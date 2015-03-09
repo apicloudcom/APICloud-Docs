@@ -3052,7 +3052,7 @@ type：
 
 - 类型：字符串
 - 默认值：all
-- 描述：侧滑类型（left：左侧滑、right：右侧滑、all：左右侧滑）
+- 描述：侧滑类型（left：左侧滑、right：右侧滑、all：左右侧滑）.安卓暂只支持 left.
 
 leftEdge：
 

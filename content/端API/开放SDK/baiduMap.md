@@ -95,11 +95,12 @@ baiduMap封装了百度地图的SDK，对百度地图的相关接口做了一层
 描述：百度开放平台的安全码获取需要区分移动平台，意味着如果你的同一个App需要同时支持IOS和Android平台，那么，您必须为这两个平台单独申请apiKey，即同一个App申请两个apiKey，并将这两个apiKey同时配置在config文件中。	
 
 配置示例:
+
 ```js
-<feature name="baiduMap">
-	<param name="android_api_key" value=" 2kyNa3maO5mXcASnUe5EwVoM " />
-	<param name="ios_api_key" value=" IvbnWLuuTnbmjOOg17zpbe0O " />
-</feature>
+  <feature name="baiduMap">
+		<param name="android_api_key" value="f7Is0dWLom2q6rV3ZfFPZ1aa" />
+		<param name="ios_api_key" value="81qz3dBYB5q2nGji4IYrawr1" />
+  </feature>
 ```
 字段描述：
 1. android_api_key：android版本的apiKey
@@ -165,6 +166,12 @@ fixedOn:
 - 类型：字符串
 - 默认值：当前主窗口的名字
 - 描述：把百度地图添加到指定窗口的名字，可为空
+
+fixed:
+
+- 类型：布尔
+- 默认值：true
+- 描述：是否将模块视图固定到窗口上，不跟随窗口上下滚动，可为空
 
 ##callback(ret, err)
 

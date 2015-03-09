@@ -48,7 +48,15 @@ qq封装了qq开放平台的SDK，实现了qq登陆，空间分享等大部分�
 
 登陆qq
 
-login(callback(ret, err))
+login({parmas},callback(ret, err))
+
+##params
+
+apiKey：
+
+- 类型：字符串
+- 默认值：无
+- 描述：从腾讯开放平台申请的app key，可为空，为空则从当前widget的config文件读取
 
 ##callback(ret, err)
 
@@ -85,7 +93,7 @@ var obj = api.require('qq');
 obj.login(function(ret,err){
 	api.alert({
         title: 'id和token',
-		msg: ret.userId + ret.accessToken
+		msg: ret.openId + ret.accessToken
     });
 });
 ```
@@ -168,7 +176,19 @@ ret：
     status: true           //操作成功状态值
     info：             //json对象，包含用户信息描述
        内部字段说明：
-         city     		       //用户所在城市         figureurl    		    //空间小头像（30）地址          figureurl_1    		 //空间中头像（50）地址         figureurl_2   		    //空间大头像（100）地址         figureurl_qq_1     	 //用户小头像（40）地址         figureurl_qq_2    	 //用户大头像（100）地址         gender   		       //用户性别         is_yellow_vip        //是否为黄钻用户         level    		       //用户账号级别         nickname   		    //用户昵称         province     		    //用户所在省份         year             	    //用户出生年份         yellow_vip_level   	 //用户账户黄钻等级
+         city     		       //用户所在城市
+         figureurl    		    //空间小头像（30）地址 
+         figureurl_1    		 //空间中头像（50）地址
+         figureurl_2   		    //空间大头像（100）地址
+         figureurl_qq_1     	 //用户小头像（40）地址
+         figureurl_qq_2    	 //用户大头像（100）地址
+         gender   		       //用户性别
+         is_yellow_vip        //是否为黄钻用户
+         level    		       //用户账号级别
+         nickname   		    //用户昵称
+         province     		    //用户所在省份
+         year             	    //用户出生年份
+         yellow_vip_level   	 //用户账户黄钻等级
 }
 ```
 
@@ -187,7 +207,14 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('qq');obj.getUserInfo(function(ret,err) {   if (ret.status) {      api.alert({msg:'获取成功'});   }else{      api.alert({msg:err.msg});   }});
+var obj = api.require('qq');
+obj.getUserInfo(function(ret,err) {
+   if (ret.status) {
+      api.alert({msg:'获取成功'});
+   }else{
+      api.alert({msg:err.msg});
+   }
+});
 ```
 
 ##可用性
@@ -235,7 +262,19 @@ err：
 	msg:''            //错误描述
 	code：            //错误码
 	       错误码说明：
-	       0     		//EQQAPISENDSUCESS          1    		//EQQAPIQQNOTINSTALLED          2   		//EQQAPIQQNOTSUPPORTAPI          3     		//EQQAPIMESSAGETYPEINVALID          4    		//EQQAPIMESSAGECONTENTNULL          5   		//EQQAPIMESSAGECONTENTINVALID          6     		//EQQAPIAPPNOTREGISTED          7    		//EQQAPIAPPSHAREASYNC         -1   		//EQQAPISENDFAILD         -4     		//用户取消分享        10000    	//qzone分享不支持text类型分享        10001   	//qzone分享不支持image类型分享        10009       //当前设备未安装qq客户端       
+	       0     		//EQQAPISENDSUCESS
+          1    		//EQQAPIQQNOTINSTALLED
+          2   		//EQQAPIQQNOTSUPPORTAPI
+          3     		//EQQAPIMESSAGETYPEINVALID
+          4    		//EQQAPIMESSAGECONTENTNULL
+          5   		//EQQAPIMESSAGECONTENTINVALID
+          6     		//EQQAPIAPPNOTREGISTED
+          7    		//EQQAPIAPPSHAREASYNC
+         -1   		//EQQAPISENDFAILD
+         -4     		//用户取消分享
+        10000    	//qzone分享不支持text类型分享
+        10001   	//qzone分享不支持image类型分享
+        10009       //当前设备未安装qq客户端       
 }
 ```
 
@@ -311,7 +350,19 @@ err：
 	msg:''            //错误描述
 	code：            //错误码
 	       错误码说明：
-	       0     		//EQQAPISENDSUCESS          1    		//EQQAPIQQNOTINSTALLED          2   		//EQQAPIQQNOTSUPPORTAPI          3     		//EQQAPIMESSAGETYPEINVALID          4    		//EQQAPIMESSAGECONTENTNULL          5   		//EQQAPIMESSAGECONTENTINVALID          6     		//EQQAPIAPPNOTREGISTED          7    		//EQQAPIAPPSHAREASYNC         -1   		//EQQAPISENDFAILD         -4     		//用户取消分享        10000    	//qzone分享不支持text类型分享        10001   	//qzone分享不支持image类型分享        10009       //当前设备未安装qq客户端       
+	       0     		//EQQAPISENDSUCESS
+          1    		//EQQAPIQQNOTINSTALLED
+          2   		//EQQAPIQQNOTSUPPORTAPI
+          3     		//EQQAPIMESSAGETYPEINVALID
+          4    		//EQQAPIMESSAGECONTENTNULL
+          5   		//EQQAPIMESSAGECONTENTINVALID
+          6     		//EQQAPIAPPNOTREGISTED
+          7    		//EQQAPIAPPSHAREASYNC
+         -1   		//EQQAPISENDFAILD
+         -4     		//用户取消分享
+        10000    	//qzone分享不支持text类型分享
+        10001   	//qzone分享不支持image类型分享
+        10009       //当前设备未安装qq客户端       
 }
 ```
 
@@ -396,7 +447,19 @@ err：
 	msg:''            //错误描述
 	code：            //错误码
 	       错误码说明：
-	       0     		//EQQAPISENDSUCESS          1    		//EQQAPIQQNOTINSTALLED          2   		//EQQAPIQQNOTSUPPORTAPI          3     		//EQQAPIMESSAGETYPEINVALID          4    		//EQQAPIMESSAGECONTENTNULL          5   		//EQQAPIMESSAGECONTENTINVALID          6     		//EQQAPIAPPNOTREGISTED          7    		//EQQAPIAPPSHAREASYNC         -1   		//EQQAPISENDFAILD         -4     		//用户取消分享        10000    	//qzone分享不支持text类型分享        10001   	//qzone分享不支持image类型分享        10009       //当前设备未安装qq客户端       
+	       0     		//EQQAPISENDSUCESS
+          1    		//EQQAPIQQNOTINSTALLED
+          2   		//EQQAPIQQNOTSUPPORTAPI
+          3     		//EQQAPIMESSAGETYPEINVALID
+          4    		//EQQAPIMESSAGECONTENTNULL
+          5   		//EQQAPIMESSAGECONTENTINVALID
+          6     		//EQQAPIAPPNOTREGISTED
+          7    		//EQQAPIAPPSHAREASYNC
+         -1   		//EQQAPISENDFAILD
+         -4     		//用户取消分享
+        10000    	//qzone分享不支持text类型分享
+        10001   	//qzone分享不支持image类型分享
+        10009       //当前设备未安装qq客户端       
 }
 ```
 
@@ -482,7 +545,19 @@ err：
 	msg:''            //错误描述
 	code：            //错误码
 	       错误码说明：
-	       0     		//EQQAPISENDSUCESS          1    		//EQQAPIQQNOTINSTALLED          2   		//EQQAPIQQNOTSUPPORTAPI          3     		//EQQAPIMESSAGETYPEINVALID          4    		//EQQAPIMESSAGECONTENTNULL          5   		//EQQAPIMESSAGECONTENTINVALID          6     		//EQQAPIAPPNOTREGISTED          7    		//EQQAPIAPPSHAREASYNC         -1   		//EQQAPISENDFAILD         -4     		//用户取消分享        10000    	//qzone分享不支持text类型分享        10001   	//qzone分享不支持image类型分享        10009       //当前设备未安装qq客户端       
+	       0     		//EQQAPISENDSUCESS
+          1    		//EQQAPIQQNOTINSTALLED
+          2   		//EQQAPIQQNOTSUPPORTAPI
+          3     		//EQQAPIMESSAGETYPEINVALID
+          4    		//EQQAPIMESSAGECONTENTNULL
+          5   		//EQQAPIMESSAGECONTENTINVALID
+          6     		//EQQAPIAPPNOTREGISTED
+          7    		//EQQAPIAPPSHAREASYNC
+         -1   		//EQQAPISENDFAILD
+         -4     		//用户取消分享
+        10000    	//qzone分享不支持text类型分享
+        10001   	//qzone分享不支持image类型分享
+        10009       //当前设备未安装qq客户端       
 }
 ```
 
@@ -568,7 +643,19 @@ err：
 	msg:''            //错误描述
 	code：            //错误码
 	       错误码说明：
-	       0     		//EQQAPISENDSUCESS          1    		//EQQAPIQQNOTINSTALLED          2   		//EQQAPIQQNOTSUPPORTAPI          3     		//EQQAPIMESSAGETYPEINVALID          4    		//EQQAPIMESSAGECONTENTNULL          5   		//EQQAPIMESSAGECONTENTINVALID          6     		//EQQAPIAPPNOTREGISTED          7    		//EQQAPIAPPSHAREASYNC         -1   		//EQQAPISENDFAILD         -4     		//用户取消分享        10000    	//qzone分享不支持text类型分享        10001   	//qzone分享不支持image类型分享        10009       //当前设备未安装qq客户端       
+	       0     		//EQQAPISENDSUCESS
+          1    		//EQQAPIQQNOTINSTALLED
+          2   		//EQQAPIQQNOTSUPPORTAPI
+          3     		//EQQAPIMESSAGETYPEINVALID
+          4    		//EQQAPIMESSAGECONTENTNULL
+          5   		//EQQAPIMESSAGECONTENTINVALID
+          6     		//EQQAPIAPPNOTREGISTED
+          7    		//EQQAPIAPPSHAREASYNC
+         -1   		//EQQAPISENDFAILD
+         -4     		//用户取消分享
+        10000    	//qzone分享不支持text类型分享
+        10001   	//qzone分享不支持image类型分享
+        10009       //当前设备未安装qq客户端       
 }
 ```
 

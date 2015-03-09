@@ -299,7 +299,7 @@ err：
 ```js
 var fs = api.require('fs');
 fs.copyTo({
-	oldPath: 'fs:// a.txt',
+	oldPath: 'fs://a.txt',
 	newPath: 'fs://newDir/a.txt'
 },function(ret,err){
 	var status = ret.status;
@@ -940,7 +940,7 @@ err：
 
 ```js
 var fs = api.require('fs');
-fs.read({
+fs.write({
 	fd:fd,
 	data:'testtext',
 	offset:0

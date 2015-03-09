@@ -123,7 +123,7 @@ uzgetuisdk.initialize(function(ret) {
 
 ##可用性
 
-iOS系统，Android系统
+iOS系统
 
 可提供的1.0.0及更高版本
 
@@ -183,7 +183,7 @@ uzgetuisdk.register(function(ret) {
 
 ##可用性
 
-iOS系统，Android系统
+iOS系统
 
 可提供的1.0.0及更高版本
 </div>
@@ -261,7 +261,7 @@ uzgetuisdk.setTag(param,function(ret) {
 
 ##可用性
 
-iOS系统，Android系统
+iOS系统
 
 可提供的1.0.0及更高版本
 
@@ -323,7 +323,7 @@ uzgetuisdk.bindAlias(param,function(ret) {
 
 ##可用性
 
-iOS系统，Android系统
+iOS系统
 
 可提供的1.0.0及更高版本
 
@@ -385,7 +385,7 @@ uzgetuisdk.unbindAlias(param,function(ret) {
 
 ##可用性
 
-iOS系统，Android系统
+iOS系统
 
 可提供的1.0.0及更高版本
 
@@ -438,7 +438,7 @@ uzgetuisdk.stopService(function(ret) {
 
 ##可用性
 
-iOS系统，Android系统
+iOS系统
 
 可提供的1.0.0及更高版本
 
@@ -512,7 +512,7 @@ uzgetuisdk.sendFeedbackMessage(param,function(ret) {
 
 ##可用性
 
-iOS系统，Android系统
+iOS系统
 
 可提供的1.0.0及更高版本
 
@@ -584,7 +584,7 @@ uzgetuisdk.turnOnPush(function(ret) {
 
 ##可用性
 
-iOS系统，Android系统
+iOS系统
 
 可提供的1.0.0及更高版本
 
@@ -637,7 +637,7 @@ uzgetuisdk.turnOffPush(function(ret) {
 
 ##可用性
 
-iOS系统，Android系统
+iOS系统
 
 可提供的1.0.0及更高版本
 
@@ -691,7 +691,7 @@ uzgetuisdk.isPushTurnedOn(function(ret) {
 
 ##可用性
 
-iOS系统，Android系统
+iOS系统
 
 可提供的1.0.0及更高版本
 
@@ -745,7 +745,7 @@ uzgetuisdk.getVersion(function(ret) {
 
 ##可用性
 
-iOS系统，Android系统
+iOS系统
 
 可提供的1.0.0及更高版本
 
@@ -818,7 +818,7 @@ uzgetuisdk.setSilentTime(param,function(ret) {
 
 ##可用性
 
-iOS系统，Android系统
+iOS系统
 
 可提供的1.0.0及更高版本
 
