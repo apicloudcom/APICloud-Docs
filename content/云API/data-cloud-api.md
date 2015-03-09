@@ -419,7 +419,7 @@ curl -X POST \
 
 ##密码重置
 
-**默认owner权限**
+**默认everyone权限**
 
 您可以使用这项功能，前提是用户将 Email 与他们的账户关联起来。如果执行重置密码操作，需要发送一个 POST 请求到 /resetRequest，示例如下：
 
@@ -429,7 +429,7 @@ curl -X POST \
 	-H "X-APICloud-AppKey: {{your_app_key}}" \
 	-H "authorization":{{login 返回的id}}" \
 	-H "Content-Type: application/json" \
-	-d '{"id":"{{you userid}}","username":"apicloud","email":"test@mail.apicloud.com","language":"zh_CN"}' \ 
+	-d '{"username":"apicloud","email":"test@mail.apicloud.com","language":"zh_CN"}' \ 
     https://d.apicloud.com/mcm/api/user/resetRequest
 ```
 

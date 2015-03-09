@@ -1,6 +1,6 @@
 /*
-Title: baiduNavigation
-Description: baiduNavigation
+Title: slider
+Description: slider
 */
 
 <ul id="tab" class="clearfix">
@@ -202,7 +202,11 @@ fixedOn：
 - 默认值：当前主窗口的名字
 - 描述：把模块视图添加到指定窗口的名字，可为空
 
+step：
 
+- 类型：数字
+- 默认值：0.00001
+- 描述：滑块滑动最小单位，可为空
 
 ##callback(ret, err)
 
@@ -291,6 +295,12 @@ maxValue：
 - 类型：数字
 - 默认值：无
 - 描述：slider最大值，可为空，为空时保持之前的值
+
+step：
+
+- 类型：数字
+- 默认值：0.00001
+- 描述：滑块滑动最小单位，可为空
 
 ##示例代码
 

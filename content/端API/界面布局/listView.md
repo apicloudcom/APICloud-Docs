@@ -201,25 +201,7 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('listView');
-obj.open({
-	h:300,
-	leftBtn:[{color:'#8B0000',title:'左按钮1'},{color:'#228B22',title:'左按钮2'}],
-	rightBtn:[{color:'#8B0000',title:'右按钮1'},{color:'#228B22',title:'右按钮2'}],
-	data:[{img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',title:'标题',subTitle:'子标题，说明文字。。。。。。'},
-		{title:'标题',subTitle:'子标题'},
-		{title:'标题',subTitle:'子标题'},
-		{title:'标题',subTitle:'子标题'},
-		{title:'标题',subTitle:'子标题'},
-		{title:'标题',subTitle:'子标题'},
-		{title:'标题',subTitle:'子标题'},
-		{title:'标题',subTitle:'子标题'},
-		{title:'标题',subTitle:'子标题'},
-		{title:'标题',subTitle:'子标题'},
-		{title:'标题',subTitle:'子标题'}]
-},function(ret,err){
-	api.alert({msg:ret.index});
-});
+var obj = api.require('listView');obj.open({    h:300,    leftBtn:[{color:'#8B0000',title:'左按钮1'},{color:'#228B22',title:'左按钮2'}],    rightBtn:[{color:'#8B0000',title:'右按钮1'},{color:'#228B22',title:'右按钮2'}],    placeholderImg: 'widget://res/listview.png',              data:[{ img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',title:'标题',subTitle:'子标题，说明文字。。。。。。'},{ title:'标题',subTitle:'子标题'},{title:'标题',subTitle:'子标题'},{ title:'标题',subTitle:'子标题'},{ title:'标题',subTitle:'子标题'},{ title:'标题',subTitle:'子标题'},{ title:'标题',subTitle:'子标题'},{ title:'标题',subTitle:'子标题 '},{title:'标题',subTitle:'子标题'},{ title:'标题',subTitle:'子标题 '},{ title:'标题',subTitle:'子标题'}]},function(ret,err){    api.alert({msg:ret.index});});
 ```
 
 ##补充说明

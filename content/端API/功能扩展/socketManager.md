@@ -86,7 +86,7 @@ ret：
 ```js
 var socketManager = api.require('socketManager');
 socketManager.createSocket({
-	host: '192.168.1.100'
+	host: '192.168.1.100',
 	port: 8282
 }, function(ret, err){
 	if(ret){
@@ -248,7 +248,7 @@ err：
 ```js
 var socketManager = api.require('socketManager');
 socketManager.write({
-	sid: '1'			//由createSocket方法获取得到
+	sid: '1',			//由createSocket方法获取得到
 	data: '你好'
 }, function(ret, err){
 	if(ret.status){

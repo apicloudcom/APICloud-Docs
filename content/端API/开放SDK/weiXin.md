@@ -31,26 +31,41 @@ weiXin封装了微信开放平台的SDK，使用此模块可轻松实现分享�
 **使用此模块之前需先配置config文件的Feature，方法如下**
 
 	名称：weiXin
-	参数：urlScheme
-	描述：配置微信专用的URL Scheme，使得本应用可以启动微信客户端，并与之交换数据，同时可以从微信客户端返回到本应用
+	参数：urlScheme、apiKey、apiSecret
+	描述：配置微信专用的URL Scheme，使得本应用可以启动微信客户端，并与之交换数据，同时可以从微信客户端返回到本应用。urlScheme为必须配置字段，apiKey和apiSecret为选择配置字段
 配置示例:
 ```js
-	<feature name="weiXin">
-		<param name="urlScheme" value="wx7779c7c063a9d4d9" />
-		<param name="apiKey" value="wx7779c7c063a9d4d9" />        <param name="apiSecret" value="a354f72aa1b4c2b8eaad137ac81434cd" />
-	</feature>
+  <feature name="weiXin">
+       <param name="urlScheme" value="wxd0d84bbf23b4a0e4"/>
+        <param name="apiKey" value="wxd0d84bbf23b4a0e4"/>
+        <param name="apiSecret" value="a354f72aa1b4c2b8eaad137ac81434cd"/>
+  </feature>
 ```
 字段描述:
 
 		1.param-urlScheme：声明此字段为URL Scheme类型
-		2.param-value：对应urlScheme类型的值。通过微信开放平台申请
-		3.param-apiSecret 通过微信开放平台申请的应用秘钥
+		2.param-apiKey：通过微信开放平台申请的key，调用分享功能和支付功能使用到的参数
+		3.param-apiSecret 通过微信开放平台申请的secret，调用支付功能使用到的参数
 
 #**registerApp**<div id="a1"></div>
 
 注册应用
 
-registerApp(callback(ret, err))
+registerApp({params},callback(ret, err))
+
+##params
+
+key：
+
+- 类型：字符串
+- 默认值：无
+- 描述：微信开放平台获取的key，可为空，若为空则从当前widget内config文件读取
+
+secret：
+
+- 类型：字符串
+- 默认值：无
+- 描述：微信开放平台获的secret,可为空,若为空则从当前widget内config文件读取
 
 ##callback(ret, err)
 
@@ -418,7 +433,7 @@ iOS系统，Android系统
 <div class="outline">
 [getToken](#b1)
 
-[getPayOrder](#b2)
+[getOrder](#b2)
 
 [payOrder](#b3)
 </div>
@@ -435,11 +450,17 @@ getToken({params}, callback(ret, err))
 
 ##params
 
+key：
+
+- 类型：字符串
+- 默认值：无
+- 描述：微信开放平台获取的key，可为空，若为空则使用registerApp接口传入的key，若registerApp接口没有传key参数，则从当前widget内config文件读取
+
 secret：
 
 - 类型：字符串
 - 默认值：无
-- 描述：商家从微信官方申请的secret，不能为空
+- 描述：微信开放平台获的secret,可为空,若为空则使用registerApp接口传入的secret，若registerApp接口没有传secret参数，则从当前widget内config文件读取
 
 ##callback(ret, err)
 
@@ -497,11 +518,11 @@ iOS系统，Android系统
 可提供的1.0.0及更高版本
 
 
-#**getPayOrder**<div id="b2"></div>
+#**getOrder**<div id="b2"></div>
 
 获取预支付订单
 
-getPayOrder({params}, callback(ret, err))
+getOrder({params}, callback(ret, err))
 
 ##params
 
@@ -614,6 +635,18 @@ sign：
 - 类型：字符串
 - 默认值：无
 - 描述：商家根据微信开放平台文档对数据做的签名（详情见[支付注意事项](!Constant)），不能为空
+
+key：
+
+- 类型：字符串
+- 默认值：无
+- 描述：从微信开放平台获取的key，可为空，若为空则使用registerApp接口或者getToken接口传入的key，若registerApp接口和getToken接口都没有传key参数，则从当前widget内config文件读取
+
+secret：
+
+- 类型：字符串
+- 默认值：无
+- 描述：商家从微信开放平台申请的secret，可为空，若为空则使用registerApp接口或者getToken接口传入的secret，若registerApp接口和getToken接口都没有传secret参数，则从当前widget内config文件读取
 
 ##callback(ret, err)
 

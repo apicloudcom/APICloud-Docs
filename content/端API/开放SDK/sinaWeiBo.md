@@ -27,24 +27,38 @@ sinaWeiBo封装了新浪微博开放平台的sdk，使用此模块可实现新�
 	参数：urlScheme
 	描述：配置新浪微博专用的URL Scheme，使得本应用可以启动新浪微博客户端，并与之交换数据，同时可以从新浪微博客户端返回到本应用
 	配置示例：
-				<feature name=" sinaWeiBo">
-					<param name="urlScheme" value=" wb1464272715" />
-					<param name="apiKey" value=" 1464272715" />
-                    <param name="rgistUrl" value="http://www.api.com" />
-				</feature>
+      <feature name="sinaWeiBo">
+        <param name="urlScheme" value="wb1132217156" />
+        <param name="apiKey" value="1132217156" />
+        <param name="registUrl" value="http://www.apicloud.com" />
+      </feature>
 	字段描述：
 		1、param-urlScheme：声明此字段为URL Scheme类型
 		2、param-value：对应urlScheme类型的值。通过新浪微博开放平台申请appId，再加上‘wb’前缀构成
 		3、param-apiKey：声明此字段为apiKey类型
 		4、param-value：对应从新浪开放平台申请的appKey
-		5、param-rgistUrl：声明此字段为rgistUrl类型
+		5、param-registUrl：声明此字段为registUrl类型
 		6、param-value：对应在新浪开放平台申appkey时填写的的回调url
 
 #**auth**<div id="1"></div>
 
 授权
 
-auth(callback(ret, err))
+auth({params},callback(ret, err))
+
+##params
+
+apiKey：
+
+- 类型：字符串
+- 默认值：无
+- 描述：从新浪开放平台申请的key，可为空，若为空则从当前widget的config文件读取
+
+registUrl：
+
+- 类型：字符串
+- 默认值：无
+- 描述：在新浪开放平台填写的回调url，可为空，若为空则从当前widget的config文件读取
 
 ##callback(ret, err)
 

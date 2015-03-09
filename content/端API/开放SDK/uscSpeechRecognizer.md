@@ -22,7 +22,7 @@ Description: uscSpeechRecognizer
 
 #**概述**
 
-uscSpeechRecognizer模块封装了云知声语音识别的sdk，开发者只需调用此模块即可实现语音识别，语音合成的相关功能，省去了开发者去云知声官网注册创建app的复杂流程。
+uscSpeechRecognizer模块封装了云知声语音识别的sdk，开发者只需调用此模块即可实现语音识别，语音合成，语义理解的相关功能，省去了开发者去云知声官网注册创建app的复杂流程。
 
 暂 仅支持 Android. 
 
@@ -70,6 +70,7 @@ ret：
 {
 	status:true		//操作成功状态值
 	resultStr：		//识别语音后的文字
+    nluStr:         //语义理解结果
 }
 ```
 
@@ -88,18 +89,20 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('uscSpeechRecognizer');obj.startRecord({},function(ret,err){    if(ret.status){        ret.resultStr;    }else{        err.msg;    }});
+var obj = api.require('uscSpeechRecognizer');obj.startRecord({},function(ret,err){    if(ret.status){        ret.resultStr;        ret.nluStr;    }else{        err.msg;    }});
 ```
 
 ##补充说明
 
-无
+解析语义理解结果请下载<<云知声语义云平台API规范文档>>
+下载地址：[dev.hivoice.cn/download_file/USC_Semantic_Parsing_Service_Protocol.pdf](http://dev.hivoice.cn/download_file/USC_Semantic_Parsing_Service_Protocol.pdf)
+
 
 ##可用性
 
 Android系统
 
-可提供的1.1.0及更高版本
+可提供的1.0.1及更高版本
 
 
 #**stopRecord**<div id="2"></div>
@@ -122,7 +125,7 @@ var obj = api.require('uscSpeechRecognizer');obj.stopRecord();
 
 Android系统
 
-可提供的1.1.0及更高版本
+可提供的1.0.1及更高版本
 
 
 #**cancelRecord**<div id="3"></div>
@@ -146,7 +149,7 @@ obj.cancelRecord();
 
 Android系统
 
-可提供的1.1.0及更高版本
+可提供的1.0.1及更高版本
 
 
 #**play**<div id="4"></div>
@@ -203,7 +206,7 @@ var obj = api.require('uscSpeechRecognizer');obj.play({    text:'北京云知�
 
 Android系统
 
-可提供的1.1.0及更高版本
+可提供的1.0.1及更高版本
 
 
 #**stopPlay**<div id="5"></div>
@@ -226,4 +229,4 @@ var obj = api.require('uscSpeechRecognizer');obj.stopPlay();
 
 Android系统
 
-可提供的1.1.0及更高版本
+可提供的1.0.1及更高版本
