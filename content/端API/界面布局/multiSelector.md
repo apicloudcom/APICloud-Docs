@@ -11,6 +11,8 @@ Description: multiSelector
 <div class="outline">
 [open](#1)
 
+[hide](#6)
+
 [close](#2)
 
 [show](#3)
@@ -106,6 +108,11 @@ fixedOn：
 - 默认值：当前主窗口的名字
 - 描述：将此模块视图添加到指定窗口的名字，可为空
 
+selectedItems：
+
+- 类型：数组
+- 默认值：无
+- 描述：默认选中的条目的下标组成的数组，下标从0开始，-1表示全选，可为空
 
 ##callback(ret, err)
 
@@ -150,8 +157,39 @@ obj.open({
 
 IOS系统 android系统
 
-可提供的1.0.1及更高版本
+可提供的1.0.0及更高版本
 
+#**setSelect**<div id="6"></div>
+
+设置/取消选中条目
+
+setSelect({params})
+
+##params
+
+indexs：
+
+- 类型：数组
+- 默认值：-1
+- 描述：设置要选中的条目的下标组成的数组（若该条目为已选中状态则会取消其选中状态），下标从0开始，-1表示全选，可为空
+
+
+
+##示例代码
+
+```js
+ var obj = api.require('multiSelector'); obj.setSelect({      index:[-1] });
+```
+
+##补充说明
+
+无
+
+##可用性
+
+IOS系统 android系统
+
+可提供的1.0.1及更高版本
 
 
 #**close**<div id="2"></div>

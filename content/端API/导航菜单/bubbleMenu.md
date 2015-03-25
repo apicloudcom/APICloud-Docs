@@ -32,41 +32,54 @@ open({params}, callback(ret, err))
 
 ##params
 
-bgColor：
+<del>bgColor：</del>
 
-- 类型：字符串
-- 默认值：#000000
-- 描述：菜单背景色
+- <del>类型：字符串</del>
+- <del>默认值：#000000</del>
+- <del>描述：菜单背景色</del>
 
-lightColor：
+<del>lightColor：</del>
 
-- 类型：字符串
-- 默认值：#009ACD
-- 描述：菜单按钮点击色
+- <del>类型：字符串</del>
+- <del>默认值：#009ACD</del>
+- <del>描述：菜单按钮点击色</del>
 
-borderColor：
+<del>borderColor：</del>
 
-- 类型：字符串
-- 默认值：#000000
-- 描述：菜单边框色
+- <del>类型：字符串</del>
+- <del>默认值：#000000</del>
+- <del>描述：菜单边框色</del>
 
-cutLineColor：
+<del>cutLineColor</del>
 
-- 类型：字符串
-- 默认值：#636363
-- 描述：按钮间分割线颜色
+- <del>类型：字符串</del>
+- <del>默认值：#636363</del>
+- <del>描述：按钮间分割线颜色</del>
+
+style：
+
+- 类型：json对象
+- 默认值：见内部字段
+- 描述：气泡样式设置，可为空
+
+ 内部字段:
+    ```js
+    {
+     bgColor:   //菜单按钮背景色，支持rgb,rgba,#,默认#000000，可为空     lightColor:  //菜单按钮点击色，支持rgb,rgba,#,默认#009ACD，可为空     borderColor:// 菜单边框色，支持rgb,rgba,#,默认#000000，可为空      cutLineColor:// 菜单按钮分割线色，支持rgb,rgba,#,默认#636363，可为空     titleColor:   //菜单按钮标题色，支持rgb,rgba,#,默认#ffffff，可为空
+ }
+ ```
 
 centerX：
 
 - 类型：数字
 - 默认值：120
-- 描述：气泡菜单箭头点的坐标
+- 描述：气泡菜单箭头点的坐标，可为空
 
 centerY：
 
 - 类型：数字
 - 默认值：120
-- 描述：气泡菜单箭头点的坐标
+- 描述：气泡菜单箭头点的坐标，可为空
 
 btnArray:
 
@@ -131,16 +144,37 @@ iOS系统，Android系统
 
 
 
-#**hidden**<div id="2"></div>
+#**<del>hidden</del>**<div id="2"></div>
+
+<del>隐藏菜单</del>
+
+<del>hidden()</del>
+
+##<del>示例代码</del>
+
+	var obj = api.require('bubbleMenu');
+	obj.hidden();
+
+##<del>补充说明</del>
+
+<del>隐藏菜单，只是隐藏，还在内存里没有清除</del>
+
+##<del>可用性</del>
+
+<del>iOS系统，Android系统</del>
+
+<del>可提供的1.0.0及更高版本</del>
+
+#**hide**<div id="2"></div>
 
 隐藏菜单
 
-hidden()
+hide()
 
 ##示例代码
 
 	var obj = api.require('bubbleMenu');
-	obj.hidden();
+	obj.hide();
 
 ##补充说明
 
@@ -150,9 +184,7 @@ hidden()
 
 iOS系统，Android系统
 
-可提供的1.0.0及更高版本
-
-
+可提供的1.0.1及更高版本
 
 #**show**<div id="3"></div>
 

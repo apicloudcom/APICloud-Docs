@@ -1090,6 +1090,61 @@ obj.exist({
 iOS系统，Android系统，PC模拟器
 
 可提供的1.0.0及更高版本
+
+#**exist**<div id="14"></div>
+
+获取指定路径下文件的属性
+
+getAttribute({params}, callback(ret, err))
+
+##params
+
+path：
+
+- 类型：字符串
+- 默认值：无
+- 描述：目标路径，不能为空
+
+##callback(ret, err)
+
+ret：
+
+- 类型：JSON对象
+
+内部字段：
+
+```js
+{
+	status:            //操作状态   attribute:          //文件属性   内部字段：{      creationDate:  //创建日期 ，字符串类型（仅ios支持此字段）      modificationDate：//修改日期，字符串类型      size：        //文件大小，数字类型，以B为单位      type：       //表示文件类型，字符串类型，取值范围：folder、file   } 
+}
+```
+err：
+
+- 类型：JSON对象
+
+内部字段：
+
+```js
+{
+	msg:            //错误描述
+}
+```
+
+##示例代码
+
+```js
+var fs = api.require('fs');fs.getAttribute({    path: 'fs://a.txt'},function(ret,err){    if (ret.status) {        api.alert({msg:'获取属性成功'});    }else{        api.alert({msg:err.msg});    }});
+```
+
+##补充说明
+
+获取指定路径的文件属性
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.0.1及更高版本
 </div>
 
 

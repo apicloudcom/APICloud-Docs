@@ -17,9 +17,9 @@ Description: listContact
 
 [setRefreshHeader](#4)
 
-[reloadData](#5)
+[hide](#5)
 
-[setRefreshHeader](#6)
+[show](#6)
 </div>
 
 #**概述**
@@ -172,7 +172,7 @@ data：
 
 ```js
 {
-	comman: [{                  //索引值
+	common: [{                  //索引值
 		img:               		//cell的头像，一个网络路径，此图片会被缓存到本地，可为空
 		placeholderImg:         //头像,本地路径,加载网络图片时显示界面上的图，不可为空
 		title:               	//cell的标题，若subtitle为空时，title上下居中位置，不可为空
@@ -210,6 +210,11 @@ fixedOn:
 - 默认值：无
 - 描述：将模块视图添加在某个窗口上的名字，若为空则默认当前视图
 
+fixed:
+- 类型：布尔
+- 默认值：true
+- 描述：是否将模块视图固定到窗口上，不跟随窗口上下滚动，可为空
+
 ##callback(ret, err)
 
 ret：
@@ -220,10 +225,10 @@ ret：
 
 ```js
 {
-    index:          	//点击某个cell或其内部按钮返回其下标
-	section:            //被点击的cell活着button所在的组号
-	clickType:      	//点击类型，0-cell；1-右边按钮；2-左边的按钮
-	btnIndex:       	//点击按钮时返回其下标
+    index:          	//点击某个cell所在区域内的cell的下标
+	section:            //被点击的cell所在的区域的下标
+	clickType:        	//点击类型，0-cell；1-右边按钮；2-左边的按钮
+	btnIndex:       	   //点击按钮时返回其下标
 }
 ```
 

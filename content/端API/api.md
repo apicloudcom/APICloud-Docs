@@ -476,6 +476,8 @@ iOS系统，Android系统
 [上传状态](#b25)
 
 [键盘弹出页面调整方式](#b26)
+
+[缓存策略](#b27)
 </div>
 
 #**toast位置**<div id="b1"></div>
@@ -865,6 +867,7 @@ iOS系统，Android系统
 - 0  		//连接错误
 - 1  		//超时
 - 2  	   //授权错误
+- 3			//数据类型错误
 
 ##可用性
 
@@ -943,6 +946,8 @@ iOS系统
 - landscape_left	    	//横屏时，屏幕在home键的左边
 - landscape_right		//横屏时，屏幕在home键的右边
 - auto						//屏幕根据重力感应在横竖屏间自动切换
+- auto_portrait			//屏幕根据重力感应在竖屏间自动切换
+- auto_landscape			//屏幕根据重力感应在横屏间自动切换
 
 ##可用性
 
@@ -979,6 +984,26 @@ iOS系统，Android系统
 - resize			//若键盘盖住输入框，页面会自动上移
 - pan				//若键盘盖住输入框，页面不会自动上移
 - auto	    		//默认值，由系统决定如何处理，iOS平台该字段等同于resize
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.0.0及更高版本
+
+
+#**缓存策略**<div id="b27"></div>
+
+缓存策略，字符串类型
+
+用于imageCache()方法中的policy字段
+
+##取值范围
+
+- default						//默认为cache_else_network
+- cache_else_network		//若服务器上没有更新，则使用缓存
+- no_cache					//不使用缓存，始终从服务器获取
+- cache_only					//当缓存存在时，只从缓存中读取
 
 ##可用性
 
@@ -1691,6 +1716,10 @@ iOS系统，Android系统
 
 [historyForward](#74)
 
+[pageUp](#79)
+
+[pageDown](#80)
+
 [removeLaunchView](#63)
 
 [parseTapmode](#34)
@@ -1710,6 +1739,8 @@ iOS系统，Android系统
 [download](#17)
 
 [cancelDownload](#8)
+
+[imageCache](#78)
 
 [readFile](#36)
 
@@ -2687,6 +2718,12 @@ index：
 - 默认值：0
 - 描述：默认显示的页面索引
 
+preload：
+
+- 类型：数字
+- 默认值：1
+- 描述：预加载的frame个数，默认加载当前页后面一个
+
 frames：
 
 - 类型：数组
@@ -3416,6 +3453,112 @@ iOS系统，Android系统
 可提供的1.0.0及更高版本
 
 
+#**pageUp**<div id="79"></div>
+
+页面向上滚动一页
+
+pageUp({params, callback(ret,err)})
+
+##params
+
+top：
+
+- 类型：布尔
+- 默认值：false
+- 描述：是否直接滚动到最顶部
+
+##callback(ret, err)
+
+ret：
+
+- 类型：JSON对象
+
+内部字段：
+
+```js
+{
+	scrolled:true		//是否滚动，为false时说明当前页面已经到达顶部了
+}
+```
+
+##示例代码
+
+```js
+api.pageUp(
+	function(ret){
+		if (!ret.scrolled){
+			api.alert({
+				msg:'已经滚动到顶部了'
+			});
+		}
+	}
+);
+```
+
+##补充说明
+
+无
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.1.0及更高版本
+
+
+#**pageDown**<div id="80"></div>
+
+页面向下滚动一页
+
+pageDown({params, callback(ret,err)})
+
+##params
+
+bottom：
+
+- 类型：布尔
+- 默认值：false
+- 描述：是否直接滚动到最底部
+
+##callback(ret, err)
+
+ret：
+
+- 类型：JSON对象
+
+内部字段：
+
+```js
+{
+	scrolled:true		//是否滚动，为false时说明当前页面已经到达底部了
+}
+```
+
+##示例代码
+
+```js
+api.pageDown(
+	function(ret){
+		if (!ret.scrolled){
+			api.alert({
+				msg:'已经滚动到底部了'
+			});
+		}
+	}
+);
+```
+
+##补充说明
+
+无
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.1.0及更高版本
+
+
 
 #**removeLaunchView**<div id="63"></div>
 
@@ -3857,8 +4000,8 @@ data：
 {
 	stream："",		//文件路径（字符串类型）
 	body："",			//请求体（字符串类型）
-	values：{},		//以键值对方式提交参数（JSON对象）
-	files：{}			//以键值对方式提交文件（JSON对象）
+	values：{},		//以表单方式提交参数（JSON对象）
+	files：{}			//以表单方式提交文件（JSON对象）
 }
 ```
 
@@ -3887,9 +4030,10 @@ err：
 
 ```js
 {
-    statusCode: 400,        //网络请求状态码
-    code:0,                 //错误码（详见异步请求错误码常量）
-    msg:""                  //错误描述
+    statusCode: 400,		//网络请求状态码，数字类型
+    code:0,					//错误码（详见异步请求错误码常量），数字类型
+    msg:''					//错误描述，字符串类型
+    body:					//当请求失败如需要权限时，此时服务器返回的数据会通过该参数返回；当要求返回的数据格式为json，而返回的数据不是json格式时，数据通过该参数返回
 }
 ```
 
@@ -3899,7 +4043,6 @@ err：
 api.ajax({
 	url: 'http://192.168.1.101:3101/upLoad',
 	method: 'post',
-	cache: false,
 	timeout: 30,
 	dataType: 'json',
 	returnAll:false,
@@ -4058,6 +4201,72 @@ api.cancelDownload ({
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
+
+
+#**imageCache**<div id="78"></div>
+
+图片缓存
+
+imageCache({params}, callback(ret, err))
+
+##params
+
+url：
+
+- 类型：字符串
+- 默认值：无
+- 描述：图片远程地址，不能为空
+
+policy：
+
+- 类型：字符串
+- 默认值：default
+- 描述：缓存策略（详见[缓存策略](!Constant)常量）
+
+thumbnail：
+
+- 类型：布尔类型
+- 默认值：true
+- 描述：使用缩略图，底层将根据当前系统及设备性能，返回最优的缩略图，有利于提高应用运行及渲染效率
+
+##callback(ret, err)
+
+ret：
+
+- 类型：JSON对象
+
+内部字段：
+
+```js
+{
+    status:true,          //是否成功，布尔类型
+    url:''                //图片本地存储路径，若下载失败，则返回传入的url，字符串类型
+}
+```
+
+##示例代码
+
+```js
+var url = 'http://a.hiphotos.baidu.com/image/w%3D400/sign=2abe1c77d4ca7bcb7d7bc62f8e086b3f/64380cd7912397ddf9f4bdb05a82b2b7d1a287f0.jpg';
+api.imageCache({
+	url: url
+},function(ret,err){
+	if (ret) {
+		var path = ret.url;
+	}
+});
+```
+
+##补充说明
+
+无
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.1.0及更高版本
+
 
 
 #**readFile**<div id="36"></div>
@@ -5264,7 +5473,7 @@ orientation：
 
 - 类型：字符串
 - 默认值：无
-- 描述：旋转屏幕到指定方向，或根据重力感应自动旋转；如果参数指定方向，则屏幕不会在重力感应下自动旋转，详见[屏幕旋转方向](!Constant)常量，不能为空
+- 描述：旋转屏幕到指定方向，或根据重力感应自动旋转；当前为横屏时，若想只在横屏间根据重力切换，则可以传auto_landscape，竖屏间切换则传auto_portrait。详见[屏幕旋转方向](!Constant)常量，不能为空
 
 ##示例代码
 
@@ -5275,7 +5484,7 @@ api.setScreenOrientation({
 ```
 ##补充说明
 
-当方向为portrait_down，即屏幕在home键的下面时，部分手机不支持
+无
 
 ##可用性
 
@@ -5881,6 +6090,18 @@ textUp：
 - 默认值：松开可以刷新...
 - 描述：松开时文字描述
 
+textLoading：
+
+- 类型：字符串
+- 默认值：加载中...
+- 描述：加载状态文字描述
+
+textTime：
+
+- 类型：字符串
+- 默认值：最后更新加日期时间
+- 描述：更新时间文字描述
+
 showTime：
 
 - 类型：布尔
@@ -5909,7 +6130,7 @@ api.setRefreshHeaderInfo({
     textUp: '松开刷新...',
     showTime: true
 }, function(ret, err){
-    
+    //从服务器加载数据，完成后调用api.refreshHeaderLoadDone()方法恢复组件到默认状态
 });
 ```
 

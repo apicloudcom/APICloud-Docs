@@ -36,7 +36,7 @@ Sort: 1
 - [极光推送](#21-0)
 - [融云即时通信](#21-1)
 
-[Reference](#22)
+[Permission](#22)
 
 - [读取手机状态和身份](#23)
 - [直接拨打电话](#24)
@@ -50,7 +50,9 @@ Sort: 1
 - [控制振动/闪光灯/屏幕休眠等硬件设备](#32)
 - [访问设备通讯录](#33)
 
-[Reference](#34)
+[Font](#34)
+
+[Reference](#35)
 
 #**Overview**
 <div id="1"></div>
@@ -73,7 +75,7 @@ Sort: 1
     </author>
     <content src="index.html" />
     <access origin="*" />
-<preference name="windowBackground" value="#FFF" />
+	<preference name="windowBackground" value="#FFF" />
     <permission name="call" />
     <feature name="weiXin">
 		<param name="urlScheme" value="wx7779c7c063a9d4d9" />
@@ -161,6 +163,12 @@ widget父元素描述了该Widget的基本属性，如表1所示。
         <td>feature</td>
         <td>功能配置。通过此配置，向系统声明需要使用哪些功能，以及需要传递给该功能的数据。如：使用新浪微博、使用微信分享等。该配置可在IDE的GUI界面中选择并使用。详细请参考<a href="#3">Feature Guide</a></td>
         <td>可选</td>
+    </tr>
+    <tr>
+        <td>font</td>
+        <td>字体配置。通过此配置，将自定义字体加入到应用中，使其可以在前端页面使用该字体</td>
+        <td>可选</td>
+    </tr>
 </table>
 
 #**Preference**<div id="4"></div>
@@ -654,8 +662,23 @@ Permission用于声明本应用用到的所有系统权限。APPCloud开放的AP
 
 配置示例：```<permission name="contact" />```
 
+#**Font**<div id="34"></div>
 
-##Reference<div id="34"></div>
+Font用于配置字体文件，配置以后在前端页面里面就可以使用该字体。
+
+字体文件需放在widget目录里面，可以同时配置多种字体。
+
+目前只支持iOS。
+
+配置示例：
+
+```
+<font name="widget/res/xingkai.ttf" />
+<font name="widget/res/lishu.ttf" />
+```
+
+
+##Reference<div id="35"></div>
 
 完整的config文件参考：
 

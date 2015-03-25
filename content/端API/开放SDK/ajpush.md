@@ -130,7 +130,7 @@ ret：
 
 ```js
 {
-	id:''               //消息id
+	id:''               //消息id，可能为空
 	title:''     		//消息标题，可能为空
 	content:''          //消息内容
 	extra:{}            //额外键值对，可能为空
@@ -691,7 +691,7 @@ iOS系统，Android系统
 
 #**其他重要信息**<div id="15"></div>
 
-在使用极光推送发送通知、消息、富媒体等类型推送时，极光推送模块会往设备状态栏上发送通知，当通知被点击后，APICloud会将本次推送的内容通过事件监听回调的方式交给开发者。具体使用如下：
+在Android平台，使用极光推送发送通知、消息等类型推送时，极光推送模块会往设备状态栏上发送通知，当通知被点击后，APICloud会将本次推送的内容通过事件监听回调的方式交给开发者。具体使用如下：
 
 ```js
 api.addEventListener({name:'appintent'}, function(ret,err) {
@@ -701,34 +701,20 @@ api.addEventListener({name:'appintent'}, function(ret,err) {
 		var title = ajpush.title;
 		var content = ajpush.content;
 		var extra = ajpush.extra;
-		//do something
 	}
 })
 ```
 
-##callback(ret, err)
+在iOS平台，当应用在后台时，使用极光推送发送通知时（消息只有应用在前台才能收到），系统会往设备发送通知。
 
-ret：
-
-- 类型：JSON对象
-
-内部字段：
+当通知被点击后，若应用已启动，则通过上面的setListener回调给开发者；若应用未启动，APICloud会将本次推送的内容通过事件监听回调的方式交给开发者。具体使用如下：
 
 ```js
-{
-	id:''               //消息id
-	title:''     		//消息标题，可能为空
-	content:''          //消息内容
-	extra:{}            //额外键值对，可能为空
-}
+api.addEventListener({name:'noticeclicked'}, function(ret,err) {
+	if(ret && ret.value){
+		var ajpush = ret.value;
+		var content = ajpush.content;
+		var extra = ajpush.extra;
+	}
+})
 ```
-
-##补充说明
-
-无
-
-##可用性
-
-iOS系统，Android系统
-
-可提供的1.0.0及更高版本

@@ -157,6 +157,10 @@ clearBtn：
 - 默认值：false
 - 描述：是否将个人中心下边按钮清除，可为空
 
+fixed:
+- 类型：布尔
+- 默认值：true
+- 描述：是否将模块视图固定到窗口上，不跟随窗口上下滚动，可为空
 
 ##callback(ret,err)
 
@@ -178,28 +182,29 @@ ret:
 ##示例代码
 
 ```js
-var obj = api.require('personalCenter');
-obj.open({
-	imgPath:'http://h.hiphotos.baidu.com/image/pic/item/42166d224f4a20a40155f84e92529822730ed0f4.jpg',
-	placeholderImg: 'widget://res/filterMe.png',
-		btnArray:[
-			{
-				bgImg:’widget://res/personal_btn_nor.png’,
-				selectedImg:’widget://res/personal_btn_sele.png’,
-			},
-			{
-				bgImg:’widget://res/personal_btn_nor.png’,
-				selectedImg:’widget://res/personal_btn_sele.png’,
-			},
-			{
-				bgImg:’widget://res/personal_btn_nor.png’,
-				selectedImg:’widget://res/personal_btn_sele.png’,
-			}
-		]
-},function(ret,err){
-	api.alert({
-		msg:ret.click
-	});
+var personalCenter = api.require('personalCenter');
+
+personalCenter.open({
+    imgPath:'http://h.hiphotos.baidu.com/image/pic/item/42166d224f4a20a40155f84e92529822730ed0f4.jpg',
+    placeholderImg: 'widget://res/filterMe.png',
+    btnArray:[
+        {
+            bgImg:'widget://res/personal_btn_nor.png',
+    selectedImg:'widget://res/personal_btn_sele.png'
+    },
+{
+    bgImg:'widget://res/personal_btn_nor.png',
+    selectedImg:'widget://res/personal_btn_sele.png'
+    },
+    {
+        bgImg:'widget://res/personal_btn_nor.png',
+        selectedImg:'widget://res/personal_btn_sele.png'
+        }
+    ]
+    },function(ret,err){
+    api.alert({
+        msg:ret.click
+    });
 });
 ```
 
