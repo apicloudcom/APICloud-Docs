@@ -13,6 +13,8 @@ Description: citySelector
 
 [hidden](#2)
 
+[hide](#5)
+
 [show](#3)
 
 [close](#4)
@@ -165,7 +167,7 @@ IOS系统，安卓系统
 
 <del>可提供的0.0.1及更高版本</del>
 
-#**hide**<div id="2"></div>
+#**hide**<div id="5"></div>
 
 隐藏选择器
 

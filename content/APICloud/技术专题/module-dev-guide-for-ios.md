@@ -192,10 +192,12 @@ module.json的内容格式为JSON数组字符串，可以对多个module进行�
 本SDK提供三个开放类，分别为：UZModule、UZAppDelegate、UZAppUtils。
 
 <table>
+    <thead>
     <tr>
-        <th>类</th>
+        <th width="50%">类</th>
         <th>描述</th>
     </tr>
+    </thead>
     <tr>
         <td>UZModule</td>
         <td>所有扩展Native模块的基类，子类通过继承该类并声明相应函数，实现子类绑定映射至JS对象</td>
@@ -211,11 +213,13 @@ module.json的内容格式为JSON数组字符串，可以对多个module进行�
 
 UZModule类是模块开发扩展的基类，其初始化，清空内存以及回调方法如下表：
 
-<table>
+<table style="table-layout:fixed;">
+    <thead>
     <tr>
-        <th>方法</th>
+        <th width="50%">方法</th>
         <th>描述</th>
     </tr>
+    </thead>
     <tr>
         <td>- (id)initWithUZWebView:(UIWebView *)webView</td>
         <td>初始化方法，做一些初始化工作，比如给在module.json里面定义的属性赋初值等</td>
@@ -232,13 +236,16 @@ UZModule类是模块开发扩展的基类，其初始化，清空内存以及回
 UZAppDelegate对象方法说明：
 
 <table>
+    <thead>
     <tr>
-        <th>方法</th>
+        <th width="50">方法</th>
         <th>描述</th>
     </tr>
+    </thead>
     <tr>
         <td>- (void)addAppHandle:(id <UIApplicationDelegate>)handle</td>
         <td>注册一个实现了UIApplicationDelegate协议的对象。注册后对象可以实现推送消息、处理第三方应用回调等功能</td>
+    </tr>
 </table>
 
 #**第八章Native模块包结构说明**<div id="8"></div>

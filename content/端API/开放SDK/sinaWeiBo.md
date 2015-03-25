@@ -15,6 +15,8 @@ Description: sinaWeiBo
 [cancelAuth](#2)
 
 [sendRequest](#3)
+
+[getUserInfo](#4)
 </div>
 
 #**概述**
@@ -59,6 +61,12 @@ registUrl：
 - 类型：字符串
 - 默认值：无
 - 描述：在新浪开放平台填写的回调url，可为空，若为空则从当前widget的config文件读取
+
+isAuth：
+
+- 类型：布尔
+- 默认值：true
+- 描述：是否登录授权，可为空，若为false则仅注册，分享消息只需注册，获取用户信息需登录授权
 
 ##callback(ret, err)
 
@@ -306,6 +314,71 @@ sinaWeiBo.sendRequest({
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
+
+#**getUserInfo**<div id="4"></div>
+
+获取用户账户信息
+
+getUserInfo({params}, callback(ret, err))
+
+##params
+
+token：
+
+- 类型：字符串
+- 默认值：当前已登录账号的token
+- 描述：登录账号获取的token值，可为空
+
+uid：
+
+- 类型：字符串
+- 默认值：当前已登录账号的userid
+- 描述：登录账号获取的userid，可为空
+
+
+##callback(ret, err)
+
+ret：
+
+- 类型：JSON对象
+
+内部字段：
+
+```js
+{
+	 status:true           //操作成功状态值
+	 userInfo:''           //获取的用户信息，json对象
+}
+```
+
+err：
+
+- 类型：JSON对象
+
+内部字段：
+
+```js
+{
+    msg:""    //错误描述
+};
+```
+
+##示例代码
+
+```js
+var sinaWeiBo = api.require('sinaWeiBo');sinaWeiBo.getUserInfo(function(ret,err){    if (ret.status) {        api.alert({msg: '获取成功'});    }else{        api.alert({msg:err.msg});    }});
+```
+
+##补充说明
+
+需先登录
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.0.1及更高版本
+
 </div>
 
 

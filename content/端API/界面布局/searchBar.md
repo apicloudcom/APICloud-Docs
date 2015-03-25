@@ -63,7 +63,7 @@ textColor：
 textFielWidth：
 
 - 类型：数字
-- 默认值：250
+- 默认值：当前屏幕宽度减70
 - 描述：搜索输入框宽度，可为空
 
 textFieldHeight：

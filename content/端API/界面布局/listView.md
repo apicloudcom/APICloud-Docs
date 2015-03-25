@@ -80,7 +80,8 @@ leftBtn：
 [{
 	color:                  //按钮背景色，支持rgb，rgba，#，可为空
 	title:                  //按钮名字，可为空
-	selecteColor            //按钮选中时候的颜色值，支持rgb，rgba，#，可为空 deprecated   selectedColor    	//按钮选中时候的颜色值，支持rgb，rgba，#，不可为空
+	selecteColor            //按钮选中时候的颜色值，支持rgb，rgba，#，可为空 deprecated
+   selectedColor    	//按钮选中时候的颜色值，支持rgb，rgba，#，不可为空
 }]
 ```
 
@@ -102,7 +103,8 @@ rightBtn：
 [{
 	color:                  //按钮背景色，支持rgb，rgba，#，可为空
 	title:                  //按钮名字，可为空
-	selecteColor            //按钮选中时候的颜色值，支持rgb，rgba，#，可为空deprecated   selectedColor    	//按钮选中时候的颜色值，支持rgb，rgba，#，不可为空
+	selecteColor            //按钮选中时候的颜色值，支持rgb，rgba，#，可为空deprecated
+   selectedColor    	//按钮选中时候的颜色值，支持rgb，rgba，#，不可为空
 }]
 ```
 
@@ -164,6 +166,7 @@ data：
 
 ```js
 [{
+    placeholderImg:      //头像,一个本地路径,加载网络图片时显示界面上的图，可为空
 	img:                    //cell的头像，一个网络路径，此图片会被缓存到本地，可为空
 	title:                  //cell的标题，若subtitle为空时，title上下居中位置
 	subTitle:               //cell的子标题，可为空，为空时title上下居中显示
@@ -181,6 +184,11 @@ fixedOn：
 - 类型：字符串
 - 默认值：当前主窗口的名字
 - 描述：将此模块视图添加到指定窗口的名字，可为空
+
+fixed:
+- 类型：布尔
+- 默认值：true
+- 描述：是否将模块视图固定到窗口上，不跟随窗口上下滚动，可为空
 
 ##callback(ret, err)
 
@@ -201,7 +209,16 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('listView');obj.open({    h:300,    leftBtn:[{color:'#8B0000',title:'左按钮1'},{color:'#228B22',title:'左按钮2'}],    rightBtn:[{color:'#8B0000',title:'右按钮1'},{color:'#228B22',title:'右按钮2'}],    placeholderImg: 'widget://res/listview.png',              data:[{ img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',title:'标题',subTitle:'子标题，说明文字。。。。。。'},{ title:'标题',subTitle:'子标题'},{title:'标题',subTitle:'子标题'},{ title:'标题',subTitle:'子标题'},{ title:'标题',subTitle:'子标题'},{ title:'标题',subTitle:'子标题'},{ title:'标题',subTitle:'子标题'},{ title:'标题',subTitle:'子标题 '},{title:'标题',subTitle:'子标题'},{ title:'标题',subTitle:'子标题 '},{ title:'标题',subTitle:'子标题'}]},function(ret,err){    api.alert({msg:ret.index});});
+var obj = api.require('listView');
+obj.open({
+    h:300,
+    leftBtn:[{color:'#8B0000',title:'左按钮1'},{color:'#228B22',title:'左按钮2'}],
+    rightBtn:[{color:'#8B0000',title:'右按钮1'},{color:'#228B22',title:'右按钮2'}],
+    placeholderImg: 'widget://res/listview.png',
+              data:[{ img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',title:'标题',subTitle:'子标题，说明文字。。。。。。'},{ title:'标题',subTitle:'子标题'},{title:'标题',subTitle:'子标题'},{ title:'标题',subTitle:'子标题'},{ title:'标题',subTitle:'子标题'},{ title:'标题',subTitle:'子标题'},{ title:'标题',subTitle:'子标题'},{ title:'标题',subTitle:'子标题 '},{title:'标题',subTitle:'子标题'},{ title:'标题',subTitle:'子标题 '},{ title:'标题',subTitle:'子标题'}]
+},function(ret,err){
+    api.alert({msg:ret.index});
+});
 ```
 
 ##补充说明
@@ -308,7 +325,10 @@ index：
 ##示例代码
 
 ```js
-var obj = api.require('listView'); obj.deleteItem({      index:2 });
+var obj = api.require('listView');
+ obj.deleteItem({
+      index:2
+ });
 ```
 
 ##补充说明
@@ -353,7 +373,11 @@ data：
 ##示例代码
 
 ```js
-var obj = api.require('listView'); obj.refreshItem({      index:2，      data：{ title:'刷新指定下标的标题',subTitle:'刷新指定下标的子标题'} });
+var obj = api.require('listView');
+obj.refreshItem({
+      index:2,
+      data: {title:'刷新指定下标的标题', subTitle:'刷新指定下标的子标题'}
+});
 ```
 
 ##补充说明

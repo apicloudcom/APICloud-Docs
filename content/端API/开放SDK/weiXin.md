@@ -600,6 +600,19 @@ payOrder({params}, callback(ret, err))
 
 ##params
 
+secret：
+
+- 类型：字符串
+- 默认值：无
+- 描述：商家从微信开放平台申请的secret，可为空，若为空则使用registerApp接口或者getToken接口传入的secret，若registerApp接口和getToken接口都没有传secret参数，则从当前widget内config文件读取
+
+key：
+
+- 类型：字符串
+- 默认值：无
+- 描述：从微信开放平台获取的key，可为空，若为空则使用registerApp接口或者getToken接口传入的key，若registerApp接口和getToken接口都没有传key参数，则从当前widget内config文件读取
+
+
 orderId：
 
 - 类型：字符串
