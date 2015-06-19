@@ -147,80 +147,67 @@ ret：
 ##示例代码
 
 ```js
-var array = [
-		{
-		  "time": "12:05",
-          "data": "15",
-          "isonline": "1"
-        },
-        {
-          "time": "13:10",
-          "data": "45",
-          "isonline": "1"
-		},
-        {
-          "time": "14:22",
-          "data": "55",
-          "isonline": "1"
-        },
-        {
-		  "time": "15:08",
-          "data": "0",
-          "isonline": "1"
-        },
-        {
-		  "time": "16:19",
-		  "data": "70",
-	      "isonline": "1"
-        },
-        {
-          "time": "17:31",
-          "data": "45",
-		  "isonline": "0"
-		},
-        {
-		  "time": "12:05",
-          "data": "60",
-		  "isonline": "1"
-         },
-         {
-          "time": "13:10",
-          "data": "35",
-          "isonline": "1"
-		 },
-         {
-          "time": "14:22",
-          "data": "85",
-          "isonline": "1"
-         },
-         {
-          "time": "15:08",
-          "data": "20",
- 		  "isonline": "0"
-          },
-          {
-           "time": "16:19",
-           "data": "70",
-           "isonline": "1"
-          },
-          {
-           "time": "17:31",
-           "data": "47",
-           "isonline": "1"
-          },
-          {	
-           "time": "17:31",
-		   "data": "45",
-           "isonline": "1"
-		  }];
+var array = [{
+  "time": "12:05",
+  "data": "15",
+  "isonline": "1"
+}, {
+  "time": "13:10",
+  "data": "45",
+  "isonline": "1"
+}, {
+  "time": "14:22",
+  "data": "55",
+  "isonline": "1"
+}, {
+  "time": "15:08",
+  "data": "0",
+  "isonline": "1"
+}, {
+  "time": "16:19",
+  "data": "70",
+  "isonline": "1"
+}, {
+  "time": "17:31",
+  "data": "45",
+  "isonline": "0"
+}, {
+  "time": "12:05",
+  "data": "60",
+  "isonline": "1"
+}, {
+  "time": "13:10",
+  "data": "35",
+  "isonline": "1"
+}, {
+  "time": "14:22",
+  "data": "85",
+  "isonline": "1"
+}, {
+  "time": "15:08",
+  "data": "20",
+  "isonline": "0"
+}, {
+  "time": "16:19",
+  "data": "70",
+  "isonline": "1"
+}, {
+  "time": "17:31",
+  "data": "47",
+  "isonline": "1"
+}, {
+  "time": "17:31",
+  "data": "45",
+  "isonline": "1"
+}];
 var obj = api.require('graph');
 obj.open({
-	bubbleUp:'widget://res/graph_bubble_up.png',
-	bubbleDown:'widget://res/graph_bubble_down.png',
-	data:array
-},function(ret,err){
-	ret.orient;
-}); 
+  bubbleUp: 'widget://res/graph_bubble_up.png',
+  bubbleDown: 'widget://res/graph_bubble_down.png',
+  data: array
+}, function(ret, err) {
+
+});
 ```
 
 ##补充说明
@@ -398,7 +385,7 @@ close()
 
 ##示例代码
 
-	varobj = api.require('graph');
+	var obj = api.require('graph');
 	obj.close();
 
 ##补充说明

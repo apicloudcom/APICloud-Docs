@@ -7,12 +7,15 @@ Description: pdfReader
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
 <div id="method-content">
+<div class="outline">
+[open](#1)
+</div>
 
 #**概述**
 
 pdfReader封装了一个简单的pdf阅读器，支持添加标签、以九宫格形式查看、打印等功能，本模块只支持阅读pdf格式的文档
 
-#**open**
+#**open**<div id="1"></div>
 
 打开一个pdf格式的文档
 

@@ -87,6 +87,8 @@ Sort: 6
 
 [.fixIos7Bar()](#41)
 
+[.fixStatusBar()](#45)
+
 [.toast()](#42)
 
 [.get()](#43)
@@ -784,12 +786,24 @@ $api.clearStorage ();
 
 ##.fixIos7Bar()<div id="41"></div>
 - 描述：适配iOS7+系统状态栏，为传入的DOM元素增加20px的上内边距
-- 用法：. fixIos7Bar(el)
+- 用法：.fixIos7Bar(el)
 - 参数：el (类型：Element) ： DOM元素
 - 备注：自动识别iOS7+，避免应用与状态栏重叠，无法跟config.xml里面的<preference name="iOS7StatusBarAppearance" value="false" />一起使用。
 - 示例：
 ```js
+var header = document.querySelector('#header');
 $api.fixIos7Bar(header);
+```
+
+##.fixStatusBar()<div id="45"></div>
+- 描述：适配iOS7+、Android4.4+系统状态栏，为传入的DOM元素增加适当的上内边距，避免header与状态栏重叠
+- 用法：.fixStatusBar(el)
+- 参数：el (类型：Element) ： DOM元素
+- 备注：自动识别iOS7+，避免应用与状态栏重叠，无法跟config.xml里面的<preference name="iOS7StatusBarAppearance" value="false" />一起使用。
+- 示例：
+```js
+var header = document.querySelector('#header');
+$api.fixStatusBar(header);
 ```
 
 ##.toast()<div id="42"></div>

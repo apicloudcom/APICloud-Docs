@@ -47,7 +47,13 @@ init(params)
 ##示例代码
 
 ```js
-var yzChannel = api.require('yzChannel');var params = {"channel_id":"3b151b6fe72cfcb2512334130f7d70b8",                 "channel_data":"custom"};yzChannel.init(params);
+var yzChannel = api.require('yzChannel');
+var params = {
+    "channel_id":"3b151b6fe72cfcb2512334130f7d70b8",
+    "channel_data":"custom"
+};
+
+yzChannel.init(params);
 ```
 
 ##补充说明

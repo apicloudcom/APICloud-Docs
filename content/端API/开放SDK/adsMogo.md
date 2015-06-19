@@ -97,17 +97,18 @@ err：
 
 ```js
 var adsMogoBanner = api.require('adsMogoBanner');
-	adsMogoBanner.initBanner({
-		mogoId:"5a10bcead61141689daf08c5fdd3426c",
-		position:"center_bottom",
-		adsize:0
-	 },function(ret,err){
-		if(ret.status){
-			api.alert({msg:"调用广告初始化成功"});
-		}else{
-			api.alert({msg:"调用广告初始化失败msg:"+err.msg});
-		}
-	});
+
+adsMogoBanner.initBanner({
+    mogoId:"5a10bcead61141689daf08c5fdd3426c",
+    position:"center_bottom",
+    adsize:0
+},function(ret,err){
+    if(ret.status){
+        api.alert({msg:"调用广告初始化成功"});
+    }else{
+        api.alert({msg:"调用广告初始化失败msg:"+err.msg});
+    }
+});
 ```
 
 ##补充说明
@@ -157,11 +158,12 @@ err：
 
 ```js
 var obj = api.require('adsMogoBanner');
+
 obj.hiddenBanner(function(ret, err){
-	if(ret.status){
-		api.alert({msg:'调用隐藏广告成功'});
+    if(ret.status){
+        api.alert({msg:'调用隐藏广告成功'});
     }else{
-		api.alert({msg:'调用隐藏广告失败msg+err.msg'});
+        api.alert({msg:'调用隐藏广告失败msg+err.msg'});
     }
 });
 ```
@@ -213,6 +215,7 @@ err：
 
 ```js
 var obj = api.require('adsMogoBanner');
+
 obj.showBanner(function(ret, err){
 	if(ret.status){
 		api.alert({msg:'调用展示广告成功'});
@@ -277,13 +280,14 @@ err：
 
 ```js
 var obj = api.require('adsMogoBanner');
+
 obj.setLog({
-	debug:true
-	}function(ret, err){
-if(ret.status){
-		api.alert({msg:'设置日志成功'});
+    debug:true
+},function(ret, err){
+    if(ret.status){
+        api.alert({msg:'设置日志成功'});
     }else{
-		api.alert({msg:'设置日志失败msg+err.msg'});
+        api.alert({msg:'设置日志失败msg+err.msg'});
     }
 });
 ```
@@ -323,10 +327,11 @@ ret：
 
 ```js
 var obj = api.require(' adsMogoBanner ');
+
 obj.setListener(function(ret, err){
-	if(ret.name == 'onRequestAd'){
-		api.alert({msg:"开始请求广告"});
-	}
+    if(ret.name == 'onRequestAd'){
+        api.alert({msg:"开始请求广告"});
+    }
 });
 ```
 
@@ -452,7 +457,8 @@ err：
 
 ```js
 var obj = api.require('adsMogoInterstitial');
-obj.showBanner(function(ret, err){
+
+obj.showInterstitial(function(ret, err){
 	if(ret.status){
 		api.alert({msg:'调用展示广告成功'});
     }else{
@@ -516,13 +522,14 @@ err：
 
 ```js
 var obj = api.require('adsMogoInterstitial');
+
 obj.setLog({
-	debug:true
-}function(ret, err){
-	if(ret.status){
-		api.alert({msg:'设置日志成功'});
+    debug:true
+},function(ret, err){
+    if(ret.status){
+        api.alert({msg:'设置日志成功'});
     }else{
-		api.alert({msg:'设置日志失败msg+err.msg'});
+        api.alert({msg:'设置日志失败msg+err.msg'});
     }
 });
 ```
@@ -563,10 +570,11 @@ ret：
 
 ```js
 var obj = api.require('adsMogoInterstitial');
+
 obj.setListener(function(ret, err){
-	if(ret.name == 'onShowInterstitialScreen'){
-		api.alert({msg:"全插屏展示到屏幕上"});
-	}
+    if(ret.name == 'onShowInterstitialScreen'){
+        api.alert({msg:"全插屏展示到屏幕上"});
+    }
 });
 ```
 
@@ -617,11 +625,12 @@ err：
 
 ```js
 var obj = api.require('adsMogoInterstitial');
-obj.hiddenBanner(function(ret, err){
-	if(ret.status){
-		api.alert({msg:'调用取消等待展示成功'});
+
+obj.cancelWaitShow(function(ret, err){
+    if(ret.status){
+        api.alert({msg:'调用取消等待展示成功'});
     }else{
-		api.alert({msg:'取消等待展示msg+err.msg'});
+        api.alert({msg:'取消等待展示msg+err.msg'});
     }
 });
 ```

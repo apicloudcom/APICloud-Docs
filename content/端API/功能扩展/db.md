@@ -27,9 +27,11 @@ db模块封装了手机常用数据库sqlite的增删改查语句，可实现数
 
 #**openDatabase**<div id="1"></div>
 
-打开数据库，若数据库不存在则创建数据库
+打开数据库，若数据库不存在则创建数据库。
 
-数据库放在widget目录下时为只读，若要进行写操作可以把数据库拷贝到fs://对应目录下面
+数据库打开后即使当前页面关闭了，数据库也不会关闭，除非手动调用closeDatabase()方法关闭，所以一旦打开在其它页面就可以直接使用。
+
+若数据库放在widget目录下，那么需要先把数据库拷贝到fs://对应目录下面再使用
 
 openDatabase({params}, callback(ret, err))
 
@@ -367,7 +369,7 @@ db.selectSql({
 	if(ret.status){
 		var data = ret.data;
 	}else{
-	};
+	}
 });
 ```
 

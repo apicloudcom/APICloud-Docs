@@ -165,7 +165,9 @@ ret：
 	status:              //状态值
 	index:               //点击的k线的结点的下标，数字
 	id: （deprecated）   //点击的K线的id ，数字（将要废弃此参数）
-	chartId:         //模块视图的id，数字类型    lineId:          //点击的K线的id，数字类型
+	chartId:         //模块视图的id，数字类型
+    lineId:          //点击的K线的id，数字类型
+
 }
 ```
 
@@ -198,7 +200,7 @@ obj.open({
 	coorLineColor:'#C0C0C0',
 	markColor:'#051353'
 },function(ret, err) {
-    api.alert({msg:ret.status})
+    api.alert({msg:ret.status});
 });
 ```
 

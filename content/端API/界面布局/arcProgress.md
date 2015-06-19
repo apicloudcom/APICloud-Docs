@@ -102,15 +102,15 @@ ret：
 ```js
 var obj = api.require('arcProgress');
 obj.open({
-	type:0,
-	centerX:100,
-	centerY:100,
-	radius:60,
+	type: 0,
+	centerX: 100,
+	centerY: 100,
+	radius: 60,
 	bgColor: '#c0c0c0',
 	pgColor: '#228b2',
-	loopWidth:3
+	loopWidth: 3
 },function(ret,err){
-	ret.id;
+
 });
 ```
 ##补充说明
@@ -205,4 +205,8 @@ iOS系统，Android系统
 
 ##取值范围：
 
-- annular		//环形- sector		//扇形- crescent		//月牙形</div>
+- annular		//环形
+- sector		//扇形
+- crescent		//月牙形
+
+</div>

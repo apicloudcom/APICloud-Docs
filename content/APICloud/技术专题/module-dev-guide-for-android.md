@@ -36,7 +36,7 @@ Sort: 5
 - [资源规范细则](#12)
 
 #**第一章 SDK简介**<div id="resoure2"></div>
-APICloud模块（Native Module）扩展SDK（以下简称SDK）是柚子科技为满足广大开发者自定义扩展Native模块的热切需求，而推出的模块扩展开发SDK，提供给有一定Android基础的开发者，通过简单的接口实现，轻松接入APICloud平台，快速开发扩展模块，自行实现对APICloud引擎能力的增强，提升App的质量及用户体验。
+APICloud模块（Native Module）扩展SDK（以下简称SDK）是APICloud为满足广大开发者自定义扩展Native模块的热切需求，而推出的模块扩展开发SDK，提供给有一定Android基础的开发者，通过简单的接口实现，轻松接入APICloud平台，快速开发扩展模块，自行实现对APICloud引擎能力的增强，提升App的质量及用户体验。
 
 一个完整的SDK包命名类似：ModulesDevProject_Android.zip。解压后是一个标准的Android工程目录，如图（1）所示：
 
@@ -89,9 +89,9 @@ APICloud引擎以实现对操作系统底层能力的封装和扩展，通过系
 
 * 启动widget、向window注入Javascript，包括：
 
-	 -在module中调用UZMAP引擎的widget管理能力启动widge
+	 -在module中调用引擎的widget管理能力启动widget
 
-	 -向UZMAP中活动window注入并执行一段Javascript
+	 -向APP的某活动window注入并执行一段Javascript
 
 * 扩展模块项目资源ID的管理,包括：
 
@@ -111,9 +111,9 @@ Eclipse3.7及以上；
 
 ADT21及以上；
 
-Android SDK 19（4.4.2）；
+Android SDK 21（5.0）及以上；
 
-JDK1.6及以上；
+JDK1.6或者1.7。尽量不要使用1.8，存在各种潜在问题；
 
 其中Android环境推荐使用Google整合版的Eclipse：SDK ADT Bundle;
 
@@ -141,7 +141,7 @@ JSON数据在线Viewer：http://www.bejson.com/go.html?u=http://www.bejson.com/j
 	
 ##ii.	开发设计Native模块<div id="6"></div>
 
-* 新建用于绑定映射至JS对象的类。在项目中新建Java类（以下以UZModuleDemo类为例，映射的JS对象为moduleDemo），继承自引擎Jar包中的UZModule类，并重写相关函数。如下图：
+* 新建用于绑定映射至JS对象的类。在项目中新建Java类（以下以UZModuleDemo类为例，映射的JS对象为moduleDemo），继承自引擎Jar包中的APIModule或者UZModule类，并重写相关函数。如下图：
 
 ![图片说明](/img/docImage/7.jpg) 
  
@@ -169,7 +169,7 @@ APICloud引擎会在初始化的时候，根据Java函数是否包含“jsmethod
 - moduleDemo.vibrate(argument)；
 即可调用到对应的Java函数中；
 
-注意：```以“jsmethod_”前缀声明的Java函数，UZMAP引擎在操作该函数时，是在UI线程中进行的，所以请勿在该函数内部做耗时的操作，避免引起UI阻塞，抛出异常。```
+注意：```以“jsmethod_”前缀声明的Java函数，APICloud终端引擎在操作该函数时，是在UI线程中进行的，所以请勿在该函数内部做耗时的操作，避免引起UI阻塞，抛出异常。```
 
 * 获取JS传入的参数
 

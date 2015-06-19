@@ -118,20 +118,20 @@ ret：
 
 ```js
 var obj = api.require('circularMenu');
-var arrayItems = new Array();
+var arrayItems = [];
 for (var i=0;i<5;i++){
 	arrayItems[i]={
 		normal:"widget://res/circularMenu2.png",
 		highlight:"widget://res/circularMenu2light.png",
 		title:"按钮二",
 		titleColor:"#FF0000"
-	}
+	};
 }
 obj.open({
 	items: arrayItems
 }, function(ret, err){
-	ret.index;
-	ret.pointerIndex;
+	var index = ret.index;
+	var pointerIndex = ret.pointerIndex;
 });
 ```
 

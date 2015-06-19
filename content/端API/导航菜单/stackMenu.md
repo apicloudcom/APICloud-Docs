@@ -96,9 +96,9 @@ ret：
 
 ```js
 var arrayPath = new Array();
-	arrayPath[0]={title:’标题一’,icon:’widget://res/stackMenu01.png’};
-	arrayPath[1]={title:’标题二’,icon:’widget://res/stackMenu02.png’};
-	arrayPath[2]={title:’标题三’,icon:’widget://res/stackMenu03.png’};
+	arrayPath[0]={title:'标题一',icon:'widget://res/stackMenu01.png'};
+	arrayPath[1]={title:'标题二',icon:'widget://res/stackMenu02.png'};
+	arrayPath[2]={title:'标题三',icon:'widget://res/stackMenu03.png'};
 
 var obj = api.require('stackMenu');
 obj.open({

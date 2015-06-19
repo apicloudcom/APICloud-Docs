@@ -17,7 +17,8 @@ Description: screenLock
 
 #**概述**
 
-screenLock封装图案解锁功能，使用此模块可轻松实现图案解锁功能
+screenLock封装图案解锁功能，使用此模块可轻松实现图案解锁功能，本模块主要实现九宫格图案解锁功能，可自定义背景颜色，只需要通过set方法设置图案密码，并通过show方法显示图案解锁界面即可简单实现，可用在某些进入时需要验证图案密码的应用，例如支付类APP。使用图案解锁前，请先通过set方法让app使用者设置图案密码。
+
 
 #**show**<div id="1"></div>
 
@@ -66,7 +67,7 @@ err：
 var screenLock = api.require('screenLock');
 screenLock.show({
    color : 'ffff00ff'
-}，
+},
 	function(ret,err){
 		api.alert({msg:''+ret.status});
 	}
@@ -127,7 +128,7 @@ err：
 var screenLock = api.require('screenLock');
 screenLock.set({
    color : 'ffff00ff'
-}，
+},
 	function(ret,err){
 		api.alert({msg:''+ret.status});
 	}

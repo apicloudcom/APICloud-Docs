@@ -11,6 +11,8 @@ Description: inputField
 <div class="outline">
 [open](#1)
 
+[setInputFieldListener](#11)
+
 [close](#2)
 
 [show](#3)
@@ -28,6 +30,8 @@ Description: inputField
 [configMsg](#9)
 
 [insertMsg](#10)
+
+[setPlaceholder](#11)
 </div>
 
 #**概述**
@@ -48,63 +52,64 @@ bgColor:
 
 - 类型：字符串
 - 默认值：灰色
-- 描述：输入视图背景色的十六进制值,支持rgba，rgb，#，可为空
+- 描述：（可选项）输入视图背景色设置,支持rgba，rgb，#
 
 lineColor:
 
 - 类型：字符串
 - 默认值：黑色
-- 描述：输入框视图最上边的分割线色的十六进制值,支持rgba，rgb，#，可为空
+- 描述：（可选项）输入框视图最上边的分割线色设置,支持rgba，rgb，#
 
 borderColor:
 
 - 类型：字符串
 - 默认值：红色
-- 描述：输入框边框色的十六进制值,支持rgba，rgb，#，可为空
+- 描述：（可选项）输入框边框色设置,支持rgba，rgb，#
 
 fileBgColor:
 
 - 类型：字符串
 - 默认值：白色
-- 描述：输入框背景色的十六进制值,，支持rgba，rgb，#，可为空
+- 描述：（可选项）输入框背景色设置，支持rgba，rgb，#
 
 sendImg:
 
 - 类型：字符串
 - 默认值：无
-- 描述：发送按钮的背景图片，不可为空
+- 描述：发送按钮的背景图片
 
 sendImgHighlight：
 
 - 类型：字符串
 - 默认值：无
-- 描述：发送按钮的背景图片，可为空
+- 描述：（可选项）发送按钮的高亮背景图片
 
 fixedOn：
 
 - 类型：字符串
 - 默认值：当前主窗口的名字
-- 描述：将此模块视图添加到指定窗口的名字，可为空
+- 描述：（可选项）将此模块视图添加到指定窗口的名字
 
 maxLines：
 
 - 类型：数字
 - 默认值：无
-- 描述：输入框高度自适应输入的文字行数的最大限高值，可为空，若为空则高度不自适应
+- 描述：（可选项）输入框高度自适应输入的文字行数的最大限高值
+- 备注：若不传空则高度不自适应
 
 placeholder：
 
 - 类型：字符串
 - 默认值：无
-- 描述：输入框的提示文字，可为空，若为空则不显示
+- 描述：（可选项）输入框的提示文字
+- 备注：若不传则不显示占位提示文字
 
 ##callback(ret, err)
 
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
@@ -137,6 +142,50 @@ iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
+#**setInputFieldListener**<div id="11"></div>
+
+设置输入框监听
+
+setInputFieldListener(callback(ret, err))
+
+##callback(ret, err)
+
+ret：
+
+- 类型：JSON对象
+- 内部字段：
+
+```js
+{
+	 eventType:        //输入框弹动事件，取值范围如下：
+                          move		    //输入框弹动事件
+                          change	    //输入框高度改变事件
+     inputFieldH：     //输入框的高度，数字类型
+     chatViewH：       //输入框下边缘距离屏幕底边的高度，数字类型
+
+}
+```
+
+##示例代码
+
+```js
+var inputField = api.require('inputField');
+
+inputField.setInputFieldListener(function(ret,err){
+    alert(JSON.stringify(ret) + JSON.stringify(err));
+});
+```
+
+##补充说明
+
+无
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.0.1及更高版本
+
 
 #**close**<div id="2"></div>
 
@@ -149,8 +198,7 @@ close(callBack(ret,err));
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
@@ -161,7 +209,9 @@ ret：
 ##示例代码
 
     var obj = api.require('inputField');
-    obj.close(callBack(ret,err));
+    obj.close(function(ret,err){
+
+    });
 
 ##补充说明
 
@@ -173,7 +223,7 @@ iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
-#**hide**<div id="3"></div>
+#**hide**<div id="4"></div>
 
 隐藏输入框，并没有从内存里清除
 
@@ -184,8 +234,7 @@ hide(callBack(ret,err))
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
@@ -196,7 +245,9 @@ ret：
 ##示例代码
 
     var obj = api.require('inputField');
-    obj.hide(callBack(ret,err));
+    obj.hide(function(ret,err){
+
+    });
 
 ##补充说明
 
@@ -208,7 +259,7 @@ iOS系统，Android系统
 
 可提供的1.0.2及更高版本
 
-#**show**<div id="4"></div>
+#**show**<div id="3"></div>
 
 显示输入框
 
@@ -219,8 +270,7 @@ show(callBack(ret,err));
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
@@ -231,7 +281,9 @@ ret：
 ##示例代码
 
     var obj = api.require('inputField');
-    show(callBack(ret,err));
+    obj.show(function(ret,err){
+
+    });
 
 ##补充说明
 
@@ -254,8 +306,7 @@ becomeFirstResponder(callBack(ret,err))
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
@@ -266,7 +317,9 @@ ret：
 ##示例代码
 
     var obj = api.require('inputField');
-    obj.close(callBack(ret,err));
+    obj.close(function(ret,err){
+
+    });
 
 ##补充说明
 
@@ -289,8 +342,7 @@ resignFirstResponder(callBack(ret,err))
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
@@ -300,7 +352,9 @@ ret：
 
 ##示例代码
 
-    var obj = api.require('inputField');    obj. resignFirstResponder ();
+    var obj = api.require('inputField');
+    obj. resignFirstResponder ();
+
 ##补充说明
 
 关闭输入框
@@ -316,21 +370,21 @@ iOS系统，Android系统
 设置输入框内的文字
 
 setMsg({params},callback(ret, err))
+
 ##params
 
 msg：
 
 - 类型：字符串
 - 默认值：空字符串
-- 描述：要设置的输入框内的文字内容，可为空
+- 描述：（可选项）要设置的输入框内的文字内容
 
 ##callback(ret, err)
 
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
@@ -340,7 +394,15 @@ ret：
 ##示例代码
 
 ```js
-   var obj = api.require('inputField');   obj.setMsg({      msg:"设置的文字"   },function(ret,err){      if(ret.status){        api.alert({msg:"设置成功"});      }   });```
+   var obj = api.require('inputField');
+   obj.setMsg({
+      msg:"设置的文字"
+   },function(ret,err){
+      if(ret.status){
+        api.alert({msg:"设置成功"});
+      }
+   });
+```
 
 ##补充说明
 
@@ -363,8 +425,7 @@ setMsg(callback(ret, err))
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
@@ -374,7 +435,11 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('inputField');obj.getMsg(function(ret,err){    api.alert({msg:ret.msg });});```
+var obj = api.require('inputField');
+obj.getMsg(function(ret,err){
+    api.alert({msg:ret.msg });
+});
+```
 
 ##补充说明
 
@@ -398,25 +463,32 @@ msg：
 
 - 类型：字符串
 - 默认值：无
-- 描述：要设置的输入框内的文字内容，可为可空，为空时callBack当前值
+- 描述：（可选项）要设置的输入框内的文字内容
+- 备注：若不传则此接口callBack当前值
 
 ##callback(ret, err)
 
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-        status:           // 布尔类型，操作是否成功状态值        msg:              // 字符串类型，获取到的当前输入框内的文字
+        status:           // 布尔类型，操作是否成功状态值
+        msg:              // 字符串类型，获取到的当前输入框内的文字
 }
 ```
 ##示例代码
 
 ```js
-var obj = api.require('inputField');obj.configMsg(function(ret,err){    if(ret.status){      api.alert({msg:ret.msg });    }});```
+var obj = api.require('inputField');
+obj.configMsg(function(ret,err){
+    if(ret.status){
+      api.alert({msg:ret.msg });
+    }
+});
+```
 
 ##补充说明
 
@@ -440,18 +512,57 @@ index：
 
 - 类型：数字
 - 默认值：当前输入框内字符串的长度
-- 描述：插入当前输入框内字符串的位置，可为空
+- 描述：（可选项）插入当前输入框内字符串的位置
 
 msg：
 
 - 类型：字符串
 - 默认值：空字符串
-- 描述：要设置的输入框内的文字内容，可为空
+- 描述：（可选项）要设置的输入框内的文字内容
 
 ##示例代码
 
 ```js
-var obj = api.require('inputField');obj.insertMsg({   msg:'这里是插入的字符串'});```
+var obj = api.require('inputField');
+obj.insertMsg({
+   msg:'这里是插入的字符串'
+});
+```
+
+##补充说明
+
+无
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.0.2及更高版本
+
+
+#**setPlaceholder**<div id="11"></div>
+
+设置占位提示文字
+
+setPlaceholder({params})
+
+##params
+
+placeholder：
+
+- 类型：字符串
+- 默认值：空
+- 描述：（可选项）占位提示文字
+- 备注：若不传或传空则表示清空占位提示文字
+
+##示例代码
+
+```js
+var obj = api.require('inputField');
+obj. setPlaceholder({
+   placeholder:'我是占位提示文字'
+});
+```
 
 ##补充说明
 

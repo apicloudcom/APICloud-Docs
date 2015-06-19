@@ -110,18 +110,19 @@ err：
 
 ```js
 var obj = api.require('maketionCardReader');
+
 obj.auth({
-	uid:123456
+    uid:123456
 }, function(ret, err){
-	if(ret.status){
-		api.alert({
+    if(ret.status){
+        api.alert({
             title: "提示",
-			msg:ret.uid
+            msg:ret.uid
         });
-}else{
-	api.alert({
-		title: "出错了",
-		msg: err.msg
+    }else{
+        api.alert({
+            title: "出错了",
+            msg: err.msg
         });
     }
 });
@@ -161,11 +162,12 @@ ret：
 
 ```js
 var obj = api.require('maketionCardReader');
+
 obj.isAuth(function(ret, err){
-	if(ret.status){
-		api.alert({
-        	title: "提示",
-			msg:"验证成功"
+    if(ret.status){
+        api.alert({
+            title: "提示",
+            msg:"验证成功"
         });
     }
 });
@@ -205,11 +207,12 @@ ret：
 
 ```js
 var obj = api.require('maketionCardReader');
+
 obj.clearAuth(function(ret, err){
-	if(ret.status){
-		api.alert({
-			title: "提示",
-			msg:"清除验证成功"
+    if(ret.status){
+        api.alert({
+            title: "提示",
+            msg:"清除验证成功"
         });
     }
 });
@@ -265,11 +268,12 @@ err：
 
 ```js
 var obj = api.require('maketionCardReader');
+
 obj.open(function(ret, err){
-	api.alert({
-		title: "提示",
-		msg:ret.state+'*'+ret.uuid
-	});
+    api.alert({
+        title: "提示",
+        msg:ret.state+'*'+ret.uuid
+    });
 });
 ```
 
@@ -330,18 +334,19 @@ err：
 
 ```js
 var obj = api.require('maketionCardReader');
+
 obj.getDataWithUuid({
-	uuids:['987654']
+    uuids:['987654']
 }, function(ret, err){
-	if(ret.status){
-		api.alert({
-			title: "提示",
-			msg:ret.datas
-		});
-	}else{
-		api.alert({
+    if(ret.status){
+        api.alert({
+            title: "提示",
+            msg:ret.datas
+        });
+    }else{
+        api.alert({
             title: "出错了",
-			msg: err.msg
+            msg: err.msg
         });
     }
 });
@@ -403,18 +408,19 @@ err：
 
 ```js
 var obj = api.require('maketionCardReader');
+
 obj.getDataWithTime({
-	uuid:0
+    time: 187656
 }, function(ret, err){
-	if(ret.status){
-		api.alert({
+    if(ret.status){
+        api.alert({
             title: "提示",
-			msg:ret.datas
+            msg:ret.datas
         });
-	}else{
-		api.alert({
+    }else{
+        api.alert({
             title: "出错了",
-			msg: err.msg
+            msg: err.msg
         });
     }
 });
@@ -478,11 +484,12 @@ err：
 
 ```js
 var obj = api.require('maketionCardReader');
+
 obj.uploadImg(function(ret, err){
-	api.alert({
-		title: "提示",
-		msg:ret.state+'*'+ret.uuid
-	});
+    api.alert({
+        title: "提示",
+        msg:ret.state+'*'+ret.uuid
+    });
 });
 ```
 
@@ -555,11 +562,15 @@ err：
 
 ```js
 var obj = api.require('maketionCardReader');
-obj.getCardImg(function(ret, err){
-	api.alert({
-		title: "提示",
-		msg:ret.status
-	});
+
+obj.getCardImg({
+    uuid: "989898",
+    save: "fs://test.png"
+},function(ret, err){
+    api.alert({
+        title: "提示",
+        msg:ret.status
+    });
 });
 ```
 

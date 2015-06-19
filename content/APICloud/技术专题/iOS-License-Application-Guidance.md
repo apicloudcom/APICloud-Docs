@@ -12,7 +12,8 @@ Sort: 12
 
 [云编译mobileprovision证书制作](#4)	
 
-[推送证书制作](#5)
+[Apple Watch对应mobileprovision证书制作](#5)	
+[推送证书制作](#6)
 
 #**云编译p12证书制作**<div id="1"></div>
 
@@ -143,7 +144,11 @@ Sort: 12
 
 ![图片说明](/img/docImage/254.png)
  
-#**推送证书制作**<div id="5"></div>
+#**Apple Watch对应mobileprovision证书制作**<div id="5"></div>
+
+云编译时若要支持Apple Watch，那么需要另外再上传一个mobileprovision证书，该证书对应的App ID由你的应用的App ID加后缀watchkitapp构成，例如应用的App ID为com.yourcompany.app，那么Apple Watch证书对应的App ID则为com.yourcompany.app.watchkitapp。创建好App ID后再按照上面的mobileprovision证书制作流程制作Apple Watch对应证书。
+ 
+#**推送证书制作**<div id="6"></div>
 
 在左侧菜单选择Certificates下面的Production，进入到如下界面：
 

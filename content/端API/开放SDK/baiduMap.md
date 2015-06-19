@@ -9,7 +9,7 @@ Description: baiduMap
 </ul>
 <div id="method-content">
 
-<div class="outline">
+<div class="outline">getBaiduFromGoogle 
 [open](#1)
 
 [close](#2)
@@ -31,6 +31,10 @@ Description: baiduMap
 [setZoomEnable](#10)
 
 [setScroolEnable](#11)
+
+[setRotation](#b1)
+
+[setOverlook](#b2)
 
 [setHidden](#12)
 
@@ -81,6 +85,10 @@ Description: baiduMap
 [removeBusRoute](#34)
 
 [longPressGesture](#35)
+
+[setMapListener](#b3)
+
+[setMapTapListener](#b4)
 </div>
 
 #**概述**
@@ -461,6 +469,14 @@ lat：
 - 默认值：无
 - 描述：纬度，不能为空
 
+mcode：
+
+- 类型：字符串
+- 默认值：无
+- 描述：安全码(到http://lbsyun.baidu.com/apiconsole/key，点击应用的设置按钮，进入应用设置界面，其中安全码便是
+- 
+- ：数字签名+;+包名)
+
 ##callback(ret, err)
 
 ret：
@@ -491,14 +507,16 @@ err：
 ##示例代码
 
 ```js
-var map = api.require('baiduMap');
-map.getBaiduFromGoogle ({
-	lon:116.351,
-	lat:39.283
-}, function(ret, err){
-	var lat = ret.lat;
-	var lon = ret.lon;
-});
+    var map = api.require('baiduMap');
+	map.getBaiduFromGoogle ({
+		lon:116.351,
+		lat:39.283,	mcode:'0B:13:25:D7:85:46:0A:67:12:F3:29:88:64:56:63:10:7A:9C:C4:59;com.apicloud.A6985734480360'
+	}, function(ret, err){
+		api.alert({
+			msg: JSON.stringify(ret) +" "+ JSON.stringify(err)
+		});
+	});
+
 ```
 
 ##可用性
@@ -627,6 +645,53 @@ iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
+#**setRotation**<div id="b1"></div>
+
+设置百度地图旋转角度
+
+setRotation({params})
+
+##params
+
+rotation：
+
+- 类型：数字
+- 默认值：0
+- 描述：地图旋转角度，可使用的范围为-183-180级，可为空
+
+##示例代码
+```js
+var map = api.require('baiduMap');map.setRotation({   rotation:10});
+```
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.0.1及更高版本
+
+#**setOverlook**<div id="b2"></div>
+
+设置百度地图俯视角度
+
+setOverlook({params})
+
+##params
+
+overlook：
+
+- 类型：数字
+- 默认值：0
+- 描述：地图俯视角度，可使用的范围为-45-0级
+
+##示例代码
+```js
+var map = api.require('baiduMap');map.setOverlook({   overlook:-10});
+```
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.0.1及更高版本
 
 #**setHidden**<div id="12"></div>
 
@@ -742,8 +807,7 @@ annoArray：
 - 类型：数组
 - 默认值：无
 - 描述：添加的大头针的信息组成的数组，不可为空
-
-内部字段：
+- 内部字段：
 
 ```js
 [{
@@ -751,7 +815,9 @@ annoArray：
         lon:116.233                   //大头针所在位置的经度，数字，不可为空
         lat:39.134                    //大头针所在位置的维度，数字，不可为空
         title: 'title'                //点击大头针时弹出的气泡的大标题，字符串，不可为空
-        subTitle: 'subtitle'          //点击大头针时弹出的气泡的小标题，字符串，不可为空
+        subTitle: 'subtitle'          //点击大头针时弹出的气泡的小标题，字符串，不可为空  
+        img:                          //自定义大头针图片路径，可为空，若为空则显示pinImg 
+        showBubble:                   //点击大头针是否显示气泡，布尔类型，默认true
 }]
 ```
 
@@ -760,6 +826,7 @@ pinImg：
 - 类型：字符串
 - 默认值：无
 - 描述：自定义的大头针图片，可为空，为空则显示默认红色大头针
+
 
 ##callback(ret, err)
 
@@ -771,10 +838,8 @@ ret：
 
 ```js
 {
-    bubbleID:10             //用户点击自定义大头针气泡时返回其id deprecated
-    cbBubbleID:10           //用户点击大头针气泡时返回其id deprecated
-    bubbleId:10             //用户点击自定义大头针气泡时返回其id
     pinId:10                //用户点击大头针气泡时返回其id
+    eventType：             //事件类型，字符串，取值范围如下：                                pin   //用户点击大头针的点击事件                               bubble//用户点击自定义气泡上左边的点击事件
 }
 ```
 
@@ -805,6 +870,12 @@ iOS系统，Android系统
 setBubbleStyle(params)
 
 ##params
+
+type：
+
+- 类型：字符串
+- 默认值：normal
+- 描述：气泡布局类型
 
 bubbleBgimg：
 
@@ -2047,7 +2118,7 @@ iOS系统，Android系统
 
 在地图上添加长按手势，返回该点经纬度
 
-addPressGesture(params,callBack(ret,err))
+longPressGesture(params,callBack(ret,err))
 
 ##params
 
@@ -2086,6 +2157,92 @@ map.longPressGesture(function(ret,err){
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
+
+#**setMapListener**<div id="b3"></div>
+
+在地图上添加视角改变监听，返回当前地图中心坐标，视角倾斜度，地图旋转角度，地图缩放度
+
+setMapListener(params,callBack(ret,err))
+
+##params
+
+add:
+
+- 类型：布尔
+- 默认值：true
+- 描述：是否添加监听，若false则移除之前添加的监听，可为空
+
+##callBack(ret,err)
+
+ret：
+
+- 类型：JSON对象
+
+内部字段：
+
+```js
+{
+        lon:              //当前地图中心的经度        lat:              //当前地图中心的纬度		zoom：			    //地图缩放角度		rotate：			//地图旋转角度		overlook：		    //视角倾斜度
+}
+```
+
+##示例代码
+
+```js
+var map = api.require('baiduMap');map. setMapListener (function(ret,err){  api.alert({msg:ret.lon+"*"+ret.lat});});
+```
+
+##可用性
+
+iOS系统，Android系统
+可提供的1.0.2及更高版本
+
+#**setMapTapListener**<div id="b4"></div>
+
+在地图上添加单击监听
+
+setMapTapListener(params,callBack(ret,err))
+
+##params
+
+add:
+
+- 类型：布尔
+- 默认值：true
+- 描述：是否添加监听，若false则移除之前添加的监听，可为空
+
+##callBack(ret,err)
+
+ret：
+
+- 类型：JSON对象
+
+内部字段：
+
+```js
+{
+        eventType:        //点击事件类型，取值范围：single--单击、double--双击  
+        lon:              //当前地图中心的经度        lat:              //当前地图中心的纬度		zoom：			    //地图缩放角度		rotate：			//地图旋转角度		overlook：		    //视角倾斜度
+}
+```
+
+##示例代码
+
+```js
+var map = api.require("baiduMap");
+
+map.open();
+
+map. setMapTapListener (function(ret,err){
+    alert(JSON.stringify(ret) + JSON.stringify(err));
+});
+
+```
+
+##可用性
+
+iOS系统，Android系统
+可提供的1.0.2及更高版本
 
 </div>
 

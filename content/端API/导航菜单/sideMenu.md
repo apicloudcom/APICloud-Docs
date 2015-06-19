@@ -108,10 +108,10 @@ ret：
 ```js
 var obj = api.require('sideMenu');
 var arrayPath = new Array();
-arrayPath[0]={icon:’widget://res/sideMemu_icon.png’,bgImg:’widget://res/sideMenu_bg.png’ };
-arrayPath[1]={icon: ’widget://res/sideMemu_icon.png’,bgImg: ’widget://res/sideMenu_bg1.png’ };
-arrayPath[2]={icon: ’widget://res/sideMemu_icon.png’,bgImg: ’widget://res/sideMenu_bg.png’ };
-arrayPath[3]={icon: ’widget://res/sideMemu_icon.png’,bgImg: ’widget://res/sideMenu_bg1.png’ };
+arrayPath[0]={icon:'widget://res/sideMemu_icon.png',bgImg:'widget://res/sideMenu_bg.png' };
+arrayPath[1]={icon: 'widget://res/sideMemu_icon.png',bgImg: 'widget://res/sideMenu_bg1.png' };
+arrayPath[2]={icon: 'widget://res/sideMemu_icon.png',bgImg: 'widget://res/sideMenu_bg.png' };
+arrayPath[3]={icon: 'widget://res/sideMemu_icon.png',bgImg: 'widget://res/sideMenu_bg1.png' };
 
 obj.open({
 	btnArray:arrayPath

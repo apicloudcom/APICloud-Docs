@@ -504,7 +504,7 @@ err：
 ##示例代码
 
 ```js
-report参数为true时：
+//report参数为true时：
 
 var model = api.require('model');
 model.uploadFile({
@@ -537,7 +537,7 @@ model.uploadFile({
 });
 
 
-report参数为false时：
+//report参数为false时：
 
 var model = api.require('model');
 model.uploadFile({

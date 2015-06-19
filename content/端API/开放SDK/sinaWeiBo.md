@@ -280,7 +280,7 @@ sinaWeiBo.sendRequest({
             msg: err.msg,
             buttons: ['确定']
         });
-    };
+    }
 });
 //当contentType为text或image时，多媒体内容可以为空;
 var sinaWeiBo = api.require('sinaWeiBo');
@@ -301,7 +301,7 @@ sinaWeiBo.sendRequest({
             msg: '发表失败',
             buttons: ['确定']
 		});
-    };
+    }
 });
 ```
 
@@ -366,7 +366,14 @@ err：
 ##示例代码
 
 ```js
-var sinaWeiBo = api.require('sinaWeiBo');sinaWeiBo.getUserInfo(function(ret,err){    if (ret.status) {        api.alert({msg: '获取成功'});    }else{        api.alert({msg:err.msg});    }});
+var sinaWeiBo = api.require('sinaWeiBo');
+sinaWeiBo.getUserInfo(function(ret,err){
+    if (ret.status) {
+        api.alert({msg: '获取成功'});
+    }else{
+        api.alert({msg:err.msg});
+    }
+});
 ```
 
 ##补充说明

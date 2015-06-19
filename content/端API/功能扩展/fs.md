@@ -37,6 +37,8 @@ Description: fs
 [close](#13)
 
 [exist](#14)
+
+[getAttribute](#15)
 </div>
 
 #**概述**
@@ -96,7 +98,7 @@ fs.createDir({
 		api.alert({msg:'创建目录成功'});
 	}else {	
 		api.alert({msg:err.msg});
-	};
+	}
 });
 ```
 
@@ -164,7 +166,7 @@ fs.createFile({
 		api.alert({msg:'创建文件成功'});
 	}else {		
 		api.alert({msg:err.msg});
-	};
+	}
 });
 ```
 
@@ -232,7 +234,7 @@ fs.remove({
 		api.alert({msg:'删除文件成功'});
 	}else {
 		api.alert({msg:err.msg});
-	};
+	}
 });
 ```
 
@@ -300,14 +302,14 @@ err：
 var fs = api.require('fs');
 fs.copyTo({
 	oldPath: 'fs://a.txt',
-	newPath: 'fs://newDir/a.txt'
+	newPath: 'fs://newDir'
 },function(ret,err){
 	var status = ret.status;
 	if (status) {
 		api.alert({msg:'拷贝文件成功'});
 	}else {
 		api.alert({msg:err.msg});
-	};
+	}
 });
 ```
 
@@ -375,14 +377,14 @@ err：
 var fs = api.require('fs');
 fs.moveTo({
 	oldPath: 'fs://a.txt',
-	newPath: 'fs://newDir/a.txt'
+	newPath: 'fs://newDir'
 },function(ret,err){
 	var status = ret.status;
 	if (status) {
 		api.alert({msg:'移动文件成功'});
 	}else {
 		api.alert({msg:err.msg});
-	};
+	}
 });
 ```
 
@@ -457,7 +459,7 @@ fs.rename({
 		api.alert({msg:'重命名文件成功'});
 	}else {
 		api.alert({msg:err.msg});
-	};
+	}
 });
 ```
 
@@ -528,7 +530,7 @@ fs.readDir({
 			api.alert({msg:jsonStr});
 		} else{
 			api.alert({msg:'此目录下为空'});
-		};
+		}
 	}else{
 		api.alert({msg:err.msg});
 	}
@@ -1016,7 +1018,7 @@ fs.close({
 		api.alert({msg:'close操作成功'});
 	}else{
 		api.alert({msg:err.msg});
-	};
+	}
 });
 ```
 
@@ -1091,7 +1093,7 @@ iOS系统，Android系统，PC模拟器
 
 可提供的1.0.0及更高版本
 
-#**exist**<div id="14"></div>
+#**getAttribute**<div id="15"></div>
 
 获取指定路径下文件的属性
 
@@ -1115,7 +1117,14 @@ ret：
 
 ```js
 {
-	status:            //操作状态   attribute:          //文件属性   内部字段：{      creationDate:  //创建日期 ，字符串类型（仅ios支持此字段）      modificationDate：//修改日期，字符串类型      size：        //文件大小，数字类型，以B为单位      type：       //表示文件类型，字符串类型，取值范围：folder、file   } 
+	status:            //操作状态
+   attribute:          //文件属性
+   内部字段：{
+      creationDate:  //创建日期 ，字符串类型（仅ios支持此字段）
+      modificationDate：//修改日期，字符串类型
+      size：        //文件大小，数字类型，以B为单位
+      type：       //表示文件类型，字符串类型，取值范围：folder、file
+   } 
 }
 ```
 err：
@@ -1133,7 +1142,16 @@ err：
 ##示例代码
 
 ```js
-var fs = api.require('fs');fs.getAttribute({    path: 'fs://a.txt'},function(ret,err){    if (ret.status) {        api.alert({msg:'获取属性成功'});    }else{        api.alert({msg:err.msg});    }});
+var fs = api.require('fs');
+fs.getAttribute({
+    path: 'fs://a.txt'
+},function(ret,err){
+    if (ret.status) {
+        api.alert({msg:'获取属性成功'});
+    }else{
+        api.alert({msg:err.msg});
+    }
+});
 ```
 
 ##补充说明

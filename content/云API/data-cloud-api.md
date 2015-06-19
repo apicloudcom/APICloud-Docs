@@ -18,6 +18,8 @@ Sort: 1
 
 [文件(file)](#5)
 
+[更新操作符](#10)
+
 [查询](#6)
 
 [错误代码清单](#7)
@@ -28,9 +30,6 @@ Sort: 1
 
 为了显示跟自定义表进行区别，所以统一在开始位置了加下划线以示区别，_accessToken、_file、_role、_roleMapping、_user。实际操作不需要加下划线。
 
-###注意
-
-**暂不稳定**，是指服务是可用的，但是可能会存在一些问题。
 
 
 #**REST API 详解**<div id="1"></div>
@@ -84,8 +83,36 @@ Restful API可以让您用任何可以发送 http 请求的设备来与 API Clou
         <td>/mcm/api/&lt;className&gt;/&lt;objectId&gt;</td>
         <td>DELETE</td>
         <td>删除对象</td>
+	 <tr>
+        <td>/mcm/api/&lt;className&gt;/count</td>
+        <td>GET</td>
+        <td>统计对象数量</td>
+	 <tr>
+        <td>/mcm/api/&lt;className&gt;/&lt;objectId&gt;/exists</td>
+        <td>GET</td>
+        <td>判断对象是否存在</td>
 </table>
 
+##Relation对象
+
+<table>
+	<tr>
+        <td>/mcm/api/&lt;className&gt;/&lt;objectId&gt;/&lt;relationColName&gt;</td>
+        <td>GET</td>
+        <td>获取关联对象</td>
+    <tr>
+        <td>/mcm/api/&lt;className&gt;/&lt;objectId&gt;/&lt;relationColName&gt;</td>
+        <td>POST</td>
+        <td>创建关联对象</td>
+    <tr>
+        <td>/mcm/api/&lt;className&gt;/&lt;objectId&gt;/&lt;relationColName&gt;/count</td>
+        <td>GET</td>
+        <td>统计关联对象数量</td>
+	 <tr>
+        <td>/mcm/api/&lt;className&gt;/&lt;objectId&gt;/&lt;relationColName&gt;</td>
+        <td>DELETE</td>
+        <td>删除所有关联对象</td>
+</table>
 
 ##用户
 
@@ -292,7 +319,7 @@ curl -X PUT \
 	-H "X-APICloud-AppId: {{your_app_id}}" \
 	-H "X-APICloud-AppKey: {{your_app_key}}" \
 	-H "Content-Type: application/json" \
-	-d '{"area":"Dongcheng District"}' \ 
+	-d '{"area":"Dongcheng District"}' \
     https://d.apicloud.com/mcm/api/Company/5436442ca1a14d1c60de3e06
 ```
 
@@ -391,7 +418,7 @@ curl -X POST \
 -H "X-APICloud-AppId: {{your_app_id}}" \
 	-H "X-APICloud-AppKey: {{your_app_key}}" \
 	-H "Content-Type: application/json" \
-	-d '{"username":"apicloud","email":"customer@mail.apicloud.com","language":"zh_CN"}' \ 
+	-d '{"username":"apicloud","email":"customer@mail.apicloud.com","language":"zh_CN"}' \
     https://d.apicloud.com/mcm/api/user/verifyEmail
 ```
 
@@ -427,9 +454,8 @@ curl -X POST \
 curl -X POST \
 	-H "X-APICloud-AppId: {{your_app_id}}" \
 	-H "X-APICloud-AppKey: {{your_app_key}}" \
-	-H "authorization":{{login 返回的id}}" \
 	-H "Content-Type: application/json" \
-	-d '{"username":"apicloud","email":"test@mail.apicloud.com","language":"zh_CN"}' \ 
+	-d '{"username":"apicloud","email":"test@mail.apicloud.com","language":"zh_CN"}' \
     https://d.apicloud.com/mcm/api/user/resetRequest
 ```
 
@@ -453,7 +479,7 @@ curl -X GET \
 	-H "X-APICloud-AppId: {{your_app_id}}" \
 	-H "X-APICloud-AppKey: {{your_app_key}}" \
 	-H "authorization":{{login 返回的id}}" \
-	-H "Content-Type: application/json" \ 
+	-H "Content-Type: application/json" \
     https://d.apicloud.com/mcm/api/user/5437a1a9e41cbf4a52d7c9d6
 ```
 
@@ -489,7 +515,7 @@ curl -X PUT \
 	-H "X-APICloud-AppKey: {{your_app_key}}" \
 	-H "authorization":{{login 返回的id}}" \
 	-H "Content-Type: application/json" \
-	-d '{"address":"No.10, Building 3, Haiwei road, Haidian district"}' \ 
+	-d '{"address":"No.10, Building 3, Haiwei road, Haidian district"}' \
     https://d.apicloud.com/mcm/api/user/543ccdcd6c0a61303282414e
 ```
 
@@ -536,10 +562,10 @@ curl -X POST \
 	-H "X-APICloud-AppId: {{your_app_id}}" \
 	-H "X-APICloud-AppKey: {{your_app_key}}" \
 	-H "Content-Type: application/json" \
-	-d '{"username":"apicloud","password":"111111"}' \ 
+	-d '{"username":"apicloud","password":"111111"}' \
     https://d.apicloud.com/mcm/api/user/login
 ```
-返回的主体是一个 JSON 对象包括所有除了 password 以外的自定义字段. 它包含了 createdAt,updateAt,id,userId 和 ttl 字段.
+返回的主体是一个 JSON 对象. 它包含了 createdAt,updateAt,id,userId 和 ttl 字段.
 
 ```js
 {
@@ -638,7 +664,7 @@ curl -X GET \
 curl -X PUT \
 	-H "X-APICloud-AppId: {{your_app_id}}" \
 	-H "X-APICloud-AppKey: {{your_app_key}}" \
-	-d '{"name":"manager1"}' \ 
+	-d '{"name":"manager1"}' \
     https://d.apicloud.com/mcm/api/role/543f2e0e474f229d61185565
 ```
 
@@ -677,7 +703,6 @@ curl -X DELETE \
 
 #**批量操作**<div id="8"></div>
 
-**暂不稳定**
 
 为了减少网络交互的次数太多带来的时间浪费, 您可以在一个请求中对多个对象进行 create/update/delete 操作.
 
@@ -754,7 +779,20 @@ curl -X POST \
 	"type": file.type
 ```
 
-**上传示例**
+###**上传示例**
+
+**curl示例**
+
+```js
+curl -X POST \
+ -H "X-APICloud-AppId:{{your_app_id}}" \
+ -H "X-APICloud-AppKey:{{your_app_key}}" \
+ -H "application/x-www-form-urlencoded;" \
+ -F "file=@{{file.path}};filename={{file.filename}};type={{file.type}}" \
+ https://d.apicloud.com/mcm/api/file
+```
+
+**web示例**
 
 ```html
 <div id="picker"></div>
@@ -862,6 +900,224 @@ $.ajax(options).done(function(data){
 		}
 }
 ```
+#**更新操作符**<div id="10"></div>
+
+###**操作符**
+
+|名称			    | 说明 |
+|--------     |--------|
+|$inc			|增加字段的值指定的数量|
+|$mul				|增加字段的值乘以指定的数量|
+|$set			|在文档中设置一个字段的值。|
+|$min			|仅更新字段如果指定的值小于现有的字段值。|
+|$max		|仅更新字段如果指定的值大于现有的字段值。|
+|$currentDate		|一个字段的值设置为当前日期,日期或时间戳。|
+
+###**$inc**
+-----
+
+$inc操作符增加一个字段指定值和具有以下形式:
+
+```js
+{ $inc: { <field1>: <amount1>, <field2>: <amount2>, ... } }
+```
+####行为
+
+$inc是一个原子操作在一个文档中.
+
+####Example
+
+考虑有如下一个集合:
+
+```js
+{
+  _id: 543f2e0e474f229d61185565,
+  sku: "abc123",
+  quantity: 10
+}
+```
+使用$inc进行更新
+```js
+curl -X PUT \
+    -H "X-APICloud-AppId: {{your_app_id}}" \
+    -H "X-APICloud-AppKey: {{your_app_key}}" \
+    -d '{"$inc": { quantity: -2},"sku":"APICloud"}' \
+    https://d.apicloud.com/mcm/api/modelName/543f2e0e474f229d61185565
+```
+更新后的文档会像:
+```js
+{
+   "_id" : 543f2e0e474f229d61185565,
+   "sku" : "APICloud",
+   "quantity" : 8,
+}
+```
+
+###**$mul**
+-----
+$mul操作符增加一个字段乘以指定值和具有以下形式:
+
+```js
+{ $mul: { <field1>: <amount1>, <field2>: <amount2>, ... } }
+```
+####行为
+
+$mul是一个原子操作在一个文档中.
+
+####Example
+
+考虑有如下一个集合:
+
+```js
+{ _id: 543f2e0e474f229d61185565, item: "ABC", price: 10.99 }
+```
+使用$mul进行更新
+```js
+curl -X PUT \
+    -H "X-APICloud-AppId: {{your_app_id}}" \
+    -H "X-APICloud-AppKey: {{your_app_key}}" \
+    -d '{"$mul": { "price": 1.25 }}' \
+    https://d.apicloud.com/mcm/api/modelName/543f2e0e474f229d61185565
+```
+更新后的文档会像:
+```js
+{ _id: 1, item: "ABC", price: 13.7375 }
+```
+
+###**$set**
+-----
+$set操作符替换一个字段的值用指定的值,具有以下形式:
+
+```js
+{ $set: { <field1>: <amount1>, <field2>: <amount2>, ... } }
+```
+
+####Example
+
+考虑有如下一个集合:
+
+```js
+{
+  _id: 543f2e0e474f229d61185565,
+  sku: "abc123",
+  quantity: 250,
+  instock: true,
+  reorder: false,
+  details: { model: "14Q2", make: "xyz" },
+  tags: [ "apparel", "clothing" ],
+  ratings: [ { by: "ijk", rating: 4 } ]
+}
+```
+使用$set进行更新
+```js
+curl -X PUT \
+    -H "X-APICloud-AppId: {{your_app_id}}" \
+    -H "X-APICloud-AppKey: {{your_app_key}}" \
+    -d '{"$set": {quantity: 500,details: { model: "14Q3", make: "xyz" },tags: [ "coats", "outerwear", "clothing" ]}}' \
+    https://d.apicloud.com/mcm/api/modelName/543f2e0e474f229d61185565
+```
+更新后的文档会像:
+```js
+{
+  _id: 543f2e0e474f229d61185565,
+  sku: "abc123",
+  quantity: 500,
+  instock: true,
+  reorder: false,
+  details: { model: "14Q3", make: "xyz" },
+  tags: [ "coats", "outerwear", "clothing" ],
+  ratings: [ { by: "ijk", rating: 4 } ]
+}
+```
+
+###**$min**
+-----
+$min操作符更新字段的值为一个指定的值,如果值小于指定字段的当前值,具有以下形式:
+
+```js
+{ $min: { <field1>: <amount1>, <field2>: <amount2>, ... } }
+```
+
+####Example
+
+考虑有如下一个集合:
+
+```js
+{ _id: 543f2e0e474f229d61185565, highScore: 800, lowScore: 200 }
+```
+使用$min进行更新
+```js
+curl -X PUT \
+    -H "X-APICloud-AppId: {{your_app_id}}" \
+    -H "X-APICloud-AppKey: {{your_app_key}}" \
+    -d '{"$min": { "lowScore": 150 }}' \
+    https://d.apicloud.com/mcm/api/modelName/543f2e0e474f229d61185565
+```
+更新后的文档会像:
+```js
+{ _id: 543f2e0e474f229d61185565, highScore: 800, lowScore: 150 }
+```
+
+###**$max**
+-----
+$max操作符更新字段的值指定的值如果指定的值大于字段的当前值,具有以下形式:
+
+```js
+{ $max: { <field1>: <amount1>, <field2>: <amount2>, ... } }
+```
+
+####Example
+
+考虑有如下一个集合:
+
+```js
+{ _id: 543f2e0e474f229d61185565, highScore: 800, lowScore: 200 }
+```
+使用$set进行更新
+```js
+curl -X PUT \
+    -H "X-APICloud-AppId: {{your_app_id}}" \
+    -H "X-APICloud-AppKey: {{your_app_key}}" \
+    -d '{"$max": { "highScore": 950 }}' \
+    https://d.apicloud.com/mcm/api/modelName/543f2e0e474f229d61185565
+```
+更新后的文档会像:
+```js
+{ _id: 1, highScore: 950, lowScore: 200 }
+```
+###**$currentDate**
+-----
+$currentDate操作符将一个字段的值设置为当前日期,具有以下形式:
+
+```js
+{ $currentDate: { <field1>: <amount1>, <field2>: <amount2>, ... } }
+```
+
+####Example
+
+考虑有如下一个集合:
+
+```js
+{ _id: 543f2e0e474f229d61185565, status: "a", lastModified: ISODate("2013-10-02T01:11:18.965Z"),date: ISODate("2013-10-02T01:11:18.965Z") }
+```
+使用$currentDate进行更新
+```js
+curl -X PUT \
+    -H "X-APICloud-AppId: {{your_app_id}}" \
+    -H "X-APICloud-AppKey: {{your_app_key}}" \
+    -d '{"$currentDate": {"lastModified": true,"date":{"$type": "timestamp" }}}' \
+    https://d.apicloud.com/mcm/api/modelName/543f2e0e474f229d61185565
+```
+更新后的文档会像:
+```js
+{
+   "_id" : 543f2e0e474f229d61185565,
+   "lastModified" : ISODate("2014-09-17T23:25:56.314Z"),
+   "date" : Timestamp(1410996356, 1)
+}
+```
+
+
 
 #**查询**<div id="6"></div>
 
@@ -1020,7 +1276,7 @@ GET /mcm/api/weapons?filter[order]=audibleRange DESC&filter[limit]=3
 ```
 **Stringified**
 ```js
-GET /mcm/api/weapons?filter={"audibleRange": "price DESC", "limit": 3 }
+GET /mcm/api/weapons?filter={"order": "audibleRange DESC", "limit": 3 }
 ```
 
 **跳过(Skip filter)**
@@ -1164,7 +1420,7 @@ GET /mcm/api//locations?filter={"where:{"geo":{"near":"-28.1,153.536"，"maxDist
   - meters(米)
   - feet(英尺)
   - degrees(角度)
- 
+
 **REST**
 ```js
 GET /mcm/api/locations?filter[where][geo][near]=-28.1,153.536&filter[where][geo][maxDistance]=1000&filter[where][geo][type]=kilometers&filter[limit]=3
@@ -1517,9 +1773,8 @@ GET /mcm/api/members?filter={"include":["posts","passports"]}
   }, ... ]
 ```
 
-##关系表过滤(Include filter) 
+##关系表过滤(Include filter)
 
-**暂不稳定**
 
 对relation,pointer相关的数据进行过滤，必须配合include使用
 

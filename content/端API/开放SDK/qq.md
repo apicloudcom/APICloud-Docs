@@ -9,11 +9,13 @@ Description: qq
 <div id="method-content">
 
 <div class="outline">
+[installed](#0)
+
 [login](#1)
 
 [logout](#2)
 
-[logout](#20)
+[getUserInfo](#20)
 
 [shareText](#3)
 
@@ -43,6 +45,46 @@ qq封装了qq开放平台的SDK，实现了qq登陆，空间分享等大部分�
 	字段描述：
 		1、param-urlScheme：声明此字段为URL Scheme类型
 		2、param- value：对应urlScheme类型的值。通过拼接tencent和腾讯开放平台申请的id号获得
+
+#**installed**<div id="0"></div>
+
+判断当前设备是否安装了QQ客户端
+
+installed(callback(ret, err))
+
+##callback(ret, err)
+
+ret：
+
+- 类型：JSON对象
+
+内部字段：
+
+```js
+{
+       status:         	//布尔类型，是否安装了QQ客户端
+}
+```
+
+##示例代码
+
+```js
+    var obj = api.require('qq');
+obj.installed(function(ret,err){
+    if(ret.status){
+       api.alert({msg: "安装"});
+    }else{
+        api.alert({msg: "没有安装"});
+    } 
+});
+
+```
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.0.2及更高版本
 
 #**login**<div id="1"></div>
 

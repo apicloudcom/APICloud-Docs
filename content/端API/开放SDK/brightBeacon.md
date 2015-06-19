@@ -88,16 +88,14 @@ code:""    	//错误码
 
 ###示例代码
 
-```
+```js
 var bbsdk = api.require("brightBeacon");
-bbsdk.registerAppKey({key:"00000000000000000000000000000000";},
-   function(ret,err){
-  	if(ret.status){
- 		alert("调用初始化KEY成功");
-  	}else{
-  		alert(err.error});
-   	}
-   });
+
+bbsdk.registerAppKey({
+    key:"00000000000000000000000000000000"
+},function(ret,err){
+    alert(JSON.stringify(ret) + JSON.stringify(err));
+});
 ```
 
 ###补充说明
@@ -143,7 +141,7 @@ error:"错误详情"    //错误描述
 ###示例代码
 
 
-```
+```js
 var bb = api.require("brightBeacon");
 bb.startRanging({uuids:["00000000-0000-0000-0000-000000000000","E2C56DB5-DFFB-48D2-B060-D0F5A71096E0"]},function(ret, err){
 	if(ret.status){
@@ -196,14 +194,13 @@ error:"错误详情"//错误描述
 ###示例代码
 
 
-```
-var obj = api.require("brightBeacon");
-obj.stopRanging(function(ret, err){
-if(ret.status){
-alert("调用关闭扫描周边Beacon成功");
-}else{
-alert(err.error);
-}
+```js
+var bb = api.require("brightBeacon");
+
+bb.stopRanging({
+    uuids:["00000000-0000-0000-0000-000000000000","E2C56DB5-DFFB-48D2-B060-D0F5A71096E0"]
+},function(ret, err){
+    alert(JSON.stringify(ret) + JSON.stringify(err));
 });
 ```
 ###补充说明
@@ -288,43 +285,41 @@ err：
 ###示例代码
 
 
-```
-//启动打开监听区域回调通道，使已监听区域有效
-apiready = function(){
-	BBSDK = api.require('brightBeacon');
-	//所有区域监听回调都会是该回调出口
-	BBSDK.startMonitoring(function(ret,err){
-		if(ret.status){
-		        if(ret.state){
-		            var param = {"msg":(ret.state==1?"进入区域通知":"离开区域通知"),"action":"立即查看","userInfo":"自定义传输参数"};
-		            BBSDK.sendLocalNotification(param,function(ret1,err1){
-		                                        if(ret1.status){
-		                                        	alert(JSON.stringify(ret1));
-		                                        }else{
-		                                        	alert(err1.error);
-		                                        }
-		                                        });
-		        }
-		    }else{
-		        alert(err.error);
-		    }
-	});
-};
+```js
+var BBSDK = api.require('brightBeacon');
+
+//所有区域监听回调都会是该回调出口
+BBSDK.startMonitoring(function(ret,err){
+    if(ret.status){
+        if(ret.state){
+            var param = {"msg":(ret.state==1?"进入区域通知":"离开区域通知"),"action":"立即查看","userInfo":"自定义传输参数"};
+            BBSDK.sendLocalNotification(param,function(ret1,err1){
+                if(ret1.status){
+                    alert(JSON.stringify(ret1));
+                }else{
+                    alert(err1.error);
+                }
+            });
+        }
+    }else{
+        alert(err.error);
+    }
+});
 ```
 
-```
+```js
 //再次开启监听区域，但区域监听只会继续使用初次打开的通道出口。
-	var obj = api.require("brightBeacon");
+var obj = api.require("brightBeacon");
 obj.startMonitoring({
-   uuid:"E2C56DB5-DFFB-48D2-B060-D0F5A71096E0",
-   mac:"xx:xx:xx:xx:xx:xx"
-   major:1,
-   minor:1，
-   in:1,//ios进入区域检测
-   out:1,//ios离开区域检测
-   display:1//ios点亮屏幕区域检测
-   },function(ret, err){
-	   if(!ret.status)alert(err.error);}
+    uuid:"E2C56DB5-DFFB-48D2-B060-D0F5A71096E0",
+    mac:"xx:xx:xx:xx:xx:xx",
+    major:1,
+    minor:1,
+    in:1,//ios进入区域检测
+    out:1,//ios离开区域检测
+    display:1//ios点亮屏幕区域检测
+},function(ret, err){
+    alert(JSON.stringify(ret) + JSON.stringify(err));
 });
 ```
 ###补充说明
@@ -373,15 +368,16 @@ ret：
 ###示例代码
 
 
-```
+```js
 var obj = api.require("brightBeacon");
+
 obj.stopMonitoring({
-   uuid:"E2C56DB5-DFFB-48D2-B060-D0F5A71096E0",
-   mac:"78:A5:6B:12:7B"
-   major:1,
-   minor:1
-   },function(ret, err){
-	 }
+    uuid:"E2C56DB5-DFFB-48D2-B060-D0F5A71096E0",
+    mac:"78:A5:6B:12:7B",
+    major:1,
+    minor:1
+},function(ret, err){
+    alert(JSON.stringify(ret) + JSON.stringify(err));
 });
 ```
 ###补充说明
@@ -440,16 +436,17 @@ error:"错误详情"      //错误描述
 ###示例代码
 
 
-```
+```js
 var bb = api.require("brightBeacon");
-bb.sendLocalNotification({msg:"区域通知","action":"立即查看","userInfo":"自定义传输参数"},
-function(ret,err){
-   if(ret.status){
-    	alert(JSON.stringify(ret1));
-   }else{
-   		alert(err.error);
-   }
-});
+
+bb.sendLocalNotification({
+        msg:"区域通知",
+        "action":"立即查看",
+        "userInfo":"自定义传输参数"
+    },
+    function(ret,err){
+        alert(JSON.stringify(ret) + JSON.stringify(err));
+    });
 ```
 ###补充说明
 支持后台发送通知到系统通知栏
@@ -506,16 +503,22 @@ error:"错误详情"           //错误描述
 ###示例代码
 
 
-```
+```js
 var obj = api.require("brightBeacon");
-obj.startAdvertising({"uuid":"E2C56DB5-DFFB-48D2-B060-D0F5A71096E0","major":1,"minor":"","mac":"","identifier":"demo"},
-function(ret, err){
-   if(ret.status){
-   	alert("调用模拟Beacon成功");
-   }else{
-   	alert(err.error);
-   }
-});
+
+obj.startAdvertising({
+        "uuid":"E2C56DB5-DFFB-48D2-B060-D0F5A71096E0",
+        "major":1,
+        "minor":"",
+        "mac":"",
+        "identifier":"demo"
+    },function(ret, err){
+        if(ret.status){
+            alert("调用模拟Beacon成功");
+        }else{
+            alert(err.error);
+        }
+    });
 ```
 ###补充说明
 该方法目前仅支持IOS，Android会在5.0后系统提供该支持
@@ -553,21 +556,18 @@ error:"错误详情"          //错误描述
 
 ###示例代码
 
-```
+```js
 var obj = api.require("brightBeacon");
+
 obj.stopAdvertising(function(ret, err){
-   if(ret.status){
-   alert("停止模拟Beacon成功");
-   }else{
-   alert("停止模拟Beacon失败"+err.error);
-   }
+    alert(JSON.stringify(ret) + JSON.stringify(err));
 });
 ```
 ###补充说明
 无
 ###可用性
 iOS系统
->
+
 
 ####connectBeacon<div id="a9"></div>
 
@@ -595,12 +595,13 @@ beacon：         //Beacon(详情见Beacon)
 
 ###示例代码
 
-```
+```js
 var obj = api.require("brightBeacon");
-obj.connectBeacon({mac:"xx:xx:xx:xx:xx"},function(ret, err){
-   if(ret.status){
-	   alert(JSON.stringify(ret.beacon));
-   }
+
+obj.connectBeacon({
+    mac:"xx:xx:xx:xx:xx"
+},function(ret, err){
+    alert(JSON.stringify(ret) + JSON.stringify(err));
 });
 ```
 ###补充说明
@@ -639,14 +640,13 @@ error:"错误详情"    //错误描述
 ###示例代码
 
 
-```
+```js
 var obj = api.require("brightBeacon");
-obj.disconnectBeacon({"mac":"xx:xx:xx:xx:xx:xx"}，function(ret, err){
-   if(ret.status){
-   alert("调用关闭Beacon连接成功");
-   }else{
-   alert(err.error);
-   }
+
+obj.disconnectBeacon({
+    "mac":"xx:xx:xx:xx:xx:xx"
+},function(ret, err){
+    alert(JSON.stringify(ret) + JSON.stringify(err));
 });
 ```
 ###补充说明
@@ -685,14 +685,13 @@ error:"错误详情"    //错误描述
 ###示例代码
 
 
-```
+```js
 var obj = api.require("brightBeacon");
-obj.isBeaconConnected(mac:"xx:xx:xx:xx:xx:xx",function(ret, err){
-   if(ret.status){
-   alert("连接状态");
-   }else{
-   alert("未连接状态");
-   }
+
+obj.isBeaconConnected({
+    mac:"xx:xx:xx:xx:xx:xx"
+},function(ret, err){
+    alert(JSON.stringify(ret) + JSON.stringify(err));
 });
 ```
 ###补充说明
@@ -774,14 +773,21 @@ error:"错误详情"    //错误描述
 ###示例代码
 
 
-```
+```js
 var obj = api.require("brightBeacon");
-obj.writeBeaconValues({mac:"xx:xx:xx:xx:xx:xx","uuid":"E2C56DB5-DFFB-48D2-B060-D0F5A71096E0","major":"0","minor":"0","name":"BrightBeacon","txInterval":"400","mPower":"-65","pMode":0,"txPower":"2"}，function(ret, err){
-   if(ret.status){
-   alert("调用设置Beacon值成功");
-   }else{
-   alert(err.error);
-   }
+
+obj.writeBeaconValues({
+    mac:"xx:xx:xx:xx:xx:xx",
+    "uuid":"E2C56DB5-DFFB-48D2-B060-D0F5A71096E0",
+    "major":"0",
+    "minor":"0",
+    "name":"BrightBeacon",
+    "txInterval":"400",
+    "mPower":"-65",
+    "pMode":0,
+    "txPower":"2"
+},function(ret, err){
+    alert(JSON.stringify(ret) + JSON.stringify(err));
 });
 ```
 ###补充说明
@@ -821,14 +827,13 @@ error:"错误详情"    //错误描述
 ###示例代码
 
 
-```
+```js
 var obj = api.require("brightBeacon");
-obj.checkBeaconFirmwareUpdate({mac:"xx:xx:xx:xx:xx:xx"},function(ret, err){
-   if(ret.status){
-   	if(ret.update)alert("调用检查固件版本成功,现在可以调用updateBeaconFirmwareWithProgress进行更新");
-   }else{
-   alert("调用检查固件版本msg+err.msg");
-   }
+
+obj.checkBeaconFirmwareUpdate({
+    mac:"xx:xx:xx:xx:xx:xx"
+},function(ret, err){
+    alert(JSON.stringify(ret) + JSON.stringify(err));
 });
 ```
 ###补充说明
@@ -868,16 +873,13 @@ error:"错误详情"    //错误描述
 ###示例代码
 
 
-```
+```js
 var obj = api.require("brightBeacon");
-obj.updateBeaconFirmwareWithProgress({mac:"xx:xx:xx:xx:xx:xx"},function(ret, err){
-   if(ret.status){
-	   if(ret.progress=='100'){
-   			alert("固件升级成功");
-	   }
-   }else{
-   	alert(err.error);
-   }
+
+obj.updateBeaconFirmwareWithProgress({
+    mac:"xx:xx:xx:xx:xx:xx"
+},function(ret, err){
+    alert(JSON.stringify(ret) + JSON.stringify(err));
 });
 ```
 ###补充说明
@@ -916,14 +918,17 @@ error:"错误详情"    //错误描述
 ###示例代码
 
 
-```
+```js
 var obj = api.require("brightBeacon");
-obj.resetBeacon({mac:"xx:xx:xx:xx:xx:xx"},function(ret, err){
-   if(ret.status){
-   alert("重置Beacon成功");
-   }else{
-   alert(err.error);
-   }
+
+obj.resetBeacon({
+    mac:"xx:xx:xx:xx:xx:xx"
+},function(ret, err){
+    if(ret.status){
+        alert("重置Beacon成功");
+    }else{
+        alert(err.error);
+    }
 });
 ```
 
@@ -963,14 +968,13 @@ error:"错误详情"    //错误描述
 ###示例代码
 
 
-```
+```js
 var obj = api.require("brightBeacon");
-obj.resetBeaconAppKey({mac:"xx:xx:xx:xx:xx:xx"},function(ret, err){
-   if(ret.status){
-   alert("重置AppKey成功");
-   }else{
-   alert(err.error);
-   }
+
+obj.resetBeaconAppKey({
+    mac:"xx:xx:xx:xx:xx:xx"
+},function(ret, err){
+    alert(JSON.stringify(ret) + JSON.stringify(err));
 });
 ```
 
@@ -1013,14 +1017,11 @@ error:"错误详情"    //错误描述
 ###示例代码
 
 
-```
+```js
 var obj = api.require("brightBeacon");
+
 obj.monitorRegions(function(ret, err){
-   if(ret.status){
-   JSON.stringify(ret.regions);
-   }else{
-   alert(err.error);
-   }
+    alert(JSON.stringify(ret) + JSON.stringify(err));
 });
 ```
 ###补充说明

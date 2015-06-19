@@ -38,48 +38,58 @@ type：
 
 - 类型：字符串
 - 默认值：up
-- 描述：菜单类型，<del>0代表从上往下弹出，1代表从下往上弹出</del>，取值范围up(从上往下)，down(从下往上)，可为空
+- 描述：（可选项）菜单类型，<del>0代表从上往下弹出，1代表从下往上弹出</del>，取值范围up--从上往下、down--从下往上
+
+h：
+
+- 类型：数字
+- 默认值：当前设备屏幕高度的三分之二
+- 描述：（可选项）菜单视图的高
 
 btnWidth：
 
 - 类型：数字
 - 默认值：60
-- 描述：菜单里每个按钮的（正方形）边长，可为空
+- 描述：（可选项）菜单里每个按钮的（正方形）边长
 
-<del>alph</del>  alpha:
+alpha:
 
 - 类型：数字
 - 默认值：0.8
-- 描述：菜单背景透明度，取值范围为0-1，可为空
+- 描述：（可选项）菜单背景透明度，取值范围为0-1
 
 bgColor：
 
 - 类型：字符串
 - 默认值：#FFFFFF
-- 描述：菜单背景色，支持rgb，rgba，#，可为空
+- 描述：（可选项）菜单背景色，支持rgb，rgba，#
 
 btnArray：
 
 - 类型：数组
 - 默认值：无
-- 描述：菜单里每个按钮的背景图片（本地路径），选中图片（本地路径），不可为空
-
-内部字段：
+- 描述：（可选项）菜单里每个按钮的背景图片、选中图片路径组成的数组
+- 内部字段：
 
 ```js
 [{
-      normal:                      //字符串，支持本地协议，不可为空
-      highlight:                   //字符串，支持本地协议，不可为空
+      normal:          //按钮常态下的图标，字符串，支持fs、widget等本地路径协议
+      selected:        //按钮选中后的图标，字符串，支持fs、widget等本地路径协议
 }]
 ```
+
+selectedIndex：
+
+- 类型：数字
+- 默认值：0
+- 描述：（可选项）设置默认选中按钮的索引
 
 ##callback(ret, err)
 
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
@@ -96,7 +106,7 @@ for(var i=0;i<17;i++){
 	arrayPath[i]={
 		normal: 'widget://res/pullMenu_btn1light.png',
 		highlight: 'widget://res/pullMenu_btn1.png'
-	}
+	};
 }
 obj.open({
 	btnArray:arrayPath
@@ -135,6 +145,44 @@ iOS系统，Android系统
 <del>iOS系统，Android系统</del>
 
 <del>可提供的1.0.0及更高版本</del>
+
+#**setSelected**<div id="5"></div>
+
+设置按钮选中/取消状态
+
+setSelected({params})
+
+##params
+
+index：
+
+ - 类型：数字
+ - 默认值：0
+ - 描述：(可选项)要设置的按钮的索引
+
+ selected：
+
+ - 类型：布尔
+ - 默认值：true
+ - 描述：(可选项)是否要将指定索引的按钮设置为选中状态
+
+##示例代码
+
+    var obj = api.require('pullMenu');
+    obj.setSelected({
+       index:2,
+       selected:true
+    });
+
+##补充说明
+
+无
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.0.1及更高版本
 
 #**hide**<div id="5"></div>
 
@@ -188,8 +236,8 @@ close()
 
 ##示例代码
 
-    var obj = api.require('pullMenu');
-    obj.close();
+	var obj = api.require('pullMenu');
+	obj.close();
 
 ##补充说明
 

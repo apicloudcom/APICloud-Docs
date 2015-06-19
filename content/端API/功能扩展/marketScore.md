@@ -16,7 +16,7 @@ Description: marketScore
 
 #**概述**
 
-marketScore是调用已安装市场，进行app评分的功能实现
+marketScore是在已安装的应用市场中，打开指定app对应的页面，提示用户评分的功能实现。是提高app排名的利器。用法包括但不限于：在适当页面放5星好评支持我们的按钮、用户第N次打开app的时候直接跳出，提示用户评分。现在主流的app基本都有这个功能。
 
 #**myScore**<div id="myScore"></div>
 
@@ -36,7 +36,7 @@ appname：
 
 ```js
 if (api.systemType =="android"){
-	smarket = api.require('marketScore');
+	var smarket = api.require('marketScore');
 	var param = {appname:"com.tencent.mm"};
 	smarket.myScore(param);
 }else{

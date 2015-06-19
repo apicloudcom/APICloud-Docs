@@ -18,7 +18,9 @@ Description: yzxVerification
 
 #**概述**
 
-YzxVerification封装了云之讯开放平台的智能验证SDK，使用此模块可以实现智能验证功能
+YzxVerification封装了云之讯开放平台的智能验证SDK，使用此模块可以实现智能验证功能.
+
+注意: 云之讯官方智能验证产品线路调整为rest通用接口,此模块将在10天后停止维护与更新. 开发者朋友可继续选择使用此模块已有功能, 或选择通过 api.ajax 使用云之讯智能验证的rest接口来完成相关功能.
 
 ##getSign<div id="getSign"></div>
 
@@ -67,16 +69,20 @@ err：
 }
 ```
 
+## 示例代码
+
 ```js
+var uzyzxVerification = api.require("yzxVerification");
+
 uzyzxVerification.getSign({
-	url: 'https://mid.ucpaas.com/vfs/demo/reg.do',
-	phonenum: '18612345678'
-}，function(ret,err){
-	if(ret.status){
-		api.alert({msg:'获得签名成功 sign='+ret.sign});
-	}else{
-		api.alert({msg:'获取签名失败 返回值:'+err.result});
-	}
+    url: 'https://mid.ucpaas.com/vfs/demo/reg.do',
+    phonenum: '18612345678'
+},function(ret,err){
+    if(ret.status){
+        api.alert({msg:'获得签名成功 sign='+ret.sign});
+    }else{
+        api.alert({msg:'获取签名失败 返回值:'+err.result});
+    }
 });
 ```
 
@@ -159,27 +165,29 @@ err：
 ```
 
 ```js
+var uzyzxVerification = api.require("yzxVerification");
+
 uzyzxVerification.getVerificationCode({
-	phonenum: 18612345678,
-	sid: 4c1990a5c1ad2674bc94bc39a6fd0699,
-	appid: efb7e1de9da649fa83881afea2841cd7,
-	appname: yzxverification
+    phonenum: 18612345678,
+    sid: "4c1990a5c1ad2674bc94bc39a6fd0699",
+    appid: "efb7e1de9da649fa83881afea2841cd7",
+    appname: "yzxverification"
 },function(ret,err){
-	if(ret.status){
-		switch (ret.type){
-			case 0:
-				api.alert({msg:'验证成功'});
-			break;
-			case 1:
-				api.alert({msg:'等待短信下发验证码'});
-			break;
-			case 2:
-				api.alert({msg:'等待语音下发验证码'});
-			break;
-		}
-	}else{
-		api.alert({msg:'获取验证码失败 错误码:'+err.code});
-	}
+    if(ret.status){
+        switch (ret.type){
+            case 0:
+                api.alert({msg:'验证成功'});
+                break;
+            case 1:
+                api.alert({msg:'等待短信下发验证码'});
+                break;
+            case 2:
+                api.alert({msg:'等待语音下发验证码'});
+                break;
+        }
+    }else{
+        api.alert({msg:'获取验证码失败 错误码:'+err.code});
+    }
 });
 ```
 
@@ -253,17 +261,19 @@ err：
 ```
 
 ```js
+var uzyzxVerification = api.require("yzxVerification");
+
 uzyzxVerification.doVerificationCode({
-	phonenum: 18612345678,
-	verifycode:12345
-	sid: 4c1990a5c1ad2674bc94bc39a6fd0699,
-	appid: efb7e1de9da649fa83881afea2841cd7
+    phonenum: "18612345678",
+    verifycode: "12345",
+    sid: "4c1990a5c1ad2674bc94bc39a6fd0699",
+    appid: "efb7e1de9da649fa83881afea2841cd7"
 },function(ret,err){
-	if(ret.status){
-		api.alert({msg:'验证成功'});
-	}else{
-		api.alert({msg:'验证失败 错误码:'+err.code});
-	}
+    if(ret.status){
+        api.alert({msg:'验证成功'});
+    }else{
+        api.alert({msg:'验证失败 错误码:'+err.code});
+    }
 });
 ```
 

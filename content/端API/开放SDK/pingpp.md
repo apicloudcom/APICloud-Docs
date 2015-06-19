@@ -20,7 +20,6 @@ Description: 封装了多个渠道的支付接口.
 pingpp 封装了支付宝（alipay），微信（wx），银联（upacp/upmp），百度钱包（bfb_wap/bfb）四个渠道的支付接口。使用此模块可轻松实现各个渠道的支付功能。<br>
 使用之前需要先到 [Ping++](https://pingxx.com) 注册，并根据[技术文档](https://pingxx.com/document)部署 Server SDK。
 
-注意: 使用此模块时,请勿同时勾选 aliPay, weChat模块
 
 #**createPayment**<div id="a1"></div>
 
@@ -74,6 +73,7 @@ err
 ##示例代码
 
 ```js
+
 var pingpp = api.require('pingpp');
 
 var params = {
@@ -141,6 +141,7 @@ err
 
 ```js
 var pingpp = api.require('pingpp');
+
 pingpp.getVersion(function(ret){
     api.alert(ret.version);
 });

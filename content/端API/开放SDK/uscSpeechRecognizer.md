@@ -89,7 +89,17 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('uscSpeechRecognizer');obj.startRecord({},function(ret,err){    if(ret.status){        ret.resultStr;        ret.nluStr;    }else{        err.msg;    }});
+var obj = api.require('uscSpeechRecognizer');
+obj.startRecord({
+},function(ret,err){
+    if(ret.status){
+        ret.resultStr;
+        ret.nluStr;
+    }else{
+        err.msg;
+    }
+});
+
 ```
 
 ##补充说明
@@ -113,8 +123,9 @@ stopRecord()
 
 ##示例代码
 
-```
-var obj = api.require('uscSpeechRecognizer');obj.stopRecord();
+```js
+var obj = api.require('uscSpeechRecognizer');
+obj.stopRecord();
 ```
 
 ##补充说明
@@ -136,7 +147,7 @@ cancelRecord()
 
 ##示例代码
 
-```
+```js
 var obj = api.require('speechRecognizer');
 obj.cancelRecord();
 ```
@@ -193,8 +204,16 @@ err：
 ```
 ##示例代码
 
-```
-var obj = api.require('uscSpeechRecognizer');obj.play({    text:'北京云知声信息技术有限公司'},function(ret,err) {    if(ret.status) {    }else{        err.msg    }});
+```js
+var obj = api.require('uscSpeechRecognizer');
+obj.play({
+    text:'北京云知声信息技术有限公司'
+},function(ret,err) {
+    if(ret.status) {
+    }else{
+        err.msg;
+    }
+});
 ```
 
 
@@ -217,8 +236,9 @@ stopPlay()
 
 ##示例代码
 
-```
-var obj = api.require('uscSpeechRecognizer');obj.stopPlay();
+```js
+var obj = api.require('uscSpeechRecognizer');
+obj.stopPlay();
 ```
 
 ##补充说明

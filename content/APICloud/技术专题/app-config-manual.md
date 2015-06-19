@@ -18,7 +18,7 @@ Sort: 1
 - [配置页面是否弹动](#7-0)
 - [配置页面默认是否显示滚动条](#8)
 - [配置启动页是否自动隐藏](#9)
-- [配置IOS7状态栏和页面是否重合](#10)
+- [配置状态栏和页面是否重合](#10)
 - [配置应用是否全屏运行](#11)
 - [配置应用是否自动检测更新](#12)
 - [配置应用是否支持增量更新、云修复](#13)
@@ -52,7 +52,11 @@ Sort: 1
 
 [Font](#34)
 
-[Reference](#35)
+[BackgroundMode](#35)
+
+[Meta-Data](#35-1)
+
+[Reference](#36)
 
 #**Overview**
 <div id="1"></div>
@@ -269,17 +273,17 @@ Preference用于声明本应用的一些全局设置或者属性，该字段以�
 
 配置示例：```<preference name="autoLaunch" value="true|false" />```
 
-##配置IOS7状态栏和页面是否重合<div id="10"></div>
+##配置状态栏和页面是否重合<div id="10"></div>
 
-字段名：iOS7StatusBarAppearance
+字段名：statusBarAppearance
 
 取值范围：true|false
 
 默认值：true
 
-描述：配置IOS7及以上系统中，页面是否和状态栏重合，表现效果为系统的状态栏将以半透的形式覆盖在当前应用上。仅IOS7以上系统起作用
+描述：配置IOS7及以上系统、Android 4.4及以上系统中，页面是否和状态栏重合，表现效果为系统的状态栏是否覆盖在当前应用上。
 
-配置示例：```<preference name="iOS7StatusBarAppearance" value="true|false" />```
+配置示例：```<preference name="statusBarAppearance" value="true|false" />```
 
 ##配置应用是否全屏运行<div id="11"></div>
 
@@ -313,7 +317,7 @@ Preference用于声明本应用的一些全局设置或者属性，该字段以�
 
 默认值：false	
 
-描述：配置应用是否支持增量更新以及云修复。如果该字段为true，应用在启动时将自动与云端握手，并检查本应用当前版本下是否有增量包更新，是否需要进行云修复。应用运行过程中会根据这些设置进行相关操作，如：提示更新下载、静默更新下载等。
+描述：配置应用是否支持增量更新以及云修复。如果该字段为true，并且自动检测更新字段autoUpdate也为true，应用在启动时将自动与云端握手，并检查本应用当前版本下是否有增量包更新，是否需要进行云修复。应用运行过程中会根据这些设置进行相关操作，如：提示更新下载、静默更新下载等。
 
 配置示例：```<preference name="smartUpdate" value="false" />```
 
@@ -470,7 +474,7 @@ Feature用于声明本应用使用到的平台扩展模块功能、第三方SDK�
 
 参数：urlScheme
 
-描述：配置支付宝专用的URL Scheme，以及apiKey，使得本应用可以启动QQ客户端，并与之交换数据，同时可以从QQ客户端返回到本应用
+描述：配置qq专用的URL Scheme，以及apiKey，使得本应用可以启动QQ客户端，并与之交换数据，同时可以从QQ客户端返回到本应用
 
 配置示例：
 ```js
@@ -664,7 +668,7 @@ Permission用于声明本应用用到的所有系统权限。APPCloud开放的AP
 
 #**Font**<div id="34"></div>
 
-Font用于配置字体文件，配置以后在前端页面里面就可以使用该字体。
+font用于配置字体文件，配置以后在前端页面里面就可以使用该字体。
 
 字体文件需放在widget目录里面，可以同时配置多种字体。
 
@@ -677,8 +681,51 @@ Font用于配置字体文件，配置以后在前端页面里面就可以使用�
 <font name="widget/res/lishu.ttf" />
 ```
 
+#**BackgroundMode**<div id="35"></div>
 
-##Reference<div id="35"></div>
+backgroundMode用于配置iOS后台运行，例如可以实现后台播放音乐。
+
+取值范围包括audio、location、voip、newsstand-content、external-accessory、bluetooth-central、bluetooth-peripheral、fetch、remote-notification等，各个值的功能如下：
+
+```js
+audio					//在后台播放和录制音频，包括使用AirPlay播放音频、视频流
+location				//在后台持续获取位置信息
+voip					//网络电话
+newsstand-content		//报刊杂志类应用在后台下载内容
+external-accessory		//与定期更新的硬件外设工作
+bluetooth-central		//与定期更新的蓝牙配件工作
+bluetooth-peripheral	//作为蓝牙外设，进行蓝牙通信
+fetch					//定期下载少量的内容
+remote-notification		//希望在收到通知后立即去下载相关内容，使相关内容可以尽快显示出来
+```
+
+配置示例：
+
+```
+<backgroundMode name="audio" />
+```
+
+#**Meta-Data**<div id="35-1"></div>
+
+meta-data用于配置Android平台上对应AndroidManifest文件中的meta-data相关键值对。
+
+在config中每配置一项，云编译服务器在编译apk包之前，会将meta-data相关的配置，映射到AndroidManifest文件中的meta-data节点中。如：我们在config中配置<meta-data name="kkkk" value="vvvv"/>，将映射至Android平台的AndroidManifest中为：<meta-data android:name="kkkk" android:value="vvvv" />，以此类推。
+
+该配置一般用于引入第三方服务的SDK模块时，配置相应模块所需的meta-data。也可用于配置渠道号等。
+
+
+配置示例：
+
+```
+<meta-data name="KKKK" value="VVVV"/>
+```
+
+字段描述：
+
+1. name：声明meta-data键值对中的键名
+2. value：声明meta-data键值对中对应的值
+
+##Reference<div id="36"></div>
 
 完整的config文件参考：
 
@@ -724,7 +771,7 @@ Font用于配置字体文件，配置以后在前端页面里面就可以使用�
         <param name="apiKey" value="1062272715" />
 	</feature>
 	<feature name="aliPay">
-    	 <param name="urlScheme" value=" AliPayA00000000001" />
+    	 <param name="urlScheme" value="AliPayA00000000001" />
 	</feature>
     <feature name="baiduLocation">
         <param name="apiKey" value="fef72715gshjelke" />

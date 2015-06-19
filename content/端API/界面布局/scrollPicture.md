@@ -41,13 +41,13 @@ x：
 
 - 类型：数字
 - 默认值：0
-- 描述：视图左上角点坐标，可为空
+- 描述：（可选项）视图左上角点坐标
 
 y：
 
 - 类型：数字
 - 默认值：导航条下边缘位置
-- 描述：图左上角点坐标，可为空
+- 描述：（可选项）图左上角点坐标
 
 <del>width:
 
@@ -64,25 +64,25 @@ w：
 
 - 类型：数字
 - 默认值：当前设备屏幕宽
-- 描述：视图的宽，可为空
+- 描述：（可选项）视图的宽
 
 h：
 
 - 类型：数字
 - 默认值：视图的宽减120
-- 描述：视图的高，可为空
+- 描述：（可选项）视图的高
 
 intervalTime：
 
 - 类型：数字
 - 默认值：3
-- 描述：图片变换间隔，单位是s，可为空
+- 描述：（可选项）图片变换间隔，单位是s
 
 paths：
 
 - 类型：数组
 - 默认值：无
-- 描述：图片路径组成的数组，支持http，https，widget，fs各种协议，不可为空
+- 描述：图片路径组成的数组，支持http，https，widget，fs各种协议
 
 <del>placeHoldImg：
 
@@ -94,7 +94,8 @@ placeholderImg：
 
 - 类型：字符串
 - 默认值：无
-- 描述：当加载网络图片时，屏幕上显示的占位图片，不可为空，paths都是本地路径，该参数可为空
+- 描述：（可选项）当加载网络图片时，屏幕上显示的占位图片
+- 备注：若paths都是本地路径，该参数可不传，否则为必传
 
 <del>subtitle：
 
@@ -106,18 +107,18 @@ subTitle：
 
 - 类型：json对象
 - 默认值：无
-- 描述：图片的说明文字，可为空，若为空则不显示说明文字
-
-内部字段：
+- 描述：（可选项）图片的说明文字
+- 备注：若不传则不显示说明文字
+- 内部字段：
 
 ```js
 {
-	height：     //数字类型，可为空，说明文字的视图的高
-	titles：     //数组类型，不可为空，说明的文字组成的数组
-	color：      //字符串类型，可为空，说明文字的颜色
-	size：       //数字类型，可为空，说明文字的字体大小
-	bgColor：    //字符串类型，可为空，说明文字视图的背景颜色
-	fixed：      //布尔值，可为空，是否将标题视图固定到主视图内部，默认false 
+	height：     //（可选项）数字类型，说明文字的视图的高，默认35.0
+	titles：     //数组类型，说明的文字组成的数组，与paths一一对应
+	color：      //（可选项）字符串类型，说明文字的颜色，默认#E0FFFF
+	size：       //（可选项）数字类型，说明文字的字体大小，默认13.0
+	bgColor：    //（可选项）说明文字视图的背景颜色，支持rgb、rgba、#，默认#696969
+	fixed：      //（可选项）布尔值，是否将标题视图固定到主视图内部，默认false 
 }
 ```
 
@@ -125,47 +126,51 @@ control：
 
 - 类型：json对象
 - 默认值：无
-- 描述：页面控制器，可为空，若为空则不显示
-
-内部字段：
+- 描述：（可选项）页面控制器
+- 备注：若不传则不显示页面控制器
+- 内部字段：
 
 ```js
 {
-	position(deprecated)://页面控制器位置，0-中间；1-左边；2-右边，默认0
-	alignment：          //页面控制器位置，center(居中),left(靠左), right(靠右),默认center
-	activeColor:        //当前圆点颜色 默认:DA70D6,可为空
-	inactiveColor:      //圆点颜色 默认：#FFFFFF，可为空
+	position:             //(deprecated)页面控制器位置，0-中间；1-左边；2-右边，默认0
+	alignment:            //(可选项)页面控制器位置，center(居中),left(靠左), right(靠右),默认center
+	activeColor:          //(可选项)当前圆点颜色，支持rgb、rgba、#，默认:DA70D6
+	inactiveColor:        //(可选项)圆点颜色 ，支持rgb、rgba、#，默认：#FFFFFF
 }
 ```
 
 fixedOn：
 
 - 类型：字符串
-- 默认值：当前视图的名字
-- 描述：要添加到某个视图上，可为空，若为空则默认当前视图
+- 默认值：当前主窗口的名字
+- 描述：（可选项）将模块视图添加到指定窗口的名字
 
 adaptive：
 
 - 类型：布尔
 - 默认值：false
-- 描述：是否使图片大小自适应传入的宽高值，可为空
+- 描述：（可选项）是否使图片大小自适应传入的宽高值
 
 fixed:
 - 类型：布尔
 - 默认值：true
-- 描述：是否将模块视图固定到窗口上，不跟随窗口上下滚动，可为空
+- 描述：（可选项）是否将模块视图固定到窗口上，不跟随窗口上下滚动
+
+circulation:
+- 类型：布尔
+- 默认值：true
+- 描述：（可选项）图片是否循环播放
 
 ##callback(ret, err)
 
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	status:true		//是否是click图片的事件
+	status:   		//是否是click图片的事件
 	index：			//图片滚动的下标
 	click：			//点击图片的下标
 }
@@ -174,7 +179,36 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('scrollPicture'); var arrayPath = new Array(); arrayPath[0] = 'widget://res/scrollPicture_01.jpg'; arrayPath[1] = 'widget://res/scrollPicture_02.jpg'; arrayPath[2] =  'http://f.hiphotos.baidu.com/image/pic/item/4e4a20a4462309f7bdca9423710e0cf3d7cad65d.jpg'; arrayPath[3] = 'widget://res/scrollPicture_04.jpg'; arrayPath[4] = 'widget://res/scrollPicture_05.jpg'; var arrayTitle = new Array(); arrayTitle[0] = 'widget://res/scrollPicture_01.jpg'; arrayTitle[1] = 'widget://res/scrollPicture_02.jpg'; arrayTitle[2] = 'http://f.hiphotos.baidu.com/image/pic/item/4e4a20a4462309f7bdca9423710e0cf3d7cad65d.jpg'; arrayTitle[3] = 'widget://res/scrollPicture_04.jpg'; arrayTitle[4] = 'widget://res/scrollPicture_05.jpg';     obj.open({     placeholderImg:'widget://res/scrollPicture_placehloder.png',     paths: arrayPath,     subtitle:{         titles:arrayTitle     },     control:{         position:0     } },function(ret,err){     if(ret.status){        ret.click;     }else{        ret.index;     } });
+var obj = api.require('scrollPicture');
+ var arrayPath = new Array();
+ arrayPath[0] = 'widget://res/scrollPicture_01.jpg';
+ arrayPath[1] = 'widget://res/scrollPicture_02.jpg';
+ arrayPath[2] =  'http://f.hiphotos.baidu.com/image/pic/item/4e4a20a4462309f7bdca9423710e0cf3d7cad65d.jpg';
+ arrayPath[3] = 'widget://res/scrollPicture_04.jpg';
+ arrayPath[4] = 'widget://res/scrollPicture_05.jpg';
+ var arrayTitle = new Array();
+ arrayTitle[0] = 'widget://res/scrollPicture_01.jpg';
+ arrayTitle[1] = 'widget://res/scrollPicture_02.jpg';
+ arrayTitle[2] = 'http://f.hiphotos.baidu.com/image/pic/item/4e4a20a4462309f7bdca9423710e0cf3d7cad65d.jpg';
+ arrayTitle[3] = 'widget://res/scrollPicture_04.jpg';
+ arrayTitle[4] = 'widget://res/scrollPicture_05.jpg';
+    
+ obj.open({
+     placeholderImg:'widget://res/scrollPicture_placeholder.png',
+     paths: arrayPath,
+     subtitle:{
+         titles:arrayTitle
+     },
+     control:{
+         position:0
+     }
+ },function(ret,err){
+     if(ret.status){
+        ret.click;
+     }else{
+        ret.index;
+     }
+ });
 ```
 
 ##补充说明
@@ -199,8 +233,7 @@ close(callBack(ret,err))
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
@@ -235,7 +268,7 @@ index：
 
 - 类型：数字
 - 默认值：0
-- 描述：指定跳转到某一页的下标，可为空
+- 描述：（可选项）指定跳转到某一页的索引值
 
 ##示例代码
 
@@ -244,8 +277,9 @@ var scrollPicture = api.require('scrollPicture');
 
 scrollPicture.turnPage({
 	index:0
-})
-```
+});
+```
+
 ##补充说明
 
 跳转到指定图片.
@@ -267,22 +301,22 @@ refresh(params)
 paths：
 
 - 类型：数组
-- 默认值：无
-- 描述：图片路径组成的数组，支持网络和本地路径，可为空，为空时显示旧值
+- 默认值：旧值
+- 描述：（可选项）图片路径组成的数组，支持网络和本地路径
 
 titles：
 
 - 类型：数组
-- 默认值：无
-- 描述：说明的文字组成的数组，可为空，为空时显示旧值
+- 默认值：旧值
+- 描述：（可选项）说明的文字组成的数组
 
 ##示例代码
 
 ```js
 var scrollPicture = api.require('scrollPicture');
+scrollPicture.refresh();
+```
 
-scrollPicture.refresh()
-```
 ##补充说明
 
 刷新视图内图片
@@ -304,8 +338,7 @@ hide(callBack(ret,err))
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
@@ -339,8 +372,7 @@ show(callBack(ret,err))
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
@@ -378,4 +410,6 @@ iOS系统，Android系统
 
 - center   	中间
 - left		 	靠左
-- right		靠右</div>
+- right		靠右
+
+</div>

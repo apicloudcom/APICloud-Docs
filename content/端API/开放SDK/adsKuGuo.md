@@ -45,9 +45,11 @@ version：
 
 ##示例代码
 
-	var kgjsapi=api.require('APIKGJS');
-	var param = {id:"hbfklpelkpoiddfe",version:"1"};
-	kgjsapi.init(param);
+```js
+var kgjsapi=api.require('APIKGJS');
+var param = {id:"hbfklpelkpoiddfe",version:"1"};
+kgjsapi.init(param);
+```
 
 ##补充说明
 
@@ -76,9 +78,14 @@ mode：
 
 ##示例代码
 
-	var kgjsapi=api.require('APIKGJS');
-	var param = {mode:1};
-	kgjsapi.show(param);
+```js
+var kgjsapi=api.require('APIKGJS');
+var param = {
+    mode:1
+};
+kgjsapi.show(param);
+
+```
 
 ##补充说明
 

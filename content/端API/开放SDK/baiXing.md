@@ -43,10 +43,12 @@ init(params)
 ##示例代码
 
 ```js
-var baiXing = api.require(‘baiXing’);baiXing.init({
-	apiKey:"ausdk_test", 
-	apiSecret:"cd864410365753c2ea6bf70c74a7e625"
-	});
+var baiXing = api.require("baiXing");
+
+baiXing.init({
+    apiKey:"ausdk_test",
+    apiSecret:"cd864410365753c2ea6bf70c74a7e625"
+});
 ```
 
 ##补充说明
@@ -107,17 +109,22 @@ startActivity(param);
 ##示例代码
 
 ```js
-var baiXing = api.require(‘baiXing’);baiXing.init({
-	apiKey:"ausdk_test", 
-	apiSecret:"cd864410365753c2ea6bf70c74a7e625"
-	});
-	var param = {
-	title:"⼆手汽车", 
-	city:"上海", 
-	queryId:"aq2", 
-	keywords:”⼤大众”, 
-	showLocation:true, 
-	showPost:true};baiXing.startActivity(param);
+var baiXing = api.require("baiXing");
+baiXing.init({
+    apiKey:"ausdk_test",
+    apiSecret:"cd864410365753c2ea6bf70c74a7e625"
+});
+
+var param = {
+    title:"⼆手汽车",
+    city:"上海",
+    queryId:"aq2",
+    keywords:"⼤大众",
+    showLocation:true,
+    showPost:true
+};
+
+baiXing.startActivity(param);
 ```
 
 ##补充说明

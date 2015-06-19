@@ -60,7 +60,7 @@ err：
 
 ```js
 {
-	msg:“”    //错误描述
+	msg: ""    //错误描述
 }
 ```
 
@@ -70,11 +70,11 @@ err：
 var obj = api.require('clipBoard');
 obj.set({
 	value: 'test'
-	}, function(ret, err){
-		if(ret.status){
-			api.alert({msg:'复制到剪切板成功'});
-		}else{
-			api.alert({msg:err.msg});
+}, function(ret, err){
+	if(ret.status){
+		api.alert({msg:'复制到剪切板成功'});
+	}else{
+		api.alert({msg:err.msg});
     }
 });
 ```
@@ -106,8 +106,8 @@ ret：
 
 ```js
 {
-	value：		//从剪切板获取的字符串
-	type：		//数据类型，取值范围见数据类型
+	value:		//从剪切板获取的字符串
+	type:		//数据类型，取值范围见数据类型
 }
 ```
 
@@ -115,7 +115,7 @@ ret：
 
 ```js
 var obj = api.require('clipBoard');
-obj.get({ function(ret, err){
+obj.get(function(ret, err){
 	api.alert({msg:ret.value+"*"+ret.type});
 });
 ```
@@ -155,7 +155,7 @@ ret：
 
 ```js
 var obj = api.require('clipBoard');
-obj.setListener({ function(ret, err){
+obj.setListener(function(ret, err){
 	api.alert({msg:ret.value+"*"+ret.type});
 });
 ```

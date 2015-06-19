@@ -256,7 +256,7 @@ onResume()
 api.addEventListener({name:'resume'}, function(ret,err) {
     var ajpush = api.require('ajpush');
 	ajpush.onResume();
-})
+});
 ```
 
 ##补充说明
@@ -284,7 +284,7 @@ onPause()
 api.addEventListener({name:'pause'}, function(ret,err) {
     var ajpush = api.require('ajpush');
 	ajpush.onPause();
-})
+});
 ```
 
 ##补充说明

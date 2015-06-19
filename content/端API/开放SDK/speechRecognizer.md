@@ -267,9 +267,9 @@ err：
 ```
 ##示例代码
 
-    var obj = api.require('speechRecognizer')
+    var obj = api.require('speechRecognizer');
     obj.addRecordHUD(function(ret,err){
-        var volume = ret.volume
+        var volume = ret.volume;
     });
 
 

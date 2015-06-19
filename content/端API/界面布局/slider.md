@@ -40,93 +40,99 @@ multiOpen：
 
 - 类型：布尔
 - 默认值：false
-- 描述：同一个页面是否可以同时打开多个滑动器，可为空
+- 描述：（可选项）同一个页面是否可以同时打开多个滑动器
+
+showBubble：
+
+- 类型：布尔
+- 默认值：true
+- 描述：（可选项）是否显示提示气泡
 
 alwaysShowBubble：
 
 - 类型：布尔
 - 默认值：true
-- 描述：是否一直显示提示气泡，可为空
+- 描述：（可选项）是否一直显示提示气泡，若为false则只有点击拖动时才显示气泡
 
 x：
 
 - 类型：数字
 - 默认值：30
-- 描述：slider左边点的坐标，可为空
+- 描述：（可选项）slider左边点的坐标
 
 y：
 
 - 类型：数字
 - 默认值：104
-- 描述：slider左边点的坐标，可为空
+- 描述：（可选项）slider左边点的坐标
 
 <del>width：</del>
 
 - <del>类型：数字</del>
 - <del>默认值：260</del>
-- <del>描述：slider的宽，可为空</del>
+- <del>描述：（可选项）slider的宽</del>
 
 w：
 
 - 类型：数字
 - 默认值：260
-- 描述：slider的宽，可为空
+- 描述：（可选项）slider的宽
 
-height：
-
-- 类型：数字
-- 默认值：5
-- 描述：slider的高，可为空
-
-<del>h：</del>
+<del>height：</del>
 
 - <del>类型：数字</del>
 - <del>默认值：5</del>
-- <del>描述：slider的高，可为空</del>
+- <del>描述：（可选项）slider的高</del>
+
+h：
+
+- 类型：数字
+- 默认值：5
+- 描述：（可选项）slider的高
 
 bgImg：
 
 - 类型：字符串
 - 默认值：无
-- 描述：slider的背景图片，不可为空
+- 描述：slider的背景图片
 
 selectedBgImg：
 
 - 类型：字符串
 - 默认值：无
-- 描述：slider滑块左边划过的区域图片，不可为空
+- 描述：slider滑块左边划过的区域图片
 
 <del>barW：</del>
 
 - <del>类型：数字</del>
 - <del>默认值：30</del>
-- <del>描述：slider滑块的宽，可为空</del>
+- <del>描述：（可选项）slider滑块的宽</del>
 
 <del>barH：</del>
 
 - <del>类型：数字</del>
 - <del>默认值：18</del>
-- <del>描述：slider滑块的高，可为空</del>
+- <del>描述：（可选项）slider滑块的高</del>
 
 <del>barImg：</del>
 
 - <del>类型：字符串</del>
 - <del>默认值：无</del>
-- <del>描述：slider滑块背景图片，不可为空</del>
+- <del>描述：（可选项）slider滑块背景图片</del>
 
 bar：
 
 - 类型：json对象
 - 默认值：见内部字段
-- 描述：气泡设置，可为空,若为空则不显示滑块
-
-内部字段：
+- 描述：（可选项）气泡设置
+- 备注：若不传则不显示滑块
+- 内部字段：
 
 ```js
 {
-	barWidth：//滑块宽，数字，可为空，默认30
-	barHeight： //滑块的高，数字，可为空，默认18
-	barImg：//滑块背景，字符串，可为空，默认#4f94dc，支持rgb，rgba，#，img
+	barWidth：  //（可选项）滑块宽，数字，默认30
+	barHeight： //（可选项）滑块的高，数字，默认18
+	barImg：    //（可选项）滑块背景，字符串，默认#4f94dc，支持rgb，rgba，#，img
 }
 ```
 
@@ -134,47 +140,48 @@ bar：
 
 - <del>类型：数字</del>
 - <del>默认值：60</del>
-- <del>描述：slider滑动时弹出的气泡的宽，可为空</del>
+- <del>描述：（可选项）slider滑动时弹出的气泡的宽</del>
 
 <del>bubbleH：</del>
 
 - <del>类型：数字</del>
 - <del>默认值：40</del>
-- <del>描述：slider滑动时弹出的气泡的高，可为空</del>
+- <del>描述：（可选项）slider滑动时弹出的气泡的高</del>
 
 <del>bubbleImg：</del>
 
 - <del>类型：字符串</del>
 - <del>默认值：无</del>
-- <del>描述：slider气泡的背景图片路径，不可为空</del>
+- <del>描述：（可选项）slider气泡的背景图片路径</del>
 
 <del>bubbleSuffix：</del>
 
 - <del>类型：字符串</del>
 - <del>默认值：℃</del>
-- <del>描述：slider气泡上的文字后缀，可为空</del>
+- <del>描述：（可选项）slider气泡上的文字后缀</del>
 
 <del>bubbleColor：</del>
 
 - <del>类型：字符串</del>
 - <del>默认值：#FFFFFF</del>
-- <del>描述：slider气泡上的文字颜色，可为空, 支持rgb，rgba，#</del>
+- <del>描述：（可选项）slider气泡上的文字颜色，可为空, 支持rgb，rgba，#</del>
 
 bubble：
 
 - 类型：json对象
 - 默认值：无
-- 描述：气泡设置，可为空
-
-内部字段：
+- 描述：（可选项）气泡设置
+- 内部字段：
 
 ```js
 {
-	bubbleWidth：//数字类型，默认60，气泡的宽，可为空
-	bubbleHeight：//数字类型，默认40，气泡的高，可为空
-	bubbleImg：//字符串，默认#5cacee，气泡背景，可为空，支持rgb,rgba,#,img
-	titleSuffix：//字符串，默认℃，气泡后缀，可为空
-	titleColor：//字符串，默认#000000，可为空，支持rgb，rgba，#
+	bubbleWidth：  //（可选项）数字类型，默认60，气泡的宽
+	bubbleHeight： //（可选项）数字类型，默认40，气泡的高
+	bubbleImg：    //（可选项）字符串，默认#5cacee，气泡背景，支持rgb,rgba,#,img
+	titleSuffix：  //（可选项）字符串，默认℃，气泡后缀
+	titleColor：   //（可选项）字符串，默认#000000，支持rgb，rgba，#
+	titleSize：    //（可选项）数字类型，默认13.0，气泡上字体大小
+	titlePosition：//（可选项）字符串类型，气泡标题位置，取值范围：left、right、center，默认center
 }
 ```
 
@@ -182,50 +189,48 @@ minValue：
 
 - 类型：数字
 - 默认值：0
-- 描述：slider最小值，可为空
+- 描述：（可选项）slider最小值
 
 maxValue：
 
 - 类型：数字
 - 默认值：100
-- 描述：slider最大值，可为空
+- 描述：（可选项）slider最大值
 
 defValue：
 
 - 类型：数字
 - 默认值：0
-- 描述：slider开启默认值，可为空
+- 描述：（可选项）slider开启默认值
 
 fixedOn：
 
 - 类型：字符串
 - 默认值：当前主窗口的名字
-- 描述：把模块视图添加到指定窗口的名字，可为空
+- 描述：（可选项）把模块视图添加到指定窗口的名字
 
 step：
 
 - 类型：数字
 - 默认值：0.00001
-- 描述：滑块滑动最小单位，可为空
+- 描述：（可选项）滑块滑动最小单位
 
 fixed:
 - 类型：布尔
 - 默认值：true
-- 描述：是否将模块视图固定到窗口上，不跟随窗口上下滚动，可为空
+- 描述：（可选项）是否将模块视图固定到窗口上，不跟随窗口上下滚动
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
-
-内部字段：
+- 类型：JSON对象内部字段：
 
 ```js
 {
-	id:               //滑动器的id
-	touchCancel:      //是否是滑动结束事件
-	value:				//滑动时返回滑动的值
+	id:                  //滑动器的id
+	touchCancel:         //是否是滑动结束事件
+	value:               //滑动时返回滑动的值
 }
 ```
 
@@ -281,37 +286,39 @@ id：
 
 - 类型：数字
 - 默认值：打开的第一个菜单的id
-- 描述：菜单id，可为空
+- 描述：（可选项）菜单id
+- 备注：若open接口内multiOpen不传或传false，则本参数被忽略
 
 value:
 
 - 类型：数字
 - 默认值：无
-- 描述：要设置的滑块的值（在最大值和最小值直接的一个值），不可为空
+- 描述：要设置的滑块的值（在最大值和最小值直接的一个值）
 
 minValue：
 
 - 类型：数字
-- 默认值：无
-- 描述：slider最小值，可为空，为空时保持之前的值
+- 默认值：旧值
+- 描述：（可选项）slider最小值
 
 maxValue：
 
 - 类型：数字
-- 默认值：无
-- 描述：slider最大值，可为空，为空时保持之前的值
+- 默认值：旧值
+- 描述：（可选项）slider最大值
 
 step：
 
 - 类型：数字
 - 默认值：0.00001
-- 描述：滑块滑动最小单位，可为空
+- 描述：（可选项）滑块滑动最小单位
 
 ##示例代码
 
 ```js
 var obj = api.require('slider');
 obj.setValue({
+    id:1,
     value:51
 });
 ```
@@ -339,19 +346,21 @@ id：
 
 - 类型：数字
 - 默认值：无
-- 描述：操作菜单id，若为空则关闭全部，可为空
+- 描述：操作菜单id
+- 备注：若open接口内multiOpen不传或传false，则本参数被忽略
 
 lock:
 
 - 类型：布尔
 - 默认值：true
-- 描述：是否锁定当前slider的值，可为空
+- 描述：（可选项）是否锁定当前slider的值
 
 ##示例代码
 
 ```js
 var obj = api.require('slider');
 obj.lock({
+	id:1,
 	lock:true
 });
 ```
@@ -380,15 +389,15 @@ id：
 
 - 类型：数字
 - 默认值：无
-- 描述：操作菜单id，若为空则关闭全部，可为空
+- 描述：（可选项）操作菜单id
+- 备注：若open接口内multiOpen不传或传false，则本参数被忽略
 
 ##callback(ret, err)
 
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
@@ -399,8 +408,7 @@ ret：
 err：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
@@ -413,7 +421,7 @@ err：
 ```js
 var obj = api.require('slider');
 obj.close({
-    value:51
+   id:1
 });
 ```
 
@@ -440,7 +448,8 @@ id：
 
 - 类型：数字
 - 默认值：无
-- 描述：操作菜单id，若为空则关闭全部，可为空
+- 描述：操作菜单id
+- 备注：若open接口内multiOpen不传或传false，则本参数被忽略
 
 
 ##callback(ret, err)
@@ -448,8 +457,7 @@ id：
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
@@ -460,8 +468,7 @@ ret：
 err：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```
 {
@@ -472,7 +479,9 @@ err：
 ##示例代码
 
 	var obj= api.require('slider');
-	obj.show();
+	obj.show({
+	  id:1
+	});
 
 ##补充说明
 无
@@ -496,7 +505,8 @@ id：
 
 - 类型：数字
 - 默认值：无
-- 描述：菜单id，若当前页面存在且仅存在一个滑块对象,则默认操作此对象.此时参数可为空
+- 描述：菜单id
+- 备注：若open接口内multiOpen不传或传false，则本参数被忽略
 
 
 ##callback(ret, err)
@@ -504,8 +514,7 @@ id：
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```
 {
@@ -517,8 +526,7 @@ err：
 
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
@@ -529,7 +537,9 @@ err：
 ##示例代码
 
 	var obj = api.require('slider');
-	obj.hide();
+	obj.hide({
+	  id:1
+	});
 
 ##补充说明
 

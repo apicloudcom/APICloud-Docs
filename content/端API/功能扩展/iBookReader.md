@@ -15,7 +15,10 @@ Description: iBookReader
 #**概述**
 
 一款文本阅读器，自带书架、翻页、书架、进度设置功能。
-初次启动需要点击安卓菜单键添加一本txt图书。
+设置：
+点击安卓菜单键可以弹出设置菜单
+阅读界面采用羊皮纸风格，翻页采用模拟iReader的仿真翻页方式。
+在添加图书菜单内可以对手机图书进行移动、重命名等操作。
 
 #**openBookShelf**<div id="openBookShelf"></div>
 
@@ -29,7 +32,7 @@ openBookShelf()
 var iBookReader = null;
 apiready = function(){
 	iBookReader = api.require('iBookReader');
-}
+};
 
 function openBookShelf(){
 	iBookReader.openBookShelf();

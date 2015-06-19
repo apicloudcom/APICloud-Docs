@@ -94,7 +94,7 @@ for(var i=0;i<17;i++){
 		highlight: 'widget://res/ navigationMenu_highlight.png',
 		selected: 'widget://res/navigationMenu_selected.png',
 		title: '收藏'
-	}
+	};
 }
 obj.open({
 	btnInfo: arrayPath

@@ -26,17 +26,18 @@ Sort: 2
 当调用 APICloud 统计相关接口时，我们需要对头部信息中X-APICloud-AppKey 进行验证，X-APICloud-AppKey 的生成规则如下：
 
 ```js
-your app key = SHA1（你的应用ID + 'UZ' + 你的应用KEY + 'UZ' + 当前时间戳）.当间时间毫秒数
+your app key = SHA1(你的应用ID + 'UZ' + 你的应用KEY + 'UZ' + 当间时间毫秒数).当间时间毫秒数
 ```
 
 例如：你的应用ID是A6968565094002，而你的应用KEY是62FB16B2-0ED6-B460-1F60-EB61954C823B，则你在请求头部信息X-APICloud-AppKey中设置的值应为
-A6968565094002+’UZ’+62FB16B2-0ED6-B460-1F60-EB61954C823B+’UZ’+当前时间戳组合字符串后通过SHA1加密后返回字符串再加上’.当前时间毫秒数’。
+'A6968565094002'+'UZ'+'62FB16B2-0ED6-B460-1F60-EB61954C823B'+'UZ'+当前时间戳组合字符串后通过SHA1加密后返回字符串再加上’.当前时间毫秒数’。
 
 示例代码如下：
 
 ```js
 var now = Date.now();
-var appKey = sha1(“A6968565094002+”UZ”+” 62FB16B2-0ED6-B460-1F60-EB61954C823B”+UZ+now)+”.”+now
+
+varappKey = sha1("A6968565094002"+"UZ"+ "62FB16B2-0ED6-B460-1F60-EB61954C823B"+"UZ"+now)+"."+now;
 ```
 
 #**接口名称：应用统计信息获取接口**<div id="2"></div>

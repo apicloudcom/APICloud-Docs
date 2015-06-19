@@ -18,7 +18,8 @@ AppKey= SHA1（你的应用ID + 'UZ' + 你的应用KEY +'UZ' +当前时间毫秒
 
 ```js
 var now = Date.now();
-varappKey = sha1(“A6968565094002+”UZ”+” 62FB16B2-0ED6-B460-1F60-EB61954C823B”+UZ+now)+”.”+now
+
+varappKey = sha1("A6968565094002"+"UZ"+ "62FB16B2-0ED6-B460-1F60-EB61954C823B"+"UZ"+now)+"."+now;
 ```
 
 #**接口名称：消息推送接口**

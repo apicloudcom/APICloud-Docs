@@ -34,7 +34,7 @@ Description: slipList
 
 #**概述**
 
-slipList封装了一个列表控件，可实现一个可左右拖动item的列表视图。开发者可根据需求自定义列表的元素，亦可自定义相关字段的样式。支持设置下拉刷新和上拉加载更多事件。支持删除刷新指定下标（index）的item数据
+slipList封装了一个列表控件，可实现一个可左右拖动item的列表视图。开发者可根据需求自定义列表的元素布局，亦可自定义相关字段的样式。支持设置下拉刷新和上拉加载更多事件。支持删除、刷新、插入指定下标（index）的item数据。本模块是有第三方模块开发者提供，使用本模块需在线云编译安装包
 
 ![图片说明](/img/docImage/slipList.jpg)
 
@@ -117,7 +117,7 @@ rightBg：
 - 默认值：#6c7b8b
 - 描述：往左滑动item露出的视图的背景色，支持rgb，rgba，#，可为空
 
-itemSyle：
+itemStyle：
 
 - 类型：json对象
 - 默认值：见内部字段
@@ -595,7 +595,7 @@ data：
 ```js
 var obj = api.require('slipList');
 obj.refreshItem({
-	index:2，
+	index:2,
 	data:{
 		img:'http://d.hiphotos.baidu.com/image/pic/item/4d086e061d950a7b29a788c209d162d9f2d3c922.jpg ',
 		title:'12:00',

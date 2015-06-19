@@ -65,7 +65,11 @@ style：
  内部字段:
     ```js
     {
-     bgColor:   //菜单按钮背景色，支持rgb,rgba,#,默认#000000，可为空     lightColor:  //菜单按钮点击色，支持rgb,rgba,#,默认#009ACD，可为空     borderColor:// 菜单边框色，支持rgb,rgba,#,默认#000000，可为空      cutLineColor:// 菜单按钮分割线色，支持rgb,rgba,#,默认#636363，可为空     titleColor:   //菜单按钮标题色，支持rgb,rgba,#,默认#ffffff，可为空
+     bgColor:   //菜单按钮背景色，支持rgb,rgba,#,默认#000000，可为空
+     lightColor:  //菜单按钮点击色，支持rgb,rgba,#,默认#009ACD，可为空
+     borderColor:// 菜单边框色，支持rgb,rgba,#,默认#000000，可为空 
+     cutLineColor:// 菜单按钮分割线色，支持rgb,rgba,#,默认#636363，可为空
+     titleColor:   //菜单按钮标题色，支持rgb,rgba,#,默认#ffffff，可为空
  }
  ```
 
@@ -121,10 +125,7 @@ ret：
 
 ```js
 var obj = api.require('bubbleMenu');
-var arrayPath = new Array();
-arrayPath[0]={ title:’按钮一’};
-arrayPath[1]={ title:’按钮二’};
-arrayPath[2]={ title:’按钮三’};
+var arrayPath = [{title:'按钮一'}, {title:'按钮二'}, {title:'按钮三'}];
 obj.open({
 	btnArray:arrayPath
 },function(ret,err){

@@ -57,7 +57,7 @@ err：
 
 ```js
 var paste = api.require('pasteboard');
-var param = {value:‘Hello paste’};
+var param = {value:'Hello paste'};
 demo.paste(param,function(ret,err){
 	if (ret.status){
 		api.alert({

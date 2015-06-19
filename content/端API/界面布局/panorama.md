@@ -139,6 +139,39 @@ iOS系统，Android系统
 可提供的1.0.0及更高版本
 
 
+#**close**<div id="2"></div>
+
+关闭全景展示视图
+
+close({params})
+
+##params
+
+id：
+
+- 类型：数字
+- 默认值：无
+- 描述：要关闭的视图的id，不能为空
+
+##示例代码
+
+```js
+var obj = api.require('panorama');
+obj.close({
+	id:1
+});
+```
+
+##补充说明
+
+无
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.0.1及更高版本
+
 #**hide**<div id="3"></div>
 
 隐藏全景展示视图

@@ -202,7 +202,7 @@ minute：
 ```js
 var obj = api.require('timeSelector');
 
-obj.open(
+obj.open({
 	hour:20,
 	minute:25
 });

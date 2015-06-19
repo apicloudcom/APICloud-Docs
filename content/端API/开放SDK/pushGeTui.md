@@ -111,9 +111,9 @@ err：
 
 ```js
 var uzgetuisdk = api.require('pushGeTui');
-	    	
+
 uzgetuisdk.initialize(function(ret) {
-	api.alert({msg:"cid:" + ret.cid});
+    api.alert({msg:"cid:" + ret.cid});
 });
 ```
 
@@ -173,7 +173,7 @@ err：
 ```js
 var uzgetuisdk = api.require('pushGeTui');
 uzgetuisdk.register(function(ret) {
-	api.alert({msg:"taskid:" + ret.taskid+" messageid:" + ret.messageid+" payload:" + ret.payload});
+    api.alert({msg:"taskid:" + ret.taskid+" messageid:" + ret.messageid+" payload:" + ret.payload});
 });
 ```
 
@@ -257,7 +257,7 @@ uzgetuisdk.setTag(param,function(ret) {
 
 ##补充说明
 
-（暂无）
+无
 
 ##可用性
 
@@ -319,7 +319,7 @@ uzgetuisdk.bindAlias(param,function(ret) {
 
 ##补充说明
 
-（暂无）
+无
 
 ##可用性
 
@@ -381,7 +381,7 @@ uzgetuisdk.unbindAlias(param,function(ret) {
 
 ##补充说明
 
-（暂无）
+无
 
 ##可用性
 
@@ -434,7 +434,7 @@ uzgetuisdk.stopService(function(ret) {
 
 ##补充说明
 
-（暂无）
+无
 
 ##可用性
 
@@ -500,15 +500,20 @@ err：
 
 ```js
 var uzgetuisdk = api.require('pushGeTui');
-var param = {taskid:"GT_1012_AKMw2kc2Oj5Tzy1DvXjMQA",messageid:"GT_1012_AKMw2kc2Oj5Tzy1DvXjMQA",actionid:90001};
+
+var param = {
+    taskid:"GT_1012_AKMw2kc2Oj5Tzy1DvXjMQA",
+    messageid:"GT_1012_AKMw2kc2Oj5Tzy1DvXjMQA",
+    actionid:90001};
+
 uzgetuisdk.sendFeedbackMessage(param,function(ret) {
-	api.alert({msg:"sendFeedbackMessage result:" + ret.result});
+    api.alert({msg:"sendFeedbackMessage result:" + ret.result});
 });
 ```
 
 ##补充说明
 
-（暂无）
+无
 
 ##可用性
 
@@ -573,14 +578,15 @@ err：
 
 ```js
 var uzgetuisdk = api.require('pushGeTui');
+
 uzgetuisdk.turnOnPush(function(ret) {
-	api.alert({msg:"turnOnPush result:" + ret.result});
+    api.alert({msg:"turnOnPush result:" + ret.result});
 });
 ```
 
 ##补充说明
 
-（暂无）
+无
 
 ##可用性
 
@@ -626,14 +632,15 @@ err：
 
 ```js
 var uzgetuisdk = api.require('pushGeTui');
+
 uzgetuisdk.turnOffPush(function(ret) {
-	api.alert({msg:"turnOffPush result:" + ret.result});
+    api.alert({msg:"turnOffPush result:" + ret.result});
 });
 ```
 
 ##补充说明
 
-（暂无）
+无
 
 ##可用性
 
@@ -680,14 +687,15 @@ err：
 
 ```js
 var uzgetuisdk = api.require('pushGeTui');
+
 uzgetuisdk.isPushTurnedOn(function(ret) {
-	api.alert({msg:"isPushTurnedOn result:" + ret.isOn});
+    api.alert({msg:"isPushTurnedOn result:" + ret.isOn});
 });
 ```
 
 ##补充说明
 
-（暂无）
+无
 
 ##可用性
 
@@ -734,14 +742,15 @@ err：
 
 ```js
 var uzgetuisdk = api.require('pushGeTui');
+
 uzgetuisdk.getVersion(function(ret) {
-	api.alert({msg:"getVersion result:" + ret.version});
+    api.alert({msg:"getVersion result:" + ret.version});
 });
 ```
 
 ##补充说明
 
-（暂无）
+无
 
 ##可用性
 
@@ -806,9 +815,10 @@ err：
 
 ```js
 var uzgetuisdk = api.require('pushGeTui');
+
 var param = {beginHour:9,duration:12};
 uzgetuisdk.setSilentTime(param,function(ret) {
-	api.alert({msg:"setSilentTime result:" + ret.result});
+    api.alert({msg:"setSilentTime result:" + ret.result});
 });
 ```
 
@@ -883,7 +893,7 @@ uzgetuisdk.sendMessage(param,function(ret) {
 
 ##补充说明
 
-（暂无）
+无
 
 ##可用性
 

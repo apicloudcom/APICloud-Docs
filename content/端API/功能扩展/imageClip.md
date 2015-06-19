@@ -5,7 +5,6 @@ Description: imageClip
 
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
-	<li><a href="#const-content">Constant</a></li>
 </ul>
 <div id="method-content">
 
@@ -14,93 +13,94 @@ Description: imageClip
 
 [save](#a2)
 
-[cancel](#a3)
+[close](#a3)
+
+[reset](#a4)
 
 </div>
 
 #**概述**
 
-imageClip模块封装了屏幕截图的功能，用户可加拖动选择截图的区域，生成的图片可指定保存路径，也可保存到本地相册。用户点击已选截图区域则保存图片并取消本次截图，点击非已选区域则直接取消本次截图
+imageClip模块封装了图片裁剪功能
 
 #**open**<div id="a1"></div>
 
-打开截图功能
+打开图片裁剪
 
 open({params}, callback(ret, err))
 
 ##params
 
-bg：
+path：
 
 - 类型：字符串
 - 默认值：无
-- 描述：背景设置，支持#，rgb，rgba，可为空，为空则无背景
+- 描述：源图片路径，支持fs://、widget://等文件路径协议
 
-x：
+bg：
 
-- 类型：数字类型
+- 类型：字符串
+- 默认值：#000
+- 描述：（可选项）背景，支持颜色（#、rgb、rgba等格式）和图片（支持fs://、widget://等文件路径协议）
+
+x:
+
+- 类型：数字
 - 默认值：0
-- 描述：可截图区域视图左上角点坐标，可为空
+- 描述：（可选项）整个区域左上角x坐标
 
-y：
+y:
 
-- 类型：数字类型
+- 类型：数字
 - 默认值：0
-- 描述：可截图区域视图左上角点坐标，可为空
+- 描述：（可选项）整个区域左上角y坐标
 
-h：
+w:
 
-- 类型：数字类型
-- 默认值：当前设备屏幕的高
-- 描述：可截图区域视图的高，可为空
+- 类型：数字
+- 默认值：屏幕宽度
+- 描述：（可选项）整个区域宽度
 
-w：
+h:
 
-- 类型：数字类型
-- 默认值：当前设备屏幕的宽
-- 描述：可截图区域视图的宽，可为空，可为空
+- 类型：数字
+- 默认值：屏幕高度
+- 描述：（可选项）整个区域高度
 
-cornerRadius：
+clipRect：
 
-- 类型：数字类型
-- 默认值：0
-- 描述：切图的圆角大小，可为空
-
-cutFrame：
-
-- 类型：json对象
-- 默认值：见内部字段
-- 描述：截取框配置，可为空，为空则不显示截取框，只显示一个rect框
+- 类型：JSON对象
+- 默认值：根据图片大小在整个区域居中显示
+- 描述：（可选项）图片裁剪区域位置和大小
 
 内部字段:
 
 ```js
 {
-	borderColor:  //边框颜色,字符串,默认#696969,支持rgb，rgba，#，可为空
-	borderWidth: //边框粗细，数字类型，默认2，可为空
-	cornerR:     //顶角半径，数字类型，默认3，可为空
-	cornerColor：//顶角颜色，字符串类型，默认#696969,支持rgb，rgba，#，可为空
-	tipsSize:   //提示文字的大小，数字类型，默认12,,可为空
-	tipsPosition：//提示文字位置，字符串，默认center,取值范围见提示文字位置,可空
-	tipsColor://提示文字颜色，字符串，默认#696969,支持#,rgb,rgba,img,可为空
+	x:  	//裁剪框左上角x坐标
+	y: 		//裁剪框左上角y坐标
+	w:   	//裁剪框宽度
+	h:		//裁剪框高度
 }
 ```
 
-save：
+layerColor:
 
-- 类型：json对象
-- 默认值：见内部字段
-- 描述：所生成的图片保存位置，可为空，为空则必须通过save接口保存
+- 类型：字符串
+- 默认值：rgba(69, 69, 69, 0.5)
+- 描述：（可选项）裁剪框以外的遮罩层颜色，支持#、rgb、rgba等格式
 
-内部字段：
+borderColor：
 
-```js
-{
-    album:            //布尔值，是否保存到系统相册，默认false，可为空
-	imgPath:          //保存的文件路径,字符串类型，无默认值,可为空,空则不保存若路径不存在文件夹则创建此目录
-	imgName:         //保存的图片名字，字符串类型，无默认值,可为空,空则不保存支持png和jpg格式，若不指定格式，则默认png
-}
-```
+- 类型：字符串
+- 默认值：#fff
+- 描述：（可选项）裁剪区域边框颜色，支持#、rgb、rgba等格式
+
+borderWidth：
+
+- 类型：数字
+- 默认值：2
+- 描述：（可选项）裁剪区域边框粗细
 
 ##callback(ret, err)
 
@@ -112,7 +112,7 @@ ret：
 
 ```js
 {
-	status://操作成功状态值
+	status:		//操作成功状态值，布尔类型
 }
 ```
 
@@ -124,7 +124,7 @@ err：
 
 ```js
 {
-	msg:    //错误描述
+	msg:		//错误描述
 }
 ```
 
@@ -133,11 +133,9 @@ err：
 ```js
 var obj = api.require('imageClip');
 obj.open(function(ret, err){
-	if(ret.status){
-		api.alert({msg:'截图完成'});
-	}else{
+	if(err){
 		api.alert({msg:err.msg});
-    }
+	}
 });
 ```
 
@@ -150,6 +148,7 @@ obj.open(function(ret, err){
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
+
 
 #**save**<div id="a2"></div>
 
@@ -163,19 +162,13 @@ album：
 
 - 类型：布尔类型
 - 默认值：false
-- 描述：是否保存到系统相册，可为空
+- 描述：（可选项）是否保存到系统相册
 
-imgPath：
-
-- 类型：字符串类型
-- 默认值：无
-- 描述：保存的图片路径，若路径不存在文件夹则创建此目录，可为空，为空则不保存
-
-imgName：
+savePath：
 
 - 类型：字符串类型
-- 默认值：apicloud.png
-- 描述：保存的图片名字，支持png和jpg格式，若不指定格式，则默认png，可为空
+- 默认值：自动创建的路径
+- 描述：（可选项）存储路径，不传或为空字符串时使用自动创建的路径
 
 ##callback(ret, err)
 
@@ -187,9 +180,10 @@ ret：
 
 ```js
 {
-	status:       //操作成功状态值
+	savePath:       //截图保存的路径
 }
 ```
+
 err：
 
 - 类型：JSON对象
@@ -198,7 +192,7 @@ err：
 
 ```js
 {
-	msg:       //错误描述
+	msg:		//错误描述
 }
 ```
 
@@ -206,9 +200,9 @@ err：
 
 ```js
 var obj = api.require('imageClip');
-obj.save (function(ret, err){
-	if(ret.status){
-		api.alert({msg:'保存完成'});
+obj.save(function(ret, err){
+	if(ret){
+		api.alert({msg:'保存路径：'+ret.savePath});
 	}else{
 		api.alert({msg:err.msg});
     }
@@ -225,49 +219,18 @@ iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
-#**cancel**<div id="a3"></div>
 
-取消截图
+#**close**<div id="a3"></div>
 
-cancel (callback(ret, err))
+关闭截图
 
-##callback(ret, err)
-
-ret：
-
-- 类型：JSON对象
-
-内部字段：
-
-```js
-{
-	status:       //操作成功状态值
-}
-```
-
-err：
-
-- 类型：JSON对象
-
-内部字段：
-
-```js
-{
-	msg:       //错误描述
-}
-```
+close()
 
 ##示例代码
 
 ```js
 var obj = api.require('imageClip');
-obj.cancel (function(ret, err){
-	if(ret.status){
-		api.alert({msg:'取消屏幕截图'});
-	}else{
-		api.alert({msg:err.msg});
-    }
-});
+obj.close();
 ```
 
 ##补充说明
@@ -280,25 +243,30 @@ iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
-</div>
 
-<div id="const-content">
+#**reset**<div id="a4"></div>
 
-#**提示文字位置**
+重置裁剪区域，恢复到初始打开时的状态
 
-截取框内提示文字的位置。字符串类型
+reset()
 
-##取值范围：
+##示例代码
 
-- center        //正中间
-- right_up//右上角
-- right_down//右下角
-- left_up//左上角
-- left_down//左下角
-- center_up//靠上边，左右居中
-- center_down//靠下边，左右居中
-- right_center//靠右上下居中
-- left_center//靠左上下居中
+```js
+var obj = api.require('imageClip');
+obj.reset();
+```
+
+##补充说明
+
+无
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.0.0及更高版本
+
 
 
 

@@ -13,7 +13,7 @@ Description: mediaScanner
 <div class="outline">
 [open](#a1)
 
-[scann](#a2)
+[scan](#a2)
 
 </div>
 
@@ -33,27 +33,26 @@ bgColor：
 
 - 类型：字符串
 - 默认值：#FFFFFF
-- 描述：背景色，支持rgb，rgba，#，imgPath，可为空
+- 描述：（可选项）背景色，支持rgb，rgba，#，imgPath
 
 row：
 
 - 类型：数字
 - 默认值：4
-- 描述：图片显示的列数，可为空
+- 描述：（可选项）图片显示的列数
 
 mark：
 
 - 类型：json对象
 - 默认值：见内部字段
-- 描述：选中标记图标配置，可为空
-
-内部字段：
+- 描述：（可选项）选中标记图标配置
+- 内部字段：
 
 ```js
 {
-	icon:  		//标记的图标，字符串，支持rgb，rgba，#，imgPath，默认#696969，可为空
-	position：	//标记的位置，取值范围见标记位置，默认left_down,可为空
-	size:  		//标记的大小，数字类型，默认图片宽度的三分之一
+	icon:  		//（可选项）标记的图标，字符串，支持rgb，rgba，#，imgPath，默认#696969
+	position:  	//（可选项）标记的位置，取值范围见标记位置，默认left_down
+	size:  		//（可选项）标记的大小，数字类型，默认图片宽度的三分之一
 }
 ```
 
@@ -61,36 +60,63 @@ navigation：
 
 - 类型：json对象
 - 默认值：见内部字段
-- 描述：导航栏设置，可为空
-
-内部字段：
+- 描述：（可选项）导航栏设置
+- 内部字段：
 
 ```js
 {
-	bg:  		//背景配置,字符串,支持rgb,rgba,#,img，默认rgba(0.5,0.5,0.5,0.8)，可为空
-	state：		//状态文字配置，json对象，可为空
-	内部字段：
-	{
-		title:   //字符串类型, 默认已选择*项，可为空
-		color：  //字符串，字体颜色，默认蓝色，可为空，支持rgb，rgba，#
-		size：   //数字类型，字体大小，默认18，可为空
-	}
-	cancel: 	 //取消按钮配置，json对象，可为空
-	内部字段：
-	{
-		title:       //字符串类型, 默认取消，可为空
-		titleColor： //字符串，字体颜色，默认蓝色，可为空，支持rgb，rgba，#
-		titleSize：  //数字类型，字体大小，默认18，可为空
-		bg:          //字符串,默认rgba(0,0,0,0)，可为空，支持rgb，rgba，#，img
-    }
-	finish: 		//完成按钮配置，json对象，可为空
-	内部字段：
-	{
-        title:       //字符串类型, 默认完成，可为空
-		titleColor： //字符串，字体颜色，默认蓝色，可为空，支持rgb，rgba，#
-		titleSize：     //数字类型，字体大小，默认18，可为空
-		bg:          //字符串,默认rgba(0,0,0,0)，可为空，支持rgb，rgba，#，img
-	}
+	bg:  		   //（可选项）背景配置,字符串,支持rgb,rgba,#,img，默认rgba(0.5,0.5,0.5,0.8)
+	state：		//（可选项）状态文字配置，json对象,默认值见内部字段
+					内部字段：
+					{
+						title:       //（可选项）字符串类型, 默认已选择*项，可为空
+						color：      //（可选项）字符串，字体颜色，默认蓝色，支持rgb，rgba，#
+						size：       //（可选项）数字类型，字体大小，默认18
+					}
+	cancel: 	  //（可选项）取消按钮配置，json对象,默认值见内部字段
+					内部字段：
+					{
+						title:       //（可选项）字符串类型, 默认取消
+						titleColor： //（可选项）字符串，字体颜色，默认蓝色，支持rgb，rgba，#
+						titleSize：  //（可选项）数字类型，字体大小，默认18
+						bg:          //（可选项）字符串,默认rgba(0,0,0,0)，支持rgb、rgba、#、img
+				    }
+	finish: 	 //完成按钮配置，json对象,默认值见内部字段
+					内部字段：
+					{
+				        title:        //（可选项）字符串类型, 默认完成
+						titleColor:   //（可选项）字符串，字体颜色，默认蓝色，支持rgb，rgba，#
+						titleSize:    //（可选项）数字类型，字体大小，默认18
+						bg:           //（可选项）字符串,默认rgba(0,0,0,0)，支持rgb，rgba，#，img
+					}
+}
+```
+
+scrollToBottom：
+
+- 类型：json
+- 默认值：见内部字段
+- 描述：（可选项）打开媒体资源界面后间隔一段时间开始自动滚动到底部设置
+- 内部字段：
+
+```js
+{
+   intervalTime:       //（可选项）打开媒体资源界面后间隔的时间开始自动滚动到底部，单位秒（s），小于零的数表示不滚动到底部，默认-1
+   anim:               //（可选项）滚动时是否添加动画，布尔类型，默认true
+}
+```
+
+sort：
+
+- 类型：json
+- 默认值：见内部字段
+- 描述：（可选项）图片排序设置
+- 内部字段：
+
+```js
+{
+   key:       //（可选项）排序key值，取值范围：size--按图片大小排序；time：按图片创建时间（时间戳）排序
+   order:     //（可选项）排序方式，取值范围：ascending--升序（小->大）；descending--降序（大->小），默认ascending
 }
 ```
 
@@ -99,19 +125,19 @@ navigation：
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	list:        //获取选中的媒体资源信息组成的数组
-	内部字段:
-	[{
-		url:        //资源路径
-		thumbUrl:  	//缩略图路径
-		mimeType: 	// 资源类型
-		size： 		//资源大小
-   }]
+	list:         //获取选中的媒体资源信息组成的数组
+					内部字段:
+					[{
+						url:          //资源路径
+						thumbUrl:     //缩略图路径
+						mimeType:     //资源类型
+						size:         //资源大小
+						time:         //资源创建时间，格式为：yyyy-MM-dd HH:mm:ss
+				    }]
 }
 ```
 
@@ -134,11 +160,11 @@ iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
-#**scann**<div id="a2"></div>
+#**scan**<div id="a2"></div>
 
 获取系统相册所有媒体资源
 
-scann(callback(ret, err))
+scan(callback(ret, err))
 
 ##callback(ret, err)
 
@@ -150,21 +176,22 @@ ret：
 
 ```js
 {
-	list:        	//系统相册中所有媒体资源的路径组成的数组
-	内部字段[{
-	url:        	//资源路径
-	thumbUrl:  		//缩略图路径
-	mimeType: 		//资源类型
-    size：			//资源大小
-   }]
+	list:     //系统相册中所有媒体资源的路径组成的数组
+				内部字段[{
+				url:        	//资源路径
+				thumbUrl:  		//缩略图路径
+				mimeType: 		//资源类型
+			    size：			 //资源大小
+				time:           //资源创建时间，格式为：yyyy-MM-dd HH:mm:ss
+			   }]
 }
 ```
 
 ##示例代码
 
-```ja
+```js
 var obj = api.require('mediaScanner');
-obj.scann( function(ret, err){
+obj.scan( function(ret, err){
 	api.alert({msg:ret.list});
 });
 ```
@@ -190,10 +217,10 @@ iOS系统，Android系统
 
 ##取值范围：
 
-- left_up		//左上角
+- left_up		   //左上角
 - left_down		//左下角
 - right_up		//右上角
-- right_down	//右下角
+- right_down	   //右下角
 
 
 

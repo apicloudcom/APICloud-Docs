@@ -71,7 +71,7 @@ Android平台的安全码及包名获取方式：
 
 ##IOS平台：
 
-IOS平台的安全码只需要该应用的Bundle Identifier，相当于Android平台的包名，登录APP3C云打包服务器后，在应用概览界面即可获取，获取包名以及SHA1码。
+IOS平台的安全码只需要该应用的Bundle Identifier，相当于Android平台的包名，登录APICloud 控制台后，在应用概览界面即可获取，获取包名。
 然后重复[配置应用](#100)的步骤，即可配置成功，生成IOS平台对应的apiKey。
 拷贝后配置config文件中ios_api_key字段即可：
  

@@ -135,7 +135,7 @@ obj.open(function(ret,err){
 	if(ret.click){
 		api.alert({msg:ret.index});
     }
-	ret.index
+	ret.index;
 });
 ```
 

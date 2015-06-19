@@ -113,6 +113,7 @@ ret：
 
 ```js
 {
+    eventType：     //事件类型，取值范围如下：                      click//点击事件                      scroll//滚动事件
 	index:           //返回用户选择的图片的下标
 }
 ```

@@ -338,11 +338,9 @@ ret：
 
 ```js
 var iap = api.require('iap');
-iap.setDownloadListener({
-	function(ret){
-		var downloads = ret.downloads;
-	}
-);
+iap.setDownloadListener(function(ret){
+	var downloads = ret.downloads;
+});
 ```
 
 ##补充说明

@@ -29,6 +29,18 @@ createSocket({params}, callback(ret, err))
 
 ##params
 
+type：
+
+- 类型：字符串
+- 默认值：tcp
+- 描述：socket类型，tcp或udp
+
+udpMode：
+
+- 类型：字符串
+- 默认值：unicast
+- 描述：udp通讯模式，取值范围为（unicast-单播、multicast-组播、broadcast-广播）
+
 host：
 
 - 类型：字符串
@@ -40,6 +52,12 @@ port：
 - 类型：数字
 - 默认值：80
 - 描述：主机端口
+
+localPort：
+
+- 类型：数字
+- 默认值：8282
+- 描述：本机绑定的端口，用于udp
 
 timeout：
 
@@ -78,6 +96,8 @@ ret：
 	sid:			//socket的唯一标识，字符串类型
 	state:			//socket状态码，见常量里面的socket状态码，数字类型
 	data:			//state为接收数据时的数据，字符串类型
+	host：			//udp收到数据时发送方地址
+	port：			//udp收到数据时发送方端口
 }
 ```
 
@@ -91,7 +111,7 @@ socketManager.createSocket({
 }, function(ret, err){
 	if(ret){
 		var state = ret.state;
-		var sid = ret.sid
+		var sid = ret.sid;
 		var data = ret.data;
 		var stateStr = "";
 		if(101 === state){
@@ -216,6 +236,18 @@ base64：
 - 类型：布尔
 - 默认值：false
 - 描述：标识data是否是经过JS层base64处理后的数据，如果是，模块中会将其decode后再发送
+
+host：
+
+- 类型：字符串
+- 默认值：createSocket方法里面传的host
+- 描述：主机地址，IP或者域名，udp时有效
+
+port：
+
+- 类型：数字
+- 默认值：createSocket方法里面传的port
+- 描述：主机端口，udp时有效
 
 ##callback(ret, err)
 

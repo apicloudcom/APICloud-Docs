@@ -36,7 +36,7 @@ path：
 
 - 类型：字符串
 - 默认值：无
-- 描述：网络音频资源地址，不能为空
+- 描述：网络音频资源地址
 
 ##callback(ret, err)
 
@@ -48,8 +48,9 @@ ret：
 
 ```js
 {
-	duration:           //音频总时长
-	current：			//当前播放位置
+	duration:            //音频总时长，单位为s
+	current：			  //当前播放位置，单位为s
+	complete:			 //布尔类型，是否播放完毕
 }
 ```
 
@@ -58,7 +59,7 @@ ret：
 ```js
 var obj = api.require('netAudio');
 obj.play({
-	path:document.getElementById("personheadimg").value
+	path:'http://7xisq1.com1.z0.glb.clouddn.com/apicloud/0d0b81b8bd5ab81bda9ca54267eb9b98.mp3'
 },function(ret,err){
 	var duration = ret.duration;
 	var current = ret.current;
@@ -89,7 +90,7 @@ volume：
 
 - 类型：数字
 - 默认值：0
-- 描述：音量大小（0-1），可为空
+- 描述：（可选项）音量大小（0-1）
 
 ##示例代码
 
@@ -124,7 +125,7 @@ progress：
 
 - 类型：数字
 - 默认值：0
-- 描述：播放位置百分比（0-100），可为空
+- 描述：（可选项）播放位置百分比，取值范围：0-100
 
 ##示例代码
 

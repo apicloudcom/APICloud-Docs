@@ -26,14 +26,16 @@ Description: weiXin
 
 #**概述**
 
-weiXin封装了微信开放平台的SDK，使用此模块可轻松实现分享消息到微信客户端的功能
+weiXin封装了微信开放平台的SDK，使用此模块可轻松实现分享消息到微信客户端的功能。
+本模块集成了微信支付功能，兼容v2、v3版本支付账号。v2版本支付功能分三步：1，getToken获取token；2，getOrder获取预支付订单号；3，payOrder支付。v2版本前两部可在服务器端完成，得到正确的参数后直接调用第三步的接口。注意签名过程必须在服务器端完成。V3版本支付功能有两套支付方案，方案一：同v2支付流程，与v2不同的是参数生成规范、签名规范（参考微信支付官方文档）；方案二：首先调用config接口配置支付参数（亦可通过key.xml配置相关支付参数，key.xml配置方法见下文），其次调用pay接口去支付。本支付方案签名过程是在模块内处理，微信官方建议获取预支付订单号和签名都在服务器端处理，所以建议大家采用方案一支付方式。
 
 **使用此模块之前需先配置config文件的Feature，方法如下**
 
-	名称：weiXin
-	参数：urlScheme、apiKey、apiSecret
-	描述：配置微信专用的URL Scheme，使得本应用可以启动微信客户端，并与之交换数据，同时可以从微信客户端返回到本应用。urlScheme为必须配置字段，apiKey和apiSecret为选择配置字段
-配置示例:
+- 名称：weiXin
+- 参数：urlScheme、apiKey、apiSecret
+- 描述：配置微信专用的URL Scheme，使得本应用可以启动微信客户端，并与之交换数据，同时可以从微信客户端返回到本应用，注意微信的urlScheme既是apikey（appid）。urlScheme为必须配置字段，apiKey和apiSecret为选择配置字段。
+- 配置示例:
+
 ```js
   <feature name="weiXin">
        <param name="urlScheme" value="wxd0d84bbf23b4a0e4"/>
@@ -41,11 +43,34 @@ weiXin封装了微信开放平台的SDK，使用此模块可轻松实现分享�
         <param name="apiSecret" value="a354f72aa1b4c2b8eaad137ac81434cd"/>
   </feature>
 ```
-字段描述:
+- 字段描述:
 
-		1.param-urlScheme：声明此字段为URL Scheme类型
-		2.param-apiKey：通过微信开放平台申请的key，调用分享功能和支付功能使用到的参数
-		3.param-apiSecret 通过微信开放平台申请的secret，调用支付功能使用到的参数
+param-urlScheme：通过微信开放平台申请的appid（apiKey）
+
+param-apiKey：通过微信开放平台申请的appid（apiKey），调用分享功能和支付功能使用到的参数
+
+param-apiSecret 通过微信开放平台申请的secret，调用支付功能使用到的参数
+
+**key.xml文档配置详解：**
+key.xml文件需要放在widget/res文件目录下，其内容格式如下：
+```js
+<?xml version="1.0" encoding="UTF-8" ?>
+<security>
+  <item name="weiXin_pay_appId" value="wxd0d84bbf23b4a0e4"/>
+  <item name="weiXin_pay_mchId" value="1234567890"/>
+  <item name="weiXin_pay_partnerKey" value="***"/>
+  <item name="weiXin_pay_notifyUrl" value="***"/>
+  <item name="其它服务需加密的参数配置 " value="***"/>
+  .
+  .
+  .
+</security> 
+```
+- weiXin_pay_appId：       //在微信开发者平台创建应用生成的appId 
+- weiXin_pay_mchId：       //商户号，填写商户对应参数
+- weiXin_pay_partnerKey：  //商户API密钥，填写相应参数
+- weiXin_pay_notifyUrl：   //支付结果回调页面
+
 
 #**registerApp**<div id="a1"></div>
 
@@ -225,13 +250,13 @@ weiXin.sendRequest({
 		api.alert({title: '发表微信',msg: '发表成功', buttons: ['确定']});
 	} else{
 		api.alert({title: '发表失败',msg: err.msg,buttons: ['确定']});
-	};
+	}
 });
 ```
 
 ##补充说明
 
-暂不支持视频流地址；title字段在contentType为text时不起作用
+暂不支持视频流地址；title字段在contentType为text时不起作用。每个窗口内必须在registerApp接口后使用
 
 ##可用性
 
@@ -254,7 +279,11 @@ ret：
 内部字段：
 
 ```js
-{  status:true		//操作成功状态值  token：         //登录成功获取的token值，字符串类型，初次登陆有效期2小时，刷新token后有效期为30天}
+{
+  status:true		//操作成功状态值
+  token：         //登录成功获取的token值，字符串类型，初次登陆有效期2小时，刷新token后有效期为30天
+}
+
 ```
 
 err：
@@ -272,7 +301,14 @@ err：
 ##示例代码
 
 ```js
-var weiXin = api.require('weiXin');weiXin.auth(function(ret,err){ if(ret.status){    api.alert({msg: ret.token}); }else{    api.alert({msg: err.msg}); }});
+var weiXin = api.require('weiXin');
+weiXin.auth(function(ret,err){ 
+if(ret.status){
+    api.alert({msg: ret.token});
+ }else{
+    api.alert({msg: err.msg});
+ }
+});
 ```
 
 ##补充说明
@@ -282,7 +318,7 @@ var weiXin = api.require('weiXin');weiXin.auth(function(ret,err){ if(ret.statu
 ##可用性
 
 iOS系统，Android系统
-可提供的1.0.2及更高版本
+可提供的1.0.2及更高版本
 
 #**cancelAuth**<div id="a4"></div>
 
@@ -319,7 +355,14 @@ err：
 ##示例代码
 
 ```js
-var weiXin = api.require('weiXin');weiXin.cancelAuth(function(ret,err){ if(ret.status){    api.alert({msg: '退出成功'}); }else{    api.alert({msg: err.msg}); }});
+var weiXin = api.require('weiXin');
+weiXin.cancelAuth(function(ret,err){ 
+if(ret.status){
+    api.alert({msg: '退出成功'});
+ }else{
+    api.alert({msg: err.msg});
+ }
+});
 ```
 
 ##补充说明
@@ -347,7 +390,19 @@ ret：
 内部字段：
 
 ```js
-{ 	 status:      //操作成功状态值，布尔类型     openid:	  //普通用户的标识，对当前开发者帐号唯一     nickname:	  //普通用户昵称     sex:	      //普通用户性别，1为男性，2为女性     province:    //普通用户个人资料填写的省份     city:  	  //普通用户个人资料填写的城市     country:	  //国家，如中国为CN     headimgurl:  //用户头像，最后一个数值代表正方形头像大小（有0、46、64、96、132数值可选，0代表640*640正方形头像），//用户没有头像时该项为空     privilege:   //用户特权信息，json数组，如微信沃卡用户为（chinaunicom）     unionid:  	  //用户统一标识。针对一个微信开放平台帐号下的应用，同一用户的unionid是唯一的。    }
+{
+ 	 status:      //操作成功状态值，布尔类型
+     openid:	  //普通用户的标识，对当前开发者帐号唯一
+     nickname:	  //普通用户昵称
+     sex:	      //普通用户性别，1为男性，2为女性
+     province:    //普通用户个人资料填写的省份
+     city:  	  //普通用户个人资料填写的城市
+     country:	  //国家，如中国为CN
+     headimgurl:  //用户头像，最后一个数值代表正方形头像大小（有0、46、64、96、132数值可选，0代表640*640正方形头像），//用户没有头像时该项为空
+     privilege:   //用户特权信息，json数组，如微信沃卡用户为（chinaunicom）
+     unionid:  	  //用户统一标识。针对一个微信开放平台帐号下的应用，同一用户的unionid是唯一的。
+    }
+
 ```
 
 err：
@@ -365,7 +420,14 @@ err：
 ##示例代码
 
 ```js
-var weiXin = api.require('weiXin');weiXin.getUserInfo(function(ret,err){ if(ret.status){    api.alert({msg: '获取成功'}); }else{    api.alert({msg: err.msg}); }});
+var weiXin = api.require('weiXin');
+weiXin.getUserInfo(function(ret,err){ 
+if(ret.status){
+    api.alert({msg: '获取成功'});
+ }else{
+    api.alert({msg: err.msg});
+ }
+});
 ```
 
 ##补充说明
@@ -394,7 +456,8 @@ ret：
 
 ```js
 {
-    status:    		//操作成功状态值，布尔类型    token：         //登录成功获取的token值，字符串类型，有效期30天
+    status:    		//操作成功状态值，布尔类型
+    token：         //登录成功获取的token值，字符串类型，有效期30天
 }
 ```
 
@@ -413,7 +476,14 @@ err：
 ##示例代码
 
 ```js
-var weiXin = api.require('weiXin');weiXin.refreshToken(function(ret,err){ if(ret.status){    api.alert({msg: '刷新成功'}); }else{    api.alert({msg: err.msg}); }});
+var weiXin = api.require('weiXin');
+weiXin.refreshToken(function(ret,err){ 
+if(ret.status){
+    api.alert({msg: '刷新成功'});
+ }else{
+    api.alert({msg: err.msg});
+ }
+});
 ```
 
 ##补充说明
@@ -436,11 +506,15 @@ iOS系统，Android系统
 [getOrder](#b2)
 
 [payOrder](#b3)
+
+[config](#b4)
+
+[pay](#b5)
 </div>
 
 #**准备工作**
 
-在使用接口之前请先保证持有向微信开放平台申请得到的 appid、appsecret(长度为32 的字符串,用于获取 access_token)、appkey(长度为 128 的字符串,用于支付过程中生 成 app_signature)及 partnerkey(微信公众平台商户模块生成的商户密钥)
+在使用接口之前请先保证持有向微信开放平台申请得到的 appid、appsecret(长度为32 的字符串,用于获取 access_token)、appkey(长度为 128 的字符串,用于支付过程中生 成 app_signature。针对v2版支付账号)及 partnerkey(微信公众平台商户模块生成的商户密钥)。v3版支付账号请按照微信官方文档说明的签名方式把getToken和getOrderId放在服务器端执行。
 
 #**getToken**<div id="b1"></div>
 
@@ -717,6 +791,234 @@ weiXin.payOrder({
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
+
+#**config**<div id="b4"></div>
+
+v3版支付账号配置商户支付参数
+
+config({params}, callback(ret, err))
+
+##params
+
+appId：
+
+- 类型：字符串
+- 默认值：无
+- 描述（可选项）在微信开发者平台创建应用生成的appId
+- 备注：若不传或者传空则从key.xml文件读取相应字段信息
+
+mchId：
+
+- 类型：字符串
+- 默认值：无
+- 描述：（可选项）商户号，填写商户对应参数
+- 备注：若不传或者传空则从key.xml文件读取相应字段信息
+
+partnerKey：
+
+- 类型：字符串
+- 默认值：无
+- 描述：（可选项）商户API密钥，填写相应参数
+- 备注：若不传或者传空则从key.xml文件读取相应字段信息
+
+notifyUrl：
+
+- 类型：字符串
+- 默认值：无
+- 描述：（可选项）支付结果回调页面
+- 备注：若不传或者传空则从key.xml文件读取相应字段信息
+
+##callback(ret, err)
+
+ret：
+
+- 类型：JSON对象
+- 内部字段：
+
+```js
+{
+    status: 		//操作成功状态值
+}
+```
+
+err：
+
+- 类型：JSON对象
+- 内部字段：
+
+```js
+{
+    msg:""       //错误描述
+}
+```
+
+##示例代码
+
+```js
+var weiXin = api.require('weiXin');
+weiXin.config({
+     appId: '',
+     mchId:'',
+     partnerKey:'',
+     notifyUrl:''
+},function(ret,err) {
+     if (ret.status) {
+         ret.result;
+     }else{
+         api.alert({msg:err.msg});
+     }
+});
+```
+
+##补充说明
+
+配置商家支付信息，v3版本以上支付账号适用
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.0.1及更高版本
+
+#**pay**<div id="b5"></div>
+
+v3版支付账号支付订单
+
+pay({params}, callback(ret, err))
+
+##params
+
+body：
+
+- 类型：字符串
+- 默认值：无
+- 描述：商品或支付单简要描述
+
+totalFee：
+
+- 类型：字符串
+- 默认值：无
+- 描述：订单总金额，只能为整数，单位（分）
+
+tradeNo：
+
+- 类型：字符串
+- 默认值：无
+- 描述：商户系统内部的订单号,32个字符内、可包含字母, 其他说明见商户订单号
+
+spBillCreateIp：
+
+- 类型：字符串
+- 默认值：196.168.1.1
+- 描述：（可选项）APP和网页支付提交用户端ip，Native支付填调用微信支付API的机器IP
+
+deviceInfo：
+
+- 类型：字符串
+- 默认值：无
+- 描述：（可选项）终端设备号(门店号或收银设备ID)，注意：PC网页或公众号内支付请传"WEB"
+- 备注：可不传
+
+detail：
+
+- 类型：字符串
+- 默认值：无
+- 描述：（可选项）商品名称明细列表
+
+attach：
+
+- 类型：字符串
+- 默认值：无
+- 描述：（可选项）附加数据，在查询API和支付通知中原样返回，该字段主要用于商户携带订单的自定义数据
+
+feeType：
+
+- 类型：字符串
+- 默认值：无
+- 描述：（可选项）符合ISO 4217标准的三位字母代码，默认人民币：CNY，其他值列表详见货币类型
+
+timeStart：
+
+- 类型：字符串
+- 默认值：无
+- 描述：（可选项）订单生成时间，格式为yyyyMMddHHmmss，如2009年12月25日9点10分10秒表示为20091225091010。其他详见时间规则
+
+timeExpire：
+
+- 类型：字符串
+- 默认值：无
+- 描述：（可选项）订单失效时间，格式为yyyyMMddHHmmss，如2009年12月27日9点10分10秒表示为20091227091010。其他详见时间规则
+
+goodsTag：
+
+- 类型：字符串
+- 默认值：无
+- 描述：（可选项）商品标记，代金券或立减优惠功能的参数，说明详见代金券或立减优惠
+
+productId：
+
+- 类型：字符串
+- 默认值：无
+- 描述：（可选项）trade_type=NATIVE，此参数必传。此id为二维码中包含的商品ID，商户自行定义
+
+openId：
+
+- 类型：字符串
+- 默认值：无
+- 描述：（可选项）trade_type=JSAPI，此参数必传，用户在商户appid下的唯一标识。下单前需要调用【网页授权获取用户信息】接口获取到用户的Openid
+
+
+##callback(ret, err)
+
+ret：
+
+- 类型：JSON对象
+- 内部字段：
+
+```js
+{
+    status: 		//操作成功状态值
+	result: 		//返回的支付结果
+}
+```
+
+err：
+
+- 类型：JSON对象
+- 内部字段：
+
+```js
+{
+    msg:""       //错误描述
+}
+```
+
+##示例代码
+
+```js
+var weiXin = api.require('weiXin');
+weiXin.pay({
+     body: '如意金箍棒',
+     totleFee:'10',
+     tradeNo:'1234567890abcdefghiglmnopqrstuvw'
+},function(ret,err) {
+     if (ret.status) {
+         ret.result;
+     }else{
+         api.alert({msg:err.msg});
+     }
+});
+```
+
+##补充说明
+
+支付订单。，v3版本以上支付账号适用
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.0.1及更高版本
 </div>
 
 <div id="const-content">
@@ -845,3 +1147,5 @@ iOS系统，Android系统
 调起微信支付 SDK 时,请求参数中 package 需填写为:Sign=WXPay
 
 注意：不能写在客户端,这个过程应都由服务器端完成
+
+</div>

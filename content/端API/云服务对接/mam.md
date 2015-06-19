@@ -72,7 +72,7 @@ mam.checkUpdate(function(ret, err){
 		api.alert({msg:str});
     } else{
 		api.alert({msg:err.msg});
-    };
+    }
 });
 ```
 ##补充说明

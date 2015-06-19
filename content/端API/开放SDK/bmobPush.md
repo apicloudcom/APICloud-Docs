@@ -66,13 +66,16 @@ err：
 
 ```
 var applicationId = "1234567890123";
-var param = {appid:applicatioinId};
+
+var param = {
+    appid: applicationId
+};
+
 var resultCallback = function(ret, err){
-	document.getElementById("pushinfo").innerHTML = JSON.stringify(ret);
-	if(err)
-		api.alert(err);
-}
+    alert(JSON.stringify(ret) + JSON.stringify(err));
+};
 var bmob = api.require('bmobPush');
+
 bmob.init(param,resultCallback);
 ```
 
@@ -179,49 +182,64 @@ err：
 
 ##示例代码
 
-```
+```js
 //按Android设备ID推送
 var type_str = "android";
 var installationId = "1234567890";//请在Bmob后台查看
 var content_str = 'Hello from Bmob';
-var param = {content:content_str,type:type_str,android_installationId：installationId};
+
+var param = {
+    content: content_str,
+    type: type_str,
+    android_installationId: installationId
+};
+
 var resultCallback = function(ret, err){
-	document.getElementById("result").innerHTML = JSON.stringify(ret);
-	if(err)
-		api.alert(err);
-}
+    document.getElementById("result").innerHTML = JSON.stringify(ret);
+    if(err){
+        api.alert(err);
+    }
+};
 var bmob = api.require('bmobPush');
+
 bmob.push(param,resultCallback);
 ```
 
-```
+```js
 //按经纬度和范围进行推送
 var type_str = "location";
 var latitude_double = 23.25;
 var longitude_double = 103.66;
 var distance_double = 10.00;
 var content_str = 'Hello from Bmob';
-var param = {content:content_str,type:type_str,latitude：latitude_double,longitude:longitude_double,distance:distance_double};
+var param = {
+    content:content_str,
+    type:type_str,
+    latitude:latitude_double,
+    longitude:longitude_double,
+    distance:distance_double
+};
+
 var resultCallback = function(ret, err){
-	document.getElementById("result").innerHTML = JSON.stringify(ret);
-	if(err)
-		api.alert(err);
+    document.getElementById("result").innerHTML = JSON.stringify(ret);
+    if(err){
+        api.alert(err);
+    }
 }
 var bmob = api.require('bmobPush');
 bmob.push(param,resultCallback);
 ```
 
-```
+```js
 //给所有用户推送
 var type_str = "all";
 var content_str = 'Hello from Bmob';
 var param = {content:content_str,type:type_str};
 var resultCallback = function(ret, err){
-	document.getElementById("result").innerHTML = JSON.stringify(ret);
-	if(err)
-		api.alert(err);
+    alert(JSON.stringify(ret) + JSON.stringify(err));
 }
 var bmob = api.require('bmobPush');
+
 bmob.push(param,resultCallback);
 ```
 
@@ -285,17 +303,16 @@ err：
 
 ##示例代码
 
-```
+```js
 //设定本用户经纬度为23.56,130.12
 var longitude_double = 130.12;
 var latitude_double = 23.56;
 var param = {latitude:latitude_double,longitude:longitude_double};
 var resultCallback = function(ret, err){
-	document.getElementById("result").innerHTML = JSON.stringify(ret);
-	if(err)
-		api.alert(err);
-}
+    alert(JSON.stringify(ret) + JSON.stringify(err));
+};
 var bmob = api.require('bmobPush');
+
 bmob.saveLocation(param,resultCallback);
 ```
 
@@ -326,14 +343,15 @@ channel：
 
 ##示例代码
 
-```
+```js
 //给当前用户添加运动和教育两个频道
 var channel_array = 'Sport;Education';
 var param = {channel:channel_array};
 var resultCallback = function(ret, err){
 	document.getElementById("result").innerHTML = JSON.stringify(ret);
-	if(err)
+	if(err){
 		api.alert(err);
+    }
 }
 var bmob = api.require('bmobPush');
 bmob.addChannel(param,resultCallback);
@@ -366,15 +384,13 @@ channel：
 
 ##示例代码
 
-```
+```js
 //给当前用户移除天气和教育两个频道
 var channel_array = 'Weather;Education';
 var param = {channel:channel_array};
 var resultCallback = function(ret, err){
-	document.getElementById("result").innerHTML = JSON.stringify(ret);
-	if(err)
-		api.alert(err);
-}
+    alert(JSON.stringify(ret) + JSON.stringify(err));
+};
 var bmob = api.require('bmobPush');
 bmob.removeChannel(param,resultCallback);
 ```
