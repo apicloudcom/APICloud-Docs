@@ -12,6 +12,8 @@ Description: fs
 <div class="outline">
 [createDir](#1)
 
+[rmdir](#m1)
+
 [createFile](#2)
 
 [remove](#3)
@@ -108,10 +110,73 @@ fs.createDir({
 
 ##可用性
 
-iOS系统，Android系统，PC模拟器
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
+<div id="m1"></div>
+
+#**rmdir**
+
+删除文件目录，**里面的所有文件一起删除，慎用**
+
+rmdir({params}, callback(ret, err))
+
+##params
+
+path：
+
+- 类型：字符串
+- 描述：目标文件路径
+
+##callback(ret, err)
+
+ret：
+
+- 类型：JSON对象
+
+内部字段：
+
+```js
+{
+	status: true           //操作成功状态值
+}
+```
+
+err：
+
+- 类型：JSON对象
+
+内部字段：
+
+```js
+{
+	code: 0,           //错误码（详见文件操作错误码常量）
+	msg: ""            //错误描述
+}
+```
+
+##示例代码
+
+```js
+var fs = api.require('fs');
+fs.rmdir({
+	path: 'fs://newDir'
+},function(ret,err){
+	var status = ret.status;
+	if (status) {
+		api.alert({msg:'删除目录成功'});
+	}else {	
+		api.alert({msg:err.msg});
+	}
+});
+```
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.0.0及更高版本
 
 #**createFile**<div id="2"></div>
 
@@ -176,10 +241,9 @@ fs.createFile({
 
 ##可用性
 
-iOS系统，Android系统，PC模拟器
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
-
 
 #**remove**<div id="3"></div>
 
@@ -244,7 +308,7 @@ fs.remove({
 
 ##可用性
 
-iOS系统，Android系统，PC模拟器
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -319,7 +383,7 @@ fs.copyTo({
 
 ##可用性
 
-iOS系统，Android系统，PC模拟器
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -394,7 +458,7 @@ fs.moveTo({
 
 ##可用性
 
-iOS系统，Android系统，PC模拟器
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -469,7 +533,7 @@ fs.rename({
 
 ##可用性
 
-iOS系统，Android系统，PC模拟器
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -543,7 +607,7 @@ fs.readDir({
 
 ##可用性
 
-iOS系统，Android系统，PC模拟器
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -620,7 +684,7 @@ fs.open({
 
 ##可用性
 
-iOS系统，Android系统，PC模拟器
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -636,7 +700,6 @@ read({params}, callback(ret, err))
 fd：
 
 - 类型：字符串
-- 默认值：无
 - 描述：open方法得到的文件句柄，不能为空
 
 offset：
@@ -648,7 +711,7 @@ offset：
 length：
 
 - 类型：数字
-- 默认值：0
+- 默认值：原文件文本内容的长度
 - 描述：读取内容长度
 
 codingType：
@@ -708,7 +771,7 @@ fs.read({
 
 ##可用性
 
-iOS系统，Android系统，PC模拟器
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -787,7 +850,7 @@ fs.readUp(function(ret,err){
 
 ##可用性
 
-iOS系统，Android系统，PC模拟器
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -868,7 +931,7 @@ fs.readDown(function(ret,err){
 
 ##可用性
 
-iOS系统，Android系统，PC模拟器
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -884,20 +947,18 @@ write({params}, callback(ret, err))
 fd：
 
 - 类型：字符串
-- 默认值：无
 - 描述：open方法得到的文件句柄，不能为空
 
 data：
 
 - 类型：字符串
-- 默认值：无
 - 描述：写入数据
 
 offset：
 
 - 类型：数字
-- 默认值：0
-- 描述：当前文件偏移量
+- 默认值：原文件文本内容的长度
+- 描述：写入内容的起始位置
 
 overwrite：
 
@@ -961,7 +1022,7 @@ fs.write({
 
 ##可用性
 
-iOS系统，Android系统，PC模拟器
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -1028,7 +1089,7 @@ fs.close({
 
 ##可用性
 
-iOS系统，Android系统，PC模拟器
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -1089,7 +1150,7 @@ obj.exist({
 
 ##可用性
 
-iOS系统，Android系统，PC模拟器
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 

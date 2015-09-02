@@ -23,31 +23,48 @@ Description: 封装腾讯信鸽推送的SDK.
 
 #**概述**
 
-本模块封装腾讯信鸽推送 [http://xg.qq.com](http://xg.qq.com) 的SDK，只需要1行代码便可实现免费、实时、专业的推送功能，支持通知、消息透传、本地通知、账号绑定、默认标签等。
+本模块封装腾讯信鸽推送 [http://xg.qq.com](http://xg.qq.com) 的SDK，只需要1行代码便可实现免费、实时、专业的推送功能，支持通知、消息透传、本地通知、账号绑定、默认标签等，目前支持Android，iOS平台。
 
-暂仅支持安卓.
 
-#**快速接入**
-## 配置
-腾讯信鸽官方网站：[http://xg.qq.com](http://xg.qq.com)
-使用本模块之前，需要先配置config文件的Feature，见下
-- 名称：tencentPush
-- 参数：urlScheme
-- 描述：配置腾讯信鸽用于标识APP身份的accessId和accessKey，需要事先在信鸽官方注册
-- 配置示例：
+**使用本模块之前，需要先配置config文件的Feature，见下**
 
+__Android:__  
+名称：tencentPush  
+参数：urlScheme  
+描述：配置腾讯信鸽用于标识APP身份的accessId和accessKey，需要事先在信鸽官方注册  
+配置示例：  
 ```
-<feature name="tencentPush">
-	<param name="android_accessId" value="2100064624" />
-    <param name="android_accessKey" value="AZ4EZQ533X9A" />
-</feature>
+<feature name="tencentPush"\>  
+		<param name="android_accessId" value="2100064624" />  
+		<param name="android_accessKey" value="AZ4EZQ533X9A" />  
+</feature>  
 ```
-字段描述：
-- param-urlScheme：声明此字段为URL Scheme类型
-- param-value：对应urlScheme类型的值。通过腾讯信鸽官方网站申请
-	A) android_accessId：信鸽Android平台的accessId，21开头的Int类型
-	
-	B）android_accessKey：信鸽Android平台的accessKey，A开头的字符串
+
+字段描述：  
+```
+1.param-urlScheme：声明此字段为URL Scheme类型  
+2.param-value：对应urlScheme类型的值。通过腾讯信鸽官方网站申请  
+		A）android_accessId：信鸽Android平台的accessId，21开头的Int类型  
+		B）android_accessKey：信鸽Android平台的accessKey，A开头的字符串  
+```
+
+__iOS:__  
+名称：tencentPush  
+参数：urlScheme  
+描述：配置腾讯信鸽用于标识APP身份的accessId和accessKey，需要事先在信鸽官方注册  
+配置示例：  
+```  
+<feature name="tencentPush">  
+		<param name="ios_accessId" value="2100064624" />  
+		<param name="ios_accessKey" value="AZ4EZQ533X9A" />  
+</feature>  
+```  
+字段描述：  
+```
+1.param-urlScheme：声明此字段为URL Scheme类型  
+2.param-value：对应urlScheme类型的值。通过腾讯信鸽官方网站申请  
+		A）ios_accessId：信鸽iOS平台的accessId，21开头的Int类型  
+		B）ios_accessKey：信鸽iOS平台的accessKey，A开头的字符串  
 ```
 	
 ## 1行代码接入
@@ -99,12 +116,12 @@ registerPush(params, callback)
 ### err：
 
 - 类型：JSON对象
+- 内部字段：
 
-内部字段：
-
-```js
+```
 {
-    msg:""       //错误描述
+		code:1001       //错误码（详见错误码常量）
+		msg:""       	//错误描述
 }
 ```
 
@@ -165,9 +182,8 @@ tencentPush.registerPush(params, resultCallback);
 
 ##可用性
 
-Android系统
-
-可提供的1.1.0及更高版本
+iOS系统，Android系统  
+可提供的1.0.0及更高版本  
 
 #**config**<div id="a2"></div>
 
@@ -251,14 +267,11 @@ tencentPush.unregisterPush(resultCallback);
 ```
 
 ##补充说明
-
-反注册后，将不再接收任何的推送.
-
-##可用性
-
-Android系统
-
-可提供的1.1.0及更高版本
+反注册后，将不再接收任何的推送  
+iOS回调中不返回token  
+##可用性  
+iOS系统，Android系统  
+可提供的1.0.0及更高版本  
 
 #**setTag**<div id="a4"></div>
 
@@ -320,15 +333,15 @@ var param = {tag:"tagName"};
 tencentPush.setTag(param, resultCallback);
 ```
 
-##补充说明
+##补充说明  
 
 无
+  
+##可用性  
 
-##可用性
+iOS系统，Android系统  
 
-Android系统
-
-可提供的1.1.0及更高版本
+可提供的1.0.0及更高版本  
 
 #**delTag**<div id="a5"></div>
 
@@ -394,7 +407,7 @@ tencentPush.delTag(param, resultCallback);
 
 ##可用性
 
-Android系统
+iOS系统，Android系统
 
 可提供的1.1.0及更高版本
 
@@ -514,15 +527,15 @@ var resultCallback = function(ret, err){
 tencentPush.addlocalNotification(params, resultCallback);
 ```
 
-##补充说明
+##补充说明  
 
-无
+iOS系统中可在params中增加sec字段来指定秒  
 
-##可用性
+##可用性  
 
-Android系统
+iOS系统，Android系统
 
-可提供的1.1.0及更高版本
+可提供的1.0.0及更高版本
 
 #**clearLocalNotifications**<div id="a7"></div>
 
@@ -544,7 +557,7 @@ tencentPush.clearLocalNotifications();
 
 ##可用性
 
-Android系统
+iOS系统，Android系统
 
 可提供的1.1.0及更高版本
 
@@ -573,11 +586,11 @@ tencentPush.cancelNotifaction(params);
 
 ##补充说明
 
-无
+iOS系统中这个函数用于取消角标  
 
 ##可用性
 
-Android系统
+iOS系统，Android系统
 
 可提供的1.1.0及更高版本
 

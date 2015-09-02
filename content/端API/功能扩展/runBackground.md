@@ -1,3 +1,20 @@
+/*
+Title: runBackground
+Description: runBackground
+*/
+
+<ul id="tab" class="clearfix">
+	<li class="active"><a href="#method-content">Method</a></li>
+</ul>
+
+
+<div class="outline">
+
+[hideActivity](#a1)
+
+</div>
+
+
 #**概述**
 
 一键退到后台运行，安卓手机可以在后台运行做的app。

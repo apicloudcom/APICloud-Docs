@@ -17,6 +17,8 @@ Description: imageFilter
 [save](#a3)
 
 [compress](#a4)
+
+[getAttr](#a5)
 </div>
 
 #**概述**
@@ -158,7 +160,8 @@ err：
 
 ```js
 var obj = api.require('imageFilter');
-obj.setFilter({
+obj.filter({
+   id:1,
 	type:"autumn "
 }, function(ret, err){
     if(ret.status){
@@ -363,6 +366,57 @@ imageFilter.compress({
     }
 }, function(ret, err){
     alert(JSON.stringify(ret) + JSON.stringify(err));
+});
+```
+
+##补充说明
+
+无
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.0.0及更高版本
+
+#**getAttr**<div id="a5"></div>
+
+获取指定路径下的图片信息
+
+getAttr({params}, callback(ret, err))
+
+##params
+
+path：
+
+- 类型：字符串
+- 描述：目标图片的路径，支持fs等本地路径，**不支持widget://协议路径**
+
+##callback(ret)
+
+ret：
+
+- 类型：JSON对象
+- 内部字段：
+
+```js
+	{
+		status:        //布尔类型；操作成功状态值
+		width:         //数字类型；获取的图片的宽
+		height:        //数字类型；获取的图片的高
+		size:          //数字类型；获取的图片文件的大小，单位：byte
+	}
+```
+
+##示例代码
+
+```js
+var  imageFilter = api.require("imageFilter");
+
+imageFilter.getAttr({
+    path: "fs://test.png"
+}, function(ret, err){
+    alert(JSON.stringify(ret));
 });
 ```
 

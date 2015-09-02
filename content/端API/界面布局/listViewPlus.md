@@ -94,33 +94,34 @@ style:
 
 ```js
 {
-	leftBg:  	//字符串类型；（可选项）往右滑动item时，所显露出部分的背景色，支持rgb、rgba、#；默认值为#5cacee
-	rightBg: 	//字符串类型；（可选项）往左滑动item时，所显露出部分的背景色，支持rgb、rgba、#；默认值为#6c7b8b
-	border:  	//JSON对象；（可选项）item之间分割线的样式；默认值见内部字段
-				内部字段如下：{
-					color: //字符串类型；（可选项）分割线的颜色，支持rgb、rgba、#；默认值为#696969
-					width: //数字类型；（可选项）分割线的宽度；默认值为1.0
-				}
-	item:  	//JSON对象；（可选项）item的样式，默认值见内部字段
-				内部字段如下: {
-				bg:            		//字符串类型；（可选项）item的背景色，支持rgb、rgba、#；默认#AFEEEE
-				highlight:			//字符串类型；（可选项）item被按下和弹起之间的背景色，支持rgb、rgba、#；默认#F5F5F5
-				height:				//数字类型；（可选项）item的高度；默认值是55.0
-				avatarW:				//数字类型；（可选项）item上头像的宽度；默认值为item的高度减去10.0个像素
-				avatarH:				//数字类型；（可选项）item上头像的高度；默认值为item的高度减去10.0个像素
-				placeholder:     	//字符串类型；（可选项）item上头像占位图的路径，仅支持本地协议路径，如fs://、widget://等，默认值为APICloud的图标
-				titleAlignment:		//字符串类型；（可选项）item上标题在水平方向的位置，取值范围center、left、right；默认值为left
-				titleSize:      		//数字类型；（可选项）item上标题字体大小；默认值为12.0
-				titleColor:      	//字符串类型；（可选项）item上标题字体颜色，支持rgb,rgba,#；默认值为#000000
-				subTitleAlignment: 	//字符串类型；（可选项）item上子标题在水平方向的位置，取值范围：center、left、right；默认left
-				subTitleSize:       //数字类型；（可选项）item上子标题字体大小；默认值为12.0
-				subTitleColor:    	//字符串类型：（可选项）item上子标题字体颜色，rgb、rgba、#；默认#000000 
-				markStyle:        	//字符串类型：（可选项）item右侧的备注部分的样式，默认值见内部字段
-										内部字段如下: {
-											remarkMargin:	//数字类型；（可选项）备注与item右侧边界的距离；默认10
-											remarkColor:	//字符串类型；（可选项）备注的字体颜色，支持rgb、rgb、#；默认#000000
-											remarkSize: 	//数字类型；（可选项）备注的字体大小；默认16.0
-											iconSize:		//数字类型；（可选项）当备注是图片时，图片的大小；默认30.0
+	bounce:      //布尔类型；（可选项）模块视图页面是否支持弹动；默认值为true
+	leftBg:      //字符串类型；（可选项）往右滑动item时，所显露出部分的背景色，支持rgb、rgba、#；默认值为#5cacee
+	rightBg:     //字符串类型；（可选项）往左滑动item时，所显露出部分的背景色，支持rgb、rgba、#；默认值为#6c7b8b
+	border:      //JSON对象；（可选项）item之间分割线的样式；默认值见内部字段
+                 内部字段如下：{
+					color:              //字符串类型；（可选项）分割线的颜色，支持rgb、rgba、#；默认值为#696969
+					width:              //数字类型；（可选项）分割线的宽度；默认值为1.0
+				 }
+	item:        //JSON对象；（可选项）item的样式；默认值见内部字段
+				 内部字段如下: {
+					bg:                 //字符串类型；（可选项）item的背景色，支持rgb、rgba、#；默认#AFEEEE
+					highlight:          //字符串类型；（可选项）item被按下和弹起之间的背景色，支持rgb、rgba、#；默认#F5F5F5
+					height:             //数字类型；（可选项）item的高度；默认值是55.0
+					avatarW:            //数字类型；（可选项）item上头像的宽度；默认值为item的高度减去10.0个像素
+					avatarH:            //数字类型；（可选项）item上头像的高度；默认值为item的高度减去10.0个像素
+					placeholder:        //字符串类型；（可选项）item上头像占位图的路径，仅支持本地协议路径，如fs://、widget://等，默认值为APICloud的图标
+					titleAlignment:     //字符串类型；（可选项）item上标题在水平方向的位置，取值范围center、left、right；默认值为left
+					titleSize:          //数字类型；（可选项）item上标题字体大小；默认值为12.0
+					titleColor:         //字符串类型；（可选项）item上标题字体颜色，支持rgb,rgba,#；默认值为#000000
+					subTitleAlignment:  //字符串类型；（可选项）item上子标题在水平方向的位置，取值范围：center、left、right；默认值为left
+					subTitleSize:       //数字类型；（可选项）item上子标题字体大小；默认值为12.0
+					subTitleColor:      //字符串类型：（可选项）item上子标题字体颜色，rgb、rgba、#；默认值为#000000 
+					markStyle:          //字符串类型：（可选项）item右侧的备注部分的样式，默认值见内部字段
+                                        内部字段如下: {
+												remarkMargin://数字类型；（可选项）备注与item右侧边界的距离；默认值为10
+												remarkColor: //字符串类型；（可选项）备注的字体颜色，支持rgb、rgb、#；默认值为#000000
+												remarkSize:  //数字类型；（可选项）备注的字体大小；默认值为16.0
+												iconSize:    //数字类型；（可选项）当备注是图片时，图片的大小；默认值为30.0
 										} 
 				}        
 }
@@ -139,27 +140,27 @@ data：
 	title:                  //字符串类型；（可选项）标题，若subTitle不传或为空字符串则title上下位置居中显示；默认值无
 	subTitle:               //字符串类型；（可选项）子标题，若不传或为空字符串则title上下位置居中显示；默认值无
 	remark                  //字符串类型；（可选项）右边备注；默认值无
-	icon                   //字符串类型；（可选项）右边备注图标路径，支持widget，fs等本地协议；默认值无
+	icon                    //字符串类型；（可选项）右边备注图标路径，支持widget，fs等本地协议；默认值无
 	leftBtn:                //JSON对象；（可选项）往右滑动item时，露出部分的按钮组成的数组，不传此参数则表示item不可向右滑动
-	内部字段如下:[{
-	bg:         	           //（可选项）按钮背景色，支持rgb、rgba、#；默认#388e8e
-	title:                  //（可选项）按钮标题；默认值无
-	titleSize:              //（可选项）按钮标题字体大小；默认值为12.0
-	titleColor:             //（可选项）按钮标题颜色，支持rgb、rgba、#；默认值为#ffffff
-	highlightColor          //（可选项）按钮被按下和弹起之间的背景色,支持rgb、rgba、#；默认无
-	icon                    //（可选项）按钮标题前图标图片路径，图标大小20*20，支持本地协议路径，如widget://、fs://等；默认值无
-	}]
+							内部字段如下:[{
+								bg:              //字符串类型；（可选项）按钮背景色，支持rgb、rgba、#；默认值为#388e8e
+								title:           //字符串类型；（可选项）按钮标题；默认值无
+								titleSize:       //数字类型；（可选项）按钮标题字体大小；默认值为12.0
+								titleColor:      //字符串类型；（可选项）按钮标题颜色，支持rgb、rgba、#；默认值为#ffffff
+								highlightColor:  //字符串类型；（可选项）按钮被按下和弹起之间的背景色,支持rgb、rgba、#；默认无
+								icon:            //字符串类型；（可选项）按钮标题前图标图片路径，图标大小20*20，支持本地协议路径，如widget://、fs://等；默认值无
+							}]
 	rightBtn:               //（可选项）往左滑动item露出的按钮组成的数组，不传此参数则表示item不可向左滑动
-								 内部字段如下：[{
-								bg:         	           //（可选项）按钮背景色，支持rgb、rgba、#，默认#388e8e
-								title:                  //（可选项）按钮标题，字符串类型，默认空字符串
-								titleSize:              //（可选项）按钮标题字体大小，数字类型，默认12.0
-								titleColor:             //（可选项）按钮标题颜色，支持rgb、rgba、#，默认#ffffff
-								highlightColor          //（可选项）按钮选中时的颜色值,支持rgb、rgba、#，默认无
-								icon                    //（可选项）按钮标题前图标的路径，图标大小20*20，支持本地协议路径，如widget://、fs://等；默认值无
-								  }]  
-	leftSlipDistance:		//（可选项）向右滑动露出左边按钮时，滑动距离占item宽的百分比，取值范围0-100；默认值为50.0，
-	rightSlipDistance:		//（可选项）往左滑动item时，所显露出部分的，item的滑动距离占item宽的百分比，默认50，取值范围0-100
+							内部字段如下：[{
+								bg:              //字符串类型；（可选项）按钮背景色，支持rgb、rgba、#；默认值为#388e8e
+								title:           //字符串类型；（可选项）按钮标题；默认值无
+								titleSize:       //数字类型；（可选项）按钮标题字体大小；默认值为12.0
+								titleColor:      //字符串类型；（可选项）按钮标题颜色，支持rgb、rgba、#；默认值为#ffffff
+								highlightColor:  //字符串类型；（可选项）按钮选中时的颜色值，支持rgb、rgba、#；默认值无
+								icon:            //字符串类型；（可选项）按钮标题前图标的路径，图标大小20*20，支持本地协议路径，如widget://、fs://等；默认值无
+							}]  
+	leftSlipDistance:       //数字类型；（可选项）向右滑动露出左边按钮时，滑动距离占item宽的百分比，取值范围0-100；默认值为50.0
+	rightSlipDistance:      //数字类型；（可选项）向左滑动露出右边按钮时，滑动距离占item宽的百分比，取值范围0-100；默认值为50.0
 }]
 ```
 
@@ -172,15 +173,15 @@ ret：
 
 ```js
 {
-    eventType:      	//事件类型，取值范围如下：
-    	                    show:           //模块视图渲染加载成功
-	                       rightBtn:       //点击右边按钮
-	                       leftBtn:        //点击右边按钮
-	                       content:        //点击的item内容
-	                       avatar:         //点击的item的头像
-	                       icon:          //点击item右边备注图标
-	index:              //响应事件的item的索引，数字类型
-	btnIndex:           //响应事件的侧滑按钮的索引，数字类型
+    eventType:  //字符串类型；回调事件的类型，取值范围如下：
+	              show:      //模块视图加载成功事件
+	              rightBtn:  //点击item侧滑右边按钮事件
+	              leftBtn:   //点击item侧滑右边按钮事件
+	              content:   //点击的item内容事件
+	              avatar:    //点击的item的头像事件
+	              icon:      //点击item右边备注图标事件
+	index:      //数字类型；响应事件的item的索引
+	btnIndex:   //数字类型；响应事件的侧滑按钮的索引
 }
 ```
 
@@ -282,22 +283,20 @@ setFrame({params })
 anim：
 
 - 类型：布尔
+- 描述：（可选项）改变模块视图的frame时，是否添加动画效果
 - 默认值：false
-- 描述：（可选项）改变模块视图的frame时是否添加动画效果
 
 y：
 
-- 类型：数字类型
-- 默认值：无
+- 类型：数字
 - 描述：（可选项）重设模块视图的y值
-- 备注：若不传则保持原值不变
+- 默认值：原值
 
 h：
 
-- 类型：数字类型
-- 默认值：无
+- 类型：数字
 - 描述：（可选项）重设模块视图的h值
-- 备注：若不传则保持原值不变
+- 默认值：原值
 
 ##示例代码
 
@@ -328,14 +327,14 @@ getIndex({params },callBack(ret,err))
 key：
 
 - 类型：字符串
+- 描述：open时传入的data所包含的开发者自定义的唯一标识的key
 - 默认值：无
-- 描述：唯一标识的key
 
 value：
 
 - 类型：字符串
+- 描述：open时传入的data所包含的开发者自定义的唯一标识的value
 - 默认值：无
-- 描述：每条item数据的唯一标识
 
 ##callBack
 
@@ -344,10 +343,12 @@ ret：
 - 类型：JSON对象
 - 内部字段：
 
+```js
 	{
-	    index:          	//获取的item的索引
-	    data：              //当前操作的item的数据，内部字段与open里data元素一致
+	    index: //数字类型；获取的item的索引
+	    data:  //数组；当前操作的item的数据，内部字段与open里data元素一致
 	}
+```
 
 ##示例代码
 

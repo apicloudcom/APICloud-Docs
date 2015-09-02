@@ -1,3 +1,8 @@
+/*
+Title: rongCloud
+Description: rongCloud
+*/
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 	<li><a href="#const-content">Constant</a></li>
@@ -122,19 +127,19 @@
 
 ## 概述
 
-融云 Rong Cloud 是国内首家专业的即时通讯云服务提供商，专注为互联网、移动互联网开发者提供即时通讯基础能力和云端服务。通过融云平台，开发者不必搭建服务端硬件环境，就可以将即时通讯、实时网络能力快速集成至应用中。
+融云rongCloud是国内首家专业的即时通讯云服务提供商，专注为互联网、移动互联网开发者提供即时通讯基础能力和云端服务。通过融云平台，开发者不必搭建服务端硬件环境，就可以将即时通讯、实时网络能力快速集成至应用中。
 
-rongCloud 封装了融云即时通讯能力库 IMLib SDK 的 API，对融云的相关接口做了一一对应的封装，功能详情可参考目录。
+rongCloud封装了融云即时通讯能力库IMLib SDK的API，对融云的相关接口做了一一对应的封装，功能详情可参考目录。
 
-使用 rongCloud 模块之前，请先 [注册](https://developer.rongcloud.cn/signup) 融云的开发者帐号并申请创建 App，创建 App 后，可以在 [开发者后台](https://developer.rongcloud.cn) 获取 App Key 和 App Secret 用于开发。
+使用rongCloud模块之前，请先 [注册](https://developer.rongcloud.cn/signup) 融云的开发者帐号并申请创建App，创建App后，可以在[开发者后台](https://developer.rongcloud.cn)获取 App Key和App Secret用于开发。
 
 开发前请先认真阅读相关的 [融云开发文档和视频](http://docs.rongcloud.cn)。
 
 ## init <div id="init"></div>
 
-初始化融云 SDK，调用 connect 连接前务必保证调用此方法
+初始化融云SDK，调用connect连接前务必保证调用此方法
 
-调用前请在 config.xml 中设置内容如下：
+调用前请在config.xml中设置内容如下：
 
 ```xml
 <feature name="rongCloud">
@@ -142,7 +147,7 @@ rongCloud 封装了融云即时通讯能力库 IMLib SDK 的 API，对融云的�
 </feature>
 ```
 
-其中 value 的值请替换为您在融云开发者平台上申请的 App Key 值
+其中value的值请替换为您在融云开发者平台上申请的 App Key 值
 
 init(callback(ret, err))
 
@@ -2076,7 +2081,7 @@ var rong = api.require('rongCloud');
 
 // 之前调用 init 和 connect 的代码省略
 
-rong.getLatestMessages(function (ret, err) {
+rong.getLatestMessages({
 		conversationType: 'PRIVATE',
 		targetId: '9527',
 		count: 20
@@ -2162,7 +2167,7 @@ var rong = api.require('rongCloud');
 
 // 之前调用 init 和 connect 的代码省略
 
-rong.getHistoryMessages(function (ret, err) {
+rong.getHistoryMessages({
 		conversationType: 'PRIVATE',
 		targetId: '9527',
 		oldestMessageId: 688,
@@ -2255,7 +2260,7 @@ var rong = api.require('rongCloud');
 
 // 之前调用 init 和 connect 的代码省略
 
-rong.getHistoryMessagesByObjectName(function (ret, err) {
+rong.getHistoryMessagesByObjectName({
 		conversationType: 'PRIVATE',
 		targetId: '9527',
 		objectName: 'RC:TxtMsg',

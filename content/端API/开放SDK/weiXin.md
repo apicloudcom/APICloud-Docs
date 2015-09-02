@@ -29,6 +29,8 @@ Description: weiXin
 weiXin封装了微信开放平台的SDK，使用此模块可轻松实现分享消息到微信客户端的功能。
 本模块集成了微信支付功能，兼容v2、v3版本支付账号。v2版本支付功能分三步：1，getToken获取token；2，getOrder获取预支付订单号；3，payOrder支付。v2版本前两部可在服务器端完成，得到正确的参数后直接调用第三步的接口。注意签名过程必须在服务器端完成。V3版本支付功能有两套支付方案，方案一：同v2支付流程，与v2不同的是参数生成规范、签名规范（参考微信支付官方文档）；方案二：首先调用config接口配置支付参数（亦可通过key.xml配置相关支付参数，key.xml配置方法见下文），其次调用pay接口去支付。本支付方案签名过程是在模块内处理，微信官方建议获取预支付订单号和签名都在服务器端处理，所以建议大家采用方案一支付方式。
 
+**此模块已拆分为 [wx](/端API/开放SDK/wx)（分享、登录功能）和 [wxPay](/端API/开放SDK/wxPay)（支付功能）模块。建议使用 优化版的 wx 和 wxPay，此模块已停止更新。**
+
 **使用此模块之前需先配置config文件的Feature，方法如下**
 
 - 名称：weiXin
@@ -71,6 +73,7 @@ key.xml文件需要放在widget/res文件目录下，其内容格式如下：
 - weiXin_pay_partnerKey：  //商户API密钥，填写相应参数
 - weiXin_pay_notifyUrl：   //支付结果回调页面
 
+**Android 系统平台上需注意事项请参考[微信集成注意事项](http://community.apicloud.com/bbs/forum.php?mod=viewthread&tid=9307)**
 
 #**registerApp**<div id="a1"></div>
 
@@ -97,8 +100,7 @@ secret：
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
@@ -569,7 +571,7 @@ err：
 ```js
 var weiXin = api.require('weiXin');
 weiXin.getToken({
-	appId: 'wx652070b3a10fcd45',
+	key: 'wx652070b3a10fcd45',
 	secret:'00f373c57777e46ba86d461cbcc2fbe8'
 },function(ret,err) {
 	if (ret.status) {
@@ -722,18 +724,6 @@ sign：
 - 类型：字符串
 - 默认值：无
 - 描述：商家根据微信开放平台文档对数据做的签名（详情见[支付注意事项](!Constant)），不能为空
-
-key：
-
-- 类型：字符串
-- 默认值：无
-- 描述：从微信开放平台获取的key，可为空，若为空则使用registerApp接口或者getToken接口传入的key，若registerApp接口和getToken接口都没有传key参数，则从当前widget内config文件读取
-
-secret：
-
-- 类型：字符串
-- 默认值：无
-- 描述：商家从微信开放平台申请的secret，可为空，若为空则使用registerApp接口或者getToken接口传入的secret，若registerApp接口和getToken接口都没有传secret参数，则从当前widget内config文件读取
 
 ##callback(ret, err)
 
@@ -999,7 +989,7 @@ err：
 var weiXin = api.require('weiXin');
 weiXin.pay({
      body: '如意金箍棒',
-     totleFee:'10',
+     totalFee:'10',
      tradeNo:'1234567890abcdefghiglmnopqrstuvw'
 },function(ret,err) {
      if (ret.status) {
@@ -1063,6 +1053,7 @@ iOS系统，Android系统
 
 ##取值范围：
 
+- -1   //当前设备未安装微信客户端
 - 0		//没有错误
 - 1		//普通错误
 - 2		//用户取消

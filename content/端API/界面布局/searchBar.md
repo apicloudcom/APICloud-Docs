@@ -20,7 +20,7 @@ Description: searchBar
 
 #**概述**
 
-searchBar定义了一个搜索界面的模板，开发者可自定义该模板的样式。可将搜索记录归档到本地
+searchBar定义了一个搜索界面的模板，开发者可自定义该模板的样式。可将搜索记录归档到本地。**UISearchBar 模块是 searchBar 模块的优化版，建议使用  UISearchBar 模块，此模块已停止更新。**
 
 ![图片说明](/img/docImage/searchBar.jpg)
 
@@ -28,7 +28,7 @@ searchBar定义了一个搜索界面的模板，开发者可自定义该模板�
 
 打开搜索界面
 
-open({params}, callback(ret, err))
+open({params}, callback(ret, err)) 
 
 ##params
 
@@ -167,6 +167,7 @@ obj.open(function(ret,err){
 	}
 });
 ```
+
 
 ##补充说明
 

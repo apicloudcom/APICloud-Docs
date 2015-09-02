@@ -129,7 +129,7 @@ iOS系统，Android系统
 
 #**save**<div id="a2"></div>
 
-保存截图到指定位置，若为调用open接口则直接截取全屏
+保存截图到指定位置，若未调用open接口则直接截取全屏
 
 save ({params}, callback(ret, err))
 

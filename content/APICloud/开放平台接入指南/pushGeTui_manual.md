@@ -4,7 +4,7 @@ Description: 个推推送SDK接入指南
 */
 
 开发者在使用 APICloud 提供的第三方开放平台-个推（pushGeTui）时，需要开发者自行到个推开放平台申请相应的AppID，并按照个推模块开发指南进行配置。
-目前仅支持 Android.
+
 
 ##申请步骤
 

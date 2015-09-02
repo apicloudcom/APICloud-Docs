@@ -12,6 +12,8 @@ Description: API对象
 <div id="attr-content">
 
 <div class="outline">
+[appId](#a27)
+
 [appName](#a1)
 
 [appVersion](#a3)
@@ -68,6 +70,20 @@ Description: API对象
 #**概述**
 
 api对象提供了构建应用程序所需要的一些基本的方法，如窗口操作、相册和网络数据访问等，而更多的方法则会在其它模块中提供，api对象不需要require引用，可以直接在js中使用
+
+#**appId**<div id="a27"></div>
+
+应用的ID，可以在网站控制台概览里面查看，字符串类型
+
+##示例代码
+
+	var appId = api.appId; //比如: A6980386445546
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.1.0及更高版本
 
 #**appName**<div id="a1"></div>
 
@@ -206,7 +222,7 @@ iOS系统，Android系统
 
 #**operator**<div id="a24"></div>
 
-运营商名称，若为获取到则返回none，字符串类型
+运营商名称，若未获取到则返回none，字符串类型
 
 ##示例代码
 
@@ -279,7 +295,7 @@ iOS系统，Android系统
 
 #**winName**<div id="a19"></div>
 
-当前主窗口名称，字符串类型
+当前window名称，字符串类型
 
 该属性值为openWin()时传递的name参数值，注意首页的名称为root
 
@@ -295,7 +311,7 @@ iOS系统，Android系统
 
 #**winWidth**<div id="a20"></div>
 
-主窗口宽度，数字类型
+当前window宽度，数字类型
 
 此属性值不同于屏幕的分辨率，比如iPhone 5的分辨率为640*1136，但是其winWidth为320，因此前端需根据winWidth和winHeight来进行布局
 
@@ -311,7 +327,7 @@ iOS系统，Android系统
 
 #**winHeight**<div id="a18"></div>
 
-主窗口高度，数字类型
+当前window高度，数字类型
 
 此属性值不同于屏幕的分辨率，比如iPhone 5的分辨率为640*1136，但是其winHeight为568（若不使用iOS7风格则为548），因此前端需根据winWidth和winHeight来进行布局
 
@@ -328,9 +344,9 @@ iOS系统，Android系统
 
 #**frameName**<div id="a9"></div>
 
-子窗口名称，字符串类型
+frame名称，字符串类型
 
-若当前环境为主窗口中，则该属性值为空字符串
+若当前环境为window中，则该属性值为空字符串
 
 ##示例代码
 
@@ -345,9 +361,9 @@ iOS系统，Android系统
 
 #**frameWidth**<div id="a10"></div>
 
-子窗口宽度，数字类型
+frame宽度，数字类型
 
-若当前环境为主窗口中，则值和winWidth相同
+若当前环境为window中，则值和winWidth相同
 
 ##示例代码
 
@@ -362,9 +378,9 @@ iOS系统，Android系统
 
 #**frameHeight**<div id="a8"></div>
 
-子窗口高度，数字类型
+frame高度，数字类型
 
-若当前环境为主窗口中，则值和winHeight相同
+若当前环境为window中，则值和winHeight相同
 
 ##示例代码
 
@@ -437,7 +453,7 @@ widget://协议对应的真实目录，即widget网页包的根目录，字符�
 	var wgtRootDir = api.wgtRootDir;  
 	/* 
 	比如:  
-	/var/mobile/Containers/Data/Application/4E376FDE-D595-4E08-B0A4-A06561B31000/Documents/uzfs/wgt/XXXXXX
+	/private/var/mobile/Containers/Bundle/Application/56218B5B-1B59-48CD-8080-DAC54DB46446/UZApp.app/widget
 	*/
 ```
 
@@ -655,7 +671,7 @@ iOS系统，Android系统
 
 #**动画类型**<div id="b6"></div>
 
-打开主窗口或打开widget时的动画类型，Android部分动画不支持，字符串类型
+打开window或打开widget时的动画类型，Android部分动画不支持，字符串类型
 
 ##取值范围
 
@@ -1180,7 +1196,7 @@ iOS系统，Android系统
 
 #**batterylow**<div id="c1"></div>
 
-电池电量低，字符串类型
+设备电池电量低事件，字符串类型
 
 ##callback(ret)
 
@@ -1216,7 +1232,7 @@ iOS系统，Android系统
 
 #**batterystatus**<div id="c2"></div>
 
-电池状态改变（电量变化或充电），字符串类型
+设备电池状态改变事件，如电量变化或正在充电，字符串类型
 
 ##callback(ret)
 
@@ -1253,9 +1269,9 @@ iOS系统，Android系统
 
 #**keyback**<div id="c3"></div>
 
-back键被点击（Android平台专用），字符串类型
+设备back键被点击事件，仅Android平台有效，字符串类型
 
-该事件必须在window中注册才有效，frame中注册无效。
+该事件必须在Window中注册才有效，Frame中注册无效。
 
 ##callback(ret)
 
@@ -1290,9 +1306,9 @@ Android系统
 
 #**keymenu**<div id="c4"></div>
 
-menu键被点击（Android平台专用）
+设备menu键被点击事件，仅Android平台有效
 
-该事件必须在window中注册才有效，frame中注册无效。
+该事件必须在Window中注册才有效，Frame中注册无效。
 
 ##callback(ret)
 
@@ -1327,7 +1343,7 @@ Android系统
 
 #**offline**<div id="c5"></div>
 
-系统监听到网络断开时的事件，字符串类型
+监听设备断开网络的事件，字符串类型
 
 ##callback()
 
@@ -1352,7 +1368,7 @@ iOS系统，Android系统
 
 #**online**<div id="c6"></div>
 
-系统监听到网络连接时的事件，字符串类型
+监听设备连接到网络的事件，字符串类型
 
 ##callback(ret, err)
 
@@ -1387,7 +1403,7 @@ iOS系统，Android系统
 
 #**pause**<div id="c7"></div>
 
-应用进入后台，字符串类型
+应用进入后台事件，字符串类型
 
 ##callback()
 
@@ -1412,7 +1428,7 @@ iOS系统，Android系统
 
 #**resume**<div id="c8"></div>
 
-应用从后台回到前台，字符串类型
+应用从后台回到前台事件，字符串类型
 
 ##callback()
 
@@ -1437,9 +1453,9 @@ iOS系统，Android系统
 
 #**scrolltobottom**<div id="c9"></div>
 
-页面滑动到底部，字符串类型
+Window或者Frame页面滑动到底部事件，字符串类型
 
-可用于实现加载更多功能
+可用于实现滚动到底部，加载更多功能
 
 ##callback()
 
@@ -1449,7 +1465,10 @@ iOS系统，Android系统
 
 ```js
 api.addEventListener({
-	name:'scrolltobottom'
+	name:'scrolltobottom',
+	extra:{
+		threshold:0			//设置距离底部多少距离时触发，默认值为0，数字类型
+	}
 },function(ret,err){
 	//operation
 });
@@ -1464,7 +1483,7 @@ iOS系统，Android系统
 
 #**shake**<div id="c10"></div>
 
-摇动设备，字符串类型
+设备摇动事件，字符串类型。设置该监听后，当前APP将立即开启摇动检测功能。
 
 可用于实现摇一摇功能
 
@@ -1491,7 +1510,7 @@ iOS系统，Android系统
 
 #**swipedown**<div id="c11"></div>
 
-向下轻扫事件，字符串类型
+Window或者Frame的页面全局向下轻扫事件，字符串类型
 
 ##callback()
 
@@ -1516,7 +1535,7 @@ iOS系统，Android系统
 
 #**swipeleft**<div id="c12"></div>
 
-向左轻扫事件，字符串类型
+Window或者Frame的页面全局向左轻扫事件，字符串类型
 
 ##callback()
 
@@ -1541,7 +1560,7 @@ iOS系统，Android系统
 
 #**swiperight**<div id="c13"></div>
 
-向右轻扫事件，字符串类型
+Window或者Frame的页面全局向右轻扫事件，字符串类型
 
 ##callback()
 
@@ -1566,7 +1585,7 @@ iOS系统，Android系统
 
 #**swipeup**<div id="c14"></div>
 
-向上轻扫事件，字符串类型
+Window或者Frame的页面全局向上轻扫事件，字符串类型
 
 ##callback()
 
@@ -1591,7 +1610,7 @@ iOS系统，Android系统
 
 #**tap**<div id="c15"></div>
 
-页面单击，字符串类型
+Window或者Frame的页面全局单击事件，字符串类型。监听该事件后，点击window或者frame的任意位置，都将收到tap回调。
 
 ##callback()
 
@@ -1616,7 +1635,9 @@ iOS系统，Android系统
 
 #**viewappear**<div id="c16"></div>
 
-主窗口页面显示，字符串类型
+Window显示到屏幕的事件，字符串类型。收到viewappear事件回调，即标识当前Window已经动画结束，并且完全显示到屏幕上。
+
+该事件的作用对象为Window，Frame的显示不会收到事件
 
 ##callback()
 
@@ -1641,9 +1662,11 @@ iOS系统，Android系统
 
 #**viewdisappear**<div id="c17"></div>
 
-主窗口页面消失，字符串类型
+Window离开屏幕的事件，字符串类型。收到viewdisappear事件回调，即标识当前Window已经动画结束，并且完全从屏幕上移除。
 
-若是window被关闭，此事件不会再回调
+该事件的作用对象为Window，Frame的隐藏不会收到事件
+
+若是Window被关闭，此事件不会再回调
 
 ##callback()
 
@@ -1752,9 +1775,24 @@ iOS系统，Android系统
 
 #**smartupdatefinish**<div id="c20"></div>
 
-云修复更新包下载完成事件，通过监听此事件来决定是否强制用户重启应用，以使更新生效，字符串类型
+云修复使用静默修复时，更新完毕事件。可通过监听此事件来通知用户做是否强制重启应用等操作或者提示，以使更新生效，字符串类型
 
-##callback()
+如果是提示修复，则不会触发该事件
+
+##callback(ret)
+
+ret：
+- 类型：JSON对象
+
+内部字段：
+```js
+{
+    value:[{
+        extra:''			//在控制台云修复里面进行静默修复时填写的附加信息，字符串类型
+    }]
+}
+```
+
 
 不能为空
 
@@ -1764,15 +1802,8 @@ iOS系统，Android系统
 api.addEventListener({
 	name:'smartupdatefinish'
 },function(ret,err){
-	api.alert({
-		msg:'更新完毕，请重启应用'
-	}, function(ret, err){
-		if (ret.index == 1){
-			api.closeWidget({
-				silent:true
-			});
-		}
-	});
+	var value = ret.value;
+	var extra = value[0];
 });
 ```
 
@@ -1791,28 +1822,28 @@ h4{clear: both; margin: 0; padding: 20px 0; font-weight: bold;}
 </style>
 <div class="outline">
 <h4>窗口系统</h4>
-<a href="#33" title="打开主窗口">openWin</a>
-<a href="#15" title="关闭主窗口">closeWin</a>
-<a href="#13" title="关闭到指定主窗口">closeToWin</a>
-<a href="#48" title="设置主窗口属性">setWinAttr</a>
-<a href="#27" title="打开子窗口">openFrame</a>
-<a href="#10" title="关闭子窗口">closeFrame</a>
-<a href="#41" title="设置子窗口属性">setFrameAttr</a>
-<a href="#6" title="把子窗口带到前面">bringFrameToFront</a>
-<a href="#40" title="把子窗口放到后面">sendFrameToBack</a>
-<a href="#5" title="子窗口动画">animation</a>
-<a href="#28" title="打开子窗口组">openFrameGroup</a>
-<a href="#11" title="关闭子窗口组">closeFrameGroup</a>
-<a href="#42" title="设置子窗口组属性">setFrameGroupAttr</a>
-<a href="#43" title="设置子窗口组当前显示页面">setFrameGroupIndex</a>
-<a href="#76" title="iPad上面打开弹出层窗口">openPopoverWin</a>
-<a href="#77" title="关闭整个弹出层窗口，只iPad上面有效">closePopoverWin</a>
+<a href="#33" title="打开window">openWin</a>
+<a href="#15" title="关闭window">closeWin</a>
+<a href="#13" title="关闭到指定window">closeToWin</a>
+<a href="#48" title="设置window属性">setWinAttr</a>
+<a href="#27" title="打开frame">openFrame</a>
+<a href="#10" title="关闭frame">closeFrame</a>
+<a href="#41" title="设置frame属性">setFrameAttr</a>
+<a href="#6" title="把frame带到前面">bringFrameToFront</a>
+<a href="#40" title="把frame放到后面">sendFrameToBack</a>
+<a href="#5" title="frame动画">animation</a>
+<a href="#28" title="打开frame组">openFrameGroup</a>
+<a href="#11" title="关闭frame组">closeFrameGroup</a>
+<a href="#42" title="设置frame组属性">setFrameGroupAttr</a>
+<a href="#43" title="设置frame组当前显示页面">setFrameGroupIndex</a>
+<a href="#76" title="iPad上面打开弹出层window">openPopoverWin</a>
+<a href="#77" title="关闭整个弹出层window，只iPad上面有效">closePopoverWin</a>
 <a href="#30" title="打开侧滑布局">openSlidLayout</a>
 <a href="#31" title="侧滑">openSlidPane</a>
 <a href="#12" title="关闭侧滑">closeSlidPane</a>
 <a href="#67" title="锁住SlidPane">lockSlidPane</a>
 <a href="#68" title="解锁SlidPane">unlockSlidPane</a>
-<a href="#18" title="在指定窗口执行脚本">execScript</a>
+<a href="#18" title="在指定页面执行脚本">execScript</a>
 <a href="#63" title="手动移除启动页">removeLaunchView</a>
 <a href="#34" title="手动移除启动页">parseTapmode</a>
 <h4>应用管理</h4>
@@ -1823,6 +1854,7 @@ h4{clear: both; margin: 0; padding: 20px 0; font-weight: bold;}
 <a href="#14" title="关闭widget">closeWidget</a>
 <h4>网络通信</h4>
 <a href="#3" title="跨域异步请求">ajax</a>
+<a href="#86" title="取消异步请求">cancelAjax</a>
 <a href="#17" title="开始下载">download</a>
 <a href="#8" title="取消下载">cancelDownload</a>
 <a href="#78" title="图片缓存">imageCache</a>
@@ -1833,6 +1865,8 @@ h4{clear: both; margin: 0; padding: 20px 0; font-weight: bold;}
 <a href="#21" title="获取偏好数据">getPrefs</a>
 <a href="#39" title="删除偏好数据">removePrefs</a>
 <a href="#9" title="清除缓存">clearCache</a>
+<a href="#84" title="获取缓存大小">getCacheSize</a>
+<a href="#85" title="获取剩余存储容量">getFreeDiskSpace</a>
 <a href="#64" title="获取加密数据">loadSecureValue</a>
 <h4>消息事件</h4>
 <a href="#2" title="添加事件监听">addEventListener</a>
@@ -1856,6 +1890,7 @@ h4{clear: both; margin: 0; padding: 20px 0; font-weight: bold;}
 <a href="#71" title="设置是否禁止屏幕休眠">setKeepScreenOn</a>
 <a href="#70" title="回到系统桌面">toLauncher</a>
 <a href="#82" title="设置是否禁止截屏">setScreenSecure</a>
+<a href="#83" title="设置应用图标右上角数字">setAppIconBadge</a>
 <h4>UI组件</h4>
 <a href="#4" title="带一个按钮的对话框">alert</a>
 <a href="#16" title="带两个按钮的对话框">confirm</a>
@@ -1866,7 +1901,8 @@ h4{clear: both; margin: 0; padding: 20px 0; font-weight: bold;}
 <a href="#60" title="自动消失的提示框">toast</a>
 <a href="#29" title="时间选择器">openPicker</a>
 <a href="#46" title="下拉刷新">setRefreshHeaderInfo</a>
-<a href="#37" title="刷新完成">refreshHeaderLoadDone</a>
+<a href="#87" title="设置刷新中">refreshHeaderLoading</a>
+<a href="#37" title="设置刷新完成">refreshHeaderLoadDone</a>
 <a href="#49" title="显示悬浮按钮">showFloatBox</a>
 <h4>多媒体</h4>
 <a href="#20" title="从系统相册、相机获取图片">getPicture</a>
@@ -1887,11 +1923,11 @@ h4{clear: both; margin: 0; padding: 20px 0; font-weight: bold;}
 
 #**openWin**<div id="33"></div>
 
-打开主窗口
+打开window
 
-若窗口已存在，则会把该窗口显示到最前面，如果url和之前的url有变化，或者reload为true时，页面会刷新，但是该窗口里面已经打开的frame等不会移除
+若window已存在，则会把该window显示到最前面，如果url和之前的url有变化，或者reload为true时，页面会刷新，但是该window里面已经打开的frame等不会移除
 
-若当前正在进行openWin、closeWin等带动画过渡的窗口操作，调用此方法会失效
+若当前正在进行openWin、closeWin等带动画过渡的window操作，调用此方法会失效
 
 openWin({params})
 
@@ -1901,13 +1937,13 @@ name：
 
 - 类型：字符串
 - 默认值：无
-- 描述：主窗口名字，不能为空字符串。若为root，则会关闭首页上面所有存在的主窗口，相当于调用closeToWin({name:'root'})方法
+- 描述：window名字，不能为空字符串。若为root，则会关闭首页上面所有存在的window，相当于调用closeToWin({name:'root'})方法
 
 url：
 
 - 类型：字符串
 - 默认值：无
-- 描述：页面地址，可以为本地文件路径，支持相对路径和绝对路径，也可以为远程地址
+- 描述：页面地址，可以为本地文件路径，支持相对路径和绝对路径，以及widget://、fs://等协议路径，也可以为远程地址
 
 pageParam：
 
@@ -1926,6 +1962,12 @@ bgColor：
 - 类型：字符串
 - 默认值：若在config.xml里面配置了windowBackground，则默认值为配置的值，否则透明
 - 描述：（可选项）背景色，支持图片和颜色，格式为#fff、#ffffff、rgba(r,g,b,a)等，图片路径支持fs://、widget://等APICloud自定义文件路径协议，同时支持相对路径
+
+scrollToTop：
+
+- 类型：布尔
+- 默认值：false
+- 描述：（可选项）当点击状态栏，页面是否滚动到顶部。若当前屏幕上不止一个页面的scrollToTop属性为true，则所有的都不会起作用。只iOS有效
 
 vScrollBarEnabled：
 
@@ -1949,7 +1991,7 @@ slidBackEnabled：
 
 - 类型：布尔
 - 默认值：true
-- 描述：（可选项）是否支持滑动返回。iOS7.0及以上系统中，在新打开的窗口中向右滑动，可以返回到上一个窗口，该字段只iOS有效
+- 描述：（可选项）是否支持滑动返回。iOS7.0及以上系统中，在新打开的页面中向右滑动，可以返回到上一个页面，该字段只iOS有效
 
 animation：
 
@@ -1977,18 +2019,18 @@ delay：
 
 - 类型：数字
 - 默认值：0
-- 描述：（可选项）窗口显示延迟时间，适用于将被打开的窗口中可能需要打开有耗时操作的模块时，可延迟窗口展示到屏幕的时间，保持UI的整体性
+- 描述：（可选项）window显示延迟时间，适用于将被打开的window中可能需要打开有耗时操作的模块时，可延迟window展示到屏幕的时间，保持UI的整体性
 
 reload：
 
 - 类型：布尔
 - 默认值：false
-- 描述：（可选项）页面已经打开时，是否重新加载页面
+- 描述：（可选项）页面已经打开时，是否重新加载页面，重新加载页面后apiready方法将会被执行
 
 allowEdit：
 
 - 类型：布尔
-- 默认值：无
+- 默认值：false
 - 描述：（可选项）是否允许长按页面时弹出选择菜单
 
 softInputMode：
@@ -2020,9 +2062,9 @@ iOS系统，Android系统
 
 #**closeWin**<div id="15"></div>
 
-关闭主窗口
+关闭window
 
-若当前正在进行openWin、closeWin等带动画过渡的窗口操作，调用此方法会失效
+若当前正在进行openWin、closeWin等带动画过渡的window操作，调用此方法会失效
 
 closeWin({params})
 
@@ -2032,7 +2074,7 @@ name：
 
 - 类型：字符串
 - 默认值：无
-- 描述：（可选项）主窗口名字，不传时关闭当前主窗口，为root时无效
+- 描述：（可选项）window名字，不传时关闭当前window，为root时无效
 
 animation：
 
@@ -2052,10 +2094,10 @@ animation：
 ##示例代码
 
 ```js
-//关闭当前窗口，使用默认动画
+//关闭当前window，使用默认动画
 api.closeWin();
 
-//关闭指定窗口，使用指定动画，若待关闭的窗口不在最上面，则动画无效
+//关闭指定window，使用指定动画，若待关闭的window不在最上面，则动画无效
 api.closeWin({
     name: 'page1',
     animation: {
@@ -2068,7 +2110,7 @@ api.closeWin({
 
 ##补充说明
 
-name为空时关闭当前窗口
+无
 
 ##可用性
 
@@ -2079,9 +2121,9 @@ iOS系统，Android系统
 
 #**closeToWin**<div id="13"></div>
 
-关闭到指定窗口，最上面显示的窗口到指定name窗口间的所有窗口都会被关闭
+关闭到指定window，最上面显示的window到指定name的window间的所有window都会被关闭
 
-若当前正在进行openWin、closeWin等带动画过渡的窗口操作，调用此方法会失效
+若当前正在进行openWin、closeWin等带动画过渡的window操作，调用此方法会失效
 
 closeToWin({params})
 
@@ -2091,7 +2133,7 @@ name：
 
 - 类型：字符串
 - 默认值：无
-- 描述：窗口名字
+- 描述：window名字
 
 animation：
 
@@ -2113,7 +2155,7 @@ animation：
 
 ```js
 api.closeToWin({
-	name: 'page1',
+	name: 'win1',
 	animation: {
 		type: 'flip',
 		subType: 'from_bottom',
@@ -2135,7 +2177,7 @@ iOS系统，Android系统
 
 #**setWinAttr**<div id="48"></div>
 
-设置主窗口属性
+设置window属性
 
 setWinAttr({params})
 
@@ -2152,6 +2194,12 @@ bgColor：
 - 类型：字符串
 - 默认值：无
 - 描述：（可选项）背景色，支持图片和颜色，格式为#fff、#ffffff、rgba(r,g,b,a)等，图片路径支持fs://、widget://等APICloud自定义文件路径协议，同时支持相对路径
+
+scrollToTop：
+
+- 类型：布尔
+- 默认值：无
+- 描述：（可选项）当点击状态栏，页面是否滚动到顶部。若当前屏幕上不止一个页面的scrollToTop属性为true，则所有的都不会起作用。只iOS有效
 
 vScrollBarEnabled：
 
@@ -2175,7 +2223,7 @@ slidBackEnabled：
 
 - 类型：布尔
 - 默认值：无
-- 描述：（可选项）是否支持滑动返回。iOS7.0及以上系统中，在新打开的窗口中向右滑动，可以返回到上一个窗口，该字段只iOS有效
+- 描述：（可选项）是否支持滑动返回。iOS7.0及以上系统中，在新打开的页面中向右滑动，可以返回到上一个页面，该字段只iOS有效
 
 softInputMode：
 
@@ -2198,19 +2246,20 @@ api.setWinAttr({
  
 ##补充说明
 
-设置主窗口属性
+无
 
 ##可用性
-iOS系统，Android系统(slidBackEnabled不支持)
+
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
 
 #**openFrame**<div id="27"></div>
 
-打开子窗口
+打开frame
 
-若子窗口已存在，则会把该窗口显示到最前面并显示，如果url和之前的url有变化，或者reload为true时，页面会刷新
+若frame已存在，则会把该窗口显示到最前面并显示，如果url和之前的url有变化，或者reload为true时，页面会刷新
 
 此方法对frameGroup里面的frame不起作用
 
@@ -2222,13 +2271,13 @@ name：
 
 - 类型：字符串
 - 默认值：无
-- 描述：子窗口名字
+- 描述：frame名字
 
 url：
 
 - 类型：字符串
 - 默认值：无
-- 描述：页面地址，可以为本地文件路径，支持相对路径和绝对路径，也可以为远程地址
+- 描述：页面地址，可以为本地文件路径，支持相对路径和绝对路径，以及widget://、fs://等协议路径，也可以为远程地址
 
 pageParam：
 
@@ -2247,6 +2296,12 @@ bgColor：
 - 类型：字符串
 - 默认值：若在config.xml里面配置了frameBackgroundColor，则默认值为配置的值，否则透明
 - 描述：（可选项）背景色，支持图片和颜色，格式为#fff、#ffffff、rgba(r,g,b,a)等，图片路径支持fs://、widget://等APICloud自定义文件路径协议，同时支持相对路径
+
+scrollToTop：
+
+- 类型：布尔
+- 默认值：true
+- 描述：（可选项）当点击状态栏，页面是否滚动到顶部。若当前屏幕上不止一个页面的scrollToTop属性为true，则所有的都不会起作用。只iOS有效
 
 vScrollBarEnabled：
 
@@ -2269,8 +2324,8 @@ scaleEnabled：
 rect：
 
 - 类型：JSON对象
-- 默认值：子窗口的位置尺寸
-- 描述：（可选项）窗口区域
+- 默认值：frame的位置尺寸
+- 描述：（可选项）页面区域
 
 内部字段：
 
@@ -2278,8 +2333,8 @@ rect：
 {
     x:0,             //左上角x坐标
     y:0,             //左上角y坐标
-    w:320,           //宽度，若传'auto'，页面从x位置开始自动充满父窗口宽度
-    h:480            //高度，若传'auto'，页面从y位置开始自动充满主窗口高度
+    w:320,           //宽度，若传'auto'，页面从x位置开始自动充满父页面宽度
+    h:480            //高度，若传'auto'，页面从y位置开始自动充满父页面高度
 }
 ```
 
@@ -2292,13 +2347,13 @@ showProgress：
 reload：
 
 - 类型：布尔
-- 默认值：无
+- 默认值：false
 - 描述：（可选项）页面已经打开时，是否重新加载页面
 
 allowEdit：
 
 - 类型：布尔
-- 默认值：无
+- 默认值：false
 - 描述：（可选项）是否允许长按页面时弹出选择菜单
 
 softInputMode：
@@ -2329,7 +2384,7 @@ api.openFrame({
 
 ##补充说明
 
-如果rect的w、h传'auto'，则自动适应当前主窗口宽高
+无
 
 ##可用性
 
@@ -2340,7 +2395,7 @@ iOS系统，Android系统
 
 #**closeFrame**<div id="10"></div>
 
-关闭子窗口
+关闭frame
 
 closeFrame({params})
 
@@ -2350,7 +2405,7 @@ name：
 
 - 类型：字符串
 - 默认值：无
-- 描述：（可选项）子窗口名字，不传时关闭当前子窗口
+- 描述：（可选项）frame名字，不传时关闭当前frame
 
 ##示例代码
 ```js
@@ -2371,7 +2426,7 @@ iOS系统，Android系统
 
 #**setFrameAttr**<div id="41"></div>
 
-设置子窗口属性
+设置frame属性
 
 setFrameAttr({params})
 
@@ -2381,7 +2436,7 @@ name：
 
 - 类型：字符串
 - 默认值：无
-- 描述：窗口名称
+- 描述：frame名称
 
 bounces：
 
@@ -2400,6 +2455,12 @@ bgColor：
 - 类型：字符串
 - 默认值：无
 - 描述：（可选项）背景色，支持图片和颜色，格式为#fff、#ffffff、rgba(r,g,b,a)等，图片路径支持fs://、widget://等APICloud自定义文件路径协议，同时支持相对路径
+
+scrollToTop：
+
+- 类型：布尔
+- 默认值：无
+- 描述：（可选项）当点击状态栏，页面是否滚动到顶部。若当前屏幕上不止一个页面的scrollToTop属性为true，则所有的都不会起作用。只iOS有效
 
 vScrollBarEnabled：
 
@@ -2430,8 +2491,8 @@ rect：
 {
     x:0,                 //左上角x坐标
     y:0,                 //左上角y坐标
-    w:320,               //宽度，若传'auto'，页面从x位置开始自动充满父窗口宽度
-    h:480                //高度，若传'auto'，页面从y位置开始自动充满父窗口高度
+    w:320,               //宽度，若传'auto'，页面从x位置开始自动充满父页面宽度
+    h:480                //高度，若传'auto'，页面从y位置开始自动充满父页面高度
 }
 ```
 
@@ -2460,7 +2521,7 @@ api.setFrameAttr({
 
 ##补充说明
 
-设置子窗口属性
+设置frame属性
 
 ##可用性
 
@@ -2471,7 +2532,7 @@ iOS系统，Android系统
 
 #**bringFrameToFront**<div id="6"></div>
 
-调整子窗口到前面
+调整frame到前面
 
 bringFrameToFront({params})
 
@@ -2481,13 +2542,13 @@ from：
 
 - 类型：字符串
 - 默认值：无
-- 描述：待调整显示顺序的子窗口名字
+- 描述：待调整显示顺序的frame名字
 
 to：
 
 - 类型：字符串
 - 默认值：无
-- 描述：（可选项）子窗口名字，不传时调整from子窗口到最前面，否则调整from子窗口到此窗口前面
+- 描述：（可选项）frame名字，不传时调整from对应frame到最前面，否则调整from对应frame到此frame前面
 
 ##示例代码
 
@@ -2500,7 +2561,7 @@ api.bringFrameToFront({
 
 ##补充说明
 
-调整子窗口到前面
+调整frame到前面
 
 ##可用性
 
@@ -2511,7 +2572,7 @@ iOS系统，Android系统
 
 #**sendFrameToBack**<div id="40"></div>
 
-调整子窗口到后面
+调整frame到后面
 
 sendFrameToBack({params})
 
@@ -2521,13 +2582,13 @@ from：
 
 - 类型：字符串
 - 默认值：无
-- 描述：子窗口名字
+- 描述：frame名字
 
 to：
 
 - 类型：字符串
 - 默认值：无
-- 描述：（可选项）子窗口名字，不传时调整from子窗口到最后面，否则调整from子窗口到此窗口后面
+- 描述：（可选项）frame名字，不传时调整from对应frame到最后面，否则调整from对应frame到此frame后面
 
 ##示例代码
 
@@ -2540,7 +2601,7 @@ api.sendFrameToBack ({
 
 ##补充说明
 
-调整子窗口到后面
+调整frame到后面
 
 ##可用性
 
@@ -2551,9 +2612,9 @@ iOS系统，Android系统
 
 #**animation**<div id="5"></div>
 
-子窗口动画，支持平移，缩放，旋转和透明度变化
+frame动画，支持平移，缩放，旋转和透明度变化
 
-仅支持子窗口，不支持主窗口以及frameGroup里面的frame
+仅支持frame，不支持window以及frameGroup里面的frame
 
 animation({params}, callback())
 
@@ -2562,8 +2623,8 @@ animation({params}, callback())
 name：
 
 - 类型：字符串
-- 默认值：当前子窗口
-- 描述：子窗口名字
+- 默认值：当前frame
+- 描述：frame名字
 
 delay：
 
@@ -2698,9 +2759,9 @@ iOS系统，Android系统
 
 #**openFrameGroup**<div id="28"></div>
 
-打开子窗口组
+打开frame组
 
-子窗口组打开后，当前页面加载完成后，页面会预加载后面一个页面
+frame组打开后，当前页面加载完成后，页面会预加载后面指定个数页面
 
 openFrameGroup({params}, callback(ret, err))
 
@@ -2710,25 +2771,25 @@ name：
 
 - 类型：字符串
 - 默认值：无
-- 描述：窗口组名字
+- 描述：frame组名字
 
 background：
 
 - 类型：字符串
 - 默认值：无
-- 描述：（可选项）窗口组背景，颜色（#fff,#ffffff,rgba(r,g,b,a)）或图片（支持文件路径协议和相对路径）
+- 描述：（可选项）frame组背景，颜色（#fff,#ffffff,rgba(r,g,b,a)）或图片（支持文件路径协议和相对路径）
 
 scrollEnabled：
 
 - 类型：布尔
 - 默认值：true
-- 描述：（可选项）窗口组是否能够左右滚动
+- 描述：（可选项）frame组是否能够左右滚动
 
 rect：
 
 - 类型：JSON对象
 - 默认值：无
-- 描述：（可选项）窗口组区域
+- 描述：（可选项）frame组区域
 
 内部字段：
 
@@ -2736,8 +2797,8 @@ rect：
 {
     x:0,             //左上角x坐标
     y:0,             //左上角y坐标
-    w:320,           //宽度，若传'auto'，窗口组从x位置开始自动充满父窗口宽度
-    h:240            //高度，若传'auto'，窗口组从y位置开始自动充满父窗口高度
+    w:320,           //宽度，若传'auto'，frame组从x位置开始自动充满父页面宽度
+    h:240            //高度，若传'auto'，frame组从y位置开始自动充满父页面高度
 }
 ```
 
@@ -2757,17 +2818,18 @@ frames：
 
 - 类型：数组
 - 默认值：无
-- 描述：子窗口数组
+- 描述：frame数组
 
 内部字段：
 
 ```js
 [{
-	name:'',                                //窗口名字，字符串类型，不能为空字符串
-	url:'',                                 //页面地址，可以为本地文件路径，支持相对路径和绝对路径，也可以为远程地址，字符串类型
+	name:'',                                //frame名字，字符串类型，不能为空字符串
+	url:'',                                 //页面地址，可以为本地文件路径，支持相对路径和绝对路径，以及widget://、fs://等协议路径，也可以为远程地址，字符串类型
 	pageParam:{},                           //（可选项）页面参数，页面中可以通过api.pageParam获取，JSON对象
 	bounces:true,                           //（可选项）是否弹动，布尔型，默认值：若在config.xml里面配置了pageBounce，则默认值为配置的值，否则为false
 	bgColor:'#fff',                         //（可选项）背景色，支持图片和颜色，格式为#fff、#ffffff、rgba(r,g,b,a)等，图片路径支持fs://、widget://等APICloud自定义文件路径协议，同时支持相对路径
+	scrollToTop:true						//（可选项）当点击状态栏，页面是否滚动到顶部。若当前屏幕上不止一个页面的scrollToTop属性为true，则所有的都不会起作用。默认值：true。只iOS有效
 	vScrollBarEnabled:true,                 //（可选项）是否显示垂直滚动条，布尔型，默认值：true
 	hScrollBarEnabled:false,                //（可选项）是否显示水平滚动条，布尔型，默认值：false
 	scaleEnabled:true,                      //（可选项）页面是否可以缩放，为true时softInputMode参数无效，布尔型，默认值：false
@@ -2781,14 +2843,14 @@ frames：
 ret：
 
 - 类型：JSON对象
-- 描述：当前显示在屏幕上的子窗口变化时会回调
+- 描述：当前显示在屏幕上的frame变化时会回调
 
 内部字段：
 
 ```js
 {
-    name:'',         //当前窗口名称
-    index:0          //当前窗口索引
+    name:'',         //当前frame名称
+    index:0          //当前frame索引
 }
 ```
 
@@ -2804,20 +2866,12 @@ api.openFrameGroup ({
 	frames:
 	[{
 		name: 'frame1', 
-		url: 'frame1.html', 
-		pageParam:{}, 
-		bounces:true,
-		bgColor: '#fff', 
-		vScrollBarEnabled:true,
-		hScrollBarEnabled:false
+		url: 'frame1.html',
+		bgColor: '#fff'
     },{
         name: 'frame2', 
 		url: 'frame2.html', 
-		pageParam:{}, 
-		bounces:true,
-		bgColor: '#fff', 
-		vScrollBarEnabled:true,
-		hScrollBarEnabled:false
+		bgColor: '#fff'
     }]
 }, function(ret, err){
 	var name = ret.name;
@@ -2827,7 +2881,7 @@ api.openFrameGroup ({
 
 ##补充说明
 
-如果rect的w、h传auto，则自动适应当前主窗口宽高
+无
 
 ##可用性
 
@@ -2838,7 +2892,7 @@ iOS系统，Android系统
 
 #**closeFrameGroup**<div id="11"></div>
 
-关闭子窗口组
+关闭frame组
 
 closeFrameGroup({params})
 
@@ -2848,7 +2902,7 @@ name：
 
 - 类型：字符串
 - 默认值：无
-- 描述：窗口组名字
+- 描述：frame组名字
 
 ##示例代码
 
@@ -2872,7 +2926,7 @@ iOS系统，Android系统
 
 #**setFrameGroupAttr**<div id="42"></div>
 
-设置子窗口组属性
+设置frame组属性
 
 setFrameGroupAttr({params})
 
@@ -2882,13 +2936,36 @@ name：
 
 - 类型：字符串
 - 默认值：无
-- 描述：窗口组名字
+- 描述：frame组名字
 
 hidden：
 
 - 类型：布尔
 - 默认值：无
-- 描述：（可选项）窗口组是否隐藏
+- 描述：（可选项）frame组是否隐藏
+
+scrollEnabled：
+
+- 类型：布尔
+- 默认值：无
+- 描述：（可选项）frame组是否能够左右滚动
+
+rect：
+
+- 类型：JSON对象
+- 默认值：无
+- 描述：（可选项）frame组区域
+
+内部字段：
+
+```js
+{
+    x:0,             //左上角x坐标
+    y:0,             //左上角y坐标
+    w:320,           //宽度，若传'auto'，frame组从x位置开始自动充满父页面宽度
+    h:240            //高度，若传'auto'，frame组从y位置开始自动充满父页面高度
+}
+```
 
 ##示例代码
 
@@ -2912,7 +2989,7 @@ iOS系统，Android系统
 
 #**setFrameGroupIndex**<div id="43"></div>
 
-设置窗口组当前可见子窗口
+设置frame组当前可见frame
 
 setFrameGroupIndex({params})
 
@@ -2922,19 +2999,25 @@ name：
 
 - 类型：字符串
 - 默认值：无
-- 描述：窗口组名字
+- 描述：frame组名字
 
 index：
 
 - 类型：数字
 - 默认值：无
-- 描述：子窗口索引
+- 描述：frame索引
 
 scroll：
 
 - 类型：布尔
 - 默认值：false
 - 描述：（可选项）是否平滑滚动至目标窗口，即是否带有动画
+
+reload：
+
+- 类型：布尔
+- 默认值：false
+- 描述：（可选项）是否刷新frame
 
 ##示例代码
 
@@ -2956,15 +3039,16 @@ iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
+
 #**openPopoverWin**<div id="76"></div>
 
 iPad上面打开弹出层窗口，弹出层从底部往上弹出，然后显示在屏幕中间一片指定区域，周围为黑色半透明，只iPad上面有效
 
 弹出层是模态的，弹出层后面的界面将不可操作，在弹出层窗口里面不能再打开弹出窗口
 
-弹出层里面窗口可以使用所有的窗口相关操作，如openWin、openFrame等
+弹出层里面页面可以使用所有的window和frame相关操作，如openWin、openFrame等
 
-使用execScript()方法时，引擎只会在整个弹出层里面的窗口中去寻找要执行脚本的窗口，如果要和弹出层以外的窗口间进行通信，可以使用sendEvent()方法代替实现
+使用execScript()方法时，引擎只会在整个弹出层里面的窗口中去寻找要执行脚本的窗口，如果要和弹出层下面的窗口间进行通信，可以使用sendEvent()方法代替实现
 
 openPopoverWin({params})
 
@@ -2986,13 +3070,13 @@ name：
 
 - 类型：字符串
 - 默认值：无
-- 描述：弹出层的第一个主窗口的名字，不能为空字符串
+- 描述：弹出层的第一个window的名字，不能为空字符串
 
 url：
 
 - 类型：字符串
 - 默认值：无
-- 描述：弹出层的第一个主窗口页面地址，可以为本地文件路径，支持相对路径和绝对路径，也可以为远程地址，不能为空字符串
+- 描述：弹出层的第一个window页面地址，可以为本地文件路径，支持相对路径和绝对路径，以及widget://、fs://等协议路径，也可以为远程地址，不能为空字符串
 
 pageParam：
 
@@ -3011,6 +3095,12 @@ bgColor：
 - 类型：字符串
 - 默认值：若在config.xml里面配置了windowBackground，则默认值为配置的值，否则透明
 - 描述：（可选项）背景色，支持图片和颜色，格式为#fff、#ffffff、rgba(r,g,b,a)等，图片路径支持fs://、widget://等APICloud自定义文件路径协议，同时支持相对路径
+
+scrollToTop：
+
+- 类型：布尔
+- 默认值：false
+- 描述：（可选项）当点击状态栏，页面是否滚动到顶部。若当前屏幕上不止一个页面的scrollToTop属性为true，则所有的都不会起作用。只iOS有效
 
 vScrollBarEnabled：
 
@@ -3039,7 +3129,7 @@ showProgress：
 allowEdit：
 
 - 类型：布尔
-- 默认值：无
+- 默认值：false
 - 描述：（可选项）是否允许长按页面时弹出选择菜单
 
 softInputMode：
@@ -3074,7 +3164,7 @@ iOS系统
 
 关闭整个弹出层窗口，只iPad上面有效
 
-在当前弹出层里面的任意窗口里面调用都会关闭整个弹出层
+在当前弹出层里面的任意页面里面调用都会关闭整个弹出层
 
 closePopoverWin()
 
@@ -3099,7 +3189,7 @@ iOS系统
 
 打开侧滑式布局
 
-打开后，其所在主窗口的name默认为slidLayout，所以关闭整个侧滑布局可以通过api.closeWin({name:'slidLayout'})实现，同时可以通过api.openWin({name:'slidLayout'})来把整个侧滑显示到最前面
+打开后，其所在window的name默认为slidLayout，所以关闭整个侧滑布局可以通过api.closeWin({name:'slidLayout'})实现，同时可以通过api.openWin({name:'slidLayout'})来把整个侧滑显示到最前面
 
 openSlidLayout({params}, callback(ret, err))
 
@@ -3133,11 +3223,12 @@ fixedPane：
 
 ```js
 {
-    name:'',                            //窗口名字（字符串类型）
-    url:'',                             //页面地址，可以为本地文件路径，支持相对路径和绝对路径，也可以为远程地址
+    name:'',                            //window名字（字符串类型）
+    url:'',                             //页面地址，可以为本地文件路径，支持相对路径和绝对路径，以及widget://、fs://等协议路径，也可以为远程地址
     pageParam:{},                       //（可选项）页面参数，页面中可以通过api.pageParam获取，JSON对象
     bgColor:'',                         //（可选项）背景色，支持图片和颜色，格式为#fff、#ffffff、rgba(r,g,b,a)等，图片路径支持fs://、widget://等APICloud自定义文件路径协议，同时支持相对路径
     bounces:false,                      //（可选项）是否弹动，默认值：若在config.xml里面配置了pageBounce，则默认值为配置的值，否则为false
+	scrollToTop:false					//（可选项）当点击状态栏，页面是否滚动到顶部。若当前屏幕上不止一个页面的scrollToTop属性为true，则所有的都不会起作用。默认值：true。只iOS有效
     vScrollBarEnabled:true,             //（可选项）是否显示垂直滚动条，默认true 
     hScrollBarEnabled:true,             //（可选项）是否显示水平滚动条，默认true
 	scaleEnabled:true,                  //（可选项）页面是否可以缩放，为true时softInputMode参数无效，布尔型，默认值：false
@@ -3156,11 +3247,12 @@ slidPane：
 
 ```js
 {
-    name:'',                            //窗口名字（字符串类型）
-    url:'',                             //页面地址，可以为本地文件路径，支持相对路径和绝对路径，也可以为远程地址
+    name:'',                            //window名字（字符串类型）
+    url:'',                             //页面地址，可以为本地文件路径，支持相对路径和绝对路径，以及widget://、fs://等协议路径，也可以为远程地址
     pageParam:{},                       //（可选项）页面参数，页面中可以通过api.pageParam获取，JSON对象
     bgColor:'',                         //（可选项）背景色，支持图片和颜色，格式为#fff、#ffffff、rgba(r,g,b,a)等，图片路径支持fs://、widget://等APICloud自定义文件路径协议，同时支持相对路径
     bounces:false,                      //（可选项）是否弹动，默认值：若在config.xml里面配置了pageBounce，则默认值为配置的值，否则为false
+	scrollToTop:false					//（可选项）当点击状态栏，页面是否滚动到顶部。若当前屏幕上不止一个页面的scrollToTop属性为true，则所有的都不会起作用。默认值：true。只iOS有效
     vScrollBarEnabled:true,             //（可选项）是否显示垂直滚动条，默认true 
     hScrollBarEnabled:true,             //（可选项）是否显示水平滚动条，默认true
 	scaleEnabled:true,                  //（可选项）页面是否可以缩放，为true时softInputMode参数无效，布尔型，默认值：false
@@ -3330,11 +3422,7 @@ iOS系统，Android系统
 
 #**execScript**<div id="18"></div>
 
-在指定窗口中执行脚本
-
-对于frameGroup里面的frame也有效
-
-若name和frameName都未指定，则在当前主窗口中执行脚本
+在指定window或者frame中执行脚本，对于frameGroup里面的frame也有效，若name和frameName都未指定，则在当前window中执行脚本，具体执行逻辑见补充说明。
 
 execScript({params})
 
@@ -3344,13 +3432,13 @@ name：
 
 - 类型：字符串
 - 默认值：无
-- 描述：（可选项）主窗口名称，若要跨主窗口执行脚本，该字段必须指定，首页的名称为root
+- 描述：（可选项）window名称，若要跨window执行脚本，该字段必须指定，首页的名称为root
 
 frameName：
 
 - 类型：字符串
 - 默认值：无
-- 描述：（可选项）子窗口名称
+- 描述：（可选项）frame名称
 
 script：
 
@@ -3361,15 +3449,44 @@ script：
 ##示例代码
 
 ```js
+//在名为winName的window中执行jsfun脚本
+var jsfun = 'funcGoto();';
 api.execScript({
-    name: 'page1',
-    script: 'exec();'
+    name: 'winName',
+    script: jsfun
+});
+```
+```js
+//在名为winName的window中找到
+//名为frmName的frame，并在该frame中执行jsfun脚本
+var jsfun = 'funcGoto();';
+api.execScript({
+    name: 'winName',
+    frameName: 'frmName',
+    script: jsfun
+});
+```
+```js
+//在当前window中找到
+//名为frmName的frame，并在该frame中执行jsfun脚本
+var jsfun = 'funcGoto();';
+api.execScript({
+    frameName: 'frmName',
+    script: jsfun
 });
 ```
 
 ##补充说明
 
-无
+统一处理逻辑为：exec->window->frame
+ 
+name参数：
+当name不传值，或者传空字符串的情况下，execScript对象为调用execScript的window（该window可能位于屏幕或者后台），在该window中继续frameName的逻辑；
+当name传值且非空字符串，但并未找到名为name的window，则直接返回不处理（不论frameName是否有值）。若找到了对应的window，则在该window中继续frameName的逻辑；
+ 
+frameName参数：
+当frameName不传值，或者传空字符串的情况下，execScript对象为调用execScript的window（该window可能位于屏幕或者后台），在该window中执行script；
+当frameName传值且非空字符串，但并未找到名为frameName的frame，则直接返回不处理。若找到了该frame，则在该frame中执行script。
 
 ##可用性
 
@@ -3764,7 +3881,7 @@ uri：
 ##callback(ret, err)
 ret：
 - 类型：JSON对象
-- 描述：目标应用关闭后的返回值
+- 描述：目标应用关闭后的返回值，只支持Android
 
 err：
 - 类型：JSON对象
@@ -3781,15 +3898,10 @@ err：
 
 ```js
 api.openApp({
-	iosUrl: 'http://www.baidu.com',         //例如调用Safari打开百度，其中http为Safari的URL Scheme，例如微信的URL Scheme为wechat，因此可以通过传wechat://来打开微信
-	appParam: {'appParam': 'app参数'}
-},function(ret,err){
-	var msg = JSON.stringify(ret);
-	api.alert({
-		title: 'openApp',
-		msg: msg,
-		buttons: ['确定']
-	});
+	iosUrl: 'http://www.baidu.com',         //例如调用系统浏览器Safari打开百度，其中http为Safari的URL Scheme；同理，微信的URL Scheme为weixin，因此可以通过传weixin://来打开微信
+	appParam: {
+		appParam: 'app参数'
+	}
 });
 ```
 
@@ -3972,6 +4084,12 @@ url：
 - 默认值：无
 - 描述：请求地址
 
+tag：
+
+- 类型：字符串
+- 默认值：无
+- 描述：（可选项）请求标识，可以传递此字段给cancelAjax方法来取消请求
+
 method：
 
 - 类型：字符串
@@ -4031,10 +4149,25 @@ data：
 ```js
 {
 	stream："",		//文件路径（字符串类型）
-	body："",			//请求体（字符串类型）如: JSON.stringify({"name1": "value1", "name2": "value2"}) (将json对像转为json字符串再赋值给body)
-	values：{},		//以表单方式提交参数（JSON对象）, 如 {"field1": "value1", "field1": "value2"} (直接传json对像.)
-	files：{}			//以表单方式提交文件（JSON对象）,如 {"field1": "filepath1", "field2": "filepath2"}，也支持同一字段对应多文件：{"file":["filepath1","filepath2"]}
-} (支持多文件上传)
+	body："",			//请求体（字符串类型）如: JSON.stringify({"name1": "value1", "name2": "value2"}) (将JSON对像转为JSON字符串再赋值给body)
+	values：{},		//以表单方式提交参数（JSON对象）, 如 {"field1": "value1", "field1": "value2"} (直接传JSON对像.)
+	files：{}			//以表单方式提交文件，支持多文件上传（JSON对象）,如 {"field1": "filepath1", "field2": "filepath2"}，也支持同一字段对应多文件：{"file":["filepath1","filepath2"]}
+}
+```
+
+certificate：
+
+- 类型：JSON对象
+- 默认值：无
+- 描述：（可选项）https安全证书设置。
+
+内部字段：
+
+```js
+{
+	path:'',			//p12证书路径，支持fs://、widget://等文件路径协议，字符串类型
+	password:''			//证书密码，字符串类型
+}
 ```
 
 ##callback(ret, err)
@@ -4103,6 +4236,40 @@ api.ajax({
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
+
+
+
+#**cancelAjax**<div id="86"></div>
+
+取消异步请求
+
+cancelAjax({params})
+
+##params
+
+tag：
+
+- 类型：字符串
+- 默认值：无
+- 描述：请求标识
+
+##示例代码
+
+```js
+api.cancelAjax({
+    tag: 'publish'
+});
+```
+
+##补充说明
+
+无
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.1.0及更高版本
 
 
 #**download**<div id="17"></div>
@@ -4574,23 +4741,126 @@ iOS系统，Android系统
 
 #**clearCache**<div id="9"></div>
 
-清除缓存
+清除缓存，包括下载的文件、拍照临时文件、网页缓存文件等，清除时可能需要消耗一定时间。
 
-clearCache()
+clearCache({params}, callback(ret, err))
+
+##params
+
+timeThreshold：
+
+- 类型：数字
+- 默认值：0
+- 描述：（可选项）清除多少天前的缓存
+
+##callback(ret, err)
+
+- 描述：清除完成后的回调
 
 ##示例代码
 
-    api.clearCache();
+    api.clearCache(
+    	function(ret,err){
+    		api.toast({
+    			msg:'清除成功',
+    			location:'middle'
+    		});
+    	}
+    );
 
 ##补充说明
 
-清除下载缓存文件、拍照临时文件、网页缓存文件等
+无
 
 ##可用性
 
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
+
+
+
+#**getCacheSize**<div id="84"></div>
+
+获取缓存占用空间大小，缓存包括下载的缓存文件、拍照临时文件以及网页缓存文件等，计算可能需要花费一些时间
+
+getCacheSize(callback(ret, err))
+
+##callback(ret, err)
+
+ret：
+
+- 类型：JSON对象
+
+内部字段：
+
+```js
+{
+	size:		//缓存大小，单位为Byte，数字类型。（-1：无存储设备、-2：正在准备USB存储设备、-3：无法访问存储设备）
+}
+```
+
+##示例代码
+
+```js
+api.getCacheSize(
+	function(ret, err) {
+		var size = ret.size;
+	}
+);
+```
+
+##补充说明
+
+无
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.1.0及更高版本
+
+
+
+#**getFreeDiskSpace**<div id="85"></div>
+
+获取剩余存储空间大小
+
+getFreeDiskSpace(callback(ret, err))
+
+##callback(ret, err)
+
+ret：
+
+- 类型：JSON对象
+
+内部字段：
+
+```js
+{
+	size:		//剩余存储空间大小，单位为Byte，数字类型。（-1：无存储设备、-2：正在准备USB存储设备、-3：无法访问存储设备）
+}
+```
+
+##示例代码
+
+```js
+api.getFreeDiskSpace(
+	function(ret, err) {
+		var size = ret.size;
+	}
+);
+```
+
+##补充说明
+
+无
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.1.0及更高版本
 
 
 
@@ -4656,6 +4926,20 @@ name：
 - 类型：字符串
 - 默认值：无
 - 描述：自定义事件或系统事件名称（详见[事件](!Event)）
+
+extra：
+
+- 类型：JSON对象
+- 默认值：无
+- 描述：（可选项）附加字段。一些特定事件可能需要提供额外的参数。
+
+内部字段：
+
+```js
+{
+	threshold:			//当事件为scrolltobottom时，设置距离底部多少距离时触发事件，默认值为0，数字类型
+}
+```
 
 ##callback(ret, err)
 
@@ -5479,7 +5763,9 @@ fullScreen：
 
 ##示例代码
 
-    api.setFullScreen({fullScreen:true});
+    api.setFullScreen({
+    	fullScreen:true
+    });
 
 ##补充说明
 
@@ -5503,8 +5789,8 @@ setStatusBarStyle({params})
 style：
 
 - 类型：字符串
-- 默认值：dark
-- 描述：（可选项）状态栏样式（详见[状态栏样式](!Constant#b23)常量）
+- 默认值：无
+- 描述：（可选项）状态栏样式（详见[状态栏样式](!Constant#b23)常量），只支持iOS
 
 color：
 
@@ -5522,7 +5808,7 @@ api.setStatusBarStyle({
 
 ##补充说明
 
-设置状态栏样式，只支持iOS；设置状态栏背景颜色，只支持Android 5.0及以上
+无
 
 ##可用性
 
@@ -5648,6 +5934,39 @@ api.setScreenSecure({
 ##可用性
 
 Android系统
+
+可提供的1.1.0及更高版本
+
+
+#**setAppIconBadge**<div id="83"></div>
+
+设置应用图标右上角数字，支持所有iOS手机，以及部分Android手机，如小米和三星的某些型号，不支持的设备，表现结果为调用该接口无任何效果
+
+setAppIconBadge({params})
+
+##params
+
+badge
+
+- 类型：数字
+- 默认值：无
+- 描述：显示在应用图标右上角的数字。为0时表示清除应用图标上显示的数字
+
+##示例代码
+
+```js
+api.setAppIconBadge({
+	badge: 1
+});
+```
+
+##补充说明
+
+无
+
+##可用性
+
+iOS系统
 
 可提供的1.1.0及更高版本
 
@@ -6247,6 +6566,27 @@ iOS系统，Android系统
 可提供的1.0.0及更高版本
 
 
+#**refreshHeaderLoading**<div id="87"></div>
+
+设置下拉刷新组件为刷新中状态
+
+refreshHeaderLoading()
+
+##示例代码
+
+api.refreshHeaderLoading();
+
+##补充说明
+
+无
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.1.0及更高版本
+
+
 #**refreshHeaderLoadDone**<div id="37"></div>
 
 通知顶部下拉刷新数据加载完毕，组件会恢复到默认状态
@@ -6344,13 +6684,19 @@ allowEdit：
 
 - 类型：布尔
 - 默认值：false
-- 描述：（可选项）是否可以选择图片后进行编辑
+- 描述：（可选项）是否可以选择图片后进行编辑，支持iOS及部分安卓手机
 
 quality：
 
 - 类型：数字
 - 默认值：50
 - 描述：（可选项）图片质量，只针对jpg格式图片（0-100整数）
+
+videoQuality：
+
+- 类型：字符串
+- 默认值：medium
+- 描述：（可选项）视频质量，取值范围(low、medium、high)，只支持iOS
 
 targetWidth：
 

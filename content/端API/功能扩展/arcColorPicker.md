@@ -93,7 +93,7 @@ fixedOn:
 
 - 类型：字符串
 - 默认值：当前主窗口的名字
-- 描述：把百度地图添加到指定窗口的名字，可为空
+- 描述：把模块添加到指定窗口的名字，可为空
 
 fixed：
 
@@ -183,9 +183,7 @@ color：
 ##示例代码
 
 	var obj = api.require('arcColorPicker');
-	obj.setColor({color:'#6757dj'}, function(ret, err){
-		api.alert({msg:ret.value});
-	});
+	obj.setColor({color:'#6757dj'});
 
 ##补充说明
 

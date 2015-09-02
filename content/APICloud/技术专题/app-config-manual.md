@@ -24,6 +24,10 @@ Sort: 1
 - [配置应用是否支持增量更新、云修复](#13)
 - [配置应用开启/关闭调试模式](#14)
 - [配置键盘弹出方式](#14-0)
+- [配置字体](#14-1)
+- [配置后台运行](#14-2)
+- [配置URL Scheme](#14-3)
+- [配置User Agent](#14-4)
 
 [Feature](#15)
 
@@ -49,10 +53,6 @@ Sort: 1
 - [开机启动](#31)
 - [控制振动/闪光灯/屏幕休眠等硬件设备](#32)
 - [访问设备通讯录](#33)
-
-[Font](#34)
-
-[BackgroundMode](#35)
 
 [Meta-Data](#35-1)
 
@@ -293,7 +293,7 @@ Preference用于声明本应用的一些全局设置或者属性，该字段以�
 
 默认值：false	
 
-描述：配置应用是否全屏运行。如果该字段为true，应用将以全屏的方式启动，并以全屏方式运行。运行过程中可随时通过APICloud开放的API（api.setFullScreen）控制退出全屏或重新进入全屏。
+描述：配置应用是否全屏运行。如果该字段为true，应用将以全屏的方式启动，并以全屏方式运行。运行过程中可随时通过APICloud开放的API（api.setFullScreen）控制退出全屏或重新进入全屏。云编译有效。
 
 配置示例：```<preference name="fullScreen" value="true|false" />```
 
@@ -305,7 +305,7 @@ Preference用于声明本应用的一些全局设置或者属性，该字段以�
 
 默认值：true	
 
-描述：配置应用是否自动检测更新。如果该字段为true，应用在启动时将自动与云端握手，并检查本应用是否有更新，是否被强制关闭，是否强制更新等（以上控制可在云端“应用服务”中随时设置）。应用运行过程中会根据这些设置进行相关操作，如：自动下载、强制关闭应用等。
+描述：配置应用是否自动检测更新。如果该字段为true，应用在启动时将自动与云端握手，并检查本应用是否有更新，是否被强制关闭，是否强制更新等（以上控制可在云端“应用服务”中随时设置）。应用运行过程中会根据这些设置进行相关操作，如：自动下载、强制关闭应用等。云编译有效。
 
 配置示例：```<preference name="autoUpdate" value="true|false" />```
 
@@ -317,7 +317,7 @@ Preference用于声明本应用的一些全局设置或者属性，该字段以�
 
 默认值：false	
 
-描述：配置应用是否支持增量更新以及云修复。如果该字段为true，并且自动检测更新字段autoUpdate也为true，应用在启动时将自动与云端握手，并检查本应用当前版本下是否有增量包更新，是否需要进行云修复。应用运行过程中会根据这些设置进行相关操作，如：提示更新下载、静默更新下载等。
+描述：配置应用是否支持增量更新以及云修复。如果该字段为true，并且自动检测更新字段autoUpdate也为true，应用在启动时将自动与云端握手，并检查本应用当前版本下是否有增量包更新，是否需要进行云修复。应用运行过程中会根据这些设置进行相关操作，如：提示更新下载、静默更新下载等。云编译有效。
 
 配置示例：```<preference name="smartUpdate" value="false" />```
 
@@ -329,7 +329,7 @@ Preference用于声明本应用的一些全局设置或者属性，该字段以�
 
 默认值：false  
       
-描述：配置应用是否处于调试模式。如果该字段为true，标识应用进入调试模式，应用运行过程中发生的因代码书写失误等原因导致的Js报错（引起执行中断）信息，将会以弹窗的方式覆盖在应用最上方，供开发者参考。目前仅Android平台有效。
+描述：配置应用是否处于调试模式。如果该字段为true，标识应用进入调试模式，应用运行过程中发生的因代码书写失误等原因导致的Js报错（引起执行中断）信息，将会以弹窗的方式覆盖在应用最上方，供开发者参考。
 
 配置示例：```<preference name="debug" value="false" />```
 
@@ -337,21 +337,109 @@ Preference用于声明本应用的一些全局设置或者属性，该字段以�
 
 字段名：softInputMode
 
-取值范围：resize、pan、auto. iOS平台resize和auto等效
-
-默认值：auto  
-      
-描述：
- - resize：弹出键盘时会把页面往上推移;
+取值范围：
+ - resize：弹出键盘时会把页面往上推移，iOS平台resize和auto等效;
  - pan：弹出键盘时页面不会被往上推移
  - auto：由系统根据输入框位置决定是否页面往上推移
 
+默认值：auto  
+      
+描述：配置键盘弹出后页面的处理方式。云编译有效。
+
 配置示例：```<preference name="softInputMode" value="resize"/>```
+
+##配置字体<div id="14-1"></div>
+
+字段名：font
+      
+描述：用于配置字体文件，配置以后在前端页面里面就可以使用该字体。字体文件需放在widget目录里面，可以同时配置多种字体。目前只支持iOS，云编译有效。
+
+配置示例：
+
+```
+//配置一个值：
+<preference name="font" value="widget/res/xingkai.ttf" />
+
+//配置多个值，各值之间用竖线 | 隔开：
+<preference name="font" value="widget/res/xingkai.ttf | widget/res/lishu.ttf" />
+```
+
+##配置后台运行<div id="14-2"></div>
+
+字段名：backgroundMode
+
+取值范围：
+
+- audio：在后台播放和录制音频，包括使用AirPlay播放音频、视频流
+- location：在后台持续获取位置信息
+- voip：网络电话
+- newsstand-content：报刊杂志类应用在后台下载内容
+- external-accessory：与定期更新的硬件外设工作
+- bluetooth-central：与定期更新的蓝牙配件工作
+- bluetooth-peripheral：作为蓝牙外设，进行蓝牙通信
+- fetch：定期下载少量的内容
+- remote-notification：希望在收到通知后立即去下载相关内容，使相关内容可以尽快显示出来
+      
+描述：用于配置iOS后台运行，配置后可以实现后台播放音乐、获取位置信息等功能。云编译有效。
+
+不要随意配置后台运行，因为后台运行的同时也会带来电池续航的问题，苹果公司规定应用使用了后台运行时，必须要在iTunes Connect里应用的描述里面进行声明，否则应用会被拒绝。具体可以参考其他应用如百度地图里面的描述。
+
+配置示例：
+
+```
+//配置一个值：
+<preference name="backgroundMode" value="audio"/>
+
+//配置多个值，各值之间用竖线 | 隔开：
+<preference name="backgroundMode" value="audio | location"/>
+```
+
+##配置URL Scheme<div id="14-3"></div>
+
+字段名：urlScheme
+      
+描述：配置应用的URL Scheme，该scheme用于从浏览器或其他应用中启动本应用，并且可以传递参数数据。此字段云编译有效。
+
+配置后，外部浏览器页面里面就可以通过a标签链接打开应用：
+```
+<a href="myScheme://?param1=xxx&param2=xxx">测试打开应用</a>
+```
+
+配置示例：
+
+```
+<preference name="urlScheme" value="myScheme" />
+```
+
+##配置User Agent<div id="14-4"></div>
+
+字段名：userAgent
+      
+描述：用于配置User Agent，配置后会更改页面里的User Agent以及ajax请求的User Agent。云编译有效。
+
+若自定义User Agent里面带有双引号等字符，则需要将内容存于一文本文件里面，并将value配置为该文件的路径，注意该文件必须放在widget目录里面，配置时必须以widget://协议开头，这种方式会替换掉默认的User Agent。
+
+配置示例：
+
+```
+//值为文件路径时，默认的User Agent会被替换成文件中的内容
+<preference name="userAgent" value="widget://res/ua.txt" />
+
+//值为普通字符串时，内容会被添加到系统默认User Agent的后面
+<preference name="userAgent" value="APICloud" />
+```
 
 
 #**Feature**<div id="15"></div>
 
-Feature用于声明本应用使用到的平台扩展模块功能、第三方SDK等接入规范、运行时组件，并声明该模块默认需要传入的参数及值（param），每个Feature对应一个或多个参数值。APICloud应用通过这些模块为用户提供特定的功能。
+Feature用于声明本应用使用到的平台扩展模块功能、第三方SDK等接入规范、运行时组件，并声明该模块默认需要传入的参数及值（param），每个Feature对应一个或多个参数值。APICloud应用通过这些模块为用户提供特定的功能。其基本结构和字段如下：
+
+```
+//forceBind字段表示是否强制绑定模块，为true时在网站上面该模块会被自动勾选上且不能去掉。默认值为true
+<feature name="moduleName" forceBind="true">
+    <param name="xxx" value="xxx" />
+</feature>
+```
 
 ##微信<div id="16"></div>
 
@@ -665,45 +753,6 @@ Permission用于声明本应用用到的所有系统权限。APPCloud开放的AP
 是否敏感：是
 
 配置示例：```<permission name="contact" />```
-
-#**Font**<div id="34"></div>
-
-font用于配置字体文件，配置以后在前端页面里面就可以使用该字体。
-
-字体文件需放在widget目录里面，可以同时配置多种字体。
-
-目前只支持iOS。
-
-配置示例：
-
-```
-<font name="widget/res/xingkai.ttf" />
-<font name="widget/res/lishu.ttf" />
-```
-
-#**BackgroundMode**<div id="35"></div>
-
-backgroundMode用于配置iOS后台运行，例如可以实现后台播放音乐。
-
-取值范围包括audio、location、voip、newsstand-content、external-accessory、bluetooth-central、bluetooth-peripheral、fetch、remote-notification等，各个值的功能如下：
-
-```js
-audio					//在后台播放和录制音频，包括使用AirPlay播放音频、视频流
-location				//在后台持续获取位置信息
-voip					//网络电话
-newsstand-content		//报刊杂志类应用在后台下载内容
-external-accessory		//与定期更新的硬件外设工作
-bluetooth-central		//与定期更新的蓝牙配件工作
-bluetooth-peripheral	//作为蓝牙外设，进行蓝牙通信
-fetch					//定期下载少量的内容
-remote-notification		//希望在收到通知后立即去下载相关内容，使相关内容可以尽快显示出来
-```
-
-配置示例：
-
-```
-<backgroundMode name="audio" />
-```
 
 #**Meta-Data**<div id="35-1"></div>
 

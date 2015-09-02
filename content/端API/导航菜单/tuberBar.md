@@ -20,6 +20,8 @@ Description: tuberBar
 [show](#5)
 
 [close](#6)
+
+[bringToFront](#7)
 </div>
 
 #**概述**
@@ -59,8 +61,6 @@ buttons：
 [{
     frame:         //（可选项）按钮图标的坐标和宽高，json对象，默认值见内部字段
                      内部字段：{
-                       x:  //（可选项）按钮图标左上角点在按钮区域内的坐标，数字类型，默认20
-                       y:  //（可选项）按钮图标左上角点在按钮区域内的坐标，数字类型，默认20
                        w:  //（可选项）按钮图标的宽度，数字类型，默认20
                        h:  //（可选项）按钮图标的高度，数字类型，默认20
                      } 
@@ -75,12 +75,6 @@ buttons：
     titleSelected： //（可选项）按钮下面的标题文字选中后颜色，支持rgb、rgba、#，字符串类型,默认#ff0000
 }]
 ```
-
-fixedOn：
-
-- 类型：字符串
-- 默认值：当前主窗口的名字
-- 描述：（可选项）将此模块视图添加到指定窗口的名字
 
 selectedIndex：
 
@@ -107,24 +101,24 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('tuberBar');
-obj.open({
-	bgImg:'widget://res/tuberBar_bg.png',
-	selectImg:'widget://res/selecte_tuberBar.png',
-	items:[{title:'item1',img:'widget://res/tuberBar_item1.png',badge:'1'},
-          {title:'item2',img:'widget://res/tuberBar_item1.png'},
-          {title:'item3',img:'widget://res/tuberBar_item1.png',badge:'2'},
-          {title:'item4',img:'widget://res/tuberBar_item1.png'},
-          {title:'item5',img:'widget://res/tuberBar_item1.png',badge:'2'},
-          {title:'item6',img:'widget://res/tuberBar_item1.png',badge:'200000'},
-          {title:'item7',img:'widget://res/tuberBar_item1.png',badge:'2'},
-          {title:'item8',img:'widget://res/tuberBar_item1.png',badge:'2'},
-          {title:'item9',img:'widget://res/tuberBar_item1.png',badge:'2'},
-          {title:'item10',img:'widget://res/tuberBar_item1.png',badge:'2'},
-          {title:'item11',img:'widget://res/tuberBar_item1.png',badge:'2'}]
-},function(ret,err){
-	api.alert({msg:ret.index});
-});
+       var obj = api.require('tuberBar');
+       obj.open({
+		   bg:'widget://res/tuberBar_bg.png',
+		   selectedIndex:3,
+		   buttons:[{title:'buttons1',normal:"widget://image/tabBar_bg.png"},
+		          {title:'buttons2',normal:"widget://image/tabBar_bg.png"},
+		          {title:'buttons3',normal:"widget://image/tabBar_bg.png"},
+		          {title:'buttons4',normal:"widget://image/tabBar_bg.png"},
+		          {title:'buttons5',normal:"widget://image/tabBar_bg.png"},
+		          {title:'buttons6',normal:"widget://image/tabBar_bg.png"},
+		          {title:'buttons7',normal:"widget://image/tabBar_bg.png"},
+		          {title:'buttons8',normal:"widget://image/tabBar_bg.png"},
+		          {title:'buttons9',normal:"widget://image/tabBar_bg.png"},
+		          {title:'buttons10',normal:"widget://image/tabBar_bg.png"},
+		          {title:'buttons11',normal:"widget://image/tabBar_bg.png"}]
+	},function(ret,err){
+         alert(JSON.stringify(ret) + JSON.stringify(err));
+	});
 ```
 
 ##补充说明
@@ -270,6 +264,23 @@ close()
 ##补充说明
 
 将打开的tuberBar从内存清除
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.0.0及更高版本
+
+#**bringToFront**<div id="7"></div>
+
+将已经打开的模块置为最上层显示
+
+bringToFront()
+
+##示例代码
+
+    var obj = api.require('tuberBar');
+    obj.bringToFront();
 
 ##可用性
 

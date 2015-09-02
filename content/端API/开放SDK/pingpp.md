@@ -83,7 +83,7 @@ var params = {
 
 pingpp.createPayment(params, function(ret, err){
     if (ret.result == "success") {
-        api.alert("success");
+        api.alert({msg:"success"});
     }
 });
 ```
@@ -104,7 +104,7 @@ Android 系统, iOS 系统
 
 获取版本号
 
-getVersion(callback);
+getVersion();
 
 ## callback(ret, err)
 
@@ -117,25 +117,9 @@ ret
 
 ```
 {
-    result:"success"    // 可选："success", "fail", "cancel", "invalid"
+    version:"2.1.1"    // 版本号
 }
 ```
-iOS 中微信客户端未安装时会返回 `invalid`，Android 中微信客户端或者银联支付插件未安装时会返回 `invalid`
-
-err
-
-- 类型：JSON 对象
-
-内部字段：
-
-```
-{
-    code:0,    // 错误码 
-    msg:""     // 错误描述
-}
-```
-
-错误码：详见[错误码](!Constant)常量
 
 ##示例代码
 
@@ -143,7 +127,7 @@ err
 var pingpp = api.require('pingpp');
 
 pingpp.getVersion(function(ret){
-    api.alert(ret.version);
+    api.alert({msg:ret.version});
 });
 ```
 
@@ -156,6 +140,34 @@ pingpp.getVersion(function(ret){
 Android系统  iOS系统
 
 可提供的1.0.0及更高版本
+
+
+
+#**setDebugMode**<div id="a2"></div>
+
+设置是否开启 Debug 模式
+
+setDebugMode({enabled:true});
+
+## params
+
+enabled
+- 类型：布尔型
+- 描述：是否开启 Debug 模式
+
+##示例代码
+```
+var pingpp = api.require('pingpp');
+pingpp.setDebugMode({enabled:true});
+```
+
+##补充说明
+
+无
+
+##可用性
+
+iOS 系统，Android 系统
 
 </div>
 

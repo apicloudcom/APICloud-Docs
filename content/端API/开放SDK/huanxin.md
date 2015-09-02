@@ -2,7 +2,9 @@
 Title: huanxin
 Description: huanxin
 */
-
+<style type="text/css">
+    .outline a{width: 33.32%;}
+</style>
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 	<li><a href="#const-content">Constant</a></li>

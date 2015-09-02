@@ -9,16 +9,18 @@ Description: ipaynow
 <div id="method-content">-
 
 <div class="outline">
+
 [generatePresignMessage](#a1)
 
 [doSignature](#a2)
 
 [pay](#a3)
+
 </div>
 
 #**概述**
 
-ipaynow封装了支付宝、微信、银联、点卡充值卡等多个渠道的支付接口。使用此模块可轻松实现各个渠道的支付功能。
+ipaynow(现在支付)封装了支付宝、微信、银联、点卡充值卡、百度支付等多个渠道的支付接口。使用此模块可轻松实现各个渠道的支付功能。
 
 使用之前需要先到[ipaynow](https://payment.ipaynow.cn/online_merchant/index.jsp)注册，并根据技术文档部署 Server SDK。
 需要参考聚合支付SDK中后台接口文档，开发后台接口使用聚合支付秘钥对交易数据进行签名。
@@ -139,7 +141,7 @@ payChannelType：
 
 - 类型：字符串
 - 默认值：无
-- 描述：渠道类型，下列中的一个值，银联支付:11，支付宝支付:12，微信支付:13，点卡支付:16，充值卡支付:19，不能为空
+- 描述：渠道类型，下列中的一个值，银联支付:11，支付宝支付:12，微信支付:13，点卡支付:16，充值卡支付:19，百度支付：50，不能为空
 
 
 

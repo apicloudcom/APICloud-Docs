@@ -15,6 +15,10 @@ Description: graph
 [reload](#2)
 
 [close](#3)
+
+[show](#4)
+
+[hide](#5)
 </div>
 
 #**概述**
@@ -335,48 +339,6 @@ iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
-#**hide**<div id="2"></div>
-
-隐藏曲线图视图
-
-hide()
-
-##示例代码
-
-	var obj = api.require('graph');
-	obj.hide();
-
-##补充说明
-
-隐藏曲线图视图，并没有从内存清空
-
-##可用性
-
-IOS系统，安卓系统
-
-可提供的1.0.1及更高版本
-
-#**show**<div id="2"></div>
-
-显示曲线图视图
-
-show()
-
-##示例代码
-
-	var obj = api.require('graph');
-	obj.show();
-
-##补充说明
-
-显示已隐藏的曲线图视图
-
-##可用性
-
-IOS系统，安卓系统
-
-可提供的1.0.1及更高版本
-
 #**close**<div id="3"></div>
 
 关闭曲线图视图
@@ -397,6 +359,48 @@ close()
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
+
+#**hide**<div id="4"></div>
+
+隐藏曲线图视图
+
+hide()
+
+##示例代码
+
+	var obj = api.require('graph');
+	obj.hide();
+
+##补充说明
+
+隐藏曲线图视图，并没有从内存清空
+
+##可用性
+
+IOS系统，安卓系统
+
+可提供的1.0.1及更高版本
+
+#**show**<div id="5"></div>
+
+显示曲线图视图
+
+show()
+
+##示例代码
+
+	var obj = api.require('graph');
+	obj.show();
+
+##补充说明
+
+显示已隐藏的曲线图视图
+
+##可用性
+
+IOS系统，安卓系统
+
+可提供的1.0.1及更高版本
 
 </div>
 

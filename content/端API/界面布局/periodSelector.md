@@ -14,6 +14,10 @@ Description: periodSelector
 [set](#2)
 
 [close](#3)
+
+[hide](#4)
+
+[show](#5)
 </div>
 
 #**概述**
@@ -181,7 +185,7 @@ obj.open({
 
 ##可用性
 
-iOS系统
+iOS系统、 android系统
 
 可提供的1.0.0及更高版本
 
@@ -242,7 +246,7 @@ rMinute：
 
 ##可用性
 
-iOS系统
+iOS系统、 android系统
 
 可提供的1.0.0及更高版本
 
@@ -264,11 +268,11 @@ close()
 
 ##可用性
 
-iOS系统
+iOS系统、 android系统
 
 可提供的1.0.0及更高版本
 
-#**hide**<div id="3"></div>
+#**hide**<div id="4"></div>
 
 隐藏时段选择器
 
@@ -285,11 +289,11 @@ hide()
 
 ##可用性
 
-iOS系统
+iOS系统、 android系统
 
 可提供的1.0.1及更高版本
 
-#**show**<div id="3"></div>
+#**show**<div id="5"></div>
 
 显示时段选择器
 
@@ -306,7 +310,7 @@ show()
 
 ##可用性
 
-iOS系统
+iOS系统、 android系统
 
 可提供的1.0.1及更高版本
 

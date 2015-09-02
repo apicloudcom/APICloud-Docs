@@ -32,6 +32,12 @@ Description: selectList
 [setSelected](#11)
 
 [getSelected](#12)
+
+[getIndex](#13)
+
+[getData](#14)
+
+[getSortedData](#15)
 </div>
 
 #**概述**
@@ -138,13 +144,17 @@ fixedOn:
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
     id：        //返回视图的id，数字类型
-    contents:   //选中的item的数据内容的数组
+    contents:   //选中的item的数据内容的数组，内部字段如下： 
+                 内部字段：[{
+                     title:       //原数据源的标题
+                     subTitle:    //原数据源的子标题
+	                 index:       //数字类型；模块内排序后本条数据的新索引值
+                 }]            
 }
 ```
 
@@ -214,6 +224,7 @@ contents：
 - 默认值：无
 - 描述：(可选项)选择列表内容（字符串）组成的数组，模块内会按照a-z排序显示，若不传则仅停止加载更多状态
 - 内部字段：
+
 ```js
 [{
 	 title:        //标题字符串，不传则不显示
@@ -554,6 +565,7 @@ content：
 - 默认值：无
 - 描述：(可选项)选择列表内容（字符串）组成的json对象
 - 内部字段：
+
 ```js
 {
 	 title:        //标题字符串，不传则不显示
@@ -602,12 +614,13 @@ index：
 - 默认值：列表最后一条数据的索引
 - 描述：（可选项）要插入的item索引下标
 
-contents：
+content：
 
 - 类型：json
 - 默认值：无
 - 描述：(可选项)选择列表内容（字符串）组成的json对象
 - 内部字段：
+
 ```js
 {
 	 title:        //标题字符串，不传则不显示
@@ -704,8 +717,13 @@ ret：
 - 内部字段：
 
 ```js
-{
-    contents:   //选中的item的数据内容组成的数组
+{            
+    contents:   //选中的item的数据内容的数组，内部字段如下： 
+                 内部字段：[{
+                     title:       //原数据源的标题
+                     subTitle:    //原数据源的子标题
+	                  index:       //数字类型；模块内排序后本条数据的新索引值
+                 }]  
 }
 ```
 ##示例代码
@@ -716,6 +734,169 @@ obj.getSelected({id:1},fucntion(ret,err){
     api.alert({msg:ret.indexs[0]});
 });
 ```
+
+##补充说明
+
+无
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.0.0及更高版本
+
+#**getIndex**<div id="13"></div>
+
+根据唯一标识查找该item在列表中的下标
+
+getIndex({params },callBack(ret,err))
+
+##params
+
+id:
+
+- 类型：数字
+- 默认值：无
+- 描述：要操作的模块视图id
+
+key：
+
+- 类型：字符串
+- 默认值：无
+- 描述：唯一标识的key
+
+value：
+
+- 类型：字符串
+- 默认值：无
+- 描述：每条item数据的唯一标识
+
+##callBack
+
+ret：
+
+- 类型：JSON对象
+- 内部字段：
+
+```js
+	{
+	    index:     //获取的item的索引
+	}
+```
+
+##示例代码
+
+	var obj = api.require('selectList');
+	obj.getIndex({
+	     key:"uid",
+	     value:"0000001"
+	},function(ret,err){
+	     api.alert({msg:ret.index})
+	});
+
+##补充说明
+
+无
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.0.0及更高版本
+
+#**getData**<div id="14"></div>
+
+根据item的索引获取item的数据
+
+getData({params },callBack(ret,err))
+
+##params
+
+id:
+
+- 类型：数字
+- 默认值：无
+- 描述：要操作的模块视图id
+
+index：
+
+- 类型：数字
+- 默认值：0
+- 描述：（可选项）要获取数据的item的索引
+
+##callback(ret, err)
+
+ret：
+
+- 类型：JSON对象
+- 内部字段：
+
+```js
+	{
+    content:   //选中的item的数据内容的数组，内部字段如下： 
+                 内部字段：{
+                     title:       //原数据源的标题
+                     subTitle:    //原数据源的子标题
+                 }
+	}
+```
+##示例代码
+
+	var obj = api.require('selectList');
+	obj.getData({
+	     index:0
+	},function(ret,err){
+	     api.alert({msg:ret.data});
+	});
+
+##补充说明
+
+无
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.0.0及更高版本
+
+#**getSortedData**<div id="15"></div>
+
+获取排序后的所有的数据
+
+getSortedData({params },callBack(ret,err))
+
+##params
+
+id:
+
+- 类型：数字
+- 默认值：无
+- 描述：要操作的模块视图id
+
+##callback(ret, err)
+
+ret：
+
+- 类型：JSON对象
+- 内部字段：
+
+```js
+	{
+    contents:   //open时传入的数据源经过排序处理后的新数组，内部字段如下： 
+                 内部字段：[{
+                     title:       //原数据源的标题
+                     subTitle:    //原数据源的子标题
+                 }]
+	}
+```
+##示例代码
+
+	var obj = api.require('selectList');
+	obj. getSortedData({
+	     id:1
+	},function(ret,err){
+	     api.alert({msg:ret.data});
+	});
 
 ##补充说明
 

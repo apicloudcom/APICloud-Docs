@@ -1,0 +1,10 @@
+/*Title: tingyunDescription: tingyun*/<ul id="tab" class="clearfix">	<li class="active"><a href="#method-content">Method</a></li>	<li><a href="#const-content">Constant</a></li></ul><div id="method-content"><div class="outline">[setCustomerData](#a1)</div>#**概述** 听云App是下一代移动应用性能监测管理解决方案。专注于帮助开发者解决应用上线后性能问题的监控与管理。通过应用内嵌入听云App SDK，同步真实用户访问体验，及时发现使用过程中的崩溃、网络和HTTP错误、网络连接不畅、交互缓慢等问题 ，帮助开发者第一时间终结用户流失。通过实时、多维立体的性能数据展现与自动分析，更能防患于未然，降低App上线后维护与迭代成本，直接提升用户留存率。**暂仅支持 IOS 平台****使用此模块之前需先配置config文件的Feature，方法如下**    名称：tingyun    参数：appKey，rate，locationAllowed，option    描述：配置听云专用的appKey，采样率，是否采集地理位置信息，模块启用选项    配置示例:    <feature name="tingyun">        <param name="appKey" value="1234567890"/>        <param name="rate" value="0.5"/>        <param name="locationAllowed" value="0"/>        <param name="option" value="7"/>    </feature>    字段描述：     appKey:通过听云平台申请的appKey，不同的app需申请不同的appkey     rate：设置听云App启动的采样率（0.0~1.0），默认值为1.0     locationAllowed：设置听云App是否采集地理位置信息，1为启用，0为不启用，默认值为0     option：设置听云App的模块启用选项，取值范围为（1~7），默认值为7             1-只启用网络性能监控模块             2-只启用UI性能监控模块             3-启用网络和UI性能监控模块             4-只启用crash采集模块             5-启用网络性能监控和crash采集模块             6-启用UI性能监控和crash采集模块             7-启用全部模块#**setCustomerData**<div id="a1"></div>  设置发生崩溃时的自定义信息
+  setCustomerData（params）##paramsKey:
+* 类型：字符串* 描述：设置发生崩溃时的自定义信息 key 值
+value:
+* 类型：字符串* 描述：设置发生崩溃时的自定义信息 value 值
+##示例代码：    var obj = api.require('tingyun')    obj.setCustomerData({      key1:'value1',
+	  key2:'value2'    })##补充说明crash信息中将会包含该自定义信息##可用性
+iOS系统
+
+可提供的1.0.0及更高版本

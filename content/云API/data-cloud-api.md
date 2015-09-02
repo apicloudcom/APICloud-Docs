@@ -25,10 +25,26 @@ Sort: 1
 [错误代码清单](#7)
 
 ###提示
+----------
 
 现有5张系统表：accessToken、file、role、roleMapping、user
 
 为了显示跟自定义表进行区别，所以统一在开始位置了加下划线以示区别，_accessToken、_file、_role、_roleMapping、_user。实际操作不需要加下划线。
+
+###SDK
+----------
+
+####手机端
+
+- [mcm模块](http://docs.apicloud.com/%E7%AB%AFAPI/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%AF%B9%E6%8E%A5/mcm)
+- [js-sdk](https://github.com/APICloud-com/mcm-js-sdk)
+
+####后端语言
+
+- [nodejs](https://github.com/APICloud-com/node-sdk)
+- [C#](https://github.com/APICloud-com/.NET-sdk)
+- [Java](https://github.com/APICloud-com/Java-sdk)
+- [Python](https://github.com/APICloud-com/python-sdk)
 
 
 
@@ -897,7 +913,7 @@ $.ajax(options).done(function(data){
 		"url": "http://file.apicloud.com/mcm/A6961095046004/a6c6cef31b5aa903db7e2788ce74f29d.png",
 		"name": "2.png",
 		"id": "547d92ed04fca43974ca87a6"
-		}
+	}
 }
 ```
 #**更新操作符**<div id="10"></div>
@@ -912,6 +928,10 @@ $.ajax(options).done(function(data){
 |$min			|仅更新字段如果指定的值小于现有的字段值。|
 |$max		|仅更新字段如果指定的值大于现有的字段值。|
 |$currentDate		|一个字段的值设置为当前日期,日期或时间戳。|
+|$push		|增加一个项到数组的尾部|
+|$pushAll		|增加多个项到数组的尾|
+|$pull		|删除一个项从数组当中|
+|$pullAll		|删除多个项从数组中|
 
 ###**$inc**
 -----
@@ -931,9 +951,9 @@ $inc是一个原子操作在一个文档中.
 
 ```js
 {
-  _id: 543f2e0e474f229d61185565,
-  sku: "abc123",
-  quantity: 10
+  "_id": "543f2e0e474f229d61185565",
+  "sku": "abc123",
+  "quantity": 10
 }
 ```
 使用$inc进行更新
@@ -969,7 +989,11 @@ $mul是一个原子操作在一个文档中.
 考虑有如下一个集合:
 
 ```js
-{ _id: 543f2e0e474f229d61185565, item: "ABC", price: 10.99 }
+{ 
+	"_id": "543f2e0e474f229d61185565", 
+	"item": "ABC", 
+	"price": 10.99 
+}
 ```
 使用$mul进行更新
 ```js
@@ -981,7 +1005,11 @@ curl -X PUT \
 ```
 更新后的文档会像:
 ```js
-{ _id: 1, item: "ABC", price: 13.7375 }
+{ 
+	"_id": 1, 
+	"item": "ABC", 
+	"price": 13.7375 
+}
 ```
 
 ###**$set**
@@ -998,14 +1026,14 @@ $set操作符替换一个字段的值用指定的值,具有以下形式:
 
 ```js
 {
-  _id: 543f2e0e474f229d61185565,
-  sku: "abc123",
-  quantity: 250,
-  instock: true,
-  reorder: false,
-  details: { model: "14Q2", make: "xyz" },
-  tags: [ "apparel", "clothing" ],
-  ratings: [ { by: "ijk", rating: 4 } ]
+  "_id": "543f2e0e474f229d61185565",
+  "sku": "abc123",
+  "quantity": 250,
+  "instock": true,
+  "reorder": false,
+  "details": { model: "14Q2", make: "xyz" },
+  "tags": [ "apparel", "clothing" ],
+  "ratings": [ { by: "ijk", rating: 4 } ]
 }
 ```
 使用$set进行更新
@@ -1019,14 +1047,14 @@ curl -X PUT \
 更新后的文档会像:
 ```js
 {
-  _id: 543f2e0e474f229d61185565,
-  sku: "abc123",
-  quantity: 500,
-  instock: true,
-  reorder: false,
-  details: { model: "14Q3", make: "xyz" },
-  tags: [ "coats", "outerwear", "clothing" ],
-  ratings: [ { by: "ijk", rating: 4 } ]
+  "_id": "543f2e0e474f229d61185565",
+  "sku": "abc123",
+  "quantity": 500,
+  "instock": true,
+  "reorder": false,
+  "details": { model: "14Q3", make: "xyz" },
+  "tags": [ "coats", "outerwear", "clothing" ],
+  "ratings": [ { by: "ijk", rating: 4 } ]
 }
 ```
 
@@ -1043,7 +1071,11 @@ $min操作符更新字段的值为一个指定的值,如果值小于指定字段
 考虑有如下一个集合:
 
 ```js
-{ _id: 543f2e0e474f229d61185565, highScore: 800, lowScore: 200 }
+{ 
+	"_id": "543f2e0e474f229d61185565", 
+	"highScore": 800, 
+	"lowScore": 200 
+}
 ```
 使用$min进行更新
 ```js
@@ -1055,7 +1087,11 @@ curl -X PUT \
 ```
 更新后的文档会像:
 ```js
-{ _id: 543f2e0e474f229d61185565, highScore: 800, lowScore: 150 }
+{ 
+	"_id": "543f2e0e474f229d61185565", 
+	"highScore": 800, 
+	"lowScore": 150 
+}
 ```
 
 ###**$max**
@@ -1071,7 +1107,11 @@ $max操作符更新字段的值指定的值如果指定的值大于字段的当�
 考虑有如下一个集合:
 
 ```js
-{ _id: 543f2e0e474f229d61185565, highScore: 800, lowScore: 200 }
+{ 
+	"_id": "543f2e0e474f229d61185565", 
+	"highScore": 800, 
+	"lowScore": 200 
+}
 ```
 使用$set进行更新
 ```js
@@ -1083,7 +1123,11 @@ curl -X PUT \
 ```
 更新后的文档会像:
 ```js
-{ _id: 1, highScore: 950, lowScore: 200 }
+{ 
+	"_id": 1, 
+	"highScore": 950, 
+	"lowScore": 200 
+}
 ```
 ###**$currentDate**
 -----
@@ -1098,7 +1142,12 @@ $currentDate操作符将一个字段的值设置为当前日期,具有以下形�
 考虑有如下一个集合:
 
 ```js
-{ _id: 543f2e0e474f229d61185565, status: "a", lastModified: ISODate("2013-10-02T01:11:18.965Z"),date: ISODate("2013-10-02T01:11:18.965Z") }
+{ 
+	"_id": "543f2e0e474f229d61185565",
+	"status: "a", 
+	"lastModified": ISODate("2013-10-02T01:11:18.965Z"),
+	"date": ISODate("2013-10-02T01:11:18.965Z") 
+}
 ```
 使用$currentDate进行更新
 ```js
@@ -1111,13 +1160,188 @@ curl -X PUT \
 更新后的文档会像:
 ```js
 {
-   "_id" : 543f2e0e474f229d61185565,
+   "_id" : "543f2e0e474f229d61185565",
    "lastModified" : ISODate("2014-09-17T23:25:56.314Z"),
    "date" : Timestamp(1410996356, 1)
 }
 ```
+###**$push**
+-----
 
+$push操作符将指定值添加到数组中,具有以下形式:
 
+```js
+{ $push: { <field1>: <value1>, ... } }
+```
+####行为
+
+如果字段不是数组类型，操作将会失败。
+
+####Example
+
+考虑有如下一个集合:
+
+```js
+{
+   "_id" : "543f2e0e474f229d61185565",
+   "quizzes" : [
+      { "wk": 1, "score" : 10 },
+      { "wk": 2, "score" : 8 },
+      { "wk": 3, "score" : 5 },
+      { "wk": 4, "score" : 6 }
+   ]
+}
+```
+使用$push进行更新
+```js
+curl -X PUT \
+    -H "X-APICloud-AppId: {{your_app_id}}" \
+    -H "X-APICloud-AppKey: {{your_app_key}}" \
+    -d '{"$push": { quizzes: { "wk": 5, "score": 8 }}}' \
+    https://d.apicloud.com/mcm/api/modelName/543f2e0e474f229d61185565
+```
+更新后的文档会像:
+```js
+{
+   "_id" : "543f2e0e474f229d61185565",
+   "quizzes" : [
+      { "wk": 1, "score" : 10 },
+      { "wk": 2, "score" : 8 },
+      { "wk": 3, "score" : 5 },
+      { "wk": 4, "score" : 6 },
+	  { "wk": 5, "score" : 8 }
+   ] 
+}
+```
+
+###**$pushAll**
+-----
+
+$pushAll操作符将数组添加到数组中,具有以下形式:
+
+```js
+{ $pushAll: { <field>: [ <value1>, <value2>, ... ] } }
+```
+####行为
+
+如果字段不是数组类型，操作将会失败。
+
+####Example
+
+考虑有如下一个集合:
+
+```js
+{
+   "_id" : "543f2e0e474f229d61185565",
+   "quizzes" : [
+      { "wk": 1, "score" : 10 },
+      { "wk": 2, "score" : 8 },
+      { "wk": 3, "score" : 5 },
+      { "wk": 4, "score" : 6 }
+   ]
+}
+```
+使用$pushAll进行更新
+```js
+curl -X PUT \
+    -H "X-APICloud-AppId: {{your_app_id}}" \
+    -H "X-APICloud-AppKey: {{your_app_key}}" \
+    -d '{"$pushAll": { quizzes: [{ "wk": 5, "score": 8 },{ "wk": 6, "score": 14 }]}}' \
+    https://d.apicloud.com/mcm/api/modelName/543f2e0e474f229d61185565
+```
+更新后的文档会像:
+```js
+{
+   "_id" : "543f2e0e474f229d61185565",
+   "quizzes" : [
+      { "wk": 1, "score" : 10 },
+      { "wk": 2, "score" : 8 },
+      { "wk": 3, "score" : 5 },
+      { "wk": 4, "score" : 6 },
+	  { "wk": 5, "score" : 8 },
+	  { "wk": 6, "score" : 14 }
+   ] 
+}
+```
+
+###**$pull**
+-----
+
+$pull操作符将指定项从数组中删除,具有以下形式:
+
+```js
+{ $pull: { <field1>: value, <field2>: value, ... } }
+```
+####行为
+
+如果字段不是数组类型，操作将会失败。
+
+####Example
+
+考虑有如下一个集合:
+
+```js
+{
+   _id: "543f2e0e474f229d61185565",
+   fruits: [ "apples", "pears", "oranges", "grapes", "bananas" ],
+   vegetables: [ "carrots", "celery", "squash", "carrots" ]
+}
+```
+使用$pull进行更新
+```js
+curl -X PUT \
+    -H "X-APICloud-AppId: {{your_app_id}}" \
+    -H "X-APICloud-AppKey: {{your_app_key}}" \
+    -d '{"$pull": { "fruits":"apples", "vegetables": "carrots" }}' \
+    https://d.apicloud.com/mcm/api/modelName/543f2e0e474f229d61185565
+```
+更新后的文档会像:
+```js
+{
+  "_id" : "543f2e0e474f229d61185565",
+  "fruits" : [ "pears","oranges", "grapes", "bananas" ],
+  "vegetables" : [ "celery", "squash" ]
+}
+```
+###**$pullAll **
+-----
+
+$pullAll 操作符将指定项从数组中删除,具有以下形式:
+
+```js
+{ $pullAll: { <field1>: [ <value1>, <value2> ... ], ... } }
+```
+####行为
+
+如果字段不是数组类型，操作将会失败。
+
+####Example
+
+考虑有如下一个集合:
+
+```js
+{
+   _id: "543f2e0e474f229d61185565",
+   "fruits": [ "apples", "pears", "oranges", "grapes", "bananas" ],
+   "vegetables": [ "carrots", "celery", "squash", "carrots" ]
+}
+```
+使用$pullAll进行更新
+```js
+curl -X PUT \
+    -H "X-APICloud-AppId: {{your_app_id}}" \
+    -H "X-APICloud-AppKey: {{your_app_key}}" \
+    -d '{"$pullAll": { "fruits": [ "apples", "oranges" ]}}' \
+    https://d.apicloud.com/mcm/api/modelName/543f2e0e474f229d61185565
+```
+更新后的文档会像:
+```js
+{
+  "_id" : "543f2e0e474f229d61185565",
+  "fruits" : [ "pears", "grapes", "bananas" ],
+  "vegetables": [ "carrots", "celery", "squash", "carrots" ]
+}
+```
 
 #**查询**<div id="6"></div>
 
@@ -1376,7 +1600,7 @@ GET /mcm/api/cars?filter[where][and][0][title]=My%20Post&filter[where][and][1][c
 ```
 **Stringified**
 ```js
-GET /mcm/api/cars?filter={"where": {"and": [{"title": "My Post"}, {"content": "Hello"}]}
+GET /mcm/api/cars?filter={"where": {"and": [{"title": "My Post"}, {"content": "Hello"}]}}
 ```
 ##between
 

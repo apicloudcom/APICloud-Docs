@@ -25,7 +25,7 @@ Description: scrollPicture
 
 #**概述**
 
-scrollPicture是一个图片自动滚动联播器，开发者自需传入一组图片地址，即可实现图片滚动联播的效果。图片地址支持网络路径，网络图片会被缓存到本地
+scrollPicture 是一个图片自动滚动联播器，开发者自需传入一组图片地址，即可实现图片滚动联播的效果。图片地址支持网络路径，网络图片会被缓存到本地。**UIScrollPicture 模块是 scrollPicture 模块的优化版，建议使用  UIScrollPicture 模块，此模块已停止更新。**
 
 ![图片说明](/img/docImage/scrollPicture.jpg)
 
@@ -155,11 +155,6 @@ fixed:
 - 类型：布尔
 - 默认值：true
 - 描述：（可选项）是否将模块视图固定到窗口上，不跟随窗口上下滚动
-
-circulation:
-- 类型：布尔
-- 默认值：true
-- 描述：（可选项）图片是否循环播放
 
 ##callback(ret, err)
 

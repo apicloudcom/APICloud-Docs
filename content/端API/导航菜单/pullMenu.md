@@ -74,14 +74,14 @@ btnArray：
 ```js
 [{
       normal:          //按钮常态下的图标，字符串，支持fs、widget等本地路径协议
-      selected:        //按钮选中后的图标，字符串，支持fs、widget等本地路径协议
+      highlight:        //按钮选中后的图标，字符串，支持fs、widget等本地路径协议
 }]
 ```
 
 selectedIndex：
 
 - 类型：数字
-- 默认值：0
+- 默认值：无
 - 描述：（可选项）设置默认选中按钮的索引
 
 ##callback(ret, err)

@@ -19,7 +19,7 @@ Description: mediaScanner
 
 #**概述**
 
-mediaScanner是一个多媒体扫描器，通过调用其相关接口可扫描系统相册内存放的图片、视频等多媒体资源，也可直接打开可自定义的模板多选界面
+mediaScanner是一个多媒体扫描器，通过调用其相关接口可扫描系统相册内存放的图片、视频等多媒体资源，也可直接打开可自定义的模板多选界面。**UIMediaScanner 模块是 mediaScanner 模块的优化版，建议使用  UIMediaScanner 模块，此模块已停止更新。**
 
 #**open**<div id="a1"></div>
 
@@ -115,7 +115,7 @@ sort：
 
 ```js
 {
-   key:       //（可选项）排序key值，取值范围：size--按图片大小排序；time：按图片创建时间（时间戳）排序
+   key:       //（可选项）排序key值，取值范围：size--按图片大小排序；time：按图片创建时间（时间戳）排序 默认time
    order:     //（可选项）排序方式，取值范围：ascending--升序（小->大）；descending--降序（大->小），默认ascending
 }
 ```

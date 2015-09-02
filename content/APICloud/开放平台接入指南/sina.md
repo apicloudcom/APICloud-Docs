@@ -4,7 +4,7 @@ Description: 新浪微博开放平台接入
 Sort: 11
 */
 
-开发者在使用APP3C提供的来自第三方开放平台-新浪微博开放平台的相关模块时，需要开发者自行到新浪微博开放平台申请相应的appId（urlScheme），并将该appId以feature的形式配置到您项目的config文件中。
+开发者在使用APICloud提供的来自第三方开放平台-新浪微博开放平台的相关模块时，需要开发者自行到新浪微博开放平台申请相应的appId（urlScheme），并将该appId以feature的形式配置到您项目的config文件中。
 
 该appId的申请与您应用的创建过程有关，具体流程请参考如下介绍。
 

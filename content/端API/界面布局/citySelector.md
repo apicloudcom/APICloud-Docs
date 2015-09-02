@@ -22,7 +22,7 @@ Description: citySelector
 
 #**概述**
 
-citySelector是一个城市选择器，以选择器的形式将中国各个省市级城市弹出，供用户选择，开发者可自定义该选择器的样式
+citySelector是一个城市选择器，以选择器的形式将中国各个省市级城市弹出，供用户选择，开发者可自定义该选择器的样式。若想自定义数据源，可用[customSelector 模块](/端API/界面布局/customSelector)。
 
 ![图片说明](/img/docImage/citySelector.jpg)
 

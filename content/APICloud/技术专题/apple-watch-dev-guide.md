@@ -1,16 +1,16 @@
 /*
 Title: Apple Watch开发指南
 Description: Apple Watch开发指南
-Sort: 4
+Sort: 13
 */
 
 
-[第一章 让应用支持Apple Watch](#1)
+[第一章 适配Apple Watch](#1)
 
-[第二章 配置](#2)
+[第二章 风格配置](#2)
 
 
-#**第一章 让应用支持Apple Watch**<div id="1"></div>
+#**第一章 适配Apple Watch**<div id="1"></div>
 
 ##1. 简介
 
@@ -25,7 +25,7 @@ Sort: 4
 在云编译界面，选择平台为iOS，然后点击右上角的向下箭头，在弹出菜单中选择Apple Watch可用，其它编译选项和应用之前的设置一致即可。
 
 
-#**第二章 配置**<div id="2"></div>
+#**第二章 风格配置**<div id="2"></div>
 
 ##1. 目录结构
 
@@ -50,13 +50,13 @@ style.json文件里面指定了当前使用哪一种风格界面，目前支持d
 
 - default
 
-当style字段值为default时，在Apple Watch上面启动应用后会显示一张内容图。
+当style字段值为default时，在Apple Watch上面启动应用后会显示一张默认图，图片尺寸为312*340。
 
 default内部字段：
 
 ```js
 {
-	"img":'default.png'		//显示的图片的文件名，文件需放置在default目录下面，默认为default.png
+	"img":"default.png"			//显示的图片的文件名，文件需放置在default目录下面，默认为default.png
 }
 ```
 
@@ -70,22 +70,28 @@ news内部字段：
 
 ```js
 {
-	"img_placeholder":'placeholder.png',	//（可选项）加载图片时的占位图文件名，默认为placeholder.png
-	"img_time":"icon_time.png",			//（可选项）时间图标文件名，默认为icon_time.png
-	"url":"http://xxx",						//请求地址，通过该地址来获取数据
+	"img_placeholder":"placeholder.png",	//（可选项）加载图片时的占位图文件名，默认为placeholder.png，尺寸为312*290
+	"img_time":"icon_time.png",				//（可选项）时间图标文件名，默认为icon_time.png，尺寸为30*30
+	"url":"http://xxx",						// 请求地址，通过该地址来获取数据
 	"key_data":"data",						//（可选项）获取到JSON数据后进行解析，通过该字段获取列表数据，该字段对应的数据需为JSON数组，字段名默认为data
 	"key_title":"title",					//（可选项）数组中的JSON对象，通过该字段获取标题，字段名默认为title
 	"key_content":"content",				//（可选项）数组中的JSON对象，通过该字段获取内容，字段名默认为content
-	"key_img":"img",							//（可选项）数组中的JSON对象，通过该字段获取图片，字段名默认为img
+	"key_img":"img",						//（可选项）数组中的JSON对象，通过该字段获取图片，字段名默认为img
 	"key_time":"time"						//（可选项）数组中的JSON对象，通过该字段获取时间，字段名默认为time
 }
 ```
 
 - list
 
-当style字段值为list时，在Apple Watch上面会使用列表类界面来展示，并且可以点击进入详情页。效果图如下：
+当style字段值为list时，在Apple Watch上面会使用列表类界面来展示，并且可以点击进入详情页。
 
-![图片说明](/img/docImage/watch_list.PNG)    ![图片说明](/img/docImage/watch_list_detail.PNG)
+列表页效果：
+
+![图片说明](/img/docImage/watch_list.PNG) 
+
+详情页效果：   
+
+![图片说明](/img/docImage/watch_list_detail.PNG)
 
 
 
@@ -93,7 +99,7 @@ list内部字段：
 
 ```js
 {
-	"img_placeholder":'placeholder.png',	//（可选项）加载图片时的占位图文件名，默认为placeholder.png
+	"img_placeholder":"placeholder.png",	//（可选项）加载图片时的占位图文件名，默认为placeholder.png，尺寸为312*166
 	"url":"http://xxx",						//请求地址，通过该地址来获取数据
 	"key_data":"data",						//（可选项）获取到JSON数据后进行解析，通过该字段获取列表数据，该字段对应的数据需为JSON数组，字段名默认为data
 	"key_title":"title",					//（可选项）数组中的JSON对象，通过该字段获取标题，字段名默认为title

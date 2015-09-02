@@ -120,10 +120,10 @@ launchClassMethod为可选项配置，若配置，引擎将在应用启动的时
 
 目录解释：
 
-- res_moduleDemo目录：放置资源文件等，此文件夹会以Create folder references方式加入工程，读取资源文件时需要注意
+- res_moduleDemo目录：放置资源文件等，此文件夹会以Create folder references方式加入工程，读取资源文件时路径需要加上res_moduleDemo
 
 
-- target目录：存放编译生成的静态库文件、第三方framework库、bundle束等，该目录下的文件最终会以Create groups方式加入到应用工程
+- target目录：存放编译生成的静态库文件、第三方framework库、bundle束等。若该目录下存在其它的文件夹，其它的文件夹也会以Create folder references的方式加入到应用工程
 
 
 - module.json文件：内容为JSON格式，定义了模块的类名称、JS对象名称、方法等;
@@ -244,7 +244,7 @@ NSString *apiKey = [feature stringValueForKey:@"apiKey" defaultValue:nil];
 }
 
 #pragma mark - UIApplicationDelegate
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     //处理应用被三方应用调起
     return YES;
 }

@@ -15,8 +15,6 @@ Description: listView
 
 [getIndex](#b1)
 
-[getData](#b2)
-
 [setRightButtons](#b3)
 
 [close](#2)
@@ -42,7 +40,7 @@ Description: listView
 
 #**概述**
 
-listView封装了一个列表控件，可实现一个可左右拖动item的列表视图。开发者可根据需求自定义列表的数据源，亦可自定义相关字段的样式。支持设置下拉刷新和上拉加载更多事件
+listView封装了一个列表控件，可实现一个可左右拖动item的列表视图。开发者可根据需求自定义列表的数据源，亦可自定义相关字段的样式。支持设置下拉刷新和上拉加载更多事件。**UIListView 模块是 listView 模块的优化版，建议使用 UIListView 模块，此模块已停止更新。**
 
 ![图片说明](/img/docImage/listView.jpg)
 
@@ -168,6 +166,12 @@ placeholderImg：
 - 描述：（可选项）头像占位图，本地图的地址，支持widget，fs等本地协议
 - 备注：不传则不显示头像，标题和子标题顶头显示
 
+fixedOn：
+
+- 类型：字符串
+- 默认值：当前主窗口的名字
+- 描述：（可选项）将此模块视图添加到指定窗口的名字
+
 data：
 
 - 类型：数组对象
@@ -231,11 +235,6 @@ markStyle：
      arrowSize:      //（可选项）右边图标大小，数字类型，默认30
 }
 ```
-fixedOn：
-
-- 类型：字符串
-- 默认值：当前主窗口的名字
-- 描述：（可选项）将此模块视图添加到指定窗口的名字
 
 ##callback(ret, err)
 
@@ -372,51 +371,6 @@ ret：
 	     value:"00000001"
 	},function(ret,err){
 	     api.alert({msg:ret.index});
-	});
-
-##补充说明
-
-无
-
-##可用性
-
-iOS系统，Android系统
-
-可提供的1.0.0及更高版本
-
-#**getData**<div id="b2"></div>
-
-根据item的索引获取item的数据
-
-getData({params },callBack(ret,err))
-
-##params
-
-index：
-
-- 类型：数字
-- 默认值：0
-- 描述：（可选项）要获取数据的item的索引
-
-##callback(ret, err)
-
-ret：
-
-- 类型：JSON对象
-
-内部字段：
-
-	{
-		data：//操作的item的data内部字段跟传进来的data一致
-	}
-
-##示例代码
-
-	var obj = api.require('listView');
-	obj.getData({
-	    index:0
-	},function(ret,err){
-	     api.alert({msg:ret.data})
 	});
 
 ##补充说明

@@ -16,7 +16,7 @@ Description: calendar
 
 #**概述**
 
-calendar是一个简单的日历模块，原生实现了公历历法列表，开发者可添加特殊日期标注，只需简单配置参数即可实现一个复杂的日历效果界面
+calendar是一个简单的日历模块，原生实现了公历历法列表，开发者可添加特殊日期标注，只需简单配置参数即可实现一个复杂的日历效果界面。**UICalendar 模块是 calendar 模块的优化版，建议使用  UICalendar 模块，此模块已停止更新。**
 
 ![图片说明](/img/docImage/calendar.jpg)
 

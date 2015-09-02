@@ -22,7 +22,7 @@ Description: netAudio
 
 #**概述**
 
-netAudio封装了对网络音频流播放的接口，使用本模块可以实现对服务器端音频流资源的播放、暂停、继续、停止、设置播放位置等相关操作。目前不支持缓存到本地
+netAudio封装了对网络音频流播放的接口，使用本模块可以实现对服务器端音频流资源的播放、暂停、继续、停止、设置播放位置等相关操作。目前暂不支持缓存到本地。在ios上如需支持后台播放功能请参考应用配置说明文档里关于[BackgroundMode的配置](http://docs.apicloud.com/APICloud/技术专题/app-config-manual)
 
 #**play**<div id="1"></div>
 

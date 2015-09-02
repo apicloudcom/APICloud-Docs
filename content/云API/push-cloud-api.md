@@ -47,7 +47,6 @@ POST
 	title–消息标题，
 	content – 消息内容
 	type – 消息类型，1:消息 2:通知
-	timer – 定时消息发送时间。定时不为空则为定时消息，毫秒数。可选参数。
 	platform - 0:全部平台，1：ios, 2：android
 	groupName - 推送组名，多个组用英文逗号隔开.默认:全部组。eg.group1,group2 .
     userIds - 推送用户id, 多个用户用英文逗号分隔，eg. user1,user2。

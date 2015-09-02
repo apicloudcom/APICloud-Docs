@@ -120,18 +120,6 @@ POST
         <td>totalOperationCount</td>
         <td>应用累计使用次数</td>
     <tr>
-        <td>totalUseTimeInSevenDays</td>
-        <td>七日内累计使用时长</td>
-    <tr>
-        <td>totalUseTimeInThirtyDays</td>
-        <td>三十日内累计使用时长</td>
-    <tr>
-        <td>totalOperationCountInSevenDays</td>
-        <td>七日内累计使用次数</td>
-    <tr>
-        <td>totalOperationCountInThirtyDays</td>
-        <td>三十日内累计使用次数</td>
-    <tr>
         <td>reportDate</td>
         <td>统计数据生成时间</td>
 </table>

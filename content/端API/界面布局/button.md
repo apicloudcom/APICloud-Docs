@@ -107,9 +107,14 @@ ret：
 - 类型：json对象
 - 内部字段：
   
+  ```js
   {
-       id:  //打开视图的id
+       eventType:      //字符串类型；回调事件类型；取值范围如下：
+                       //show：打开成功并显示在UI上
+                       //click：用户点击事件
+       id:             //数字类型；打开模块的id
   }
+  ```
 
 ##示例代码
 ```js
@@ -154,7 +159,7 @@ title:
 
 ##示例代码
 ```js
-var obj = api.require('button');obj.setTitle({   id:1,   title:{normalTitel:"按钮"}},function(ret,err){   api.alert({msg:ret.index+ret.id});});
+var obj = api.require('button');obj.setTitle({   id:1,   title:{normalTitle:"按钮"}},function(ret,err){   api.alert({msg:ret.index+ret.id});});
 ```
 ##补充说明
 

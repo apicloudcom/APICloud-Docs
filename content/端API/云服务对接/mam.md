@@ -35,7 +35,7 @@ ret：
 ```js
 {
 	status:true,				//操作成功状态值
-	resul:
+	result:
 	{
 		update:true,			//是否有更新
 		closed:true,			//设备上当前版本是否被强行关闭
@@ -68,8 +68,10 @@ var mam = api.require('mam');
 mam.checkUpdate(function(ret, err){
 	if (ret) {
 		var result = ret.result;
-		var str = '操作成功状态值:'+ret.status+';是否有更新:'+result.update+';设备上当前版本是否被强行关闭:'+result.closed+';新版本型号:'+result.version+';更新描述:'+result.versionDes+';强行关闭提示语:'+result.closeTip+';更新提示语:'+result.updateTip+';下载地址:'+result.source+';发布时间:'+result.time;
-		api.alert({msg:str});
+		if (result){
+			var str = '操作成功状态值:'+ret.status+';是否有更新:'+result.update+';设备上当前版本是否被强行关闭:'+result.closed+';新版本型号:'+result.version+';更新描述:'+result.versionDes+';强行关闭提示语:'+result.closeTip+';更新提示语:'+result.updateTip+';下载地址:'+result.source+';发布时间:'+result.time;
+			api.alert({msg:str});
+		}
     } else{
 		api.alert({msg:err.msg});
     }
