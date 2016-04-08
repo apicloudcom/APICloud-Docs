@@ -7,14 +7,14 @@ Description: jd
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
 <div id="method-content">
-
+</div>
 <div class="outline">
 [login](#1)
 </div>
 
 #**概述**
 
-jd模块封装了京东授权登录SDK，使用之前需要去京东云网站（http://jos.jd.com）创建应用。
+jd模块封装了京东授权登录SDK，使用之前需要去[京东云网站](http://jos.jd.com)创建应用。
 
 使用时可以通过login方法以参数的形式将appKey、appSecret等信息传进去，也可以在config.xml里面进行配置，模块会优先使用方法里面传进去的信息。
 

@@ -80,15 +80,14 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('zip');
-obj.archive({
-	password:'123',
-	files:['widget://res/1.docx','widget://res/test.pdf']
-},function(ret,err){
-	if(ret.status) {
-		api.alert({msg:'压缩成功'});
-	} else{
-		api.alert({msg:err.msg});
+var zip = api.require('zip');
+zip.archive({
+	files: [ 'fs://test.txt' ]
+},function( ret, err ){		
+	if( ret.status ){
+		alert( JSON.stringify( ret ) );
+	}else{
+		alert( JSON.stringify( err ) );
 	}
 });
 ```
@@ -159,15 +158,15 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('zip');
-obj.unarchive({
-	file:'widget://res/zipTest.zip',
-	password:'123'
-},function(ret,err){
-	if(ret.status) {
-		api.alert({msg:'解压成功'});
+var zip = api.require('zip');
+zip.unarchive({
+	file: 'fs://fitest.zip',
+	password: '123'
+},function( ret, err ){		
+	if( ret.status ){
+		alert( JSON.stringify( ret ) );
 	}else{
-		api.alert(err.msg);
+		alert( JSON.stringify( err ) );
 	}
 });
 ```

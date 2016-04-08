@@ -2,220 +2,189 @@
 Title: dkSDK
 Description: dkSDK
 */
-
-<ul id="tab" class="clearfix">
-	<li class="active"><a href="#method-content">方法</a></li>
-</ul>
-<div id="method-content">
 <div class="outline">
-[registerKey](#registerKey)
-[getBannerAD](#getBannerAD)
-[setHideDate](#setHideDate)
-[getIntAD](#getIntAD)
+[registerKey](#a1)
+
+[getBannerAD](#a2)
+
+[setHideDate](#a3)
+
+[removeBannerAD](#a4)
+
+[getIntAD](#a5)
+
 </div>
 
-#**概述**
-   
-   dkSDK 封装了点开广告平台的SDK，使用此模块可轻松实现添加广告到应用的功能,根据需求放置调用的位置。
 
-#**registerKey**<div id="registerKey"></div>
-注册key.
+## 概述
+   
+   *dkSDK*封装了点开广告平台的SDK，使用此模块可轻松实现添加广告到应用的功能,根据需求放置调用的位置。 
+
+<div id="a1"></div>
+
+## registerKey
+		
+注册key:开发者需要在http://www.alldk.com/index.php?action=main.register注册key,注册成功后才能使用模块
 
 registerKey(params);
-
-##params
+   	
+##params   
 
 DIANKAI_APP_KEY:
 
--	类型:字符串
--	默认值:无
--	描述:开发者在点开平台申请的APPKEY.
-
+ - 类型：String  
+ - 描述：此字段为开发者在点开平台申请的横幅广告的使用KEY
 
 DIANKAI_INTAD_KEY:
 
--	类型: 字符串
--	默认值:无
--	描述:开发者在点开平台申请的插屏广告的使用KEY.
+ - 类型：String  
+ - 描述：此字段为开发者在点开平台申请的插屏广告的使用KEY
 
 DIANKAI_BANNER_KEY:
 
--	类型:数组
--	默认值:无
--	描述:开发者在点开平台申请的横幅广告的使用KEY.
+ - 类型：String  
+ - 描述：此字段为开发者在点开平台申请的横幅广告的使用KEY
+   	
+ ``` 
+   var dkapi = api.require('dkSDK');
+   	function registerKey(){ 	
+     	var param = {DIANKAI_APP_KEY:"YOUR_APPKEY",
+     		DIANKAI_INTAD_KEY:"YOUR_INTAD_KEY", 
+     		DIANKAI_BANNER_KEY:"YOUR_BANNER_KEY"};	 
+     	dkapi.registerKey(param); 		
+     } 
+  ```
 
-##示例代码
+##可用性: 
+android ios系统 
 
-```js
-var keys = {
-    "ios": {
-        DIANKAI_APP_KEY:"6b1b80d155dbbf468a48b65729f68219",
-        DIANKAI_INTAD_KEY:"9c00ed79d40ee2f4bc20a891e86ca92c",
-        DIANKAI_BANNER_KEY:"50a1290f30ec1964b10b6d6d306ef2a0"
-    },
-    "android": {
-        DIANKAI_APP_KEY:"d86bdd51a028c377f8b68c6c5ffe3c71",
-        DIANKAI_INTAD_KEY:"2c1ee0e567a6e1fb2a64874ad0698659",
-        DIANKAI_BANNER_KEY:"b1adc08abf036aabed011fc2c8753de6"
-    }
-};
+<div id="a2"></div>   
 
-var key = keys[api.systemType];
+##getBannerAD
 
-var dkSDK = api.require('dkSDK');
-
-dkSDK.registerKey({
-    DIANKAI_APP_KEY:"YOUR_APPKEY",
-    DIANKAI_INTAD_KEY:"YOUR_INTAD_KEY",
-    DIANKAI_BANNER_KEY:"YOUR_BANNER_KEY"
-});
-```
-
-##补充说明
-
-无
-
-##可用性
-
-iOS系统，Android系统
-
-可提供的1.0.0及更高版本
-
-#**getBannerAD**<div id="getBannerAD"></div>
-banner广告展示.
+banner广告展示(展示之前先要注册key)
 
 getBannerAD(params);
 
-##params
+## params
 
-height:
+h:
 
--	类型:数字
--	默认值: 屏幕高度
--	描述:宽度设置.
+- 类型:String
+- 默认值:自适应
+- 描述:高度设置,用于设置高度,
 
+w:
 
-width:
+- 类型:String
+- 默认值:铺满屏幕
+- 描述:宽度设置,用于设置宽度
+	
+x:
 
--	类型: 数字
--	默认值: ios为 屏幕宽度.
--	描述:宽度设置.
+- 类型:String
+- 默认值:0
+- 描述:banner左上角横坐标
 
-##示例代码
+y:
 
-```js
-var dkSDK = api.require('dkSDK');
+- 类型:String
+- 默认值:0
+- 描述:banner左上角纵坐标
 
-dkSDK.getBannerAD({
-  height: 100,
-  width: 200
-});
+```		
+		function getBannerAD(){ 			
+		var param = {h:"100",w:"500",x:"100",y:"1000"};
+		
+		dkapi.getBannerAD(param);
+		}		
+		getBannerAD();
+
 ```
+		
+##可用性:
+android 系统 
 
-##补充说明
 
-无
+<div id="a3"></div> 	
+	
+##setHideDate
 
-##可用性
-
-iOS系统，Android系统
-
-可提供的1.0.0及更高版本
-
-#**setHideDate**<div id="setHideDate"></div>
-设置隐藏banner广告时间.
+关闭插屏广告时间设置
 
 setHideDate(params);
 
-##params
 
+##params  
+  
 hideDate:
 
--	类型: number
--	默认值: 60 * 60 * 1000 .
--	描述:经过多长时间再次广告,单位毫秒.
+- 类型:Long
+- 默认值:0 表示调用一次  用户点击取消,不再调用插屏广告
+- 描述:经过多长时间再次调用广告,单位毫秒
 
-##示例代码
-
-```js
-var dkSDK = api.require('dkSDK');
-
-dkSDK.setHideDate({
-   hideDate: 3000
-});
+```
+		function setHideDate(){ 
+    		var hideDate = {hideDate:"5000"};
+				dkapi.setHideDate(hideDate);
+    	} 
 ```
 
-##补充说明
 
-无
+##可用性:
+android 系统
+    
+<div id="a4"></div> 
+    
+##removeBannerAD	
 
-##可用性
+移除广告 
 
-iOS系统，Android系统
-
-可提供的1.0.0及更高版本
-
-#**removeBannerAD**<div id="removeBannerAD"></div>
-隐藏广告.
-
-setHideDate();
-
-##示例代码
-
-```js
-var dkSDK = api.require('dkSDK');
-
-dkSDK.removeBannerAD();
+removeBannerAD(params);
+    
+- msg:
+- 类型:String
+- 描述:移除广告
+    
+```
+    function removeBannerAD (){ 
+    		var par = {msg:"Hello diankai!"};
+    		dkapi.removeBannerAD(par); 		
+    }
 ```
 
-##补充说明
+##可用性:
+android ios系统
+ 
+<div id="a5"></div> 
+   
+##getIntAD
 
-无
-
-##可用性
-
-iOS系统，Android系统
-
-可提供的1.0.0及更高版本
-
-
-#**getIntAD**<div id="getIntAD"></div>
-展示插屏广告.
+插屏广告展示
 
 getIntAD(params);
 
-##params
-
+##params 
+	
 height:
 
--	类型:数字
--	默认值: 屏幕高度
--	描述:宽度设置.
-
+- 类型:String
+- 描述:ios设置int广告的高度,android 已经实现了根据屏幕自适应可任意填写
 
 width:
-
--	类型: 数字
--	默认值: ios为 屏幕宽度.
--	描述:宽度设置.
-
-##示例代码
-
-```js
-var dkSDK = api.require('getIntAD');
-
-dkSDK.getBannerAD({
-  height: 100,
-  width:100
-});
+    
+- 类型:String
+- 默认值:android默认值为0.9,表示插屏宽度占屏幕宽度的90%,ios默认为宽式屏幕.
+- 描述:ios设置int广告的宽度和高度,android 已经实现了根据屏幕自适应可任意填写
+   
+```    	
+function getIntAD(){
+    		var param = {height:"200", width:"320"};
+    		dkapi.getIntAD(param);
+  		}
 ```
 
-##补充说明
-
-无
-
-##可用性
-
-iOS系统，Android系统
-
-可提供的1.0.0及更高版本
+##可用性:
+android ios系统
+		
+警告:调用广告之前 必须先执行注册key

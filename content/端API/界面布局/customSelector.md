@@ -23,7 +23,7 @@ Description: customSelector
 
 #**概述**
 
-customSelector是自定义分级选择器模块，开发者可自定义选择器的大小、位置、内容级别（android暂仅最大支持3级）和数据源及其显示样式，可设置指定选中项。本模块是有第三方模块开发者提供，使用此模块需在线云编译安装包
+customSelector是自定义分级选择器模块，开发者可自定义选择器的大小、位置、内容级别（android暂仅最大支持3级）和数据源及其显示样式，可设置指定选中项。本模块是有第三方模块开发者提供，使用此模块需在线云编译安装包。本模块已停止优化更新，建议使用[UISelector](http://docs.apicloud.com/端API/界面布局/UISelector)
 
 ![图片说明](/img/docImage/customSelector.jpg)
 
@@ -116,9 +116,9 @@ dataSource：
 
 fixedOn：
 
-- 类型：字符串
-- 默认值：当前主窗口的名字
-- 描述：（可选项）指定添加到窗口的名字
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 indexs：
 

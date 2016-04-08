@@ -8,8 +8,8 @@ Sort: 8
 
 #**发布规范**
 
-- 模块名与模块包的名称需保持一致，详情可参见[模块开发文档](http://resource.apicloud.com/templet/DocTemplate.docx)；
-- 发布模块需提交 模块测试用例[下载测试用例模板](http://resource.apicloud.com/templet/TestCase.zip)；
+- 模块名与模块包的名称需保持一致，详情可参见[开发模块设计规范](http://docs.apicloud.com/APICloud/%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/module-dev-standard)；
+- 发布模块需提交 模块测试用例[下载测试用例模板](http://7o50i9.com2.z0.glb.qiniucdn.com/TestCase.zip)；
 - 发布模块需提供md格式的模块接口文档.可参考[我们已有的文档](https://github.com/APICloud-com/apicloud_docs),并使用我们提供的 [MD 编辑工具](http://docs.apicloud.com/md-preview.html)在线编辑.
 - 模块审核约5-8个工作日；
 - 为模块提供封面图和预览图可提高模块的关注度；

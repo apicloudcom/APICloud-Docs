@@ -5,11 +5,12 @@ Description: baiduNavigation
 
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
-	<li><a href="#const-content">Constant</a></li>
 </ul>
 <div id="method-content">
 
 <div class="outline">
+
+[start](#a1)
 
 </div>
 
@@ -29,8 +30,8 @@ baiduNavigation模块封装了百度导航的sdk，支持语音导航功能。�
 
 ```js
 <feature name="baiduNavigation">
-					<param name="android_api_key " value=" 2kyNa3maO5mXcASnUe5EwVoM " />
-					<param name="ios_api_key " value=" IvbnWLuuTnbmjOOg17zpbe0O " />
+	<param name="android_api_key" value="2kyNa3maO5mXcASnUe5EwVoM" />
+	<param name="ios_api_key" value="IvbnWLuuTnbmjOOg17zpbe0O" />
 </feature>
 ```
 
@@ -54,94 +55,105 @@ start({params}, callback(ret, err))
 
 start：
 
-- 类型：json对象
-- 默认值：无
-- 描述：起点信息，不能为空
-
-内部字段：
+- 类型：JSON 对象
+- 描述：起点信息
+- 内部字段：
 
 ```js
 {
-    position: //起点经纬度，与address配合可为空，josn对象类型
-      内部字段：{
-	lon：  //起点经度，数字类型，不可为空
-	lat：  //起点纬度，数字类型，不可为空
-				}
-    title：//起点描述信息，字符串类型，可为空
-    address://起点地址信息，字符串类型，与position配合为空
+    position: {      //（可选项）JSON对象；起点经纬度（百度坐标系），可与 address 配合不传
+	   lon: ,        //数字类型；起点经度
+	   lat:          //数字类型；起点纬度
+	} ,
+    title: ,         //（可选项）字符串类型；起点描述信息
+    address:         //（可选项）字符串类型；起点地址信息，可与 position 配合不传
 }
 ```
 
 goBy：
 
-- 类型：数组对象
-- 默认值：无
-- 描述：途经点位置信息，可为空，可输入1-3个途经点
-
-内部字段：
+- 类型：数组
+- 描述：（可选项）途经点位置信息，可输入1-3个途经点
+- 内部字段：
 
 ```js
 [{
-	position: //起点经纬度，与address配合可为空，josn对象类型
-	内部字段：{
-	lon：  //起点经度，数字类型，不可为空
-	lat：  //起点纬度，数字类型，不可为空
-			}
-    title：//起点描述信息，字符串类型，可为空
-    address://起点地址信息，字符串类型，与position配合为空
+	position: {     //（可选项）JSON对象；途经点经纬度（百度坐标系），可与 address 配合不传
+	   lon: ,       //数字类型；途经点经度
+	   lat:         //数字类型；途经点纬度
+	},
+    title:  ,       //（可选项）字符串类型；途经点描述信息
+    address:        //（可选项）字符串类型；途经点地址信息，可与 position 配合不传
 }]
 ```
 
 end：
 
-- 类型：json对象
-- 默认值：无
-- 描述：终点信息，不能为空
+- 类型：JSON 对象
+- 描述：终点信息
+- 内部字段：
 
-内部字段：
 
-```
+```js
 {
-	position: //起点经纬度，与address配合可为空，josn对象类型
-      内部字段：{
-		lon：  //起点经度，数字类型，不可为空
-		lat：  //起点纬度，数字类型，不可为空
-			}
-    title：//起点描述信息，字符串类型，可为空
-    address://起点地址信息，字符串类型，与position配合为空
+    position: {      //（可选项）JSON对象；终点经纬度（百度坐标系），可与 address 配合不传
+	   lon: ,        //数字类型；终点经度
+	   lat:          //数字类型；终点纬度
+	} ,
+    title: ,         //（可选项）字符串类型；终点描述信息
+    address:         //（可选项）字符串类型；终点地址信息，可与 position 配合不传
 }
 ```
 
 routeMode：
 
 - 类型：字符串
-- 默认值：recommend
 - 描述：导航路线类型，取值范围见[路线类型](!Constant)，可为空
+- 默认值：recommend
+- 取值范围：
+	- ###ios专用类型（对android无效）
+	- recommend :           //推荐
+	- highway   :           //高速优先
+	- noHighway :           //少走高速
+	- ###android专用类型（对ios无效）
+	- min_time	:	        //最短时间
+	- min_dist	:	        //最短距离
+	- min_toll	:	        //最少收费
+	- avoid_trafficJam	:	//躲避拥堵
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
-
-内部字段：
+- 类型：JSON 对象
+- 内部字段：
 
 ```
 {
-	status: //导航成功状态值
+	status:         //布尔类型：导航成功状态值，true|false
 }
 ```
 
 err：
 
-- 类型：JSON对象
-
-内部字段：
+- 类型：JSON 对象
+- 内部字段：
 
 ```js
 {
-	msg: //错误描述
-	code：//错误码，参见导航错误码
+	msg: ,      //字符串类型；错误描述
+	code:       //数字类型；错误码，取值范围如下：
+	            //###ios
+				//- 1	:获取地理位置失败
+				//- 2	:定位服务未开启
+				//- 3	:线路取消
+				//- 4	:退出导航
+				//- 5	:退出导航声明页面
+				//###android
+				//- 1	:验证权限失败
+				//- 2	:导航引擎初始化失败
+				//- 3	:导航失败
+				//- 4	:退出导航界面
 }
 ```
 
@@ -205,56 +217,8 @@ baiduNavigation.start({
 });
 ```
 
-##补充说明
-
-开始导航指定线路
-
 ##可用性
 
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
-</div>
-
-<div id="const-content">
-<div class="outline">
-[导航失败错误码](#a100)
-
-[路线类型](#a101)
-</div>
-
-#**导航失败错误码**<div id="a100"></div>
-
-导航失败码。数字类型
-
-##取值范围：
-
-###ios
-- 1		//获取地理位置失败
-- 2		//定位服务未开启
-- 3		//线路取消
-- 4		//退出导航
-- 5		//退出导航声明页面
-
-###android
-- 1		//验证权限失败
-- 2		//导航引擎初始化失败
-- 3		//导航失败
-- 4		//退出导航界面
-
-#**路线类型**<div id="a101"></div>
-
-所要导航路线的类型。字符串类型
-
-##取值范围：
-
-###ios专用类型（对android无效）
-- recommend            //推荐
-- highway              //高速优先
-- noHighway            //少走高速
-
-###android专用类型（对ios无效）
-- min_time		//最短时间
-- min_dist		//最短距离
-- min_toll		//最少收费
-- avoid_trafficJam		//躲避拥堵

@@ -168,9 +168,9 @@ datas：
 
 fixedOn：
 
-- 类型：字符串
-- 默认值：当前主窗口的名字
-- 描述：将此模块视图添加到指定窗口的名字，可为空
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 fixed:
 - 类型：布尔
@@ -199,98 +199,102 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('slipList');
-obj.open({
-	datas:[{
-		img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-		title:'12:00',
-		headline:'刘德华',
-		subTitle:'APICloud粉丝见面会',
-		titleIcon:'widget://image/slipList_watch.png',
-		subTitleIcon:'widget://image/slipList_star.png',
-		remark:'完成'
+var slipList = api.require('slipList');
+slipList.open({
+	datas: [{
+		img: 'widget://res/img/ic/sliplist.jpg',
+		title: '12:00',
+		headline: '刘德华',
+		subTitle: 'APICloud粉丝见面会',
+		titleIcon: 'widget://res/img/ic/slipList_watch.png',
+		subTitleIcon: 'widget://res/img/ic/slipList_star.png',
+		remark: '完成'
 	},{
-		img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-		title:'12:00',
-		headline:'刘德华',
-		subTitle:'APICloud粉丝见面会',
-		titleIcon:'widget://image/slipList_watch.png',
-		subTitleIcon:'widget://image/slipList_star.png',
-		remark:'完成'
+		img: 'widget://res/img/ic/sliplist.jpg',
+		title: '12:00',
+		headline: '刘德华',
+		subTitle: 'APICloud粉丝见面会',
+		titleIcon: 'widget://res/img/ic/slipList_watch.png',
+		subTitleIcon: 'widget://res/img/ic/slipList_star.png',
+		remark: '完成'
 	},{
-		img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-		title:'12:00',
-		headline:'刘德华',
-		subTitle:'APICloud粉丝见面会',
-		titleIcon:'widget://image/slipList_watch.png',
-		remark:'完成'
+		img: 'widget://res/img/ic/sliplist.jpg',
+		title: '12:00',
+		headline: '刘德华',
+		subTitle: 'APICloud粉丝见面会',
+		titleIcon: 'widget://res/img/ic/slipList_watch.png',
+		remark: '完成'
 	},{
-		img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-		title:'12:00',
-		headline:'刘德华',
-		subTitle:'APICloud粉丝见面会',
-		titleIcon:'widget://image/slipList_watch.png',
-		subTitleIcon:'widget://image/slipList_star.png',
-		remark:'完成'
+		img: 'widget://res/img/ic/sliplist.jpg',
+		title: '12:00',
+		headline: '刘德华',
+		subTitle: 'APICloud粉丝见面会',
+		titleIcon: 'widget://res/img/ic/slipList_watch.png',
+		subTitleIcon: 'widget://res/img/ic/slipList_star.png',
+		remark: '完成'
 	},{
-		img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-		title:'12:00',
-		headline:'刘德华',
-		subTitle:'APICloud粉丝见面会',
-		titleIcon:'widget://image/slipList_watch.png',
-		subTitleIcon:'widget://image/slipList_star.png',
-		remark:'完成'
+		img: 'widget://res/img/ic/sliplist.jpg',
+		title: '12:00',
+		headline: '刘德华',
+		subTitle: 'APICloud粉丝见面会',
+		titleIcon: 'widget://res/img/ic/slipList_watch.png',
+		subTitleIcon: 'widget://res/img/ic/slipList_star.png',
+		remark: '完成'
 	},{
-		img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-		title:'12:00',
-		headline:'刘德华',
-		subTitle:'APICloud粉丝见面会',
-		titleIcon:'widget://image/slipList_watch.png',
-		subTitleIcon:'widget://image/slipList_star.png',
-		remark:'完成'
+		img: 'widget://res/img/ic/sliplist.jpg',
+		title: '12:00',
+		headline: '刘德华',
+		subTitle: 'APICloud粉丝见面会',
+		titleIcon: 'widget://res/img/ic/slipList_watch.png',
+		subTitleIcon: 'widget://res/img/ic/slipList_star.png',
+		remark: '完成'
 	},{
-		img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-		title:'12:00',
-		headline:'刘德华',
-		subTitle:'APICloud粉丝见面会',
-		titleIcon:'widget://image/slipList_watch.png',
-		subTitleIcon:'widget://image/slipList_star.png',
-		remark:'完成'
+		img: 'widget://res/img/ic/sliplist.jpg',
+		title: '12:00',
+		headline: '刘德华',
+		subTitle: 'APICloud粉丝见面会',
+		titleIcon: 'widget://res/img/ic/slipList_watch.png',
+		subTitleIcon: 'widget://res/img/ic/slipList_star.png',
+		remark: '完成'
 	},{
-		img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-		title:'12:00',
-		headline:'刘德华',
-		subTitle:'APICloud粉丝见面会',
-		titleIcon:'widget://image/slipList_watch.png',
-		subTitleIcon:'widget://image/slipList_star.png',
-		remark:'完成'
+		img: 'widget://res/img/ic/sliplist.jpg',
+		title: '12:00',
+		headline: '刘德华',
+		subTitle: 'APICloud粉丝见面会',
+		titleIcon: 'widget://res/img/ic/slipList_watch.png',
+		subTitleIcon: 'widget://res/img/ic/slipList_star.png',
+		remark: '完成'
 	},{
-		img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-		title:'12:00',
-		headline:'刘德华',
-		subTitle:'APICloud粉丝见面会',
-		titleIcon:'widget://image/slipList_watch.png',
-		subTitleIcon:'widget://image/slipList_star.png',
-		remark:'完成'
+		img: 'widget://res/img/ic/sliplist.jpg',
+		title: '12:00',
+		headline: '刘德华',
+		subTitle: 'APICloud粉丝见面会',
+		titleIcon: 'widget://res/img/ic/slipList_watch.png',
+		subTitleIcon: 'widget://res/img/ic/slipList_star.png',
+		remark: '完成'
 	},{
-	img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-	title:'12:00',
-	headline:'刘德华',
-	subTitle:'APICloud粉丝见面会',
-	titleIcon:'widget://image/slipList_watch.png',
-	subTitleIcon:'widget://image/slipList_star.png',
-	remark:'完成'
+		img: 'widget://res/img/ic/sliplist.jpg',
+		title: '12:00',
+		headline: '刘德华',
+		subTitle: 'APICloud粉丝见面会',
+		titleIcon: 'widget://res/img/ic/slipList_watch.png',
+		subTitleIcon: 'widget://res/img/ic/slipList_star.png',
+		remark: '完成'
 	},{
-	img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-	title:'12:00',
-	headline:'刘德华',
-	subTitle:'APICloud粉丝见面会',
-	titleIcon:'widget://image/slipList_watch.png',
-	subTitleIcon:'widget://image/slipList_star.png',
-	remark:'完成'
+		img: 'widget://res/img/ic/sliplist.jpg',
+		title: '12:00',
+		headline: '刘德华',
+		subTitle: 'APICloud粉丝见面会',
+		titleIcon: 'widget://res/img/ic/slipList_watch.png',
+		subTitleIcon: 'widget://res/img/ic/slipList_star.png',
+		remark: '完成'
 	}]
-},function(ret,err){
-	api.alert({msg:ret.index+'*'+ret.eventType});
+},function( ret, err ){
+	if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -312,8 +316,10 @@ close()
 
 ##示例代码
 
-	var obj = api.require('slipList');
-	obj.close();
+```js
+var slipList = api.require('slipList');
+slipList.close();
+```
 
 ##补充说明
 
@@ -355,97 +361,97 @@ datas：
 
 ##示例代码
 
-```
-var obj = api.require('slipList');
-obj.reloadData({
-	datas:[{
-		img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-		title:'12:00',
-		headline:'张学友',
-		subTitle:'APICloud粉丝交流会',
-		titleIcon:'widget://image/slipList_watch.png',
-		subTitleIcon:'widget://image/slipList_star.png',
-		remark:'完成'
+```js
+var slipList = api.require('slipList');
+slipList.reloadData({
+	datas: [{
+		img: 'widget://res/img/ic/sliplist.jpg',
+		title: '12:00',
+		headline: '张学友',
+		subTitle: 'APICloud粉丝交流会',
+		titleIcon: 'widget://res/img/ic/slipList_watch.png',
+		subTitleIcon: 'widget://res/img/ic/slipList_star.png',
+		remark: '完成'
 	},{
-		img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-		title:'12:00',
-		headline:'张学友',
-		subTitle:'APICloud粉丝交流会',
-		titleIcon:'widget://image/slipList_watch.png',
-		subTitleIcon:'widget://image/slipList_star.png',
-		remark:'完成'
+		img: 'widget://res/img/ic/sliplist.jpg',
+		title: '12:00',
+		headline: '张学友',
+		subTitle: 'APICloud粉丝交流会',
+		titleIcon: 'widget://res/img/ic/slipList_watch.png',
+		subTitleIcon: 'widget://res/img/ic/slipList_star.png',
+		remark: '完成'
 	},{
-		img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-		title:'12:00',
-		headline:'张学友',
-		subTitle:'APICloud粉丝交流会',
-		titleIcon:'widget://image/slipList_watch.png',
-		subTitleIcon:'widget://image/slipList_star.png',
-		remark:'完成'
+		img: 'widget://res/img/ic/sliplist.jpg',
+		title: '12:00',
+		headline: '张学友',
+		subTitle: 'APICloud粉丝交流会',
+		titleIcon: 'widget://res/img/ic/slipList_watch.png',
+		subTitleIcon: 'widget://res/img/ic/slipList_star.png',
+		remark: '完成'
 	},{
-		img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-		title:'12:00',
-		headline:'张学友',
-		subTitle:'APICloud粉丝交流会',
-		titleIcon:'widget://image/slipList_watch.png',
-		subTitleIcon:'widget://image/slipList_star.png',
-		remark:'完成'
+		img: 'widget://res/img/ic/sliplist.jpg',
+		title: '12:00',
+		headline: '张学友',
+		subTitle: 'APICloud粉丝交流会',
+		titleIcon: 'widget://res/img/ic/slipList_watch.png',
+		subTitleIcon: 'widget://res/img/ic/slipList_star.png',
+		remark: '完成'
 	},{
-		img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-		title:'12:00',
-		headline:'张学友',
-		subTitle:'APICloud粉丝交流会',
-		titleIcon:'widget://image/slipList_watch.png',
-		subTitleIcon:'widget://image/slipList_star.png',
-		remark:'完成'
+		img: 'widget://res/img/ic/sliplist.jpg',
+		title: '12:00',
+		headline: '张学友',
+		subTitle: 'APICloud粉丝交流会',
+		titleIcon: 'widget://res/img/ic/slipList_watch.png',
+		subTitleIcon: 'widget://res/img/ic/slipList_star.png',
+		remark: '完成'
 	},{
-		img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-		title:'12:00',
-		headline:'张学友',
-		subTitle:'APICloud粉丝交流会',
-		titleIcon:'widget://image/slipList_watch.png',
-		subTitleIcon:'widget://image/slipList_star.png',
-		remark:'完成'
+		img: 'widget://res/img/ic/sliplist.jpg',
+		title: '12:00',
+		headline: '张学友',
+		subTitle: 'APICloud粉丝交流会',
+		titleIcon: 'widget://res/img/ic/slipList_watch.png',
+		subTitleIcon: 'widget://res/img/ic/slipList_star.png',
+		remark: '完成'
 	},{
-		img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-		title:'12:00',
-		headline:'张学友',
-		subTitle:'APICloud粉丝交流会',
-		titleIcon:'widget://image/slipList_watch.png',
-		subTitleIcon:'widget://image/slipList_star.png',
-		remark:'完成'
+		img: 'widget://res/img/ic/sliplist.jpg',
+		title: '12:00',
+		headline: '张学友',
+		subTitle: 'APICloud粉丝交流会',
+		titleIcon: 'widget://res/img/ic/slipList_watch.png',
+		subTitleIcon: 'widget://res/img/ic/slipList_star.png',
+		remark: '完成'
 	},{
-		img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-		title:'12:00',
-		headline:'张学友',
-		subTitle:'APICloud粉丝交流会',
-		titleIcon:'widget://image/slipList_watch.png',
-		subTitleIcon:'widget://image/slipList_star.png',
-		remark:'完成'
+		img: 'widget://res/img/ic/sliplist.jpg',
+		title: '12:00',
+		headline: '张学友',
+		subTitle: 'APICloud粉丝交流会',
+		titleIcon: 'widget://res/img/ic/slipList_watch.png',
+		subTitleIcon: 'widget://res/img/ic/slipList_star.png',
+		remark: '完成'
 	},{
-		img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-		title:'12:00',
-		headline:'张学友',
-		subTitle:'APICloud粉丝交流会',
-		titleIcon:'widget://image/slipList_watch.png',
-		subTitleIcon:'widget://image/slipList_star.png',
-		remark:'完成'
+		img: 'widget://res/img/ic/sliplist.jpg',
+		title: '12:00',
+		headline: '张学友',
+		subTitle: 'APICloud粉丝交流会',
+		titleIcon: 'widget://res/img/ic/slipList_watch.png',
+		subTitleIcon: 'widget://res/img/ic/slipList_star.png',
+		remark: '完成'
 	},{
-		img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-		title:'12:00',
-		headline:'张学友',
-		subTitle:'APICloud粉丝交流会',
-		titleIcon:'widget://image/slipList_watch.png',
-		subTitleIcon:'widget://image/slipList_star.png',
-		remark:'完成'
+		img: 'widget://res/img/ic/sliplist.jpg',
+		title: '12:00',
+		headline: '张学友',
+		subTitle: 'APICloud粉丝交流会',
+		titleIcon: 'widget://res/img/ic/slipList_watch.png',
+		subTitleIcon: 'widget://res/img/ic/slipList_star.png',
+		remark: '完成'
 	},{
-		img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-		title:'12:00',
-		headline:'张学友',
-		subTitle:'APICloud粉丝交流会',
-		titleIcon:'widget://image/slipList_watch.png',
-		subTitleIcon:'widget://image/slipList_star.png',
-		remark:'完成'
+		img: 'widget://res/img/ic/sliplist.jpg',
+		title: '12:00',
+		headline: '张学友',
+		subTitle: 'APICloud粉丝交流会',
+		titleIcon: 'widget://res/img/ic/slipList_watch.png',
+		subTitleIcon: 'widget://res/img/ic/slipList_star.png',
+		remark: '完成'
 	}]
 });
 ```
@@ -477,9 +483,9 @@ index：
 ##示例代码
 
 ```js
-var obj = api.require('slipList');
-obj.deleteItem({
-	index:2
+var slipList = api.require('slipList');
+slipList.deleteItem({
+	index: 2
 });
 ```
 
@@ -531,17 +537,17 @@ data：
 ##示例代码
 
 ```js
-var obj = api.require('slipList');
-obj.insertItem({
-	index:2,
-	data:{
-		img:'http://d.hiphotos.baidu.com/image/pic/item/4d086e061d950a7b29a788c209d162d9f2d3c922.jpg ',
-		title:'12:00',
-		headline:'小张',
-		subTitle:'APICloud粉丝互动会',
-		titleIcon:'widget://image/slipList_watch.png',
-		subTitleIcon:'widget://image/slipList_star.png',
-		remark:'完成'
+var slipList = api.require('slipList');
+slipList.insertItem({
+	index: 2,
+	data: {
+		img: 'http://d.hiphotos.baidu.com/image/pic/item/4d086e061d950a7b29a788c209d162d9f2d3c922.jpg ',
+		title: '12:00',
+		headline: '小张',
+		subTitle: 'APICloud粉丝互动会',
+		titleIcon: 'widget://image/slipList_watch.png',
+		subTitleIcon: 'widget://image/slipList_star.png',
+		remark: '完成'
 	}
 });
 ```
@@ -593,17 +599,17 @@ data：
 ##示例代码
 
 ```js
-var obj = api.require('slipList');
-obj.refreshItem({
-	index:2,
+var slipList = api.require('slipList');
+slipList.refreshItem({
+	index: 2,
 	data:{
-		img:'http://d.hiphotos.baidu.com/image/pic/item/4d086e061d950a7b29a788c209d162d9f2d3c922.jpg ',
-		title:'12:00',
-		headline:'小张',
-		subTitle:'APICloud粉丝互动会',
-		titleIcon:'widget://image/slipList_watch.png',
-		subTitleIcon:'widget://image/slipList_star.png',
-		remark:'完成'
+		img: 'http://d.hiphotos.baidu.com/image/pic/item/4d086e061d950a7b29a788c209d162d9f2d3c922.jpg ',
+		title: '12:00',
+		headline: '小张',
+		subTitle: 'APICloud粉丝互动会',
+		titleIcon: 'widget://image/slipList_watch.png',
+		subTitleIcon: 'widget://image/slipList_star.png',
+		remark: '完成'
 	}
 });
 ```
@@ -649,96 +655,96 @@ datas：
 ##示例代码
 
 ```js
-var obj = api.require('slipList');
-obj.appendData({
-	datas:[{
-		img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-		title:'12:00',
-		headline:'莱昂纳多',
-		subTitle:'APICloud粉丝见面会',
-		titleIcon:'widget://image/slipList_watch.png',
-		subTitleIcon:'widget://image/slipList_star.png',
-		remark:'完成'
+var slipList = api.require('slipList');
+slipList.appendData({
+	datas: [{
+		img: 'widget://res/img/ic/sliplist.jpg',
+		title: '12:00',
+		headline: '莱昂纳多',
+		subTitle: 'APICloud粉丝见面会',
+		titleIcon: 'widget://image/slipList_watch.png',
+		subTitleIcon: 'widget://image/slipList_star.png',
+		remark: '完成'
 	},{
-		img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-		title:'12:00',
-		headline:'莱昂纳多',
-		subTitle:'APICloud粉丝见面会',
-		titleIcon:'widget://image/slipList_watch.png',
-		subTitleIcon:'widget://image/slipList_star.png',
-		remark:'完成'
+		img: 'widget://res/img/ic/sliplist.jpg',
+		title: '12:00',
+		headline: '莱昂纳多',
+		subTitle: 'APICloud粉丝见面会',
+		titleIcon: 'widget://image/slipList_watch.png',
+		subTitleIcon: 'widget://image/slipList_star.png',
+		remark: '完成'
 	},{
-		img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-		title:'12:00',
-		headline:'莱昂纳多',
-		subTitle:'APICloud粉丝见面会',
-		titleIcon:'widget://image/slipList_watch.png',
-		subTitleIcon:'widget://image/slipList_star.png',
-		remark:'完成'
+		img: 'widget://res/img/ic/sliplist.jpg',
+		title: '12:00',
+		headline: '莱昂纳多',
+		subTitle: 'APICloud粉丝见面会',
+		titleIcon: 'widget://image/slipList_watch.png',
+		subTitleIcon: 'widget://image/slipList_star.png',
+		remark: '完成'
 	},{
-		img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-		title:'12:00',
-		headline:'莱昂纳多',
-		subTitle:'APICloud粉丝见面会',
-		titleIcon:'widget://image/slipList_watch.png',
-		subTitleIcon:'widget://image/slipList_star.png',
-		remark:'完成'
+		img: 'widget://res/img/ic/sliplist.jpg',
+		title: '12:00',
+		headline: '莱昂纳多',
+		subTitle: 'APICloud粉丝见面会',
+		titleIcon: 'widget://image/slipList_watch.png',
+		subTitleIcon: 'widget://image/slipList_star.png',
+		remark: '完成'
 	},{
-		img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-		title:'12:00',
-		headline:'莱昂纳多',
-		subTitle:'APICloud粉丝见面会',
-		titleIcon:'widget://image/slipList_watch.png',
-		subTitleIcon:'widget://image/slipList_star.png',
-		remark:'完成'
+		img: 'widget://res/img/ic/sliplist.jpg',
+		title: '12:00',
+		headline: '莱昂纳多',
+		subTitle: 'APICloud粉丝见面会',
+		titleIcon: 'widget://image/slipList_watch.png',
+		subTitleIcon: 'widget://image/slipList_star.png',
+		remark: '完成'
 	},{
-		img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-		title:'12:00',
-		headline:'莱昂纳多',
-		subTitle:'APICloud粉丝见面会',
-		titleIcon:'widget://image/slipList_watch.png',
-		subTitleIcon:'widget://image/slipList_star.png',
-		remark:'完成'
+		img: 'widget://res/img/ic/sliplist.jpg',
+		title: '12:00',
+		headline: '莱昂纳多',
+		subTitle: 'APICloud粉丝见面会',
+		titleIcon: 'widget://image/slipList_watch.png',
+		subTitleIcon: 'widget://image/slipList_star.png',
+		remark: '完成'
 	},{
-		img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-		title:'12:00',
-		headline:'莱昂纳多',
-		subTitle:'APICloud粉丝见面会',
-		titleIcon:'widget://image/slipList_watch.png',
-		subTitleIcon:'widget://image/slipList_star.png',
-		remark:'完成'
+		img: 'widget://res/img/ic/sliplist.jpg',
+		title: '12:00',
+		headline: '莱昂纳多',
+		subTitle: 'APICloud粉丝见面会',
+		titleIcon: 'widget://image/slipList_watch.png',
+		subTitleIcon: 'widget://image/slipList_star.png',
+		remark: '完成'
 	},{
-		img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-		title:'12:00',
-		headline:'莱昂纳多',
-		subTitle:'APICloud粉丝见面会',
-		titleIcon:'widget://image/slipList_watch.png',
-		subTitleIcon:'widget://image/slipList_star.png',
-		remark:'完成'
+		img: 'widget://res/img/ic/sliplist.jpg',
+		title: '12:00',
+		headline: '莱昂纳多',
+		subTitle: 'APICloud粉丝见面会',
+		titleIcon: 'widget://image/slipList_watch.png',
+		subTitleIcon: 'widget://image/slipList_star.png',
+		remark: '完成'
 	},{
-		img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-		title:'12:00',
-		headline:'莱昂纳多',
-		subTitle:'APICloud粉丝见面会',
-		titleIcon:'widget://image/slipList_watch.png',
-		subTitleIcon:'widget://image/slipList_star.png',
-		remark:'完成'
+		img: 'widget://res/img/ic/sliplist.jpg',
+		title: '12:00',
+		headline: '莱昂纳多',
+		subTitle: 'APICloud粉丝见面会',
+		titleIcon: 'widget://image/slipList_watch.png',
+		subTitleIcon: 'widget://image/slipList_star.png',
+		remark: '完成'
 	},{
-		img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-		title:'12:00',
-		headline:'莱昂纳多',
-		subTitle:'APICloud粉丝见面会',
-		titleIcon:'widget://image/slipList_watch.png',
-		subTitleIcon:'widget://image/slipList_star.png',
-		remark:'完成'
+		img: 'widget://res/img/ic/sliplist.jpg',
+		title: '12:00',
+		headline: '莱昂纳多',
+		subTitle: 'APICloud粉丝见面会',
+		titleIcon: 'widget://image/slipList_watch.png',
+		subTitleIcon: 'widget://image/slipList_star.png',
+		remark: '完成'
 	},{
-		img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-		title:'12:00',
-		headline:'莱昂纳多',
-		subTitle:'APICloud粉丝见面会',
-		titleIcon:'widget://image/slipList_watch.png',
-		subTitleIcon:'widget://image/slipList_star.png',
-		remark:'完成'
+		img: 'widget://res/img/ic/sliplist.jpg',
+		title: '12:00',
+		headline: '莱昂纳多',
+		subTitle: 'APICloud粉丝见面会',
+		titleIcon: 'widget://image/slipList_watch.png',
+		subTitleIcon: 'widget://image/slipList_star.png',
+		remark: '完成'
 	}]
 });
 ```
@@ -804,23 +810,20 @@ showTime：
 ##示例代码
 
 ```js
-var loadingImgae = 'widget://res/slipList_arrow.png';//刷新的小箭头
-var bgColor = '#F5F5F5';//下拉刷新的背景颜色，有默认值，可为空
-var textColor= '#8E8E8E';//提示语颜色，有默认值，可为空
-var textDown= '下拉可以刷新...';//尚未触发刷新时间的提示语，有默认值，可为空
-var textUp= '松开开始刷新...';//触发刷新事件的提示语，有默认值，可为空
-var showTime= true;//是否显示时间，有默认值，可为空
-
-var obj = api.require('slipList');
-obj.setRefreshHeader({
-	loadingImg : loadingImgae,
-	bgColor:bgColor,
-	textColor:textColor,
-	textDown:textDown,
-	textUp:textUp,
-	showTime : showTime
-},function(ret,err){
-//触发加载事件
+var slipList = api.require('slipList');
+slipList.setRefreshHeader({
+	loadingImg : 'widget://res/slipList_arrow.png',
+	bgColor: '#F5F5F5',
+	textColor: '#8E8E8E',
+	textDown: '下拉可以刷新...',
+	textUp: '松开开始刷新...',
+	showTime : true
+},function( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -881,22 +884,20 @@ showTime：
 ##示例代码
 
 ```js
-var loadingImgae = 'widget://res/slipList_arrow.png';//刷新的小箭头
-var bgColor = '#F5F5F5';//下拉刷新的背景颜色，有默认值，可为空
-var textColor= '#8E8E8E';//提示语颜色，有默认值，可为空
-var textDown= '上拉可加载更多...';//尚未触发刷新时间的提示语，有默认值，可为空
-var textUp= '松开开始加载...';//触发刷新事件的提示语，有默认值，可为空
-var showTime= true;//是否显示时间，有默认值，可为空
-var obj = api.require('slipList');
-obj.setRefreshFooter({
-	loadingImg : loadingImgae,
-	bgColor:bgColor,
-	textColor:textColor,
-	textDown:textDown,
-	textUp:textUp,
-	showTime : showTime
-},function(ret,err){
-        //触发加载事件
+var slipList = api.require('slipList');
+slipList.setRefreshFooter({
+	loadingImg : 'widget://res/slipList_arrow.png',
+	bgColor: '#F5F5F5',
+	textColor: '#8E8E8E',
+	textDown: '上拉可加载更多...',
+	textUp: '松开开始加载...',
+	showTime : true
+},function( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -919,8 +920,10 @@ show()
 
 ##示例代码
 
-	var obj = api.require('slipList');
-	obj.show();
+```js
+var slipList = api.require('slipList');
+slipList.show();
+```
 
 ##补充说明
 
@@ -940,8 +943,10 @@ hide()
 
 示例代码
 
-	var obj = api.require('slipList');
-	obj.hide();
+```js
+var slipList = api.require('slipList');
+slipList.hide();
+```
 
 ##补充说明
 

@@ -73,6 +73,7 @@ data：
     scope: '0-23'       //内容的取值范围
                         //支持字符串类型，如：'0-23' ，表示取值范围为0至23，中间符号为英文连字符'-'，只有整数范围可以如此传参
                         //支持数组类型，如：['一','二','三','四']，表示内容取值范围包含在数组之内
+                        //支持数组类型，如：[{value:'一',id:1},{value:'二',id:2},{value:'三',id:3},{value:'四',id:4}]，表示内容取值包含在 JSON 对象组成的数组之内，其中 value 为必须传键值。其余可自定义，此 JSON 对象会在 callback 内回调给前端
 }]
 ```
 
@@ -88,10 +89,17 @@ autoHide：
 - 描述：（可选项）选中内容时，上下选项是否自动隐藏
 - 默认值：true
 
+loop：
+
+- 类型：布尔
+- 描述：（可选项）是否循环滚动
+- 默认值：true
+
 fixedOn：
 
-- 类型：字符串
-- 描述：（可选项）模块所属 Frame 的名字，若不传则模块归属于当前 Window
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 fixed:
 - 类型：布尔
@@ -112,20 +120,20 @@ ret：
                             //取值范围：
                             //show（模块打开成功）
                             //selected（选择器选中内容）
-    data: ['12','30']       //数组类型；选择器选中的内容数组
+    data: ['12','30']       //数组类型；选择器选中的内容数组，内部元素与源数据保持一致
 }
 ```
 
 ##示例代码
 
 ```js
-var obj = api.require('UICustomPicker');
-obj.open({
+var UICustomPicker = api.require('UICustomPicker');
+UICustomPicker.open({
     rect: {
-        x: 0,
-        y: 64,
-        w: 320,
-        h: 250
+		x: 30,
+		y: api.frameHeight / 2 - 170,
+		w: api.frameWidth - 60,
+		h: 340
     },
     styles: {
         bg: 'rgba(0,0,0,0)',
@@ -140,14 +148,16 @@ obj.open({
         scope: '0-23'
     }, {
         tag: '分',
-        scope: '0-59'
+        scope: ["a","b","c","d"]
     }],
     rows: 3,
-    fixedOn: '',
+    fixedOn: api.frameName,
     fixed: true
-}, function(ret, err){
-    if(ret){
-        alert(JSON.stringify(ret));
+}, function( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -175,8 +185,10 @@ id：
 ##示例代码
 
 ```js
-var obj = api.require('UICustomPicker');
-obj.close({id: 0});
+var UICustomPicker = api.require('UICustomPicker');
+UICustomPicker.close({
+    id: 0
+});
 ```
 
 ##可用性
@@ -202,8 +214,10 @@ id：
 ##示例代码
 
 ```js
-var obj = api.require('UICustomPicker');
-obj.show({id: 0});
+var UICustomPicker = api.require('UICustomPicker');
+UICustomPicker.show({
+    id: 0
+});
 ```
 
 ##可用性
@@ -229,8 +243,10 @@ id：
 ##示例代码
 
 ```js
-var obj = api.require('UICustomPicker');
-obj.hide({id: 0});
+var UICustomPicker = api.require('UICustomPicker');
+UICustomPicker.hide({
+    id: 0
+});
 ```
 
 ##可用性
@@ -256,13 +272,13 @@ id：
 data：
 
 - 类型：数组
-- 描述：设置选中内容的数组，数组某一项为空或不传，表示不改变原先的值
+- 描述：设置选中内容的数组，数组某一项为空或不传，表示不改变对应列的值
 
 ##示例代码
 
 ```js
-var obj = api.require('UICustomPicker');
-obj.setValue({
+var UICustomPicker = api.require('UICustomPicker');
+UICustomPicker.setValue({
     id: 0,
     data: ['12', '30']
 });

@@ -18,6 +18,8 @@ Description: netAudio
 [pause](#4)
 
 [stop](#5)
+
+[addEventListener](#6)
 </div>
 
 #**概述**
@@ -35,7 +37,6 @@ play({params}, callback(ret, err))
 path：
 
 - 类型：字符串
-- 默认值：无
 - 描述：网络音频资源地址
 
 ##callback(ret, err)
@@ -43,8 +44,7 @@ path：
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
@@ -57,18 +57,17 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('netAudio');
-obj.play({
-	path:'http://7xisq1.com1.z0.glb.clouddn.com/apicloud/0d0b81b8bd5ab81bda9ca54267eb9b98.mp3'
-},function(ret,err){
-	var duration = ret.duration;
-	var current = ret.current;
+var netAudio = api.require('netAudio');
+netAudio.play({
+	path: 'http://7xisq1.com1.z0.glb.clouddn.com/apicloud/0d0b81b8bd5ab81bda9ca54267eb9b98.mp3'
+},function( ret, err ){		
+	if( ret ){
+		alert( JSON.stringify( ret ) );
+	}else{
+		alert( JSON.stringify( err ) );
+	}
 });
 ```
-
-##补充说明
-
-播放网络音频
 
 ##可用性
 
@@ -89,21 +88,17 @@ setVolume({params})
 volume：
 
 - 类型：数字
-- 默认值：0
 - 描述：（可选项）音量大小（0-1）
+- 默认值：0
 
 ##示例代码
 
 ```js
-var obj = api.require('netAudio');
-obj.setVolume({
-	volume:0.6
+var netAudio = api.require('netAudio');
+netAudio.setVolume({
+	volume: 0.6
 });
 ```
-
-##补充说明
-
-设置音量大小
 
 ##可用性
 
@@ -124,21 +119,17 @@ setProgress({params})
 progress：
 
 - 类型：数字
-- 默认值：0
 - 描述：（可选项）播放位置百分比，取值范围：0-100
+- 默认值：0
 
 ##示例代码
 
 ```js
-var obj = api.require('netAudio');
-obj.setProgress({
-	progress:50
+var netAudio = api.require('netAudio');
+netAudio.setProgress({
+	progress: 50
 });
 ```
-
-##补充说明
-
-设置播放进度
 
 ##可用性
 
@@ -156,12 +147,10 @@ pause()
 
 ##示例代码
 
-	var obj = api.require('netAudio');
-	obj.pause();
-
-##补充说明
-
-暂停播放
+```js
+var netAudio = api.require('netAudio');
+netAudio.pause();
+```
 
 ##可用性
 
@@ -179,12 +168,10 @@ stop()
 
 ##示例代码
 
-	var obj = api.require('netAudio');
-	obj.stop();
-
-##补充说明
-
-停止播放
+```js
+var netAudio = api.require('netAudio');
+netAudio.stop();
+```
 
 ##可用性
 
@@ -192,4 +179,37 @@ iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
+#**addEventListener**<div id="6"></div>
 
+监听被其它 app 打断事件，**暂仅支持 ios 平台**
+
+addEventListener(callback(ret))
+
+##callback(ret)
+
+ret：
+
+- 类型：JSON对象
+- 内部字段：
+
+```js
+{
+	eventType:            //字符串类型；交互事件类型，取值范围如下：
+	                      //pause：播放暂停
+}
+```
+
+##示例代码
+
+```js
+var audio = api.require('netAudio');
+audio.addEventListener(function(ret){
+   alert('pause');
+});
+```
+
+##可用性
+
+IOS系统
+
+可提供的1.0.0及更高版本

@@ -67,15 +67,15 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('clipBoard');
-obj.set({
+var clipBoard = api.require('clipBoard');
+clipBoard.set({
 	value: 'test'
-}, function(ret, err){
-	if(ret.status){
-		api.alert({msg:'复制到剪切板成功'});
+}, function( ret, err ){
+	if( ret ){
+		alert( JSON.stringify( ret ) );
 	}else{
-		api.alert({msg:err.msg});
-    }
+		alert( JSON.stringify( err ) );
+	}
 });
 ```
 
@@ -114,9 +114,13 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('clipBoard');
-obj.get(function(ret, err){
-	api.alert({msg:ret.value+"*"+ret.type});
+var clipBoard = api.require('clipBoard');
+clipBoard.get(function( ret, err ){
+	if( ret ){
+		alert( JSON.stringify( ret ) );
+	}else{
+		alert( JSON.stringify( err ) );
+	}
 });
 ```
 
@@ -154,9 +158,13 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('clipBoard');
-obj.setListener(function(ret, err){
-	api.alert({msg:ret.value+"*"+ret.type});
+var clipBoard = api.require('clipBoard');
+clipBoard.setListener(function( ret, err ){
+	if( ret ){
+		alert( JSON.stringify( ret ) );
+	}else{
+		alert( JSON.stringify( err ) );
+	}
 });
 ```
 
@@ -178,8 +186,10 @@ removeListener()
 
 ##示例代码
 
-	var obj = api.require('clipBoard');
-	obj.removeListener ();
+```js
+var clipBoard = api.require('clipBoard');
+clipBoard.removeListener ();
+```
 
 ##补充说明
 

@@ -127,6 +127,8 @@ Description: rongCloud
 
 ## 概述
 
+（该模块为融云早期的版本,目前已停止更新,建议用rongCloud2模块）
+
 融云rongCloud是国内首家专业的即时通讯云服务提供商，专注为互联网、移动互联网开发者提供即时通讯基础能力和云端服务。通过融云平台，开发者不必搭建服务端硬件环境，就可以将即时通讯、实时网络能力快速集成至应用中。
 
 rongCloud封装了融云即时通讯能力库IMLib SDK的API，对融云的相关接口做了一一对应的封装，功能详情可参考目录。
@@ -1369,7 +1371,7 @@ ret:
 			conversationType: 'PRIVATE', // 参见 会话类型 枚举
 			messageDirection: 'SEND', // 消息方向：SEND 或者 RECEIVE
 			targetId: '16', // 接收者 Id
-			objectName: 'RC:TxtMsg', // 消息类型，参见 http://docs.rongcloud.cn/android_message.html#_内置内容类消息
+			objectName: 'RC:CmdNtf', // 消息类型，参见 http://docs.rongcloud.cn/android_message.html#_内置内容类消息
 			sentStatus: 'SENDING', // 发送状态：SENDING, SENT 或 FAILED
 			senderUserId: '55', // 发送者 userId
 			messageId: 608, // 本地消息 Id

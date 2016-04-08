@@ -8,7 +8,7 @@ Sort: 3
 
 **生成规则**
 
-当调用 APICloud统计相关接口时，我们需要对头部信息中X-APICloud-AppKey 进行验证，X-APICloud-AppKey 的生成规则如下：
+当调用 APICloud推送相关接口时，我们需要对头部信息中X-APICloud-AppKey 进行验证，X-APICloud-AppKey 的生成规则如下：
 
 ```js
 AppKey= SHA1（你的应用ID + 'UZ' + 你的应用KEY +'UZ' +当前时间毫秒数）.当前时间毫秒数
@@ -56,4 +56,41 @@ POST
 ```js
 成功返回：
 	{ status:1}
+```
+
+
+js 示例：
+
+
+```
+	 
+		
+			var now = Date.now();
+		    var	appKey = $.sha1("A690146020****" + "UZ" + "580DAADD-523D-89ED-3913-9AC1FE4C****" + "UZ" + now) + "." + now;
+		
+		function push() {
+			api.ajax({
+				url : 'https://p.apicloud.com/api/push/message',
+				method : "post",
+				headers : {
+					"X-APICloud-AppId" : "A690146020****",
+					"X-APICloud-AppKey" : appKey
+				},
+				dataType : "json",
+				data : {
+					"values" : {
+						"title" : "消息标题",
+						"content" : "消息内容",
+						"type" : 1, //– 消息类型，1:消息 2:通知
+						"platform" : 0, //0:全部平台，1：ios, 2：android
+					//	"groupName" : "department", //推送组名，多个组用英文逗号隔开.默认:全部组。eg.group1,group2 .
+					//	"userIds" : "testId" //推送用户id, 多个用户用英文逗号分隔，eg. user1,user2。
+					}
+				}
+			}, function(ret, err) {
+				//coding...
+				alert(JSON.stringify(ret))
+				alert(JSON.stringify(err))
+			});
+		}
 ```

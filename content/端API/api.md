@@ -68,8 +68,7 @@ Description: API对象
 </div>
 
 #**概述**
-
-api对象提供了构建应用程序所需要的一些基本的方法，如窗口操作、相册和网络数据访问等，而更多的方法则会在其它模块中提供，api对象不需要require引用，可以直接在js中使用
+api对象是您入门APICloud必须了解和熟练掌握的一个基础对象。api对象提供了构建应用程序所需要的一些基本的方法（method），如窗口操作、相册和网络数据访问等；以及一些常见的属性（Attrbute），如屏幕宽度（screenWidth），系统类型（systemType）等；还有一些常用事件，如电量低（batterylow）事件、应用进入后台（pause）事件。api对象不需要require引用，可以直接在js中使用。
 
 #**appId**<div id="a27"></div>
 
@@ -1161,6 +1160,10 @@ iOS系统，Android系统
 
 [keymenu](#c4)
 
+[volumeup](#c21)
+
+[volumedown](#c22)
+
 [offline](#c5)
 
 [online](#c6)
@@ -1173,6 +1176,8 @@ iOS系统，Android系统
 
 [shake](#c10)
 
+[takescreenshot](#c24)
+
 [swipedown](#c11)
 
 [swipeleft](#c12)
@@ -1182,6 +1187,8 @@ iOS系统，Android系统
 [swipeup](#c14)
 
 [tap](#c15)
+
+[longpress](#c23)
 
 [viewappear](#c16)
 
@@ -1271,7 +1278,7 @@ iOS系统，Android系统
 
 设备back键被点击事件，仅Android平台有效，字符串类型
 
-该事件必须在Window中注册才有效，Frame中注册无效。
+该事件必须在Window中注册才有效，Frame中注册无效，并且只在当前屏幕上的window才能收到回调。
 
 ##callback(ret)
 
@@ -1283,7 +1290,8 @@ ret:
 
 ```js
 {
-    keyCode:0			//被点击的按键
+    keyCode:0				//被点击的按键
+    longPress:false			//是否是长按
 }
 ```
 
@@ -1308,7 +1316,7 @@ Android系统
 
 设备menu键被点击事件，仅Android平台有效
 
-该事件必须在Window中注册才有效，Frame中注册无效。
+该事件必须在Window中注册才有效，Frame中注册无效，并且只在当前屏幕上的window才能收到回调。
 
 ##callback(ret)
 
@@ -1320,7 +1328,8 @@ ret:
 
 ```js
 {
-    keyCode:0			//被点击的按键
+    keyCode:0				//被点击的按键
+    longPress:false			//是否是长按
 }
 ```
 
@@ -1339,6 +1348,82 @@ api.addEventListener({
 Android系统
 
 可提供的1.0.0及更高版本
+
+
+#**volumeup**<div id="c21"></div>
+
+设备音量加键被点击事件，仅Android平台有效
+
+该事件必须在Window中注册才有效，Frame中注册无效，并且只在当前屏幕上的window才能收到回调。
+
+##callback(ret)
+
+ret:
+
+- 描述：被点击的按键
+
+内部字段：
+
+```js
+{
+    keyCode:0				//被点击的按键
+    longPress:false			//是否是长按
+}
+```
+
+##示例代码
+
+```js
+api.addEventListener({
+	name:'volumeup'
+},function(ret,err){
+	//operation
+});
+```
+
+##可用性
+
+Android系统
+
+可提供的1.2.0及更高版本
+
+
+#**volumedown**<div id="c22"></div>
+
+设备音量减键被点击事件，仅Android平台有效
+
+该事件必须在Window中注册才有效，Frame中注册无效，并且只在当前屏幕上的window才能收到回调。
+
+##callback(ret)
+
+ret:
+
+- 描述：被点击的按键
+
+内部字段：
+
+```js
+{
+    keyCode:0				//被点击的按键
+    longPress:false			//是否是长按
+}
+```
+
+##示例代码
+
+```js
+api.addEventListener({
+	name:'volumedown'
+},function(ret,err){
+	//operation
+});
+```
+
+##可用性
+
+Android系统
+
+可提供的1.2.0及更高版本
 
 
 #**offline**<div id="c5"></div>
@@ -1508,6 +1593,31 @@ iOS系统，Android系统
 可提供的1.0.0及更高版本
 
 
+#**takescreenshot**<div id="c24"></div>
+
+应用在前台运行期间，用户屏幕截图事件（比如同时按下了home键和电源键），只支持iOS。
+
+##callback()
+
+不能为空
+
+##示例代码
+
+```js
+api.addEventListener({
+	name:'takescreenshot'
+},function(ret,err){
+	//operation
+});
+```
+
+##可用性
+
+iOS系统
+
+可提供的1.2.0及更高版本
+
+
 #**swipedown**<div id="c11"></div>
 
 Window或者Frame的页面全局向下轻扫事件，字符串类型
@@ -1631,6 +1741,31 @@ api.addEventListener({
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
+
+
+#**longpress**<div id="c23"></div>
+
+Window或者Frame的页面全局长按事件，字符串类型。
+
+##callback()
+
+不能为空
+
+##示例代码
+
+```js
+api.addEventListener({
+	name:'longpress'
+},function(ret,err){
+	//operation
+});
+```
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.2.0及更高版本
 
 
 #**viewappear**<div id="c16"></div>
@@ -1831,6 +1966,7 @@ h4{clear: both; margin: 0; padding: 20px 0; font-weight: bold;}
 <a href="#41" title="设置frame属性">setFrameAttr</a>
 <a href="#6" title="把frame带到前面">bringFrameToFront</a>
 <a href="#40" title="把frame放到后面">sendFrameToBack</a>
+<a href="#93" title="设置frame页面加载监听">setFrameClient</a>
 <a href="#5" title="frame动画">animation</a>
 <a href="#28" title="打开frame组">openFrameGroup</a>
 <a href="#11" title="关闭frame组">closeFrameGroup</a>
@@ -1843,6 +1979,9 @@ h4{clear: both; margin: 0; padding: 20px 0; font-weight: bold;}
 <a href="#12" title="关闭侧滑">closeSlidPane</a>
 <a href="#67" title="锁住SlidPane">lockSlidPane</a>
 <a href="#68" title="解锁SlidPane">unlockSlidPane</a>
+<a href="#89" title="打开抽屉式侧滑Window">openDrawerLayout</a>
+<a href="#90" title="打开抽屉式侧滑Pane">openDrawerPane</a>
+<a href="#91" title="关闭抽屉式侧滑Pane">closeDrawerPane</a>
 <a href="#18" title="在指定页面执行脚本">execScript</a>
 <a href="#63" title="手动移除启动页">removeLaunchView</a>
 <a href="#34" title="手动移除启动页">parseTapmode</a>
@@ -1850,6 +1989,7 @@ h4{clear: both; margin: 0; padding: 20px 0; font-weight: bold;}
 <a href="#23" title="安装应用">installApp</a>
 <a href="#25" title="打开应用">openApp</a>
 <a href="#75" title="判断设备是否已安装指定应用">appInstalled</a>
+<a href="#92" title="重启应用">rebootApp</a>
 <a href="#32" title="打开widget">openWidget</a>
 <a href="#14" title="关闭widget">closeWidget</a>
 <h4>网络通信</h4>
@@ -1872,6 +2012,7 @@ h4{clear: both; margin: 0; padding: 20px 0; font-weight: bold;}
 <a href="#2" title="添加事件监听">addEventListener</a>
 <a href="#38" title="移除事件监听">removeEventListener</a>
 <a href="#72" title="发送事件">sendEvent</a>
+<a href="#88" title="SuperWebView中js向原生发送消息">accessNative</a>
 <a href="#65" title="弹出通知提示">notification</a>
 <a href="#69" title="取消本应用弹出到状态栏的某个或所有通知">cancelNotification</a>
 <h4>设备访问</h4>
@@ -1901,6 +2042,7 @@ h4{clear: both; margin: 0; padding: 20px 0; font-weight: bold;}
 <a href="#60" title="自动消失的提示框">toast</a>
 <a href="#29" title="时间选择器">openPicker</a>
 <a href="#46" title="下拉刷新">setRefreshHeaderInfo</a>
+<a href="#94" title="自定义下拉刷新">setCustomRefreshHeaderInfo</a>
 <a href="#87" title="设置刷新中">refreshHeaderLoading</a>
 <a href="#37" title="设置刷新完成">refreshHeaderLoadDone</a>
 <a href="#49" title="显示悬浮按钮">showFloatBox</a>
@@ -1937,7 +2079,7 @@ name：
 
 - 类型：字符串
 - 默认值：无
-- 描述：window名字，不能为空字符串。若为root，则会关闭首页上面所有存在的window，相当于调用closeToWin({name:'root'})方法
+- 描述：window名字，不能为空字符串
 
 url：
 
@@ -1993,6 +2135,12 @@ slidBackEnabled：
 - 默认值：true
 - 描述：（可选项）是否支持滑动返回。iOS7.0及以上系统中，在新打开的页面中向右滑动，可以返回到上一个页面，该字段只iOS有效
 
+slidBackType：
+
+- 类型：字符串
+- 默认值：full
+- 描述：（可选项）当支持滑动返回时，设置手指在页面右滑的有效作用区域。取值范围（full:整个页面范围都可以右滑返回，edge:在页面左边缘右滑才可以返回），该字段只iOS有效
+
 animation：
 
 - 类型：JSON对象
@@ -2013,7 +2161,24 @@ showProgress：
 
 - 类型：布尔
 - 默认值：false
-- 描述：（可选项）是否显示等待框，只在url为网址时有效
+- 描述：（可选项）是否显示等待框，此参数即将废弃，使用progress参数代替。若传了progress参数，此参数将忽略
+
+progress：
+
+- 类型：JSON对象
+- 默认值：无
+- 描述：（可选项）页面加载进度配置信息，若不传则无加载进度效果
+
+内部字段：
+
+```js
+{
+    type:"",            	//加载进度效果类型，默认值为default，取值范围为default|page，default等同于showProgress参数效果；为page时，进度效果为仿浏览器类型，固定在页面的顶部
+    title:"",       		//type为default时显示的加载框标题
+    text:"",                //type为default时显示的加载框内容
+    color:""                //type为page时进度条的颜色，默认值为#45C01A，支持#FFF，#FFFFFF，rgb(255,255,255)，rgba(255,255,255,1.0)等格式
+}
+```
 
 delay：
 
@@ -2039,13 +2204,21 @@ softInputMode：
 - 默认值：auto
 - 描述：（可选项）当键盘弹出时，输入框被盖住时，当前页面的调整方式，详见[键盘弹出页面调整方式](!Constant#b26)常量；只iOS有效，且当scaleEnabled参数为true时无效，Android请在config.xml里面配置并云编译使用
 
+customRefreshHeader：
+
+- 类型：字符串
+- 默认值：无
+- 描述：（可选项）设置使用自定义下拉刷新模块的名称，设置后可以使用api.setCustomRefreshHeaderInfo方法来使用自定义下拉刷新组件
+
 ##示例代码
 
 ```js
 api.openWin({
 	name: 'page1',
 	url: './page1.html',
-	pageParam: {name: 'test'}
+	pageParam: {
+	    name: 'test'
+	}
 });
 ```
 
@@ -2237,10 +2410,10 @@ softInputMode：
 api.setWinAttr({
 	bounces: true,
 	bgColor: '#fff',
-	vScrollBarEnabled:true,
-	hScrollBarEnabled:true,
-	scaleEnabled:true,
-	slidBackEnabled:true
+	vScrollBarEnabled: true,
+	hScrollBarEnabled: true,
+	scaleEnabled: true,
+	slidBackEnabled: true
 });
 ```
  
@@ -2324,8 +2497,8 @@ scaleEnabled：
 rect：
 
 - 类型：JSON对象
-- 默认值：frame的位置尺寸
-- 描述：（可选项）页面区域
+- 默认值：充满整个父页面
+- 描述：（可选项）frame的位置和大小，设置margin后，在不同手机上面会保持与父页面的各方向边距一致，而中间区域会自动扩充。
 
 内部字段：
 
@@ -2335,6 +2508,14 @@ rect：
     y:0,             //左上角y坐标
     w:320,           //宽度，若传'auto'，页面从x位置开始自动充满父页面宽度
     h:480            //高度，若传'auto'，页面从y位置开始自动充满父页面高度
+    
+    marginLeft:0,	//相对父window左外边距的距离
+    
+    marginTop:0,	//相对父window上外边距的距离
+    
+    marginBottom:0,	//相对父window下外边距的距离
+    
+    marginRight:0	//相对父window右外边距的距离
 }
 ```
 
@@ -2342,7 +2523,24 @@ showProgress：
 
 - 类型：布尔
 - 默认值：false
-- 描述：（可选项）是否显示等待框，只在url为网址时有效
+- 描述：（可选项）是否显示等待框，此参数即将废弃，使用progress参数代替。若传了progress参数，此参数将忽略
+
+progress：
+
+- 类型：JSON对象
+- 默认值：无
+- 描述：（可选项）页面加载进度配置信息，若不传则无加载进度效果
+
+内部字段：
+
+```js
+{
+    type:"",            	//加载进度效果类型，默认值为default，取值范围为default|page，default等同于showProgress参数效果；为page时，进度效果为仿浏览器类型，固定在页面的顶部
+    title:"",       		//type为default时显示的加载框标题
+    text:"",                //type为default时显示的加载框内容
+    color:""                //type为page时进度条的颜色，默认值为#45C01A，支持#FFF，#FFFFFF，rgb(255,255,255)，rgba(255,255,255,1.0)等格式
+}
+```
 
 reload：
 
@@ -2362,23 +2560,47 @@ softInputMode：
 - 默认值：auto
 - 描述：（可选项）当键盘弹出时，输入框被盖住时，当前页面的调整方式，详见[键盘弹出页面调整方式](!Constant#b26)常量；只iOS有效，且当scaleEnabled参数为true时无效，Android请在config.xml里面配置并云编译使用
 
+animation：
+
+- 类型：JSON对象
+- 默认值：无
+- 描述：（可选项）动画参数，不传时无动画，**type**：[动画类型](!Constant#b6)，**subType**：[动画子类型](!Constant#b8)。
+
+内部字段：
+
+```js
+{
+    type:"none",                //动画类型（详见动画类型常量）
+    subType:"from_right",       //动画子类型（详见动画子类型常量）
+    duration:300                //动画过渡时间，默认300毫秒
+}
+```
+
+customRefreshHeader：
+
+- 类型：字符串
+- 默认值：无
+- 描述：（可选项）设置使用自定义下拉刷新模块的名称，设置后可以使用api.setCustomRefreshHeaderInfo方法来使用自定义下拉刷新组件
+
 ##示例代码
 
 ```js
 api.openFrame({
 	name: 'page2',
 	url: './page2.html',
-	rect:{
-		x:0,
-		y:0,
-		w:320,
-		h:480
+	rect: {
+		x: 0,
+		y: 0,
+		w: 320,
+		h: 480
 	},
-	pageParam: {name: 'test'},
+	pageParam: {
+	    name: 'test'
+	},
 	bounces: true,
 	bgColor: 'rgba(0,0,0,0)',
-	vScrollBarEnabled:true,
-	hScrollBarEnabled:true
+	vScrollBarEnabled: true,
+	hScrollBarEnabled: true
 });
 ```
 
@@ -2408,6 +2630,7 @@ name：
 - 描述：（可选项）frame名字，不传时关闭当前frame
 
 ##示例代码
+
 ```js
 api.closeFrame({
 	name: 'page2'
@@ -2501,21 +2724,22 @@ softInputMode：
 - 类型：字符串
 - 默认值：无
 - 描述：（可选项）当键盘弹出时，输入框被盖住时，当前页面的调整方式，详见[键盘弹出页面调整方式](!Constant#b26)常量；只iOS有效，且当scaleEnabled参数为true时无效，Android请在config.xml里面配置并云编译使用
+
 ##示例代码
 
 ```js
 api.setFrameAttr({
 	name: 'page2',
-	rect:{
-		x:0,
-		y:0,
-		w:320,
-		h:480
+	rect: {
+		x: 0,
+		y: 0,
+		w: 320,
+		h: 480
 	},
 	bounces: true,
 	bgColor: '#fff',
-	vScrollBarEnabled:true,
-	hScrollBarEnabled:true
+	vScrollBarEnabled: true,
+	hScrollBarEnabled: true
 });
 ```
 
@@ -2554,8 +2778,8 @@ to：
 
 ```js
 api.bringFrameToFront({
-	from:'page1',
-	to:'page2'
+	from: 'page1',
+	to: 'page2'
 });
 ```
 
@@ -2608,6 +2832,72 @@ api.sendFrameToBack ({
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
+
+
+#**setFrameClient**<div id="93"></div>
+
+设置指定frame的页面加载监听，仅在window中调用生效，可以对多个frame进行监听。
+
+setFrameClient({params}, callback(ret, err))
+
+##params
+
+frameName：
+
+- 类型：字符串
+- 默认值：无
+- 描述：frame名字
+
+##callback(ret, err)
+
+ret：
+
+- 类型：JSON对象
+- 描述：frame加载状态、加载进度等发生变化时的回调
+
+内部字段：
+
+```js
+{
+	state:0,			//加载状态，数字类型，取值范围：0-开始加载；1-加载进度发生变化；2-结束加载；3-title发生变化；4-url发生变化
+	progress:0,			//state为1时，页面的加载进度，数字类型，取值范围0-100
+	title:'',			//state为3时，页面当前的title，字符串类型
+	url:''				//state为0|2|4时，页面当前的url，字符串类型
+}
+```
+
+##示例代码
+
+```js
+api.setFrameClient({
+	frameName:'webpage'
+}, function(ret, err){
+	switch (ret.state) {
+		case 0:
+			break;
+		case 1:
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4:
+			break;
+		default:
+			break;
+	}
+});
+```
+
+##补充说明
+
+无
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.2.0及更高版本
 
 
 #**animation**<div id="5"></div>
@@ -2716,6 +3006,7 @@ rotation：
 动画结束后的回调
 
 ##示例代码
+
 ```js
 api.animation ({
 	name: 'page1',
@@ -2725,23 +3016,23 @@ api.animation ({
 	repeatCount: 2,
 	autoreverse: true,
 	alpha: 0.6,
-	translation:{
+	translation: {
 	    x: 0,
 	    y: 100,
 	    z: 0
 	}, 
-	scale:{
+	scale: {
 	    x: 1.2,
 	    y: 1,
 	    z: 1
 	},
-	rotation:{
-	    degree:45,
+	rotation: {
+	    degree: 45,
 	    x: 0,
 	    y: 0,
 	    z: 1
 	}
-}, function() {
+}, function( ret, err ) {
 	api.alert({msg: '动画结束'});
 });
 ```
@@ -2788,8 +3079,8 @@ scrollEnabled：
 rect：
 
 - 类型：JSON对象
-- 默认值：无
-- 描述：（可选项）frame组区域
+- 默认值：充满整个父页面
+- 描述：（可选项）frameGroup的位置和大小，设置margin后，在不同手机上面会保持与父页面的各方向边距一致，而中间区域会自动扩充。
 
 内部字段：
 
@@ -2797,8 +3088,13 @@ rect：
 {
     x:0,             //左上角x坐标
     y:0,             //左上角y坐标
-    w:320,           //宽度，若传'auto'，frame组从x位置开始自动充满父页面宽度
-    h:240            //高度，若传'auto'，frame组从y位置开始自动充满父页面高度
+    w:320,           //宽度，若传'auto'，页面从x位置开始自动充满父页面宽度
+    h:480，          //高度，若传'auto'，页面从y位置开始自动充满父页面高度
+    
+    marginLeft:0,	//相对父window左外边距的距离
+    marginTop:0,	//相对父window上外边距的距离
+    marginBottom:0,	//相对父window下外边距的距离
+    marginRight:0	//相对父window右外边距的距离
 }
 ```
 
@@ -2835,6 +3131,7 @@ frames：
 	scaleEnabled:true,                      //（可选项）页面是否可以缩放，为true时softInputMode参数无效，布尔型，默认值：false
 	allowEdit:false,						//（可选项）是否允许长按页面时弹出选择菜单
 	softInputMode:'auto'		            //（可选项）当键盘弹出时，输入框被盖住时，当前页面的调整方式，参考键盘弹出页面调整方式常量，只iOS有效，且当scaleEnabled参数为true时无效
+	customRefreshHeader:''					//（可选项）设置使用自定义下拉刷新模块的名称，设置后可以使用api.setCustomRefreshHeaderInfo方法来使用自定义下拉刷新组件
 }]
 ```
 
@@ -2859,12 +3156,16 @@ ret：
 ```js
 api.openFrameGroup ({
 	name: 'group1',
-	background:'#fff',
-	scrollEnabled:false,
-	rect:{x:0, y:0, w:'auto', h:'auto'},
-	index:1,
-	frames:
-	[{
+	background: '#fff',
+	scrollEnabled: false,
+	rect: {
+	     x: 0, 
+	     y: 0, 
+	     w: 'auto', 
+	     h: 'auto'
+	},
+	index: 1,
+	frames: [{
 		name: 'frame1', 
 		url: 'frame1.html',
 		bgColor: '#fff'
@@ -2873,9 +3174,12 @@ api.openFrameGroup ({
 		url: 'frame2.html', 
 		bgColor: '#fff'
     }]
-}, function(ret, err){
-	var name = ret.name;
-	var index = ret.index;
+}, function( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -2972,7 +3276,7 @@ rect：
 ```js
 api.setFrameGroupAttr({
     name: 'group1',
-    hidden:true
+    hidden: true
 });
 ```
 
@@ -3024,8 +3328,8 @@ reload：
 ```js
 api.setFrameGroupIndex({
     name: 'group1',
-    index:2,
-    scroll:true
+    index: 2,
+    scroll: true
 });
 ```
 
@@ -3124,7 +3428,24 @@ showProgress：
 
 - 类型：布尔
 - 默认值：false
-- 描述：（可选项）是否显示等待框，只在url为网址时有效
+- 描述：（可选项）是否显示等待框，此参数即将废弃，使用progress参数代替。若传了progress参数，此参数将忽略
+
+progress：
+
+- 类型：JSON对象
+- 默认值：无
+- 描述：（可选项）页面加载进度配置信息，若不传则无加载进度效果
+
+内部字段：
+
+```js
+{
+    type:"",            	//加载进度效果类型，默认值为default，取值范围为default|page，default等同于showProgress参数效果；为page时，进度效果为仿浏览器类型，固定在页面的顶部
+    title:"",       		//type为default时显示的加载框标题
+    text:"",                //type为default时显示的加载框内容
+    color:""                //type为page时进度条的颜色，默认值为#45C01A，支持#FFF，#FFFFFF，rgb(255,255,255)，rgba(255,255,255,1.0)等格式
+}
+```
 
 allowEdit：
 
@@ -3138,12 +3459,18 @@ softInputMode：
 - 默认值：auto
 - 描述：（可选项）当键盘弹出时，输入框被盖住时，当前页面的调整方式，详见[键盘弹出页面调整方式](!Constant#b26)常量；只iOS有效，且当scaleEnabled参数为true时无效，Android请在config.xml里面配置并云编译使用
 
+customRefreshHeader：
+
+- 类型：字符串
+- 默认值：无
+- 描述：（可选项）设置使用自定义下拉刷新模块的名称，设置后可以使用api.setCustomRefreshHeaderInfo方法来使用自定义下拉刷新组件
+
 ##示例代码
 
 ```js
 api.openPopoverWin({
-	width:480,
-	height:400,
+	width: 480,
+	height: 400,
 	name: 'page1',
 	url: './page1.html'
 });
@@ -3199,19 +3526,57 @@ type：
 
 - 类型：字符串
 - 默认值：all
-- 描述：（可选项）侧滑类型（left：左侧滑、right：右侧滑、all：左右侧滑）.安卓暂只支持 left.
+- 描述：（可选项）侧滑类型（left：左侧滑、right：右侧滑、all：左右侧滑）。安卓暂只支持left。
 
 leftEdge：
 
 - 类型：数字
 - 默认值：60
-- 描述：（可选项）左侧滑时，侧滑window停留时露出的宽度
+- 描述：（可选项）左侧滑时，侧滑window停留时露出的宽度。即将废弃，用slidPaneStyle中leftEdge参数代替
 
 rightEdge：
 
 - 类型：数字
 - 默认值：60
-- 描述：（可选项）右侧滑时，侧滑window停留时露出的宽度
+- 描述：（可选项）右侧滑时，侧滑window停留时露出的宽度。即将废弃，用slidPaneStyle中rightEdge参数代替
+
+slidPaneStyle：
+
+- 类型：JSON对象
+- 默认值：无
+- 描述：侧滑层window样式
+
+内部字段：
+
+```js
+{
+	leftEdge:				//（可选项）左侧滑时，侧滑window停留时露出的宽度，默认60，数字类型
+	rightEdge:				//（可选项）右侧滑时，侧滑window停留时露出的宽度，默认60，数字类型
+	leftScale:				//（可选项）左侧滑时，侧滑window移动时能缩放的最小倍数，0-1.0，默认1.0，数字类型，只支持iOS
+	rightScale:				//（可选项）右侧滑时，侧滑window移动时能缩放的最小倍数，0-1.0，默认1.0，数字类型，只支持iOS
+}
+```
+
+fixedPaneStyle：
+
+- 类型：JSON对象
+- 默认值：无
+- 描述：底部固定层window样式
+
+内部字段：
+
+```js
+{
+	leftEdge:				//（可选项）左侧滑时，固定window能向左移动的最大宽度，默认0，数字类型，只支持iOS
+	rightEdge:				//（可选项）右侧滑时，固定window能向右移动的最大宽度，默认0，数字类型，只支持iOS
+	leftScale:				//（可选项）左侧滑时，固定window向左移动时能缩放的最小倍数，0-1.0，默认1.0，数字类型，只支持iOS
+	rightScale:				//（可选项）右侧滑时，固定window向右移动时能缩放的最小倍数，0-1.0，默认1.0，数字类型，只支持iOS
+	leftMaskBg:				//（可选项）左侧滑时，固定window上面的遮罩层背景，支持颜色和图片，默认rgba(0,0,0,0)，字符串类型，只支持iOS
+	rightMaskBg:			//（可选项）右侧滑时，固定window上面的遮罩层背景，支持颜色和图片，默认rgba(0,0,0,0)，字符串类型，只支持iOS
+	leftBg:					//（可选项）左侧滑时，固定window后面的背景，缩放过程中后面的背景将会显示出来，支持颜色和图片，默认rgba(0,0,0,0)，字符串类型，只支持iOS
+	rightBg:				//（可选项）右侧滑时，固定window后面的背景，缩放过程中后面的背景将会显示出来，支持颜色和图片，默认rgba(0,0,0,0)，字符串类型，只支持iOS
+}
+```
 
 fixedPane：
 
@@ -3223,8 +3588,8 @@ fixedPane：
 
 ```js
 {
-    name:'',                            //window名字（字符串类型）
-    url:'',                             //页面地址，可以为本地文件路径，支持相对路径和绝对路径，以及widget://、fs://等协议路径，也可以为远程地址
+    name:'',                            // window名字（字符串类型）
+    url:'',                             // 页面地址，可以为本地文件路径，支持相对路径和绝对路径，以及widget://、fs://等协议路径，也可以为远程地址
     pageParam:{},                       //（可选项）页面参数，页面中可以通过api.pageParam获取，JSON对象
     bgColor:'',                         //（可选项）背景色，支持图片和颜色，格式为#fff、#ffffff、rgba(r,g,b,a)等，图片路径支持fs://、widget://等APICloud自定义文件路径协议，同时支持相对路径
     bounces:false,                      //（可选项）是否弹动，默认值：若在config.xml里面配置了pageBounce，则默认值为配置的值，否则为false
@@ -3234,6 +3599,7 @@ fixedPane：
 	scaleEnabled:true,                  //（可选项）页面是否可以缩放，为true时softInputMode参数无效，布尔型，默认值：false
     allowEdit:false,					//（可选项）是否允许长按页面时弹出选择菜单
     softInputMode:'auto'		        //（可选项）当键盘弹出时，输入框被盖住时，当前页面的调整方式，参考键盘弹出页面调整方式常量，只iOS有效，且当scaleEnabled参数为true时无效
+    customRefreshHeader:''				//（可选项）设置使用自定义下拉刷新模块的名称，设置后可以使用api.setCustomRefreshHeaderInfo方法来使用自定义下拉刷新组件
 }
 ```
 
@@ -3247,8 +3613,8 @@ slidPane：
 
 ```js
 {
-    name:'',                            //window名字（字符串类型）
-    url:'',                             //页面地址，可以为本地文件路径，支持相对路径和绝对路径，以及widget://、fs://等协议路径，也可以为远程地址
+    name:'',                            // window名字（字符串类型）
+    url:'',                             // 页面地址，可以为本地文件路径，支持相对路径和绝对路径，以及widget://、fs://等协议路径，也可以为远程地址
     pageParam:{},                       //（可选项）页面参数，页面中可以通过api.pageParam获取，JSON对象
     bgColor:'',                         //（可选项）背景色，支持图片和颜色，格式为#fff、#ffffff、rgba(r,g,b,a)等，图片路径支持fs://、widget://等APICloud自定义文件路径协议，同时支持相对路径
     bounces:false,                      //（可选项）是否弹动，默认值：若在config.xml里面配置了pageBounce，则默认值为配置的值，否则为false
@@ -3258,6 +3624,7 @@ slidPane：
 	scaleEnabled:true,                  //（可选项）页面是否可以缩放，为true时softInputMode参数无效，布尔型，默认值：false
     allowEdit:false,					//（可选项）是否允许长按页面时弹出选择菜单
     softInputMode:'auto'		        //（可选项）当键盘弹出时，输入框被盖住时，当前页面的调整方式，参考键盘弹出页面调整方式常量，只iOS有效，且当scaleEnabled参数为true时无效
+    customRefreshHeader:''				//（可选项）设置使用自定义下拉刷新模块的名称，设置后可以使用api.setCustomRefreshHeaderInfo方法来使用自定义下拉刷新组件
 }
 ```
 
@@ -3282,30 +3649,29 @@ ret：
 ```js
 api.openSlidLayout ({
 	type: 'all',
-	leftEdge:80,
-	rightEdge:60,
+	leftEdge: 80,
+	rightEdge: 60,
 	fixedPane: {
         name: 'win1', 
 		url: 'win1.html', 
 		bgColor: '#fff', 
-		bounces:true,
-		vScrollBarEnabled:true,
-		hScrollBarEnabled:false
+		bounces: true,
+		vScrollBarEnabled: true,
+		hScrollBarEnabled: false
 	},
 	slidPane: {
         name: 'win2', 
 		url: 'win2.html', 
 		bgColor: '#fff', 
-		bounces:true,
-		vScrollBarEnabled:true,
-		hScrollBarEnabled:false
+		bounces: true,
+		vScrollBarEnabled: true,
+		hScrollBarEnabled: false
     }
-}, function(ret){
-	var type = ret.type;
-	if (type == 'left') {
-
-	} else {
-
+},function( ret, err ){
+	if( ret ) {
+        alert( JSON.stringify( ret ) );
+	}else{
+        alert( JSON.stringify( err ) );
 	}
 });
 ```
@@ -3386,7 +3752,9 @@ lockSlidPane()
 
 ##示例代码
 
-	api.lockSlidPane();
+```js
+api.lockSlidPane();
+```
 
 ##补充说明
 
@@ -3407,7 +3775,9 @@ unlockSlidPane()
 
 ##示例代码
 
-	api.unlockSlidPane();
+```js
+api.unlockSlidPane();
+```
 
 ##补充说明
 
@@ -3418,6 +3788,285 @@ unlockSlidPane()
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
+
+#**openDrawerLayout**<div id="89"></div>
+
+打开一个抽屉式侧滑window，可以从当前window的左右边缘滑动拉出侧滑window。
+
+此方法在openWin方法的基础上增加了leftPane、rightPane参数，所以可以通过api.closeWin()方法来关闭整个抽屉式侧滑。
+
+openDrawerLayout({params})
+
+##params
+
+name：
+
+- 类型：字符串
+- 默认值：无
+- 描述：window名字，不能为空字符串
+
+url：
+
+- 类型：字符串
+- 默认值：无
+- 描述：页面地址，可以为本地文件路径，支持相对路径和绝对路径，以及widget://、fs://等协议路径，也可以为远程地址
+
+pageParam：
+
+- 类型：JSON对象
+- 默认值：无
+- 描述：（可选项）页面参数，新页面中可以通过api.pageParam获取
+
+bounces：
+
+- 类型：布尔
+- 默认值：若在config.xml里面配置了pageBounce，则默认值为配置的值，否则为false
+- 描述：（可选项）页面是否弹动
+
+bgColor：
+
+- 类型：字符串
+- 默认值：若在config.xml里面配置了windowBackground，则默认值为配置的值，否则透明
+- 描述：（可选项）背景色，支持图片和颜色，格式为#fff、#ffffff、rgba(r,g,b,a)等，图片路径支持fs://、widget://等APICloud自定义文件路径协议，同时支持相对路径
+
+scrollToTop：
+
+- 类型：布尔
+- 默认值：false
+- 描述：（可选项）当点击状态栏，页面是否滚动到顶部。若当前屏幕上不止一个页面的scrollToTop属性为true，则所有的都不会起作用。只iOS有效
+
+vScrollBarEnabled：
+
+- 类型：布尔
+- 默认值：true
+- 描述：（可选项）是否显示垂直滚动条
+
+hScrollBarEnabled：
+
+- 类型：布尔
+- 默认值：true
+- 描述：（可选项）是否显示水平滚动条
+
+scaleEnabled：
+
+- 类型：布尔
+- 默认值：false
+- 描述：（可选项）页面是否可以缩放，为true时softInputMode参数无效
+
+slidBackEnabled：
+
+- 类型：布尔
+- 默认值：true
+- 描述：（可选项）是否支持滑动返回。iOS7.0及以上系统中，在新打开的页面中向右滑动，可以返回到上一个页面，该字段只iOS有效
+
+slidBackType：
+
+- 类型：字符串
+- 默认值：full
+- 描述：（可选项）当支持滑动返回时，设置手指在页面右滑的有效作用区域。取值范围（full:整个页面范围都可以右滑返回，edge:在页面左边缘右滑才可以返回），该字段只iOS有效
+
+animation：
+
+- 类型：JSON对象
+- 默认值：无
+- 描述：（可选项）动画参数，不传时使用默认动画，**type**：[动画类型](!Constant#b6)，**subType**：[动画子类型](!Constant#b8)。
+
+内部字段：
+
+```js
+{
+    type:"none",                //动画类型（详见动画类型常量）
+    subType:"from_right",       //动画子类型（详见动画子类型常量）
+    duration:300                //动画过渡时间，默认300毫秒
+}
+```
+
+showProgress：
+
+- 类型：布尔
+- 默认值：false
+- 描述：（可选项）是否显示等待框，此参数即将废弃，使用progress参数代替。若传了progress参数，此参数将忽略
+
+progress：
+
+- 类型：JSON对象
+- 默认值：无
+- 描述：（可选项）页面加载进度配置信息，若不传则无加载进度效果
+
+内部字段：
+
+```js
+{
+    type:"",            	//加载进度效果类型，默认值为default，取值范围为default|page，default等同于showProgress参数效果；为page时，进度效果为仿浏览器类型，固定在页面的顶部
+    title:"",       		//type为default时显示的加载框标题
+    text:"",                //type为default时显示的加载框内容
+    color:""                //type为page时进度条的颜色，默认值为#45C01A，支持#FFF，#FFFFFF，rgb(255,255,255)，rgba(255,255,255,1.0)等格式
+}
+```
+
+delay：
+
+- 类型：数字
+- 默认值：0
+- 描述：（可选项）window显示延迟时间，适用于将被打开的window中可能需要打开有耗时操作的模块时，可延迟window展示到屏幕的时间，保持UI的整体性
+
+reload：
+
+- 类型：布尔
+- 默认值：false
+- 描述：（可选项）页面已经打开时，是否重新加载页面，重新加载页面后apiready方法将会被执行
+
+allowEdit：
+
+- 类型：布尔
+- 默认值：false
+- 描述：（可选项）是否允许长按页面时弹出选择菜单
+
+softInputMode：
+
+- 类型：字符串
+- 默认值：auto
+- 描述：（可选项）当键盘弹出时，输入框被盖住时，当前页面的调整方式，详见[键盘弹出页面调整方式](!Constant#b26)常量；只iOS有效，且当scaleEnabled参数为true时无效，Android请在config.xml里面配置并云编译使用
+
+customRefreshHeader：
+
+- 类型：字符串
+- 默认值：无
+- 描述：（可选项）设置使用自定义下拉刷新模块的名称，设置后可以使用api.setCustomRefreshHeaderInfo方法来使用自定义下拉刷新组件
+
+leftPane：
+
+- 类型：JSON对象
+- 默认值：无
+- 描述：左边侧滑window
+
+内部字段：
+
+```js
+{
+    edge:60,							// 左边侧滑打开后，漏出的半透明区域宽度，默认值为60。此时左边侧滑window的宽度为屏幕宽度减去edge
+    name:'',                            // window名字（字符串类型）
+    url:'',                             // 页面地址，可以为本地文件路径，支持相对路径和绝对路径，以及widget://、fs://等协议路径，也可以为远程地址
+    pageParam:{},                       //（可选项）页面参数，页面中可以通过api.pageParam获取，JSON对象
+    bgColor:'',                         //（可选项）背景色，支持图片和颜色，格式为#fff、#ffffff、rgba(r,g,b,a)等，图片路径支持fs://、widget://等APICloud自定义文件路径协议，同时支持相对路径
+    bounces:false,                      //（可选项）是否弹动，默认值：若在config.xml里面配置了pageBounce，则默认值为配置的值，否则为false
+	scrollToTop:false					//（可选项）当点击状态栏，页面是否滚动到顶部。若当前屏幕上不止一个页面的scrollToTop属性为true，则所有的都不会起作用。默认值：true。只iOS有效
+    vScrollBarEnabled:true,             //（可选项）是否显示垂直滚动条，默认true 
+    hScrollBarEnabled:true,             //（可选项）是否显示水平滚动条，默认true
+	scaleEnabled:true,                  //（可选项）页面是否可以缩放，为true时softInputMode参数无效，布尔型，默认值：false
+    allowEdit:false,					//（可选项）是否允许长按页面时弹出选择菜单
+    softInputMode:'auto'		        //（可选项）当键盘弹出时，输入框被盖住时，当前页面的调整方式，参考键盘弹出页面调整方式常量，只iOS有效，且当scaleEnabled参数为true时无效
+    customRefreshHeader:''				//（可选项）设置使用自定义下拉刷新模块的名称，设置后可以使用api.setCustomRefreshHeaderInfo方法来使用自定义下拉刷新组件
+}
+```
+
+rightPane：
+
+- 类型：JSON对象
+- 默认值：无
+- 描述：右边侧滑window
+
+内部字段：
+
+```js
+{
+    edge:60,							// 右边侧滑打开后，漏出的半透明区域宽度，默认值为60。此时右边侧滑window的宽度为屏幕宽度减去edge
+    name:'',                            // window名字（字符串类型）
+    url:'',                             // 页面地址，可以为本地文件路径，支持相对路径和绝对路径，以及widget://、fs://等协议路径，也可以为远程地址
+    pageParam:{},                       //（可选项）页面参数，页面中可以通过api.pageParam获取，JSON对象
+    bgColor:'',                         //（可选项）背景色，支持图片和颜色，格式为#fff、#ffffff、rgba(r,g,b,a)等，图片路径支持fs://、widget://等APICloud自定义文件路径协议，同时支持相对路径
+    bounces:false,                      //（可选项）是否弹动，默认值：若在config.xml里面配置了pageBounce，则默认值为配置的值，否则为false
+	scrollToTop:false					//（可选项）当点击状态栏，页面是否滚动到顶部。若当前屏幕上不止一个页面的scrollToTop属性为true，则所有的都不会起作用。默认值：true。只iOS有效
+    vScrollBarEnabled:true,             //（可选项）是否显示垂直滚动条，默认true 
+    hScrollBarEnabled:true,             //（可选项）是否显示水平滚动条，默认true
+	scaleEnabled:true,                  //（可选项）页面是否可以缩放，为true时softInputMode参数无效，布尔型，默认值：false
+    allowEdit:false,					//（可选项）是否允许长按页面时弹出选择菜单
+    softInputMode:'auto'		        //（可选项）当键盘弹出时，输入框被盖住时，当前页面的调整方式，参考键盘弹出页面调整方式常量，只iOS有效，且当scaleEnabled参数为true时无效
+    customRefreshHeader:''				//（可选项）设置使用自定义下拉刷新模块的名称，设置后可以使用api.setCustomRefreshHeaderInfo方法来使用自定义下拉刷新组件
+}
+```
+
+##示例代码
+
+```js
+api.openDrawerLayout({
+	name: 'main',
+	url: './main.html',
+	animation:{
+		type:'none'
+	},
+	leftPane:{
+		name: 'leftPane',
+		url: 'leftPane.html'
+	}
+});
+```
+
+##补充说明
+
+无
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.2.0及更高版本
+
+
+#**openDrawerPane**<div id="90"></div>
+
+打开抽屉式侧滑Pane
+
+openDrawerPane(params)
+
+##params
+
+type：
+
+- 类型：字符串
+- 默认值：无
+- 描述：侧滑类型，left或right
+
+##示例代码
+
+```js
+api.openDrawerPane({
+    type: 'left'
+});
+```
+
+##补充说明
+
+无
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.2.0及更高版本
+
+
+#**closeDrawerPane**<div id="91"></div>
+
+关闭抽屉式侧滑Pane
+
+closeDrawerPane()
+
+##示例代码
+
+```js
+api.closeDrawerPane();
+```
+
+##补充说明
+
+无
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.2.0及更高版本
 
 
 #**execScript**<div id="18"></div>
@@ -3455,8 +4104,8 @@ api.execScript({
     name: 'winName',
     script: jsfun
 });
-```
-```js
+
+
 //在名为winName的window中找到
 //名为frmName的frame，并在该frame中执行jsfun脚本
 var jsfun = 'funcGoto();';
@@ -3465,8 +4114,8 @@ api.execScript({
     frameName: 'frmName',
     script: jsfun
 });
-```
-```js
+
+
 //在当前window中找到
 //名为frmName的frame，并在该frame中执行jsfun脚本
 var jsfun = 'funcGoto();';
@@ -3500,7 +4149,15 @@ iOS系统，Android系统
 
 历史记录后退一页
 
-historyBack(callback(ret, err))
+historyBack({params}, callback(ret, err))
+
+##params
+
+frameName：
+
+- 类型：字符串
+- 默认值：无
+- 描述：（可选项）frame名称，若不传则表示对当前页面进行操作
 
 ##callback(ret, err)
 
@@ -3519,14 +4176,12 @@ ret：
 ##示例代码
 
 ```js
-api.addEventListener({
-   name: 'keyback'
-}, function(ret, err){
-   var js = 'api.historyBack(function(ret, err){if(ret.status){alert("历史回退");}else{api.closeWidget();}});';
-   api.execScript({
-       frameName: 'apicloud',
-       script: js
-   });
+api.historyBack({
+	frameName:'detail'
+},function(ret,err){
+	if(!ret.status){
+		api.closeWin();
+	}
 });
 ```
 
@@ -3545,7 +4200,15 @@ iOS系统，Android系统
 
 历史记录前进一页
 
-historyForward(callback(ret, err))
+historyForward({params}, callback(ret, err))
+
+##params
+
+frameName：
+
+- 类型：字符串
+- 默认值：无
+- 描述：（可选项）frame名称，若不传则表示对当前页面进行操作
 
 ##callback(ret, err)
 
@@ -3564,16 +4227,13 @@ ret：
 ##示例代码
 
 ```js
-api.historyForward(
-    function(ret, err){
-    	if (ret.status){
-        
-    	} else {
-        
-    	}
-    }
-);
-
+api.historyForward({
+	frameName:'detail'
+},function(ret,err){
+	if(!ret.status){
+		
+	}
+});
 ```
 
 ##补充说明
@@ -3618,15 +4278,13 @@ ret：
 ##示例代码
 
 ```js
-api.pageUp(
-	function(ret){
-		if (!ret.scrolled){
-			api.alert({
-				msg:'已经滚动到顶部了'
-			});
-		}
-	}
-);
+api.pageUp(function( ret, err ){
+	if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }	
+});
 ```
 
 ##补充说明
@@ -3671,15 +4329,13 @@ ret：
 ##示例代码
 
 ```js
-api.pageDown(
-	function(ret){
-		if (!ret.scrolled){
-			api.alert({
-				msg:'已经滚动到底部了'
-			});
-		}
-	}
-);
+api.pageDown(function( ret, err ){
+	if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }		
+});
 ```
 
 ##补充说明
@@ -3698,12 +4354,35 @@ iOS系统，Android系统
 
 移除启动图。若config.xml里面配置autoLaunch为false，则启动图不会自动消失，直到调用此方法移除。
 
-removeLaunchView()
+removeLaunchView({params})
+
+##params
+
+animation：
+
+- 类型：JSON对象
+- 默认值：无
+- 描述：（可选项）动画参数，不传时不使用动画，**type**：[动画类型](!Constant#b6)，**subType**：[动画子类型](!Constant#b8)。
+
+内部字段：
+
+```js
+{
+    type:"fade",                //动画类型（详见动画类型常量）
+    subType:"from_right",       //动画子类型（详见动画子类型常量）
+    duration:300                //动画过渡时间，默认300毫秒
+}
+```
 
 ##示例代码
 
 ```js
-api.removeLaunchView();
+api.removeLaunchView({
+	animation: {
+		type: 'fade',
+		duration: 500
+	}
+});
 ```
 
 ##补充说明
@@ -3728,7 +4407,9 @@ parseTapmode()
 
 ##示例代码
 
-    api.parseTapmode();
+```js
+api.parseTapmode();
+```
 
 ##补充说明
 
@@ -3757,14 +4438,13 @@ appUri：
 
 ##示例代码
 
-//Android用法：
 ```js
+//Android用法：
 api.installApp({
 	appUri: 'file://xxx.apk'
 });
-```
+
 //iOS用法：
-```js
 api.installApp({
 	appUri: 'https://itunes.apple.com/cn/app/qq/id444934666?mt=8'    //itunes地址
 });
@@ -3773,65 +4453,10 @@ api.installApp({
 	appUri: 'https://list.kuaiapp.cn/list/KuaiAppZv7.1.plist'        //安装包对应plist地址
 });
 ```
+
 ##补充说明
 
 安装应用
-
-##可用性
-
-iOS系统，Android系统
-
-可提供的1.0.0及更高版本
-
-
-#**appInstalled**<div id="75"></div>
-
-判断设备上面是否已安装指定应用
-
-appInstalled({params}, callback(ret, err))
-
-##params
-
-appBundle：
-
-- 类型：字符串
-- 默认值：无
-- 描述：Android平台为应用包名，iOS平台为应用定义的URL Scheme
-
-##callback(ret, err)
-ret：
-- 类型：JSON对象
-
-内部字段：
-```js
-{
-    installed:true			//是否安装，布尔类型
-}
-```
-
-##示例代码
-
-```js
-var appBundle;
-if (api.systemType == 'ios'){
-	appBundle = 'wechat://';
-} else {
-	appBundle = 'com.tencent.mm';
-}
-api.appInstalled({
-    appBundle: appBundle
-},function(ret,err){
-	if (ret.installed) {
-		
-	} else {
-		
-	}
-});
-
-```
-##补充说明
-
-iOS中的URL Scheme与包名不一样，一个应用只有一个包名，但是可以配置多个URL Scheme
 
 ##可用性
 
@@ -3852,7 +4477,7 @@ appParam：
 
 - 类型：JSON对象
 - 默认值：无
-- 描述：（可选项）传给目标应用的参数
+- 描述：（可选项）传给目标应用的参数。iOS平台会将appParam里面的值拼接到iosUrl后面，比如iosUrl为http://www.baidu.com，appParam为{"keyword":"APICloud"}，则最后传递给第三方应用的url为http://www.baidu.com?keyword=APICloud
 
 iosUrl：
 
@@ -3894,44 +4519,117 @@ err：
 ```
 
 ##示例代码
-//iOS中的使用方法如下：
 
 ```js
+//iOS中的使用方法如下：
+
 api.openApp({
 	iosUrl: 'http://www.baidu.com',         //例如调用系统浏览器Safari打开百度，其中http为Safari的URL Scheme；同理，微信的URL Scheme为weixin，因此可以通过传weixin://来打开微信
 	appParam: {
 		appParam: 'app参数'
 	}
 });
-```
 
 //Android中的使用方法如下：
-```js
+
 api.openApp({
 	androidPkg: 'android.intent.action.VIEW',
 	mimeType: 'text/html',
 	uri: 'http://www.baidu.com'
-},function(ret,err){
-	var msg = JSON.stringify(ret);
-	api.alert({
-		title: 'openApp',
-		msg: msg,
-		buttons: ['确定']
-	});
+},function( ret, err ){
+	if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
 ##补充说明
 
-iOS平台会将appParam里面的值拼接到iosUrl后面
-
-如appParam为{"keyword":"APICloud"}，iosUrl为http://www.baidu.com，则最后传递给第三方应用的url为http://www.baidu.com?keyword=APICloud，因此appParam里面不要有JSON对象或数组
+无
 
 ##可用性
 
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
+
+
+#**appInstalled**<div id="75"></div>
+
+判断设备上面是否已安装指定应用
+
+appInstalled({params}, callback(ret, err))
+
+##params
+
+appBundle：
+
+- 类型：字符串
+- 默认值：无
+- 描述：Android平台为应用包名，iOS平台为应用定义的URL Scheme。iOS中的URL Scheme与包名不一样，一个应用只有一个包名，但是可以配置多个URL Scheme
+
+##callback(ret, err)
+
+ret：
+
+- 类型：JSON对象
+
+内部字段：
+
+```js
+{
+    installed:true			//是否安装，布尔类型
+}
+```
+
+##示例代码
+
+```js
+api.appInstalled({
+    appBundle: appBundle
+},function( ret, err ){
+	if( ret ){
+		alert( JSON.stringify( ret ) );
+	}else{
+		alert( JSON.stringify( err ) );
+	}
+});
+```
+
+##补充说明
+
+无
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.0.0及更高版本
+
+
+#**重启应用**<div id="92"></div>
+
+重启应用，云修复完成后可以调用此方法来重启应用使云修复生效。
+
+rebootApp()
+
+##示例代码
+
+```js
+api.rebootApp();
+```
+
+##补充说明
+
+无
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.2.0及更高版本
 
 
 #**openWidget**<div id="32"></div>
@@ -3987,16 +4685,18 @@ api.openWidget({
 		subType: 'from_bottom',
 		duration: 500
 	}
-}, function(ret, err){
-	if(ret){
-
-	}
+}, function( ret, err ){
+	if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
 ##补充说明
 
-widget操作
+无
 
 ##可用性
 
@@ -4029,7 +4729,7 @@ silent：
 
 - 类型：布尔型
 - 默认值：false
-- 描述：（可选项）是否静默退出，只在主widget中有效
+- 描述：（可选项）是否静默退出应用，只在主widget中有效。当为false时，引擎会弹出对话框询问是否退出应用
 
 animation：
 
@@ -4047,10 +4747,13 @@ animation：
 ```
 
 ##示例代码
+
 ```js
 api.closeWidget({
 	id: 'A00000001',
-	retData: {name:'closeWidget'},
+	retData: {
+	    name: 'closeWidget'
+	},
 	animation: {
 		type: 'flip',
 		subType: 'from_bottom',
@@ -4061,7 +4764,7 @@ api.closeWidget({
 
 ##补充说明
 
-关闭应用可调用api.closeWidget({silent:true})进行静默关闭，默认情况下，在关闭应用时，引擎会弹出确认对话框
+无
 
 ##可用性
 
@@ -4151,7 +4854,7 @@ data：
 	stream："",		//文件路径（字符串类型）
 	body："",			//请求体（字符串类型）如: JSON.stringify({"name1": "value1", "name2": "value2"}) (将JSON对像转为JSON字符串再赋值给body)
 	values：{},		//以表单方式提交参数（JSON对象）, 如 {"field1": "value1", "field1": "value2"} (直接传JSON对像.)
-	files：{}			//以表单方式提交文件，支持多文件上传（JSON对象）,如 {"field1": "filepath1", "field2": "filepath2"}，也支持同一字段对应多文件：{"file":["filepath1","filepath2"]}
+	files：{}			//以表单方式提交文件，支持多文件上传（JSON对象）,如 {"file": "path"}，也支持同一字段对应多文件：{"file":["path1","path2"]}。路径支持绝对路径，以及fs://、widget://、cache://等文件路径协议.
 }
 ```
 
@@ -4165,7 +4868,7 @@ certificate：
 
 ```js
 {
-	path:'',			//p12证书路径，支持fs://、widget://等文件路径协议，字符串类型
+	path:'',				//p12证书路径，支持fs://、widget://、cache://等文件路径协议，字符串类型
 	password:''			//证书密码，字符串类型
 }
 ```
@@ -4208,21 +4911,19 @@ err：
 api.ajax({
 	url: 'http://192.168.1.101:3101/upLoad',
 	method: 'post',
-	timeout: 30,
-	dataType: 'json',
-	returnAll:false,
-	data:{
-		values: {name: 'haha'},
-		files: {file: 'fs://a.gif'}
+	data: {
+		values: { 
+		    name: 'haha'
+		},
+		files: { 
+		    file: 'fs://a.gif'
+		}
 	}
-},function(ret,err){
+},function(ret, err){
 	if (ret) {
-		var urlJson = JSON.stringify(ret);
-		api.alert({msg: urlJson});
-	}else {
-		api.alert({
-			msg:('错误码：'+err.code+'；错误信息：'+err.msg+'网络状态码：'+err.statusCode)
-		});
+		 alert(JSON.stringify(ret));
+	} else {
+		 alert(JSON.stringify(err));
 	}
 });
 ```
@@ -4342,18 +5043,17 @@ err：
 ##示例代码
 
 ```js
-var url = 'http://file05.daimg.com/2013/photo/1401/DAimG_2014011335974260TA24.rar';
 api.download({
 	url: url,
 	savePath: 'fs://test.rar',
 	report: true,
 	cache: true,
-	allowResume:true
-},function(ret,err){
-	if (ret) {
-		var value = ('文件大小：'+ret.fileSize+'；下载进度：'+ret.percent+'；下载状态'+ret.state+'存储路径: '+ret.savePath);
-	} else{
-		var value = err.msg;
+	allowResume: true
+},function( ret, err ){
+	if(ret){
+		alert( JSON.stringify( ret ) );
+	}else{
+		alert( JSON.stringify ( err ) );
 	}
 });
 ```
@@ -4385,12 +5085,13 @@ url：
 - 描述：下载地址
 
 ##示例代码
+
 ```js
-var url = 'http://file05.daimg.com/2013/photo/1401/DAimG_2014011335974260TA24.rar';
-api.cancelDownload ({
+api.cancelDownload({
     url: url
 });
 ```
+
 ##补充说明
 
 取消文件下载
@@ -4446,13 +5147,14 @@ ret：
 ##示例代码
 
 ```js
-var url = 'http://a.hiphotos.baidu.com/image/w%3D400/sign=2abe1c77d4ca7bcb7d7bc62f8e086b3f/64380cd7912397ddf9f4bdb05a82b2b7d1a287f0.jpg';
 api.imageCache({
-	url: url
-},function(ret,err){
-	if (ret) {
-		var path = ret.url;
-	}
+	url: 'http://a.hiphotos.baidu.com/image/w%3D400/sign=2abe1c77d4ca7bcb7d7bc62f8e086b3f/64380cd7912397ddf9f4bdb05a82b2b7d1a287f0.jpg'
+},function( ret, err ){
+	if( ret ){
+		 alert( JSON.stringify( ret ) );
+	}else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -4470,7 +5172,7 @@ iOS系统，Android系统
 
 #**readFile**<div id="36"></div>
 
-读取文本文件内容
+读取文本文件内容，只支持utf-8编码文本类型文件
 
 readFile({params}, callback(ret, err))
 
@@ -4514,21 +5216,19 @@ err：
 
 ```js
 api.readFile({
-	path:'fs://a.txt'
-}, function(ret, err){
-	if(ret.status){
-		api.alert({msg:ret.data});
-	} else{
-		api.alert({
-			msg: '错误码: '+err.code+'错误信息'+err.msg
-		});
-	}
+	path: 'fs://a.txt'
+}, function( ret, err ){
+	if( ret ){
+		 alert( JSON.stringify( ret ) );
+	}else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
 ##补充说明
 
-只支持utf-8编码文本类型文件
+无
 
 ##可用性
 
@@ -4549,7 +5249,7 @@ path：
 
 - 类型：字符串
 - 默认值：无
-- 描述：文件路径，支持绝对路径和文件路径协议如fs://、cache://等
+- 描述：文件路径，支持绝对路径和文件路径协议如fs://、cache://等，不支持widget://目录，该目录只读
 
 data：
 
@@ -4591,22 +5291,23 @@ err：
 ```
 
 ##示例代码
+
 ```js
 api.writeFile({
 	path: 'fs://a.txt',
 	data: 'writeFile测试内容'
 }, function(ret, err){
-	var status = ret.status;
-	if(status){
-		api.alert({msg:'写入文件成功'});
-	} else{
-		api.alert({msg:err.msg});
-	}
+	if( ret ){
+		 alert( JSON.stringify( ret ) );
+	}else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
+
 ##补充说明
 
-不要往widget://目录下进行写操作，该目录只读
+无
 
 ##可用性
 
@@ -4646,7 +5347,7 @@ api.setPrefs({
 
 ##补充说明
 
-敏感数据如密码等不要通过此方式存储
+无
 
 ##可用性
 
@@ -4689,9 +5390,12 @@ ret：
 ```js
 api.getPrefs({
     key: 'k'
-}, function(ret, err){
-    var v = ret.value;
-    api.alert({msg:v});
+}, function( ret, err ){
+    if( ret ){
+		 alert( JSON.stringify( ret ) );
+	}else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -4759,14 +5463,15 @@ timeThreshold：
 
 ##示例代码
 
-    api.clearCache(
-    	function(ret,err){
-    		api.toast({
-    			msg:'清除成功',
-    			location:'middle'
-    		});
-    	}
-    );
+```js
+api.clearCache(function( ret, err ){
+	if( ret ){
+		 alert( JSON.stringify( ret ) );
+	}else{
+         alert( JSON.stringify( err ) );
+    }	
+});
+```
 
 ##补充说明
 
@@ -4803,11 +5508,13 @@ ret：
 ##示例代码
 
 ```js
-api.getCacheSize(
-	function(ret, err) {
-		var size = ret.size;
-	}
-);
+api.getCacheSize(function( ret, err ){
+	if( ret ){
+		 alert( JSON.stringify( ret ) );
+	}else{
+         alert( JSON.stringify( err ) );
+    }
+});
 ```
 
 ##补充说明
@@ -4845,11 +5552,13 @@ ret：
 ##示例代码
 
 ```js
-api.getFreeDiskSpace(
-	function(ret, err) {
-		var size = ret.size;
-	}
-);
+api.getFreeDiskSpace(function( ret, err ){
+	if( ret ){
+		 alert( JSON.stringify( ret ) );
+	}else{
+         alert( JSON.stringify( err ) );
+    }
+});
 ```
 
 ##补充说明
@@ -4866,7 +5575,14 @@ iOS系统，Android系统
 
 #**loadSecureValue**<div id="64"></div>
 
-从加密的key.xml文件中读取指定数据
+从加密的key.xml文件中读取指定数据，key.xml文件放置于网页包里面的res目录，配置方式：
+
+```js
+<?xml version="1.0" encoding="UTF-8"?>
+<security>
+<item name="appKey" value="1111111"/>
+</security>
+```
 
 loadSecureValue({params}, callback(ret, err))
 
@@ -4896,15 +5612,15 @@ ret：
 
 ```js
 api.loadSecureValue({
-	key:''
-}, function(ret, err) {
-	var value = ret.value;
+	key:'appKey'
+},function( ret, err ) {
+	alert(ret.value);
 });
 ```
 
 ##补充说明
 
-按照格式配置key.xml文件，云编译时会对其加密，通过该方法获取指定数据
+无
 
 ##可用性
 
@@ -4954,8 +5670,12 @@ ret：
 //如监听网络连接事件
 api.addEventListener({
 	name: 'online'
-}, function(ret, err){
-	api.alert({msg: '已联网'});
+}, function( ret, err ){
+	if( ret ){
+		 alert( JSON.stringify( ret ) );
+	}else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -5020,34 +5740,31 @@ extra
 
 - 类型：字符串或JSON对象
 - 默认值：无
-- 描述：（可选项）附带的参数
+- 描述：（可选项）附带的参数。在监听页面的回调里面通过ret.value获取。
 
 ##示例代码
 
 ```js
 api.sendEvent({
 	name: 'myEvent',
-	extra: {key1:'value1', key2:'value2'}
+	extra: {
+	    key1: 'value1', 
+	    key2: 'value2'
+	}
 });
 
 //html页面a：
 api.addEventListener({
 	name: 'myEvent'
-}, function(ret){
-	if(ret && ret.value){
-		var value = ret.value;
-		alert(value.key1 + ' , ' + value.key2);
-	}
+}, function(ret, err){
+	alert(JSON.stringify(ret.value));
 });
 
 //html页面b：
 api.addEventListener({
 	name: 'myEvent'
-}, function(ret){
-	if(ret && ret.value){
-		var value = ret.value;
-		alert(value.key1 + ' , ' + value.key2);
-	}
+}, function( ret, err ){
+	alert(JSON.stringify(ret.value));
 });
 
 //a、b页面都将收到myEvent事件
@@ -5055,18 +5772,67 @@ api.addEventListener({
 
 ##补充说明
 
-监听自定义事件，callback(ret)收到的回调值内部字段为：
-```js
-{
-	value:		//其值为sendEvent时传入的extra
-}
-```
+无
 
 ##可用性
 
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
+
+
+#**accessNative**<div id="88"></div>
+
+使用SuperWebView时，js向原生发送消息。此方法只在使用SuperWebView时有效。
+
+accessNative({params}, callback(ret,err))
+
+##params
+
+name
+
+- 类型：字符串
+- 默认值：无
+- 描述：消息名称。
+
+extra
+
+- 类型：JSON对象
+- 默认值：无
+- 描述：（可选项）附带的参数。
+
+##callback(ret, err)
+
+ret：
+
+- 类型：JSON对象
+
+err：
+
+- 类型：JSON对象
+
+##示例代码
+
+```js
+api.accessNative({
+	name: 'showMenu',
+	extra: {
+	    key: 'value'
+	}
+},function(ret,err){
+    
+});
+```
+
+##补充说明
+
+无
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.2.0及更高版本
 
 
 #**notification**<div id="65"></div>
@@ -5158,10 +5924,12 @@ api.notification({
 		minutes: 30,
 		daysOfWeek: [2,3,4,5,6]
 	}
-}, function(ret, err){
-	if(ret && ret.id){
-		api.alert(ret.id);
-	}
+}, function( ret, err ){
+	if( ret ){
+		 alert( JSON.stringify( ret ) );
+	}else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -5178,7 +5946,7 @@ iOS系统，Android系统
 
 #**cancelNotification**<div id="69"></div>
 
-取消本应用弹出到状态栏的某个或所有通知
+取消本应用弹出到状态栏的某个或所有通知，也可以清除设定的闹铃
 
 cancelNotification({params})
 
@@ -5187,8 +5955,8 @@ cancelNotification({params})
 id：
 
 - 类型：字符串
-- 默认值：0。如果传入-1，则取消本应用弹到状态栏的所有通知
-- 描述：（可选项）调用notification时返回的id，取消已经弹出到设备状态栏的通知
+- 默认值：0。如果传入-1，则取消本应用弹到状态栏的所有通知，iOS只支持清除所有弹到状态栏的通知。
+- 描述：（可选项）调用notification方法时返回的id
 
 ##示例代码
 
@@ -5211,7 +5979,7 @@ iOS系统，Android系统
 
 #**startLocation**<div id="52"></div>
 
-开始定位
+调用系统自带定位功能，开始定位
 
 startLocation({params}, callback(ret, err))
 
@@ -5269,26 +6037,22 @@ err：
 ```js
 api.startLocation({
 	accuracy: '100m',
-	filter:1,
+	filter: 1,
 	autoStop: true
-},function(ret, err){
-	if(ret.status){
-		var lat = ret.latitude;
-		var lon = ret.longitude;
-		var time = ret.timestamp;
-		var str = '经度：'+ lon +'\n';
-		str += '纬度：'+ lat +'\n';
-		str += '更新时间：'+ time;
-		api.alert({msg:str});
-	} else{
-		api.alert({msg:err.msg});
-	}
+},function( ret, err ){
+	if( ret ){
+		 alert( JSON.stringify( ret ) );
+	}else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
 ##补充说明
 
-开始定位
+本API使用系统自身定位能力进行定位。
+Android上使用的是Google的定位服务，因法规政策的原因，在中国基本无法提供服务，因此建议国内开发者使用百度定位模块（baiduLocation）进行定位操作。
+IOS上使用的是苹果的定位服务，不受影响。
 
 ##可用性
 
@@ -5305,7 +6069,9 @@ stopLocation()
 
 ##示例代码
 
-    api.stopLocation();
+```js
+api.stopLocation();
+```
 
 ##补充说明
 
@@ -5321,7 +6087,7 @@ iOS系统，Android系统
 
 #**getLocation**<div id="19"></div>
 
-获取位置信息
+获取位置信息，获取成功后自动停止获取。
 
 若之前已通过startLocation()方法进行定位，则直接返回上次定位的数据，否则使用默认设置进行定位
 
@@ -5359,26 +6125,20 @@ err：
 ##示例代码
 
 ```js
-api.getLocation(
-	function(ret, err){
-		if(ret.status){
-			var lat = ret.latitude;
-			var lon = ret.longitude;
-			var time = ret.timestamp;
-			var str = '经度：'+ lon +'\n';
-			str += '纬度：'+ lat +'\n';
-			str += '更新时间：'+ time;
-			api.alert({msg:str});
-		} else{
-			api.alert({msg:err.msg});
-		}
-	}
-);
+api.getLocation(function( ret, err ){
+	if( ret ){
+		 alert( JSON.stringify( ret ) );
+	}else{
+         alert( JSON.stringify( err ) );
+    }
+});
 ```
 
 ##补充说明
 
-获取位置信息
+本API使用系统自身定位能力进行定位。
+Android上使用的是Google的定位服务，因法规政策的原因，在中国基本无法提供服务，因此建议国内开发者使用百度定位模块（baiduLocation）进行定位操作。
+IOS上使用的是苹果的定位服务，不受影响。
 
 ##可用性
 
@@ -5436,18 +6196,12 @@ err：
 ```js
 api.startSensor({
 	type: 'accelerometer'
-}, function(ret, err){
-	if(ret.status){
-		var x = ret.x;
-		var y = ret.y;
-		var z = ret.z;
-		var proximity = ret.proximity;
-		var p = proximity ? '是' : '否';
-		var str = 'X轴：'+ x +'\nY轴：'+ y + '\nZ轴：'+ z +'\n是否接近设备：'+ p;
-		api.alert({msg:str});
-	} else{
-		api.alert({msg:err.msg});
-	}
+}, function( ret, err ){
+	if( ret ){
+		 alert( JSON.stringify( ret ) );
+	}else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -5584,12 +6338,12 @@ ret：
 api.sms({
 	numbers: ['10086'],
 	text: '测试短信'
-},function(ret, err){
-	if(ret.status){
-		api.alert({msg:'发送成功'});
-	} else{
-		api.alert({msg:'发送失败'});
-	}
+},function( ret, err ){
+	if( ret ){
+		 alert( JSON.stringify( ret ) );
+	}else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -5653,25 +6407,17 @@ ret：
 ##示例代码
 
 ```js
-var recip = 'test@163.com';
-var sub = '邮件测试';
-var body = '这是一封测试用的邮件';
-var attach = 'widget://a.txt';
 api.mail({
-	recipients: [recip],
-	subject: sub,
-	body: body,
-	attachments: [attach]
-}, function(ret, err){
-	if(ret.status){
-		api.alert({
-			msg: '发送成功'
-		});
-	} else{
-		api.alert({
-			msg: '发送失败'
-		});
-	}
+	recipients: ['test@163.com'],
+	subject: '邮件测试',
+	body: '这是一封测试用的邮件',
+	attachments: ['widget://a.txt']
+}, function( ret, err ){
+	if( ret ){
+		 alert( JSON.stringify( ret ) );
+	}else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -5724,16 +6470,13 @@ err：
 ##示例代码
 
 ```js
-api.openContacts(
-	function(ret,err){
-		if(ret.status){
-			var msg = '姓名:'+ret.name+'--电话:'+ret.phone;
-			api.alert({msg:msg});
-		}else{
-			api.alert({msg:err.msg});
-		}	
-	}
-);
+api.openContacts(function( ret, err ){
+	if( ret ){
+		 alert( JSON.stringify( ret ) );
+	}else{
+         alert( JSON.stringify( err ) );
+    } 
+});
 ```
 
 ##补充说明
@@ -5763,9 +6506,11 @@ fullScreen：
 
 ##示例代码
 
-    api.setFullScreen({
-    	fullScreen:true
-    });
+```js
+api.setFullScreen({
+	fullScreen: true
+});
+```
 
 ##补充说明
 
@@ -5835,7 +6580,7 @@ orientation：
 
 ```js
 api.setScreenOrientation({
-	orientation:'landscape_left'
+	orientation: 'landscape_left'
 });
 ```
 ##补充说明
@@ -5973,7 +6718,7 @@ iOS系统
 
 #**alert**<div id="4"></div>
 
-带一个按钮的对话框
+弹出带一个按钮的对话框，更多按钮的对话框请使用confirm方法
 
 alert({params}, callback(ret, err))
 
@@ -6017,11 +6762,13 @@ ret：
 api.alert({
 	title: 'testtitle',
 	msg: 'testmsg',
-	buttons:['确定']
-},function(ret,err){
-	if(ret.buttonIndex == 1){
-		api.alert({msg: '点击了确定'});
-	}
+	buttons: ['确定']
+},function( ret, err ){
+	if( ret ){
+		 alert( JSON.stringify( ret ) );
+	}else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -6039,7 +6786,7 @@ iOS系统，Android系统
 
 #**confirm**<div id="16"></div>
 
-带两个或三个按钮的confirm对话框
+弹出带两个或三个按钮的confirm对话框
 
 confirm({params}, callback(ret, err))
 
@@ -6081,11 +6828,13 @@ ret：
 api.confirm({
 	title: 'testtitle',
 	msg: 'testmsg',
-	buttons:['确定', '取消']
-},function(ret,err){
-	if(ret.buttonIndex == 1){
-		api.alert({msg: '点击了确定'});
-	}
+	buttons: ['确定', '取消']
+},function( ret, err ){
+	if( ret ){
+		 alert( JSON.stringify( ret ) );
+	}else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -6102,7 +6851,7 @@ iOS系统，Android系统
 
 #**prompt**<div id="35"></div>
 
-带两个或三个按钮和输入框的对话框
+弹出带两个或三个按钮和输入框的对话框
 
 prompt({params}, callback(ret, err))
 
@@ -6157,11 +6906,13 @@ ret：
 
 ```js
 api.prompt({
-	buttons:['确定', '取消']
-},function(ret,err){
-	if(ret.buttonIndex == 1){
-		api.alert({msg:ret.text});
-	}
+	buttons: ['确定', '取消']
+},function( ret, err ){
+	if( ret ){
+		 alert( JSON.stringify( ret ) );
+	}else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -6251,10 +7002,12 @@ api.actionSheet({
     cancelTitle: '这里是取消按钮',
     destructiveTitle: '红色警告按钮',
 	buttons: ['1','2','3']
-},function(ret,err){
-	api.alert({
-    	msg: '你刚点击了'+ret.buttonIndex
-    });
+},function( ret, err ){
+	if( ret ){
+		 alert( JSON.stringify( ret ) );
+	}else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -6308,6 +7061,7 @@ modal：
 - 描述：（可选项）是否模态，模态时整个页面将不可交互
 
 ##示例代码
+
 ```js
 api.showProgress({
     style: 'default',
@@ -6317,6 +7071,7 @@ api.showProgress({
     modal: false
 });
 ```
+
 ##补充说明
 
 显示进度提示框
@@ -6336,7 +7091,9 @@ hideProgress()
 
 ##示例代码
 
-    api.hideProgress();
+```js
+api.hideProgress();
+```
 
 ##补充说明
 
@@ -6380,7 +7137,7 @@ location：
 ```js
 api.toast({
     msg: '网络错误',
-    duration:2000,
+    duration: 2000,
     location: 'bottom'
 });
 ```
@@ -6446,13 +7203,13 @@ ret：
 api.openPicker({
 	type: 'date_time',
 	date: '2014-05-01 12:30',
-	title:'选择时间'
-},function(ret,err){
-	var year = ret.year;
-	var month = ret.month;
-	var day = ret.day;
-	var hour = ret.hour;
-	var minute = ret.minute;
+	title: '选择时间'
+},function( ret, err ){
+	if( ret ){
+		 alert( JSON.stringify( ret ) );
+	}else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -6469,7 +7226,7 @@ iOS系统，Android系统
 
 #**setRefreshHeaderInfo**<div id="46"></div>
 
-显示顶部下拉刷新，此时当前页面会被设为弹动
+显示顶部下拉刷新组件，页面必须设置为弹动。
 
 setRefreshHeaderInfo({params}, callback(ret, err))
 
@@ -6550,8 +7307,9 @@ api.setRefreshHeaderInfo({
     textDown: '下拉刷新...',
     textUp: '松开刷新...',
     showTime: true
-}, function(ret, err){
-    //从服务器加载数据，完成后调用api.refreshHeaderLoadDone()方法恢复组件到默认状态
+}, function( ret, err ){
+    //在这里从服务器加载数据，加载完成后调用api.refreshHeaderLoadDone()方法恢复组件到默认状态
+    
 });
 ```
 
@@ -6566,6 +7324,69 @@ iOS系统，Android系统
 可提供的1.0.0及更高版本
 
 
+#**setCustomRefreshHeaderInfo**<div id="94"></div>
+
+显示顶部自定义下拉刷新组件，页面必须设置为弹动。
+
+可以在config.xml里面配置要使用的自定义下拉刷新模块名称，如：
+
+```js
+<preference name="customRefreshHeader" value="UIPullRefresh"/>
+```
+
+或者在使用openWin、openFrame等方法打开页面时传入customRefreshHeader参数来指定。
+
+setCustomRefreshHeaderInfo({params}, callback(ret, err))
+
+##params
+
+由对应的自定义下拉刷新模块提供
+
+##callback(ret, err)
+
+由对应的自定义下拉刷新模块提供
+
+##示例代码
+
+```js
+api.setCustomRefreshHeaderInfo({
+    bgColor: '#C0C0C0',
+    images: {
+        pull: 'widget://image/refresh/pulling.png', 
+        transform: [
+            'widget://image/refresh/transform0.png', 
+            'widget://image/refresh/transform1.png',
+            'widget://image/refresh/transform2.png',
+            'widget://image/refresh/transform3.png',
+            'widget://image/refresh/transform4.png',
+            'widget://image/refresh/transform5.png',
+            'widget://image/refresh/transform6.png'
+        ],
+        load: [ 
+            'widget://image/refresh/loading0.png', 
+            'widget://image/refresh/loading1.png',
+            'widget://image/refresh/loading2.png', 
+            'widget://image/refresh/loading3.png',
+            'widget://image/refresh/loading4.png',
+        ]
+    }
+}, function( ret, err ){
+    //在这里从服务器加载数据，加载完成后调用api.refreshHeaderLoadDone()方法恢复组件到默认状态
+    
+});
+```
+
+##补充说明
+
+无
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.2.0及更高版本
+
+
 #**refreshHeaderLoading**<div id="87"></div>
 
 设置下拉刷新组件为刷新中状态
@@ -6574,7 +7395,9 @@ refreshHeaderLoading()
 
 ##示例代码
 
+```js
 api.refreshHeaderLoading();
+```
 
 ##补充说明
 
@@ -6595,7 +7418,9 @@ refreshHeaderLoadDone()
 
 ##示例代码
 
+```js
 api.refreshHeaderLoadDone();
+```
 
 ##补充说明
 
@@ -6753,15 +7578,15 @@ api.getPicture({
 	destinationType: 'url',
 	allowEdit: true,
 	quality: 50,
-	targetWidth:100,
-	targetHeight:100,
+	targetWidth: 100,
+	targetHeight: 100,
 	saveToPhotoAlbum: false
-}, function(ret, err){ 
-	if (ret) {
-		api.alert({msg:ret.data});
-	} else{
-		api.alert({msg:err.msg});
-	}
+}, function( ret, err ){ 
+	if( ret ){
+		 alert( JSON.stringify( ret ) );
+	}else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -6820,12 +7645,12 @@ err：
 ```js
 api.saveMediaToAlbum({
 	path: 'fs://1.png'
-}, function(ret, err){ 
-	if (ret.status) {
-		api.alert({msg:'保存成功'});
-	} else{
-		api.alert({msg:err.msg});
-	}
+}, function( ret, err ){ 
+	if( ret ){
+		 alert( JSON.stringify( ret ) );
+	}else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -6855,11 +7680,13 @@ path：
 - 描述：（可选项）文件路径，不传时自动创建路径
 
 ##示例代码
+
 ```js
 api.startRecord({
     path: 'fs://a.amr'
 });
 ```
+
 ##补充说明
 
 录音格式为amr
@@ -6893,15 +7720,17 @@ ret：
 ```
 
 ##示例代码
+
 ```js
-api.stopRecord(
-    function(ret,err){
-    	if (ret) {
-    		api.alert({msg:('文件路径--'+ret.path+';录音时长:'+ret.duration+'s')});
-    	}
-    }
-);
+api.stopRecord(function( ret, err ){
+    if( ret ){
+		 alert( JSON.stringify( ret ) );
+	}else{
+         alert( JSON.stringify( err ) );
+    }	
+});
 ```
+
 ##补充说明
 
 停止录音
@@ -6936,8 +7765,12 @@ path：
 ```js
 api.startPlay({
     path: 'widget://res/1.mp3'
-},function(){
-    api.alert({msg: '播放完成'});
+},function( ret, err ){
+    if( ret ){
+		 alert( JSON.stringify( ret ) );
+	}else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -6961,7 +7794,9 @@ stopPlay()
 
 ##示例代码
 
-    api.stopPlay();
+```js
+api.stopPlay();
+```
 
 ##补充说明
 

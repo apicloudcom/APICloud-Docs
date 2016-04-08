@@ -16,7 +16,7 @@ Description: brightness
 
 #**概述**
 
-brightness封装了android调节当前窗体亮度的功能，使用此模块可轻松实现对窗体亮度调节的功能。**暂仅支持Android。**
+brightness 封装了android 调节当前窗体亮度的功能，使用此模块可轻松实现对窗体亮度调节的功能。**暂仅支持Android。**
 
 
 #**setBrightness**<div id="a1"></div>
@@ -36,8 +36,9 @@ Brightness：
 
 ```js
 var brightness = api.require('brightness');
-
-brightness.setBrightness({Brightness:100});
+brightness.setBrightness({
+    Brightness: 100
+});
 ```
 
 ##可用性

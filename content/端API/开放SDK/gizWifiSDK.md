@@ -142,8 +142,7 @@ appID:
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode: 0,					// 执行成功，数字类型
@@ -153,8 +152,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -165,7 +163,7 @@ err
 ###示例代码
 	var gizWifiSDK = api.require('gizWifiSDK');
 	gizWifiSDK.startWithAppID({"appID": "7ac10dec7dba436785ac23949536a6eb"}, function(ret, err) {
-	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+		alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
 	});
 
 ###可用性
@@ -181,11 +179,11 @@ iOS系统，Android系统
 getVersion(callback(ret, err))
 
 ###callback(ret, err)
+
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		version:	// SDK版本号，字符串类型
@@ -194,7 +192,7 @@ ret
 ###示例代码
 	var gizWifiSDK = api.require('gizWifiSDK');
 	gizWifiSDK.getVersion(function(ret, err) {
-	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+	    	alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
 	});
 
 ###可用性
@@ -212,24 +210,18 @@ setLogLevel({params})
 logLevel:
 
 * 类型： 数字类型
-* 默认值：3
-* 描述：SDK日志级别（0 = 输出错误日志，1 = 输出错误和警告，2 = 输出所有日志信息）
+* 默认值：3，详细日志输出
+* 描述：SDK日志级别
 
-logFile:
-
-* 类型： 字符串
-* 默认值：无
-* 描述：日志文件路径。iOS系统上的相对路径为 /Documents ；Android系统上的相对路径为/sdcard。如果设置为 nil，则不保存日志文件。
-
-printDataLevel:
+writeSDCard:
 
 * 类型： 布尔类型
 * 默认值：false
-* 描述：是否输出二进制数据（true = 输出二进制数据）
+* 描述：是否写SD卡。此参数只在Andorid平台生效（true = 写SD卡）
 
 ###示例代码
 	var gizWifiSDK = api.require(‘gizWifiSDK');
-	gizWifiSDK.setLogLevel(setLogLevel({"logLevel": 3, "printDataLevel": true});
+	gizWifiSDK.setLogLevel({"logLevel": 3, "writeSDCard": true});
 
 ###可用性
 
@@ -248,8 +240,7 @@ getPhoneSSID(callback(ret, err))
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		SSID:	// 手机当前wifi的SSID，字符串类型
@@ -258,8 +249,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -270,7 +260,7 @@ err
 ###示例代码
 	var gizWifiSDK = api.require('gizWifiSDK');
 	gizWifiSDK.getPhoneSSID(function(ret, err) {
-	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+	    	alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
 	});
 
 ###可用性
@@ -285,6 +275,8 @@ iOS系统，Android系统
 
 设备配置支持两种方式：SoftAP方式、AirLink方式。在设备上按不同的按键，可以使设备进入对应的配置模式。详细的操作方式，请访问[机智云网站](http://site.gizwits.com/zh-cn/document/gokit/i_01_stared/)。
 
+提醒：进行 SoftAP 配置时，手机当前必须连上 SoftAP 热点。
+
 setDeviceWifi({params}, callback(ret, err))
 
 ###params
@@ -293,25 +285,26 @@ ssid:
 
 * 类型： 字符串
 * 默认值：无
-* 描述：要配置的Wifi SSID。
+* 描述：要配置的Wifi SSID
 
 key:
 
 * 类型： 字符串
 * 默认值：无
-* 描述：要配置的Wifi密码。
+* 描述：要配置的 Wifi 密码
 
 mode:
 
 * 类型： 数字类型
 * 默认值：无
-* 描述：设备配置方式（1 = SoftAP方式，2 = AirLink方式）
+* 描述：设备配置方式（见 mode 枚举定义）
 
 softAPSSIDPrefix:
 
 * 类型： 字符串
 * 默认值：无
-* 描述：SoftAP配置时，可以指定设备的热点名称。机智云的GoKit，默认前缀为”XPG-GAgent”或”XPG_GAgent”
+* 描述：SoftAPMode 模式下SoftAP 的 SSID 全名。机智云的GoKit，默认前缀为”XPG-GAgent”或”XPG_GAgent”
+
 
 timeout:
 
@@ -319,13 +312,19 @@ timeout:
 * 默认值：30
 * 描述：超时时间。超时时间建议设置为60秒
 
+gagentTypes:
+
+* 类型： 数值数组类型
+* 默认值：0
+* 描述：模组类型（见 GAgentType 枚举定义）
+
+
 ###callback(ret, err)
 
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		device:{			// 配置成功的设备，以下字段是设备信息：
@@ -337,8 +336,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -352,10 +350,11 @@ err
 	        "ssid": 'XXXXXXXXXX',
 	        "key": 'XXXXXXXXXXX',
 	        "mode":1,
-	        "softAPSSIDPrefix": 'XPG-GAgent',
-	        "timeout": 60
-	    }, function(ret, err) {
-	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+	        "softAPSSIDPrefix": 'XXXXXXXXXXX',
+	        "timeout": 60,
+            "gagentTypes":[4]
+	}, function(ret, err) {
+	    	alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
 	});
 
 ###可用性
@@ -366,7 +365,7 @@ iOS系统，Android系统
 
 #**getSSIDList**<div id="a6"></div>
 
-获取设备热点列表。设备处于SoftAP热点模式时，可以获取设备搜索到的WiFi热点列表。
+获取设备热点列表。设备 wifi 模组处于 SoftAP 热点模式时，可以获取设备搜索到的 WiFi 热点列表。此接口需要手机当前 Wifi 连上设备模组的 SoftAP 热点后才能工作。
 
 getSSIDList(callback(ret, err))
 
@@ -376,8 +375,7 @@ getSSIDList(callback(ret, err))
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		wifiSSIDs:[{   	// WiFi热点列表，以下字段是热点信息：
@@ -389,8 +387,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -401,7 +398,7 @@ err
 ###示例代码
 	var gizWifiSDK = api.require('gizWifiSDK');
 	gizWifiSDK.getSSIDList(function(ret, err) {
-	    alert("ret = " + JSON.stringify(ret) + "err = "  JSON.stringify(err))
+	    	alert("ret = " + JSON.stringify(ret) + "err = "  JSON.stringify(err))
 	});
 
 ###可用性
@@ -412,7 +409,10 @@ iOS系统，Android系统
 
 #**updateDeviceFromServer**<div id="a7"></div>
 
-更新设备配置信息。SDK需要设备配置信息才能识别设备类型、设备操作指令以及设备的上报状态。请在执行设备操作之前，先更新设备配置信息。
+更新设备配置信息。SDK需要设备配置信息才能识别设备类型、设备操作指令以及设备的上报状态。SDK在获取到绑定设备列表时自动下载一次设备的配置文件。但如果设备的数据点有变化，APP 需要调用此接口先更新设备配置信息。
+
+请在执行设备操作之前，确认设备的数据点定义是否有变化。如果数据点无变化，不需要调用此接口。
+
 
 updateDeviceFromServer({params}, callback(ret, err))
 
@@ -422,25 +422,23 @@ productKey:
 
 * 类型： 字符串
 * 默认值：无
-* 描述：产品标识码。开发者在机智云网站创建硬件接入产品时会得到一个产品标识码，可唯一标识设备类型。
+* 描述：产品标识码。开发者在机智云网站创建硬件接入产品时会得到一个产品标识码，即 Product Key，可唯一标识设备类型。
 
 ###callback(ret, err)
 
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
-		product:	// 配置信息更新成功的productkey，字符串类型
+		product:	// 配置信息更新成功的productKey，字符串类型
 	}
 
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -450,8 +448,8 @@ err
 
 ###示例代码
 	var gizWifiSDK = api.require('gizWifiSDK');
-	gizWifiSDK.updateDeviceFromServer({"productKey": 'ef074d0b7304407e9acb3ae4ecc667be'}, function(ret, err) {
-	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+	gizWifiSDK.updateDeviceFromServer({"productKey": '6f3074fe43894547a4f1314bd7e3ae0b'}, function(ret, err) {
+		alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
 	});
 
 ###可用性
@@ -462,7 +460,8 @@ iOS系统，Android系统
 
 #**getBoundDevices**<div id="a8"></div>
  
-获取设备列表。用户登录后，可以获取指定产品类型的设备列表，包括从云端返回的和本地搜索得到的设备。
+获取设备列表。用户登录后，可以获取指定产品类型的设备列表，包括从云端返回的和小循环搜索得到的设备。用户不登录时调用此接口，将只能获取小循环搜索得到的设备。
+因为此接口会同时触发小循环设备发现和大循环获取绑定设备列表请求，设备搜索结果将根据当前搜索情况多次返回。
 
 getBoundDevices({params}, callback(ret, err))
 
@@ -471,27 +470,26 @@ uid:
 
 * 类型： 字符串
 * 默认值：无
-* 描述：用户登录后获取到的uid。
+* 描述：用户登录后获取到的uid。uid 和 token 都不传时，将只会得到小循环设备
 
 token:
 
 * 类型： 字符串
 * 默认值：无
-* 描述：用户登录后获取到的token。
+* 描述：用户登录后获取到的token。uid 和 token 都不传时，将只会得到小循环设备
 
 specialProductKeys:
 
 * 类型： 字符串数组
 * 默认值：无
-* 描述：指定过滤的产品类型识别码。
+* 描述：指定过滤的产品类型识别码，可同时指定多个要过滤的 Product Key
 
 ###callback(ret, err)
 
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		devices:[{			// 设备数组（以下字段是设备对象信息），数组类型
@@ -499,7 +497,7 @@ ret
 			did:  			// 设备唯一标识，字符串类型
 			ip:				// 设备IP地址，字符串类型
 			passcode:		// 设备验证码（用于设备绑定和登录时验证身份），字符串类型
-			productkey:		// 设备的产品识别码，字符串类型
+			productKey:		// 设备的产品识别码，字符串类型
 			productName:	// 设备的产品名称，字符串类型
 			type:			// 设备类型（0＝普通设备，1＝中控设备），数字类型
 			isDisconnected:	// 设备是否已登录，布尔类型
@@ -513,8 +511,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -522,10 +519,14 @@ err
 	}
 
 ###示例代码
-	var gizWifiSDK = api.require('gizWifiSDK');
-	gizWifiSDK.getBoundDevices({"productKey": 'ef074d0b7304407e9acb3ae4ecc667be'}, function(ret, err) {
-	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
-	});
+	var gizWifiSDK = api.require(‘gizWifiSDK');
+    	gizWifiSDK.getBoundDevices({
+    		"uid": ‘xxx’,
+    		"token": ‘xxx’,
+    		"specialProductKeys": ['6f3074fe43894547a4f1314bd7e3ae0b']
+     	}, function (ret1, err1) {
+    		alert("ret1 = " + JSON.stringify(ret1) + "err1 = " + JSON.stringify(err1))
+    	});
 
 ###可用性
 
@@ -558,7 +559,7 @@ did:
 
 * 类型： 字符串
 * 默认值：无
-* 描述：设备唯一标识。
+* 描述：设备唯一标识 id。此 id 为设备向云端注册时，由云端分配。SDK 在设备搜索时可以给 APP 提供设备 did。
 
 passcode:
 
@@ -570,15 +571,14 @@ remark:
 
 * 类型： 字符串
 * 默认值：无
-* 描述：设备备注信息。绑定设备时，可以给设备备注个好记的名字。
+* 描述：设备备注信息。绑定设备时，可以给设备备注个好记的名字。此参数不要求必填。
 
 ###callback(ret, err)
 
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		did:  // 设备唯一标识，字符串类型
@@ -587,8 +587,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -597,13 +596,13 @@ err
 
 ###示例代码
 	var gizWifiSDK = api.require(‘gizWifiSDK');
-    gizWifiSDK.getBoundDevices({
-        "uid":uids,
-        "token":tokens,
-        "specialProductKeys": ['6f3074fe43894547a4f1314bd7e3ae0b']
-    }, function (ret1, err1) {
-        alert("ret1 = " + JSON.stringify(ret1) + "err1 = " + JSON.stringify(err1))
-    });
+    	gizWifiSDK.bindDevice({
+		"uid": ‘xxxxxxxx’,
+		"token": ‘xxxxxxxx’,
+		“did”: ‘xxxxxx’	
+    	}, function (ret1, err1) {
+    		alert("ret1 = " + JSON.stringify(ret1) + "err1 = " + JSON.stringify(err1))
+    	});
 
 ###可用性
 
@@ -636,18 +635,11 @@ did:
 * 默认值：无
 * 描述：设备唯一标识。
 
-passcode:
-
-* 类型： 字符串
-* 默认值：无
-* 描述：设备验证码。passcode是否要填充，跟绑定设备时相同。
-
 ###callback(ret, err)
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		did:  // 设备唯一标识，字符串类型
@@ -656,8 +648,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -667,11 +658,11 @@ err
 ###示例代码
 	var gizWifiSDK = api.require('gizWifiSDK');
 	gizWifiSDK.unbindDevice({
-	    "uid":'XXXXXXXXXXX',
-	    "token": 'XXXXXXXXXXX',
-	    "did": YOUR_Device_DID
+		"uid": ‘xxxxxxxx’,
+		"token": ‘xxxxxxxx’,
+		“did”: ‘xxxxxx’	
 	}, function(ret, err) {
-	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+	    	alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
 	});
 
 ###可用性
@@ -682,7 +673,7 @@ iOS系统，Android系统
 
 #**userLoginAnonymous**<div id="a11"></div>
 
-匿名用户登录，SDK会默认生成一个账号登录到云端，并返回对应的uid和token。
+匿名用户登录，SDK会默认生成一个账号登录到云端，并返回对应的 uid 和 token。
 
 userLoginAnonymous(callback(ret, err))
 
@@ -692,8 +683,7 @@ userLoginAnonymous(callback(ret, err))
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		uid:  	// 用户uid，字符串类型
@@ -703,8 +693,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -715,7 +704,7 @@ err
 ###示例代码
 	var gizWifiSDK = api.require('gizWifiSDK');
 	gizWifiSDK.userLoginAnonymous(function(ret, err) {
-	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+	    	alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
 	});
 
 
@@ -727,7 +716,7 @@ iOS系统，Android系统
 
 #**userLogin**<div id="a12"></div>
  
-普通用户登录。
+普通用户登录。用户名可以是手机号、邮箱和普通用户名。
 
 userLogin({params}, callback(ret, err))
 
@@ -749,8 +738,7 @@ password:
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		uid:  	// 用户uid，字符串类型
@@ -760,8 +748,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -771,10 +758,10 @@ err
 ###示例代码
 	var gizWifiSDK = api.require('gizWifiSDK');
 	gizWifiSDK.userLogin({
-	    "userName": 'XXXXXX',
-	    "password": 'XXXXXX'
+		"userName": 'XXXXXX',
+	    	"password": 'XXXXXX'
 	}, function(ret, err) {
-	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+	    	alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
 	})
 
 ###可用性
@@ -784,7 +771,7 @@ iOS系统，Android系统
 
 #**userLoginWithThirdAccountType**<div id="a13"></div>
 
-第三方账号登录。第三方账号支持百度、新浪、QQ，需要通过shareSDK或各自对应的SDK，获取到uid和token之后才可以使用此接口。
+第三方账号登录。第三方账号支持百度、新浪、QQ，需要通过第三方的 shareSDK 工具或各自对应的SDK，获取到 uid 和 token 之后才可以使用此接口。
 
 userLoginWithThirdAccountType({params}, callback(ret, err))
 
@@ -794,38 +781,36 @@ uid: 登录第三方账号之后得到的uid
 
 * 类型： 字符串
 * 默认值：无
-* 描述：要登录的用户名。
+* 描述：要登录的用户id
 
 token: 登录第三方账号之后得到的token
 
 * 类型： 字符串
 * 默认值：无
-* 描述：要登录的密码。
+* 描述：要登录的密码
 
 thirdAccountType:
 
 * 类型： 数字类型
 * 默认值：无
-* 描述：第三方账号类型（0 = 百度账号, 1 = 新浪账号, 2 = QQ账号）。
+* 描述：第三方账号类型（0 = 百度账号, 1 = 新浪账号, 2 = QQ账号，见 thirdAccountType 枚举定义）
 
 ###callback(ret, err)
 
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
-		uid:  	// 登录机智云后得到的uid，字符串类型
-		token:	// 登录机智云后得到的token，字符串类型
+		uid:  	// 登录机智云后得到的 uid，字符串类型
+		token:	// 登录机智云后得到的 token，字符串类型
 	}
 
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -835,11 +820,11 @@ err
 ###示例代码
 	var gizWifiSDK = api.require('gizWifiSDK');
 	gizWifiSDK.userLoginWithThirdAccountType({
-	        "thirdAccountType": type,
-	        "uid": uid,
-	        "token": token
+	        "thirdAccountType": 0,
+	        "uid": ‘xxxxxx’,
+	        "token": ‘xxxxxx’
 	}, function(ret, err) {
-	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+	    	alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
 	});
 
 
@@ -851,7 +836,8 @@ iOS系统，Android系统
 
 #**requestSendVerifyCode**<div id="a14"></div>
 
-获取手机验证码。当注册新用户、匿名用户转换、找回密码、修改用户信息时，需要先调用此接口获取到手机验证码。
+此接口已废弃，调用后将返回错误码为－47，含义是不支持的API。
+请使用新的短信验证接口获取手机验证码：getCaptchaCode、requestSendPhoneSMSCode、verifyPhoneSMSCode。当注册新用户、匿名用户转换、找回密码、修改用户信息时，需要先调用这些接口。
 
 requestSendVerifyCode({params}, callback(ret, err))
 
@@ -867,8 +853,7 @@ phone:
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode: 0, 					// 验证码获取成功，数字类型
@@ -878,8 +863,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -889,7 +873,187 @@ err
 ###示例代码
 	var gizWifiSDK = api.require('gizWifiSDK');
 	gizWifiSDK.requestSendVerifyCode({
-	        "phone": 'XXXXXXX'
+	        "phone": ‘xxxxxx’
+	}, function(ret, err) {
+	    	alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+	});
+
+###可用性
+iOS系统，Android系统
+
+可提供的1.0.0及更高版本
+
+#**getCaptchaCode**<div id="a14"></div>
+
+通过 App Secret 获取图片验证码。
+
+getCaptchaCode({params}, callback(ret, err))
+
+###params
+
+appSecret: 
+
+* 类型： 字符串
+* 默认值：无
+* 描述：应用的 secret 信息，是与 AppID 对应的应用签名字符串，从 site.gizwits.com 中可以看到
+
+###callback(ret, err)
+ret
+
+* 类型：JSON对象
+* 内部字段
+
+	{
+		token: ‘xxxxxx’, 			// 图片验证码 token，字符串类型
+		captchaId: ‘xxxxxx’		// 图片验证码 id，字符串类型
+		captchaURL: ‘xxxxxx’		// 图片验证码 url，字符串类型
+	}
+
+err
+
+* 类型：JSON对象
+* 内部字段
+
+	{
+		errorCode:	// 错误代码，数字类型
+		msg:		// 错误描述，字符串类型
+	}
+
+###示例代码
+	var gizWifiSDK = api.require('gizWifiSDK');
+	gizWifiSDK.getCaptchaCode({
+	        "appSecret": ‘xxxxxx’
+	}, function(ret, err) {
+	    	alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+	});
+
+###可用性
+iOS系统，Android系统
+
+可提供的1.0.0及更高版本
+
+#**requestSendPhoneSMSCode**<div id="a14"></div>
+
+用图片验证码，请求发送手机短信验证码
+
+requestSendPhoneSMSCode({params}, callback(ret, err))
+
+###params
+
+token: 
+
+* 类型： 字符串
+* 默认值：无
+* 描述：验证码 token，通过 getCaptchaCode 获取
+
+captchaId: 
+
+* 类型： 字符串
+* 默认值：无
+* 描述：验证码 id，通过 getCaptchaCode 获取
+
+captchaCode: 
+
+* 类型： 字符串
+* 默认值：无
+* 描述：验证码，来自图片的验证内容
+
+phone: 
+
+* 类型： 字符串
+* 默认值：无
+* 描述：手机号
+
+###callback(ret, err)
+ret
+
+* 类型：JSON对象
+* 内部字段
+
+	{
+		errorCode: 0, 					// 验证码获取成功，数字类型
+		msg: "GizWifiError_SUCCESS"		// 消息描述，字符串类型
+	}
+
+err
+
+* 类型：JSON对象
+* 内部字段
+
+	{
+		errorCode:	// 错误代码，数字类型
+		msg:		// 错误描述，字符串类型
+	}
+
+###示例代码
+	var gizWifiSDK = api.require('gizWifiSDK');
+	gizWifiSDK.requestSendPhoneSMSCode({
+	        "token": ‘xxxxxx’
+	        "captchaId": ‘xxxxxx’
+	        "captchaCode": ‘xxxxxx’
+	        "phone": ‘xxxxxx’
+	}, function(ret, err) {
+	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+	});
+
+###可用性
+iOS系统，Android系统
+
+可提供的1.0.0及更高版本
+
+#**verifyPhoneSMSCode**<div id="a14"></div>
+
+验证收到的手机短信验证码
+
+verifyPhoneSMSCode({params}, callback(ret, err))
+
+###params
+
+token: 
+
+* 类型： 字符串
+* 默认值：无
+* 描述：验证码 token，通过 getCaptchaCode 获取
+
+phoneCode: 
+
+* 类型： 字符串
+* 默认值：无
+* 描述：手机短信中的验证码内容
+
+phone: 
+
+* 类型： 字符串
+* 默认值：无
+* 描述：手机号
+
+###callback(ret, err)
+ret
+
+* 类型：JSON对象
+* 内部字段
+
+	{
+		errorCode: 0, 					// 验证码获取成功，数字类型
+		msg: ‘GizWifiError_SUCCESS’		// 消息描述，字符串类型
+	}
+
+err
+
+* 类型：JSON对象
+* 内部字段
+
+	{
+		errorCode:	// 错误代码，数字类型
+		msg:		// 错误描述，字符串类型
+	}
+
+###示例代码
+	var gizWifiSDK = api.require('gizWifiSDK');
+	gizWifiSDK.verifyPhoneSMSCode({
+	        "token": 'xxxxxx'
+	        "phoneCode": 'xxxxxx'
+	        "phone": 'xxxxxx'
 	}, function(ret, err) {
 	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
 	});
@@ -923,8 +1087,7 @@ password:
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		uid:  	// 注册成功后返回的uid，字符串类型
@@ -934,8 +1097,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -944,12 +1106,12 @@ err
 
 ###示例代码
 	var gizWifiSDK = api.require('gizWifiSDK');
-    gizWifiSDK.registerUser({
-    "userName": '',
-    "password" :''
-   }, function(ret, err) {
-    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
-   });
+	gizWifiSDK.registerUser({
+		"userName": 'xxxxxx',
+		"password" :'xxxxxx'
+	}, function(ret, err) {
+		alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+	});
 
 ###可用性
 
@@ -959,7 +1121,7 @@ iOS系统，Android系统
 
 #**registerUserByPhoneAndCode**<div id="a16"></div>
 
-注册手机号用户。
+注册手机号用户
 
 registerUserByPhoneAndCode({params}, callback(ret, err))
 
@@ -987,8 +1149,7 @@ code:
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		uid:  	// 注册成功后返回的uid，字符串类型
@@ -998,8 +1159,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -1009,9 +1169,9 @@ err
 ###示例代码
 	var gizWifiSDK = api.require('gizWifiSDK');
 	gizWifiSDK.registerUserByPhoneAndCode({
-	    "phone": '18301194524',
-	    "password": '1234567',
-	    "code":'485320'
+	    "phone": 'xxxxxx',
+	    "password": 'xxxxxx',
+	    "code":'xxxxxx'
 	}, function(ret, err) {
 	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
 	});
@@ -1024,11 +1184,12 @@ iOS系统，Android系统
 
 #**registerUserByEmail**<div id="a17"></div>
  
-注册邮箱用户。
+注册邮箱用户
 
 registerUserByEmail({params}, callback(ret, err))
 
 ###params
+
 email: 
 
 * 类型： 字符串
@@ -1045,8 +1206,7 @@ password:
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		uid:  	// 注册成功后返回的uid，字符串类型
@@ -1056,8 +1216,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -1067,10 +1226,10 @@ err
 ###示例代码
 	var gizWifiSDK = api.require('gizWifiSDK');
 	gizWifiSDK.registerUserByEmail({
-	"email": 'XXXXXXXXXX',
-	"password": 'XXXXXXXX'
+		"email": 'xxxxxx',
+		"password": 'xxxxxx'
 	}, function(ret, err) {
-	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+		alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
 	});
 
 ###可用性
@@ -1110,8 +1269,7 @@ password:
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode: 0, 					// 转换成功，数字类型
@@ -1121,8 +1279,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -1132,11 +1289,11 @@ err
 ###示例代码
 	var gizWifiSDK = api.require('gizWifiSDK');
 	gizWifiSDK.transAnonymousUserToNormalUser({
-	"token": 'XXXXXX',
-	"userName": 'XXXXX',
-	"password": 'XXXXXXXX'
+		"token": 'xxxxxx',
+		"userName": 'xxxxxx',
+		"password": 'xxxxxx'
 	}, function(ret, err) {
-	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+		alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
 	});
 
 ###可用性
@@ -1180,8 +1337,7 @@ code:
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode: 0, 					// 转换成功，数字类型
@@ -1191,8 +1347,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -1202,12 +1357,12 @@ err
 ###示例代码
 	var gizWifiSDK = api.require('gizWifiSDK');
 	gizWifiSDK.transAnonymousUserToPhoneUser({
-	"token": 'XXXXXXXXXX',
-	"phone": 'XXXXXXXXXX',
-	"password": 'XXXXXXXXX',
-	"code": 'XXXXX'
+		"token": 'xxxxxx',
+		"phone": 'xxxxxx',
+		"password": 'xxxxxx',
+		"code": 'xxxxxx'
 	}, function(ret, err) {
-	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+		alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
 	});
 
 ###可用性
@@ -1245,8 +1400,7 @@ newPassword:
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode: 0, 					// 重置成功，数字类型
@@ -1256,8 +1410,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -1267,11 +1420,11 @@ err
 ###示例代码
 	var gizWifiSDK = api.require('gizWifiSDK');
 	gizWifiSDK.changeUserPasswordByCode({
-	"phone": YOUR_PHONE,
-	"code": YOUR_CODE,
-	"newPassword": YOUR_PASSWORD
+		"phone": ‘xxxxxx’,
+		"code": ‘xxxxxx’,
+		"newPassword": ‘xxxxxx’
 	},function(ret, err) {
-	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+		alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
 	});
 
 ###可用性
@@ -1283,6 +1436,7 @@ iOS系统，Android系统
 #**changeUserPasswordByEmail**<div id="a21"></div>
 
 通过邮箱重置密码。忘记密码时，可以通过邮箱重置密码，机智云会向该邮箱发送一个重置密码的链接，用户登录邮箱后可以点击链接重置密码。
+
 changeUserPasswordByEmail({params}, callback(ret, err))
 
 
@@ -1299,8 +1453,7 @@ r)
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode: 0, 					// 请求发送成功，数字类型
@@ -1310,8 +1463,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -1321,9 +1473,9 @@ err
 ###示例代码
 	var gizWifiSDK = api.require('gizWifiSDK');
 	gizWifiSDK.changeUserPasswordByEmail({
-	"email": 'XXXXXXXXXX'
+		"email": 'xxxxxx'
 	}, function(ret, err) {
-	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+		alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
 	});
 
 ###可用性
@@ -1363,8 +1515,7 @@ newPassword:
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode: 0, 					// 修改成功，数字类型
@@ -1374,8 +1525,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -1383,13 +1533,13 @@ err
 	}
 
 ###示例代码
-	var gizWifiSDK = api.require('gizWifiSDK');
-    gizWifiSDK.changeUserPassword({
-    "token": YOUR_TOKEN,
-	"oldPassword": YOUR_OLD_PASSWORD,
-	"newPassword": YOUR_NEW_PASSWORD
+	var gizWifiSDK = api.require('gizWifiSDK')
+	gizWifiSDK.changeUserPassword({
+		"token": ‘xxxxxx’,
+		"oldPassword": ‘xxxxxx’,
+		"newPassword": ‘xxxxxx’
 	},function(ret, err) {
-	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+		alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
 	});
 
 ###可用性
@@ -1401,6 +1551,7 @@ iOS系统，Android系统
 #**changeUserEmail**<div id="a23"></div>
 
 修改用户邮箱。用户登录后，修改或补充邮箱地址。
+
 changeUserEmail({params}, callback(ret, err))
 
 ###params
@@ -1421,8 +1572,7 @@ email:
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode: 0, 					// 修改成功，数字类型
@@ -1432,8 +1582,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -1443,11 +1592,12 @@ err
 ###示例代码
 	var gizWifiSDK = api.require('gizWifiSDK');
 	gizWifiSDK.changeUserEmail({
-	"token": YOUR_TOKEN,
-	"email": YOUR_EMAIL
+		"token": ‘xxxxxx’,
+		"email": ‘xxxxxx’
 	},function(ret, err) {
-	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+		alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
 	});
+
 ###可用性
 
 iOS系统，Android系统
@@ -1484,8 +1634,7 @@ code:
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode: 0, 					// 修改成功，数字类型
@@ -1495,8 +1644,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -1506,12 +1654,11 @@ err
 ###示例代码
 	var gizWifiSDK = api.require('gizWifiSDK');
 	gizWifiSDK.changeUserPhone({
-	    "token": '',
-	    "phone":'',
-	     "code": ''
-	},function(ret, e
-	},function(ret,rr) {
-	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+		"token": 'xxxxxx',
+		"phone":'xxxxxx',
+		"code": 'xxxxxx'
+	},function(ret, err) {
+		alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
 	});
 
 ###可用性
@@ -1519,6 +1666,131 @@ iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
+#**changeUserAdditionalInfo**<div id="a24"></div>
+ 
+补充用户个人信息。用户登录后，可以补充用户个人信息。
+
+changeUserAdditionalInfo({params}, callback(ret, err))
+
+###params
+
+token: 
+
+* 类型： 字符串
+* 默认值：无
+* 描述：用户登录后获得的token。
+
+additionalInfo: 
+
+* 类型： JSON对象
+* 默认值：无
+* 描述：用户附加信息。
+* 内部字段
+
+		{
+			"name":		// 用户姓名，字符串类型
+			"gender":	// 用户性别，见 UserGenderType 枚举类型
+			"birthday":	// 生日，字符串类型
+			"address":	// 家庭住址，字符串类型
+			"remark":	// 备注，字符串类型
+		}
+
+###callback(ret, err)
+ret
+
+* 类型：JSON对象
+* 内部字段
+
+	{
+		errorCode: 0, 					// 修改成功，数字类型
+		msg: "GizWifiError_SUCCESS"		// 消息描述，字符串类型
+	}
+
+err
+
+* 类型：JSON对象
+* 内部字段
+
+	{
+		errorCode:	// 错误代码，数字类型
+		msg:		// 错误描述，字符串类型
+	}
+
+###示例代码
+	var gizWifiSDK = api.require('gizWifiSDK');
+	gizWifiSDK.changeUserAdditionalInfo({
+		"token": '',
+	    	"additionalInfo": {
+			"name”: ’xxx’,
+			"gender”: 0,
+			"birthday”: ’xxx’,
+			"address”: ’xxx’,
+			"remark": 'xxx’
+	    	}
+	},function(ret, err) {
+	    	Ialert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+	});
+
+###可用性
+iOS系统，Android系统
+
+可提供的1.0.0及更高版本
+
+#**getUserInfo**<div id="a23"></div>
+
+获取用户信息。用户登录后，可以获取用户的详细信息。
+
+getUserInfo({params}, callback(ret, err))
+
+###params
+token: 
+
+* 类型： 字符串
+* 默认值：无
+* 描述：用户登录后获得的 token
+
+###callback(ret, err)
+
+ret
+
+* 类型：JSON对象
+* 内部字段
+
+	{
+		"uid": "xxx",					// 用户登录的uid，字符串类型
+    		"username": "xxx",			// 用户名，字符串类型
+    		"email": "xxx",				// email信息，字符串类型
+    		"phone": "xxx",				// 电话号码，字符串类型
+    		"isAnonymous": true/false,		// 是否为匿名用户，布尔类型
+    		"name": "xxx",				// 昵称，字符串类型
+    		"gender": "xxx",				// 性别，UserGenderType枚举类型
+    		"birthday": "xxx",				// 生日，字符串类型
+    		"address": "xxx",				// 住址，字符串类型
+    		"remark": "xxx"				// 备注，字符串类型
+	}
+
+err
+
+* 类型：JSON对象
+* 内部字段
+
+	{
+		errorCode:	// 错误代码，数字类型
+		msg:		// 错误描述，字符串类型
+	}
+
+###示例代码
+	var gizWifiSDK = api.require('gizWifiSDK');
+	gizWifiSDK.getUserInfo({
+		"token": ‘xxx’
+	},function(ret, err) {
+	    	alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+	});
+###可用性
+
+iOS系统，Android系统
+
+可提供的1.0.0及更高版本
 
 #**getGroups**<div id="a25"></div>
 
@@ -1550,8 +1822,7 @@ specialProductKeys:
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		groups:[{  	// 组对象（以下字段是组对象信息），数组类型
@@ -1562,8 +1833,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -1573,11 +1843,11 @@ err
 ###示例代码
 	var gizWifiSDK = api.require(‘gizWifiSDK');
 	gizWifiSDK.getGroups({
-        "uid": uid,
-        "token": token,
-        "specialProductKeys": []
+        	"uid": ‘xxxxxx’,
+        	"token": ‘xxxxxx’,
+        	"specialProductKeys": []
     },function(ret, err) {
-        alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+        	alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
     });
 
 ###可用性
@@ -1606,11 +1876,11 @@ token:
 * 默认值：无
 * 描述：用户登录后获得的uid。
 
-productkey: 
+productKey: 
 
 * 类型： 字符串
 * 默认值：无
-* 描述：要添加的组类型标识，即要添加的设备的productkey。
+* 描述：要添加的组类型标识，即要添加的设备的productKey。
 
 groupName: 
 
@@ -1636,8 +1906,7 @@ specialDevices:
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		groups:[{  	// 组对象（以下字段是组对象信息），数组类型
@@ -1648,8 +1917,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -1659,13 +1927,13 @@ err
 ###示例代码
 	var gizWifiSDK = api.require(‘gizWifiSDK');
 	gizWifiSDK.addGroup({
-            "uid": uid,
-            "token": token,
-            "productkey": productkey,
-            "groupName": "test1",
-            "specialDevices": []
+            	"uid": ‘xxxxxx’,
+            	"token": ‘xxxxxx’,
+            	"productKey": ‘xxxxxx’,
+            	"groupName": ‘xxxxxx’,
+            	"specialDevices": []
         },function(ret, err) {
-            alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err));
+            	alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err));
         });
 
 ###可用性
@@ -1702,8 +1970,7 @@ gid:
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		groups:[{  	// 组对象（以下字段是组对象信息），数组类型
@@ -1714,8 +1981,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -1723,14 +1989,14 @@ err
 	}
 
 ###示例代码
-	  var gizWifiSDK = api.require(‘gizWifiSDK');
-	  gizWifiSDK.removeGroup({
-	        "uid": uid,
-	        "token": token,
-	        "gid": 0
-	    }, function (ret, err) {
-	        alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
-	    });
+	var gizWifiSDK = api.require(‘gizWifiSDK');
+	gizWifiSDK.removeGroup({
+		"uid": ‘xxxxxx’,
+            	"token": ‘xxxxxx’,
+	       "gid": ’xxxxxx’
+	}, function (ret, err) {
+		alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+	});
 
 ###可用性
 iOS系统，Android系统
@@ -1786,8 +2052,7 @@ specialDevices:
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		groups:[{  	// 组对象（以下字段是组对象信息），数组类型
@@ -1798,8 +2063,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -1808,15 +2072,15 @@ err
 
 ###示例代码
 	var gizWifiSDK = api.require('gizWifiSDK');
-    gizWifiSDK.editGroup({
-        "uid": uid,
-        "token": token,
-        "gid":0,
-        "groupName": groupName,
-        "specialDevices": []
-    }, function (ret, err) {
-        alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
-    });
+    	gizWifiSDK.editGroup({
+		"uid": ’xxx’,
+        	"token": ’xxx’,
+        	"gid": ’xxx’,
+        	"groupName": ’xxx’,
+        	"specialDevices": []
+    	}, function (ret, err) {
+        	alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+    	});
 
 ###可用性
 iOS系统，Android系统
@@ -1844,7 +2108,7 @@ token:
 
 * 类型： 字符串
 * 默认值：无
-* 描述：用户登录后获得的uid。
+* 描述：用户登录后获得的token。
 
 device: 
 
@@ -1862,8 +2126,7 @@ device:
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		device:{   	// 登录成功的设备对象（以下字段是设备对象信息），对象类型
@@ -1875,8 +2138,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -1890,14 +2152,14 @@ err
 ###示例代码
 	var gizWifiDevice = api.require('gizWifiDevice');
 	gizWifiDevice.login({
-	"uid": YOUR_UID,
-	"token": YOUR_TOKEN,
-	"device": {
-	    "mac": YOUR_DEVICE_MAC,
-	    "did": YOUR_DEVICE_DID
-	  }
+		"uid": ’xxx’,
+		"token": ’xxx’,
+		"device": {
+	    		"mac": ’xxx’,
+	    		"did": ’xxx’
+	  	}
 	},function(ret, err) {
-	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+	    	alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
 	});
 
 ###可用性
@@ -1937,10 +2199,12 @@ data:
 * 内部字段
 
 		{
-			"cmd":	// 命令属性，数字类型
+			"cmd":	// 命令action属性，数字类型
+					// 1 = 设备控制（APP->设备）
 					// 2 = 状态查询（APP->设备）
-					// 3 = 设备控制（APP->设备）
-					// 5 = 上报（设备->APP）
+					// 3 = 查询应答（设备->APP）
+					// 4 = 状态上报（设备->APP）
+					
 			"entity0": {				// 设备数据接入点名称（默认为entity0），对象类型
 				……
 				"attrName": "attrValue",	// 操作命令：操作名称、操作值
@@ -1955,8 +2219,7 @@ data:
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		device:{   	// 操作命令执行成功的设备对象（以下字段是设备对象信息），对象类型
@@ -1983,8 +2246,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -1998,23 +2260,23 @@ err
 ###示例代码
 	var gizWifiDevice = api.require('gizWifiDevice');
 	gizWifiDevice.write({
-	    "device": {
-	             "mac": YOUR_DEVICE_MAC,
-	             "did": YOUR_DEVICE_DID
-	         },
-	     "data": {
-	         "cmd": 1,
-	         "entity0": {
-	               "LED_G": 127,
-	               "LED_B":254,
-	               "LED_R":127,
-	               "LED_OnOff":true,
-	               "Motor_Speed":2,
-	               "Infrared":true
-	         }
-	     }
+		"device": {
+	             "mac": ’xxx’,
+	             "did": ’xxx’
+		},
+		"data": {
+			"cmd": 1,
+			"entity0": {
+				"LED_G": 127,
+	               	"LED_B":254,
+	               	"LED_R":127,
+	               	"LED_OnOff":true,
+	               	"Motor_Speed":2,
+	               	"Infrared":true
+	         	}
+	     	}
 	}, function(ret, err) {
-	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+	    	alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
 	});
 
 ###可用性
@@ -2047,8 +2309,7 @@ device:
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		device:{   	// 操作命令执行成功的设备对象（以下字段是设备对象信息），对象类型
@@ -2077,8 +2338,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -2092,12 +2352,12 @@ err
 ###示例代码
 	var gizWifiDevice = api.require('gizWifiDevice');
 	gizWifiDevice.registerNotifications({
-	"device": {
-	     "mac": YOUR_DEVICE_MAC,
-	     "did": YOUR_DEVICE_DID
-	     }
+		"device": {
+	     		"mac": ’xxx’,
+	     		"did": ’xxx’
+	     	}
 	}, function(ret, err) {
-	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+	    	alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
 	});
 
 
@@ -2132,8 +2392,7 @@ device:
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		device:{   	// 操作命令执行成功的设备对象（以下字段是设备对象信息），对象类型
@@ -2146,8 +2405,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -2161,12 +2419,12 @@ err
 ###示例代码
 	var gizWifiDevice = api.require('gizWifiDevice');
 	gizWifiDevice.disconnect({
-	   "device": {
-	        "mac": YOUR_DEVICE_MAC,
-			"did": YOUR_DEVICE_DID
-	   }
+	   	"device": {
+	        	"mac": ’xxx’,
+			"did": ’xxx’
+	   	}
 	}, function(ret, err) {
-	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+	    	alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
 	});
 
 ###可用性
@@ -2184,8 +2442,8 @@ getIsBind({params}, callback(ret, err))
 
 ###params
 
-device: 
-设备是否已绑定
+device:  
+
 * 类型： JSON对象
 * 默认值：无
 * 描述：要判断的设备对象，设备对象信息可以在获取设备列表时得到。
@@ -2207,8 +2465,7 @@ uid:
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		device:{   	// 操作命令执行成功的设备对象（以下字段是设备对象信息），对象类型
@@ -2221,8 +2478,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -2236,13 +2492,13 @@ err
 ###示例代码
 	var gizWifiDevice = api.require('gizWifiDevice');
 	gizWifiDevice.getIsBind({
-	"device": {
-	    "mac": YOUR_DEVICE_MAC,
-		"did": YOUR_DEVICE_DID
-	  },
-	"uid": YOUR_UID
+		"device": {
+	    		"mac": ’xxx’,
+			"did": ’xxx’
+	  	},
+		"uid": ’xxx’
 	}, function(ret, err) {
-	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+	    	alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
 	});
 
 ###可用性
@@ -2276,8 +2532,7 @@ device:
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		device: {   	// 操作命令执行成功的设备对象（以下字段是设备对象信息），对象类型
@@ -2285,10 +2540,10 @@ ret
 			"did": 	// 设备did，字符串类型
 		}
 		hardwareInfo: {			// 硬件信息对象，对象类型
-			"hardVersion":		// WiFi硬件版本号，字符串类型
-			"softVersion":			// WiFi软件版本号，字符串类型
-			"mcuHardVersion":	// 设备硬件版本号，字符串类型
-			"mcuSoftVersion":		// 设备软件版本号，字符串类型
+			"wifiHardVer":		// WiFi硬件版本号，字符串类型
+			"wifiSoftVer":			// WiFi软件版本号，字符串类型
+			"mcuHardVer":		// 设备硬件版本号，字符串类型
+			"mcuSoftVer":		// 设备软件版本号，字符串类型
 			"firmwareId":			// 固件fid，字符串类型
 			"firmwareVer":		// 固件版本号，字符串类型
 			"productKey":		// 产品类型识别码
@@ -2298,8 +2553,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -2313,12 +2567,12 @@ err
 ###示例代码
 	var gizWifiDevice = api.require('gizWifiDevice');
 	gizWifiDevice.getHardwareInfo({
-	    "device": {
-	        "mac": YOUR_DEVICE_MAC,
-			"did": YOUR_DEVICE_DID
-	    }
+	    	"device": {
+	        	"mac": ’xxx’,
+			"did": ’xxx’
+	    	}
 	},function(ret, err) {
-	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+	    	alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
 	});
 
 ###可用性
@@ -2351,8 +2605,7 @@ device:
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		device: {   	// 设备对象（以下字段是设备信息），对象类型
@@ -2360,7 +2613,7 @@ ret
 			did:  			// 设备唯一标识，字符串类型
 			ip:				// 设备IP地址，字符串类型
 			passcode:		// 设备验证码（用于设备绑定和登录时验证身份），字符串类型
-			productkey:		// 设备的产品识别码，字符串类型
+			productKey:		// 设备的产品识别码，字符串类型
 			productName:	// 设备的产品名称，字符串类型
 			type:			// 设备类型（0＝普通设备，1＝中控设备），数字类型
 			isConnected:	// 设备是否已登录，布尔类型
@@ -2374,8 +2627,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -2389,12 +2641,12 @@ err
 ###示例代码
 	var gizWifiDevice = api.require('gizWifiDevice');
 	gizWifiDevice.getDeviceInfo({
-	        "device": {
-	            "mac": YOUR_DEVICE_MAC,
-				"did": YOUR_DEVICE_DID
+		"device": {
+			"mac": ’xxx’,
+			"did": ’xxx’
 	        }
 	}, function(ret, err) {
-	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+	    	alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
 	});
 
 ###可用性
@@ -2434,8 +2686,7 @@ device:
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		device:{   	// 中控设备对象（以下字段是设备对象信息），对象类型
@@ -2455,8 +2706,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -2471,11 +2721,11 @@ err
 	var gizWifiCentralControlDevice = api.require('gizWifiCentralControlDevice');
 	gizWifiCentralControlDevice.registerNotifications({
 	        "device": {
-	            "mac": YOUR_DEVICE_MAC,
-	            "did": YOUR_DEVICE_DID
+	            	"mac": ’xxx’,
+	            	"did": ’xxx’
 	        }
 	}, function(ret, err) {
-	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+	    	alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
 	});
 
 ###可用性
@@ -2509,8 +2759,7 @@ device:
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		device:{   	// 中控设备对象（以下字段是设备对象信息），对象类型
@@ -2521,11 +2770,11 @@ ret
 			"mac": 		// 中控设备mac，字符串类型
 			"did":		// 中控设备did，字符串类型
 			"subDid": 				// 子设备did，字符串类型
-			"subProductkey":			// 子设备类型标识，字符串类型
+			"subProductKey":			// 子设备类型标识，字符串类型
 			"subProductName":		// 子设备产品名称，字符串类型
 			"type”:					// 子设备类型，数字类型
 			"isOnline":				// 子设备是否在线，布尔类型
-			"productkey":				// 中控设备类型标识，字符串类型
+			"productKey":				// 中控设备类型标识，字符串类型
 			"productName":			// 中控设备产品名称，字符串类型
 		}
 	}
@@ -2533,8 +2782,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -2549,11 +2797,11 @@ err
 	var gizWifiCentralControlDevice = api.require('gizWifiCentralControlDevice');
 	gizWifiCentralControlDevice.getSubDevices({
 	        "device": {
-	            "mac": YOUR_DEVICE_MAC,
-				"did": YOUR_DEVICE_DID
+	            	"mac": ’xxx’,
+			"did": ’xxx’
 	        }
 	}, function(ret, err) {
-	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+	    	alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
 	});
 
 ###可用性
@@ -2588,8 +2836,7 @@ device:
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		device:{   	// 中控设备对象（以下字段是设备对象信息），对象类型
@@ -2600,11 +2847,11 @@ ret
 			"mac": 		// 中控设备mac，字符串类型
 			"did":		// 中控设备did，字符串类型
 			"subDid": 				// 子设备did，字符串类型
-			"subProductkey":			// 子设备类型标识，字符串类型
+			"subProductKey":			// 子设备类型标识，字符串类型
 			"subProductName":		// 子设备产品名称，字符串类型
 			"type”:					// 子设备类型，数字类型
 			"isOnline":				// 子设备是否在线，布尔类型
-			"productkey":				// 中控设备类型标识，字符串类型
+			"productKey":			// 中控设备类型标识，字符串类型
 			"productName":			// 中控设备产品名称，字符串类型
 		}
 	}
@@ -2612,8 +2859,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -2628,11 +2874,11 @@ err
 	var gizWifiCentralControlDevice = api.require('gizWifiCentralControlDevice');
 	gizWifiCentralControlDevice.addSubDevice({
 	        "device": {
-	            "mac": YOUR_DEVICE_MAC,
-				"did": YOUR_DEVICE_DID
+	            	"mac": ’xxx’,
+			"did": ’xxx’
 	        }
 	}, function(ret, err) {
-	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+	    	alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
 	});
 
 ###可用性
@@ -2675,8 +2921,7 @@ device:
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		device:{   	// 中控设备对象（以下字段是设备对象信息），对象类型
@@ -2687,11 +2932,11 @@ ret
 			"mac": 		// 中控设备mac，字符串类型
 			"did":		// 中控设备did，字符串类型
 			"subDid": 				// 子设备did，字符串类型
-			"subProductkey":			// 子设备类型标识，字符串类型
+			"subProductKey":			// 子设备类型标识，字符串类型
 			"subProductName":		// 子设备产品名称，字符串类型
 			"type”:					// 子设备类型，数字类型
 			"isOnline":				// 子设备是否在线，布尔类型
-			"productkey":				// 中控设备类型标识，字符串类型
+			"productKey":			// 中控设备类型标识，字符串类型
 			"productName":			// 中控设备产品名称，字符串类型
 		}
 	}
@@ -2699,8 +2944,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -2715,12 +2959,12 @@ err
 	var gizWifiCentralControlDevice = api.require('gizWifiCentralControlDevice');
 	gizWifiCentralControlDevice.deleteSubDevice({
 	        "device": {
-	            "mac": YOUR_DEVICE_MAC,
-	            "did": YOUR_DEVICE_DID,
-	            "subDid": YOUR_SUBDID
+	            	"mac": ’xxx’,
+	            	"did": ’xxx’,
+	            	"subDid": ’xxx’
 	        }
 	 }, function(ret, err) {
-	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+	    	alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
 	});
 
 ###可用性
@@ -2778,8 +3022,7 @@ data:
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		device:{   	// 操作命令执行成功的设备对象（以下字段是设备对象信息），对象类型
@@ -2807,8 +3050,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -2823,24 +3065,24 @@ err
 ###示例代码
 	var gizWifiSubDevice = api.require('gizWifiSubDevice');
 	gizWifiSubDevice.write({
-	    "device": {
-	        "mac": YOUR_DEVICE_MAC,
-			"did": YOUR_DEVICE_DID,
-			"subDid": YOUR_SUBDEVICE_DID
-	    },
-	   "data": {
-	       "cmd": 1,
-	       "entity0": {
-	             "LED_G": 127,
-	             "LED_B":254,
-	             "LED_R":127,
-	             "LED_OnOff":true,
-	             "Motor_Speed":2,
-				 "Infrared":true
-	       }
-	   }
-	 }, function(ret, err) {
-	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+		"device": {
+	        	"mac": ’xxx’,
+			"did": ’xxx’,
+			"subDid": ’xxx’
+	    	},
+	   	"data": {
+			"cmd": 1,
+	       		"entity0": {
+				"LED_G": 127,
+	             		"LED_B":254,
+	             		"LED_R":127,
+	             		"LED_OnOff":true,
+	             		"Motor_Speed":2,
+				"Infrared":true
+	       		}
+	   	}
+	}, function(ret, err) {
+	    	alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
 	});
 
 ###可用性
@@ -2875,8 +3117,7 @@ device:
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		device:{   	// 操作命令执行成功的子设备对象（以下字段是子设备信息），对象类型
@@ -2905,8 +3146,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -2922,12 +3162,12 @@ err
 	var gizWifiSubDevice = api.require('gizWifiSubDevice');
 	gizWifiSubDevice.registerNotifications({
 	        "device": {
-	            "mac": YOUR_DEVICE_MAC,
-	            "did": YOUR_DEVICE_DID,
-				"subDid": YOUR_SUBDEVICE_DID
+			"mac": ’xxx’,
+	            	"did": ’xxx’,
+			"subDid": ’xxx’
 	        }
-	  }, function(ret, err) {
-	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+	}, function(ret, err) {
+	    	alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
 	});
 
 ###可用性
@@ -2962,19 +3202,18 @@ device:
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		device: {   	// 子设备对象（以下字段是子设备信息），对象类型
 			"mac":					// 中控设备mac地址，字符串类型
 			"did": 					// 中控设备did，字符串类型
 			"subDid": 				// 子设备did，字符串类型
-			"subProductkey":			// 子设备类型标识，字符串类型
+			"subProductKey":			// 子设备类型标识，字符串类型
 			"subProductName":		// 子设备产品名称，字符串类型
 			"type”:					// 子设备类型，数字类型
 			"isOnline":				// 子设备是否在线，布尔类型
-			"productkey":				// 中控设备类型标识，字符串类型
+			"productKey":				// 中控设备类型标识，字符串类型
 			"productName":			// 中控设备产品名称，字符串类型
 		}
 	}
@@ -2982,8 +3221,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -2998,13 +3236,13 @@ err
 ###示例代码
 	var gizWifiSubDevice = api.require('gizWifiSubDevice');
 	gizWifiSubDevice.getDeviceInfo({
-	        "device": {
-	            "mac": YOUR_DEVICE_MAC,
-				"did": YOUR_DEVICE_DID,
-				"subDid": YOUR_SUBDEVICE_DID
-	        }
-	  }, function(ret, err) {
-	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+		"device": {
+			"mac": ’xxx’,
+			"did": ’xxx’,
+			"subDid": ’xxx’
+		}
+	}, function(ret, err) {
+	    	alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
 	});
 
 ###可用性
@@ -3041,8 +3279,7 @@ group:
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		group:{   	// 组对象（以下字段是组信息），对象类型
@@ -3058,8 +3295,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -3072,11 +3308,11 @@ err
 ###示例代码
 	var gizWifiGroup = api.require('gizWifiGroup');
 	gizWifiGroup.getDevices({
-	    "group": {
-	        "gid": YOUR_GROUP_ID
-	    }
+		"group": {
+	       		"gid": ’xxx’
+		}
 	}, function(ret, err) {
-	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+	    	alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
 	});
 
 ###可用性
@@ -3120,8 +3356,7 @@ device:
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		group:{   	// 组对象（以下字段是组信息），对象类型
@@ -3137,8 +3372,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -3152,15 +3386,15 @@ err
 	var gizWifiGroup = api.require('gizWifiGroup');
 	gizWifiGroup.addDevice({
 	        "group": {
-	            "gid": YOUR_GROUP_ID
+	            "gid": ’xxx’
 	        },
 	       "device":{
-	           "did": YOUR_CENTRALCONTROL_DID,
-				"mac": YOUR_CENTRALCONTROL_MAC,
-				"subDid": YOUR_SUBDEVCIE_DID
+			"did": ’xxx’,
+			"mac": ’xxx’,
+			"subDid": ’xxx’
 	       }
-	  }, function(ret, err) {
-	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+	}, function(ret, err) {
+	    	alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
 	});
 
 ###可用性
@@ -3175,6 +3409,7 @@ iOS系统，Android系统
 removeDevice({params}, callback(ret, err))
 
 ###params
+
 group: 
 
 * 类型： JSON对象
@@ -3200,11 +3435,11 @@ device:
 		}
 
 ###callback(ret, err)
+
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		group:{   	// 组对象（以下字段是组信息），对象类型
@@ -3220,8 +3455,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -3235,15 +3469,15 @@ err
 	var gizWifiGroup = api.require('gizWifiGroup');
 	gizWifiGroup.removeDevice({
 	        "group": {
-	            "gid": YOUR_GROUP_ID
+	            "gid": ’xxx’
 	        },
 	        "device":{
-	            "did": YOUR_CENTRALCONTROL_DID,
-				"mac": YOUR_CENTRALCONTROL_MAC,
-				"subDid": YOUR_SUBDEVCIE_DID
+			"did": ’xxx’,
+			"mac": ’xxx’,
+			"subDid": ’xxx’
 	        }
 	 }, function(ret, err) {
-	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+	    	alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
 	});
 
 ###可用性
@@ -3274,8 +3508,7 @@ group:
 ret
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		group:{   	// 组对象（以下字段是组信息），对象类型
@@ -3288,8 +3521,7 @@ ret
 err
 
 * 类型：JSON对象
-
-内部字段
+* 内部字段
 
 	{
 		errorCode:	// 错误代码，数字类型
@@ -3302,11 +3534,11 @@ err
 ###示例代码
 	var gizWifiGroup = api.require('gizWifiGroup');
 	gizWifiGroup.getGroupInfo({
-	    "group": {
-	        "gid": YOUR_GROUP_ID
-	    }
+		"group": {
+	        	"gid": ’xxx’
+		}
 	}, function(ret, err) {
-	    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+		alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
 	});
 
 ###可用性
@@ -3330,9 +3562,10 @@ airLink  | 一键配置方式：2
 
 logLevel  | 日志级别
 ---------- |   --------  |
-error  | 错误日志输出：0
-warning  | 警告日志输出：1
-all  | 全部日志输出：2
+none  | 原生SDK无日志输出：0
+error  | 错误日志输出：1
+debug  | 警告日志输出：2
+all  | 全部日志输出：3
 
 type  | 设备分类
 ---------- |   --------  |
@@ -3344,6 +3577,23 @@ thirdAccountType  | 第三方账号类型
 BAIDU  | 百度账号：0
 SINA  | 新浪账号：1
 QQ  | 腾讯账号：2
+
+UserGenderType  | 用户性别
+---------- |   --------  |
+Male  | 男：0
+Female  | 女：1
+Unknow  | 其他：2
+
+GAgentType  | 模组类型
+---------- |   --------  |
+MXCHIP  | MXCHIP 1.x 模组（庆科3162）：0
+HF  | HF 模组（汉枫）：1
+RTK  | RTK 模组（RealTek）：2
+WM  | WM 模组（联盛德）：3
+ESP  | ESP 模组（乐鑫）：4
+QCA  | QCA 模组（高通）：5
+TI  | TI 模组（TI）：6
+
 
 
 #**错误码描述**
@@ -3357,7 +3607,9 @@ errorCode |       msg  |
 -5  | GizWifiError_CONNECTION_ID
 -7  | GizWifiError_CONNECTION_CLOSED
 -8  | GizWifiError_PACKET_CHECKSUM
--10  | GizWifiError_LOGIN_FAIL
+-9  | GizWifiError_LOGIN_VERIFY_FAILED
+-10  | GizWifiError_NOT_LOGINED
+-11  | GizWifiError_NOT_CONNECTED
 -12  | GizWifiError_MQTT_FAIL
 -13  | GizWifiError_DISCOVERY_MISMATCH
 -14  | GizWifiError_SET_SOCK_OPT
@@ -3372,16 +3624,21 @@ errorCode |       msg  |
 -24  | GizWifiError_THREAD_BUSY
 -25  | GizWifiError_HTTP_FAIL
 -26  | GizWifiError_GET_PASSCODE_FAIL
+-27  | GizWifiError_DNS_FAILED
+-30  | GizWifiError_UDP_PORT_BIND_FAILED
+-39  | GizWifiError_CONFIGURE_SSID_NOT_MATCHED
 -40  | GizWifiError_CONFIGURE_TIMEOUT
 -41  | GizWifiError_CONFIGURE_SENDFAILED
 -42  | GizWifiError_NOT_IN_SOFTAPMODE
 -43  | GizWifiError_UNRECOGNIZED_DATA
 -44  | GizWifiError_CONNECTION_NO_GATEWAY
 -45  | GizWifiError_CONNECTION_REFUSED
--46  | GizWifiError_DATAPOINT_UPDATE_FAILED
--47  | GizWifiError_SDK_INIT_FAILED
--48  | GizWifiError_DEVICE_IS_INVALID
--49  | GizWifiError_GROUP_IS_INVALID
+-46  | GizWifiError_IS_RUNNING
+-47  | GizWifiError_UNSUPPORTED_API
+-48  | GizWifiError_RAW_DATA_TRANSMIT
+-60  | GizWifiError_SDK_INIT_FAILED
+-61  | GizWifiError_DEVICE_IS_INVALID
+-62  | GizWifiError_GROUP_IS_INVALID
 9001|mac already registered!
 9002|product_key invalid!
 9003|appid invalid!

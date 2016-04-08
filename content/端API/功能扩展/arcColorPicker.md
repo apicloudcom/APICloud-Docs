@@ -89,11 +89,12 @@ currentColor：
 - 默认值：gradients的第一个元素
 - 描述：环形取色器当前颜色值，仅支持#，可为空
 
-fixedOn:
+fixedOn：
 
-- 类型：字符串
-- 默认值：当前主窗口的名字
-- 描述：把模块添加到指定窗口的名字，可为空
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
+
 
 fixed：
 
@@ -110,15 +111,31 @@ ret：
 
 内部字段：
 
-	{
-		touchCancel:      //是否是滑动结束事件，布尔类型，若为true则表示手指离开事件
-		color：//色值的十六进制表示，字符串类型
-	}
+```js
+{
+	touchCancel:      //是否是滑动结束事件，布尔类型，若为true则表示手指离开事件
+	color：//色值的十六进制表示，字符串类型
+}
+```
 
 ##示例代码
 
-	var obj = api.require('arcColorPicker');
-	obj.open();
+```js
+var arcColorPicker = api.require('arcColorPicker');
+arcColorPicker.open({
+    gradients : [ 
+		'#FF0005',
+		'#FF00F0'
+	],
+	fixedOn: api.frameName
+},function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
+```
 
 ##补充说明
 
@@ -145,16 +162,24 @@ ret：
 
 内部字段：
 
-	{
-		color：//色值的十六进制表示，字符串类型
-	}
+```js
+{
+	color：//色值的十六进制表示，字符串类型
+}
+```
 
 ##示例代码
 
-	var obj = api.require('arcColorPicker');
-	obj.getColor(function(ret, err){
-		api.alert({msg:ret.value});
-	});
+```js
+var arcColorPicker = api.require('arcColorPicker');
+arcColorPicker.getColor(function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
+```
 
 ##补充说明
 
@@ -182,8 +207,12 @@ color：
 
 ##示例代码
 
-	var obj = api.require('arcColorPicker');
-	obj.setColor({color:'#6757dj'});
+```js
+var arcColorPicker = api.require('arcColorPicker');
+arcColorPicker.setColor({
+    color: '#6757dj'
+});
+```
 
 ##补充说明
 
@@ -209,14 +238,18 @@ ret：
 
 内部字段：
 
-	{
-		status:      //操作是否成功，布尔类型
-	}
+```js
+{
+	status:      //操作是否成功，布尔类型
+}
+```
 
 ##示例代码
 
-	var obj = api.require('arcColorPicker');
-	obj.hide();
+```js
+var arcColorPicker = api.require('arcColorPicker');
+arcColorPicker.hide();
+```
 
 ##补充说明
 
@@ -243,14 +276,18 @@ ret：
 
 内部字段：
 
-	{
-		status:      //操作是否成功，布尔类型
-	}
+```js
+{
+	status:      //操作是否成功，布尔类型
+}
+```
 
 ##示例代码
 
-	var obj = api.require('arcColorPicker');
-	obj.show();
+```js
+var arcColorPicker = api.require('arcColorPicker');
+arcColorPicker.show();
+```
 
 ##补充说明
 
@@ -276,14 +313,18 @@ ret：
 
 内部字段：
 
-	{
-		status:      //操作是否成功，布尔类型
-    }
+```js
+{
+	status:      //操作是否成功，布尔类型
+}
+```
 
 ##示例代码
 
-	var obj = api.require('arcColorPicker');
-	obj.close();
+```js
+var arcColorPicker = api.require('arcColorPicker');
+arcColorPicker.close();
+```
 
 ##补充说明
 

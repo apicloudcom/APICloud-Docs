@@ -11,7 +11,7 @@ Description: wifiSSID
 <div class="outline">
 
 [getSsid](#getSsid)
-
+[错误码](#2)
 </div>
 
 #**概述**
@@ -45,7 +45,7 @@ err：
 
 ```js
 {
-    msg:""    //错误描述
+    error:""    ////错误码
 }
 ```
 
@@ -60,7 +60,7 @@ err：
 						});
 				} else {
 					api.alert({
-						msg : err.msg
+						msg : err.error
 						});
 					}
 		});
@@ -75,3 +75,7 @@ err：
 Android系统
 
 可提供的1.0.1及更高版本
+
+#**错误码**<div id="2"></div>
+
+1. 90000 手机未连接WIFI

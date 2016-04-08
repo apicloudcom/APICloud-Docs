@@ -437,25 +437,25 @@ rightBtn：
 ##示例代码
 
 ```js
-            var obj = api.require('goodsList');
-            obj.setRightButtons({
-               index:0,
-               rightBtn: [{
-                 bg:  "#556B2F",  //按钮背景色，支持rgb，rgba，#，默认#ee8262.
-                 title: "取消", //按钮名字，字符串类型，默认‘按钮’
-                 titleSize: 13,      //按钮标题大小，默认12
-                 titleColor: "#000000", // 按钮标题颜色，支持rgb，rgba，#，默认#ffffff
-                 selectedColor: "#FFFFFF",  //按钮选中时候的颜色值,支持rgb，rgba，#
-                 icon:"widget://image/goodsList/ok.png"
-               }, {
-                 bg:  "#4EEE94",  //按钮背景色，支持rgb，rgba，#，默认#ee8262.
-                 title: "确定", //按钮名字，字符串类型，默认‘按钮’
-                 titleSize: 13,      //按钮标题大小，默认12
-                 titleColor: "#000000", // 按钮标题颜色，支持rgb，rgba，#，默认#ffffff
-                 selectedColor: "ffffff",  //按钮选中时候的颜色值,支持rgb，rgba，#
-                 icon:"widget://image/goodsList/ok.png"
-               }]
-            });
+var obj = api.require('goodsList');
+obj.setRightButtons({
+   index:0,
+   rightBtn: [{
+     bg:  "#556B2F",  //按钮背景色，支持rgb，rgba，#，默认#ee8262.
+     title: "取消", //按钮名字，字符串类型，默认‘按钮’
+     titleSize: 13,      //按钮标题大小，默认12
+     titleColor: "#000000", // 按钮标题颜色，支持rgb，rgba，#，默认#ffffff
+     selectedColor: "#FFFFFF",  //按钮选中时候的颜色值,支持rgb，rgba，#
+     icon:"widget://image/goodsList/ok.png"
+   }, {
+     bg:  "#4EEE94",  //按钮背景色，支持rgb，rgba，#，默认#ee8262.
+     title: "确定", //按钮名字，字符串类型，默认‘按钮’
+     titleSize: 13,      //按钮标题大小，默认12
+     titleColor: "#000000", // 按钮标题颜色，支持rgb，rgba，#，默认#ffffff
+     selectedColor: "ffffff",  //按钮选中时候的颜色值,支持rgb，rgba，#
+     icon:"widget://image/goodsList/ok.png"
+   }]
+});
 ```
 
 ##补充说明

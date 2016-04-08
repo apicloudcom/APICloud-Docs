@@ -11,6 +11,10 @@ Description: UIChatBox
 
 [hide](#m4)
 
+[popupBoard](#m55)
+
+[closeBoard](#m66)
+
 [popupKeyboard](#m5)
 
 [closeKeyboard](#m6)
@@ -22,6 +26,8 @@ Description: UIChatBox
 [addEventListener](#m11)
 
 [setPlaceholder](#m13)
+
+[reloadExtraBoard](#m14)
 </div>
 
 #**概述**
@@ -29,6 +35,9 @@ Description: UIChatBox
 UIChatBox 模块是一个集成表情的聊天输入框，可自定义表情集、及附加功能，监听输入框的高度及位置变化，还可监听录音按钮的相关事件；常用于实现聊天、评论的表情输入及文本输入功能。此模块始终定位在 Window 窗口最底部，其生命周期与所在 Window 窗口一致。**UIChatBox 模块是 chatBox 模块的优化版。**
 
 ![UIChatBox](/img/docImage/chatBox.jpg)
+
+
+## [实例widget下载地址](http://docs.apicloud.com/img/demo_widget/UIChatBox.rar)
 
 <div id="m1"></div>
 
@@ -85,6 +94,9 @@ texts：
     recordBtn: {                        //（可选项）JSON对象；录音按钮文字内容
         normalTitle: '按住 说话',       //（可选项）字符串类型；按钮常态的标题，默认：'按住 说话'
         activeTitle: '松开 结束'        //（可选项）字符串类型；按钮按下时的标题，默认：'松开 结束'
+    },
+    sendBtn: {                        //（可选项）JSON对象；发送按钮文字内容，在 IOS 平台上对键盘内按钮无效
+        title: '发送'                  //（可选项）字符串类型；按钮常态的标题，默认：'发送'
     }
 }
 ```
@@ -131,6 +143,12 @@ styles：
                                         //extrasPanel（附加功能面板显示）
         color: '#c4c4c4',               //（可选项）字符串类型；指示器颜色；支持rgb、rgba、#；默认：'#c4c4c4'
         activeColor: '#9e9e9e'          //（可选项）字符串类型；当前指示器颜色；支持rgb、rgba、#；默认：'#9e9e9e'
+    },
+    sendBtn: {                         //（可选项）JSON对象；发送按钮样式，本参数对 IOS 平台上的键盘内发送按钮无效
+        bg: '#4cc518',                 //（可选项）字符串类型；发送按钮背景颜色，支持rgb、rgba、#、img；默认：#4cc518
+        titleColor: '#ffffff',          //（可选项）字符串类型；发送按钮标题颜色；默认：#ffffff
+        activeBg: '#46a91e',            //（可选项）字符串类型；发送按钮背景颜色，支持rgb、rgba、#、img；默认：无
+        titleSize: 13                    //（可选项）数字类型；发送按钮标题字体大小；默认：13
     }
 }
 ```
@@ -173,15 +191,18 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('UIChatBox');
-obj.open({
+var UIChatBox = api.require('UIChatBox');
+UIChatBox.open({
     placeholder: '',
     maxRows: 4,
-    emotionPath: 'widget://image/emotion',
+    emotionPath: 'widget://res/img/emotion',
     texts: {
         recordBtn: {
             normalTitle: '按住 说话',
             activeTitle: '松开 结束'
+        },
+        sendBtn:{
+	        title:"send"
         }
     },
     styles: {
@@ -194,16 +215,16 @@ obj.open({
             bgColor: '#FFFFFF'
         },
         emotionBtn: {
-            normalImg: 'widget://image/chatBox_face1.png'
+            normalImg: 'widget://res/img/chatBox_face1.png'
         },
         extrasBtn: {
-            normalImg: 'widget://image/chatBox_add1.png'
+            normalImg: 'widget://res/img/chatBox_add1.png'
         },
         keyboardBtn: {
-            normalImg: 'widget://image/chatBox_key1.png'
+            normalImg: 'widget://res/img/chatBox_key1.png'
         },
         speechBtn: {
-            normalImg: 'widget://image/chatBox_key1.png'
+            normalImg: 'widget://res/img/chatBox_key1.png'
         },
         recordBtn: {
             normalBg: '#c4c4c4',
@@ -215,6 +236,12 @@ obj.open({
             target: 'both',
             color: '#c4c4c4',
             activeColor: '#9e9e9e'
+        },
+        sendBtn: {
+            titleColor: '#4cc518',
+            bg: '#999999' ,
+            activeBg: '#46a91e',
+            titleSize: 14
         }
     },
     extras: {
@@ -222,23 +249,20 @@ obj.open({
         titleColor: '#a3a3a3',
         btns: [{
             title: '图片',
-            normalImg: 'widget://image/chatBox_album1.png',
-            activeImg: 'widget://image/chatBox_album2.png'
+            normalImg: 'widget://res/img/chatBox_album1.png',
+            activeImg: 'widget://res/img/chatBox_album2.png'
         },{
             title: '拍照',
-            normalImg: 'widget://image/chatBox_cam1.png',
-            activeImg: 'widget://image/chatBox_cam2.png'
+            normalImg: 'widget://res/img/chatBox_cam1.png',
+            activeImg: 'widget://res/img/chatBox_cam2.png'
         }]
     }
-}, function(ret){
-    //点击附加功能面板
-    if(ret.eventType == 'clickExtras'){
-        alert("用户点击了第"+ ret.index +"个按钮");
+}, function( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
     }
-    //点击发送按钮
-    if(ret.eventType == 'send'){
-        alert('输入的内容是：'+ ret.msg);
-	}
 });
 ```
 
@@ -259,8 +283,8 @@ close()
 ##示例代码
 
 ```js
-var obj = api.require('UIChatBox');
-obj.close();
+var UIChatBox = api.require('UIChatBox');
+UIChatBox.close();
 ```
 
 ##可用性
@@ -280,8 +304,8 @@ show()
 ##示例代码
 
 ```js
-var obj = api.require('UIChatBox');
-obj.show();
+var UIChatBox = api.require('UIChatBox');
+UIChatBox.show();
 ```
 
 ##可用性
@@ -301,8 +325,8 @@ hide()
 ##示例代码
 
 ```js
-var obj = api.require('UIChatBox');
-obj.hide();
+var UIChatBox = api.require('UIChatBox');
+UIChatBox.hide();
 ```
 
 ##可用性
@@ -322,8 +346,8 @@ popupKeyboard()
 ##示例代码
 
 ```js
-var obj = api.require('UIChatBox');
-obj.popupKeyboard();
+var UIChatBox = api.require('UIChatBox');
+UIChatBox.popupKeyboard();
 ```
 
 ##可用性
@@ -343,8 +367,63 @@ closeKeyboard()
 ##示例代码
 
 ```js
-var obj = api.require('UIChatBox');
-obj.closeKeyboard();
+var UIChatBox = api.require('UIChatBox');
+UIChatBox.closeKeyboard();
+```
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.0.0及更高版本
+
+<div id="m55"></div>
+
+#**popupBoard**
+
+弹出表情、附加功能面板
+
+popupBoard({params})
+
+##params
+
+target:
+
+- 类型：字符串
+- 描述：操作的面板类型，取值范围如下：
+	- emotion：表情面板
+	- extras：附加功能面板
+- 默认值：emotion
+	
+
+##示例代码
+
+```js
+var UIChatBox = api.require('UIChatBox');
+UIChatBox.popupBoard({
+  target:'extras'
+});
+```
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.0.0及更高版本
+
+<div id="m66"></div>
+
+#**closeBoard**
+
+收起表情、附加功能面板
+
+closeBoard()
+
+##示例代码
+
+```js
+var UIChatBox = api.require('UIChatBox');
+UIChatBox.closeBoard();
 ```
 
 ##可用性
@@ -385,16 +464,18 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('UIChatBox');
+var UIChatBox = api.require('UIChatBox');
 //设置输入框的值
-obj.value({
+UIChatBox.value({
     msg: '设置输入框的值'
 });
 
 //获取输入框的值
-obj.value(function(ret, err){
-    if(ret.status){
-      api.alert({msg: ret.msg});
+UIChatBox.value(function(ret, err){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -430,8 +511,8 @@ msg：
 ##示例代码
 
 ```js
-var obj = api.require('UIChatBox');
-obj.insertValue({
+var UIChatBox = api.require('UIChatBox');
+UIChatBox.insertValue({
     index: 10,
     msg: '这里是插入的字符串'
 });
@@ -478,6 +559,7 @@ name：
         - showRecord（用户点击左侧语音按钮）
         - showEmotion（用户点击表情按钮）
         - showExtras（用户点击右侧附加功能按钮，如果 open 时传了 extras 参数才会有此回调）
+        - valueChanged（输入框内容改变事件）
 
 ##callback(ret)
 
@@ -489,7 +571,8 @@ ret：
 ```js
 {
     inputBarHeight: 60,    //数字类型；输入框及左右按钮整体区域的高度，仅当监听 inputBar 的 move 和 change 事件时本参数有值
-    panelHeight: 300       //数字类型；输入框下边缘距离屏幕底部的高度，仅当监听 inputBar 的 move 和 change 事件时本参数有值
+    panelHeight: 300 ,     //数字类型；输入框下边缘距离屏幕底部的高度，仅当监听 inputBar 的 move 和 change 事件时本参数有值
+    value: ''              //字符串类型；输入框当前内容，仅当 target 为 inputBar name 为 valueChanged 时有值
 }
 ```
 
@@ -497,21 +580,29 @@ ret：
 
 ```js
 //监听 recordBtn 按钮
-var obj = api.require('UIChatBox');
-obj.addEventListener({
+var UIChatBox = api.require('UIChatBox');
+UIChatBox.addEventListener({
     target: 'recordBtn',
     name: 'press'
-}, function(ret,err){
-    api.alert({msg: '按下了录音按钮'});
+}, function( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
 });
 
 //监听 inputBar 
-var obj = api.require('UIChatBox');
-obj.addEventListener({
+var UIChatBox = api.require('UIChatBox');
+UIChatBox.addEventListener({
     target: 'inputBar',
     name: 'move'
-}, function(ret,err){
-    alert(JSON.stringify(ret));
+}, function( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -539,9 +630,88 @@ placeholder：
 ##示例代码
 
 ```js
-var obj = api.require('UIChatBox');
-obj.setPlaceholder({
+var UIChatBox = api.require('UIChatBox');
+UIChatBox.setPlaceholder({
     placeholder: '修改了占位提示内容'
+});
+```
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.0.0及更高版本
+
+#**reloadExtraBoard**
+
+重新加载（刷新）附加功能面板，**open时必须添加附加功能按钮及其面板参数**
+
+reloadExtraBoard(params)
+
+##params
+
+extras：
+
+- 类型：JSON对象
+- 描述：（可选项）点击附加功能按钮，打开的附加功能面板的按钮样式，配合 extrasBtn 一起使用，若 extrasBtn 参数内 normalImg 属性不传则此参数可不传
+
+```js
+{
+    titleSize: 10,                  //（可选项）数字类型；标题文字大小，默认：10
+    titleColor: '#a3a3a3',          //（可选项）字符串类型；标题文字颜色，支持rgb、rgba、#；默认：'#a3a3a3'
+    btns: [{                        //数组类型；附加功能按钮的样式
+        title: '图片',               //（可选项）字符串类型；附加功能按钮的标题内容                  
+        normalImg: '',              //（可选项）字符串类型；按钮常态的背景图片（本地路径，fs://，widget://）
+        activeImg: ''               //（可选项）字符串类型；按钮按下时的背景图片（本地路径，fs://，widget://）   
+    }]
+}
+```
+##示例代码
+
+```js
+var UIChatBox = api.require('UIChatBox');
+UIChatBox.reloadExtraBoard({
+    extras: {
+        titleSize: 10,
+        titleColor: '#a3a3a3',
+        btns: [{
+            title: '图片',
+            normalImg: 'widget://res/img/chatBox_album1.png',
+            activeImg: 'widget://res/img/chatBox_album2.png'
+        },{
+            title: '拍照',
+            normalImg: 'widget://res/img/chatBox_cam1.png',
+            activeImg: 'widget://res/img/chatBox_cam2.png'
+        },{
+            title: '拍照',
+            normalImg: 'widget://res/img/chatBox_cam1.png',
+            activeImg: 'widget://res/img/chatBox_cam2.png'
+        },{
+            title: '拍照',
+            normalImg: 'widget://res/img/chatBox_cam1.png',
+            activeImg: 'widget://res/img/chatBox_cam2.png'
+        },{
+            title: '拍照',
+            normalImg: 'widget://res/img/chatBox_cam1.png',
+            activeImg: 'widget://res/img/chatBox_cam2.png'
+        },{
+            title: '拍照',
+            normalImg: 'widget://res/img/chatBox_cam1.png',
+            activeImg: 'widget://res/img/chatBox_cam2.png'
+        },{
+            title: '拍照',
+            normalImg: 'widget://res/img/chatBox_cam1.png',
+            activeImg: 'widget://res/img/chatBox_cam2.png'
+        },{
+            title: '拍照',
+            normalImg: 'widget://res/img/chatBox_cam1.png',
+            activeImg: 'widget://res/img/chatBox_cam2.png'
+        },{
+            title: '拍照',
+            normalImg: 'widget://res/img/chatBox_cam1.png',
+            activeImg: 'widget://res/img/chatBox_cam2.png'
+        }]
+    }
 });
 ```
 

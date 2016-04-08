@@ -5,7 +5,6 @@ Description: geeTest
 
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
-	<li><a href="#const-content">Constant</a></li>
 </ul>
 
 <div id="method-content">
@@ -16,71 +15,62 @@ Description: geeTest
 
 </div>
 
-
 #概述
-
 geeTest封装了极验验证的sdk，开发者必须配置开从*[极验验证官网](http://www.geetest.com)*申请的相应的参数即可将极验验证的验证模块集成到自己的app，安全，方便，快捷。让开发者摆脱冗长的集成流程。
 
 **<mark>此模块必须配合极验提供的服务器部署代码，来完成二次验证。</mark>[查看服务器安装代码](http://www.geetest.com/install/)** 
 
 ####极验验证模块使用注意：
+* 使用极验验证的用户，必须获取在极验验证官网申请的验证ID和KEY。*[了解更多](http://www.geetest.com/install/sections/idx-basic-introduction.html)*
+* 可使用api_1和api_2作为验证启动参数，优先使用本组参数
+* 亦可使用gt、challenge和success作为验证启动参数(该方案要求对极验的通讯流程了解清楚)
 
-* 使用极验验证的用户，必须获取在极验验证官网申请的验证ID和KEY。*[了解更多](http://www.geetest.com/)*
-
-* 公钥ID：可以通过key.xml文件设置，也可通过config接口配置，亦可在时随参数一起传进来,但必须选择一种方式传入ID。如果将验证ID配置在key.xml文件里，将该key.xml文件放在widget下的res文件里，apicloud服务器云编译时会将此文件加密。geeTest的模块底层代码会自动读取该文件中的公钥。
-
-####使用此模块之前需先配置config或key文件的字段，方法如下:
-
-##config配置方式
-
-名称：geeTest
-
-参数：urlScheme, id ，custom_server_validate_url
-
-描述：配置极验验证模块信息
-
-```js
-	  <feature name="geeTest">
-        <param name="urlScheme" value="gt8cace00ade6ce17838da348ac4aa7ed2"/>
-        <param name="id" value="8cace00ade6ce17838da348ac4aa7ed2"/>
-        <param name="custom_server_validate_url" value="http://testcenter.geetest.com/gtweb/android_sdk_demo_server_validate/"/>
-    </feature>
-```
-字段描述:
-
-1. urlScheme：由'gt'字段与官网上获得的极验ID合并而成
-
-2. id: 极验ID，极验平台获取
-
-3. custom_ server_ validate_url：二次验证的链接，由用户自己提供。示例代码中提供的是仅供测试使用的二次验证链接。用户必须根据我们提供的*[服务器部署代码](http://www.geetest.com/install/)*来配套部署服务器。
-
-* 注意config里的二次验证链接，在示例代码中使用的是geetest专门演示用二次验证链接，用户在自己使用模块的时候请务必在自己的服务器上做相应的配置。见上面高亮标记的说明文字以及链接。
-
-###补充说明
-<mark>“custom_ server_ validate_url”：示例代码中提供的是仅供测试使用的二次验证链接。用户必须在使用极验验证端SDK之前先根据我们提供的*[服务器部署代码](http://www.geetest.com/install/)*来配套部署服务器，然后在端config里填入自己部署的“custom_ server_ validate_url”。很重要，很重要，很重要。重要的事情要说三遍。</mark>
-
-##key.xml配置方式
-```js
-<?xml version="1.0" encoding="UTF-8" ?>
-<security>
-    <item name="gt_id" value="***Your极验验证ID***"/>
-</security>
-```
-
-###可用性
-iOS系统 支持版本1.0.0
-
-## openGTView <div id="openGTView"></div>
-开启极验验证的方法
+##openGTView <div id="openGTView"></div>
+配置验证，并且开启验证
 
 openGTView({params},callback(ret,err))
 
 ###param
-gt_id:
+api_1:
 
 * 类型：字符串
 * 默认值：无
-* 描述：可以为空，但必须在三种配置方法中至少选择一个，否者会有相应的错误提示
+* 描述：不可为空，由网站主集成极验的服务器sdk时提供的给网站主客户端的接口。该接口用于客户端向网站主服务端获取极验验证所需的验证信息。示例代码中提供的是仅供测试使用的链接，请不要在发布的项目里使用。用户必须根据我们提供的*[服务器部署代码](http://www.geetest.com/install/)*来部署服务器。
+
+api_2:
+
+* 类型：字符串
+* 默认值：无
+* 描述：不可为空，由网站主集成极验的服务器sdk时提供的给网站主客户端的接口。该接口为二次验证的链接，用于校验服务端获得的验证结果。示例代码中提供的是仅供测试使用的二次验证链接，请不要在发布的项目里使用。用户必须根据我们提供的*[服务器部署代码](http://www.geetest.com/install/)*来部署服务器。
+
+blurType:
+
+* 类型：字符串
+* 默认值：不使用模糊背景
+* 描述：可以为空，用于配置验证背景的效果。只在iOS8.0以上生效。
+
+https:
+* 类型：字符串('true'/'false')
+* 默认值：false
+* 描述：配置验证是否使用https协议(默认不适用)
+
+gt:
+
+* 类型：字符串
+* 默认值：无
+* 描述：如果不用api_1和api_2两个参数配置验证，则此参数就必须要配置。用于验证的ID参数。
+
+challenge:
+
+* 类型：字符串
+* 默认值：无
+* 描述：如果不用api_1和api_2两个参数配置验证，则此参数就必须要配置。用于验证的Challenge参数。
+
+success:
+
+* 类型：字符串('true'/'false')
+* 默认值：'true'
+* 描述：如果不用api_1和api_2两个参数配置验证，则此参数就必须要配置。用于验证的Success参数。
 
 ###callback(ret,err)
 ret:
@@ -88,6 +78,7 @@ ret:
 * 类型:json对象
 
 内部字段:
+
 ```
 {
     status:	//验证是否通过,BOOL类型
@@ -99,18 +90,43 @@ err:
 * 类型:json对象
 
 内部字段:
+
 ```
 {
     msg:""		//验证失败返回的信息,字符串类型
 }
 ```
+####err: msg: 错误消息列举
+'-100':
+
+调用openGTView时传入的参数错误
+
+'-200':
+
+极验验证服务异常，暂不可用
+
+'-300':
+
+用户主动关闭了验证
+
+'-400':
+
+二次验证结果为失败
+
+其它:
+
+验证内部异常
+
 ###示例代码
 ```
         var geeTest = api.require('geeTest');
         geeTest.openGTView({
-                            gt_id:'8cace00ade6ce17838da348ac4aa7ed2'
+                           api_1 : 'http://webapi.geetest.com/apis/start-mobile-captcha/',
+                           api_2 : 'http://webapi.geetest.com/apis/mobile-server-validate/',
+                        blurType : 'dark',
+                           https : 'false'
                               },
-                              function(ret,err){
+                           function(ret,err){
                               if (ret.status){
                            /* Todo Your Code */
                                 api.alert({
@@ -118,18 +134,46 @@ err:
                                           msg: '验证成功',
                                           buttons: ['确定']
                                           });
-                              }else{
-                                api.alert({
-                                          title: '验证结果',
-                                          msg: err.msg,
-                                          buttons: ['确定']
-                                          });
+                           
+                                }else{
+                           
+                           if (err.msg == '-100') {
+                           api.alert({
+                                     title: '验证信息错误',
+                                     msg: 'Invalid config params. Check Your Server/Client Config.',
+                                     buttons: ['确定']
+                                     });
+                           }else if (err.msg == '-200'){
+                           api.alert({
+                                     title: '验证不可用',
+                                     msg: '极验服务不可用, 请使用备用验证',
+                                     buttons: ['确定']
+                                     });
+                           }else if (err.msg == '-300'){
+                           api.alert({
+                                     title: '验证关闭',
+                                     msg: '用户关闭了验证',
+                                     buttons: ['确定']
+                                     });
+                           }else if (err.msg == '-400'){
+                           api.alert({
+                                     title: '验证结果',
+                                     msg: '二次验证失败',
+                                     buttons: ['确定']
+                                     });
+                           }else{
+                           api.alert({
+                                     title: '验证异常',
+                                     msg: err.msg,
+                                     buttons: ['确定']
+                                     });
+                           }
                                 }
-                              });
-    }
+                            });
+
 ```
 ###补充说明
-示例代码中验证通过后后续的用户方法在/* Todo Your Code */对应的地方写入
+验证通过后要执行的方法在'/* Todo Your Code */'地方写入
 
 ###可用性
-iOS系统 支持版本1.0.0
+iOS系统 支持版本2.0.0

@@ -95,7 +95,7 @@ Description: baiduMap
 
 #**概述**
 
-baiduMap封装了百度地图的SDK，对百度地图的相关接口做了一层严格准确的封装 把相对复杂的调用接口简单化，极大的简化了手机app集成百度地图的流程 该模块的接口含盖了百度地图几乎所有的接口，功能详情可参考目录
+baiduMap封装了百度地图的SDK，对百度地图的相关接口做了一层严格准确的封装 把相对复杂的调用接口简单化，极大的简化了手机app集成百度地图的流程 该模块的接口含盖了百度地图几乎所有的接口，功能详情可参考目录。**[bMap 模块](/端API/开放SDK/bMap)是 baiduMap 模块的优化版。建议使用  bMap 模块，此模块已停止更新。**
 
 **在集成此模块之前需先配置config文件,在config里添加如下字段：**
 名称：baiduMap
@@ -171,11 +171,11 @@ lat:
 - 默认值：无
 - 描述：（可选项）开启地图时设置的中心点的经度
 
-fixedOn:
+fixedOn：
 
-- 类型：字符串
-- 默认值：当前主窗口的名字
-- 描述：（可选项）把百度地图添加到指定窗口的名字
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 fixed:
 
@@ -657,7 +657,10 @@ rotation：
 
 ##示例代码
 ```js
-var map = api.require('baiduMap');map.setRotation({   rotation:10});
+var map = api.require('baiduMap');
+map.setRotation({
+   rotation:10
+});
 ```
 ##可用性
 
@@ -681,7 +684,10 @@ overlook：
 
 ##示例代码
 ```js
-var map = api.require('baiduMap');map.setOverlook({   overlook:-10});
+var map = api.require('baiduMap');
+map.setOverlook({
+   overlook:-10
+});
 ```
 ##可用性
 
@@ -835,7 +841,9 @@ ret：
 ```js
 {
     pinId:                  //用户点击大头针气泡时返回其id
-    eventType：             //事件类型，字符串，取值范围如下：                                pin   //用户点击大头针事件                               bubble//用户点击气泡的事件
+    eventType：             //事件类型，字符串，取值范围如下： 
+                               pin   //用户点击大头针事件
+                               bubble//用户点击气泡的事件
 }
 ```
 
@@ -1502,7 +1510,8 @@ ret：
 ```js
 {
     status:""      //操作成功状态值
-    steps:""       //路线方案，数组对象，路线每个结点的信息    plans：        //建议路线方案组成的数组
+    steps:""       //路线方案，数组对象，路线每个结点的信息
+    plans：        //建议路线方案组成的数组
 }
 ```
 
@@ -1514,8 +1523,28 @@ err：
 ```js
 {
     msg:""      //错误描述
-    code:””   //错误码，取值范围如下：               0：检索结果正常               1：检索词有歧义               2：检索地址有歧义               3：该城市不支持公交搜索               4：不支持跨城市公交               5：没有找到检索结果               6：起终点太近
-    suggestStarts： //建议起点信息组成的数组，若非传入起点信息模糊则为空       内部字段：[{            name：  //地点名            city:   //地点所在城市            lon:    //地点经度            lat:    // 地点纬度       }]    suggestEnds：  //建议终点信息组成的数组，若非传入终点信息模糊则为空       内部字段：[{            name：   //地点名            city:   //地点所在城市            lon:    //地点经度	            lat:    // 地点纬度    }]
+    code:””   //错误码，取值范围如下：
+               0：检索结果正常
+               1：检索词有歧义
+               2：检索地址有歧义
+               3：该城市不支持公交搜索
+               4：不支持跨城市公交
+               5：没有找到检索结果
+               6：起终点太近
+    suggestStarts： //建议起点信息组成的数组，若非传入起点信息模糊则为空
+       内部字段：[{
+            name：  //地点名
+            city:   //地点所在城市
+            lon:    //地点经度
+            lat:    // 地点纬度
+       }]
+    suggestEnds：  //建议终点信息组成的数组，若非传入终点信息模糊则为空
+       内部字段：[{
+            name：   //地点名
+            city:   //地点所在城市
+            lon:    //地点经度	
+            lat:    // 地点纬度
+    }]
 }
 ```
 
@@ -2245,14 +2274,21 @@ ret：
 
 ```js
 {
-        lon:              //当前地图中心的经度        lat:              //当前地图中心的纬度		zoom：			    //地图缩放角度		rotate：			//地图旋转角度		overlook：		    //视角倾斜度
+        lon:              //当前地图中心的经度
+        lat:              //当前地图中心的纬度
+		zoom：			    //地图缩放角度
+		rotate：			//地图旋转角度
+		overlook：		    //视角倾斜度
 }
 ```
 
 ##示例代码
 
 ```js
-var map = api.require('baiduMap');map. setMapListener (function(ret,err){  api.alert({msg:ret.lon+"*"+ret.lat});});
+var map = api.require('baiduMap');
+map. setMapListener (function(ret,err){
+  api.alert({msg:ret.lon+"*"+ret.lat});
+});
 ```
 
 ##可用性
@@ -2284,7 +2320,11 @@ ret：
 ```js
 {
    eventType:      //点击事件类型，取值范围：single--单击、double--双击  
-   lon:            //点击点的经度   lat:            //点击点的纬度   zoom:           //地图缩放角度   rotate:         //地图旋转角度   overlook:       //视角倾斜度
+   lon:            //点击点的经度
+   lat:            //点击点的纬度
+   zoom:           //地图缩放角度
+   rotate:         //地图旋转角度
+   overlook:       //视角倾斜度
 }
 ```
 
@@ -2328,8 +2368,8 @@ iOS系统，Android系统
 ##取值范围：
 
 - standard         //标准地图
-- trafficOn        //打开实时路况
-- trafAndsate      //实时路况和卫星地图
+- trafficOn        //打开实时路况，**ios 暂不支持**
+- trafAndsate      //实时路况和卫星地图，**ios 暂不支持**
 - satellite        //卫星地图
 
 ##可用性
@@ -2380,7 +2420,15 @@ iOS系统，Android系统
 
 ##取值范围：
 
-- ecar_fee_first		    //驾乘检索策略常量：较少费用- ecar_dis_first		    //驾乘检索策略常量：最短距离- ecar_time_first		//驾乘检索策略常量：时间优先- ecar_avoid_jam		    //驾车策略： 躲避拥堵- ebus_no_subway		    //公交检索策略常量：不含地铁- ebus_time_first		//公交检索策略常量：时间优先- ebus_transfer_first	//公交检索策略常量：最少换乘- ebus_walk_first		//公交检索策略常量：最少步行距离
+- ecar_fee_first		    //驾乘检索策略常量：较少费用
+- ecar_dis_first		    //驾乘检索策略常量：最短距离
+- ecar_time_first		//驾乘检索策略常量：时间优先
+- ecar_avoid_jam		    //驾车策略： 躲避拥堵
+- ebus_no_subway		    //公交检索策略常量：不含地铁
+- ebus_time_first		//公交检索策略常量：时间优先
+- ebus_transfer_first	//公交检索策略常量：最少换乘
+- ebus_walk_first		//公交检索策略常量：最少步行距离
+
 
 ##可用性
 

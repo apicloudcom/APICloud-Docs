@@ -19,7 +19,7 @@ Description: mediaScanner
 
 #**概述**
 
-mediaScanner是一个多媒体扫描器，通过调用其相关接口可扫描系统相册内存放的图片、视频等多媒体资源，也可直接打开可自定义的模板多选界面。**UIMediaScanner 模块是 mediaScanner 模块的优化版，建议使用  UIMediaScanner 模块，此模块已停止更新。**
+mediaScanner是一个多媒体扫描器，通过调用其相关接口可扫描系统相册内存放的图片、视频等多媒体资源，也可直接打开可自定义的模板多选界面。**UIMediaScanner 模块是 mediaScanner 模块的优化版，建议使用  [UIMediaScanner](http://docs.apicloud.com/端API/界面布局/UIMediaScanner) 模块，此模块已停止更新。**
 
 #**open**<div id="a1"></div>
 
@@ -96,7 +96,7 @@ scrollToBottom：
 
 - 类型：json
 - 默认值：见内部字段
-- 描述：（可选项）打开媒体资源界面后间隔一段时间开始自动滚动到底部设置
+- 描述：（可选项）打开媒体资源界面后间隔一段时间开始自动滚动到底部设置，android 平台上不支持此功能
 - 内部字段：
 
 ```js
@@ -145,8 +145,12 @@ ret：
 
 ```js
 var obj = api.require('mediaScanner');
-obj.open ( function(ret, err){
-	api.alert({msg:ret.list});
+obj.open(function( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -206,8 +210,6 @@ iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
-
-</div>
 
 <div id="const-content">
 

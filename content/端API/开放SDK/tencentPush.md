@@ -34,7 +34,7 @@ __Android:__
 描述：配置腾讯信鸽用于标识APP身份的accessId和accessKey，需要事先在信鸽官方注册  
 配置示例：  
 ```
-<feature name="tencentPush"\>  
+<feature name="tencentPush">  
 		<param name="android_accessId" value="2100064624" />  
 		<param name="android_accessKey" value="AZ4EZQ533X9A" />  
 </feature>  

@@ -21,7 +21,7 @@ Description: imageClip
 
 #**概述**
 
-imageClip模块封装了图片裁剪功能
+imageClip模块封装了图片裁剪功能，本模块已停止更新，建议使用优化升级版[FNImageClip](http://docs.apicloud.com/端API/功能扩展/FNImageClip)
 
 #**open**<div id="a1"></div>
 
@@ -77,9 +77,9 @@ clipRect：
 
 ```js
 {
-	x:  	   //布尔类型；裁剪框左上角x坐标
-	y: 		   //布尔类型；裁剪框左上角y坐标
-	w:   	   //布尔类型；裁剪框宽度
+	x:  	   //数字类型；裁剪框左上角x坐标
+	y: 		   //数字类型；裁剪框左上角y坐标
+	w:   	   //数字类型；裁剪框宽度
 	h:		   //数字类型；裁剪框高度
 	fixation:  //布尔类型；裁剪框位置大小是否固定，默认：false（不固定）
 }
@@ -132,11 +132,15 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('imageClip');
-obj.open(function(ret, err){
-	if(err){
-		api.alert({msg:err.msg});
-	}
+var imageClip = api.require('imageClip');
+imageClip.open({
+    path: 'widget://res/img/apicloud.png'
+},function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -168,8 +172,7 @@ album：
 savePath：
 
 - 类型：字符串类型
-- 默认值：自动创建的路径
-- 描述：（可选项）存储路径，不传或为空字符串时使用自动创建的路径
+- 描述：存储路径，要求本地路径（fs://）
 
 quality：
 
@@ -187,7 +190,7 @@ ret：
 
 ```js
 {
-	savePath:       //截图保存的路径
+	savePath:       //截图保存的绝对路径
 }
 ```
 
@@ -206,12 +209,12 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('imageClip');
-obj.save(function(ret, err){
-	if(ret){
-		api.alert({msg:'保存路径：'+ret.savePath});
-	}else{
-		api.alert({msg:err.msg});
+var imageClip = api.require('imageClip');
+imageClip.save(function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -236,8 +239,8 @@ close()
 ##示例代码
 
 ```js
-var obj = api.require('imageClip');
-obj.close();
+var imageClip = api.require('imageClip');
+imageClip.close();
 ```
 
 ##补充说明
@@ -260,8 +263,8 @@ reset()
 ##示例代码
 
 ```js
-var obj = api.require('imageClip');
-obj.reset();
+var imageClip = api.require('imageClip');
+imageClip.reset();
 ```
 
 ##补充说明

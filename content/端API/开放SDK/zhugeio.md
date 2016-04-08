@@ -16,7 +16,7 @@ Description: zhugeio
 
 #**概述**
 
-zhugeio封装了zhugeio精细化运营分析工具SDK，使用此模块可轻松实现精细化运营分析。
+zhugeio封装了zhugeio精细化运营分析工具SDK，使用此模块可轻松实现精细化运营分析。  (请使用本模块升级版[zhuge](http://docs.apicloud.com/%E7%AB%AFAPI/%E5%BC%80%E6%94%BESDK/zhuge)，支持Android和IOS双平台。本模块已停止更新)
 
 ###**配置选项**<div id="a2"></div>
 需在config.xml中配置:

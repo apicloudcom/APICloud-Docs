@@ -35,7 +35,7 @@ type：
 
 - 类型：字符串类型
 - 默认值：annular
-- 描述：进度视图类型，<del>0-环、1-扇形、2-类月牙形</del>，取值范围[进度条类型](!Constant),可为空
+- 描述：进度视图类型，取值范围[进度条类型](!Constant),可为空
 
 centerX：
 
@@ -43,7 +43,7 @@ centerX：
 - 默认值：100
 - 描述：视图中心点坐标，可为空
 
-centeerY：
+centerY：
 
 - 类型：数字
 - 默认值：100
@@ -75,9 +75,9 @@ loopWidth：
 
 fixedOn：
 
-- 类型：字符串
-- 默认值：无
-- 描述：要把该视图添加到某视图的名字，可为空
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 fixed:
 - 类型：布尔
@@ -100,18 +100,28 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('arcProgress');
-obj.open({
-	type: 0,
-	centerX: 100,
-	centerY: 100,
-	radius: 60,
-	bgColor: '#c0c0c0',
-	pgColor: '#228b2',
-	loopWidth: 3
+var arcProgress = api.require('arcProgress');
+arcProgress.open({
+    type: 1,
+    centerX: api.frameWidth / 6 * (2 * 1  + 1),
+    centerY: api.frameHeight / 2,
+    radius: api.frameWidth / 6,
+    bgColor: '#87c0ed',
+    pgColor: '#325570',
+    fixedOn: api.frameName
 },function(ret,err){
-
+	setValue( { id: ret.id, value: 0 } )
 });
+function setValue( obj ){
+	if( obj.value == 100 ){ obj.value = 0; } 
+	setTimeout(function(){
+		arcProgress.setValue({
+			id: obj.id,
+			value: ++obj.value
+		});
+		setValue( obj )
+	},100);
+}
 ```
 ##补充说明
 
@@ -139,8 +149,12 @@ id：
 
 ##示例代码
 
-    var obj = api.require('arcProgress');
-    obj.close({id:1});
+```js
+    var arcProgress = api.require('arcProgress');
+    arcProgress.close({
+        id:1
+    });
+```
 
 ##补充说明
 
@@ -175,10 +189,10 @@ value：
 ##示例代码
 
 ```js
-var obj = api.require('arcProgress');
-obj.setValue({
-    id:1,
-    value:50
+var arcProgress = api.require('arcProgress');
+arcProgress.setValue({
+    id: 1,
+    value: 50
 });
 ```
 

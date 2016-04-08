@@ -108,31 +108,11 @@ var socketManager = api.require('socketManager');
 socketManager.createSocket({
 	host: '192.168.1.100',
 	port: 8282
-}, function(ret, err){
-	if(ret){
-		var state = ret.state;
-		var sid = ret.sid;
-		var data = ret.data;
-		var stateStr = "";
-		if(101 === state){
-			stateStr = "创建成功";
-		}else if(102 === state){
-			stateStr = "连接成功";
-		}else if(103 === state){
-			stateStr = "收到消息";
-		}else if(201 === state){
-			stateStr = "创建失败";
-		}else if(202 === state){
-			stateStr = "连接失败";
-		}else if(203 === state){
-			stateStr = "异常断开";
-		}else if(204 === state){
-			stateStr = "正常断开";
-		}else if(205 === state){
-			stateStr = "发生未知错误";
-    	}
-		var msg = 'sid: '+sid+'\nstate: '+stateStr+'\ndata: '+(data?data:'');
-		api.alert({msg:msg});
+},function( ret, err ){		
+	if( ret ){
+		alert( JSON.stringify( ret ) );
+	}else{
+		alert( JSON.stringify( err ) );
 	}
 });
 ```
@@ -190,13 +170,13 @@ err：
 ```js
 var socketManager = api.require('socketManager');
 socketManager.closeSocket({
-	sid: '1'			//由createSocket方法获取得到
-}, function(ret, err){
-	if(ret.status){
-		api.alert({msg:'关闭成功'});
-    }else{
-		api.alert({msg:'error'});
-    }
+	sid: '1'
+},function( ret, err ){		
+	if( ret.status ){
+		alert( JSON.stringify( ret ) );
+	}else{
+		alert( JSON.stringify( err ) );
+	}
 });
 ```
 
@@ -280,14 +260,14 @@ err：
 ```js
 var socketManager = api.require('socketManager');
 socketManager.write({
-	sid: '1',			//由createSocket方法获取得到
+	sid: '1',
 	data: '你好'
-}, function(ret, err){
-	if(ret.status){
-		api.alert({msg:'发送成功'});
-    }else{
-		api.alert({msg:'error'});
-    }
+},function( ret, err ){		
+	if( ret.status ){
+		alert( JSON.stringify( ret ) );
+	}else{
+		alert( JSON.stringify( err ) );
+	}
 });
 ```
 

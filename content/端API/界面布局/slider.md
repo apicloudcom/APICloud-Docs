@@ -24,7 +24,7 @@ Description: slider
 
 #**概述**
 
-slider封装了一个滑动器，开发者可自定义最大值、最小值、当前值以及拖动滑块时的气泡提示信息等各种滑动器用到的功能。原生代码比前端实现更加流畅稳定
+slider封装了一个滑动器，开发者可自定义最大值、最小值、当前值以及拖动滑块时的气泡提示信息等各种滑动器用到的功能。原生代码比前端实现更加流畅稳定。本模块已停止更新，建议使用 [UISlider](http://docs.apicloud.com/端API/界面布局/UISlider)
 
 ![图片说明](/img/docImage/slider.jpg)
 
@@ -58,37 +58,25 @@ x：
 
 - 类型：数字
 - 默认值：30
-- 描述：（可选项）slider左边点的坐标
+- 描述：（可选项）slider左边点的坐标，**在 Android 平台上需适当预留出滑块空隙**
 
 y：
 
 - 类型：数字
 - 默认值：104
-- 描述：（可选项）slider左边点的坐标
-
-<del>width：</del>
-
-- <del>类型：数字</del>
-- <del>默认值：260</del>
-- <del>描述：（可选项）slider的宽</del>
+- 描述：（可选项）slider左边点的坐标，**在 Android 平台上需适当预留出滑块空隙**
 
 w：
 
 - 类型：数字
 - 默认值：260
-- 描述：（可选项）slider的宽
-
-<del>height：</del>
-
-- <del>类型：数字</del>
-- <del>默认值：5</del>
-- <del>描述：（可选项）slider的高</del>
+- 描述：（可选项）slider的宽，**在 Android 平台上需适当预留出滑块空隙**
 
 h：
 
 - 类型：数字
 - 默认值：5
-- 描述：（可选项）slider的高
+- 描述：（可选项）slider的高，**在 Android 平台上需适当预留出滑块空隙**
 
 bgImg：
 
@@ -101,24 +89,6 @@ selectedBgImg：
 - 类型：字符串
 - 默认值：无
 - 描述：slider滑块左边划过的区域图片
-
-<del>barW：</del>
-
-- <del>类型：数字</del>
-- <del>默认值：30</del>
-- <del>描述：（可选项）slider滑块的宽</del>
-
-<del>barH：</del>
-
-- <del>类型：数字</del>
-- <del>默认值：18</del>
-- <del>描述：（可选项）slider滑块的高</del>
-
-<del>barImg：</del>
-
-- <del>类型：字符串</del>
-- <del>默认值：无</del>
-- <del>描述：（可选项）slider滑块背景图片</del>
 
 bar：
 
@@ -135,36 +105,6 @@ bar：
 	barImg：    //（可选项）滑块背景，字符串，默认#4f94dc，支持rgb，rgba，#，img
 }
 ```
-
-<del>bubbleW：</del>
-
-- <del>类型：数字</del>
-- <del>默认值：60</del>
-- <del>描述：（可选项）slider滑动时弹出的气泡的宽</del>
-
-<del>bubbleH：</del>
-
-- <del>类型：数字</del>
-- <del>默认值：40</del>
-- <del>描述：（可选项）slider滑动时弹出的气泡的高</del>
-
-<del>bubbleImg：</del>
-
-- <del>类型：字符串</del>
-- <del>默认值：无</del>
-- <del>描述：（可选项）slider气泡的背景图片路径</del>
-
-<del>bubbleSuffix：</del>
-
-- <del>类型：字符串</del>
-- <del>默认值：℃</del>
-- <del>描述：（可选项）slider气泡上的文字后缀</del>
-
-<del>bubbleColor：</del>
-
-- <del>类型：字符串</del>
-- <del>默认值：#FFFFFF</del>
-- <del>描述：（可选项）slider气泡上的文字颜色，可为空, 支持rgb，rgba，#</del>
 
 bubble：
 
@@ -205,9 +145,9 @@ defValue：
 
 fixedOn：
 
-- 类型：字符串
-- 默认值：当前主窗口的名字
-- 描述：（可选项）把模块视图添加到指定窗口的名字
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 step：
 
@@ -237,28 +177,29 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('slider');
-obj.open({
-         x:30,
-         y:104,
-         width:260,
-         height:6,
-         bgImg:"widget://image/slider_bg.png",
-         selectedBgImg:"widget://image/slider_selected.png",
-         barW:30,
-         barH:20,
-         barImg:"widget://image/slider_bar.png",
-         bubbleW:60,
-         bubbleH:40,
-         bubbleImg:"widget://image/slider_bubble.png",
-         minValue:0,
-         maxValue:100,
-         defValue:30
-},function(ret,err){
-    if(ret.touchCancel){
-        api.alert({msg:ret.value});
+var slider = api.require('slider');
+slider.open({
+     x: 30,
+     y: api.frameHeight - 60,
+     width: api.frameWidth - 60,
+     height: 6,
+     bgImg: "widget://res/img/slider_bg.png",
+     selectedBgImg: "widget://res/img/slider_selected.png",
+     barW: 30,
+     barH: 20,
+     barImg: "widget://res/img/slider_bar.png",
+     bubbleW: 60,
+     bubbleH: 40,
+     bubbleImg: "widget://res/img/slider_bubble.png",
+     minValue: 0,
+     maxValue: 100,
+     defValue: 30,
+     fixedOn: api.frameName
+},function( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
     }else{
-        ret.value;
+         alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -316,8 +257,8 @@ step：
 ##示例代码
 
 ```js
-var obj = api.require('slider');
-obj.setValue({
+var slider = api.require('slider');
+slider.setValue({
     id:1,
     value:51
 });
@@ -358,8 +299,8 @@ lock:
 ##示例代码
 
 ```js
-var obj = api.require('slider');
-obj.lock({
+var slider = api.require('slider');
+slider.lock({
 	id:1,
 	lock:true
 });
@@ -419,8 +360,8 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('slider');
-obj.close({
+var slider = api.require('slider');
+slider.close({
    id:1
 });
 ```
@@ -478,10 +419,12 @@ err：
 
 ##示例代码
 
-	var obj= api.require('slider');
-	obj.show({
-	  id:1
-	});
+```js
+var slider= api.require('slider');
+slider.show({
+  id:1
+});
+```
 
 ##补充说明
 无
@@ -536,10 +479,12 @@ err：
 
 ##示例代码
 
-	var obj = api.require('slider');
-	obj.hide({
-	  id:1
-	});
+```js
+var slider = api.require('slider');
+slider.hide({
+  id:1
+});
+```
 
 ##补充说明
 

@@ -11,16 +11,26 @@ Description: UIInput
 
 [hide](#m4)
 
-[value](#m9)
+[value](#m5)
 
-[insertValue](#m10)
+[insertValue](#m6)
+
+[popupKeyboard](#m7)
+
+[closeKeyboard](#m8)
 </div>
 
 #**概述**
 
-UIInput 是一个输入框模块；输入框可自动获取焦点，并弹出键盘，可自定义输入框的位置及样式，监听输入框内容的变化；用于实现搜索框或其它输入框的 autofocus 及弹出键盘功能。
+UIInput 是一个输入框模块；输入框可自动获取焦点，并弹出键盘，可自定义输入框的位置及样式，监听输入框内容的变化；用于实现搜索框及弹出键盘功能。
 
 ![UIInput](/img/docImage/UIInput.jpg)
+
+**注意：**
+
+1，在 iOS 上如果 open 窗口时候加了延迟，则该模块被打开时即便 autoFocus 为 true 也不会弹出键盘，会出现弹出键盘然后又缩回去的现象。该问题的解决方法是去掉延迟；
+
+2，由于输入法的关系，当 autoFocus 为 true 时部分 android 机型上默认弹不出键盘
 
 <div id="m1"></div>
 
@@ -70,6 +80,13 @@ maxRows：
 - 描述：（可选项）输入框显示的最大行数，**注意：取值大于1（多行显示时），不触发 search 事件回调**
 - 默认值：1
 
+
+autoFocus：
+
+- 类型：布尔类型
+- 描述：（可选项）打开时是否弹出键盘
+- 默认值：true
+
 placeholder：
 
 - 类型：字符串
@@ -87,8 +104,9 @@ keyboardType:
 
 fixedOn：
 
-- 类型：字符串
-- 描述：（可选项）模块所属 Frame 的名字，若不传则模块归属于当前 Window
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 ##callback(ret, err)
 
@@ -127,13 +145,16 @@ UIInput.open({
             color: '#ccc'
         }
     },
+    autoFocus: false,
     maxRows: 4,
     placeholder: '这是一个输入框',
     keyboardType: 'number',
-    fixedOn: ''
-}, function(ret){
-    if(ret.status){
-        alert(ret.eventType);
+    fixedOn: api.frameName
+}, function( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -207,7 +228,7 @@ iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
-<div id="m9"></div>
+<div id="m5"></div>
 
 #**value**
 
@@ -246,9 +267,11 @@ UIInput.value({
 });
 
 //获取输入框的值
-UIInput.value(function(ret, err){
-    if(ret.status){
-      api.alert({msg: ret.msg});
+UIInput.value(function( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -259,7 +282,7 @@ iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
-<div id="m10"></div>
+<div id="m6"></div>
 
 #**insertValue**
 
@@ -289,6 +312,48 @@ UIInput.insertValue({
     index: 10,
     msg: '这里是插入的字符串'
 });
+```
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.0.0及更高版本
+
+<div id="m7"></div>
+
+#**popupKeyboard**
+
+弹出键盘
+
+popupKeyboard()
+
+##示例代码
+
+```js
+var UIInput = api.require('UIInput');
+UIInput.popupKeyboard();
+```
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.0.0及更高版本
+
+<div id="m8"></div>
+
+#**closeKeyboard**
+
+收起键盘
+
+closeKeyboard()
+
+##示例代码
+
+```js
+var UIInput = api.require('UIInput');
+UIInput.closeKeyboard();
 ```
 
 ##可用性

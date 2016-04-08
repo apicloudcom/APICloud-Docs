@@ -22,7 +22,7 @@ unionPay封装了银联支付的SDK，使用此模块可在应用内接入银联
 （8）银联将支付结果通知支付控件；<br>
 （9）支付控件显示支付结果并将支付结果返回给客户端；<br>
 
-**注: 本模块实现了上述流程的（5）、（9）步骤**
+**注: 本模块实现了上述流程的（5）---（9）步骤**
 
 <div id="a1"></div>
 #**pay**
@@ -77,7 +77,7 @@ ret：
 	    if (ret) {
 			unPay.pay({
 				tn: ret,
-				mode: true
+				devMode: true
 		    }, function(ret, err){
 			   api.alert({msg:JSON.stringify(ret)});
 		    });

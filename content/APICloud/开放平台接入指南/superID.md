@@ -1,6 +1,6 @@
 /*
-Title: 一登刷脸登录的平台接入
-Description:一登刷脸登录的API配置指南
+Title: 一登刷脸登录平台接入
+Description:一登刷脸登录API配置指南
 Sort: 11
 */
 
@@ -23,8 +23,6 @@ Sort: 11
 
 ##配置AppID和AppSecret
 
-在教程5.SDK初始化中，可以配置AppID和AppSecret
-![image](/img/superID/4.png )
 
- 另外，如果您已创建过应用，可以直接选择已有应用，查看AppID和AppSecret
+找到已创建过应用，查看AppID和AppSecret
 ![image](/img/superID/5.png )

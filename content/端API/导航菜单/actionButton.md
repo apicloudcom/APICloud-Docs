@@ -20,7 +20,7 @@ Description: actionButton
 
 #**概述**
 
-actionButton 是一个仿照新浪微博快捷菜单而定制的一个模块，使用该模块可弹出一个由多个按钮组成的菜单，点击按钮，菜单消失。此模块最大的特点是弹出和消失都有相应的动画，开发者可自定义按钮的样式和个数（超过单屏显示的可以左右拖动）。效果炫酷，调用方便快捷
+actionButton 是一个仿照新浪微博快捷菜单而定制的一个模块，使用该模块可弹出一个由多个按钮组成的菜单，点击按钮，菜单消失。此模块最大的特点是弹出和消失都有相应的动画，开发者可自定义按钮的样式和个数（超过单屏显示的可以左右拖动）。本模块已停止更新，建议使用优化升级版模块[MNActionButton](http://docs.apicloud.com/端API/导航菜单/MNActionButton)
 
 ![图片说明](/img/docImage/actionButton.jpg)
 
@@ -56,7 +56,12 @@ items：
 [{
     bgColor:       //按钮背景色值，deprecated
     image：		//图片路径，deprecated
-    normal         //（可选项）按钮背景色设置，支持rgb，rgba，#，img，默认#ff0000    highlight：    //（可选项）按钮高亮背景设置，支持rgb,rgba,#,默认和normal一样	title：        //（可选项）标题，字符串类型，无默认值，可为空，为空则不显示    titleSize :   // （可选项）标题字体的大小，默认15	titleColor :  // （可选项）标题字体的颜色，支持rgb，rgba，#，默认#000000 
+    normal         //（可选项）按钮背景色设置，支持rgb，rgba，#，img，默认#ff0000
+    highlight：    //（可选项）按钮高亮背景设置，支持rgb,rgba,#,默认和normal一样
+	title：        //（可选项）标题，字符串类型，无默认值，可为空，为空则不显示
+    titleSize :   // （可选项）标题字体的大小，默认15
+	titleColor :  // （可选项）标题字体的颜色，支持rgb，rgba，#，默认#000000 
+
 }]
 ```
 
@@ -83,9 +88,9 @@ pageControl：
 
 fixedOn：
 
-- 类型：字符串
-- 默认值：当前主窗口的名字
-- 描述：（可选项）将此模块视图添加到指定窗口的名字
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 clickDisappear：
 
@@ -102,7 +107,10 @@ matrix：
 
 ```js
 {
-   row:         //（可选项）每屏幕显示的按钮行数，数字类型，默认2   column:      //（可选项）每屏幕显示的按钮列数，数字类型，默认3   bottomMargin://（可选项）底排按钮下边缘距离模块视图底端高度占h的百分比,数字类型,默认40 	   取值范围 0 ~ 100
+   row:         //（可选项）每屏幕显示的按钮行数，数字类型，默认2
+   column:      //（可选项）每屏幕显示的按钮列数，数字类型，默认3
+   bottomMargin://（可选项）底排按钮下边缘距离模块视图底端高度占h的百分比,数字类型,默认40 	   取值范围 0 ~ 100
+
 }
 ```
 
@@ -134,25 +142,27 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('actionButton');
-obj.open({
- 	items:[{bgColor:'#00CED1',title:'子标题',image:'widget://res/actionSheet_icon1.png'},
-		{bgColor:'#FFC0CB',title:'子标题',image:'widget://res/actionSheet_icon2.png'},
-		{bgColor:'#DB7093',title:'子标题',image:'widget://res/actionSheet_icon3.png'},
-		{bgColor:'#FF00FF',title:'子标题',image:'widget://res/actionSheet_icon4.png'},
-		{bgColor:'#A52A2A',title:'子标题',image:'widget://res/actionSheet_icon5.png'},
-		{bgColor:'#A0522D',title:'子标题',image:'widget://res/actionSheet_icon6.png'},
-		{bgColor:'#7FFF00',title:'子标题',image:'widget://res/actionSheet_icon7.png'},
-		{bgColor:'#7FFF00',title:'子标题',image:'widget://res/actionSheet_icon7.png'},
-		{bgColor:'#7FFF00',title:'子标题',image:'widget://res/actionSheet_icon7.png'},
-		{bgColor:'#7FFF00',title:'子标题',image:'widget://res/actionSheet_icon7.png'},
-		{bgColor:'#7FFF00',title:'子标题',image:'widget://res/actionSheet_icon7.png'},
-		{bgColor:'#7FFF00',title:'子标题',image:'widget://res/actionSheet_icon7.png'},
-		{bgColor:'#7FFF00',title:'子标题',image:'widget://res/actionSheet_icon7.png'}],
-	topHeight:200,
-	pageControl:{activeColor:'#778899',inactiveColor:'#DDA0DD'}
-},function(ret,err){
-	api.alert({msg:ret.index});
+var actionButton = api.require('actionButton');
+actionButton.open({
+	items: [{
+		bgColor: '#00CED1',
+		title: '标题一'
+	},{
+		bgColor: '#00CED1',
+		title: '标题三'
+	}],
+	topHeight: 20,
+	pageControl: {
+		activeColor: '#778899',
+		inactiveColor: '#DDA0DD'
+	},
+    fixedOn: api.frameName
+},function( ret, err ){		
+	if( ret ){
+		alert( JSON.stringify( ret ) );
+	}else{
+		alert( JSON.stringify( err ) );
+	}
 });
 ```
 
@@ -174,8 +184,10 @@ close()
 
 ##示例代码
 
-    var obj = api.require('actionButton');
-    obj.close();
+```js
+var actionButton = api.require('actionButton');
+actionButton.close();
+```
 
 ##补充说明
 
@@ -195,8 +207,10 @@ hide()
 
 ##示例代码
 
-    var obj = api.require('actionButton');
-    obj.hide();
+```js
+var actionButton = api.require('actionButton');
+actionButton.hide();
+```
 
 ##补充说明
 
@@ -216,8 +230,10 @@ show()
 
 ##示例代码
 
-    var obj = api.require('actionButton');
-    obj.show();
+```js
+var actionButton = api.require('actionButton');
+actionButton.show();
+```
 
 ##补充说明
 

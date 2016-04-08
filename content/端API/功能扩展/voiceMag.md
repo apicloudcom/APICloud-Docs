@@ -36,7 +36,7 @@ onCall()
 
 ```js
 var voiceMag = api.require('voiceMag');
-voiceMag.onCall();//改为听筒播放
+voiceMag.onCall();
 ```
 
 ##补充说明
@@ -59,7 +59,7 @@ onNormal()
 
 ```js
 var voiceMag = api.require('voiceMag');
-voiceMag.onCall();//改为听筒播放
+voiceMag.onNormal();
 ```
 
 ##补充说明
@@ -83,7 +83,9 @@ startPlay(function(ret,err))
 
 ```js
 var voiceMag = api.require('voiceMag');
-voiceMag.startPlay({path:"fs://test.mp3"}); //播放语音
+voiceMag.startPlay({
+	path: 'http://7xisq1.com1.z0.glb.clouddn.com/apicloud/0d0b81b8bd5ab81bda9ca54267eb9b98.mp3'
+});
 ```
 
 ##补充说明

@@ -32,9 +32,9 @@ path：
 ##示例代码
 
 ```js
-var obj = api.require('pdfReader');
-obj.open({
-    path:'文件路径'
+var pdfReader = api.require('pdfReader');
+pdfReader.open({
+    path: 'widget://res/test.pdf'
 });
 ```
 

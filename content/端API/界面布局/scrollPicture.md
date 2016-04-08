@@ -25,7 +25,7 @@ Description: scrollPicture
 
 #**概述**
 
-scrollPicture 是一个图片自动滚动联播器，开发者自需传入一组图片地址，即可实现图片滚动联播的效果。图片地址支持网络路径，网络图片会被缓存到本地。**UIScrollPicture 模块是 scrollPicture 模块的优化版，建议使用  UIScrollPicture 模块，此模块已停止更新。**
+scrollPicture 是一个图片自动滚动联播器，开发者自需传入一组图片地址，即可实现图片滚动联播的效果。图片地址支持网络路径，网络图片会被缓存到本地。**UIScrollPicture 模块是 scrollPicture 模块的优化版，建议使用  [UIScrollPicture](http://docs.apicloud.com/端API/界面布局/UIScrollPicture) 模块，此模块已停止更新。**
 
 ![图片说明](/img/docImage/scrollPicture.jpg)
 
@@ -48,17 +48,6 @@ y：
 - 类型：数字
 - 默认值：导航条下边缘位置
 - 描述：（可选项）图左上角点坐标
-
-<del>width:
-
-- <del>类型：数字
-- <del>默认值：当前设备屏幕宽 
-- <del>描述：视图的宽，可为空
-
-<del>height：
-- <del>类型：数字
-- <del>默认值：视图的宽减120
-- <del>描述：视图的高，可为空
 
 w：
 
@@ -84,11 +73,6 @@ paths：
 - 默认值：无
 - 描述：图片路径组成的数组，支持http，https，widget，fs各种协议
 
-<del>placeHoldImg：
-
-- <del>类型：字符串
-- <del>默认值：无
-- <del>描述：当加载网络图片时，屏幕上显示的占位图片，不可为空，paths都是本地路径，该参数可为空
 
 placeholderImg：
 
@@ -97,11 +81,6 @@ placeholderImg：
 - 描述：（可选项）当加载网络图片时，屏幕上显示的占位图片
 - 备注：若paths都是本地路径，该参数可不传，否则为必传
 
-<del>subtitle：
-
-- <del>类型：json对象
-- <del>默认值：无
-- <del>描述：图片的说明文字，可为空，若为空则不显示说明文字
 
 subTitle：
 
@@ -141,9 +120,9 @@ control：
 
 fixedOn：
 
-- 类型：字符串
-- 默认值：当前主窗口的名字
-- 描述：（可选项）将模块视图添加到指定窗口的名字
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 adaptive：
 
@@ -390,7 +369,6 @@ iOS系统，Android系统
 
 可提供的1.0.1及更高版本
 
-</div>
 <div id="const-content">
 
 <div class="outline">

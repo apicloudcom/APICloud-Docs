@@ -31,7 +31,7 @@ show({params},callback(ret, err))
 color：
 
 - 类型：字符串
-- 默认值：#ff000000
+- 默认值：#ff0000
 - 描述：背景颜色，支持argb，rgb，#可为空
 
 ##callback(ret, err)
@@ -66,12 +66,14 @@ err：
 ```js
 var screenLock = api.require('screenLock');
 screenLock.show({
-   color : 'ffff00ff'
-},
-	function(ret,err){
-		api.alert({msg:''+ret.status});
+   color : '#f00'
+},function( ret, err ){		
+	if( ret ){
+		alert( JSON.stringify( ret ) );
+	}else{
+		alert( JSON.stringify( err ) );
 	}
-);
+});
 ```
 
 ##可用性
@@ -127,12 +129,14 @@ err：
 ```js
 var screenLock = api.require('screenLock');
 screenLock.set({
-   color : 'ffff00ff'
-},
-	function(ret,err){
-		api.alert({msg:''+ret.status});
+   color : '#f0f'
+},function( ret, err ){		
+	if( ret ){
+		alert( JSON.stringify( ret ) );
+	}else{
+		alert( JSON.stringify( err ) );
 	}
-);
+});
 ```
 
 ##可用性

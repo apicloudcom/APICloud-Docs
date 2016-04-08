@@ -63,8 +63,8 @@ style：
 - 描述：气泡样式设置，可为空
 
  内部字段:
-    ```js
-    {
+```js
+{
      bgColor:   //菜单按钮背景色，支持rgb,rgba,#,默认#000000，可为空
      lightColor:  //菜单按钮点击色，支持rgb,rgba,#,默认#009ACD，可为空
      borderColor:// 菜单边框色，支持rgb,rgba,#,默认#000000，可为空 
@@ -103,9 +103,9 @@ btnArray:
 
 fixedOn：
 
-- 类型：字符串
-- 默认值：当前主窗口的名字
-- 描述：将此模块视图添加到指定窗口的名字，可为空
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 ##callback(ret, err)
 
@@ -124,12 +124,24 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('bubbleMenu');
-var arrayPath = [{title:'按钮一'}, {title:'按钮二'}, {title:'按钮三'}];
-obj.open({
-	btnArray:arrayPath
-},function(ret,err){
-	api.alert({msg:'点击了菜单的第'+ret.index+'个按钮'});
+var bubbleMenu = api.require('bubbleMenu');
+bubbleMenu.open({
+	centerX: api.frameWidth / 2,
+	centerY: api.frameHeight / 2,
+	btnArray: [{
+		title: '按钮'
+	},{
+		title: '按钮'
+	},{
+		title: '按钮'
+	}],
+    fixedOn: api.frameName
+},function( ret, err ){		
+	if( ret ){
+		alert( JSON.stringify( ret ) );
+	}else{
+		alert( JSON.stringify( err ) );
+	}
 });
 ```
 
@@ -153,8 +165,10 @@ iOS系统，Android系统
 
 ##<del>示例代码</del>
 
-	var obj = api.require('bubbleMenu');
-	obj.hidden();
+```js
+var bubbleMenu = api.require('bubbleMenu');
+bubbleMenu.hidden();
+```
 
 ##<del>补充说明</del>
 
@@ -174,8 +188,10 @@ hide()
 
 ##示例代码
 
-	var obj = api.require('bubbleMenu');
-	obj.hide();
+```js
+var bubbleMenu = api.require('bubbleMenu');
+bubbleMenu.hide();
+```
 
 ##补充说明
 
@@ -195,8 +211,10 @@ show()
 
 ##示例代码
 
-	var obj = api.require('bubbleMenu');
-	obj.show();
+```js
+var bubbleMenu = api.require('bubbleMenu');
+bubbleMenu.show();
+```
 
 ##补充说明
 
@@ -218,8 +236,10 @@ close()
 
 ##示例代码
 
-	var obj = api.require('bubbleMenu');
-	obj.close();
+```js
+var bubbleMenu = api.require('bubbleMenu');
+bubbleMenu.close();
+```
 
 ##补充说明
 

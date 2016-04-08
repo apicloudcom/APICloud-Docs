@@ -43,7 +43,7 @@ APPKEY/APPID：从个推平台上的获得的应用标识
 
 4.推送服务获取到推送标识CID后返回给JS层，应用一般需要将该CID和用户ID做一个绑定，记录到服务端；
 
-5.服务端指定CID进行消息推送（可以通过个推开放平台直接操作，也可以使用服务端SDK调用消息推送接口），携带透传消息内容Payload
+5.服务端指定CID进行透传消息推送（可以通过个推开放平台直接操作，也可以使用服务端SDK调用消息推送接口），携带透传消息内容Payload
 
 6.推送服务接收到消息后，通过register接口注册的消息监听器回调给JS层
 
@@ -54,6 +54,7 @@ APPKEY/APPID：从个推平台上的获得的应用标识
 ###关于透传消息的
 受到JS层目前机制限制，如果apicloud应用未运行，JS层是无法处理透传数据的。
 
+
 **使用此模块之前需先配置config文件的Feature，方法如下**
 
 	名称：pushGeTui
@@ -61,13 +62,13 @@ APPKEY/APPID：从个推平台上的获得的应用标识
 	描述：配置个推应用信息
 ```js
 	<feature name="pushGeTui">
+	  <param name="ios_appkey" value="xCGkZR1bCp6gscLUB20Dl4" />
+		<param name="ios_appid" value="G5lfFkQZ008VoZUXydA2r2" />
+		<param name="ios_appsecret" value="RuxlC8ExWA7T4NFoJhQFd6" />
 		<param name="android_appkey" value="aiMe49ehZa7IK8sevOTiY8" />
 		<param name="android_appid" value="h5AH1rK4KW7vfFGZjT7fG" />
 		<param name="android_appsecret" value="wx7779c7c063a9d4d9" />
 		<param name="android_groupid" value="" />
-        <param name="ios_appkey" value="n0VIVpn0KM8IUlanqAVNk8"/>
-        <param name="ios_appid" value="NM5hSoDl9u6AZqhZ6nBYo3"/>
-        <param name="ios_appsecret" value="E9MssvSMGp7H6DVxlsSxL"/>
 	</feature>
 ```
 字段描述:
@@ -76,7 +77,7 @@ APPKEY/APPID：从个推平台上的获得的应用标识
 		2.android_appid：应用ID，通过个推平台获得
 		3.android_appsecret：通过个推平台获得
 		4.android_groupid: 目前留空即可
-
+		
 ***接口设计说明***
 一、cid、payload、occurError都使用通过initialize传递进去的callback，所有的回调里面都定义了一个type参数，我们可以通过判断type参数来判断回调的类型.
 type类型参数说明：
@@ -113,7 +114,6 @@ function callback(ret,err){
     type:"occurError"
 }
 ```
-
 #**initialize**<div id="a1"></div>
 
 初始化推送服务
@@ -164,6 +164,7 @@ err：
 }
 ```
 
+
 ##示例代码
 
 ```js
@@ -193,8 +194,6 @@ uzgetuisdk.initialize(function(ret) {
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
-
-
 #**registerDeviceToken**<div id="a2"></div>
 
 注册deviceToken
@@ -238,7 +237,6 @@ function registerDeviceToken(){
 iOS系统
 
 可提供的1.0.0及更高版本
-
 </div>
 
 
@@ -249,14 +247,13 @@ iOS系统
 
 [bindAlias](#b2)
 
-[unbindAlias](#b3)
+[unBindAlias](#b3)
 
 [stopService](#b4)
 
 [sendFeedbackMessage](#b5)
 
 [fetchClientId](#b6)
-
 </div>
 
 #**setTag**<div id="b1"></div>
@@ -312,13 +309,14 @@ uzgetuisdk.setTag(param,function(ret) {
 
 ##补充说明
 
-无
+（暂无）
 
 ##可用性
 
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
+
 
 #**bindAlias**<div id="b2"></div>
 
@@ -373,7 +371,7 @@ uzgetuisdk.bindAlias(param,function(ret) {
 
 ##补充说明
 
-无
+（暂无）
 
 ##可用性
 
@@ -381,11 +379,12 @@ iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
-#**unbindAlias**<div id="b3"></div>
+
+#**unBindAlias**<div id="b3"></div>
 
 解绑用户别名。针对单个CID取消设置别名。
 
-unbindAlias({params},callback(ret, err))
+unBindAlias({params},callback(ret, err))
 
 ##params
 
@@ -405,7 +404,7 @@ ret：
 
 ```js
 {
-	result:1               //操作成功状态值
+	result:"1"               //操作成功状态值
 }
 ```
 
@@ -427,20 +426,21 @@ err：
 ```js
 var uzgetuisdk = api.require('pushGeTui');
 var param = {alias:"myalias"};
-uzgetuisdk.unbindAlias(param,function(ret) {
+uzgetuisdk.unBindAlias(param,function(ret) {
 	api.alert({msg:"unbindAlias result:" + ret.result});
 });
 ```
 
 ##补充说明
 
-无
+（暂无）
 
 ##可用性
 
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
+
 
 #**stopService**<div id="b4"></div>
 
@@ -458,7 +458,7 @@ ret：
 
 ```js
 {
-	result:1               //操作成功状态值
+	result:"1"               //操作成功状态值
 }
 ```
 
@@ -486,13 +486,14 @@ uzgetuisdk.stopService(function(ret) {
 
 ##补充说明
 
-无
+（暂无）
 
 ##可用性
 
- Android系统
+Android系统
 
 可提供的1.0.0及更高版本
+
 
 #**sendFeedbackMessage**<div id="b5"></div>
 
@@ -530,9 +531,10 @@ ret：
 
 ```js
 {
-	result:1              //操作成功状态值
+	result:"1"               //操作成功状态值
 }
 ```
+
 err：
 
 - 类型：JSON对象
@@ -545,28 +547,24 @@ err：
     msg: ""      //错误描述
 }
 ```
+
 ##示例代码
 
 ```js
 var uzgetuisdk = api.require('pushGeTui');
-
-var param = {
-    taskid:"GT_1012_AKMw2kc2Oj5Tzy1DvXjMQA",
-    messageid:"GT_1012_AKMw2kc2Oj5Tzy1DvXjMQA",
-    actionid:90001};
-
+var param = {taskid:"GT_1012_AKMw2kc2Oj5Tzy1DvXjMQA",messageid:"GT_1012_AKMw2kc2Oj5Tzy1DvXjMQA",actionid:90001};
 uzgetuisdk.sendFeedbackMessage(param,function(ret) {
-    api.alert({msg:"sendFeedbackMessage result:" + ret.result});
+	api.alert({msg:"sendFeedbackMessage result:" + ret.result});
 });
 ```
 
 ##补充说明
 
-无
+（暂无）
 
 ##可用性
 
-Android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -590,6 +588,9 @@ ret：
 	cid:"0580dc70460e71d5e55a3fec4c0ae92x"               
 }
 ```
+
+
+
 ##示例代码
 
 ```js
@@ -609,9 +610,7 @@ uzgetuisdk.fetchClientId(function(ret,err){
 android系统 iOS系统
 
 可提供的1.0.0及更高版本
-
 </div>
-
 <div id="advanced-content">
 
 <div class="outline">
@@ -670,21 +669,21 @@ err：
 
 ```js
 var uzgetuisdk = api.require('pushGeTui');
-
 uzgetuisdk.turnOnPush(function(ret) {
-    api.alert({msg:"turnOnPush result:" + ret.result});
+	api.alert({msg:"turnOnPush result:" + ret.result});
 });
 ```
 
 ##补充说明
 
-无
+（暂无）
 
 ##可用性
 
-Android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
+
 
 #**turnOffPush**<div id="c2"></div>
 
@@ -705,6 +704,7 @@ ret：
 	result:1              //操作成功状态值
 }
 ```
+
 err：
 
 - 类型：JSON对象
@@ -722,21 +722,21 @@ err：
 
 ```js
 var uzgetuisdk = api.require('pushGeTui');
-
 uzgetuisdk.turnOffPush(function(ret) {
-    api.alert({msg:"turnOffPush result:" + ret.result});
+	api.alert({msg:"turnOffPush result:" + ret.result});
 });
 ```
 
 ##补充说明
 
-无
+（暂无）
 
 ##可用性
 
-Android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
+
 
 #**isPushTurnedOn**<div id="c3"></div>
 
@@ -754,7 +754,7 @@ ret：
 
 ```js
 {
-	result:1                  //操作成功状态值
+	result:1                   //操作成功状态值
 	isOn:"true"                  //推送服务状态
 }
 ```
@@ -776,21 +776,21 @@ err：
 
 ```js
 var uzgetuisdk = api.require('pushGeTui');
-
 uzgetuisdk.isPushTurnedOn(function(ret) {
-    api.alert({msg:"isPushTurnedOn result:" + ret.isOn});
+	api.alert({msg:"isPushTurnedOn result:" + ret.isOn});
 });
 ```
 
 ##补充说明
 
-无
+（暂无）
 
 ##可用性
 
-Android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
+
 
 #**getVersion**<div id="c4"></div>
 
@@ -808,7 +808,7 @@ ret：
 
 ```js
 {
-	result:1                    //操作成功状态值
+	result:1                   //操作成功状态值
 	version:"2.3.0.0.apicloud"    //SDK版本号
 }
 ```
@@ -830,20 +830,22 @@ err：
 
 ```js
 var uzgetuisdk = api.require('pushGeTui');
-
 uzgetuisdk.getVersion(function(ret) {
-    api.alert({msg:"getVersion result:" + ret.version});
+	api.alert({msg:"getVersion result:" + ret.version});
 });
 ```
+
 ##补充说明
 
-无
+（暂无）
 
 ##可用性
 
-iOS系统，Android系统
+Android系统，iOS系统
 
 可提供的1.0.0及更高版本
+
+
 
 #**setSilentTime**<div id="c5"></div>
 
@@ -879,7 +881,7 @@ ret：
 
 ```js
 {
-	result:1               //操作成功状态值
+	result:1              //操作成功状态值
 }
 ```
 
@@ -900,12 +902,12 @@ err：
 
 ```js
 var uzgetuisdk = api.require('pushGeTui');
-
 var param = {beginHour:9,duration:12};
 uzgetuisdk.setSilentTime(param,function(ret) {
-    api.alert({msg:"setSilentTime result:" + ret.result});
+	api.alert({msg:"setSilentTime result:" + ret.result});
 });
 ```
+
 ##补充说明
 
 （暂无）
@@ -916,11 +918,13 @@ Android系统
 
 可提供的1.0.0及更高版本
 
+
+
 #**sendMessage**<div id="c6"></div>
 
 发送上行消息，服务端使用MMP SDK接收客户端发送的上行消息。
 
-sendMessage({params},callback(ret, err))
+sendMessage({params},callback(ret,err))
 
 ##params
 
@@ -942,11 +946,10 @@ ret：
 
 - 类型：JSON对象
 
-内部字段：
-
+内部字段
 ```js
 {
-	result:1               //操作成功状态值
+  result:1                                //操作成功状态值
 }
 ```
 
@@ -969,19 +972,20 @@ err：
 var uzgetuisdk = api.require('pushGeTui');
 var param = {taskid:"SX_1111_ABCDEFG",extraData:"any_command"};
 uzgetuisdk.sendMessage(param,function(ret) {
-	api.alert({msg:"sendMessage result:" + ret.result});
+  api.alert({msg:"sendMessage result:" + ret.result});
 });
 ```
 
 ##补充说明
 
-无
+（暂无）
 
 ##可用性
 
-Android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
+
 
 #**payloadMessage**<div id="c7"></div>
 

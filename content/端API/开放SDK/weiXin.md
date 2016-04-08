@@ -516,7 +516,7 @@ iOS系统，Android系统
 
 #**准备工作**
 
-在使用接口之前请先保证持有向微信开放平台申请得到的 appid、appsecret(长度为32 的字符串,用于获取 access_token)、appkey(长度为 128 的字符串,用于支付过程中生 成 app_signature。针对v2版支付账号)及 partnerkey(微信公众平台商户模块生成的商户密钥)。v3版支付账号请按照微信官方文档说明的签名方式把getToken和getOrderId放在服务器端执行。
+在使用接口之前请先保证持有向微信开放平台申请得到的 appid、appsecret(长度为32 的字符串,用于获取 access_token)、appkey(长度为 128 的字符串,用于支付过程中生 成 app_signature。针对v2版支付账号)及 partnerkey(微信公众平台商户模块生成的商户密钥)。v3版支付账号请按照微信官方文档说明的签名方式把getToken和getOrder放在服务器端执行。
 
 #**getToken**<div id="b1"></div>
 

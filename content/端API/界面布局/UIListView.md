@@ -28,6 +28,8 @@ Description: UIListView
 [insertItem](#m10)
  
 [appendData](#m11)
+
+[getCount](#m16)
  
 [setRefreshHeader](#m12)
  
@@ -36,7 +38,7 @@ Description: UIListView
 
 #**概述**
 
-UIListView 模块封装了一个数据列表控件，列表项水平侧滑可出现控制按钮；开发者可自定义列表的数据源，及列表的样式，支持列表项的增、删、改、查，支持批量更新、追加数据，支持下拉刷新和上拉加载事件。**UIListView 模块是 listView 模块的优化版。**
+UIListView 模块封装了一个数据列表控件，列表项水平侧滑可出现控制按钮；开发者可自定义列表的数据源，及列表的样式，支持列表项的增、删、改、查，支持批量更新、追加数据，支持下拉刷新和上拉加载事件。**UIListView 模块是 listView 模块的优化版。**本模块的源码开源地址为：[https://github.com/apicloudcom/UIListView](https://github.com/apicloudcom/UIListView)
 
 ![图片说明](/img/docImage/listView.jpg)
 
@@ -53,6 +55,7 @@ rect：
 
 - 类型：JSON对象
 - 描述：（可选项）模块的位置及尺寸
+- 备注：Android 必须传此参数。
 - 内部字段：
 
 ```js
@@ -115,6 +118,7 @@ styles:
         height: 55,                     //（可选项）数字类型；列表项的高度；默认：55
         imgWidth: 40,                   //（可选项）数字类型；列表项配图的宽度；默认：列表项的高度减去10px
         imgHeight: 40,                  //（可选项）数字类型；列表项配图的高度；默认：列表项的高度减去10px
+        imgCorner: 4,                   //（可选项）数字类型；列表项配图的圆角大小；默认：0
         placeholderImg: '',             //（可选项）字符串类型；列表项配图的占位图路径（本地路径，fs://，widget://），默认：APICloud 图标
         titleSize: 12,                  //（可选项）数字类型；列表项标题文字大小；默认：12
         titleColor: '#000',             //（可选项）字符串类型；列表项标题文字颜色，支持rgb，rgba，#；默认：'#000000'
@@ -127,10 +131,11 @@ styles:
 }
 ```
 
-fixedOn:
+fixedOn：
 
-- 类型：字符串
-- 描述：（可选项）模块所属 Frame 的名字，若不传则模块归属于当前 Window
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 ##callback(ret)
 
@@ -156,23 +161,86 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('UIListView');
-obj.open({
+var UIListView = api.require('UIListView');
+UIListView.open({
     rect: {
         x: 0,
         y: 0,
-        w: 320,
-        h: 480
+        w: api.winWidth,
+        h: api.frameHeight
     },
     data: [{
         uid: '1001',    //开发者自定义的唯一标识
-        imgPath: 'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
+        imgPath: 'widget://res/img/apicloud.png',
         title: '标题',
         subTitle: '子标题，说明文字',
         remark: '备注',
         icon: ''
     },{
-        imgPath: 'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
+        uid: '1001',    //开发者自定义的唯一标识
+        imgPath: 'widget://res/img/apicloud.png',
+        title: '标题',
+        subTitle: '子标题，说明文字',
+        remark: '备注',
+        icon: ''
+    },{
+        uid: '1001',    //开发者自定义的唯一标识
+        imgPath: 'widget://res/img/apicloud.png',
+        title: '标题',
+        subTitle: '子标题，说明文字',
+        remark: '备注',
+        icon: ''
+    },{
+        uid: '1001',    //开发者自定义的唯一标识
+        imgPath: 'widget://res/img/apicloud.png',
+        title: '标题',
+        subTitle: '子标题，说明文字',
+        remark: '备注',
+        icon: ''
+    },{
+        uid: '1001',    //开发者自定义的唯一标识
+        imgPath: 'widget://res/img/apicloud.png',
+        title: '标题',
+        subTitle: '子标题，说明文字',
+        remark: '备注',
+        icon: ''
+    },{
+        uid: '1001',    //开发者自定义的唯一标识
+        imgPath: 'widget://res/img/apicloud.png',
+        title: '标题',
+        subTitle: '子标题，说明文字',
+        remark: '备注',
+        icon: ''
+    },{
+        uid: '1001',    //开发者自定义的唯一标识
+        imgPath: 'widget://res/img/apicloud.png',
+        title: '标题',
+        subTitle: '子标题，说明文字',
+        remark: '备注',
+        icon: ''
+    },{
+        uid: '1001',    //开发者自定义的唯一标识
+        imgPath: 'widget://res/img/apicloud.png',
+        title: '标题',
+        subTitle: '子标题，说明文字',
+        remark: '备注',
+        icon: ''
+    },{
+        uid: '1001',    //开发者自定义的唯一标识
+        imgPath: 'widget://res/img/apicloud.png',
+        title: '标题',
+        subTitle: '子标题，说明文字',
+        remark: '备注',
+        icon: ''
+    },{
+        uid: '1001',    //开发者自定义的唯一标识
+        imgPath: 'widget://res/img/apicloud.png',
+        title: '标题',
+        subTitle: '子标题，说明文字',
+        remark: '备注',
+        icon: ''
+    },{
+        imgPath: 'widget://res/img/apicloud.png',
         title: '标题',
         subTitle: '子标题，说明文字',
         remark: '备注',
@@ -196,6 +264,7 @@ obj.open({
             height: 55.0,
             imgWidth: 40,
             imgHeight: 40,
+            imgCorner: 4,
             placeholderImg: '',
             titleSize: 12.0,
             titleColor: '#000',
@@ -206,9 +275,13 @@ obj.open({
             remarkIconWidth: 30
         }
     },
-    fixedOn: ''
-}, function(ret){
-    alert(JSON.stringify(ret));
+    fixedOn: api.frameName
+}, function( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -228,8 +301,8 @@ close()
 ##示例代码
 
 ```js
-var obj = api.require('UIListView');
-obj.close();
+var UIListView = api.require('UIListView');
+UIListView.close();
 ```
 
 ##可用性
@@ -248,8 +321,8 @@ show()
 ##示例代码
  
 ```js    
-var obj = api.require('UIListView');
-obj.show();
+var UIListView = api.require('UIListView');
+UIListView.show();
 ```
  
 ##可用性
@@ -268,8 +341,8 @@ hide()
 ##示例代码
  
 ```js
-var obj = api.require('UIListView');
-obj.hide();
+var UIListView = api.require('UIListView');
+UIListView.hide();
 ```
  
 ##可用性
@@ -315,12 +388,16 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('UIListView');
-obj.setAttr({
+var UIListView = api.require('UIListView');
+UIListView.setAttr({
     y: 40,
     h: 200
-}, function(ret){
-    alert('设置成功');
+}, function( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -366,12 +443,16 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('UIListView');
-obj.getIndex({
+var UIListView = api.require('UIListView');
+UIListView.getIndex({
     key: "uid",
     value: "1001"
-}, function(ret){
-    alert(JSON.stringify(ret));
+}, function( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -412,11 +493,15 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('UIListView');
-obj.getDataByIndex({
+var UIListView = api.require('UIListView');
+UIListView.getDataByIndex({
 	index: 0
-},function(ret){
-	alert(JSON.stringify(ret.data));
+},function( ret, err ){
+	if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -476,8 +561,8 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('UIListView');
-obj.setSwipeBtns({
+var UIListView = api.require('UIListView');
+UIListView.setSwipeBtns({
     index: 0,
     btns: [{
         bgColor: '#388e8e',
@@ -489,8 +574,12 @@ obj.setSwipeBtns({
         icon: '',
         iconWidth: 20
     }]
-}, function(ret){
-    alert('设置成功');
+}, function( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -542,8 +631,8 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('UIListView');
-obj.reloadData({
+var UIListView = api.require('UIListView');
+UIListView.reloadData({
 	 data:[{
         imgPath: 'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
         title: '新标题',
@@ -552,8 +641,10 @@ obj.reloadData({
         icon: ""
     }]
 },function(ret){
-    if(ret.status){
-        alert('刷新数据成功');
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -595,12 +686,14 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('UIListView');
-obj.deleteItem({
+var UIListView = api.require('UIListView');
+UIListView.deleteItem({
     index: 2
-},function(ret){
-    if(ret.status){
-        alert('删除成功');
+},function( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -659,8 +752,8 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('UIListView');
-obj.updateItem({
+var UIListView = api.require('UIListView');
+UIListView.updateItem({
     index: 2,
     data: {
         imgPath: 'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
@@ -668,9 +761,11 @@ obj.updateItem({
         subTitle: '刷新子标题',
         remark: '刷新备注'
     }
-}, function(ret){
-    if(ret.status){
-        alert('刷新列表数据成功');
+}, function( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -729,8 +824,8 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('UIListView');
-obj.insertItem({
+var UIListView = api.require('UIListView');
+UIListView.insertItem({
     index: 2,
     data: {
         imgPath: 'http://d.hiphotos.baidu.com/image/pic/item/4d086e061d950a7b29a788c209d162d9f2d3c922.jpg',
@@ -738,9 +833,11 @@ obj.insertItem({
         subTitle: 'APICloud粉丝互动会',
         remark: '完成'
     }
-},function(ret){
-    if(ret.status){
-        alert('插入数据成功');
+},function( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -793,18 +890,56 @@ ret：
 ##示例代码
  
 ```js
-var obj = api.require('UIListView');
-obj.appendData({
+var UIListView = api.require('UIListView');
+UIListView.appendData({
     data: [{
         imgPath: 'http://d.hiphotos.baidu.com/image/pic/item/4d086e061d950a7b29a788c209d162d9f2d3c922.jpg',
         title: '新增标题',
         subTitle: '新增子标题',
         remark: '新增备注'
     }]
-},function(ret){
-    if(ret.status){
-        alert('追加数据成功');
+},function( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
     }
+});
+```
+ 
+##可用性
+ 
+iOS系统，Android系统
+ 
+可提供的1.0.0及更高版本
+
+<div id="m16"></div>
+#**getCount**
+ 
+获取当前列表的总数据量
+ 
+getCount(callback(ret))
+ 
+ 
+##callback(ret)
+
+ret：
+
+- 类型：JSON对象
+- 内部字段：
+
+```js
+{
+    count: 21        //数字类型；当前列表包含的数据总数
+}
+```
+
+##示例代码
+ 
+```js
+var UIListView = api.require('UIListView');
+UIListView.getCount(function( ret){
+   alert( JSON.stringify( ret ) );
 });
 ```
  
@@ -867,16 +1002,20 @@ showTime：
 ##示例代码
  
 ```js
-var obj = api.require('UIListView');
-obj.setRefreshHeader({
+var UIListView = api.require('UIListView');
+UIListView.setRefreshHeader({
     loadingImg: 'widget://res/UIListView_arrow.png',
     bgColor: '#F5F5F5',
     textColor: '#8E8E8E',
     textDown: '下拉可以刷新...',
     textUp: '松开开始刷新...',
     showTime: true
-},function(ret, err){
-    
+},function( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
  
@@ -937,16 +1076,20 @@ showTime：
 ##示例代码
  
 ```js      
-var obj = api.require('UIListView');
-obj.setRefreshFooter({
+var UIListView = api.require('UIListView');
+UIListView.setRefreshFooter({
     loadingImg: 'widget://res/UIListView_arrow.png',
     bgColor: '#F5F5F5',
     textColor: '#8E8E8E',
     textUp: '上拉加载更多...',
     textDown: '松开开始加载...',
     showTime: true
-},function(ret, err){
-    
+},function( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
 });
  
 ```

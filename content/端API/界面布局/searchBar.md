@@ -20,7 +20,7 @@ Description: searchBar
 
 #**概述**
 
-searchBar定义了一个搜索界面的模板，开发者可自定义该模板的样式。可将搜索记录归档到本地。**UISearchBar 模块是 searchBar 模块的优化版，建议使用  UISearchBar 模块，此模块已停止更新。**
+searchBar定义了一个搜索界面的模板，开发者可自定义该模板的样式。可将搜索记录归档到本地。**UISearchBar 模块是 searchBar 模块的优化版，建议使用  [UISearchBar](http://docs.apicloud.com/端API/界面布局/UISearchBar) 模块，此模块已停止更新。**
 
 ![图片说明](/img/docImage/searchBar.jpg)
 
@@ -121,12 +121,6 @@ cleanSize：
 - 类型：数字
 - 默认值：16
 - 描述：（可选项）清除历史记录字体大小
-
-<del>animation：</del>
-
-- <del>类型：布尔</del>
-- <del>默认值：true</del>
-- <del>描述：（可选项）打开页面时是否有动画</del>
 
 anim：
 

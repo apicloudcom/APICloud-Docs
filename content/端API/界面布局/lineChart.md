@@ -16,7 +16,7 @@ Description: lineChart
 
 #**概述**
 
-lineChart模块封装了k线图的绘制方法，开发者可自定义图表的样式，只需传入相应的数据，即可在图表上显示多条折线。亦可自定义结点点击事件
+lineChart模块封装了k线图的绘制方法，开发者可自定义图表的样式，只需传入相应的数据，即可在图表上显示多条折线。亦可自定义结点点击事件。本模块已停止更新，建议使用优化升级版模块[UILineChart](http://docs.apicloud.com/端API/界面布局/UILineChart)
 
 ![图片说明](/img/docImage/lineChart.jpg)
 
@@ -39,18 +39,6 @@ y：
 - 类型：数字
 - 默认值：100
 - 描述：视图左上角点坐标，可为空
-
-<del>width：<del>
-
-- <del>类型：数字</del>
-- <del>默认值：无</del>
-- <del>描述：视图的宽，不可为空</del>
-
-<del>height：</del>
-
-- <del>类型：数字</del>
-- <del>默认值：无</del>
-- <del>描述：视图的高，不可为空</del>
 
 w：
 
@@ -111,13 +99,7 @@ lines：
  }
  ```
 
-<del>backGroundColor：</del>
-
-- <del>类型：字符串</del>
-- <del>默认值：无</del>
-- <del>描述：K线图背景颜色，十六进制值字符串，不可为空</del>
-
-bgColor：
+ bgColor：
 
 - 类型：字符串
 - 默认值：#FFFFFF
@@ -135,17 +117,11 @@ markColor：
 - 默认值：#000000
 - 描述：K线图xy轴标记字体颜色，支持rgb，rgba，#，不可为空
 
-<del>id：</del>
-
-- <del>i类型：数字</del>
-- <del>i默认值：无</del>
-- <del>i描述：K线图id，根据此id关闭该视图，可为空</del>
-
 fixedOn：
 
-- 类型：字符串
-- 默认值：无
-- 描述：要把该视图添加到某视图的名字，可为空
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 fixed:
 - 类型：布尔
@@ -186,21 +162,38 @@ err:
 ##示例代码
 
 ```js
-var obj = api.require('lineChart');
-obj.open({
-	x:0,
-	y:64,
-	w:320,
-	h:300,
-	yAxis:{"max":1000,"step":200},
-	xAxis:{"indexs":['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月','一月'],"screenXcount":7},
-	lines:[{'color': ' #800080', 'datas':[ 200,400,-300,500,-400,600,400,0,500,-100,800,100],id:1},
-		   {'color': '#7FFFAA', 'datas':[ -200,-400,300,-500,400,-600,-400,0,-500,100,-800,-100],id:2}],
-	bgColor:'#F0FFFF',
-	coorLineColor:'#C0C0C0',
-	markColor:'#051353'
-},function(ret, err) {
-    api.alert({msg:ret.status});
+var lineChart = api.require('lineChart');
+lineChart.open({
+	x: 0,
+	y: 64,
+	w: 320,
+	h: 300,
+	yAxis: {
+	    "max": 1000,
+	    "step": 200
+	},
+	xAxis: {
+	    "indexs": ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月','一月'],
+	    "screenXcount": 7
+	},
+	lines: [{
+	    'color': '#800080', 
+	    'datas': [ 200,400,-300,500,-400,600,400,0,500,-100,800,100],
+	     id: 1
+	},{
+	    'color': '#7FFFAA', 
+	    'datas': [ -200,-400,300,-500,400,-600,-400,0,-500,100,-800,-100],
+	    id: 2
+	}],
+	bgColor: '#F0FFFF',
+	coorLineColor: '#C0C0C0',
+	markColor: '#051353'
+},function( ret, err) {
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -230,8 +223,12 @@ id：
 
 ##示例代码
 
-	var obj = api.require('lineChart');
-	obj.hide({id:1});
+```js
+var lineChart = api.require('lineChart');
+lineChart.hide({
+    id: 1
+});
+```
 
 ##补充说明
 
@@ -259,8 +256,10 @@ id：
 
 ##示例代码
 
-	var obj = api.require('lineChart');
-	obj.show();
+```js
+var lineChart = api.require('lineChart');
+lineChart.show();
+```
 
 ##补充说明
 
@@ -287,9 +286,10 @@ id：
 - 描述：K线图id，不可为
 
 ##示例代码
+
 ```js
-var obj = api.require('lineChart');
-obj.close({
+var lineChart = api.require('lineChart');
+lineChart.close({
 	id:1
 });
 ```

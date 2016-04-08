@@ -31,22 +31,6 @@ Sort: 1
 
 为了显示跟自定义表进行区别，所以统一在开始位置了加下划线以示区别，_accessToken、_file、_role、_roleMapping、_user。实际操作不需要加下划线。
 
-###SDK
-----------
-
-####手机端
-
-- [mcm模块](http://docs.apicloud.com/%E7%AB%AFAPI/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%AF%B9%E6%8E%A5/mcm)
-- [js-sdk](https://github.com/APICloud-com/mcm-js-sdk)
-
-####后端语言
-
-- [nodejs](https://github.com/APICloud-com/node-sdk)
-- [C#](https://github.com/APICloud-com/.NET-sdk)
-- [Java](https://github.com/APICloud-com/Java-sdk)
-- [Python](https://github.com/APICloud-com/python-sdk)
-
-
 
 #**REST API 详解**<div id="1"></div>
 
@@ -276,16 +260,54 @@ https://d.apicloud.com/mcm/api/Company/5436219ea1a14d1c60de3e05
 
 为了在 API Cloud 上创建一个新的对象，应该向 class 的 URL 发送一个 POST 请求，其中应该包含对象本身。例如，要创建如上对象：
 
+**curl**
 ```js
 curl -X POST \
 	-H "X-APICloud-AppId: {{your_app_id}}" \
-	-H "X-APICloud-AppKey: {{your_app_key}}" \
+	-H "X-APICloud-AppKey: {{加密后的key}}" \
 	-H "Content-Type: application/json" \
 	-d '{"name": "API Cloud","level": "Branch","area": "Haidian District"}' \
     https://d.apicloud.com/mcm/api/Company
 ```
 
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("Company");
+Model.save({
+	"name": "API Cloud",
+	"level": "Branch",
+	"area": "Haidian District"
+}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
 
+**jquery.ajax**
+```js
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/Company",
+  	"method": "POST",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	},
+  	"data": {
+		"name": "API Cloud",
+		"level": "Branch",
+		"area": "Haidian District"
+  	}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
+```
 
 当创建成功时，HTTP的返回Code是 200，响应的主体是一个 JSON 对象，包含新的对象的 objectId，createdAt和updateAt 时间戳。
 
@@ -303,15 +325,43 @@ curl -X POST \
 ##获取对象
 
 当你创建了一个对象时，你可以通过发送一个 GET 请求以获取它的内容。例如，为了得到我们上面创建的对象：
-
+**curl**
 ```js
 curl -X GET \
 	-H "X-APICloud-AppId: {{your_app_id}}" \
-	-H "X-APICloud-AppKey: {{your_app_key}}" \
+	-H "X-APICloud-AppKey: {{加密后的key}}" \
     https://d.apicloud.com/mcm/api/Company/5436442ca1a14d1c60de3e06
 ```
 
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("Company");
+Model.get({"_id":"5436442ca1a14d1c60de3e06"}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
 
+**jquery.ajax**
+```js
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/Company/5436442ca1a14d1c60de3e06",
+  	"method": "GET",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
+```
 
 返回的主体是一个 JSON 对象包含所有用户提供的字段加上 createdAt，updatedAt 和 objectId 字段：
 
@@ -330,16 +380,46 @@ curl -X GET \
 
 为了更改一个对象上已经有的数据，您可以发送一个 PUT 请求到对象相应的 URL 上，任何您未指定的 key 都不会更改，所以您可以只更新对象数据的一个子集。例如，我们来更改我们对象的一个 area 的字段：
 
+**curl**
 ```js
 curl -X PUT \
 	-H "X-APICloud-AppId: {{your_app_id}}" \
-	-H "X-APICloud-AppKey: {{your_app_key}}" \
+	-H "X-APICloud-AppKey: {{加密后的key}}" \
 	-H "Content-Type: application/json" \
 	-d '{"area":"Dongcheng District"}' \
     https://d.apicloud.com/mcm/api/Company/5436442ca1a14d1c60de3e06
 ```
 
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("Company");
+Model.save({"_id":"5436442ca1a14d1c60de3e06"},{"area":"Dongcheng District"}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
 
+**jquery.ajax**
+```js
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/Company/5436442ca1a14d1c60de3e06",
+  	"method": "POST",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	},
+  	"data": {"area":"Dongcheng District","_method":"PUT"}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
+```
 
 
 返回的主体是一个 JSON 对象包含所有用户提供的字段加上 createdAt，updatedAt 和 objectId 字段，其中 updatedAt 为最新的UTC更新时间戳。
@@ -358,28 +438,58 @@ curl -X PUT \
 ##删除对象
 为了在 API Cloud 中删除一个对象，可以发送一个 DELETE 请求到指定的对象的 URL，比如：
 
+**curl**
 ```js
 curl -X DELETE \
 	-H "X-APICloud-AppId: {{your_app_id}}" \
-	-H "X-APICloud-AppKey: {{your_app_key}}" \
+	-H "X-APICloud-AppKey: {{加密后的key}}" \
     https://d.apicloud.com/mcm/api/Company/5436442ca1a14d1c60de3e06
 ```
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("Company");
+Model.delete({"_id":"5436442ca1a14d1c60de3e06"},function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
 
+**jquery.ajax**
+```js
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/Company/5436442ca1a14d1c60de3e06",
+  	"method": "POST",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	},
+  	"data": {"_method":"DELETE"}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
+```
 
 ##数据类型
 
 在API Cloud中创建对象时，相关对象字段数据类型可以被定义为以下十种的任何一种，相关支持数据类型如下：
 
-- String
-- Number
-- Boolean
-- Date
-- File
-- Array
-- Object
-- GeoPoint
-- Pointer
-- Relation
+- String (字符串)
+- Number (数字)
+- Boolean (布尔值)
+- Date (日期时间)
+- File (文件类型)包含id、url、name三个字段
+- Array (数组)
+- Object (对象)与JSON对象相同
+- GeoPoint (地理位置)包含lat、lng两个字段
+- Pointer (一对一)
+- Relation (一对多)
 
 #**用户**<div id="3"></div>
 
@@ -390,16 +500,54 @@ curl -X DELETE \
 注册一个新用户时 username 、password两个字段都是必要的。password 字段会以和其他的字段不一样的方式处理，它在储存时会被加密而且永远不会被返回给任何来自客户端的请求。
 为了新增一个用户，需要向 user 路径发送一个 POST 请求，示例如下:
 
+**curl**
 ```js
 curl -X POST \
 	-H "X-APICloud-AppId: {{your_app_id}}" \
-	-H "X-APICloud-AppKey: {{your_app_key}}" \
+	-H "X-APICloud-AppKey: {{加密后的key}}" \
 	-H "Content-Type: application/json" \
 	-d '{"username":"apicloud","password":"123456","email":"test@apicloud.com"}' \
     https://d.apicloud.com/mcm/api/user
 ```
 
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("user");
+Model.save({
+	"username":"apicloud",
+	"password":"123456",
+	"email":"test@apicloud.com"
+}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
 
+**jquery.ajax**
+```js
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/user",
+  	"method": "POST",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	},
+  	"data":{
+		"username":"apicloud",
+		"password":"123456",
+		"email":"test@apicloud.com"
+	}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
+```
 
 如果创建成功，返回的状态码是200，返回的主体是一个 JSON 对象，包含 objectId, createdAt和updatedAt 等属性信息，示例如下：
 
@@ -429,16 +577,54 @@ emailVerified 字段有三种状态：
 
 发送给用户的邮箱验证邮件在两周内失效，为了发送验证请求，需要向verifyEmail路径发送一个 POST 请求，示例如下：
 
+**curl**
 ```js
 curl -X POST \
 -H "X-APICloud-AppId: {{your_app_id}}" \
-	-H "X-APICloud-AppKey: {{your_app_key}}" \
+	-H "X-APICloud-AppKey: {{加密后的key}}" \
 	-H "Content-Type: application/json" \
 	-d '{"username":"apicloud","email":"customer@mail.apicloud.com","language":"zh_CN"}' \
     https://d.apicloud.com/mcm/api/user/verifyEmail
 ```
 
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("user");
+Model.verify({
+	"username":"apicloud",
+	"email":"customer@mail.apicloud.com",
+	"language":"zh_CN"
+}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
 
+**jquery.ajax**
+```js
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/user/verifyEmail",
+  	"method": "POST",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	},
+  	"data": {
+		"username":"apicloud",
+		"email":"customer@mail.apicloud.com",
+		"language":"zh_CN"
+	}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
+```
 无论发送邮件成功或失败，返回的主体都是JSON对象，成功返回：
 
 ```js
@@ -466,15 +652,54 @@ curl -X POST \
 
 您可以使用这项功能，前提是用户将 Email 与他们的账户关联起来。如果执行重置密码操作，需要发送一个 POST 请求到 /resetRequest，示例如下：
 
+**curl**
 ```js
 curl -X POST \
 	-H "X-APICloud-AppId: {{your_app_id}}" \
-	-H "X-APICloud-AppKey: {{your_app_key}}" \
+	-H "X-APICloud-AppKey: {{加密后的key}}" \
 	-H "Content-Type: application/json" \
 	-d '{"username":"apicloud","email":"test@mail.apicloud.com","language":"zh_CN"}' \
     https://d.apicloud.com/mcm/api/user/resetRequest
 ```
 
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("user");
+Model.reset({
+	"username":"apicloud",
+	"email":"customer@mail.apicloud.com",
+	"language":"zh_CN"
+}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
+
+**jquery.ajax**
+```js
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/user/resetRequest",
+  	"method": "POST",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	},
+  	"data": {
+		"username":"apicloud",
+		"email":"customer@mail.apicloud.com",
+		"language":"zh_CN"
+	}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
+```
 
 如果发送成功，返回的主体是一个 JSON 对象：
 
@@ -490,16 +715,45 @@ curl -X POST \
 
 您可以发送一个 GET 请求到 URL 以获取用户信息，示例如下:
 
+**curl**
 ```js
 curl -X GET \
 	-H "X-APICloud-AppId: {{your_app_id}}" \
-	-H "X-APICloud-AppKey: {{your_app_key}}" \
+	-H "X-APICloud-AppKey: {{加密后的key}}" \
 	-H "authorization":{{login 返回的id}}" \
 	-H "Content-Type: application/json" \
     https://d.apicloud.com/mcm/api/user/5437a1a9e41cbf4a52d7c9d6
 ```
 
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("user");
+Model.get({"_id":"5437a1a9e41cbf4a52d7c9d6"}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
 
+**jquery.ajax**
+```js
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/user/5437a1a9e41cbf4a52d7c9d6",
+  	"method": "GET",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
+```
 
 返回的 body 是一个 JSON 对象，包含所有用户提供的字段，除了密码以外，也包括了 createdAt、updatedAt 和 objectId 字段。
 
@@ -525,16 +779,47 @@ curl -X GET \
 
 如果我们想对用户居住地址的信息做出一些修改:
 
+**curl**
 ```js
 curl -X PUT \
 	-H "X-APICloud-AppId: {{your_app_id}}" \
-	-H "X-APICloud-AppKey: {{your_app_key}}" \
+	-H "X-APICloud-AppKey: {{加密后的key}}" \
 	-H "authorization":{{login 返回的id}}" \
 	-H "Content-Type: application/json" \
 	-d '{"address":"No.10, Building 3, Haiwei road, Haidian district"}' \
     https://d.apicloud.com/mcm/api/user/543ccdcd6c0a61303282414e
 ```
 
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("user");
+Model.save({"_id":"543ccdcd6c0a61303282414e"},{"address":"No.10, Building 3, Haiwei road, Haidian district"}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
+
+**jquery.ajax**
+```js
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/user/543ccdcd6c0a61303282414e",
+  	"method": "POST",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	},
+  	"data": {"address":"No.10, Building 3, Haiwei road, Haidian district","_method":"PUT"}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
+```
 
 如果成功，返回的 body 是一个 JSON 对象：
 
@@ -557,14 +842,47 @@ curl -X PUT \
 
 为了在 API Cloud 上删除一个用户，可以向它的 URL 上发送一个 DELETE 请求，示例如下：
 
+**curl**
 ```js
 curl -X DELETE \
 	-H "X-APICloud-AppId: {{your_app_id}}" \
-	-H "X-APICloud-AppKey: {{your_app_key}}" \
+	-H "X-APICloud-AppKey: {{加密后的key}}" \
 	-H "authorization":{{login 返回的id}}" \
 	-H "Content-Type: application/json" \
     https://d.apicloud.com/mcm/api/user/5437a1a9e41cbf4a52d7c9d6
 ```
+
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("user");
+Model.delete({"_id":"5437a1a9e41cbf4a52d7c9d6"},function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
+
+**jquery.ajax**
+```js
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/user/5437a1a9e41cbf4a52d7c9d6",
+  	"method": "POST",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	},
+  	"data": {"_method":"DELETE"}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
+```
+
 
 ##用户登录
 
@@ -572,15 +890,48 @@ curl -X DELETE \
 
 在您允许用户注册之后, 在以后您需要让他们用自己的用户名和密码登陆. 为了做到这一点, 发送一个 POST 请求到 /mcm/api/user/login, 加上 username 和 password 作为参数.
 
-
+**curl**
 ```js
 curl -X POST \
 	-H "X-APICloud-AppId: {{your_app_id}}" \
-	-H "X-APICloud-AppKey: {{your_app_key}}" \
+	-H "X-APICloud-AppKey: {{加密后的key}}" \
 	-H "Content-Type: application/json" \
 	-d '{"username":"apicloud","password":"111111"}' \
     https://d.apicloud.com/mcm/api/user/login
 ```
+
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("user");
+Model.login({"username":"apicloud","password":"111111"}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
+
+**jquery.ajax**
+```js
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/user/login",
+  	"method": "POST",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	},
+  	"data": {"username":"apicloud","password":"111111"}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
+```
+
+
 返回的主体是一个 JSON 对象. 它包含了 createdAt,updateAt,id,userId 和 ttl 字段.
 
 ```js
@@ -600,13 +951,45 @@ curl -X POST \
 
 登录完成后可以把返回的id作为token进行请求，如果需要注销用户，需要发送一个 POST 请求到 /mcm/api/user/logout，把login返回的id作为headers里authorization的参数
 
+**curl**
 ```js
 curl -X POST \
 	-H "X-APICloud-AppId: {{your_app_id}}" \
-	-H "X-APICloud-AppKey: {{your_app_key}}" \
+	-H "X-APICloud-AppKey: {{加密后的key}}" \
 	-H "authorization":{{login 返回的id}}" \
 	-H "Content-Type: application/json" \
     https://d.apicloud.com/mcm/api/user/logout
+```
+
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("user");
+Model.logout({token: "{{login 返回的id}}"}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
+
+**jquery.ajax**
+```js
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/user/logout",
+  	"method": "POST",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}",
+		"authorization":{{login 返回的id}}"
+  	}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
 ```
 
 如果成功，返回的主体是一个 空JSON 对象，
@@ -625,15 +1008,46 @@ curl -X POST \
 
 创建一个新角色，需要发送一个 POST 请求到 role 根路径，相关示例如下：
 
+**curl**
 ```js
 curl -X POST \
 	-H "X-APICloud-AppId: {{your_app_id}}" \
-	-H "X-APICloud-AppKey: {{your_app_key}}" \
+	-H "X-APICloud-AppKey: {{加密后的key}}" \
 	-H "Content-Type: application/json" \
 	-d '{"name":"manager1","description":"manager desc"}' \
     https://d.apicloud.com/mcm/api/role
 ```
 
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("role");
+Model.save({"name":"manager1","description":"manager desc"}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
+
+**jquery.ajax**
+```js
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/role",
+  	"method": "POST",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	},
+  	"data": {"name":"manager1","description":"manager desc"}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
+```
 
 
 如果创建成功，返回的 body 是一个 JSON 对象，除了包括角色名称外也包括了 createdAt、updatedAt 和 objectId 字段，相关JSON返回对象如下：
@@ -652,13 +1066,43 @@ curl -X POST \
 
 您可以同样通过发送一个 GET 请求来获取某个角色对象。例如我们想要获取上面创建的对象：
 
+**curl**
 ```js
 curl -X GET \
 	-H "X-APICloud-AppId: {{your_app_id}}" \
-	-H "X-APICloud-AppKey: {{your_app_key}}" \
+	-H "X-APICloud-AppKey: {{加密后的key}}" \
     https://d.apicloud.com/mcm/api/role/543f2e0e474f229d61185565
 ```
 
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("role");
+Model.get({"_id":"543f2e0e474f229d61185565"}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
+
+**jquery.ajax**
+```js
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/role/543f2e0e474f229d61185565",
+  	"method": "GET",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
+```
 
 如果成功，响应的 body 是一个包含角色所有字段的JSON对象：
 
@@ -676,15 +1120,45 @@ curl -X GET \
 
 您可以同样通过发送一个 PUT 请求来更新某个角色对象，比如我们想要更新上面所创建角色对象的描述：
 
+**curl**
 ```js
 curl -X PUT \
 	-H "X-APICloud-AppId: {{your_app_id}}" \
-	-H "X-APICloud-AppKey: {{your_app_key}}" \
+	-H "X-APICloud-AppKey: {{加密后的key}}" \
 	-d '{"name":"manager1"}' \
     https://d.apicloud.com/mcm/api/role/543f2e0e474f229d61185565
 ```
 
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("role");
+Model.save({"_id":"543f2e0e474f229d61185565"},{"name":"manager1"}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
 
+**jquery.ajax**
+```js
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/role/543f2e0e474f229d61185565",
+  	"method": "POST",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	},
+  	"data": {"name":"manager1","_method":"PUT"}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
+```
 
 响应的 body 是一个包含角色的所有字段（含更新字段）的JSON对象：
 
@@ -702,14 +1176,44 @@ curl -X PUT \
 
 您可以通过发送一个 DELETE 请求来删除某个已创建的角色对象，示例如下：
 
+**curl**
 ```js
 curl -X DELETE \
 	-H "X-APICloud-AppId: {{your_app_id}}" \
-	-H "X-APICloud-AppKey: {{your_app_key}}" \
+	-H "X-APICloud-AppKey: {{加密后的key}}" \
     https://d.apicloud.com/mcm/api/role/543f2e0e474f229d61185565
 ```
 
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("role");
+Model.delete({"_id":"543f2e0e474f229d61185565"},function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
 
+**jquery.ajax**
+```js
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/role/543f2e0e474f229d61185565",
+  	"method": "POST",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	},
+  	"data": {"_method":"DELETE"}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
+```
 
 如果执行成功，则返回200状态码。
 
@@ -724,10 +1228,11 @@ curl -X DELETE \
 
 在一个批次中每一个操作都有相应的方法、路径和主体, 这些参数可以代替您通常会使用的 HTTP 方法. 这些操作会以发送过去的顺序来执行, 比如我们要创建一系列的 GameScore 的对象:
 
+**curl**
 ```js
 curl -X POST \
   -H "X-APICloud-AppId: {{your_app_id}}" \
-  -H "X-APICloud-AppKey: {{your_app_key}}" \
+  -H "X-APICloud-AppKey: {{加密后的key}}" \
   -H "Content-Type: application/json" \
   -d '{
         "requests": [
@@ -751,6 +1256,70 @@ curl -X POST \
       }' \
   https://d.apicloud.com/mcm/api/batch
 
+```
+
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+client.batch([
+	{
+		"method": "POST",
+		"path": "/mcm/api/company",
+		"body": {
+			"name": "apicloud",
+			"address": "北京市..."
+		}
+	},
+	{
+		"method": "POST",
+		"path": "/mcm/api/company",
+		"body": {
+			"name": "百度",
+			"address": "北京市西二旗"
+		}
+	}
+], function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
+
+**jquery.ajax**
+```js
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/batch",
+  	"method": "POST",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	},
+  	"data": {
+		"requests": [{
+			"method": "POST",
+			"path": "/mcm/api/company",
+			"body": {
+				"name": "apicloud",
+				"address": "北京市..."
+			}
+		},
+		{
+			"method": "POST",
+			"path": "/mcm/api/company",
+			"body": {
+				"name": "百度",
+				"address": "北京市西二旗"
+			}
+		}]
+	}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
 ```
 批量操作的响应会是一个列表, 列表的元素数量和给定的操作数量是一致的. 每一个在列表中的元素都是一个对象."success" 的值是通常是进行其他 REST 操作会返回的值:
 ```js
@@ -790,7 +1359,7 @@ curl -X POST \
 
 ```js
 	"X-APICloud-AppId: {{your_app_id}}"
-	"X-APICloud-AppKey: {{your_app_key}}"
+	"X-APICloud-AppKey: {{加密后的key}}"
 	"filename": file.name,
 	"type": file.type
 ```
@@ -802,10 +1371,22 @@ curl -X POST \
 ```js
 curl -X POST \
  -H "X-APICloud-AppId:{{your_app_id}}" \
- -H "X-APICloud-AppKey:{{your_app_key}}" \
+ -H "X-APICloud-AppKey:{{加密后的key}}" \
  -H "application/x-www-form-urlencoded;" \
  -F "file=@{{file.path}};filename={{file.filename}};type={{file.type}}" \
  https://d.apicloud.com/mcm/api/file
+```
+
+**js-sdk**
+```js
+var File = client.Factory("file");
+
+api.getPicture({},function(ret,err){
+    File.save({file:{isFile:true,path:ret.data,values:{filename:"ava.png"}}},function(data,err){
+        alert("file:\t"+JSON.stringify(data));
+        alert("file:\t"+JSON.stringify(err));
+    })
+})
 ```
 
 **web示例**
@@ -847,7 +1428,7 @@ uploadurl.on('uploadComplete', function (file) {
 	uploadurl.removeFile(file);
 });
 uploadurl.on('uploadBeforeSend', function (block, data, headers) {
-	headers["X-APICloud-AppKey"] = "{{your_app_key}}";
+	headers["X-APICloud-AppKey"] = "{{加密后的key}}";
 	headers["X-APICloud-AppId"] = "{{your_app_id}}";
 });
 //上传中
@@ -878,6 +1459,7 @@ uploadurl.on('uploadProgress',function(file,percentage){
 
 如在其他表中有File类型的字段，添加记录可以如下添加：
 
+**jquery.ajax**
 ```js
 var file={
 	id: "547d92ed04fca43974ca87a6"
@@ -892,7 +1474,7 @@ var options={
 		...
 	},
 	headers:{
-		"X-APICloud-AppKey" = "{{your_app_key}}";
+		"X-APICloud-AppKey" = "{{加密后的key}}";
 		"X-APICloud-AppId" = "{{your_app_id}}";
 	}
 }
@@ -927,7 +1509,6 @@ $.ajax(options).done(function(data){
 |$set			|在文档中设置一个字段的值。|
 |$min			|仅更新字段如果指定的值小于现有的字段值。|
 |$max		|仅更新字段如果指定的值大于现有的字段值。|
-|$currentDate		|一个字段的值设置为当前日期,日期或时间戳。|
 |$push		|增加一个项到数组的尾部|
 |$pushAll		|增加多个项到数组的尾|
 |$pull		|删除一个项从数组当中|
@@ -957,12 +1538,45 @@ $inc是一个原子操作在一个文档中.
 }
 ```
 使用$inc进行更新
+
+**curl**
 ```js
 curl -X PUT \
     -H "X-APICloud-AppId: {{your_app_id}}" \
-    -H "X-APICloud-AppKey: {{your_app_key}}" \
+    -H "X-APICloud-AppKey: {{加密后的key}}" \
     -d '{"$inc": { quantity: -2},"sku":"APICloud"}' \
-    https://d.apicloud.com/mcm/api/modelName/543f2e0e474f229d61185565
+    https://d.apicloud.com/mcm/api/Company/543f2e0e474f229d61185565
+```
+
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("Company");
+Model.save({"_id":"543f2e0e474f229d61185565"},{"$inc": { quantity: -2},"sku":"APICloud"}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
+
+**jquery.ajax**
+```js
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/Company/543f2e0e474f229d61185565",
+  	"method": "POST",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	},
+  	"data": {"$inc": { quantity: -2},"sku":"APICloud","_method":"PUT"}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
 ```
 更新后的文档会像:
 ```js
@@ -996,13 +1610,47 @@ $mul是一个原子操作在一个文档中.
 }
 ```
 使用$mul进行更新
+
+**curl**
 ```js
 curl -X PUT \
     -H "X-APICloud-AppId: {{your_app_id}}" \
-    -H "X-APICloud-AppKey: {{your_app_key}}" \
+    -H "X-APICloud-AppKey: {{加密后的key}}" \
     -d '{"$mul": { "price": 1.25 }}' \
-    https://d.apicloud.com/mcm/api/modelName/543f2e0e474f229d61185565
+    https://d.apicloud.com/mcm/api/Company/543f2e0e474f229d61185565
 ```
+
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("Company");
+Model.save({"_id":"543f2e0e474f229d61185565"},{"$mul": { "price": 1.25 }}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
+
+**jquery.ajax**
+```js
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/Company/543f2e0e474f229d61185565",
+  	"method": "POST",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	},
+  	"data": {"$mul": { "price": 1.25 },"_method":"PUT"}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
+```
+
 更新后的文档会像:
 ```js
 { 
@@ -1037,13 +1685,74 @@ $set操作符替换一个字段的值用指定的值,具有以下形式:
 }
 ```
 使用$set进行更新
+
+**curl**
 ```js
 curl -X PUT \
     -H "X-APICloud-AppId: {{your_app_id}}" \
-    -H "X-APICloud-AppKey: {{your_app_key}}" \
+    -H "X-APICloud-AppKey: {{加密后的key}}" \
     -d '{"$set": {quantity: 500,details: { model: "14Q3", make: "xyz" },tags: [ "coats", "outerwear", "clothing" ]}}' \
-    https://d.apicloud.com/mcm/api/modelName/543f2e0e474f229d61185565
+    https://d.apicloud.com/mcm/api/Company/543f2e0e474f229d61185565
 ```
+
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("Company");
+Model.save({"_id":"543f2e0e474f229d61185565"},{
+	"$set": {
+		quantity: 500,
+		details: { 
+			model: "14Q3", 
+			make: "xyz" 
+		},
+		tags: [
+			"coats", 
+			"outerwear", 
+			"clothing" 
+		]
+	}
+}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
+
+**jquery.ajax**
+```js
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/Company/543f2e0e474f229d61185565",
+  	"method": "POST",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	},
+  	"data": {
+		"$set": {
+			quantity: 500,
+			details: { 
+				model: "14Q3", 
+				make: "xyz" 
+			},
+			tags: [
+				"coats", 
+				"outerwear", 
+				"clothing" 
+			]
+		},
+		"_method":"PUT"
+	}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
+```
+
 更新后的文档会像:
 ```js
 {
@@ -1078,13 +1787,47 @@ $min操作符更新字段的值为一个指定的值,如果值小于指定字段
 }
 ```
 使用$min进行更新
+
+**curl**
 ```js
 curl -X PUT \
     -H "X-APICloud-AppId: {{your_app_id}}" \
-    -H "X-APICloud-AppKey: {{your_app_key}}" \
+    -H "X-APICloud-AppKey: {{加密后的key}}" \
     -d '{"$min": { "lowScore": 150 }}' \
-    https://d.apicloud.com/mcm/api/modelName/543f2e0e474f229d61185565
+    https://d.apicloud.com/mcm/api/Company/543f2e0e474f229d61185565
 ```
+
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("Company");
+Model.save({"_id":"543f2e0e474f229d61185565"},{"$min": { "lowScore": 150 }}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
+
+**jquery.ajax**
+```js
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/Company/543f2e0e474f229d61185565",
+  	"method": "POST",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	},
+  	"data": {"$min": { "lowScore": 150 },"_method":"PUT"}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
+```
+
 更新后的文档会像:
 ```js
 { 
@@ -1114,13 +1857,47 @@ $max操作符更新字段的值指定的值如果指定的值大于字段的当�
 }
 ```
 使用$set进行更新
+
+**curl**
 ```js
 curl -X PUT \
     -H "X-APICloud-AppId: {{your_app_id}}" \
-    -H "X-APICloud-AppKey: {{your_app_key}}" \
+    -H "X-APICloud-AppKey: {{加密后的key}}" \
     -d '{"$max": { "highScore": 950 }}' \
-    https://d.apicloud.com/mcm/api/modelName/543f2e0e474f229d61185565
+    https://d.apicloud.com/mcm/api/Company/543f2e0e474f229d61185565
 ```
+
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("Company");
+Model.save({"_id":"543f2e0e474f229d61185565"},{"$max": { "highScore": 950 }}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
+
+**jquery.ajax**
+```js
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/Company/543f2e0e474f229d61185565",
+  	"method": "POST",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	},
+  	"data": {"$max": { "highScore": 950 },"_method":"PUT"}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
+```
+
 更新后的文档会像:
 ```js
 { 
@@ -1129,42 +1906,7 @@ curl -X PUT \
 	"lowScore": 200 
 }
 ```
-###**$currentDate**
------
-$currentDate操作符将一个字段的值设置为当前日期,具有以下形式:
 
-```js
-{ $currentDate: { <field1>: <amount1>, <field2>: <amount2>, ... } }
-```
-
-####Example
-
-考虑有如下一个集合:
-
-```js
-{ 
-	"_id": "543f2e0e474f229d61185565",
-	"status: "a", 
-	"lastModified": ISODate("2013-10-02T01:11:18.965Z"),
-	"date": ISODate("2013-10-02T01:11:18.965Z") 
-}
-```
-使用$currentDate进行更新
-```js
-curl -X PUT \
-    -H "X-APICloud-AppId: {{your_app_id}}" \
-    -H "X-APICloud-AppKey: {{your_app_key}}" \
-    -d '{"$currentDate": {"lastModified": true,"date":{"$type": "timestamp" }}}' \
-    https://d.apicloud.com/mcm/api/modelName/543f2e0e474f229d61185565
-```
-更新后的文档会像:
-```js
-{
-   "_id" : "543f2e0e474f229d61185565",
-   "lastModified" : ISODate("2014-09-17T23:25:56.314Z"),
-   "date" : Timestamp(1410996356, 1)
-}
-```
 ###**$push**
 -----
 
@@ -1193,13 +1935,47 @@ $push操作符将指定值添加到数组中,具有以下形式:
 }
 ```
 使用$push进行更新
+
+**curl**
 ```js
 curl -X PUT \
     -H "X-APICloud-AppId: {{your_app_id}}" \
-    -H "X-APICloud-AppKey: {{your_app_key}}" \
+    -H "X-APICloud-AppKey: {{加密后的key}}" \
     -d '{"$push": { quizzes: { "wk": 5, "score": 8 }}}' \
-    https://d.apicloud.com/mcm/api/modelName/543f2e0e474f229d61185565
+    https://d.apicloud.com/mcm/api/Company/543f2e0e474f229d61185565
 ```
+
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("Company");
+Model.save({"_id":"543f2e0e474f229d61185565"},{"$push": { quizzes: { "wk": 5, "score": 8 }}}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
+
+**jquery.ajax**
+```js
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/Company/543f2e0e474f229d61185565",
+  	"method": "POST",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	},
+  	"data": {"$push": { quizzes: { "wk": 5, "score": 8 }},"_method":"PUT"}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
+```
+
 更新后的文档会像:
 ```js
 {
@@ -1242,12 +2018,45 @@ $pushAll操作符将数组添加到数组中,具有以下形式:
 }
 ```
 使用$pushAll进行更新
+
+**curl**
 ```js
 curl -X PUT \
     -H "X-APICloud-AppId: {{your_app_id}}" \
-    -H "X-APICloud-AppKey: {{your_app_key}}" \
+    -H "X-APICloud-AppKey: {{加密后的key}}" \
     -d '{"$pushAll": { quizzes: [{ "wk": 5, "score": 8 },{ "wk": 6, "score": 14 }]}}' \
-    https://d.apicloud.com/mcm/api/modelName/543f2e0e474f229d61185565
+    https://d.apicloud.com/mcm/api/Company/543f2e0e474f229d61185565
+```
+
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("Company");
+Model.save({"_id":"543f2e0e474f229d61185565"},{"$pushAll": { quizzes: [{ "wk": 5, "score": 8 },{ "wk": 6, "score": 14 }]}}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
+
+**jquery.ajax**
+```js
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/Company/543f2e0e474f229d61185565",
+  	"method": "POST",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	},
+  	"data": {"$pushAll": { quizzes: [{ "wk": 5, "score": 8 },{ "wk": 6, "score": 14 }]},"_method":"PUT"}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
 ```
 更新后的文档会像:
 ```js
@@ -1288,12 +2097,46 @@ $pull操作符将指定项从数组中删除,具有以下形式:
 }
 ```
 使用$pull进行更新
+
+**curl**
 ```js
 curl -X PUT \
     -H "X-APICloud-AppId: {{your_app_id}}" \
-    -H "X-APICloud-AppKey: {{your_app_key}}" \
+    -H "X-APICloud-AppKey: {{加密后的key}}" \
     -d '{"$pull": { "fruits":"apples", "vegetables": "carrots" }}' \
     https://d.apicloud.com/mcm/api/modelName/543f2e0e474f229d61185565
+```
+
+
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("Company");
+Model.save({"_id":"543f2e0e474f229d61185565"},{"$pull": { "fruits":"apples", "vegetables": "carrots" }}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
+
+**jquery.ajax**
+```js
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/Company/543f2e0e474f229d61185565",
+  	"method": "POST",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	},
+  	"data": {"$pull": { "fruits":"apples", "vegetables": "carrots" },"_method":"PUT"}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
 ```
 更新后的文档会像:
 ```js
@@ -1327,13 +2170,47 @@ $pullAll 操作符将指定项从数组中删除,具有以下形式:
 }
 ```
 使用$pullAll进行更新
+
+**curl**
 ```js
 curl -X PUT \
     -H "X-APICloud-AppId: {{your_app_id}}" \
-    -H "X-APICloud-AppKey: {{your_app_key}}" \
+    -H "X-APICloud-AppKey: {{加密后的key}}" \
     -d '{"$pullAll": { "fruits": [ "apples", "oranges" ]}}' \
     https://d.apicloud.com/mcm/api/modelName/543f2e0e474f229d61185565
 ```
+
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("Company");
+Model.save({"_id":"543f2e0e474f229d61185565"},{"$pullAll": { "fruits": [ "apples", "oranges" ]}}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
+
+**jquery.ajax**
+```js
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/Company/543f2e0e474f229d61185565",
+  	"method": "POST",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	},
+  	"data": {"$pullAll": { "fruits": [ "apples", "oranges" ]},"_method":"PUT"}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
+```
+
 更新后的文档会像:
 ```js
 {
@@ -1379,31 +2256,67 @@ curl -X PUT \
 
 设置字段是否显示在结果列表内。
 
-**REST**
+**REST 语法**
 
 ```js
 filter[fields][propertyName]=<true|false>&filter[fields][propertyName]=<true|false>...
 ```
 
-**Stringified**
+**Stringified 语法**
 
 	filter={ "fields": {"propertyName": <true|false>, "propertyName": <true|false>, ... } }
 
-Examples
+###Examples
 
 只显示id,make,model字段
 
-**REST**
+**REST 语法**
 
 ```js
 GET /mcm/api/car?filter[fields][id]=true&filter[fields][make]=true&filter[fields][model]=true
 ```
 
-**Stringified**
+**Stringified 语法**
 
 ```js
 GET /mcm/api/car?filter={ "fields": {"id": true, "make": true, "model": true} }
 ```
+
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("Company");
+Model.query({
+	fields:{"id": true, "make": true, "model": true}//或者["id","make","model"]
+}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
+
+**jquery.ajax**
+```js
+var filter = {
+	fields:{"id": true, "make": true, "model": true}//或者["id","make","model"]
+}
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/Company?filter=" + encodeURIComponent(JSON.stringify(filter)),
+  	"method": "GET",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
+```
+
 
 **Returns:**
 
@@ -1425,47 +2338,117 @@ GET /mcm/api/car?filter={ "fields": {"id": true, "make": true, "model": true} }
 
 排除vin字段
 
-**REST**
+**REST 语法**
 
 ```js
 GET /mcm/api/car?filter[fields][vin]=false
 ```
 
-**Stringified**
+**Stringified 语法**
 ```js
 GET /mcm/api/car?filter={ "fields": {"vin": false} }
+```
+
+###Examples
+
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("Company");
+Model.query({
+	fields:{"vin": false}
+}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
+
+**jquery.ajax**
+```js
+var filter = {
+	fields:{"vin": false}
+}
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/Company?filter=" + encodeURIComponent(JSON.stringify(filter)),
+  	"method": "GET",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
 ```
 
 ##条数过滤(Limit filter)
 
 限制返回的记录数指定的数量(或更少)
 
-**REST**
+**REST 语法**
 ```js
 filter[limit]=n
 ```
 
-**Stringified**
+**Stringified 语法**
 ```js
 filter={"limit": n}
 ```
-Examples
+###Examples
 
 返回前5条结果
 
-**REST**
+**REST 语法**
 ```js
 GET /mcm/api/cars?filter[limit]=5
 ```
 
-**Stringified**
+**Stringified 语法**
 ```js
 GET /mcm/api/cars?filter={"limit": 5}
 ```
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("Company");
+Model.query({
+	limit:5
+}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
 
+**jquery.ajax**
+```js
+var filter = {
+	limit:5
+}
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/Company?filter=" + encodeURIComponent(JSON.stringify(filter)),
+  	"method": "GET",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
+```
 ##排序(Order filter)
 
-**REST**
+**REST 语法**
 
 一列
 ```js
@@ -1477,7 +2460,7 @@ filter[order]=propertyName<ASC|DESC>
 filter[order][0]=propertyName <ASC|DESC>&filter[order][1]=propertyName <ASC|DESC>...
 ```
 
-**Stringified**
+**Stringified 语法**
 
 一列
 
@@ -1490,19 +2473,55 @@ filter={ "order": "propertyName <ASC|DESC>" }
 filter={ "order": ["propertyName <ASC|DESC>", "propertyName <ASC|DESC>",...] }
 ```
 
-Examples
+###Examples
 
 按audibleRange 进行倒叙排序，并限制返回3条数据
 
-**REST**
+**REST 语法**
 ```js
 GET /mcm/api/weapons?filter[order]=audibleRange DESC&filter[limit]=3
 ```
-**Stringified**
+**Stringified 语法**
 ```js
 GET /mcm/api/weapons?filter={"order": "audibleRange DESC", "limit": 3 }
 ```
 
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("Company");
+Model.query({
+	"order": "audibleRange DESC", 
+	"limit": 3
+}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
+
+**jquery.ajax**
+```js
+var filter = {
+	"order": "audibleRange DESC", 
+	"limit": 3
+}
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/Company?filter=" + encodeURIComponent(JSON.stringify(filter)),
+  	"method": "GET",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
+```
 **跳过(Skip filter)**
 
 跳过一些数据后返回
@@ -1512,27 +2531,63 @@ GET /mcm/api/weapons?filter={"order": "audibleRange DESC", "limit": 3 }
 filter[skip]=n
 ```
 
-**Stringified**
+**Stringified 语法**
 ```js
 filter={ "skip": n }
 ```
-Examples
+###Examples
 
-**REST**
+**REST 语法**
 ```js
 GET /mcm/api/cars?filter[limit]=10&filter[skip]=20
 ```
 
-**Stringified**
+**Stringified 语法**
 ```js
 GET /mcm/api/cars?filter={"limit":10,"skip":20}
 ```
 
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("Company");
+Model.query({
+	"limit":10,
+	"skip":20
+}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
+
+**jquery.ajax**
+```js
+var filter = {
+	"limit":10,
+	"skip":20
+}
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/Company?filter=" + encodeURIComponent(JSON.stringify(filter)),
+  	"method": "GET",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
+```
 ##条件过滤(Where filter)
 
 在过滤器指定一组逻辑条件匹配,类似于一个where子句的SQL查询
 
-**REST**
+**REST 语法**
 
 ```js
 filter[where][property]=value
@@ -1542,14 +2597,49 @@ filter[where][property][op]=value
 ```js
 GET /mcm/api/cars?filter[where][carClass]=fullsize
 ```
-**Stringified**
+**Stringified 语法**
 ```js
 filter={"where": {"property": value}}
 filter={"where": {"property": {"op": value}}}
 ```
-Examples
+###Examples
 ```js
 GET /mcm/api/cars?filter={"where":{"carClass":"fullsize"}}
+```
+
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("Company");
+Model.query({
+	"where":{"carClass":"fullsize"}
+}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
+
+**jquery.ajax**
+```js
+var filter = {
+	"where":{"carClass":"fullsize"}
+}
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/Company?filter=" + encodeURIComponent(JSON.stringify(filter)),
+  	"method": "GET",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
 ```
 **操作符**
 
@@ -1568,73 +2658,303 @@ GET /mcm/api/cars?filter={"where":{"carClass":"fullsize"}}
 
 equal
 
-**REST**
+**REST 语法**
 ```js
 GET /mcm/api/weapons?filter[where][name]=M1911
 ```
-**Stringified**
+**Stringified 语法**
 ```js
 GET /mcm/api/weapons?filter={"where":{"name":"M1911"}}
 ```
 ##gt and lt
 
-**REST**
+**REST 语法**
 ```js
 GET /mcm/api/weapons?filter[where][effectiveRange][gt]=900
 GET /mcm/api/weapons?filter[where][audibleRange][lt]=10
 ```
-**Stringified**
+**Stringified 语法**
 ```js
 GET /mcm/api/weapons?filter={"where":{"effectiveRange":{"gt":900}}}
 GET /mcm/api/weapons?filter={"where":{"audibleRange":{"lt":10}}}
 ```
+###Examples
+
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("Company");
+Model.query({
+	"where":{
+		"effectiveRange":{"gt":900},
+		"audibleRange":{"lt":10}
+	}
+}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
+
+**jquery.ajax**
+```js
+var filter = {
+	"where":{
+		"effectiveRange":{"gt":900},
+		"audibleRange":{"lt":10}
+	}
+}
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/Company?filter=" + encodeURIComponent(JSON.stringify(filter)),
+  	"method": "GET",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
+```
+
 ##and / or
 
 **语法**
 ```js
 [where][<and|or>][0]condition1&[where][<and|or>]condition2...
 ```
-**REST**
+**REST 语法**
 ```js
 GET /mcm/api/cars?filter[where][and][0][title]=My%20Post&filter[where][and][1][content]=Hello
 ```
-**Stringified**
+**Stringified 语法**
 ```js
 GET /mcm/api/cars?filter={"where": {"and": [{"title": "My Post"}, {"content": "Hello"}]}}
 ```
+
+###Examples
+
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("Company");
+Model.query({
+	"where": {
+		"and": [
+			{"title": "My Post"}, 
+			{"content": "Hello"}
+		]
+	}
+}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
+
+**jquery.ajax**
+```js
+var filter = {
+	"where": {
+		"and": [
+			{"title": "My Post"}, 
+			{"content": "Hello"}
+		]
+	}
+}
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/Company?filter=" + encodeURIComponent(JSON.stringify(filter)),
+  	"method": "GET",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
+```
+
 ##between
 
-**REST**
+**REST 语法**
 ```js
 GET /mcm/api/cars?filter[where][price][between][0]=0&filter[where][price][between][1]=7
 ```
-**Stringified**
+**Stringified 语法**
 ```js
 GET /mcm/api/cars?filter={"where":{"price":{"between":[0,7]}}}
 ```
+
+###Examples
+
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("Company");
+Model.query({
+	"where": {
+		"price":{"between":[0,7]}
+	}
+}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
+
+**jquery.ajax**
+```js
+var filter = {
+	"where": {
+		"price":{"between":[0,7]}
+	}
+}
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/Company?filter=" + encodeURIComponent(JSON.stringify(filter)),
+  	"method": "GET",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
+```
+
 ##near
 
 **查询的是GeoPoint列，格式为：维度,经度**
 
-**REST**
+**REST 语法**
 ```js
 GET /mcm/api/locations?filter[where][geo][near]=-28.1,153.536&filter[limit]=3
 ```
-**Stringified**
+**Stringified 语法**
 ```js
-GET /mcm/api//locations?filter={"where:{"geo":{"near":"-28.1,153.536"}},"limit":3}
+GET /mcm/api//locations?filter={"where":{"geo":{"near":"-28.1,153.536"}},"limit":3}
+```
+
+###Examples
+
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("Company");
+Model.query({
+	"where":{
+		"geo":{
+			"near":"-28.1,153.536"
+		}
+	},
+	"limit":3
+}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
+
+**jquery.ajax**
+```js
+var filter = {
+	"where":{
+		"geo":{
+			"near":"-28.1,153.536"
+		}
+	},
+	"limit":3
+}
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/Company?filter=" + encodeURIComponent(JSON.stringify(filter)),
+  	"method": "GET",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
 ```
 
 ###maxDistance
 对地理位置做范围限制，必须配合near使用
-**REST**
+**REST 语法**
 ```js
 GET /mcm/api/locations?filter[where][geo][near]=-28.1,153.536&filter[where][geo][maxDistance]=1000&filter[limit]=3
 ```
-**Stringified**
+**Stringified 语法**
 ```js
-GET /mcm/api//locations?filter={"where:{"geo":{"near":"-28.1,153.536"，"maxDistance":1000}},"limit":3}
+GET /mcm/api//locations?filter={"where":{"geo":{"near":"-28.1,153.536","maxDistance":1000}},"limit":3}
 ```
+
+###Examples
+
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("Company");
+Model.query({
+	"where":{
+		"geo":{
+			"near":"-28.1,153.536",
+			"maxDistance":1000
+		}
+	},
+	"limit":3
+}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
+
+**jquery.ajax**
+```js
+var filter = {
+	"where":{
+		"geo":{
+			"near":"-28.1,153.536",
+			"maxDistance":1000
+		}
+	},
+	"limit":3
+}
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/Company?filter=" + encodeURIComponent(JSON.stringify(filter)),
+  	"method": "GET",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
+```
+
 ###type
 对地理位置做范围单位限制，必须配合near使用，默认为meters
 类型
@@ -1645,49 +2965,193 @@ GET /mcm/api//locations?filter={"where:{"geo":{"near":"-28.1,153.536"，"maxDist
   - feet(英尺)
   - degrees(角度)
 
-**REST**
+**REST 语法**
 ```js
 GET /mcm/api/locations?filter[where][geo][near]=-28.1,153.536&filter[where][geo][maxDistance]=1000&filter[where][geo][type]=kilometers&filter[limit]=3
 ```
-**Stringified**
+**Stringified 语法**
 ```js
-GET /mcm/api//locations?filter={"where:{"geo":{"near":"-28.1,153.536"，"maxDistance":1000,"type":"kilometers"}},"limit":3}
+GET /mcm/api//locations?filter={"where":{"geo":{"near":"-28.1,153.536","maxDistance":1000,"type":"kilometers"}},"limit":3}
+```
+
+###Examples
+
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("Company");
+Model.query({
+	"where":{
+		"geo":{
+			"near":"-28.1,153.536",
+			"maxDistance":1000,
+			"type":"kilometers"
+		}
+	},
+	"limit":3
+}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
+
+**jquery.ajax**
+```js
+var filter = {
+	"where":{
+		"geo":{
+			"near":"-28.1,153.536",
+			"maxDistance":1000,
+			"type":"kilometers"
+		}
+	},
+	"limit":3
+}
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/Company?filter=" + encodeURIComponent(JSON.stringify(filter)),
+  	"method": "GET",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
 ```
 ##like and nlike
 
-**REST**
+**REST 语法**
 ```js
 GET /mcm/api/Post?filter[where][title][like]=M.+st
 GET /mcm/api/Post?filter[where][title][nlike]=M.+XY
 GET /mcm/api/User?filter[where][name][like]=%St%
 GET /mcm/api/User?filter[where][name][nlike]=M%XY
 ```
-**Stringified**
+**Stringified 语法**
 ```js
 GET /mcm/api/Post?filter={"where":{"title": {"like": "M.+st"}}}
 GET /mcm/api/Post?filter={"where":{"title": {"nlike": "M.+XY"}}}
 GET /mcm/api/User?filter={"where": {"name": {"like": "%St%"}}}
 GET /mcm/api/User?filter={"where": {"name": {"nlike": "M%XY"}}}
 ```
+
+###Examples
+
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("Company");
+Model.query({
+	"where":{
+		"title":{
+			"like":"M.+st"
+		},
+		"name::{
+			"nlike":"M%XY"
+		}
+	}
+}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
+
+**jquery.ajax**
+```js
+var filter = {
+	"where":{
+		"title":{
+			"like":"M.+st"
+		},
+		"name::{
+			"nlike":"M%XY"
+		}
+	}
+}
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/Company?filter=" + encodeURIComponent(JSON.stringify(filter)),
+  	"method": "GET",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
+```
 ##inq
 
-**REST**
+**REST 语法**
 ```js
 GET /mcm/api/medias?filter[where][keywords][inq]=foo&filter[where][keywords][inq]=bar
 ```
-**Stringified**
+**Stringified 语法**
 ```js
 GET /mcm/api/medias?filter={"where": {"keywords": {"inq": ["foo", "bar"]}}}
 ```
+
+###Examples
+
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("Company");
+Model.query({
+	"where":{
+		"keywords": {"inq": ["foo", "bar"]}
+	}
+}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
+
+**jquery.ajax**
+```js
+var filter = {
+	"where":{
+		"keywords": {"inq": ["foo", "bar"]}
+	}
+}
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/Company?filter=" + encodeURIComponent(JSON.stringify(filter)),
+  	"method": "GET",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
+```
+
 ##关系过滤(Include filter)
 
 查询relation,pointer相关的数据
 
-**REST**
+**REST 语法**
 ```js
 GET /mcm/api/cars?filter[include][relatedModel]=propertyName
 ```
-**Stringified**
+**Stringified 语法**
 ```js
 GET /mcm/api/cars?filter={"include": "relatedModel"}
 GET /mcm/api/cars?filter={"include": ["relatedModel1", "relatedModel2", ...]}
@@ -1695,14 +3159,49 @@ GET /mcm/api/cars?filter={"include": {"relatedModel1": [{"relatedModel2": "prope
 ```
 ##Examples
 
-**REST**
+**REST 语法**
 ```js
 GET /mcm/api/members?filter[include]=posts
 ```
-**Stringified**
+**Stringified 语法**
 ```js
 GET /mcm/api/members?filter={"include":"posts"}
 ```
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("Company");
+Model.query({
+	"include":"posts"
+}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
+
+**jquery.ajax**
+```js
+var filter = {
+	"include":"posts"
+}
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/Company?filter=" + encodeURIComponent(JSON.stringify(filter)),
+  	"method": "GET",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
+```
+
 **Returns**
 
 ```js
@@ -1744,13 +3243,47 @@ GET /mcm/api/members?filter={"include":"posts"}
 ... ]
 ```
 
-**REST**
+**REST 语法**
 ```js
 GET /mcm/api/members?filter[include][posts]=authorPointer
 ```
-**Stringified**
+**Stringified 语法**
 ```js
 GET /mcm/api/members?filter={"include":{"posts":"authorPointer"}}
+```
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("Company");
+Model.query({
+	"include":{"posts":"authorPointer"}
+}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
+
+**jquery.ajax**
+```js
+var filter = {
+	"include":{"posts":"authorPointer"}
+}
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/Company?filter=" + encodeURIComponent(JSON.stringify(filter)),
+  	"method": "GET",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
 ```
 **Returns**
 
@@ -1812,15 +3345,50 @@ GET /mcm/api/members?filter={"include":{"posts":"authorPointer"}}
   }, ... ]
 ```
 
-**REST**
+**REST 语法**
 ```js
 GET /api/members?filter[include][posts]=authorPointer&filter[where][age]=21
 ```
-**Stringified**
+**Stringified 语法**
 ```js
 GET /api/members?filter={"include":{"posts":"authorPointer"},"where":{"age":21}}
 ```
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("Company");
+Model.query({
+	"include":{"posts":"authorPointer"},
+	"where":{"age":21}
+}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
 
+**jquery.ajax**
+```js
+var filter = {
+	"include":{"posts":"authorPointer"},
+	"where":{"age":21}
+}
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/Company?filter=" + encodeURIComponent(JSON.stringify(filter)),
+  	"method": "GET",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
+```
 **Returns**
 
 ```js
@@ -1865,13 +3433,49 @@ GET /api/members?filter={"include":{"posts":"authorPointer"},"where":{"age":21}}
 ]
 ```
 
-**REST**
+**REST 语法**
 ```js
 GET /mcm/api/members?filter[include][posts]=authorPointer&filter[limit]=2
 ```
-**Stringified**
+**Stringified 语法**
 ```js
 GET /mcm/api/members?filter={"include":{"posts":"authorPointer"},"limit":2}
+```
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("Company");
+Model.query({
+	"include":{"posts":"authorPointer"},
+	"limit":2
+}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
+
+**jquery.ajax**
+```js
+var filter = {
+	"include":{"posts":"authorPointer"},
+	"limit":2
+}
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/Company?filter=" + encodeURIComponent(JSON.stringify(filter)),
+  	"method": "GET",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
 ```
 **Returns**
 
@@ -1934,15 +3538,48 @@ GET /mcm/api/members?filter={"include":{"posts":"authorPointer"},"limit":2}
 ]
 ```
 
-**REST**
+**REST 语法**
 ```js
 GET /mcm/api/members?filter[include]=posts&filter[include]=passports
 ```
-**Stringified**
+**Stringified 语法**
 ```js
 GET /mcm/api/members?filter={"include":["posts","passports"]}
 ```
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("Company");
+Model.query({
+	"include":["posts","passports"]
+}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
 
+**jquery.ajax**
+```js
+var filter = {
+	"include":["posts","passports"]
+}
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/Company?filter=" + encodeURIComponent(JSON.stringify(filter)),
+  	"method": "GET",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
+```
 **Returns**
 
 ```js
@@ -2002,11 +3639,11 @@ GET /mcm/api/members?filter={"include":["posts","passports"]}
 
 对relation,pointer相关的数据进行过滤，必须配合include使用
 
-**REST**
+**REST 语法**
 ```js
 GET /mcm/api/cars?filter[include][relatedModel]=propertyName&filter[includefilter][relatedModelName][limit]=2
 ```
-**Stringified**
+**Stringified 语法**
 ```js
 GET /mcm/api/cars?filter={"include": "relatedModel","includefilter":{"relatedModelName":{"limit":2}}}
 GET /mcm/api/cars?filter={"include": ["relatedModel1", "relatedModel2", ...],"includefilter":{"relatedModel1Name":{"limit":2},"relatedModel2Name":{"where":{"propertyName":"username"}}}}
@@ -2017,13 +3654,49 @@ GET /mcm/api/cars?filter={"include": {"relatedModel1": [{"relatedModel2": "prope
 
 ##Examples
 
-**REST**
+**REST 语法**
 ```js
 GET /mcm/api/members?filter[include]=posts&filter[includefilter][Posts][limit]=2
 ```
-**Stringified**
+**Stringified 语法**
 ```js
 GET /mcm/api/members?filter={"include":"posts","includefilter":{"Posts":{"limit":2}}}
+```
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("Company");
+Model.query({
+	"include":"posts",
+	"includefilter":{"Posts":{"limit":2}}
+}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
+
+**jquery.ajax**
+```js
+var filter = {
+	"include":"posts",
+	"includefilter":{"Posts":{"limit":2}}
+}
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/Company?filter=" + encodeURIComponent(JSON.stringify(filter)),
+  	"method": "GET",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
 ```
 **Returns**
 
@@ -2061,14 +3734,51 @@ GET /mcm/api/members?filter={"include":"posts","includefilter":{"Posts":{"limit"
 ... ]
 ```
 
-**REST**
+**REST 语法**
 ```js
 GET /mcm/api/members?filter[include][posts]=authorPointer&filter["includefilter"][author][fields]=id&filter["includefilter"][author][fields]=name
 ```
-**Stringified**
+**Stringified 语法**
 ```js
 GET /mcm/api/members?filter={"include":{"posts":"authorPointer"},"includefilter":{"author":{"fields":["id","name"]}}}
 ```
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("Company");
+Model.query({
+	"include":{"posts":"authorPointer"},
+	"includefilter":{"author":{"fields":["id","name"]}}
+}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
+
+**jquery.ajax**
+```js
+var filter = {
+	"include":{"posts":"authorPointer"},
+	"includefilter":{"author":{"fields":["id","name"]}}
+}
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/Company?filter=" + encodeURIComponent(JSON.stringify(filter)),
+  	"method": "GET",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
+```
+
 **Returns**
 
 ```js
@@ -2125,13 +3835,57 @@ GET /mcm/api/members?filter={"include":{"posts":"authorPointer"},"includefilter"
   }, ... ]
 ```
 
-**REST**
+**REST 语法**
 ```js
 GET /api/members?filter[include][posts]=authorPointer&filter[where][age]=21&filter[includefilter][post][where][title]=Post A&filter[includefilter][author][fields]=id&filter[includefilter][author][fields]=name
 ```
-**Stringified**
+**Stringified 语法**
 ```js
 GET /api/members?filter={"include":{"posts":"authorPointer"},"where":{"age":21},"includefilter":{"post":{"where":{"title":"Post A"}},"author":{"fields":["id","name"]}}}
+```
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("Company");
+Model.query({	
+	"where":{"age":21},
+	"include":{"posts":"authorPointer"},
+	"includefilter":{
+		"post":{"where":{"title":"Post A"}},
+		"author":{"fields":["id","name"]}
+	}
+}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
+
+**jquery.ajax**
+```js
+var filter = {
+	"where":{"age":21},
+	"include":{"posts":"authorPointer"},
+	"includefilter":{
+		"post":{"where":{"title":"Post A"}},
+		"author":{"fields":["id","name"]}
+	}
+}
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/Company?filter=" + encodeURIComponent(JSON.stringify(filter)),
+  	"method": "GET",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
 ```
 
 **Returns**
@@ -2157,14 +3911,54 @@ GET /api/members?filter={"include":{"posts":"authorPointer"},"where":{"age":21},
 ]
 ```
 
-**REST**
+**REST 语法**
 ```js
 GET /mcm/api/members?filter[include][posts]=authorPointer&filter[limit]=2&filter[includefilter][post][limit]=2
 ```
-**Stringified**
+**Stringified 语法**
 ```js
 GET /mcm/api/members?filter={"include":{"posts":"authorPointer"},"limit":2,"includefilter":{"post":{"limit":2}}}
 ```
+
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("Company");
+Model.query({	
+	"include":{"posts":"authorPointer"},
+	"limit":2,
+	"includefilter":{"post":{"limit":2}}
+}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
+
+**jquery.ajax**
+```js
+var filter = {
+	"include":{"posts":"authorPointer"},
+	"limit":2,
+	"includefilter":{"post":{"limit":2}}
+}
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/Company?filter=" + encodeURIComponent(JSON.stringify(filter)),
+  	"method": "GET",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
+```
+
 **Returns**
 
 ```js
@@ -2216,15 +4010,58 @@ GET /mcm/api/members?filter={"include":{"posts":"authorPointer"},"limit":2,"incl
 ]
 ```
 
-**REST**
+**REST 语法**
 ```js
 GET /mcm/api/members?filter[include]=posts&filter[include]=passports&filter[limit]=5&filter[includefilter][post][limit]=1&filter[includefilter][passport][limit]=1
 ```
-**Stringified**
+**Stringified 语法**
 ```js
 GET /mcm/api/members?filter={"include":["posts","passports"],"limit":5,"includefilter":{post:{"limit":1},"passport":{"limit":1}}}
 ```
+**js-sdk**
+```js
+var client = new Resource("appId", "appKey");
+var Model = client.Factory("Company");
+Model.query({	
+	"include":["posts","passports"],
+	"limit":5,
+	"includefilter":{
+		post:{"limit":1},
+		"passport":{"limit":1}
+	}
+}, function(ret,err){
+	if(err){
+		//处理错误 err
+	}else{
+		//处理数据 ret
+	}
+})
+```	
 
+**jquery.ajax**
+```js
+var filter = {
+	"include":["posts","passports"],
+	"limit":5,
+	"includefilter":{
+		post:{"limit":1},
+		"passport":{"limit":1}
+	}
+}
+$.ajax({
+  	"url": "https://d.apicloud.com/mcm/api/Company?filter=" + encodeURIComponent(JSON.stringify(filter)),
+  	"method": "GET",
+  	"cache": false,
+  	"headers": {
+    	"X-APICloud-AppId": "{{your_app_id}}",
+    	"X-APICloud-AppKey": "{{加密后的key}}"
+  	}
+}).success(function (data, status, header) {
+  	//success body
+}).fail(function (header, status, errorThrown) {
+  	//fail body
+})
+```
 **Returns**
 
 ```js

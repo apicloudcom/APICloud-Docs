@@ -46,17 +46,6 @@ y：
 - 默认值：64
 - 描述：选择器视图左上角点坐标，可为空
 
-<del>width：</del>
-
-- <del>类型：数字</del>
-- <del>默认值：当前设备屏幕的宽度</del>
-- <del>描述：选择器视图宽，可为空</del>
-
-<del>height：</del>
-
-- <del>类型：数字</del>
-- <del>默认值：宽度减70px</del>
-- <del>描述：选择器视图高，可为空</del>
 
 w：
 
@@ -76,11 +65,6 @@ lHour：
 - 默认值：0
 - 描述：时段选择器开始时间-时，可为空
 
-<del>lMinit：</del>
-
-- <del>类型：数字</del>
-- <del>默认值：0</del>
-- <del>描述：时段选择器开始时间-分，可为空</del>
 
 lMinute：
 
@@ -94,11 +78,6 @@ rHour：
 - 默认值：0
 - 描述：时段选择器结束时间-时，可为空
 
-<del>rMinit：</del>
-
-- <del>类型：数字</del>
-- <del>默认值：0</del>
-- <del>描述：时段选择器结束时间-分，可为空</del>
 
 rMinit：
 
@@ -138,9 +117,9 @@ titleColor：
 
 fixedOn：
 
-- 类型：字符串
-- 默认值：当前主窗口的名字
-- 描述：将此模块视图添加到指定窗口的名字，可为空
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 fixed:
 - 类型：布尔
@@ -160,7 +139,10 @@ ret：
 	sHour:			//选择的起始小时
 	sMinit: 		//选择的起始分钟 deprecated
 	eHour:          //选择的结束小时
-	eMinit:         //选择的结束分钟deprecated    eMinute:        //选择的结束分钟    sMinute:        //选择的起始分钟
+	eMinit:         //选择的结束分钟deprecated
+    eMinute:        //选择的结束分钟
+    sMinute:        //选择的起始分钟
+
 
 }
 ```
@@ -168,14 +150,19 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('periodSelector');
-obj.open({
-	x: 0,
-	y:64,
-	w:320,
-	h:250
-}, function(ret, err){
-	ret.sHour+'*'+ret.sMinute+'---'+ret.eHour+'*'+ret.eMinute
+var periodSelector = api.require('periodSelector');
+periodSelector.open({
+	x: 30,
+	y: api.frameHeight / 2 - 170,
+	w: api.frameWidth - 60,
+	h: 340,
+    fixedOn: api.frameName
+}, function( ret, err ){
+	if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -205,12 +192,6 @@ lHour：
 - 默认值：当前时间的时
 - 描述：时段选择器开始时间-时，可为空
 
-<del>lMinit：</del>
-
-- <del>类型：数字</del>
-- <del>默认值：当前时间的分</del>
-- <del>描述：时段选择器开始时间-分，可为空</del>
-
 lMinute：
 
 - 类型：数字
@@ -223,11 +204,6 @@ rHour：
 - 默认值：当前时间的时
 - 描述：时段选择器结束时间-时，可为空
 
-<del>rMinit：</del>
-
-- <del>类型：数字</del>
-- <del>默认值：当前时间的分</del>
-- <del>描述：时段选择器结束时间-分，可为空</del>
 
 rMinute：
 
@@ -237,8 +213,10 @@ rMinute：
 
 ##示例代码
 
-    var obj = api.require('periodSelector');
-    obj.set();
+```js
+var periodSelector = api.require('periodSelector');
+periodSelector.set();
+```
 
 ##补充说明
 
@@ -259,8 +237,10 @@ close()
 
 ##示例代码
 
-    var obj = api.require('periodSelector');
-    obj.close();
+```js
+var periodSelector = api.require('periodSelector');
+periodSelector.close();
+```
 
 ##补充说明
 
@@ -280,8 +260,10 @@ hide()
 
 ##示例代码
 
-    var obj = api.require('periodSelector');
-    obj.hide();
+```js
+var periodSelector = api.require('periodSelector');
+periodSelector.hide();
+```
 
 ##补充说明
 
@@ -301,8 +283,10 @@ show()
 
 ##示例代码
 
-    var obj = api.require('periodSelector');
-    obj.show();
+```js
+var periodSelector = api.require('periodSelector');
+periodSelector.show();
+```
 
 ##补充说明
 

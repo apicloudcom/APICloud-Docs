@@ -50,8 +50,12 @@ ret：
 {
     status: true,                //布尔型；true||false
     id: 0,                       //数字类型；系统分配的联系人 id
-    lastName: '',                //字符串类型；联系人姓氏
-    firstName: '',               //字符串类型；联系人名字
+    lastName: '',                //字符串类型；联系人姓氏，若该联系人此信息缺少则本字段为undefine
+    firstName: '',               //字符串类型；联系人名字，若该联系人此信息缺少则本字段为undefine
+    middleName: '',              //字符串类型；联系人中间名，若该联系人此信息缺少则本字段为undefine
+    prefix: '',                  //字符串类型；名称前缀，若该联系人此信息缺少则本字段为undefine
+    suffix: '',                  //字符串类型；名称后缀，若该联系人此信息缺少则本字段为undefine
+    fullName: '',                //字符串类型；联系人全名，若该联系人此信息缺少则本字段为undefine
     phones: [{'工作': '10086'}], //数组类型；联系人电话组成的数组
                                  //内部字段：[{"标签": '号码'}]                    
     email: '',                   //字符串类型；邮箱
@@ -89,10 +93,12 @@ err：
 
 ```js
 var contacts = api.require('contacts');
-contacts.select(function(ret, err){
-	if(ret.status){
-	   alert(JSON.stringify(ret));
-	}
+contacts.select(function( ret, err ){
+	if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -125,6 +131,21 @@ firstName：
 
 - 类型：字符串
 - 描述：（可选项）联系人名字
+
+middleName：
+
+- 类型：字符串
+- 描述：（可选项）联系人中间名
+
+prefix：
+
+- 类型：字符串
+- 描述：（可选项）联系人名称前缀
+
+suffix：
+
+- 类型：字符串
+- 描述：（可选项）联系人名称后缀
 
 phones：
 
@@ -212,6 +233,9 @@ contacts.add({
 	groupId: 1,
 	lastName: '张',
     firstName: '三丰',
+	middleName: '太极',
+    prefix: '他',
+	suffix: '牛',
 	phones: [{
         '住宅': '12345678'
     },{
@@ -228,10 +252,12 @@ contacts.add({
 		ZIP: '100000'
 	},
 	note: '无'
-}, function(ret){
-	if(ret.status){
-	   api.alert({msg:'添加成功'});
-	}
+}, function( ret, err ){
+	if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -287,12 +313,12 @@ err：
 var contacts = api.require('contacts');
 contacts.delete({
 	ids: [1, 2]
-}, function(ret, err){
-	if(ret.status) {
-		api.alert({msg:'删除成功'});
-	}else{
-		api.alert({msg:'删除失败'});
-	} 
+}, function( ret, err ){
+	if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -325,6 +351,21 @@ firstName：
 
 - 类型：字符串
 - 描述：（可选项）联系人名字
+
+middleName：
+
+- 类型：字符串
+- 描述：（可选项）联系人中间名
+
+prefix：
+
+- 类型：字符串
+- 描述：（可选项）联系人名称前缀
+
+suffix：
+
+- 类型：字符串
+- 描述：（可选项）联系人名称后缀
 
 phones：
 
@@ -411,6 +452,9 @@ contacts.update({
     id: 1,
     lastName: '李',
     firstName: '四',
+	middleName: 'Cloud',
+    prefix: 'API',
+	suffix: '柚子',
     phones: [{
         '住宅': '12345678'
     },{
@@ -427,12 +471,12 @@ contacts.update({
         ZIP: '100000'
     },
     note: '无'
-}, function(ret){
-	if(ret.status){
-		api.alert({msg:'修改成功'});
-	}else{
-		api.alert({msg:err.msg});
-	}
+}, function( ret, err ){
+	if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -495,9 +539,11 @@ var contacts = api.require('contacts');
 contacts.move({
     id: 10,
     groupId: 20
-}, function(ret, err){
-    if(ret.status){
-        alert('移动分组成功');
+}, function( ret, err ){
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -534,8 +580,12 @@ ret：
     status: true,                   //布尔型；true||false
     contacts: [{                    
         id: 1,                      //数字类型；联系人的 id
-        lastName: '',               //字符串类型；联系人姓氏
-        firstName: '',              //字符串类型；联系人名字
+	    lastName: '',                //字符串类型；联系人姓氏，若该联系人此信息缺少则本字段为undefine
+	    firstName: '',               //字符串类型；联系人名字，若该联系人此信息缺少则本字段为undefine
+	    middleName: '',              //字符串类型；联系人中间名，若该联系人此信息缺少则本字段为undefine
+	    prefix: '',                  //字符串类型；名称前缀，若该联系人此信息缺少则本字段为undefine
+	    suffix: '',                  //字符串类型；名称后缀，若该联系人此信息缺少则本字段为undefine
+       fullName: '',                //字符串类型；联系人全名，若该联系人此信息缺少则本字段为undefine
         phones: [{'工作', '123'}],  //数组类型；联系人电话组成的数组
                                     //内部字段：[{"标签":"号码"}]
         email: '',                  //字符串类型；邮箱
@@ -573,10 +623,12 @@ err：
 var contacts = api.require('contacts');
 contacts.query({
     ids: [1, 2]
-}, function(ret, err){
-	if(ret.status){
-		alert(JSON.stringify(ret.contacts));
-	}
+}, function( ret, err ){
+	if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -612,8 +664,12 @@ ret：
     status: true,                   //布尔型；true||false
     contacts: [{                    
         id: 1,                      //数字类型；联系人的 id
-        lastName: '',               //字符串类型；联系人姓氏
-        firstName: '',              //字符串类型；联系人名字
+	    lastName: '',                //字符串类型；联系人姓氏，若该联系人此信息缺少则本字段为undefine
+	    firstName: '',               //字符串类型；联系人名字，若该联系人此信息缺少则本字段为undefine
+	    middleName: '',              //字符串类型；联系人中间名，若该联系人此信息缺少则本字段为undefine
+	    prefix: '',                  //字符串类型；名称前缀，若该联系人此信息缺少则本字段为undefine
+	    suffix: '',                  //字符串类型；名称后缀，若该联系人此信息缺少则本字段为undefine
+       fullName: '',                //字符串类型；联系人全名，若该联系人此信息缺少则本字段为undefine
         phones: [{'工作', '123'}],  //数组类型；联系人电话组成的数组
                                     //内部字段：[{"标签":"号码"}]
         email: '',                  //字符串类型；邮箱
@@ -652,10 +708,10 @@ var contacts = api.require('contacts');
 contacts.queryByKeyword({
     keyword: '孙'
 }, function(ret, err){
-    if(ret.status){   
-        alert(JSON.stringify(ret.contacts));
+    if( ret ){
+        alert( JSON.stringify( ret ) );
     }else{
-        api.alert({msg: '获取失败'});
+        alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -700,8 +756,12 @@ ret：
     pages: 10,                      //数字类型；联系人总页数
     contacts: [{                    
         id: 1,                      //数字类型；联系人的 id
-        lastName: '',               //字符串类型；联系人姓氏
-        firstName: '',              //字符串类型；联系人名字
+	    lastName: '',                //字符串类型；联系人姓氏，若该联系人此信息缺少则本字段为undefine
+	    firstName: '',               //字符串类型；联系人名字，若该联系人此信息缺少则本字段为undefine
+	    middleName: '',              //字符串类型；联系人中间名，若该联系人此信息缺少则本字段为undefine
+	    prefix: '',                  //字符串类型；名称前缀，若该联系人此信息缺少则本字段为undefine
+	    suffix: '',                  //字符串类型；名称后缀，若该联系人此信息缺少则本字段为undefine
+       fullName: '',                //字符串类型；联系人全名，若该联系人此信息缺少则本字段为undefine
         phones: [{'工作', '123'}],  //数组类型；联系人电话组成的数组
                                     //内部字段：[{"标签":"号码"}]
         email: '',                  //字符串类型；邮箱
@@ -736,34 +796,16 @@ err：
 ##示例代码
 
 ```js
-var pageIndex = 0,  //分页索引 
-    pages;          //总页数
 var contacts = api.require('contacts');
 contacts.queryByPage({
     count: 20,
-    pageIndex: pageIndex
-}, function(ret){
-    if(ret.status){
-        alert(JSON.stringify(ret.contacts));
-        pages = ret.pages;
+    pageIndex: 0
+}, function( ret, err ){
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
     }
-});
-
-api.addEventListener({
-    name:'scrolltobottom'
-},function(ret,err){
-    ++pageIndex;
-    if(pageIndex >= pages - 1){
-        return;
-    }
-    contacts.queryByPage({
-        count: 20,
-        pageIndex: pageIndex
-    }, function(ret){
-        if(ret.status){
-            alert(JSON.stringify(ret.contacts));
-        }
-    });
 });
 ```
 
@@ -819,10 +861,12 @@ err：
 var contacts = api.require('contacts');
 contacts.createGroup({
     groupName: '同学'
-}, function(ret, err){
-	if(ret.status){
-        alert('分组id为：'+ ret.groupId);
-	}
+}, function( ret, err ){
+	if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -878,9 +922,11 @@ err：
 var contacts = api.require('contacts');
 contacts.deleteGroup({
     groupId: 1
-}, function(ret, err){
-    if(ret.status){
-        api.alert({msg: '删除分组成功'});
+}, function( ret, err ){
+   if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -931,10 +977,12 @@ err：
 
 ```js
 var contacts = api.require('contacts');
-contacts.queryGroups(function(ret, err){
-    if(ret.status){
-		alert(JSON.stringify(ret));
-	}
+contacts.queryGroups(function( ret, err ){
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -970,8 +1018,12 @@ ret：
     status: true                    //布尔型；true||false
     groups: [{
         id: 1,                      //数字类型；联系人的 id
-        lastName: '',               //字符串类型；联系人姓氏
-        firstName: '',              //字符串类型；联系人名字
+	    lastName: '',                //字符串类型；联系人姓氏，若该联系人此信息缺少则本字段为undefine
+	    firstName: '',               //字符串类型；联系人名字，若该联系人此信息缺少则本字段为undefine
+	    middleName: '',              //字符串类型；联系人中间名，若该联系人此信息缺少则本字段为undefine
+	    prefix: '',                  //字符串类型；名称前缀，若该联系人此信息缺少则本字段为undefine
+	    suffix: '',                  //字符串类型；名称后缀，若该联系人此信息缺少则本字段为undefine
+       fullName: '',                //字符串类型；联系人全名，若该联系人此信息缺少则本字段为undefine
         phones: [{'工作', '123'}],  //数组类型；联系人电话组成的数组
                                     //内部字段：[{"标签":"号码"}]
         email: '',                  //字符串类型；邮箱
@@ -1011,9 +1063,11 @@ var contacts = api.require('contacts');
 contacts.queryByGroupId({
 	groupId: 1
 },function(ret,err){
-	if(ret.status){
-        alert(JSON.stringify(ret));
-	}
+	if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 

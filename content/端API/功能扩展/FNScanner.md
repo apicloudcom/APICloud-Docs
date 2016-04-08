@@ -7,6 +7,8 @@ Description: FNScanner
 
 [openView](#2)
 
+[setFrame](#222)
+
 [closeView](#3)
 
 [decodeImg](#4)
@@ -14,13 +16,32 @@ Description: FNScanner
 [encodeImg](#5)
 
 [switchLight](#6)
+
 </div>
 
 #**概述**
 
-FNScanner模块是一个二维码/条形码扫描器，底层集成了ZXing，Zbar条形码/二维码分析库。调用 openScanner 接口打开默认UI的二维码/条形码扫描页面，可控制闪光灯开关、从相册读取图片；开发者亦可通过 openView 接口打开扫描区域，自定义其 UI；本模块还实现了图片解码、字符串编码功能；开发者可将扫描结果保存到系统相册或指定位置。**FNScanner 模块是 scanner 模块的优化版。**
+FNScanner 模块是一个二维码/条形码扫描器，是 scanner 模块的优化升级版。在 iOS 平台上本模块底层集成了 Zbar 和系统自带的条形码/二维码分析库，由于 iOS 系统平台在 iOS7.0 以上才开放了二维码/条码的相关接口，所以在 iOS6 上运行时模块会调用开源库 Zbar 去读取解析二维码/条码。只有在 iOS7 以上版本才会调用系统自带扫码功能。
+
+**本模块封装了两套扫码方案：**
+
+***方案一***
+
+开发者通过调用 openScanner 接口直接打开自带默认 UI 效果的二维码/条形码扫描页面，本界面相当于打开一个 window 窗口，其界面内容不支持自定义。用户可在此界面实现功能如下：
+ 
+1.打开关闭闪关灯
+
+2.从系统相册选取二维码/条码图片进行解密操作
+
+3.打开摄像头，自动对焦扫码想要解析的二维码/条码
+
+***方案二***
+
+通过 openView 接口打开一个自定义大小的扫描区域（本区域相当于打开一个 frame）进行扫描。开发者可自行 open 一个 frame 贴在模块上，从而实现自定义扫描界面的功能。然后配合使用serFrame、closeView、switchLight等接口实现开关闪光灯、重设扫描界面位置大小、图片解码、字符串编码等相关功能。详情请参考模块接口参数。
 
 ![图片说明](/img/docImage/scanner.jpg)
+
+##**模块接口**
 
 <div id="1"></div>
 
@@ -37,10 +58,10 @@ sound：
 - 类型：字符串
 - 描述：（可选项）扫描结束后的提示音文件路径，要求本地路径（fs://，widget://），**为保证兼容性，推荐使用  wav 格式的短音频文件**
 
-autoLight:
+autorotation:
 
 - 类型：布尔
-- 描述：（可选项）闪光灯是否自动打开，如果本参数为true，视当前光线环境自动打开闪光灯，**本参数仅对 iOS 有效**
+- 描述：（可选项）扫描页面是否自动旋转（横竖屏）
 - 默认值：false
 
 saveToAlbum:
@@ -88,20 +109,15 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('FNScanner');
-obj.openScanner({
-    sound: 'widget://res/beep.wav',
-    autoLight: true,
-    saveToAlbum: false,
-    saveImg: {
-        path: '',
-        w: 200,
-        h: 200
+var FNScanner = api.require('FNScanner');
+FNScanner.openScanner({
+    autorotation: true,
+},function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
     }
-}, function(ret) {
-	 if(ret){
-        alert(JSON.stringify(ret));
-     }
 });
 ```
 
@@ -141,10 +157,10 @@ sound：
 - 类型：字符串
 - 描述：（可选项）扫描结束后的提示音文件路径，要求本地路径（fs://，widget://），**为保证兼容性，推荐使用  wav 格式的短音频文件**
 
-autoLight:
+autorotation:
 
 - 类型：布尔
-- 描述：（可选项）闪光灯是否自动打开，如果本参数为true，视当前光线环境自动打开闪光灯，**本参数仅对 iOS 有效**
+- 描述：（可选项）扫描页面是否自动旋转（横竖屏）
 - 默认值：false
 
 saveToAlbum:
@@ -169,8 +185,9 @@ saveImg：
 
 fixedOn：
 
-- 类型：字符串
-- 描述：（可选项）模块所属 Frame 的名字，若不传则模块归属于当前 Window
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 fixed:
 
@@ -201,28 +218,67 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('FNScanner');
-obj.openView({
-    rect: {
-        x: 0,
-        y: 0,
-        w: 320,
-        h: 480
-    },
-	sound: 'widget://res/beep.wav',
-    autoLight: false,
-    saveToAlbum: false,
-    saveImg: {
-        path: 'fs://a.jpg',
-        w: 200,
-        h: 200
-    },
-    fixedOn: '',
-    fixed: true
-},function(ret){
-	if(ret){
-        alert(JSON.stringify(ret));
+var FNScanner = api.require('FNScanner');
+FNScanner.openView({
+    autorotation: true
+},function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
     }
+});
+```
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.0.0及更高版本
+
+<div id="222"></div>
+
+#**setFrame**
+
+重设可自定义的二维码/条形码扫描器的大小和位置
+
+setFrame({params})
+
+##params
+
+x:
+
+- 类型：数字
+- 描述：（可选项）模块左上角的 x 坐标（相对于所属的 Window 或 Frame）
+- 默认值：原值
+
+y:
+
+- 类型：数字
+- 描述：（可选项）模块左上角的 y 坐标（相对于所属的 Window 或 Frame）
+- 默认值：原值
+
+w：
+
+- 类型：数字
+- 描述：（可选项）模块的宽度
+- 默认值：原值
+
+h:
+
+- 类型：数字
+- 描述：（可选项）模块的高度
+- 默认值：原值
+
+##示例代码
+
+```js
+var FNScanner = api.require('FNScanner');
+FNScanner.setFrame({
+   x: 10,
+   y: 64,
+   w: 300,
+   h: 300
 });
 ```
 
@@ -243,8 +299,8 @@ closeView()
 ##示例代码
 
 ```js
-var obj = api.require('FNScanner');
-obj.closeView();
+var FNScanner = api.require('FNScanner');
+FNScanner.closeView();
 ```
 
 ##可用性
@@ -290,13 +346,14 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('FNScanner');
-obj.decodeImg({
-	sound: 'widget://res/beep.wav',
-    path: 'fs://a.jpg'
-},function(ret){
-    if(ret.status){
-        alert(ret.content);
+var FNScanner = api.require('FNScanner');
+FNScanner.decodeImg({
+    path: 'widget://res/img/apicloud.png'
+},function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -368,19 +425,20 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('FNScanner');
-obj.encodeImg({
-    type: 'qr_image',
-	content: "123456789",
-    saveToAlbum: false,
+var FNScanner = api.require('FNScanner');
+FNScanner.encodeImg({
+	content: 'http://www.apicloud.com/',
+    saveToAlbum: true,
     saveImg: {
-        path: 'fs://a.jpg',
+        path: 'fs://album.png',
         w: 200,
         h: 200
     }
-},function(ret){
-	if(ret.status){
-        alert(JSON.stringify(ret));
+},function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -412,8 +470,8 @@ status：
 ##示例代码
 
 ```js
-var obj = api.require('FNScanner');
-obj.switchLight({
+var FNScanner = api.require('FNScanner');
+FNScanner.switchLight({
 	status: 'on'
 });
 ```

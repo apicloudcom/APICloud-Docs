@@ -17,7 +17,16 @@ Description: sendSms
 </div>
 
 #**概述**
-sendSms实现了注册时短信验证，取回密码手机验证功能，使用此模块之前需要先去http://mob.com/sms  注册获取appkey和appsecret，mob每天可以有10000条免费的短信，基本上可以算是免费的了
+
+sendSms实现了注册时短信验证，取回密码手机验证功能，使用此模块之前需要先去http://mob.com/ 注册获取appkey和appsecret，mob每天可以有10000条免费的短信，基本上可以算是免费的了
+
+
+使用注意事项：
+1、请在云端打包！请在云端打包！请在云端打包！（重要的事说三遍）
+2、短信中的掌淘科技可以去除，具体请咨询mob官方
+3、老给一个手机号发短信会导致失败率很高，这个是运营商为了防骚扰做的
+4、测试包地址：http://community.apicloud.com/bbs/forum.php?mod=viewthread&tid=14430
+
 
 #**regSms**<div id="a1"></div>
 
@@ -30,25 +39,20 @@ regSms(params)
 appkey：
 
 - 类型：字符串
-- 默认值：无
 - 描述：从mob网站获取的appkey，不能为空
 
 appsecret：
 
 - 类型：字符串
-- 默认值：无
 - 描述：从mob网站获取的appsecret，不能为空，注册保密
 
 ##示例代码
 
 ```js
-//120秒内只能注册一次，不然会失败，注意下;
-var sendsms = api.require('sendSms');
-var param = {
-    appkey:"6680ba14a50e",
-    appsecret:"95b67202d004b9f4ab2a38f3eda2e82c"
-};
-
+//貌似是120秒内只能注册一次，不然会失败，注意下
+//需要特别注意的事，这个函数没有回调！！我已经和官方沟通了，确实没有
+sendsms = api.require('sendSms');
+var param = {appkey:"6680ba14a50e",appsecret:"95b67202d004b9f4ab2a38f3eda2e82c"};
 sendsms.regSms(param);
 ```
 
@@ -69,7 +73,6 @@ sendMessage(params,callback(ret, err))
 phone：
 
 - 类型：字符串
-- 默认值：无
 - 描述：欲验证的手机号，13800000000的形式，暂时不支持国外
 
 ##callback(ret, err)
@@ -82,7 +85,7 @@ ret：
 
 ```js
 {
-  status:ok		//操作成功状态值，字符串类型
+  result:ok		//操作成功状态值，字符串类型
 }
 
 ```
@@ -90,19 +93,16 @@ ret：
 ##示例代码
 
 ```js
-//120秒内只能注册一次，不然会失败，注意下;
-var sendsms = api.require('sendSms');
-var param = {
-    phone:13800000000
-};
+sendsms = api.require('sendSms');
+var param = {phone:13800000000};
 sendsms.sendMessage(param,function(ret,err){
-    if(ret.result == "ok"){
-        maxtime = 90;
-        timer1 = setInterval("send_code_jishi();", 1000);
-        alert("短信发送成功");
-    }else{
-        alert(ret.result);
-    }
+	if(ret.result == "ok"){
+	        maxtime = 90;
+			timer1 = setInterval("send_code_jishi();", 1000);
+	        alert("短信发送成功");
+	}else{
+	        alert(ret.result);
+	}
 });
 ```
 
@@ -127,7 +127,6 @@ enterCode(params,callback(ret, err))
 code：
 
 - 类型：字符串
-- 默认值：无
 - 描述：收到的验证码，应该是4位数字
 
 ##callback(ret, err)
@@ -140,7 +139,7 @@ ret：
 
 ```js
 {
-    status:ok    		//操作成功状态值，字符串类型
+    result:ok    		//操作成功状态值，字符串类型
 }
 ```
 
@@ -151,11 +150,11 @@ ret：
 sendsms = api.require('sendSms');
 var param={code:mycode};
 sendsms.enterCode(param,function(ret,err){
-    if(ret.result == "ok"){
-        alert("验证成功");
-    }else{
-        alert("验证失败");
-    }
+	if(ret.result == "ok"){
+		alert("验证成功");
+	}else{
+		alert("验证失败");
+	}
 });
 ```
 

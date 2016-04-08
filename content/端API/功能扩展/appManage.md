@@ -40,7 +40,7 @@ pkgName:
 
 ```js
 {
-	"pkgName"："com.apicloud.freeman.xxx"
+    pkgName：'com.apicloud.freeman.xxx'
 }
 ```
 
@@ -62,10 +62,13 @@ ret：
 
 ```js
 var appManage = api.require('appManage');
-var params = {"pkgName":"com.wan.xdemo"};
-appManage.isInstalled(params,function(ret){
-    if(ret.status){
-        alert(ret.value ? "已安装" : "未安装");
+appManage.isInstalled({
+    pkgName: 'com.wan.xdemo'
+},function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -113,13 +116,15 @@ ret：
 
 ```js
 var appManage = api.require('appManage');
-var params = {"pkgName":"com.wan.xdemo"};
-appManage.isSystemApp(params,function(ret){
-    if(ret.status){
-        alert(ret.value ? "系统应用" : "非系统应用");
+appManage.isSystemApp({
+    pkgName: 'com.wan.xdemo'
+},function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
     }
 });
-
 ```
 
 ##可用性
@@ -165,9 +170,14 @@ ret：
 
 ```js
 var appManage = api.require('appManage');
-var params = {"filePath":"sdcard/folderX/appX.apk"};
-appManage.install(params,function(ret){
-	alert(JSON.stringify(ret));
+appManage.install({
+    filePath: 'sdcard/folderX/appX.apk'
+},function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });	
 ```
 
@@ -204,8 +214,9 @@ pkgName:
 
 ```js
 var appManage = api.require('appManage');
-var params = {"pkgName":"com.wan.xdemo"};
-appManage.uninstsall(params);
+appManage.uninstsall({
+    pkgName: 'com.wan.xdemo'
+});
 ```
 
 ##可用性

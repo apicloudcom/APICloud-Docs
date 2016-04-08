@@ -37,8 +37,8 @@ users：
 
 ```js
 [{
-	    "phoneNumber": "135xxxxxxxx",     //联系人电话号码
-	    "disPlayName": "小王"             //姓名
+	    phoneNumber: '135xxxxxxxx',     //联系人电话号码
+	    disPlayName: '小王'             //姓名
 }]
 ```
 
@@ -94,85 +94,36 @@ sendData：
 内部字段：
 ```js
 [{
-	    "phoneNumber": "135xxxxxxxx",                   //联系人电话号码
-	    "strContents": "祝小张新年快乐郭xx"             //短信内容
+	    phoneNumber: "135xxxxxxxx",                   //联系人电话号码
+	    strContents: "祝小张新年快乐郭xx"             //短信内容
 }]
 ```
 
 ##示例代码1
 ```js
-var bulksms = api.require('bulkSMS');
-//小张会收到:祝小张新年快乐郭xx
-//小王会收到:郭xx祝小王新年快乐
-var params = {
-            	users: [
-	                {
-	                    "phoneNumber": "135xxxxxxxx",
-	                    "disPlayName": "小张"
-	                },
-	        		
-	                {
-	                    "phoneNumber": "134xxxxxxxx",
-	                    "disPlayName": "小王"
-	                }
-	            ],
-	            strcontents: [
-	                "祝#disPlayName#新年快乐#name#",
-	                "#name#祝#disPlayName#新年快乐",
-	                "祝新年快乐"
-	            ],
-	            name: "郭xx"
-        	};
-			
-bulksms.sends(params,function(ret,err){
-	if(ret.results == "0"){
-		//var time = setInterval("send();", 60*60*1000);
-		alert("短信群发送成功");
-	}else{
-		alert(ret.info);
-	}
+var bulkSMS = api.require('bulkSMS');
+bulkSMS.sends({
+    users: [{
+        phoneNumber: '135xxxxxxxx',
+        disPlayName: '小张'
+    },{
+        phoneNumber: '134xxxxxxxx',
+        disPlayName: '小王'
+    }],
+    strcontents: [
+        '祝#disPlayName#新年快乐#name#',
+        '#name#祝#disPlayName#新年快乐',
+        '祝新年快乐'
+    ],
+    name: '郭xx'
+},function( ret, err ){		
+    if( ret.results == '0' ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
-
-##示例代码 2
-```js
-//利用contact模块获取到通讯录所有人信息
-var contacts = null;
-var contact = api.require('contact');
-		
-		contact.queryContact({
-			
-		},function(ret,err) {
-		    if(ret.status) {
-		        contacts =ret.contacts;      
-		    } else{
-		        api.alert({msg:'获取失败'});
-		    }
-		});
-//给通讯录所有人发短信
-var bulksms = api.require('bulkSMS');
-
-var params = {
-            	users: contacts,
-	            strcontents: [
-	                "祝#disPlayName#端午快乐#name#",
-	                "#name#祝#disPlayName#端午快乐",
-	                "祝端午快乐"
-	            ],
-	            name: "郭xx"
-        	};
-			
-bulksms.sends(params,function(ret,err){
-	if(ret.results == "0"){
-		//var time = setInterval("send();", 60*60*1000);
-		alert("短信群发送成功"+JSON.stringify(ret));
-	}else{
-		alert(ret.info);
-	}
-});
-```
-
-
 
 ##补充说明
 有些机型会有限制比如1小时内最多发送100条，需要设置手机具体的设置看使用的设备说明。也可以每次发送不超过限制规定时间后继续发送。
@@ -194,40 +145,8 @@ stop()
 ##示例代码
 
 ```js
-//利用contact模块获取到通讯录所有人信息
-var contacts = null;
-var contact = api.require('contact');
-		
-		contact.queryContact({
-			
-		},function(ret,err) {
-		    if(ret.status) {
-		        contacts =ret.contacts;
-		    } else{
-		        api.alert({msg:'获取失败'});
-		    }
-		});
-var bulksms = api.require('bulkSMS');
-var params = {
-            	users: contacts,
-	            strcontents: [
-	                "祝#disPlayName#新年快乐#name#",
-	                "#name#祝#disPlayName#新年快乐",
-	                "祝新年快乐"
-	            ],
-	            name: "郭xx"
-        	};
-
-bulksms.sends(params,function(ret,err){
-	if(ret.results == "0"){
-		//var time = setInterval("send();", 60*60*1000);
-		alert("短信群发送成功");
-	}else{
-		alert(ret.info);
-	}
-});
-
-bulksms.stop();
+var bulkSMS = api.require('bulkSMS');
+bulkSMS.stop();
 ```
 
 ##补充说明

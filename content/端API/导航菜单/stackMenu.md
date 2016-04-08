@@ -21,7 +21,7 @@ Description: stackMenu
 
 #**概述**
 
-stackMenu是一个栈菜单，高度模仿mac系统下的dock管理器。同时允许开发者自定义按钮样式和个数，让开发者轻松实现复杂的ui效果
+stackMenu是一个栈菜单，高度模仿mac系统下的dock管理器。同时允许开发者自定义按钮样式和个数，让开发者轻松实现复杂的ui效果。本模块已停止更新，建议使用优化升级版模块[MNStack](http://docs.apicloud.com/端API/导航菜单/MNStack)
 
 ![图片说明](/img/docImage/stackMenu.jpg)
 
@@ -95,16 +95,21 @@ ret：
 ##示例代码
 
 ```js
-var arrayPath = new Array();
-	arrayPath[0]={title:'标题一',icon:'widget://res/stackMenu01.png'};
-	arrayPath[1]={title:'标题二',icon:'widget://res/stackMenu02.png'};
-	arrayPath[2]={title:'标题三',icon:'widget://res/stackMenu03.png'};
-
-var obj = api.require('stackMenu');
-obj.open({
-	items:arrayPath
-},function(ret,err){
-	ret.index;
+var stackMenu = api.require('stackMenu');
+stackMenu.open({
+	items:[{
+        title: '标题一',
+        icon: 'widget://res/img/ic/small-bell.png'
+    },{
+        title: '标题二',
+        icon: 'widget://res/img/ic/clock.png'
+    }]
+},function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -127,8 +132,10 @@ close()
 
 ##示例代码
 
-	var obj = api.require('stackMenu');
-	obj.close();
+```js
+var stackMenu = api.require('stackMenu');
+stackMenu.close();
+```
 
 ##补充说明
 
@@ -149,8 +156,10 @@ close()
 
 ##示例代码
 
-	var obj = api.require('stackMenu');
-	obj.show();
+```js
+var stackMenu = api.require('stackMenu');
+stackMenu.show();
+```
 
 ##补充说明
 
@@ -171,8 +180,10 @@ hide()
 
 ##示例代码
 
-	var obj = api.require('stackMenu');
-	obj.hide();
+```js
+var stackMenu = api.require('stackMenu');
+stackMenu.hide();
+```
 
 ##补充说明
 
@@ -183,7 +194,6 @@ hide()
 IOS系统，安卓系统
 
 可提供的0.0.1及更高版本
-</div>
 
 
 <div id="const-content">

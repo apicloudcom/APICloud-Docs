@@ -29,7 +29,7 @@ Description: downloadManager
 
 #**概述**
 
-通过downloadManager模块，能够对所有的下载进程进行管理，并可以通过界面来查看下载进度等信息，同时还提供压缩包解压、快速查看下载完成文件等功能
+通过 downloadManager 模块，能够对所有的下载进程进行管理，并可以通过界面来查看下载进度等信息，同时还提供压缩包解压、快速查看下载完成文件等功能
 
 #**openManagerView**<div id="a1"></div>
 
@@ -67,22 +67,15 @@ ret：
 ##示例代码
 
 ```js
-var manager = api.require('downloadManager');
-manager.openManagerView({
-	title: '下载'
-},function(ret){
-	var id = ret.id;
-	var mimeType = ret.mimeType;
-	var savePath = ret.savePath;
-	manager.openDownloadedFile({
-		id: id
-	},function(ret,err){
-		if (ret.status) {
-			
-		} else {
-			var msg = ret.msg;
-		}
-    });
+var downloadManager = api.require('downloadManager');
+downloadManager.openManagerView({
+	title: '下载管理'
+},function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -105,8 +98,10 @@ closeManagerView()
 
 ##示例代码
 
-    var manager = api.require('downloadManager');
-    manager.closeManagerView();
+```js
+var downloadManager = api.require('downloadManager');
+downloadManager.closeManagerView();
+```
 
 ##补充说明
 
@@ -204,18 +199,20 @@ ret：
 ##示例代码
 
 ```js
-var manager = api.require('downloadManager');
-manager.enqueue({
-	url:'http://xxx.zip',
-	savePath:'fs://xxx.zip',
-	cache:true,
+var downloadManager = api.require('downloadManager');
+downloadManager.enqueue({
+	url: 'http://xxx.zip',
+	savePath: 'fs://xxx.zip',
+	cache: true,
 	allowResume: true,
-	title:'教程',
-	networkTypes:'all'
-},function(ret,err){
-	if (ret.id) {
-		
-	}
+	title: '教程',
+	networkTypes: 'all'
+},function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -262,15 +259,15 @@ ret：
 ##示例代码
 
 ```js
-var manager = api.require('downloadManager');
-manager.pause({
-	id: '123456'
-},function(ret,err){
-	if(ret.status){
-		
-	} else{
-		var msg= ret.msg;
-	}
+var downloadManager = api.require('downloadManager');
+downloadManager.pause({
+	id: '123'
+},function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -317,15 +314,15 @@ ret：
 ##示例代码
 
 ```js
-var manager = api.require('downloadManager');
-manager.resume({
-	id: '123456'
-},function(ret,err){
-	if (ret.status) {
-　　
-	} else {
-		var msg = ret.msg;
-	}
+var downloadManager = api.require('downloadManager');
+downloadManager.resume({
+	id: '123'
+},function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -378,14 +375,15 @@ ret：
 ##示例代码
 
 ```js
-var manager = api.require('downloadManager');
-manager.remove({
-	ids: ['123456', '1234567']
-},function(ret,err){
-	var number = ret.number;
-	if (number > 0) {
-		
-	}
+var downloadManager = api.require('downloadManager');
+downloadManager.remove({
+	ids: [ '123456', '1234567' ]
+},function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -449,15 +447,16 @@ ret：
 ##示例代码
 
 ```js
-var manager = api.require('downloadManager');
-manager.query({
-	ids: ['123456', '1234567'],
-	status:1
-},function(ret,err){
-	var data = ret.data;
-	if (data) {  
-		
-	}
+var downloadManager = api.require('downloadManager');
+downloadManager.query({
+	ids: [ '123456', '1234567' ],
+	status: 1
+},function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -504,15 +503,15 @@ ret：
 ##示例代码
 
 ```js
-var manager = api.require('downloadManager');
-manager.openDownloadedFile({
+var downloadManager = api.require('downloadManager');
+downloadManager.openDownloadedFile({
 	id: '123456'
-},function(ret,err){
-	if (ret.status) {
-		
-	} else {
-		var msg = ret.msg;
-	}
+},function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 

@@ -36,73 +36,65 @@ open({params},callback)
 
 ##params
 
-<del>id：</del>
-
-- <del>类型：数字</del>
-- <del>默认值：无</del>
-- <del>描述：视图的id，根据此id删除此视图，可为空</del>
-
 x：
 
 - 类型：数字
-- 默认值：0
 - 描述：（可选项）圆心坐标
+- 默认值：0
 
 y：
 
 - 类型：数字
-- 默认值：100
 - 描述：（可选项）圆心坐标
+- 默认值：100
 
 radius：
 
 - 类型：数字
-- 默认值：当前屏幕宽的1/4
 - 描述：（可选项）圆半径
-
-<del>title：</del>
-
-- <del>类型：字符串</del>
-- <del>默认值：中标题</del>
-- <del>描述：（可选项）饼图中间的说明文字</del>
-
-<del>subTitle：</del>
-
-- <del>类型：字符串</del>
-- <del>默认值：子标题</del>
-- <del>描述：（可选项）饼图中间的说明文</del>
+- 默认值：当前屏幕宽的1/4
 
 center：
 
-- 类型：json对象
-- 默认值：见内部字段
+- 类型：JSON对象
 - 描述：（可选项）饼形图中间标题样式设置
+- 默认值：见内部字段
 - 内部字段：
 
 ```js
 {
-    r:’’,           //（可选项）中间圆圈的半径，数字类型 ，默认radius/3.0    bg:’’           //（可选项）中间圆背景颜色 ，支持rgb，rgba，# ，默认#ffffff    title：         //（可选项）饼图中间的说明文字，字符串类型，默认：标题     titleColor:     //（可选项）标题的颜色，支持rgb、rgba、#，默认#000000    titleSize       //（可选项）标题的字体大小，数字类型，默认12    subTitle：      //（可选项）饼图中间的说明文字，字符串类型，默认：子标题    subTitleColor   //（可选项）子标题的颜色，支持rgb、rgba、#，默认#696969    subTitleSize    //（可选项）子标题的字体大小，数字类型，默认12
+    r:’’,           //（可选项）数字类型；中间圆圈的半径；默认：radius/3.0
+    bg:’’           //（可选项）字符串类型；中间圆背景颜色，支持rgb、rgba、# ；默认：#fff
+    title：         //（可选项）字符串类型；饼图中间的说明文字，默认：标题 
+    titleColor:     //（可选项）字符串类型；标题的颜色，支持rgb、rgba、#；默认：#000000
+    titleSize       //（可选项）数字类型；标题的字体大小；默认：12
+    subTitle：      //（可选项）字符串类型；饼图中间的说明文字；默认：子标题
+    subTitleColor   //（可选项）字符串类型；子标题的颜色，支持rgb、rgba、#；默认：#696969
+    subTitleSize    //（可选项）数字类型；子标题的字体大小；默认：12
 }
 ```
 
 elements：
 
 - 类型：数组
-- 默认值：无
 - 描述：模块字典对象组成的数组
 - 内部字段：
 
 ```js
 [{
-    value:     //本部分的大小，数字类型     color:     //颜色值 ，支持rgb，rgba，#     title：    //（可选项）单元格显示的标题，字符串类型，若不传则显示百分比，若传空字符串则显示空字符串    titleColor//（可选项）标题的颜色，支持rgb、rgba、#，默认#ffffff    titleSize //（可选项）标题的字体大小，数字类型，默认12
+    value:     //数字类型；本部分的数值大小
+    color:     //字符串类型；本部分颜色，支持rgb、rgba、# 
+    title：    //（可选项）字符串类型；单元格显示的标题，若不传则显示百分比，若传空字符串则显示空字符串
+    titleColor//（可选项）字符串类型；标题的颜色，支持rgb、rgba、#；默认：#ffffff
+    titleSize //（可选项）数字类型；标题的字体大小；默认：12
 }]
 ```
 
-fixedOn：
+fixed:
 
-- 类型：字符串
-- 默认值：当前主窗口的名字
-- 描述：（可选项）将此模块视图添加到指定窗口的名字
+- 类型：布尔
+- 描述：（可选项）模块是否随所属 Window 或 Frame 滚动
+- 默认值：true（不随之滚动）
 
 ##callback(ret, err)
 
@@ -113,43 +105,55 @@ ret：
 
 ```js
 {
-    eventType:       //回调事件类型，字符串类型，取值范围如下：
+    eventType:       //字符串类型；回调事件类型，取值范围如下：
                         rotation//拖动旋转事件
                         click   //点击旋转事件，点击色块，该色块旋转到0度
                         open    //打开事件
-    index:           //返回饼图0度（圆形最下端）位置的模块的index
-    percent:         //返回饼图0度（圆形最下端）位置的模块的百分比
-    id:              //返回饼图视图的id
+    index:           //数字类型；返回饼图0度（圆形最下端）位置的模块的索引值
+    value:           //数字类型；返回饼图0度（圆形最下端）位置的模块的值
+    percent:         //数字类型；返回饼图0度（圆形最下端）位置的模块的百分比值
+    id:              //数字类型；返回饼图视图的id
 }
 ```
 
 ##示例代码
 
 ```js
-var array = new Array();
-array[0] = {value: 15, color: '#FF6600'};
-array[1] = {value: 15, color: '#660099'};
-array[2] = {value: 15, color: '#FF33FF'};
-array[3] = {value: 15, color: '#66CCFF'};
-array[4] = {value: 15, color: '#00CCFF'};
-var obj = api.require('pieChart');
-obj.open({
-      x: 200,
-      y: 250,
+var pieChart = api.require('pieChart');
+pieChart.open({
+      x: api.frameWidth / 2,
+      y:  api.frameHeight / 2,
       radius: 100,
-      title: '标题',
-      subTitle: '子标题',
-      elements: array
+      center:{
+	      title: '标题',
+	      subTitle: '子标题'
+      },
+      elements: [{
+            value: 15, 
+            color: '#FF6600'
+      },{
+            value: 15, 
+            color: '#660099'
+      },{
+            value: 15, 
+            color: '#FF33FF'
+      },{
+            value: 15, 
+            color: '#66CCFF'
+      },{
+            value: 15, 
+            color: '#00CCFF'
+      }],
+	fixedOn: api.frameName,
+	fixed: false
 }, function(ret, err) {
-      api.alert({
-            msg:ret.index+ret.percent
-      });
+      if( ret ){
+         alert( JSON.stringify( ret ) );
+      }else{
+         alert( JSON.stringify( err ) );
+      }
 });
 ```
-
-##补充说明
-
-无
 
 ##可用性
 
@@ -161,37 +165,73 @@ iOS系统，Android系统
 
 刷新展示数据
 
-close({params})
+close({params},callback(ret))
 
 ##params
 
 id：
 
 - 类型：数字
-- 默认值：无
 - 描述：操作的视图的id
 
 elements：
 
 - 类型：数组
-- 默认值：无
-- 描述：（可选项）模块字典对象组成的数组，可为空，为空则不刷新数据
+- 描述：模块字典对象组成的数组
 - 内部字段：
 
 ```js
 [{
-    value:       //组成部分的大小    color:       //组成部分的颜色值 ，支持rgb，rgba，#     title：      //（可选项）单元格显示的标题，字符串类型，可为空，若为空则显示百分比
+    value:       //数字类型；组成部分的大小
+    color:       //字符串类型；组成部分的颜色值 ，支持rgb，rgba，# 
+    title：      //（可选项）字符串类型；单元格显示的标题，若为空则显示百分比
 }]
 ```
+
+##callback(ret)
+
+ret：
+
+- 类型：JSON对象
+- 内部字段：
+  
+  ```js
+  {
+       status: true,        //布尔类型；数据源是否刷新成功， true|false
+       count: 20            //数字类型；刷新数据后总数据量数 
+  }
+ ```
+
 ##示例代码
 
 ```js
-var obj = api.require('barChart');obj.reloadData({     parts:[{value:'2',color:'#FF6600'},     {value:'2',color:'#660099'},     {value:'2',color:'#FF33FF'},     {value:'2',color:'#66CCFF'},     {value:'2',color:'#00CCFF'}]},function(ret,err){   api.alert({msg:ret.index+ret.id});});
+var pieChart = api.require('pieChart');
+pieChart.reloadData({
+     id: 1,
+     elements: [{
+            value: 15, 
+            color: '#FF6600'
+      },{
+            value: 15, 
+            color: '#660099'
+      },{
+            value: 15, 
+            color: '#FF33FF'
+      },{
+            value: 15, 
+            color: '#66CCFF'
+      },{
+            value: 15, 
+            color: '#00CCFF'
+      }]
+},function( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
+});
 ```
-
-##补充说明
-
-无
 
 ##可用性
 
@@ -210,26 +250,25 @@ serFrame({params})
 id：
 
 - 类型：数字
-- 默认值：无
 - 描述：操作的视图的id
 
 x：
 
 - 类型：数字
-- 默认值：原值
 - 描述：（可选项）圆心坐标
+- 默认值：原值
 
 y：
 
 - 类型：数字
-- 默认值：原值
 - 描述：（可选项）圆心坐标
+- 默认值：原值
 
 radius：
 
 - 类型：数字
-- 默认值：原值
 - 描述：（可选项）圆半径
+- 默认值：原值
 
 anim：
 
@@ -240,12 +279,14 @@ anim：
 ##示例代码
 
 ```js
-var obj = api.require('barChart');obj.setFrame({x:10,w:300});
+var pieChart = api.require('pieChart');
+pieChart.setFrame({
+    id: 1,
+  	x: 10,
+  	y: 300,
+  	anim: true
+});
 ```
-
-##补充说明
-
-无
 
 ##可用性
 
@@ -264,21 +305,16 @@ close({params})
 id：
 
 - 类型：数字
-- 默认值：无
 - 描述：要关闭的饼图的id
 
 ##示例代码
 
 ```js
-var obj = api.require('pieChart');
-obj.close({
-    id:1
+var pieChart = api.require('pieChart');
+pieChart.close({
+    id: 1
 });
 ```
-
-##补充说明
-
-无
 
 ##可用性
 
@@ -297,15 +333,14 @@ hide({params})
 id：
 
 - 类型：数字
-- 默认值：无
 - 描述：要隐藏的饼图的id
 
 ##示例代码
 
 ```js
-var obj = api.require('pieChart');
-obj.hide({
-    id:1
+var pieChart = api.require('pieChart');
+pieChart.hide({
+    id: 1
 });
 ```
 
@@ -321,7 +356,7 @@ iOS系统，Android系统
 
 #**show**<div id="6"></div>
 
-显示饼图
+显示已隐藏的饼形图
 
 show({params})
 
@@ -330,21 +365,16 @@ show({params})
 id：
 
 - 类型：数字
-- 默认值：无
 - 描述：要显示的饼图的id
 
 ##示例代码
 
 ```js
-var obj = api.require('pieChart');
-obj.show({
-    id:1
+var pieChart = api.require('pieChart');
+pieChart.show({
+    id: 1
 });
 ```
-
-##补充说明
-
-显示已隐藏的饼形图
 
 ##可用性
 

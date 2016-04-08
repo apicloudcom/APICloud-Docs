@@ -93,25 +93,19 @@ err：
 ##示例代码
 
 ```js
-var micoMqtt = api.require("micoMqtt");
-var host = "http://api.easycc.io";
-var username = "";
-var password = "";
-var clientID = "aca213caec5c";
-var topic = "d64f517c/out/read/#";
+var micoMqtt = api.require('micoMqtt');
 micoMqtt.startMqtt({
-	micoMqtt : micoMqtt,
-	host : host,
-	username : username,
-	password : password,
-	clientID : clientID,
-	topic : topic
-}, function(ret, err){
-	if(ret.status){
-		api.alert({msg:'start success'});
+	host: 'http://api.easycc.io',
+	username: 'admin',
+	password: 'admin',
+	clientID: 'aca213caec5c',
+	topic: 'd64f517c/out/read/#'
+},function( ret, err ){		
+	if( ret.status ){
+		alert( JSON.stringify( ret ) );
 	}else{
-		api.alert({msg:err.msg});
-    }
+		alert( JSON.stringify( err ) );
+	}
 });
 ```
 
@@ -161,13 +155,13 @@ err：
 ##示例代码
 
 ```js
-var micoMqtt = api.require("micoMqtt");
-micoMqtt.recvMqttMsg(function(ret, err) {
-	if(ret){
-		api.alert({msg:JSON.stringify(ret.subs)});
+var micoMqtt = api.require('micoMqtt');
+micoMqtt.recvMqttMsg(function( ret, err ){		
+	if( ret.status ){
+		alert( JSON.stringify( ret ) );
 	}else{
-		api.alert({msg:err.msg});
-    }
+		alert( JSON.stringify( err ) );
+	}
 });
 ```
 
@@ -191,7 +185,7 @@ stopRecvMqttMsg()
 ##示例代码
 
 ```js
-var micoMqtt = api.require("micoMqtt");
+var micoMqtt = api.require('micoMqtt');
 micoMqtt.stopRecvMqttMsg();
 ```
 
@@ -253,18 +247,16 @@ err：
 ##示例代码
 
 ```js
-var micoMqtt = api.require("micoMqtt");
-var topic = "d64f517c/in/read/app1";
-var command = "{}";
+var micoMqtt = api.require('micoMqtt');
 micoMqtt.publish({
-	topic : topic,
-	command : command
-}, function(ret, err){
-	if(ret.status){
-		api.alert({msg:'publish success'});
-    }else{
-		api.alert({msg:err.msg});
-    }
+	topic: 'd64f517c/in/read/app1',
+	command: '{}'
+},function( ret, err ){		
+	if( ret.status ){
+		alert( JSON.stringify( ret ) );
+	}else{
+		alert( JSON.stringify( err ) );
+	}
 });
 ```
 
@@ -313,13 +305,13 @@ err：
 ##示例代码
 
 ```js
-var micoMqtt = api.require("micoMqtt");
-micoMqtt.stopMqtt(function(ret, err) {
-	if(ret.status){
-		api.alert({msg:'stop success'});
-    }else{
-		api.alert({msg:err.msg});
-    }
+var micoMqtt = api.require('micoMqtt');
+micoMqtt.stopMqtt(function( ret, err ){		
+	if( ret.status ){
+		alert( JSON.stringify( ret ) );
+	}else{
+		alert( JSON.stringify( err ) );
+	}
 });
 ```
 

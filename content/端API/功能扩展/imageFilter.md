@@ -46,8 +46,7 @@ imgPath：
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
@@ -59,8 +58,7 @@ ret：
 err：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
@@ -76,15 +74,15 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('imageFilter');
-obj.open ({
-	imgPath: 'widget://image/test.png'
-}, function(ret, err){
-    if(ret.status){
-api.alert({msg:'打开成功'});
-    }else{
-        api.alert({msg:err.code});
-    }
+var imageFilter = api.require('imageFilter');
+imageFilter.open({
+	imgPath: 'widget://res/img/apicloud.png'
+},function( ret, err ){		
+	if( ret.status ){
+		alert( JSON.stringify( ret ) );
+	}else{
+		alert( JSON.stringify( err ) );
+	}
 });
 ```
 
@@ -130,8 +128,7 @@ id：
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
@@ -143,8 +140,7 @@ ret：
 err：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
@@ -159,16 +155,16 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('imageFilter');
-obj.filter({
-   id:1,
-	type:"autumn "
-}, function(ret, err){
-    if(ret.status){
-api.alert({msg:ret.path});
-    }else{
-        api.alert({msg:'error'});
-    }
+var imageFilter = api.require('imageFilter');
+imageFilter.filter({
+    id: 1,
+    type: 'autumn'
+},function( ret, err ){		
+	if( ret.status ){
+		alert( JSON.stringify( ret ) );
+	}else{
+		alert( JSON.stringify( err ) );
+	}
 });
 ```
 
@@ -222,18 +218,18 @@ id：
 ret：
 
 - 类型：JSON对象
+- 内部字段：
 
-内部字段：
-
+```js
 	{
 		status:              //操作成功状态值
 	}
+```
 
 err：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
@@ -248,13 +244,13 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('screenClip');
-obj.save (function(ret, err){
-    if(ret.status){
-api.alert({msg:'保存完成'});
-    }else{
-api.alert({msg:err.code});
-    }
+var imageFilter = api.require('imageFilter');
+imageFilter.save(function( ret, err ){		
+	if( ret.status ){
+		alert( JSON.stringify( ret ) );
+	}else{
+		alert( JSON.stringify( err ) );
+	}
 });
 ```
 
@@ -319,7 +315,10 @@ save：
 
 ```js
 {
-       album:            //(可选项)布尔值，是否保存到系统相册，默认false        imgPath:          //(可选项)保存的文件路径,字符串类型，无默认值,不传或传空则不保存，若路径不存在文件夹则创建此目录       imgName:         //(可选项)保存的图片名字，支持png和jpg格式，若不指定格式，则默认png，字符串类型，无默认值,不传或传空则不保存                           
+       album:            //(可选项)布尔值，是否保存到系统相册，默认false 
+       imgPath:          //(可选项)保存的文件路径,字符串类型，无默认值,不传或传空则不保存，若路径不存在文件夹则创建此目录
+       imgName:         //(可选项)保存的图片名字，支持png和jpg格式，若不指定格式，则默认png，字符串类型，无默认值,不传或传空则不保存
+                           
 }
 ```
 
@@ -345,27 +344,25 @@ err：
 {
 	code:              //错误描述，取值范围如下：
 	                     -1://未知错误
-	                      0：//保存到相册失败，无权限访问系统相册
-	                      1：//保存到指定路径失败，无指定保存路径
+	                      0：//保存到相册失败
+	                      1：//保存到指定路径失败
+	                      2：//保存到相册和指定路径失败
 }
 ```
 
 ##示例代码
 
 ```js
-var  imageFilter = api.require("imageFilter");
-
+var imageFilter = api.require('imageFilter');
 imageFilter.compress({
-    img: "fs://test.png",
-    quality: 0.1,
-    scale: 0.5,
-    save: {
-        album: true,
-        imgPath: "fs://test/",
-        imgName: "test.png"
-    }
-}, function(ret, err){
-    alert(JSON.stringify(ret) + JSON.stringify(err));
+    img: 'widget://res/img/apicloud.png',
+    quality: 0.1
+},function( ret, err ){		
+	if( ret.status ){
+		alert( JSON.stringify( ret ) );
+	}else{
+		alert( JSON.stringify( err ) );
+	}
 });
 ```
 
@@ -390,7 +387,7 @@ getAttr({params}, callback(ret, err))
 path：
 
 - 类型：字符串
-- 描述：目标图片的路径，支持fs等本地路径，**不支持widget://协议路径**
+- 描述：目标图片的路径，支持fs等本地路径
 
 ##callback(ret)
 
@@ -411,12 +408,15 @@ ret：
 ##示例代码
 
 ```js
-var  imageFilter = api.require("imageFilter");
-
+var imageFilter = api.require('imageFilter');
 imageFilter.getAttr({
-    path: "fs://test.png"
-}, function(ret, err){
-    alert(JSON.stringify(ret));
+    path: 'widget://res/img/apicloud.png'
+},function( ret, err ){		
+	if( ret.status ){
+		alert( JSON.stringify( ret ) );
+	}else{
+		alert( JSON.stringify( err ) );
+	}
 });
 ```
 

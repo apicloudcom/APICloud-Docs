@@ -105,7 +105,7 @@ menuItems：
 
 - 类型：数组
 - 默认值：无
-- 描述：菜单各菜单项的信息
+- 描述：菜单各菜单项的信息(必填)
 
 内部字段：
 
@@ -121,7 +121,7 @@ menuItemConfig：
 
 - 类型：JSON对象
 - 默认值：无
-- 描述：菜单项配置
+- 描述：菜单项配置(必填)
 
 内部字段：
 
@@ -138,7 +138,7 @@ menuConfig：
 
 - 类型：JSON对象
 - 默认值：无
-- 描述：菜单配置
+- 描述：菜单配置(必填)
 
 内部字段：
 
@@ -164,7 +164,7 @@ ret：
 	item:{ 		//对象,表示被点击的按钮.
 		type: 	//被点击的按钮所属控件,字符串,可选”bar”, “menu”
 		index:	//被点击的按钮的下标. 标签栏和菜单部分的按钮的下标均分别从 0 开始计数
-		}
+	}
 }
 ```
 err:
@@ -181,111 +181,100 @@ err:
 ##示例代码
 
 ```js
-var tabBarMenu = api.require("tabBarMenu");
-var theme = "simple"; //可以支持自定义主题,示例内置两种风格题:simple,night.
-tabBarMenu.open({ //打开标签菜单.
-	defaultBarSelect: 1,//默认选中的标签栏按钮
-	autoLayout: true,//是否自动调整当前页面网页视图的位置.
-	barConfig: {//标签栏通用配置信息.
-				//背景图片路径.
-		bgImg: "widget://image/tabBarMenu/" + theme + "/tabbar_bg.png"
-    },
-	barItemConfig: {//标签栏按钮的通用配置信息.
-		//文本颜色, 格式为#fff、#ffffff、rgba(r,g,b,a)等
-		titleColor: "#ffffff",
-		titleSelectColor: "#ffffff",    			//选中状态时,按钮文本的颜色, 默认与titleColor相同.
-		fontSize: 11.0,     						//文字大小.
-		textMarginTop: 41.0,   						//文本距离按钮上边界的距离.
-		primaryItem: 2      						//激活弹出菜单的标签栏按钮的下标.
-	},	
-	//标签栏各按钮的信息.
-	barItems: [{title: "动态",//标题.
-			bgImg: "widget://image/tabBarMenu/" + theme + "/tabbar_icon_auth.png",          				//背景图片路径.
-			bgImgClick: "widget://image/tabBarMenu/" + theme + "/tabbar_icon_auth_click.png"      			//被点击时的背景图片路径.
-        },
-        {title: "与我有关",//标题
-			bgImg: "widget://image/tabBarMenu/" + theme + "/tabbar_icon_at.png",//背景图片路径.
-			//被点击时的背景图片路径.
-			bgImgClick: "widget://image/tabBarMenu/" + theme + "/tabbar_icon_at_click.png"
-        },
-        {title: "动态", //标题.
-			bgImg: "widget://image/tabBarMenu/" + theme + "/tabbar_btn.png",        
-			bgImgClick: "widget://image/tabBarMenu/" + theme + "/tabbar_btn_click.png"     
-        },
-        {title: "玩吧", 
-			bgImg: "widget://image/tabBarMenu/" + theme + "/tabbar_icon_more.png", 
-			bgImgClick: "widget://image/tabBarMenu/" + theme + "/tabbar_icon_more_click.png" 
-        },
-        {title: "空间",
-			bgImg: "widget://image/tabBarMenu/" + theme + "/tabbar_icon_space.png", 
-			bgImgClick: "widget://image/tabBarMenu/" + theme + "/tabbar_icon_space_click.png" 
-        }
-    ],
-    //菜单栏通用配置. 
-	menuConfig: {					
-		coverBgColor: "#000000", //遮罩的背景色, 格式为#fff、#ffffff、rgba(r,g,b,a)等.  
-		coverAlpha: 0.8,//遮罩的透明度, 取值范围0.0~1.0.  
-       rows: 4//单页菜单每行显示的按钮数.
-    },
-    //菜单栏各按钮通用配置信息.
-	menuItemConfig: {					
-		titleColor: "#ffffff",//文本颜色, 格式为#fff、#ffffff、rgba(r,g,b,a)等.
-		titleSelectColor:"#ffffff",//选中状态时,按钮文本的颜色, 默认与titleColor相同.
-		fontSize: 11.0,//字体大小.
-		textMarginTop: 90.0//文本距离按钮上边界的距离.
-    },
-    //菜单栏各按钮的信息.
-	menuItems: [
-		  {title: "说说",//标题.
-				bgImg: "widget://image/tabBarMenu/" + theme + "/tabbar_btn_popup_talk.png",//背景图片.  
-				//被点击时的背景图片.
-				bgImgClick: "widget://image/tabBarMenu/" + theme + "/tabbar_btn_popup_talk_click.png" 
-        },
-        {title: "照片",      				 
-			bgImg: "widget://image/tabBarMenu/" + theme + "/tabbar_btn_popup_transferphotos.png",  
-			bgImgClick: "widget://image/tabBarMenu/" + theme + "/tabbar_btn_popup_transferphotos_click.png"  
-        },
-        {title: "水印相机",
-			bgImg: "widget://image/tabBarMenu/" + theme + "/tabbar_btn_popup_watermarkcamera.png",
-			bgImgClick: "widget://image/tabBarMenu/" + theme + "/tabbar_btn_popup_watermarkcamera_click.png"
-        },
-        { title: "视频",
-			bgImg: "widget://image/tabBarMenu/" + theme + "/tabbar_btn_popup_video.png", 
-			bgImgClick: "widget://image/tabBarMenu/" + theme + "/tabbar_btn_popup_video_click.png" 
-        },
-        {title: "签到",
-			bgImg: "widget://image/tabBarMenu/" + theme + "/tabbar_btn_popup_registration.png", 
-			bgImgClick: "widget://image/tabBarMenu/" + theme + "/tabbar_btn_popup_registration_click.png"  
 
-        },
-        { title: "连拍",
-			bgImg: "widget://image/tabBarMenu/" + theme + "/tabbar_btn_popup_continuousshooting.png", 
-		bgImgClick: "widget://image/tabBarMenu/" + theme + "/tabbar_btn_popup_continuousshooting_click.png" 
-        },
-        {itle: "日志",      				
-			bgImg: "widget://image/tabBarMenu/" + theme + "/tabbar_btn_popup_journal.png",
-			bgImgClick: "widget://image/tabBarMenu/" + theme + "/tabbar_btn_popup_journal_click.png"  		
-        },
-        {title: "二维码",
-			bgImg: "widget://image/tabBarMenu/" + theme + "/tabbar_btn_popup_2dbarcode.png", 
-			bgImgClick: "widget://image/tabBarMenu/" + theme + "/tabbar_btn_popup_2dbarcode_click.png"
-        },
-        {title: "语音相机",
-			bgImg: "widget://image/tabBarMenu/" + theme + "/tabbar_btn_popup_videocamera.png",
-			bgImgClick: "widget://image/tabBarMenu/" + theme + "/tabbar_btn_popup_videocamera_click.png"  
-        },
-        {title: "位置",
-			bgImg: "widget://image/tabBarMenu/" + theme + "/tabbar_btn_popup_place.png", 
-			bgImgClick: "widget://image/tabBarMenu/" + theme + "/tabbar_btn_popup_place_click.png"  
-        }
-    ]
-}, function(ret, err){ 							//点击标签栏或菜单栏按钮时的回调方法.点击激活菜单栏的标签栏按钮时不会触发此方法.
-	if(ret){
-		var item = ret.item;
-		if("menu " == item.type){
-			tabBarMenu.hideMenu();
-		}
-		api.alert({title: "提示", msg: "您点击了 " + item.type + " 上,第 " + item.index + " 个按钮!", buttons: ["确定"]});
+var tabBarMenu = api.require('tabBarMenu'),
+    theme = 'simple';
+tabBarMenu.open({
+	defaultBarSelect: 1,
+	autoLayout: true,
+	barConfig: {
+		bgImg: 'widget://image/tabBarMenu/'+ theme +'/tabbar_bg.png'
+    },
+	barItemConfig: {
+		titleColor: '#fff',
+		titleSelectColor: '#fff',
+		fontSize: 11.0,
+		textMarginTop: 41.0,
+		primaryItem: 2
+	},	
+	barItems: [{
+            title: '动态',
+			bgImg: 'widget://image/tabBarMenu/' + theme + 'tabbar_icon_auth.png',
+			bgImgClick: 'widget://image/tabBarMenu/' + theme + '/tabbar_icon_auth_click.png'
+        },{
+            title: '与我有关',
+			bgImg: 'widget://image/tabBarMenu/' + theme + '/tabbar_icon_at.png',
+			bgImgClick: 'widget://image/tabBarMenu/' + theme + '/tabbar_icon_at_click.png'
+        },{
+            title: '动态',
+			bgImg: 'widget://image/tabBarMenu/' + theme + '/tabbar_btn.png',        
+			bgImgClick: 'widget://image/tabBarMenu/' + theme + '/tabbar_btn_click.png'     
+        },{
+            title: '玩吧', 
+			bgImg: 'widget://image/tabBarMenu/' + theme + '/tabbar_icon_more.png', 
+			bgImgClick: 'widget://image/tabBarMenu/' + theme + '/tabbar_icon_more_click.png' 
+        },{
+            title: '空间',
+			bgImg: 'widget://image/tabBarMenu/' + theme + '/tabbar_icon_space.png', 
+			bgImgClick: 'widget://image/tabBarMenu/' + theme + '/tabbar_icon_space_click.png' 
+    }], 
+	menuConfig: {					
+		coverBgColor: '#000000',
+		coverAlpha: 0.8,
+       rows: 4
+    },
+	menuItemConfig: {					
+		titleColor: '#fff',
+		titleSelectColor:'#fff',
+		fontSize: 11.0,
+		textMarginTop: 90.0
+    },
+	menuItems: [{
+            title: '说说',
+            bgImg: 'widget://image/tabBarMenu/' + theme + '/tabbar_btn_popup_talk.png',
+            bgImgClick: 'widget://image/tabBarMenu/' + theme + '/tabbar_btn_popup_talk_click.png' 
+        },{
+            title: '照片',      				 
+            bgImg: 'widget://image/tabBarMenu/' + theme + '/tabbar_btn_popup_transferphotos.png',  
+            bgImgClick: 'widget://image/tabBarMenu/' + theme + '/tabbar_btn_popup_transferphotos_click.png'  
+        },{
+            title: '水印相机',
+            bgImg: 'widget://image/tabBarMenu/' + theme + '/tabbar_btn_popup_watermarkcamera.png',
+            bgImgClick: 'widget://image/tabBarMenu/' + theme + '/tabbar_btn_popup_watermarkcamera_click.png'
+        },{ 
+            title: '视频',
+            bgImg: 'widget://image/tabBarMenu/' + theme + '/tabbar_btn_popup_video.png', 
+            bgImgClick: 'widget://image/tabBarMenu/' + theme + '/tabbar_btn_popup_video_click.png' 
+        },{
+            title: '签到',
+            bgImg: 'widget://image/tabBarMenu/' + theme + '/tabbar_btn_popup_registration.png', 
+            bgImgClick: 'widget://image/tabBarMenu/' + theme + '/tabbar_btn_popup_registration_click.png'  
+        },{ 
+            title: '连拍',
+            bgImg: 'widget://image/tabBarMenu/' + theme + '/tabbar_btn_popup_continuousshooting.png', 
+            bgImgClick: 'widget://image/tabBarMenu/' + theme + '/tabbar_btn_popup_continuousshooting_click.png' 
+        },{
+            itle: '日志',      				
+            bgImg: 'widget://image/tabBarMenu/' + theme + '/tabbar_btn_popup_journal.png',
+            bgImgClick: 'widget://image/tabBarMenu/' + theme + '/tabbar_btn_popup_journal_click.png'  		
+        },{
+            title: '二维码',
+            bgImg: 'widget://image/tabBarMenu/' + theme + '/tabbar_btn_popup_2dbarcode.png', 
+            bgImgClick: 'widget://image/tabBarMenu/' + theme + '/tabbar_btn_popup_2dbarcode_click.png'
+        },{
+            title: '语音相机',
+            bgImg: 'widget://image/tabBarMenu/' + theme + '/tabbar_btn_popup_videocamera.png',
+            bgImgClick: 'widget://image/tabBarMenu/' + theme + '/tabbar_btn_popup_videocamera_click.png'  
+        },{
+            title: '位置',
+            bgImg: 'widget://image/tabBarMenu/' + theme + '/tabbar_btn_popup_place.png', 
+            bgImgClick: 'widget://image/tabBarMenu/' + theme + '/tabbar_btn_popup_place_click.png'  
+        }]	
+},function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -311,9 +300,10 @@ close()
 
 ##示例代码
 
-	var tabBarMenu = api.require("tabBarMenu");
-	
-	tabBarMenu.close();
+```js
+var tabBarMenu = api.require('tabBarMenu');
+tabBarMenu.close();
+```
 
 ##补充说明
 
@@ -343,10 +333,9 @@ index:
 ##示例代码
 
 ```js
-var tabBarMenu = api.require("tabBarMenu");
-
-tabBarMenu.setBarSelect({ 				//设置当前选中的按钮.
-    index: 3 							//要设置选中状态的按钮的下标.
+var tabBarMenu = api.require('tabBarMenu');
+tabBarMenu.setBarSelect({
+    index: 3
 });
 ```
 
@@ -424,45 +413,13 @@ marginTop:
 ##示例代码
 
 ```js
-var tabBarMenu = api.require("tabBarMenu");
-
-tabBarMenu.setBadge({ 					//设置徽章.
+var tabBarMenu = api.require('tabBarMenu');
+tabBarMenu.setBadge({
 	item: {
-        type: "bar",	    			//按钮所属控件,可选”bar”, “menu”
-        index: 0						//按钮的下标. 标签栏和菜单部分的按钮的下标均分别从 0 开始计数
+        type: 'bar',
+        index: 0
     },
-    title: "", 							//要设置的按钮的内容.
-    type: "center", 					//徽章风格,可选”left”, “center”, “right”.
-	bgColor: "#ff0000",    				//徽章的背景色,格式为#fff、#ffffff、rgba(r,g,b,a)等.
-	titleColor: "#ffffff",  			//文本颜色, 格式为#fff、#ffffff、rgba(r,g,b,a)等.
-	fontSize: 11.0,   					//字体大小.
-	marginTop: 17.0       				//徽章距离按钮上边缘的距离.
-});
-
-tabBarMenu.setBadge({ 					//设置徽章.
-	item: {
-        type: "bar",	    			//按钮所属控件,可选”bar”, “menu”
-        index: 3						//按钮的下标. 标签栏和菜单部分的按钮的下标均分别从 0 开始计数
-    },
-    title: "NEW", 						//要设置的按钮的内容.
-    type: "right", 						//徽章风格,可选”left”, “center”, “right”.
-	bgColor: "#ff0000",    				//徽章的背景色,格式为#fff、#ffffff、rgba(r,g,b,a)等.
-	titleColor: "#ffffff",  			//文本颜色, 格式为#fff、#ffffff、rgba(r,g,b,a)等.
-	fontSize: 11.0,   					//字体大小.
-	marginTop: 17.0       				//徽章距离按钮上边缘的距离.
-});
-
-tabBarMenu.setBadge({ 					//设置徽章.
-	item: {
-        type: "menu",	    			//按钮所属控件,可选”bar”, “menu”
-        index: 3						//按钮的下标. 标签栏和菜单部分的按钮的下标均分别从 0 开始计数
-    },
-    title: "NEW", 						//要设置的按钮的内容.
-    type: "right", 						//徽章风格,可选”left”, “center”, “right”.
-	bgColor: "#ff0000",    				//徽章的背景色,格式为#fff、#ffffff、rgba(r,g,b,a)等.
-	titleColor: "#ffffff",  			//文本颜色, 格式为#fff、#ffffff、rgba(r,g,b,a)等.
-	fontSize: 11.0,   					//字体大小.
-	marginTop: 15.0       				//徽章距离按钮上边缘的距离.
+    title: '标题',
 });
 ```
 
@@ -500,16 +457,10 @@ index:
 ##示例代码
 
 ```js
-var tabBarMenu = api.require("tabBarMenu");
-
-tabBarMenu.removeBadge({ 					//移除徽章.
-    type: "bar",							//按钮所属控件,可选”bar”, “menu”
-    index: 3								//按钮的下标. 标签栏和菜单部分的按钮的下标均分别从 0 开始计数
-});
-
-tabBarMenu.removeBadge({ 					//移除徽章.
-    type: "menu",							//按钮所属控件,可选”bar”, “menu”
-    index: 3								//按钮的下标. 标签栏和菜单部分的按钮的下标均分别从 0 开始计数
+var tabBarMenu = api.require('tabBarMenu');
+tabBarMenu.removeBadge({
+    type: 'bar',
+    index: 3
 });
 ```
 
@@ -532,9 +483,10 @@ hide();
 
 ##示例代码
 
-	var tabBarMenu = api.require("tabBarMenu");
-	
-	tabBarMenu.hide();
+```js
+var tabBarMenu = api.require('tabBarMenu');
+tabBarMenu.hide();
+```
 
 ##补充说明
 
@@ -553,11 +505,10 @@ iOS系统，Android系统
 show();
 
 ##示例代码
-
-	var tabBarMenu = api.require("tabBarMenu");
-	
-	tabBarMenu.show();
-
+```js
+var tabBarMenu = api.require('tabBarMenu');
+tabBarMenu.show();
+```
 ##补充说明
 
 无
@@ -577,9 +528,10 @@ hideMenu();
 
 ##示例代码
 
-	var tabBarMenu = api.require("tabBarMenu");
-	
-	tabBarMenu.hideMenu();
+```js
+var tabBarMenu = api.require('tabBarMenu');
+tabBarMenu.hideMenu();
+```
 
 ##补充说明
 
@@ -599,9 +551,10 @@ showMenu();
 
 ##示例代码
 
-	var tabBarMenu = api.require("tabBarMenu");
-	
-	tabBarMenu.showMenu();
+```js
+var tabBarMenu = api.require('tabBarMenu');
+tabBarMenu.showMenu();
+```
 
 ##补充说明
 

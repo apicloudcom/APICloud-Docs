@@ -37,15 +37,14 @@ ret：
 ##示例代码
 
 ```js
-var fb = api.require('fileBrowser');
-fb.open( 
-	function(ret,err) {
-		api.alert({
-			title: '本文件url',
-			msg: ret.url
-		});
-	}
-);
+var fileBrowser = api.require('fileBrowser');
+fileBrowser.open(function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
 ```
 ##可用性
 
@@ -62,8 +61,8 @@ clsoe()
 ##示例代码
 
 ```js
-var fb = api.require('fileBrowser');
-fb.close();
+var fileBrowser = api.require('fileBrowser');
+fileBrowser.close();
 ```
 ##可用性
 
