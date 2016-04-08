@@ -55,14 +55,14 @@ centerX：
 centerY：
 
 - 类型：数字
-- 默认值：导航条的最下边
+- 默认值：100
 - 描述：（可选项）加载标签的中心点坐标
 
 fixedOn：
 
-- 类型：字符串
-- 默认值：当前主窗口的名字
-- 描述：（可选项）将此模块视图添加到指定窗口的名字
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 fixed:
 - 类型：布尔
@@ -104,10 +104,14 @@ ret：
 
 ##示例代码
 
-	var obj = api.require('loadingLabel');
-	obj.open(function(ret,err){
-	   api.alert({msg:ret.id});
-	});
+var loadingLabel = api.require('loadingLabel');
+loadingLabel.open(function( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
+});
 
 ##补充说明
 
@@ -136,8 +140,12 @@ id：
 
 ##示例代码
 
-	var obj = api.require("loadingLabel");
-	obj.stop({id:1});
+```js
+var loadingLabel = api.require("loadingLabel");
+loadingLabel.stop({
+    id: 1
+});
+```
 
 ##补充说明
 
@@ -165,8 +173,12 @@ id：
 
 ##示例代码
 
-	var obj = api.require('loadingLabel');
-	obj.start({id:1});
+```js
+var loadingLabel = api.require('loadingLabel');
+loadingLabel.start({
+    id: 1
+});
+```
 
 ##补充说明
 
@@ -195,8 +207,12 @@ id：
 
 ##示例代码
 
-	var obj = api.require('loadingLabel');
-	obj.close({id:1});
+```js
+var loadingLabel = api.require('loadingLabel');
+loadingLabel.close({
+    id:1
+});
+```
 
 ##补充说明
 
@@ -224,8 +240,12 @@ id：
 
 ##示例代码
 
-	var obj = api.require('loadingLabel');
-	obj.show({id:1});
+```js
+var loadingLabel = api.require('loadingLabel');
+loadingLabel.show({
+    id:1
+});
+```
 
 ##补充说明
 
@@ -256,8 +276,12 @@ id：
 
 ##示例代码
 
-	var obj = api.require('loadingLabel');
-	obj.hide({id:1});
+```js
+var loadingLabel = api.require('loadingLabel');
+loadingLabel.hide({
+    id: 1
+});
+```
 
 ##补充说明
 

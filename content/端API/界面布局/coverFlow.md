@@ -44,18 +44,6 @@ y：
 - 默认值：100
 - 描述：视图左上角点坐标，可为空
 
-<del>width：<del>
-
-- <del>类型：数字<del>
-- <del>默认值：无<del>
-- <del>描述：视图的宽，可为空<del>
-
-<del>height：<del>
-
-- <del>类型：数字<del>
-- <del>默认值：无<del>
-- <del>描述：视图的高，可为空</del>
-
 w：
 
 - 类型：数字
@@ -67,12 +55,6 @@ h：
 - 类型：数字
 - 默认值：w-20
 - 描述：视图的高，可为空
-
-<del>backGroundColor：</del>
-
-- <del>类型：字符串</del>
-- <del>默认值：无</del>
-- <del>描述：背景颜色十六进制值</del>
 
 bgColor：
 
@@ -88,9 +70,9 @@ paths：
 
 fixedOn：
 
-- 类型：字符串
-- 默认值：当前主窗口的名字
-- 描述：将此模块视图添加到指定窗口的名字，可为空
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 reflect：
 
@@ -113,7 +95,9 @@ ret：
 
 ```js
 {
-    eventType：     //事件类型，取值范围如下：                      click//点击事件                      scroll//滚动事件
+    eventType：     //事件类型，取值范围如下：
+                      click//点击事件
+                      scroll//滚动事件
 	index:           //返回用户选择的图片的下标
 }
 ```
@@ -121,19 +105,31 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('coverFlow');
-obj.open({
-	x:0,
-	y:64,
-	w:320,
-	h:300,
+var coverFlow = api.require('coverFlow');
+coverFlow.open({
+	x: 0,
+	y: 0,
+	w: api.winWidth,
+	h: 300,
 	bgColor:'#ADD8E6',
-	paths:['widget://res/a1.png','widget://res/a2.png','widget://res/a3.png',
-		'widget://res/a4.png','widget://res/a5.png','widget://res/a6.png',
-		'widget://res/a7.png','widget://res/a8.png','widget://res/a9.png',
-		'widget://res/a10.png']
-},function(ret,err) {
-	var index = ret.index;
+	paths:[
+        'widget://res/a1.png',
+        'widget://res/a1.png',
+        'widget://res/a1.png',
+        'widget://res/a1.png',
+        'widget://res/a1.png',
+        'widget://res/a1.png',
+        'widget://res/a1.png',
+        'widget://res/a1.png',
+        'widget://res/a1.png'
+    ],
+    fixedOn: api.frameName
+},function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -156,8 +152,10 @@ close()
 
 ##示例代码
 
-    var obj = api.require('coverFlow');
-    obj.close();
+```js
+    var coverFlow = api.require('coverFlow');
+    coverFlow.close();
+```
 
 ##补充说明
 
@@ -177,8 +175,10 @@ hide()
 
 ##示例代码
 
-    var obj = api.require('coverFlow');
-    obj.hide();
+```js
+var coverFlow = api.require('coverFlow');
+coverFlow.hide();
+```
 
 ##补充说明
 
@@ -198,8 +198,10 @@ show()
 
 ##示例代码
 
-    var obj = api.require('coverFlow');
-    obj.show();
+```js
+var coverFlow = api.require('coverFlow');
+coverFlow.show();
+```
 
 ##补充说明
 

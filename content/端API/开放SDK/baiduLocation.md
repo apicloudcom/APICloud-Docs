@@ -20,7 +20,31 @@ Description: baiduLocation
 
 #**概述**
 
-baiduLocation封装了百度定位的相关功能，使用此模块可获取当前位置信息
+baiduLocation 封装了百度地图定位的 SDK。百度地图定位 SDK 是为移动端应用提供的一套简单易用的LBS定位服务接口，专注于为广大开发者提供最好的综合定位服务，通过使用百度定位SDK，开发者可以轻松为应用程序实现智能、精准、高效的定位功能。该套SDK免费对外开放，接口使用无次数限制。在使用前，您需先申请密钥（ak）才可使用。任何非营利性应用请直接使用，商业目的产品使用前请参考[使用须知](http://lbsyun.baidu.com/index.php?title=open/question)。在您使用百度地图Android SDK之前，请先阅读[百度地图API使用条款](http://lbsyun.baidu.com/index.php?title=open/law)。
+
+开发者使用本模块之前需先去[百度地图开放平台](http://lbsyun.baidu.com)申请开发者账号，创建自己的 APP 从而获取 ak，本模块所需的 ak 与 baiduMap 模块、bMap 模块所需的密钥可以共用。
+
+***使用此模块之前必须先配置  config 文件，配置方法如下：***
+
+- 名称：baiduLocation
+- 参数：apiKey
+- 配置示例:
+
+```xml
+  <feature name="baiduLocation">
+    <param name="apiKey" value="f7Is0dWLom2q6rV3ZfFPZ1aa" />
+  </feature>
+```
+
+- 字段描述:
+
+    **apiKey**：在百度地图开放平台申请的 ak
+
+如果不配置 config.xml 则模块会去读 baiduMap 模块的 key（其实两个key都是在百度地图开放平台申请的同一个key）。但 baiduMap 模块现已停止更新，用bMap模块替换。所以最好还是每个模块单独配置每个模块的key，模块之间相互独立，互不干涉依赖。
+
+注意：getLocation 接口无法设置 accuracy、filter、autoStop 这些参数，当调用getLocation 时，模块底层会先做个判断，如果已经调用过 startLocation 并且已经定位成功获取位置信息，则将此位置信息返回（所以这个位置信息有很大可能不是实时的）。若没调用过startLocation 则模块内部自己先 startLocation，此时 accuracy、filter、autoStop 这些参数取默认值。定位到信息后则返回定位到的信息。所以建议先调用 startLocation 再getLocation。
+
+##**模块接口**
 
 #**startLocation**<div id="a1"></div>
 

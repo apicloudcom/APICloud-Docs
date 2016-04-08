@@ -120,6 +120,24 @@ err：
 - 类型：JSON对象
 - 描述：错误信息
 
+##示例代码
+
+```js
+var model = api.require('model');
+model.insert({
+    class: 'user',
+    value: {
+         name : 'text'
+    }
+},function( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
+});
+```
+
 ##补充说明
 
 无
@@ -162,6 +180,22 @@ err：
 
 - 类型：JSON对象
 - 描述：错误信息
+
+##示例代码
+
+```js
+var model = api.require('model');
+model.deleteById({
+    class: 'user',
+    id: 'A0000000001'
+},function( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
+});
+```
 
 ##补充说明
 
@@ -222,9 +256,11 @@ model.updateById({
     value: {
         nickname: 'Tom'
     }
-}, function(ret, err){
-    if(ret){
-        //do something      
+},function( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );   
+    }else{
+         alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -279,9 +315,11 @@ var model = api.require('model');
 model.findById({
     class: 'user',
     id: 'A00001'
-},function(ret, err){
-    if(ret){
-        //do something
+},function( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );   
+    }else{
+         alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -333,19 +371,14 @@ err：
 
 ```js
 var model = api.require('model');
-var query = api.require('query');
-query.createQuery(function(ret, err) {
-    if (ret && ret.qid) {
-        var queryId = ret.qid;
-        model.findAll({
-            class: "activity",
-            qid: queryId
-        }, function(ret, err) {
-            if (ret) {
-                //do something           
-            }
-            
-        });
+model.findAll({
+    class: "activity",
+    qid: queryId
+}, function( ret, err ) {
+    if( ret ){
+         alert( JSON.stringify( ret ) );   
+    }else{
+         alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -393,6 +426,22 @@ err：
 - 类型：JSON对象
 - 描述：错误信息
 
+##示例代码
+
+```js
+var model = api.require('model');
+model.count({
+    class: "user",
+    qid: queryId
+}, function( ret, err ) {
+    if( ret ){
+         alert( JSON.stringify( ret ) );   
+    }else{
+         alert( JSON.stringify( err ) );
+    }
+});
+```
+
 ##补充说明
 
 无
@@ -434,6 +483,21 @@ err：
 
 - 类型：JSON对象
 - 描述：错误信息
+
+##示例代码
+
+```js
+var model = api.require('model');
+model.exist({
+    class: "user"
+}, function( ret, err ) {
+    if( ret ){
+         alert( JSON.stringify( ret ) );   
+    }else{
+         alert( JSON.stringify( err ) );
+    }
+});
+```
 
 ##补充说明
 
@@ -504,59 +568,24 @@ err：
 ##示例代码
 
 ```js
-//report参数为true时：
-
 var model = api.require('model');
 model.uploadFile({
-	report:true,
-	data:{
-		file:{
-			name:'1.png',
-			url:'widget://image/1.png'
+	report: false,
+	data: {
+		file: {
+			name: 'apicloud.png',
+			url: 'widget://res/img/apicloud.png'
 		},
-		values:{
-			key1:'value1',
-			key2:'value2'
+		values: {
+			key1: 'value1',
+			key2: 'value2'
 		}
 	}
-},function(ret, err) {
-    if (ret) {
-        var state = ret.state;
-        if (state == 1) {
-            //上传完成
-            var body = ret.body;
-            if (body) {
-                //处理服务器返回数据
-            }
-        } else {
-        
-        }
-    } else {
-        
-    }
-});
-
-
-//report参数为false时：
-
-var model = api.require('model');
-model.uploadFile({
-	report:false,
-	data:{
-		file:{
-			name:'1.png',
-			url:'widget://image/1.png'
-		},
-		values:{
-			key1:'value1',
-			key2:'value2'
-		}
-	}
-},function(ret, err) {
-    if (ret) {
-        //处理服务器返回数据
-    } else {
-        
+},function( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );   
+    }else{
+         alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -630,23 +659,14 @@ err：
 ```js
 var model = api.require('model');
 model.downloadFile({
-	report:true,
-	id:'asfdasfasfasfasf',
-	savePath:'fs://1.png'
-},function(ret, err) {
-    if (ret) {
-        var state = ret.state;
-        if (state == 1) {
-            //下载完成
-            var savePath = ret.savePath;
-            if (savePath) {
-                
-            }
-        } else {
-        
-        }
-    } else {
-        
+	report: true,
+	id: 'asfdasfasfasfasf',
+	savePath: ''
+},function( ret, err ) {
+    if( ret ){
+         alert( JSON.stringify( ret ) );   
+    }else{
+         alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -740,15 +760,16 @@ ret：
 
 ```js
 var query = api.require('query');
-query.createQuery(function(ret, err) {
-    if (ret && ret.qid) {
-        var queryId = ret.qid;
-        //do something
+query.createQuery(function( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );   
+    }else{
+         alert( JSON.stringify( err ) );
     }
 });
 ```
 
-#补充说明
+##补充说明
 
 无
 
@@ -761,7 +782,7 @@ iOS系统，Android系统
 
 #**limit**<div id="2"></div>
 
-设置查询返回结果限制为n条
+设置查询返回结果限制为n条，相当于“分页”大小。
 
 limit({params})
 
@@ -775,19 +796,17 @@ qid：
 
 value：
 
-- 类型：字符串
-- 默认值：无
-- 描述：被限制的数目值，不能为空
+- 类型：数字
+- 默认值：20
+- 描述：被限制的数目值
 
 ##示例代码
 
 ```js
 var query = api.require('query');
-query.createQuery(function(ret, err){
-    if(ret && ret.qid){
-        var queryId = ret.qid;
-        query.limit({qid:queryId, value:3});
-    }
+query.limit({
+    qid: queryId, 
+    value: 3
 });
 ```
 
@@ -818,9 +837,19 @@ qid：
 
 value：
 
-- 类型：字符串
-- 默认值：无
-- 描述：被忽略的数目值，不能为空
+- 类型：数字
+- 默认值：0
+- 描述：被忽略的数目值
+
+##示例代码
+
+```js
+var query = api.require('query');
+query.skip({
+    qid: queryId, 
+    value: 0
+});
+```
 
 ##补充说明
 
@@ -853,6 +882,16 @@ column：
 - 默认值：无
 - 描述：用于排序的列，不能为空
 
+##示例代码
+
+```js
+var query = api.require('query');
+query.asc({
+    qid: queryId, 
+    column: 'id'
+});
+```
+
 ##补充说明
 
 与desc互斥
@@ -883,6 +922,16 @@ column：
 - 类型：字符串
 - 默认值：无
 - 描述：用于排序的列，不能为空
+
+##示例代码
+
+```js
+var query = api.require('query');
+query.desc({
+    qid: queryId, 
+    column: 'id'
+});
+```
 
 ##补充说明
 
@@ -919,13 +968,9 @@ column：
 
 ```js
 var query = api.require('query');
-query.createQuery(function (ret, err) {
-    if (ret && ret.qid) {
-        query.include({
-            qid: ret.qid,
-            column: 'pointer.column'
-        });
-    }
+query.include({
+    qid: queryId,
+    column: 'column'
 });
 ```
 
@@ -970,14 +1015,10 @@ value：
 
 ```js
 var query = api.require('query');
-query.createQuery(function (ret, err) {
-    if (ret && ret.qid) {
-        query.whereEqual({
-            qid: ret.qid,
-            column: 'id',
-            value: 'pointer.id'
-        });
-    }
+query.whereEqual({
+    qid: queryId,
+    column: 'id',
+    value: 'A00000000001'
 });
 ```
 
@@ -1018,6 +1059,17 @@ value：
 - 默认值：无
 - 描述：作为条件的值，不能为空
 
+##示例代码
+
+```js
+var query = api.require('query');
+query.whereNotEqual({
+    qid: queryId,
+    column: 'id',
+    value: 'A00000000001'
+});
+```
+
 ##补充说明
 
 可设置多个，与whereEqual互斥
@@ -1054,6 +1106,17 @@ value：
 - 类型：字符串
 - 默认值：无
 - 描述：作为条件的值，不能为空
+
+##示例代码
+
+```js
+var query = api.require('query');
+query.whereLike({
+    qid: queryId,
+    column: 'id',
+    value: 'A00000000001'
+});
+```
 
 ##补充说明
 
@@ -1092,6 +1155,17 @@ value：
 - 默认值：无
 - 描述：作为条件的值，不能为空
 
+##示例代码
+
+```js
+var query = api.require('query');
+query.whereUnLike({
+    qid: queryId,
+    column: 'id',
+    value: 'A00000000001'
+});
+```
+
 ##补充说明
 
 可设置多个
@@ -1129,6 +1203,17 @@ value：
 - 默认值：无
 - 描述：作为条件的值，不能为空
 
+##示例代码
+
+```js
+var query = api.require('query');
+query.whereStartWith({
+    qid: queryId,
+    column: 'id',
+    value: 'A00000000001'
+});
+```
+
 ##补充说明
 
 可设置多个
@@ -1144,7 +1229,7 @@ iOS系统，Android系统
 
 设置查询条件为某列内容以某值结尾
 
-whereUnLike({params})
+whereEndWith({params})
 
 ##params
 
@@ -1165,6 +1250,17 @@ value：
 - 类型：字符串
 - 默认值：无
 - 描述：作为条件的值，不能为空
+
+##示例代码
+
+```js
+var query = api.require('query');
+query.whereEndWith({
+    qid: queryId,
+    column: 'id',
+    value: 'A00000000001'
+});
+```
 
 ##补充说明
 
@@ -1197,6 +1293,16 @@ column：
 - 默认值：无
 - 描述：作为条件的列名，不能为空
 
+##示例代码
+
+```js
+var query = api.require('query');
+query.whereExist({
+    qid: queryId,
+    column: 'id'
+});
+```
+
 ##补充说明
 
 可设置多个
@@ -1227,6 +1333,16 @@ column：
 - 类型：字符串
 - 默认值：无
 - 描述：作为条件的列名，不能为空
+
+##示例代码
+
+```js
+var query = api.require('query');
+query.whereNotExist({
+    qid: queryId,
+    column: 'id'
+});
+```
 
 补充说明
 
@@ -1265,6 +1381,17 @@ value：
 - 默认值：无
 - 描述：作为条件的值，不能为空
 
+##示例代码
+
+```js
+var query = api.require('query');
+query.whereContain({
+    qid: queryId,
+    column: 'id',
+    value: 'A00000000001'
+});
+```
+
 ##补充说明
 
 可设置多个，该列需为array型
@@ -1301,6 +1428,17 @@ value：
 - 类型：字符串数组
 - 默认值：无
 - 描述：作为条件的多个值，不能为空
+
+##示例代码
+
+```js
+var query = api.require('query');
+query.whereContainAll({
+    qid: queryId,
+    column: 'id',
+    value: ['A00000000001']
+});
+```
 
 ##补充说明
 
@@ -1339,6 +1477,17 @@ value：
 - 默认值：无
 - 描述：作为条件的值，不能为空
 
+##示例代码
+
+```js
+var query = api.require('query');
+query.whereNotContain({
+    qid: queryId,
+    column: 'id',
+    value: 'A00000000001'
+});
+```
+
 ##补充说明
 
 可设置多个，该列需为array型
@@ -1375,6 +1524,17 @@ value：
 - 类型：字符串
 - 默认值：无
 - 描述：作为条件的值，数字或者date型，不能为空
+
+##示例代码
+
+```js
+var query = api.require('query');
+query.whereGreaterThan({
+    qid: queryId,
+    column: 'id',
+    value: 'A00000000001'
+});
+```
 
 ##补充说明
 
@@ -1413,11 +1573,22 @@ value：
 - 默认值：无
 - 描述：作为条件的值，数字或者date型，不能为空
 
+##示例代码
+
+```js
+var query = api.require('query');
+query.whereGreaterThanOrEqual({
+    qid: queryId,
+    column: 'id',
+    value: 'A00000000001'
+});
+```
+
 ##补充说明
 
 可设置多个
 
-#可用性
+##可用性
 
 iOS系统，Android系统
 
@@ -1449,6 +1620,17 @@ value：
 - 类型：字符串
 - 默认值：无
 - 描述：作为条件的值，数字或者date型，不能为空
+
+##示例代码
+
+```js
+var query = api.require('query');
+query.whereLessThan({
+    qid: queryId,
+    column: 'id',
+    value: 'A00000000001'
+});
+```
 
 ##补充说明
 
@@ -1487,6 +1669,17 @@ value：
 - 默认值：无
 - 描述：作为条件的值，数字或者date型，不能为空
 
+##示例代码
+
+```js
+var query = api.require('query');
+query.whereLessThanOrEqual({
+    qid: queryId,
+    column: 'id',
+    value: 'A00000000001'
+});
+```
+
 ##补充说明
 
 可设置多个
@@ -1518,6 +1711,16 @@ value：
 - 类型：字符串数组
 - 默认值：无
 - 描述：字段的值，不能为空
+ 
+##示例代码
+
+```js
+var query = api.require('query');
+query.justFields({
+    qid: queryId,
+    value: ['value']
+});
+```
 
 ##补充说明
 
@@ -1550,6 +1753,16 @@ value：
 - 类型：字符串数组
 - 默认值：无
 - 描述：字段的值，不能为空
+
+##示例代码
+
+```js
+var query = api.require('query');
+query.exceptFields({
+    qid: queryId,
+    value: ['value']
+});
+```
 
 ##补充说明
 
@@ -1623,6 +1836,26 @@ err：
 - 类型：JSON对象
 - 描述：错误信息
 
+##示例代码
+
+```js
+var relation = api.require('relation');
+relation.insert({
+    class: 'user',
+    id: 'A00001',
+    column: 'column',
+    value: {
+        name: 'value'
+    }
+},function( ret, err ){
+     if( ret ){
+        alert( JSON.stringify( ret) );
+     }else{
+        alert( JSON.stringify( err) );
+     }
+});
+```
+
 ##补充说明
 
 无
@@ -1671,6 +1904,23 @@ err：
 
 - 类型：JSON对象
 - 描述：错误信息
+
+##示例代码
+
+```js
+var relation = api.require('relation');
+relation.count({
+    class: 'user',
+    id: 'A00001',
+    column: 'column'
+},function( ret, err ){
+     if( ret ){
+        alert( JSON.stringify( ret) );
+     }else{
+        alert( JSON.stringify( err) );
+     }
+});
+```
 
 ##补充说明
 
@@ -1724,14 +1974,16 @@ err：
 ##示例代码
 
 ```js
-var relation_m = api.require('relation');
-relation_m.findAll({
-    class: 'relation._class',
-    id: 'relation.id',
-    column: 'relation.column'
+var relation = api.require('relation');
+relation.findAll({
+    class: 'user',
+    id: 'A000000001',
+    column: 'column'
 }, function (ret, err) {
-    if (ret) {
-        //do something
+    if( ret ){
+        alert( JSON.stringify( ret) );
+    }else{
+        alert( JSON.stringify( err) );
     }
 });
 ```
@@ -1784,6 +2036,23 @@ err：
 
 - 类型：JSON对象
 - 描述：错误信息
+
+##示例代码
+
+```js
+var relation = api.require('relation');
+relation.deleteAll({
+    class: 'user',
+    id: 'A00001',
+    column: 'column'
+},function( ret, err ){
+     if( ret ){
+        alert( JSON.stringify( ret) );
+     }else{
+        alert( JSON.stringify( err) );
+     }
+});
+```
 
 ##补充说明
 
@@ -1851,10 +2120,12 @@ var user = api.require('user');
 user.login({
     username: 'name',
     password: '12345678'
-}, function(ret, err) {
-    if (ret) {
-        //do something       
-    }
+}, function( ret, err ) {
+     if( ret ){
+        alert( JSON.stringify( ret) );
+     }else{
+        alert( JSON.stringify( err) );
+     }
 });
 ```
 
@@ -1913,10 +2184,13 @@ err：
 var user = api.require('user');
 user.register({
     username: 'uname',
-    password: '111111'
-}, function(ret, err) {
-    if (ret) {
-        //do something        
+    password: '111111',
+    email: 'xixi@apicloud.com'
+}, function( ret, err ) {
+    if( ret ){
+        alert( JSON.stringify( ret) );
+    }else{
+        alert( JSON.stringify( err) );
     }
 });
 ```
@@ -1955,8 +2229,10 @@ err：
 ```js
 var user = api.require('user');
 user.logout(function(ret, err){
-    if(ret){
-        //do something        
+    if( ret ){
+        alert( JSON.stringify( ret) );
+    }else{
+        alert( JSON.stringify( err) );
     }
 });
 ```
@@ -2005,8 +2281,10 @@ var user = api.require('user');
 user.updatePassword({
     password: 'newPwd'
 }, function(ret, err) {
-    if (ret) {
-        //do it
+    if( ret ){
+        alert( JSON.stringify( ret) );
+    }else{
+        alert( JSON.stringify( err) );
     }
 });
 ```

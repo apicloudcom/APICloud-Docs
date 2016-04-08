@@ -44,9 +44,10 @@ text：
 
 ```js
 var shareTool = api.require('shareTool');
-
-shareTool.shareText({text:"这个游戏真好玩！",title:"我爱分享"});
-
+shareTool.shareText({
+    text: '这个游戏真好玩！',
+    title: '我爱分享'
+});
 ```
 
 ##补充说明
@@ -85,8 +86,10 @@ url：
 
 ```js
 var shareTool = api.require('shareTool');
-
-shareTool.sharePicture({url:"/storage/emulated/0/airshow/qyc.png",title:"我爱分享"});
+shareTool.sharePicture({
+    url: 'widget://.png',
+    title: '分享'
+});
 ```
 
 ##补充说明

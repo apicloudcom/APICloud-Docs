@@ -35,7 +35,15 @@ iap模块封装了iOS系统应用内购买相关功能，部分功能如商品�
 
 获取有效商品列表
 
-getProducts(callback(ret, err))
+getProducts({params}, callback(ret, err))
+
+##params
+
+productIds：
+
+- 类型：字符串数组
+- 默认值：无
+- 描述：商品id列表，不能为空
 
 ##callback(ret, err)
 
@@ -77,25 +85,22 @@ err：
 
 ```js
 var iap = api.require('iap');
-iap.getProducts(
-	function(ret, err){
-		if (ret) {
-			if(ret.products){
-			
-			}
-			if (ret.invalidProductIds) {
-				
-			}
-		} else {
-			
-		}
-	}
-);
+iap.getProducts({
+	productIds: [
+        'com.apicloud.iap.free'
+    ]
+},function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
 ```
 
 ##补充说明
 
-使用此接口来获取有效的商品
+获取有效的商品
 
 ##可用性
 
@@ -167,42 +172,12 @@ err：
 ```js
 var iap = api.require('iap');
 iap.purchase({
-productId:'com.company.app.productid'		//有效商品id
-}, function(ret, err){
-    if(ret){
-		var state = ret.state;
-		switch (state)
-		{
-			case 0:
-			{
-				//交易已加入队列
-			}
-				break;
-			case 1:
-			{
-				//交易成功，应该对交易凭证进行验证；若有下载内容，需把下载内容提供给用户
-			}
-				break;
-			case 2:
-			{
-				//交易失败
-			}
-				break;
-			case 3:
-			{
-				//交易恢复，调用恢复购买时会触发，同样若有下载内容，需把下载内容提供给用户
-			}
-				break;
-			case 4:
-			{
-				//交易等待被确认，待确认后交易状态会变更为其它状态
-			}
-				break;
-			default:
-				break;
-		}
+    productId: 'com.company.app.productid'
+},function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
     }else{
-	api.alert({msg:err.msg});
+        alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -275,20 +250,13 @@ err：
 
 ```js
 var iap = api.require('iap');
-iap.restoreTransactions(
-	function(ret, err){
-		if(ret){
-		if (ret.finished){
-				//恢复购买全部完成
-			} else {
-				//获取当前恢复成功的交易
-				var transaction = ret.transaction;
-			}
-		}else{
-			api.alert({errorCode:err.errorCode});
-		}
-	}
-);
+iap.restoreTransactions(function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
 ```
 
 ##补充说明
@@ -338,8 +306,12 @@ ret：
 
 ```js
 var iap = api.require('iap');
-iap.setDownloadListener(function(ret){
-	var downloads = ret.downloads;
+iap.setDownloadListener(function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -370,10 +342,14 @@ contentIds：
 
 ##示例代码
 
+```js
 var iap = api.require('iap');
 iap.startDownloads({
-	contentIds: ['xxx']
+	contentIds: [
+        '123'
+    ]
 });
+```
 
 ##补充说明
 
@@ -405,7 +381,9 @@ contentIds：
 ```js
 var iap = api.require('iap');
 iap.pauseDownloads({
-	contentIds: ['xxx']
+	contentIds: [
+		'123'
+	]
 });
 ```
 
@@ -439,7 +417,9 @@ contentIds：
 ```js
 var iap = api.require('iap');
 iap.resumeDownloads({
-	contentIds: ['xxx']
+	contentIds: [
+		'123'
+	]
 });
 ```
 
@@ -473,7 +453,9 @@ contentIds：
 ```js
 var iap = api.require('iap');
 iap.cancelDownloads({
-	contentIds: ['xxx']
+	contentIds: [
+		'123'
+	]
 });
 ```
 

@@ -16,11 +16,13 @@ Description: screenClip
 
 [cancel](#a3)
 
+[screenShot](#a4)
+
 </div>
 
 #**概述**
 
-screenClip模块封装了屏幕截图的功能，用户可加拖动选择截图的区域，生成的图片可指定保存路径，也可保存到本地相册。用户点击已选截图区域则保存图片并取消本次截图，点击非已选区域则直接取消本次截图
+screenClip模块封装了屏幕截图的功能，用户可加拖动选择截图的区域，生成的图片可指定保存路径，也可保存到本地相册。用户点击已选截图区域则保存图片并取消本次截图，点击非已选区域则直接取消本次截图。**不支持截取视频画面**。
 
 #**open**<div id="a1"></div>
 
@@ -33,43 +35,41 @@ open({params}, callback(ret, err))
 bg：
 
 - 类型：字符串
-- 默认值：无
-- 描述：（可选项）背景设置，支持#，rgb，rgba
+- 描述：（可选项）背景颜色设置，支持#，rgb，rgba
 
 cutFrame：
 
-- 类型：json对象
-- 默认值：见内部字段
+- 类型：JSON对象
 - 描述：（可选项）截取框配置
+- 默认值：见内部字段
 - 内部字段:
 
 ```js
 {
-    x:            //（可选项）截图区域左上角点坐标，数字类型，默认10
-    y:            //（可选项）截图区域左上角点坐标，数字类型，默认128
-    w:            //（可选项）截图区域的宽，数字类型，默认当前屏幕宽减二十
-    h:            //（可选项）截图区域的高，数字类型，默认w
-	borderColor:  //（可选项）边框颜色,字符串,默认#696969,支持rgb，rgba，#
-	borderWidth:  //（可选项）边框粗细，数字类型，默认2
-	tipsSize:     //（可选项）提示文字的大小，数字类型，默认12
-	tipsPosition：//（可选项）提示文字位置，字符串，默认center,取值范围见提示文字位置
-	tipsColor:    //（可选项）提示文字颜色，字符串，默认#696969,支持#,rgb,rgba
+    x:            //（可选项）数字类型；截图区域左上角点坐标；默认：10
+    y:            //（可选项）数字类型；截图区域左上角点坐标；默认：128
+    w:            //（可选项）数字类型；截图区域的宽；默认：当前屏幕宽减二十
+    h:            //（可选项）数字类型；截图区域的高；默认：w
+	borderColor:  //（可选项）字符串类型；边框颜色，支持rgb、rgba、#；默认：#696969
+	borderWidth:  //（可选项）数字类型；边框粗细；默认：2
+	tipsSize:     //（可选项）数字类型；提示文字的大小；默认：12
+	tipsPosition: //（可选项）字符串类型；提示文字位置，取值范围见提示文字位置；默认：center
+	tipsColor:    //（可选项）字符串类型；提示文字颜色，支持#、rgb、rgba；默认：#696969
 }
 ```
 
 save：
 
-- 类型：json对象
+- 类型：JSON对象
+- 描述：所生成的图片保存位置
 - 默认值：见内部字段
-- 描述：（可选项）所生成的图片保存位置
-- 备注：不传则必须通过save接口保存
 - 内部字段：
 
 ```js
 {
-	album:            //（可选项）布尔值，是否保存到系统相册，默认false
-	imgPath:          //（可选项）保存的文件路径,字符串类型，无默认值,不传则不保存，若路径不存在文件夹则创建此目录
-	imgName:         //（可选项）保存的图片名字，字符串类型，无默认值,不传则不保存，支持png和jpg格式，若不指定格式，则默认png
+	album:            //（可选项）布尔类型；是否保存到系统相册；默认：false
+	imgPath:          //（可选项）字符串类型；保存的文件路径，不传则不保存，若路径不存在文件夹则创建此目录
+	imgName:         //（可选项）字符串类型；保存的图片名字，不传则不保存，支持png和jpg格式，若不指定格式，则默认png
 }
 ```
 
@@ -78,48 +78,42 @@ save：
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	status://操作成功状态值
+	status:         //布尔类型；操作成功状态值，true|false
 }
 ```
 
 err：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	code:    //错误码，取值范围如下：
-	          -1：//未知错误
-	           0：//保存到相册失败，无操作相册权限
-	           1：//保存到到指定路径失败，无指定保存图片路径
-	           2：//截图失败
-	           3：//用户取消
+	code:         //错误码，取值范围如下：
+	              // -1：未知错误
+	              // 0：保存到相册失败，无操作相册权限
+	              // 1：保存到到指定路径失败，无指定保存图片路径
+	              // 2：截图失败
+	              // 3：用户取消
 }
 ```
 
 ##示例代码
 
 ```js
-var obj = api.require('screenClip');
-obj.open(function(ret, err){
-	if(ret.status){
-		api.alert({msg:'截图完成'});
+var screenClip = api.require('screenClip');
+screenClip.open(function( ret, err ){		
+	if( ret.status ){
+		alert( JSON.stringify( ret ) );
 	}else{
-		api.alert({msg:err.code});
-    }
+		alert( JSON.stringify( err ) );
+	}
 });
 ```
-
-##补充说明
-
-无
 
 ##可用性
 
@@ -129,7 +123,7 @@ iOS系统，Android系统
 
 #**save**<div id="a2"></div>
 
-保存截图到指定位置，若未调用open接口则直接截取全屏
+截取 open 接口内 cutFrame 参数指定的当前区域的图片，并保存到指定位置
 
 save ({params}, callback(ret, err))
 
@@ -138,19 +132,17 @@ save ({params}, callback(ret, err))
 album：
 
 - 类型：布尔类型
-- 默认值：false
 - 描述：（可选项）是否保存到系统相册
+- 默认值：false
 
 imgPath：
 
 - 类型：字符串类型
-- 默认值：无
 - 描述：（可选项）保存的图片路径，若路径不存在文件夹则创建此目录，不传则不保存
 
 imgName：
 
 - 类型：字符串类型
-- 默认值：无
 - 描述：（可选项）保存的图片名字，不传则不保存，支持png和jpg格式，若不指定格式，则默认png
 
 ##callback(ret, err)
@@ -158,48 +150,42 @@ imgName：
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	status:       //操作成功状态值
+	status:       //布尔类型；操作成功状态值，true|false
 }
 ```
 
 err：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
 	code:       //错误码，取值范围如下：
-	             -1：//未知错误
-	              0：//保存到相册失败，无操作相册权限
-	              1：//保存到到指定路径失败，无指定保存图片路径
-	              2：//截图失败
-	              3：//用户取消
+	            //-1：未知错误
+	            // 0：保存到相册失败，无操作相册权限
+	            // 1：保存到到指定路径失败，无指定保存图片路径
+	            // 2：截图失败
+	            // 3：用户取消
 }
 ```
 
 ##示例代码
 
 ```js
-var obj = api.require('screenClip');
-obj.save (function(ret, err){
-	if(ret.status){
-		api.alert({msg:'保存完成'});
+var screenClip = api.require('screenClip');
+screenClip.save(function( ret, err ){		
+	if( ret.status ){
+		alert( JSON.stringify( ret ) );
 	}else{
-		api.alert({msg:err.code});
-    }
+		alert( JSON.stringify( err ) );
+	}
 });
 ```
-
-##补充说明
-
-无
 
 ##可用性
 
@@ -215,12 +201,10 @@ cancel()
 
 ##示例代码
 
-	var obj = api.require('screenClip');
-	obj.cancel();
-
-##补充说明
-
-无
+```js
+var screenClip = api.require('screenClip');
+screenClip.cancel();
+```
 
 ##可用性
 
@@ -228,7 +212,7 @@ iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
-#**screenShot**<div id="a2"></div>
+#**screenShot**<div id="a4"></div>
 
 截屏
 
@@ -239,19 +223,17 @@ screenShot ({params}, callback(ret, err))
 album：
 
 - 类型：布尔类型
-- 默认值：false
 - 描述：（可选项）是否保存到系统相册
+- 默认值：false
 
 imgPath：
 
 - 类型：字符串类型
-- 默认值：无
 - 描述：（可选项）保存的图片路径，若路径不存在文件夹则创建此目录，不传则不保存
 
 imgName：
 
 - 类型：字符串类型
-- 默认值：无
 - 描述：（可选项）保存的图片名字，不传则不保存，支持png和jpg格式，若不指定格式，则默认png
 
 ##callback(ret, err)
@@ -259,47 +241,41 @@ imgName：
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	status:       //操作成功状态值
+	status:       //布尔类型；操作成功状态值，true|false
 }
 ```
 
 err：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	code:       //错误码，取值范围如下：
-	             -1：//未知错误
-	              0：//保存到相册失败，无操作相册权限
-	              1：//保存到到指定路径失败，无指定保存图片路径
-	              2：//截图失败
+	code:        //错误码，取值范围如下：
+	             //-1：未知错误
+	             // 0：保存到相册失败，无操作相册权限
+	             // 1：保存到到指定路径失败，无指定保存图片路径
+	             // 2：截图失败
 }
 ```
 
 ##示例代码
 
 ```js
-var obj = api.require('screenClip');
-obj.screenShot (function(ret, err){
-	if(ret.status){
-		api.alert({msg:'保存完成'});
+var screenClip = api.require('screenClip');
+screenClip.screenShot(function( ret, err ){		
+	if( ret.status ){
+		alert( JSON.stringify( ret ) );
 	}else{
-		api.alert({msg:err.code});
-    }
+		alert( JSON.stringify( err ) );
+	}
 });
 ```
-
-##补充说明
-
-无
 
 ##可用性
 

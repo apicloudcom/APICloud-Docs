@@ -1,6 +1,6 @@
 /*
-Title: 应用配置说明
-Description: 应用配置说明
+Title: config.xml应用配置说明
+Description: config.xml应用配置说明
 Sort: 1
 */
 
@@ -18,16 +18,22 @@ Sort: 1
 - [配置页面是否弹动](#7-0)
 - [配置页面默认是否显示滚动条](#8)
 - [配置启动页是否自动隐藏](#9)
-- [配置状态栏和页面是否重合](#10)
+- [配置iOS状态栏和页面是否重合（沉浸式效果）](#10-0)
+- [配置状态栏和页面是否重合（沉浸式效果）](#10)
 - [配置应用是否全屏运行](#11)
 - [配置应用是否自动检测更新](#12)
 - [配置应用是否支持增量更新、云修复](#13)
 - [配置应用开启/关闭调试模式](#14)
+- [配置是否允许使用第三方键盘](#14-5)
 - [配置键盘弹出方式](#14-0)
 - [配置字体](#14-1)
 - [配置后台运行](#14-2)
 - [配置URL Scheme](#14-3)
-- [配置User Agent](#14-4)
+- [配置可被检测的URL Scheme](#14-4)
+- [配置User Agent](#14-6)
+- [配置iTunes文件共享](#14-7)
+- [配置自定义下拉刷新模块](#14-8)
+- [配置是否在桌面显示应用图标](#14-9)
 
 [Feature](#15)
 
@@ -55,6 +61,8 @@ Sort: 1
 - [访问设备通讯录](#33)
 
 [Meta-Data](#35-1)
+
+[Intent-Filter](#35-2)
 
 [Reference](#36)
 
@@ -155,17 +163,17 @@ widget父元素描述了该Widget的基本属性，如表1所示。
     </tr>
     <tr>
         <td>preference</td>
-        <td>偏好设置。配置Widget的一些运行时属性，如：页面是否支持弹动效果、窗口默认背景、页面是否显示滚动条等。该配置可在IDE的GUI界面中选择并使用。详细请参考<a href="#1">Preference Guide</a></td>
+        <td>偏好设置。配置Widget的一些运行时属性，如：页面是否支持弹动效果、窗口默认背景、页面是否显示滚动条等。该配置可在APICloud Studio的GUI界面中选择并使用。详细请参考<a href="#1">Preference Guide</a></td>
         <td>可选</td>
     </tr>
     <tr>
         <td>permission</td>
-        <td>权限配置。通过此配置向系统声明Widget所用到的系统权限。如：直接拨打电话、直接发送短信、发起定位等。该配置可在IDE的GUI界面中选择并使用。详细请参考<a href="#2">Platform Permission</a></td>
+        <td>权限配置。通过此配置向系统声明Widget所用到的系统权限。如：直接拨打电话、直接发送短信、发起定位等。该配置可在APICloud Studio的GUI界面中选择并使用。详细请参考<a href="#2">Platform Permission</a></td>
         <td>必选</td>
     </tr>
     <tr>
         <td>feature</td>
-        <td>功能配置。通过此配置，向系统声明需要使用哪些功能，以及需要传递给该功能的数据。如：使用新浪微博、使用微信分享等。该配置可在IDE的GUI界面中选择并使用。详细请参考<a href="#3">Feature Guide</a></td>
+        <td>功能配置。通过此配置，向系统声明需要使用哪些功能，以及需要传递给该功能的数据。如：使用新浪微博、使用微信分享等。该配置可在APICloud Studio的GUI界面中选择并使用。详细请参考<a href="#3">Feature Guide</a></td>
         <td>可选</td>
     </tr>
     <tr>
@@ -192,7 +200,11 @@ Preference用于声明本应用的一些全局设置或者属性，该字段以�
 
 描述：配置App的背景颜色或图片，默认为透明色。配置此字段后，如果window的背景为透明色，则将透射出App背景。APICloud应用的UI层次结构见图1.
 
-配置示例： ```<preference name="appBackground" value="color|imageUrl" />```
+配置示例： 
+
+```
+<preference name="appBackground" value="color|imageUrl" />
+```
 
 图1.APICloud应用UI层次结构图：
 
@@ -213,7 +225,11 @@ Preference用于声明本应用的一些全局设置或者属性，该字段以�
 
 描述：配置Window的背景颜色或图片，默认为透明色。配置此字段后，所有open的Window都会使用该背景，可提高开发效率、节省系统资源、加速渲染速度。
 
-配置示例：```<preference name="windowBackground" value="color|imageUrl" />```
+配置示例：
+
+```
+<preference name="windowBackground" value="color|imageUrl" />
+```
 
 ##配置Frame默认背景<div id="7"></div>
 
@@ -228,7 +244,11 @@ Preference用于声明本应用的一些全局设置或者属性，该字段以�
 
 描述：配置Frame的背景颜色或图片，默认为透明色。此字段的配置效果等同于对网页的body标签设置background-color。
 
-配置示例：```<preference name="frameBackgroundColor" value="color" />```
+配置示例：
+
+```
+<preference name="frameBackgroundColor" value="color" />
+```
 
 ##配置页面是否弹动<div id="7-0"></div>
 
@@ -240,7 +260,11 @@ Preference用于声明本应用的一些全局设置或者属性，该字段以�
 
 描述：配置页面是否可以弹动。若不配置，window默认不弹动，frame默认可以弹动；若配置，则window和frame是否可以弹动默认都以此配置的为准。
 
-配置示例：```<preference name="pageBounce" value="false" />```
+配置示例：
+
+```
+<preference name="pageBounce" value="false" />
+```
 
 
 ##配置页面默认是否显示滚动条<div id="8"></div>
@@ -271,9 +295,31 @@ Preference用于声明本应用的一些全局设置或者属性，该字段以�
 
 描述：APICloud应用在启动时向用户展示一个启动界面，并控制该启动界面在适当的时候隐藏。如该字段置为false，则启动页需要开发者自行调相关接口关闭(api.removeLaunchView)。置为true，则引擎自动关闭。默认显示3秒后关闭，如3秒内网页未加载完毕则一直等待，直到网页加载完毕再关闭启动页。
 
-配置示例：```<preference name="autoLaunch" value="true|false" />```
+配置示例：
 
-##配置状态栏和页面是否重合<div id="10"></div>
+```
+<preference name="autoLaunch" value="true|false" />
+```
+
+##配置iOS状态栏和页面是否重合（沉浸式效果）<div id="10-0"></div>
+
+字段名：iOS7StatusBarAppearance
+
+取值范围：true|false
+
+默认值：true
+
+描述：配置应用界面是否和设备状态栏重合，表现效果为系统的状态栏是否覆盖在当前应用上。若配置了statusBarAppearance字段，此字段将会忽略。
+
+支持IOS7及以上系统。
+
+配置示例：
+
+```
+<preference name="iOS7StatusBarAppearance" value="true" />
+```
+
+##配置状态栏和页面是否重合（沉浸式效果）<div id="10"></div>
 
 字段名：statusBarAppearance
 
@@ -281,9 +327,15 @@ Preference用于声明本应用的一些全局设置或者属性，该字段以�
 
 默认值：true
 
-描述：配置IOS7及以上系统、Android 4.4及以上系统中，页面是否和状态栏重合，表现效果为系统的状态栏是否覆盖在当前应用上。
+描述：配置应用界面是否和设备状态栏重合，表现效果为系统的状态栏是否覆盖在当前应用上，即“沉浸式效果”。
 
-配置示例：```<preference name="statusBarAppearance" value="true|false" />```
+支持IOS7及以上、Android4.4及以上系统。
+
+配置示例：
+
+```
+<preference name="statusBarAppearance" value="true" />
+```
 
 ##配置应用是否全屏运行<div id="11"></div>
 
@@ -295,7 +347,11 @@ Preference用于声明本应用的一些全局设置或者属性，该字段以�
 
 描述：配置应用是否全屏运行。如果该字段为true，应用将以全屏的方式启动，并以全屏方式运行。运行过程中可随时通过APICloud开放的API（api.setFullScreen）控制退出全屏或重新进入全屏。云编译有效。
 
-配置示例：```<preference name="fullScreen" value="true|false" />```
+配置示例：
+
+```
+<preference name="fullScreen" value="true|false" />
+```
 
 ##配置应用是否自动检测更新<div id="12"></div>
 
@@ -305,9 +361,13 @@ Preference用于声明本应用的一些全局设置或者属性，该字段以�
 
 默认值：true	
 
-描述：配置应用是否自动检测更新。如果该字段为true，应用在启动时将自动与云端握手，并检查本应用是否有更新，是否被强制关闭，是否强制更新等（以上控制可在云端“应用服务”中随时设置）。应用运行过程中会根据这些设置进行相关操作，如：自动下载、强制关闭应用等。云编译有效。
+描述：配置应用是否自动检测更新。如果该字段为true，应用在启动时将自动与云端握手，并检查本应用是否有更新，是否被强制关闭，是否强制更新等（以上控制可在云端控制台“版本”中设置）。应用运行过程中会根据这些设置进行相关操作，如：自动下载、强制关闭应用等；若配置为false，则不会弹出任何更新提示。云编译有效。
 
-配置示例：```<preference name="autoUpdate" value="true|false" />```
+配置示例：
+
+```
+<preference name="autoUpdate" value="false" />
+```
 
 ##配置应用是否支持增量更新、云修复<div id="13"></div>
 
@@ -317,9 +377,13 @@ Preference用于声明本应用的一些全局设置或者属性，该字段以�
 
 默认值：false	
 
-描述：配置应用是否支持增量更新以及云修复。如果该字段为true，并且自动检测更新字段autoUpdate也为true，应用在启动时将自动与云端握手，并检查本应用当前版本下是否有增量包更新，是否需要进行云修复。应用运行过程中会根据这些设置进行相关操作，如：提示更新下载、静默更新下载等。云编译有效。
+描述：配置应用是否支持增量更新以及云修复。如果该字段为true，应用在启动时将自动与云端握手，并检查本应用当前版本下是否有增量包更新，是否需要进行云修复。应用运行过程中会根据这些设置进行相关操作，如：提示更新下载、静默更新下载等。云编译有效。
 
-配置示例：```<preference name="smartUpdate" value="false" />```
+配置示例：
+
+```
+<preference name="smartUpdate" value="true" />
+```
 
 ##配置应用开启/关闭调试模式<div id="14"></div>
 
@@ -331,7 +395,27 @@ Preference用于声明本应用的一些全局设置或者属性，该字段以�
       
 描述：配置应用是否处于调试模式。如果该字段为true，标识应用进入调试模式，应用运行过程中发生的因代码书写失误等原因导致的Js报错（引起执行中断）信息，将会以弹窗的方式覆盖在应用最上方，供开发者参考。
 
-配置示例：```<preference name="debug" value="false" />```
+配置示例：
+
+```
+<preference name="debug" value="false" />
+```
+
+##配置是否允许使用第三方键盘<div id="14-5"></div>
+
+字段名：allowKeyboardExtension
+
+取值范围：true|false
+
+默认值：true	
+
+描述：配置是否允许使用第三方键盘。若不允许，键盘弹出后将不能选择第三方输入法进行输入。只支持iOS，云编译有效。
+
+配置示例：
+
+```
+<preference name="allowKeyboardExtension" value="false" />
+```
 
 ##配置键盘弹出方式<div id="14-0"></div>
 
@@ -346,7 +430,11 @@ Preference用于声明本应用的一些全局设置或者属性，该字段以�
       
 描述：配置键盘弹出后页面的处理方式。云编译有效。
 
-配置示例：```<preference name="softInputMode" value="resize"/>```
+配置示例：
+
+```
+<preference name="softInputMode" value="resize"/>
+```
 
 ##配置字体<div id="14-1"></div>
 
@@ -402,16 +490,34 @@ Preference用于声明本应用的一些全局设置或者属性，该字段以�
 
 配置后，外部浏览器页面里面就可以通过a标签链接打开应用：
 ```
-<a href="myScheme://?param1=xxx&param2=xxx">测试打开应用</a>
+<a href="myscheme://?param1=xxx&param2=xxx">测试打开应用</a>
 ```
 
 配置示例：
 
 ```
-<preference name="urlScheme" value="myScheme" />
+<preference name="urlScheme" value="myscheme" />
 ```
 
-##配置User Agent<div id="14-4"></div>
+注意：value的值必须是小写，否则将不起作用。
+
+##配置可被检测的URL Scheme<div id="14-4"></div>
+
+字段名：querySchemes
+      
+描述：iOS9中对检测应用是否安装的方法做了限制，只允许检测在Info.plist中配置过的白名单列表里面的应用。所以若代码里面调用了api.appInstalled等方法来检测应用是否安装，那么需要进行额外的配置才能得到期望的结果。此字段云编译有效。
+
+配置示例：
+
+```
+//多个值之间用英文逗号隔开
+<preference name="querySchemes" value="scheme1,scheme2" />
+```
+
+注意：已经对常用的如微信、qq、新浪微博、支付宝等应用的URL Scheme进行了配置，其它应用的则需要开发者自己进行配置。
+
+
+##配置User Agent<div id="14-6"></div>
 
 字段名：userAgent
       
@@ -429,6 +535,51 @@ Preference用于声明本应用的一些全局设置或者属性，该字段以�
 <preference name="userAgent" value="APICloud" />
 ```
 
+##配置iTunes文件共享<div id="14-7"></div>
+
+字段名：fileShare
+
+取值范围：true|false
+
+默认值：false
+      
+描述：用于配置是否开启iTunes文件共享，开启后可以通过iTunes或者其它手机助手访问应用的文件目录（苹果已经屏蔽各类手机助手对iOS8.3及以上系统的应用文件目录的访问）。 注意：若需要上传AppStore审核，请不要随意配置此项，除非确实需要文件共享功能，否则会被拒绝。云编译有效，只支持iOS。
+
+配置示例：
+
+```
+<preference name="fileShare" value="false" />
+```
+
+##配置自定义下拉刷新模块<div id="14-8"></div>
+
+字段名：customRefreshHeader
+
+默认值：无
+      
+描述：用于配置在页面里面默认使用的自定义下拉刷新模块名称，配置后页面里面可以使用指定的下拉刷新模块来实现各种各样的下拉刷新效果。使用自定义下拉刷新时，页面里面需调用api.setCustomRefreshHeaderInfo方法。
+
+配置示例：
+
+```
+<preference name="customRefreshHeader" value="UIPullRefresh" />
+```
+
+##配置是否在桌面显示应用图标<div id="14-9"></div>
+
+字段名：launcher
+
+取值范围：true|false
+
+默认值：true
+      
+描述：仅Android平台有效。用于配置云编译后的应用在安装到用户手机等设备上后，是否在桌面显示应用图标。如果配置为false，应用安装完后将不会在用户手机桌面显示图标，用户无法直接使用，需被第三方应用调起才能使用。该功能通常用于某主应用管理多个子应用的场景。
+
+配置示例：
+
+```
+<preference name="launcher" value="false" />
+```
 
 #**Feature**<div id="15"></div>
 
@@ -489,7 +640,8 @@ Feature用于声明本应用使用到的平台扩展模块功能、第三方SDK�
 1. param-value：对应urlScheme类型的值。通过新浪微博开放平台申请apiKey，再加上‘wb’前缀构成
 1. param-apiKey：在新浪微博开放平台申请的apiKey，使用新浪微博的开放接口，必须申请该key。
 1. param-value：在新浪微博开放平台申请的apiKey的值。
-1. param-apiSecret: 通过微信开放平台申请的应用秘钥1. param-value: 此参数用于微信登录授权获取登录的accessToken
+1. param-apiSecret: 通过微信开放平台申请的应用秘钥
+1. param-value: 此参数用于微信登录授权获取登录的accessToken
 
 ##百度定位<div id="18"></div>
 
@@ -774,6 +926,56 @@ meta-data用于配置Android平台上对应AndroidManifest文件中的meta-data�
 1. name：声明meta-data键值对中的键名
 2. value：声明meta-data键值对中对应的值
 
+#**Intent-Filter**<div id="35-2"></div>
+
+该配置使用时需要Android原生开发人员参与。
+
+intent-filter用于配置Android平台相应的AndroidManifest文件中，APICloud引擎主Activity的intent-filter相关信息。
+
+在config中每配置一项，云编译服务器在编译apk包之前，会将intent-filter相关的配置，新增并映射到AndroidManifest文件中，引擎主Activity的intent-filter节点。如：我们在config中配置：
+```
+<intent-filter>
+	<action name="android.intent.action.MAIN"/>
+	<category name="android.intent.category.DEFAULT"/>
+	<data scheme="http" mimeType="text/html">
+</intent-filter>
+```
+将映射至Android平台的AndroidManifest中引擎主Activity的intent-filter，类似：
+```
+<activity android:name="com.uzmap.pkg.EntranceActivity">
+	<intent-filter>
+		<action android:name="android.intent.action.MAIN" />
+		<category android:name="android.intent.category.DEFAULT" />
+		<data android:scheme="http" android:mimeType="text/html"/>
+	</intent-filter>
+</activity>
+```
+config中每配置一项intent-filter，该节点下新增一项intent-filter。
+
+该配置一般用于配置本应用被其他应用调起时的响应类型，比如响应一个“打开”的操作，或者一个“发送”的操作等。
+
+
+配置示例：
+
+```
+<intent-filter>
+	<action name="android.intent.action.MAIN"/>
+	<category name="android.intent.category.DEFAULT" />
+	<category name="com.ibm.apicloud.open"/>
+	<data scheme="http" mimeType="text/html" host="baidu" path="/">
+</intent-filter>
+```
+
+字段描述：
+
+1. action：声明intent-filter响应的动作，同Android平台的action。（必须字段）
+2. category：声明intent-filter响应的范围或类别，同Android平台的category（可选字段）
+3. data：声明intent-filter响应的数据类型，同Android平台的data（可选字段）
+	3.1.  scheme：data对应的协议头（可选字段）
+	3.2.  mimeType：data对应的mimeType（可选字段）
+	3.3.  host：data对应的主机地址（可选字段）
+	3.4.  path：data对应的路径（可选字段）
+
 ##Reference<div id="36"></div>
 
 完整的config文件参考：
@@ -796,10 +998,12 @@ meta-data用于配置Android平台上对应AndroidManifest文件中的meta-data�
     <preference name="hScrollBarEnabled" value="true" />
     <preference name="vScrollBarEnabled" value="true" />
     <preference name="autoLaunch" value="true" />
+	<preference name="autoUpdate" value="true" />
     <preference name="smartUpdate" value="false" />
     <preference name="fullScreen" value="false" />
-    <preference name="iOS7StatusBarAppearance" value="true" />
-    <preference name="autoUpdate" value="false" />
+    <preference name="statusBarAppearance" value="true" />
+	<preference name="softInputMode" value="resize"/>
+	<preference name="debug" value="true"/>
     <permission name="readPhoneState" />
     <permission name="call" />
 	<permission name="sms" />

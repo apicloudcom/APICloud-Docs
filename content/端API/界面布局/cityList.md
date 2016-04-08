@@ -20,7 +20,7 @@ Description: cityList
 
 #**概述**
 
-cityList是一个城市列表模块，自带了右边字母导航条，可快速滚动到目标城市选项。开发者可自定义城市列表的数据源
+cityList是一个城市列表模块，自带了右边字母导航条，可快速滚动到目标城市选项。开发者可自定义城市列表的数据源，[本模块已有升级优化版](http://docs.apicloud.com/端API/界面布局/UICityList)
 
 ![图片说明](/img/docImage/cityList.jpg)
 
@@ -43,18 +43,6 @@ y：
 - 类型：数字
 - 默认值：0
 - 描述：（可选项）城市列表视图左上角点坐标
-
-<del>width：</del>
-
-- <del>类型：数字</del>
-- <del>默认值：无</del>
-- <del>描述：视图的宽，可为空</del>
-
-<del>height：</del>
-
-- <del>类型：数字</del>
-- <del>默认值：无</del>
-- <del>描述：视图的高，可为空</del>
 
 w：
 
@@ -119,9 +107,9 @@ topCitys：
 
 fixedOn：
 
-- 类型：字符串
-- 默认值：当前主窗口的名字
-- 描述：（可选项）将此模块视图添加到指定窗口的名字
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 style：
 
@@ -136,7 +124,7 @@ style：
                        bgColor:  //（可选项）字母导航条背景色，支持rgb、rgba、#，默认#FFFFFF
                        tintColor://（可选项）字母导航条字母色，支持rgb、rgba、#，默认#696969
                        }
-     bg:             //（可选项）列表背景设置，支持rgb、rgba、#，默认#696969
+     bg:             //（可选项）列表分组标题背景设置，支持rgb、rgba、#，默认#E0E0E0
      itemBg:         //（可选项）列表单条选项背景色，支持rgb、rgba、#，默认#ffffff
      titleColor:     //（可选项）section标题字体颜色，支持rgb、rgba、#，默认#000000
      titleSize:      //（可选项）section标题字体大小，数字类型，默认12.0
@@ -145,7 +133,7 @@ style：
      localColor:     //（可选项）定位提示字体颜色，支持rgb、rgba、#，默认#696969
      localSize:      //（可选项）定位提示字体大小，数字类型，默认12.0
      searchBar:      //（可选项）搜索条样式设置，内部字段如下：{
-                        bg:         //（可选项）搜索条背景色，支持支持rgb、rgba、#，默认#696969
+                        bg:         //（可选项）搜索条背景色，支持支持rgb、rgba、#，默认#C2C2C2
                         placeholder://（可选项）搜索条占位提示文字，默认输入城市名或首字母查询
                         cancelColor://（可选项）右边取消字体颜色，支持rgb、rgba、#，默认#E3E3E3；android上忽略此参数
                       }

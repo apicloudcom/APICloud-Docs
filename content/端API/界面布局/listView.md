@@ -40,7 +40,7 @@ Description: listView
 
 #**概述**
 
-listView封装了一个列表控件，可实现一个可左右拖动item的列表视图。开发者可根据需求自定义列表的数据源，亦可自定义相关字段的样式。支持设置下拉刷新和上拉加载更多事件。**UIListView 模块是 listView 模块的优化版，建议使用 UIListView 模块，此模块已停止更新。**
+listView封装了一个列表控件，可实现一个可左右拖动item的列表视图。开发者可根据需求自定义列表的数据源，亦可自定义相关字段的样式。支持设置下拉刷新和上拉加载更多事件。**UIListView 模块是 listView 模块的优化版，建议使用 [UIListView](http://docs.apicloud.com/端API/界面布局/UIListView) 模块，此模块已停止更新。**
 
 ![图片说明](/img/docImage/listView.jpg)
 
@@ -168,9 +168,9 @@ placeholderImg：
 
 fixedOn：
 
-- 类型：字符串
-- 默认值：当前主窗口的名字
-- 描述：（可选项）将此模块视图添加到指定窗口的名字
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 data：
 

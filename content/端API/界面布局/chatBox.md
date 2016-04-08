@@ -38,7 +38,7 @@ Description: chatBox
 
 #**概述**
 
-chatBox是一个聊天输入框模块，集成了表情，从相册选取图片的功能。开发者可自定义表情集，只需简单配置即可实现自定义表情和添加点击事件。**UIChatBox 模块是 chatBox 模块的优化版，建议使用  UIChatBox 模块，此模块已停止更新。**
+chatBox是一个聊天输入框模块，集成了表情，从相册选取图片的功能。开发者可自定义表情集，只需简单配置即可实现自定义表情和添加点击事件。**chatBox 模块已停止更新，建议使用  [UIChatBox](http://docs.apicloud.com/端API/界面布局/UIChatBox) 模块，此模块已停止更新。**
 
 ![图片说明](/img/docImage/chatBox.jpg)
 
@@ -133,9 +133,9 @@ pageControl：
 
 fixedOn：
 
-- 类型：字符串
-- 默认值：当前主窗口的名字
-- 描述：（可选项）将此模块视图添加到指定窗口的名字
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 placeholder：
 

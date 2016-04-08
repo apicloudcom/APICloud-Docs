@@ -21,7 +21,7 @@ Description: customPicker
 
 #**概述**
 
-customPicker是自定义选择器模块，支持多列，各列数据之间相互独立。
+customPicker是自定义选择器模块，支持多列，各列数据之间相互独立。本模块已停止更新，建议使用优化升级版模块[UICustomPicker](http://docs.apicloud.com/端API/界面布局/UICustomPicker)
 
 #**open**<div id="1"></div>
 
@@ -178,9 +178,9 @@ selectedIndexs:
 
 fixedOn：
 
-- 类型：字符串
-- 默认值：当前主窗口的名字
-- 描述：（可选项）将此模块视图添加到指定窗口的名字
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 fixed：
 

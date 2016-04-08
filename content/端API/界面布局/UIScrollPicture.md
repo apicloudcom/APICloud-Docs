@@ -78,6 +78,11 @@ styles：
                                         //取值范围：
                                         //overlay（悬浮在图片上方，底部与图片底部对齐）
                                         //bottom（紧跟在图片下方，顶部与图片底部对齐）
+        alignment: 'center'             //（可选项）字符串类型：说明文字在水平线上的位置；默认：left
+                                        //取值范围：
+                                        //right（居右限时）
+                                        //center（居中显示）
+                                        //left（居左显示）                                  
     },
     indicator: {                        //（可选项）JSON对象；指示器样式；不传则不显示指示器
         align: 'center',                //（可选项）字符串类型；指示器位置；默认：center
@@ -125,8 +130,9 @@ loop:
 
 fixedOn：
 
-- 类型：字符串
-- 描述：（可选项）模块所属 Frame 的名字，若不传则模块归属于当前 Window
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 fixed:
 
@@ -155,20 +161,22 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('UIScrollPicture');
-var paths = ['widget://res/slide1.jpg', 'widget://res/slide2.jpg', 'http://f.hiphotos.baidu.com/image/pic/item/4e4a20a4462309f7bdca9423710e0cf3d7cad65d.jpg', 'widget://res/slide3.jpg', 'widget://res/slide4.jpg'];
-var captions = ['title1', 'title2', 'title3', 'title4', 'title5'];
-
-obj.open({
+var UIScrollPicture = api.require('UIScrollPicture');
+UIScrollPicture.open({
     rect: {
         x: 0,
-        y: 20,
+        y: 0,
         w: api.winWidth,
-        h: 200
+        h: api.winHeight / 2
     },
     data: {
-        paths: paths,
-        captions: captions
+        paths: [
+        'widget://res/img/apicloud.png', 
+        'widget://res/img/apicloud-gray.png',
+        'widget://res/img/apicloud.png', 
+        'widget://res/img/apicloud-gray.png'
+        ],
+        captions: ['apicloud', 'apicloud', 'apicloud', 'apicloud']
     },
     styles: {
         caption: {
@@ -187,16 +195,15 @@ obj.open({
     placeholderImg: 'widget://res/slide1.jpg',
     contentMode: 'scaleToFill',
     interval: 3,
+    fixedOn: api.frameName,
     loop: true,
-    fixedOn: '',
     fixed: false
-}, function(ret, err){
-     if(ret.status){
-        if(ret.eventType == 'click'){
-            //点击图片的操作
-            alert(ret.index);
-        }
-     }
+},function( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -216,8 +223,8 @@ close()
 ##示例代码
 
 ```js
-var obj = api.require('UIScrollPicture');
-obj.close();
+var UIScrollPicture = api.require('UIScrollPicture');
+UIScrollPicture.close();
 ```
 
 ##可用性
@@ -236,8 +243,8 @@ show()
 ##示例代码
 
 ```js
-var obj = api.require('UIScrollPicture');
-obj.show();
+var UIScrollPicture = api.require('UIScrollPicture');
+UIScrollPicture.show();
 ```
 
 ##可用性
@@ -256,8 +263,8 @@ hide()
 ##示例代码
 
 ```js
-var obj = api.require('UIScrollPicture');
-obj.hide();
+var UIScrollPicture = api.require('UIScrollPicture');
+UIScrollPicture.hide();
 ```
 
 ##可用性
@@ -284,8 +291,8 @@ index：
 ##示例代码
 
 ```js
-var obj = api.require('UIScrollPicture');
-obj.setCurrentIndex({
+var UIScrollPicture = api.require('UIScrollPicture');
+UIScrollPicture.setCurrentIndex({
 	index: 2
 });
 ```
@@ -321,13 +328,11 @@ data：
 ##示例代码
 
 ```js
-var obj = api.require('UIScrollPicture');
-var paths = ['widget://res/scrollPicture_01.jpg', 'widget://res/scrollPicture_02.jpg', 'http://f.hiphotos.baidu.com/image/pic/item/4e4a20a4462309f7bdca9423710e0cf3d7cad65d.jpg'];
-var captions = ['title1', 'title2', 'title3'];
-obj.reloadData({
+var UIScrollPicture = api.require('UIScrollPicture');
+UIScrollPicture.reloadData({
     data: {
-        paths: paths,
-        captions: captions
+        paths: ['widget://res/img/ic/slide1.jpg', 'widget://res/img/ic/slide2.jpg', 'widget://res/img/ic/slide5.jpg'],
+        captions: ['title1', 'title2', 'title3']
     }
 });
 ```
@@ -370,13 +375,14 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('UIScrollPicture');
-obj.addEventListener({
+var UIScrollPicture = api.require('UIScrollPicture');
+UIScrollPicture.addEventListener({
     name: 'scroll'
-}, function(ret, err){
-    //滑动图片时的回调
-    if(ret.status){
-        alert(ret.index);
+}, function( ret, err ){
+    if( ret ){
+          alert( JSON.stringify( ret ) );
+    }else{
+          alert( JSON.stringify( err ) );
     }
 });
 ```

@@ -38,86 +38,81 @@ open({params})
 x：
 
 - 类型：数字
+- 描述：（可选项）模块左上角的 x 坐标（相对于所属的 Window 或 Frame）
 - 默认值：0
-- 描述：视图左上角点坐标，可为空
 
 y：
 
 - 类型：数字
+- 描述：（可选项）模块左上角的 y 坐标（相对于所属的 Window 或 Frame）
 - 默认值：0
-- 描述：视图左上角点坐标，可为空
 
 w：
 
 - 类型：数字
+- 描述：（可选项）模块的宽度
 - 默认值：当前设备屏幕宽
-- 描述：视图的宽度，可为空
 
 h：
 
 - 类型：数字
+- 描述：（可选项）模块的高度
 - 默认值：w
-- 描述：视图高度，可为空
 
 type：
 
 - 类型：字符串
+- 描述：（可选项）摇一摇视图类型，取值范围见[摇一摇类型常量](!Constant)
 - 默认值：up_down
-- 描述：摇一摇视图类型，取值范围见[摇一摇类型常量](!Constant)，可为空
 
 anim：
 
-- 类型：json对象
-- 默认值：无
-- 描述：视图动画的参数配置，可为空
-
-内部字段：
+- 类型：JSON对象
+- 描述：（可选项）视图动画的参数配置
+- 内部字段：
 
 ```js
 {
-	time:           //动画持续时间，数字，默认3.0秒，可为空
-	sound:          //摇动后的音效文件路径，字符串，可为空
-	isShake:        //是否添加手机震动效果，布尔值，默认false，可为空   
-	percent：        //裂开距离占摇动视图的百分比，数字类型，默认50，可为空  
+	time:          //（可选项）数字类型；动画持续时间；默认：3.0秒
+	sound:         //（可选项）字符串类型；摇动后的音效文件路径，要求本地路径（fs://），Android 平台不支持 wdget 协议，若不传则无声音提示
+	isShake:       //（可选项）布尔类型；是否添加手机震动效果；默认：false   
+	percent:       //（可选项）数字类型；裂开距离占摇动视图的百分比；默认：50
 }
 ```
 
 img：
 
-- 类型：json对象
-- 默认值：无
-- 描述：视图界面图片配置，可为空
-
-内部字段：
+- 类型：JSON对象
+- 描述：（可选项）视图界面图片配置
+- 内部字段：
 
 ```js
 {
-	leftUp:           //左边（上面）的图片路径，字符串类型，默认灰色界面可为空
-	rightDown:        //右边（下面）的图片路径，字符串类型，默认灰色界面可为空
-	bg:               //背景图片路径，字符串类型，默认绿色面板，可为空
-	shake：           //摇动效果动画时摇动的图片，可为空。当type为up_down或left_right时，忽略此参数
+	leftUp:           //（可选项）字符串类型；左边（上面）的图片路径，要求本地路径（widget://、fs://）；默认：灰色视图
+	rightDown:        //（可选项）字符串类型；右边（下面）的图片路径，要求本地路径（widget://、fs://）；默认：灰色视图
+	bg:               //（可选项）字符串类型；背景图片路径，要求本地路径（widget://、fs://）；默认：绿色视图
+	shake：           //（可选项）字符串类型；震动效果动画时震动（抖动）的图片路径，要求本地路径（widget://、fs://），当type为up_down或left_right时忽略此参数
 }
 ```
 
 fixedOn：
 
-- 类型：字符串
-- 默认值：当前窗口名
-- 描述：将模块视图添加到指定窗口名，可为空
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 fixed:
+
 - 类型：布尔
-- 默认值：true
-- 描述：是否将模块视图固定到窗口上，不跟随窗口上下滚动，可为空
+- 描述：（可选项）模块是否随所属 Window 或 Frame 滚动
+- 默认值：true（不随之滚动）
 
 ##示例代码
 
-	var obj = api.require('shakeView');
-	obj.open();
-
-##补充说明
-
-打开摇一摇视图
+```js
+var shakeView = api.require('shakeView');
+shakeView.open();
+```
 
 ##可用性
 
@@ -136,18 +131,16 @@ shake({params},callback(ret,err))
 
 anim：
 
-- 类型：json对象
-- 默认值：无
-- 描述：视图动画的参数配置，可为空
-
-内部字段：
+- 类型：JSON对象
+- 描述：（可选项）视图动画的参数配置
+- 内部字段：
 
 ```js
 {
-	time:           //动画持续时间，数字，默认3.0秒，可为空
-	sound:          //摇动后的音效文件路径，字符串，可为空
-	isShake:        //是否添加手机震动效果，布尔值，默认false，可为空
-	percent：        //裂开距离占摇动视图的百分比，数字类型，默认50，可为空
+	time:          //（可选项）数字类型；动画持续时间；默认：3.0秒
+	sound:         //（可选项）字符串类型；摇动后的音效文件路径，要求本地路径（fs://），Android 平台不支持 wdget 协议，若不传则无声音提示
+	isShake:       //（可选项）布尔类型；是否添加手机震动效果；默认：false   
+	percent:       //（可选项）数字类型；裂开距离占摇动视图的百分比；默认：50
 }
 ```
 
@@ -157,19 +150,22 @@ anim：
 
 ##示例代码
 
-	var obj = api.require('shakeView');
-	obj.shake();
-
-##补充说明
-
-触发摇一摇事件
+```js
+var shakeView = api.require('shakeView');
+shakeView.shake(function( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
+});
+```
 
 ##可用性
 
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
-
 
 
 #**hide**<div id="3"></div>
@@ -180,12 +176,10 @@ hidd()
 
 ##示例代码
 
-	var obj = api.require('shakeView');
-	obj.hide();
-
-##补充说明
-
-隐藏视图，只是移除到屏幕之外，还在内存里没有清除
+```js
+var shakeView = api.require('shakeView');
+shakeView.hide();
+```
 
 ##可用性
 
@@ -202,28 +196,9 @@ show()
 
 ##示例代码
 ```js
-var obj = api.require('shakeView');
-obj.open({
-     type:'up_down',
-     x:0,
-     y:64,
-     w:320,
-     h:300,
-     anim:{
-         time:3,
-         isShake:"true"
-     },
-     img:{
-         leftUp:"widget://image/ak2.png",
-         rightDown:"widget://image/ak5.png",
-         bg:"widget://image/ak6.png"
-     }
-});
+var shakeView = api.require('shakeView');
+shakeView.show();
 ```
-
-##补充说明
-
-显示视图，从屏幕外移动到屏幕内
 
 ##可用性
 
@@ -241,13 +216,9 @@ close()
 ##示例代码
 
 ```js
-	var obj = api.require('shakeView');
-	obj.close();
+var shakeView = api.require('shakeView');
+shakeView.close();
 ```
-
-##补充说明
-
-关闭视图，意味着从内存里清除
 
 ##可用性
 

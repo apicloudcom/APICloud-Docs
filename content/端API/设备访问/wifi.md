@@ -274,10 +274,12 @@ ret：
 
 ```js
 var obj = api.require('wifi');
-obj.openWifi(function(ret,err){ 
-   if(ret.status){
-      api.alert({msg:ret.result });
-   }
+obj.openWifi(function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 

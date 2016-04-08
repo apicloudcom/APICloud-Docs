@@ -47,9 +47,13 @@ ret：
 
 ```js
 var imageTool = api.require('imageTool');
-
-
-imageTool.openImage(function(ret, err){api.prompt({title:"信息",msg:"图片名称："+ret.imgName+"图片大小："+ret.imgSize+"图片路径："+ret.imgPath,buttons:["取消","确定"]});});
+imageTool.openImage(function( ret, err ){		
+	if( ret ){
+		alert( JSON.stringify( ret ) );
+	}else{
+		alert( JSON.stringify( err ) );
+	}
+});
 ```
 
 ##补充说明

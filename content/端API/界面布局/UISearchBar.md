@@ -39,6 +39,12 @@ historyCount：
 - 描述：（可选项）历史记录条数
 - 默认值：10
 
+dataBase：
+
+- 类型：字符串
+- 描述：（可选项）历史记录存储库名，以区分同一个 app 多个不同页面的数据
+- 默认值：UISearchBarData
+
 showRecordBtn：
 
 - 类型：布尔
@@ -118,8 +124,8 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('UISearchBar');
-obj.open({
+var UISearchBar = api.require('UISearchBar');
+UISearchBar.open({
     placeholder: '请输入搜索关键字',
     historyCount: 10,
     showRecordBtn: true,
@@ -154,16 +160,12 @@ obj.open({
             size: 16
         }
     }
-}, function(ret){
-	if(ret.eventType == 'record'){
-		api.alert({msg: '点击了录音按钮'});
-	} else if(ret.eventType == 'search') {
-		api.alert({msg: '点击了搜索按钮'});
-	} else if(ret.eventType == 'history') {
-		api.alert({msg: '点击了历史记录'});
-	} else {
-		alert(ret.text);
-	}
+},function( ret, err ){
+	if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    } 
 });
 ```
 
@@ -183,8 +185,8 @@ close()
 ##示例代码
 
 ```js
-var obj = api.require('UISearchBar');
-obj.close();
+var UISearchBar = api.require('UISearchBar');
+UISearchBar.close();
 ```
 
 ##可用性
@@ -210,8 +212,8 @@ text：
 ##示例代码
 
 ```js
-var obj = api.require('UISearchBar');
-obj.setText({
+var UISearchBar = api.require('UISearchBar');
+UISearchBar.setText({
     text: '设置语音识别的文本'
 });
 ```
@@ -225,15 +227,15 @@ iOS系统，Android系统
 <div id="m4"></div>
 #**clearHistory**
 
-清空搜索历史记录
+清空当前搜索历史记录
 
 clearHistory()
 
 ##示例代码
 
 ```js
-var obj = api.require('UISearchBar');
-obj.clearHistory();
+var UISearchBar = api.require('UISearchBar');
+UISearchBar.clearHistory();
 ```
 
 ##可用性

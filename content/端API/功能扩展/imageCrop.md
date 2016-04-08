@@ -22,7 +22,7 @@ Description: imageCrop
 
 #**概述**
 
-imageCrop模块封装了Android原生图片剪切的功能，通过拍照或者从相册选取图片之后，可以调用图片剪切方法。用户可以拖放剪切剪切框改变大小，也可以通过剪切框对图片进行缩放。在选取剪切位置和大小之后，可以选择确认或者取消。 本模块暂仅支持安卓。
+imageCrop模块封装了Android原生图片剪切的功能，通过拍照或者从相册选取图片之后，可以调用图片剪切方法。用户可以拖放剪切剪切框改变大小，也可以通过剪切框对图片进行缩放。在选取剪切位置和大小之后，可以选择确认或者取消。 **本模块暂仅支持安卓。**
 
 #**takePhoto**<div id="a1"></div>
 
@@ -30,14 +30,12 @@ imageCrop模块封装了Android原生图片剪切的功能，通过拍照或者�
 
 takePhoto(callback(ret, err))
 
-
 ##callback(ret, err)
 
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
@@ -48,8 +46,7 @@ ret：
 err：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
@@ -60,19 +57,15 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('imageCrop');
- obj.takePhoto(function(ret, err){
-	if(ret){
-		imgPath=ret.imgPath;
-	}else{
-		api.alert({msg:err.msg})	
-	}
+var imageCrop = api.require('imageCrop');
+imageCrop.takePhoto(function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
-
-##补充说明
-
-无
 
 ##可用性
 
@@ -92,8 +85,7 @@ getPhoto(callback(ret, err))
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
@@ -103,8 +95,7 @@ ret：
 err：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
@@ -115,19 +106,15 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('imageCrop');
- obj.getPhoto(function(ret, err){
-	if(ret){
-		imgPath=ret.imgPath;
-	}else{
-		api.alert({msg:err.msg})	
-	}
+var imageCrop = api.require('imageCrop');
+imageCrop.getPhoto(function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
-
-##补充说明
-
-无
 
 ##可用性
 
@@ -140,37 +127,32 @@ Android系统
 开始截图
 
 clipPhoto ({params},callback(ret, err))
+
 ##params
 
 imgPath：
 
 - 类型：字符串
-- 默认值：无
 - 描述：要剪切图片的路径(1.1版本之后可以不传通过以上方法获取的图片路径)
 
 height：
 
 - 类型：数值类型
+- 描述：（可选项）裁剪后的图片高度
 - 默认值：150
-- 描述：裁剪后的图片高度，可为空，默认值为150px
 
 width：
 
 - 类型：数值类型
+- 描述：（可选项）裁剪后的图片宽度
 - 默认值：150
-- 描述：裁剪后的图片宽度，可为空，默认值为150px
-- 
-- 注：1.1版本之后修复了剪裁尺寸大于图片原始尺寸不能正确剪裁的Bug。
-- 当产生上述情况时按照图片原始尺寸进行剪裁。
-- 同时，适配了多种机型大尺寸剪切图片的问题。
 
 ##callback(ret, err)
 
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
@@ -181,8 +163,7 @@ ret：
 err：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
@@ -193,19 +174,19 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('imageCrop');
-var param = {"imgPath":imgPath,"height":300,"width":300};
-obj.clipPhoto(param, function(ret, err){
-    if(ret){
-        ret.imgPath   //裁剪后的图片路径，可以直接上传
-    }
+var imageCrop = api.require('imageCrop');
+imageCrop.clipPhoto({
+    imgPath: 'widget://.png',
+    height: 300,
+    width: 300
+},function( ret, err ){		
+	if( ret ){
+		alert( JSON.stringify( ret ) );
+	}else{
+		alert( JSON.stringify( err ) );
+	}
 });
 ```
-
-##补充说明
-
-无
-
 ##可用性
 
 Android系统
@@ -221,13 +202,9 @@ deletePic(callback()
 ##示例代码
 
 ```js
-var obj = api.require('imageCrop');
-obj.deletePic();
+var imageCrop = api.require('imageCrop');
+imageCrop.deletePic();
 ```
-
-##补充说明
-
-无
 
 ##可用性
 
@@ -235,13 +212,4 @@ Android系统
 
 可提供的1.1.0及更高版本
 
-
 </div>
-
-<div id="const-content">
-
-#**暂无**
-
-
-
-

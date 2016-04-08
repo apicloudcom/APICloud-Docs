@@ -17,7 +17,6 @@ Description: superID
 [logoutCurrentAccount](#a3)
 [queryUserState](#a4)
 [cancelAuthorization](#a5)
-[updateAppUid](#a6)
 [updateAppUserInfo](#a7)
 [obtainFaceFeatureView](#a8)
 
@@ -43,12 +42,14 @@ superID封装了一登人脸登录的SDK，使用此模块可为应用提供「�
 </feature>
 ```
 
-其中```AppID```和```AppSecret```为一登开发者中心（https://center.superid.me/developer/queryUserState）创建应用后获得
+其中```AppID```和```AppSecret```为一登开发者中心（http://.superid.me/developer/）创建应用后获得
 
 
 #**registerApp**<div id="a1"></div>
 
-注册应用：```registerApp()```
+注册应用
+
+registerApp()
 
 ##示例代码
 
@@ -63,7 +64,9 @@ superID.registerApp();
 
 #**obtainLoginView**<div id="a2"></div>
 
-弹出刷脸登录界面：```obtainLoginView({params}, callback(ret, err))```
+弹出刷脸登录界面
+
+obtainLoginView({params}, callback(ret, err))
 
 ##params
 
@@ -104,8 +107,11 @@ ret：
     }
   },
   "uid": "idbsapMIaW7sVXdCDs8UxD40AZ" //用户的uid
+  "openid": "dskaldlakdaskdsaskdlsakSA" //用户的openid
 }
 ```
+
+*注：请使用OpenId作为用户标识*
 
 err：
 
@@ -140,7 +146,9 @@ function callBack(ret, err){
 
 #**logoutCurrentAccount**<div id="a3"></div>
 
-退出登录：```logoutCurrentAccount()```
+退出登录
+
+logoutCurrentAccount()
 
 ##示例代码
 
@@ -151,15 +159,17 @@ superID.logoutCurrentAccount();
 
 #**queryUserState**<div id="a4"></div>
 
-检查用户授权状态：```queryUserState({params}, callback(ret, err))```
+检查用户授权状态
+
+queryUserState({params}, callback(ret, err))
 
 ##params
 
-uid：
+openid：
 
 - 类型：字符串
 - 默认值：无
-- 描述：检测该uid是否已经授权，必填
+- 描述：检测该openid是否已经授权，必填
 
 
 ##callback(ret, err)
@@ -193,7 +203,7 @@ err：
 
 ```js
 var param = {
-    uid:"idCIXkfV8BOeM7u2AjbK0MVihY!"
+    openid:"******"
 };
 var superID = api.require('superID');
 superID.registerApp();
@@ -211,7 +221,9 @@ superID.queryUserState(param,function(ret, err){
 
 #**cancelAuthorization**<div id="a5"></div>
 
-取消授权：```cancelAuthorization(callback)```
+取消授权
+
+cancelAuthorization(callback)
 
 ##callback(ret, err)
 
@@ -257,67 +269,11 @@ superID.cancelAuthorization(function(ret, err){
 
 调用此接口前应确保调用过一次registerApp接口，此接口需要访问网络，所以需要一段时间才能callBack得到结果
 
-#**updateAppUid**<div id="a6"></div>
-
-更新uid：```updateAppUid({params},callback)```
-
-##params
-
-uid：
-
-- 类型：字符串
-- 默认值：无
-- 描述：检测该uid是否已经授权，必填
-
-##callback(ret, err)
-
-ret：
-
-- 类型：JSON对象
-
-内部字段：
-
-```js
-{
-  Msg : "Succeed" //取消授权成功
-}
-
-```
-
-err：
-
-- 类型：JSON对象
-
-内部字段：
-
-```js
-{
-    Msg: ""      //错误描述
-}
-```
-
-##示例代码
-
-```js
-var param = {
-    uid:"idCIXkfV8BOeM7u2AjbK0MVihY!"
-};
-var superID = api.require('superID');
-superID.registerApp();
-superID.queryUserState(param,function(ret, err){
-    api.toast({
-        msg:ret.State
-    });
-});
-```
-
-##补充说明
-
-调用此接口前应确保调用过一次registerApp接口，此接口需要访问网络，所以需要一段时间才能callBack得到结果
-
 #**updateAppUserInfo**<div id="a7"></div>
 
-更新用户信息：```updateAppUserInfo({params},callback)```
+更新用户信息
+
+updateAppUserInfo({params},callback)
 
 ##params
 
@@ -367,7 +323,7 @@ var superID = api.require('superID');
 superID.registerApp();
 superID.updateAppUserInfo(param,function(ret, err){
     api.toast({
-        msg:ret.State
+        msg:ret.Msg
     });
 });
 ```
@@ -378,7 +334,9 @@ superID.updateAppUserInfo(param,function(ret, err){
 
 #**obtainFaceFeatureView**<div id="a8"></div>
 
-获取人脸信息：```obtainFaceFeatureView(callback)```
+获取人脸信息
+
+obtainFaceFeatureView(callback)
 
 ##callback(ret, err)
 

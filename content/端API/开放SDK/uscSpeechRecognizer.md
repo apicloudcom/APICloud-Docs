@@ -26,6 +26,9 @@ uscSpeechRecognizer模块封装了云知声语音识别的sdk，开发者只需�
 
 暂 仅支持 Android. 
 
+
+**本模块已停止维护更新，即将下架，建议开发者使用其它语音识别模块**
+
 #**startRecord**<div id="1"></div>
 
 开始语音识别，识别完成后返回识别文字

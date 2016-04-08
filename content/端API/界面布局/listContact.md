@@ -26,11 +26,13 @@ Description: listContact
 [refreshItem](#8)
 
 [insertItem](#9)
+
+[scrollToItem](#10)
 </div>
 
 #**概述**
 
-listContact定义了一个类似微信联系人界面的模板，开发者可自定义数据源，ui界面里的各种元素的样式等
+listContact定义了一个类似微信联系人界面的模板，开发者可自定义数据源，ui界面里的各种元素的样式等，**右边字母索引导航条不支持字母以外的内容**
 
 ![图片说明](/img/docImage/listContact.jpg)
 
@@ -94,8 +96,7 @@ leftBtn：
 - 默认值：无
 - 描述：（可选项）往右滑动cell露出的按钮组成的数字
 - 备注：若不传则表示cell不可向右滑动
-
-内部字段：
+- 内部字段：
 
 ```js
 [{
@@ -117,8 +118,7 @@ rightBtn：
 - 默认值：无
 - 描述：（可选项）往左滑动cell露出的按钮组成的数组
 - 备注：若不传则表示cell不可向左滑动
-
-内部字段：
+- 内部字段：
 
 ```js
 [{
@@ -211,11 +211,11 @@ indicator:
 }
 ```
 
-fixedOn:
+fixedOn：
 
-- 类型：字符串
-- 默认值：当前主窗口名
-- 描述：（可选项）将模块视图添加在某个窗口上的名字
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 searchBar:
 
@@ -255,56 +255,59 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('listContact');
-obj.open({
-    h: 300,
+var listContact = api.require('listContact');
+listContact.open({
+    h: api.frameHeight,
     rightBtn: [{
         color: '#8B0000',
         title: '备注'
     }],
     data: {
         common: [{
-            placeholderImg: 'widget://res/listContact.png',
+            placeholderImg: 'widget://res/img/ic/listContact.png',
             img: 'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
             title: '标题'
         }],
         A: [{
-            placeholderImg: 'widget://res/listContact.png',
+            placeholderImg: 'widget://res/img/ic/listContact.png',
             img: 'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
             title: '标题'
         }, {
-            placeholderImg: 'widget://res/listContact.png',
+            placeholderImg: 'widget://res/img/ic/listContact.png',
             title: '标题'
         }, {
-            placeholderImg: 'widget://res/listContact.png',
+            placeholderImg: 'widget://res/img/ic/listContact.png',
             title: '标题'
         }, {
-            placeholderImg: 'widget://res/listContact.png',
+            placeholderImg: 'widget://res/img/ic/listContact.png',
             title: '标题'
         }, {
-            placeholderImg: 'widget://res/listContact.png',
+            placeholderImg: 'widget://res/img/ic/listContact.png',
             title: '标题'
         }, {
-            placeholderImg: 'widget://res/listContact.png',
+            placeholderImg: 'widget://res/img/ic/listContact.png',
             title: '标题'
         }, {
-            placeholderImg: 'widget://res/listContact.png',
+            placeholderImg: 'widget://res/img/ic/listContact.png',
             title: '标题'
         }, {
-            placeholderImg: 'widget://res/listContact.png',
+            placeholderImg: 'widget://res/img/ic/listContact.png',
             title: '标题'
         }, {
-            placeholderImg: 'widget://res/listContact.png',
+            placeholderImg: 'widget://res/img/ic/listContact.png',
             title: '标题'
         }, {
-            placeholderImg: 'widget://res/listContact.png',
+            placeholderImg: 'widget://res/img/ic/listContact.png',
             title: '标题'
         }]
-    }
+    },
+    fixedOn: api.frameName
 }, function(ret, err) {
-    api.alert({
-        msg: ret.section + "*" + ret.index
-    });
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -327,8 +330,10 @@ close()
 
 ##示例代码
 
-	var obj = api.require('listContact');
-	obj.close();
+```js
+var listContact = api.require('listContact');
+listContact.close();
+```
 
 ##补充说明
 
@@ -379,39 +384,43 @@ B:[{}],,,,,,
 ##示例代码
 
 ```js
-var obj = api.require('listContact');
-obj.reloadData({
-	data:{
-		common:[{
-			placeholderImg:'widget://res/listContact.png',
+var listContact = api.require('listContact');
+listContact.reloadData({
+	data: {
+		common: [{
+			placeholderImg: 'widget://res/img/ic/listContact.png',
 			img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
        		title:'标题'
       	}],
-		A:[{
-			placeholderImg:'widget://res/listContact.png',
+		A: [{
+			placeholderImg:'widget://res/img/ic/listContact.png',
 			img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
        		title:'标题'
      	},{
-			placeholderImg: 'widget://res/listContact.png',title:'标题'
+			placeholderImg: 'widget://res/img/ic/listContact.png',title:'标题'
      	},{
-			placeholderImg: 'widget://res/listContact.png',title:'标题' 
+			placeholderImg: 'widget://res/img/ic/listContact.png',title:'标题' 
      	},{
-			placeholderImg:'widget://res/listContact.png',title:'标题'
+			placeholderImg:'widget://res/img/ic/listContact.png',title:'标题'
      	},{
-			placeholderImg:'widget://res/listContact.png',title:'标题'
+			placeholderImg:'widget://res/img/ic/listContact.png',title:'标题'
      	},{
-			placeholderImg: 'widget://res/listContact.png',title:'标题'
+			placeholderImg: 'widget://res/img/ic/listContact.png',title:'标题'
      	},{
-			placeholderImg: 'widget://res/listContact.png',title:'标题' 
+			placeholderImg: 'widget://res/img/ic/listContact.png',title:'标题' 
      	},{
-			placeholderImg: 'widget://res/listContact.png',title:'标题'
+			placeholderImg: 'widget://res/img/ic/listContact.png',title:'标题'
      	},{
-			placeholderImg: 'widget://res/listContact.png',title:'标题'
+			placeholderImg: 'widget://res/img/ic/listContact.png',title:'标题'
      	},{
-			placeholderImg:'widget://res/listContact.png' ,title:'标题'
+			placeholderImg:'widget://res/img/ic/listContact.png' ,title:'标题'
      	}]}
 },function(ret,err){
-				api.alert({msg:ret.section+"*"+ret.index});
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }		
 });
 ```
 
@@ -477,23 +486,16 @@ showTime：
 ##示例代码
 
 ```js
-var loadingImgae = 'widget://res/listContact_arrow.png';		//刷新的小箭头，不可为空
-var bgColor = '#F5F5F5';									//下拉刷新的背景颜色，有默认值，可为空
-var textColor= '#8E8E8E';									//提示语颜色，有默认值，可为空
-var textDown= '下拉可以刷新...';								//尚未触发刷新时间的提示语，有默认值，可为空
-var textUp= '松开开始刷新...';								//触发刷新事件的提示语，有默认值，可为空
-var showTime= true;											//是否显示时间，有默认值，可为空
-
-var obj = api.require('listContact');
-obj.setRefreshHeader({
-		loadingImg : loadingImgae,
-		bgColor:bgColor,
-		textColor:textColor,
-		textDown:textDown,
-		textUp:textUp,
-		showTime : showTime
-},function(ret,err){
-	//触发加载事件
+var listContact = api.require('listContact');
+listContact.setRefreshHeader({
+	loadingImg : 'widget://res/img/ic/listContact_arrow.png',
+	bgColor: '#F5F5F5',
+	textColor: '#8E8E8E',
+	textDown: '下拉可以刷新...',
+	textUp: '松开开始刷新...',
+	showTime : true
+},function( ret ){
+    alert( '刷新事件');
 });
 ```
 
@@ -515,8 +517,10 @@ hide()
 
 ##示例代码
 
-	var obj = api.require('listContact');
-	obj.hide();
+```js
+var listContact = api.require('listContact');
+listContact.hide();
+```
 
 ##补充说明
 
@@ -536,8 +540,10 @@ show()
 
 ##示例代码
 
-	var obj = api.require('listContact');
-	obj.show();
+```js
+var listContact = api.require('listContact');
+listContact.show();
+```
 
 ##补充说明
 
@@ -572,10 +578,10 @@ key：
 ##示例代码
 
 ```js
-var obj = api.require('listContact');
- obj.deleteItem({
-      index:2,
-      key:A
+var listContact = api.require('listContact');
+ listContact.deleteItem({
+      index: 2,
+      key: A
  });
 ```
 
@@ -635,10 +641,13 @@ data：
 ##示例代码
 
 ```js
-var obj = api.require('listContact');
-obj.refreshItem({
-      index:2,
-      data: {title:'刷新指定下标的标题', subTitle:'刷新指定下标的子标题'}
+var listContact = api.require('listContact');
+listContact.refreshItem({
+      index: 2,
+      data: {
+           title: '刷新指定下标的标题', 
+           subTitle: '刷新指定下标的子标题'
+      }
 });
 ```
 
@@ -698,16 +707,16 @@ data：
 ##示例代码
 
 ```js
-var obj = api.require('listContact');
- obj.insertItem({
+var listContact = api.require('listContact');
+listContact.insertItem({
     index:2,
-data:{
-   img:' http://d.hiphotos.baidu.com/image/pic/item/4d086e061d950a7b29a788c209d162d9f2d3c922.jpg ',
-    title:'12:00',
-    subTitle:'APICloud粉丝互动会',
-        remark:'完成'
-      }
- });
+    data:{
+          img: 'widget://res/img/ic/listContact.jpg',
+          title: '12:00',
+          subTitle: 'APICloud粉丝互动会',
+          remark: '完成'
+    }
+});
 ```
 
 ##补充说明
@@ -719,3 +728,37 @@ data:{
 iOS系统，Android系统
 
 可提供的1.0.2及更高版本
+
+#**scrollToItem**<div id="10"></div>
+
+滚动到指定 index 条目
+
+scrollToItem({params})
+
+##params
+
+index：
+
+- 类型：数字
+- 描述：要滚动到的 item 的索引
+
+key：
+
+- 类型：字符串
+- 描述：要滚动到的 item 所在的区域的 key
+
+##示例代码
+
+```js
+var listContact = api.require('listContact');
+listContact.scrollToItem({
+      index: 2,    
+      key: 'B'
+});
+```
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.0.1及更高版本

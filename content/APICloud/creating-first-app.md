@@ -7,7 +7,7 @@ Sort: 2
 
 [准备工作](#2)
 
-[创建应用](#3)
+[创建应用及代码管理](#3)
 
 [应用包结构](#4)
 
@@ -27,15 +27,15 @@ Sort: 2
 
 #**应用简介**<div id="1"></div>
     
-本文档会逐步引导您，快速开发一个简单应用。应用将包含简单的文件读写功能，所有步骤涉及IDE的使用、APICloud平台使用、端API调用等各方面知识介绍。
+本文档会逐步引导您，快速开发一个简单应用。应用将包含简单的文件读写功能，所有步骤涉及APICloud Studio的使用、APICloud平台使用、端API调用等各方面知识介绍。
 
 #**一、准备工作**<div id="2"></div>
 
-[下载](http://apicloud.com/dev)并安装APICloud IDE开发环境，IDE当前支持Windows系统。
+[下载](http://apicloud.com/dev)并安装APICloud Studio开发环境，APICloud Studio当前支持Windows系统。
 
 #**二、创建应用**<div id="3"></div>
 
-APICloud提供了两种应用创建方式，方便开发者在云端和IDE中创建应用。
+APICloud提供了两种应用创建方式，方便开发者在云端和APICloud Studio中创建应用。
 
 ##云端创建应用：
 
@@ -44,11 +44,11 @@ APICloud提供了两种应用创建方式，方便开发者在云端和IDE中创
 
 ![图片说明](/img/docImage/120.jpg)
 
-应用概览页 http://www.apicloud.com/appoverview 可以看到应用相关信息，留意一下应用ID，IDE会用到。
+应用概览页 http://www.apicloud.com/appoverview 可以看到应用相关信息，留意一下应用ID，APICloud Studio会用到。
 
 ![图片说明](/img/docImage/121.png)
 
-2) 用以上注册的APICloud账号登录IDE
+2) 用以上注册的APICloud账号登录APICloud Studio
 
 ![图片说明](/img/docImage/122.png) 
 
@@ -64,9 +64,9 @@ APICloud提供了两种应用创建方式，方便开发者在云端和IDE中创
 
 ![图片说明](/img/docImage/126.png)  
 
-##IDE中创建应用：
+##APICloud Studio中创建应用：
 
-1) 登录IDE，没有账号点击“注册账号”
+1) 登录APICloud Studio，没有账号点击“注册账号”
 
 ![图片说明](/img/docImage/127.png)
 
@@ -78,6 +78,41 @@ APICloud提供了两种应用创建方式，方便开发者在云端和IDE中创
 
 ![图片说明](/img/docImage/129.png)
 
+4) 同步本地应用到云端资源库
+
+开发者在APICLoud Studio创建的应用会和云端资源库建立连接。项目代码改动后，可以使用APICLoud Studio的代码提交功能提交代码到云端资源库。
+
+**操作流程**
+
+- 首先选择一个需要同步到云端资源库的项目。
+- 在项目上右键，选择云端同步—提交。
+ 
+![图片说明](/img/docImage/178.png)
+
+- 在打开的提交界面输入提交信息后点击完成。即可提交项目代码到云端资源库中。
+
+![图片说明](/img/docImage/179.jpg)
+
+5）其他上传代码的方式
+
+ 第一种方式： 也可在网站控制台-端开发-代码界面上传整个项目的zip格式压缩包。（项目的根目录名要改为 widget。即压缩后为widget.zip。） 
+ 
+![图片说明](/img/docImage/commitcode1.png)
+
+ 第二种方式： 使用TortoiseSVN（俗称“小乌龟”）等任何SVN工具提交代码。
+
+ ![图片说明](/img/docImage/commitcode2.png)
+
+  在电脑上新建一个文件夹，命名为您的项目名。在文件夹中右键，选择 SVN Checkout。出现如下界面：
+
+  ![图片说明](/img/docImage/commitcode3.png)
+
+ 填入网站的项目地址，检出到的本地地址。点击ok即可。（前提是已经登录过APICloud Studio, 否则需要输入您在APICloud注册的用户名，及点击获取分支密码获得的密码。）
+
+
+
+
+  
 #**三、应用包结构**<div id="4"></div>
 
 ![图片说明](/img/docImage/130.png)
@@ -129,7 +164,7 @@ APICloud提供了两种应用创建方式，方便开发者在云端和IDE中创
 
 #**七、真机同步调试**<div id="8"></div>
 
-打开IDE，用数据线连接移动设备，当前项目下，右键选择“一键真机同步测试”
+打开APICloud Studio，用数据线连接移动设备，当前项目下，右键选择“一键真机同步测试”
  
 ![图片说明](/img/docImage/131.png)
 
@@ -137,7 +172,7 @@ APICloud提供了两种应用创建方式，方便开发者在云端和IDE中创
 
 等待同步完成，项目代码被拷贝到移动设备指定目录，移动设备上的APP Loader自动启动，即可实现真机同步调试。
 
-点击顶部的“启动日志”按钮，当真机调试的应用有JavaScript错误时，IDE的控制台会有日志输出。
+点击顶部的“启动日志”按钮，当真机调试的应用有JavaScript错误时，APICloud Studio的控制台会有日志输出。
  
 ![图片说明](/img/docImage/135.jpg)
 
@@ -146,7 +181,7 @@ APICloud提供了两种应用创建方式，方便开发者在云端和IDE中创
 
 #**八、本地打包**<div id="10"></div>
 
-选择应用项目，右键选择“生成快速测试包”，填写“应用名称”，选择“生成平台”，点击“打包”，即可生成测试安装包。（更多详尽功能参见[IDE使用指南](/APICloud/ide-dev-guide)）
+选择应用项目，右键选择“生成快速测试包”，填写“应用名称”，选择“生成平台”，点击“打包”，即可生成测试安装包。（更多详尽功能参见[APICloud Studio使用指南](/APICloud/ide-dev-guide)）
 
 #**九、云端编译**<div id="11"></div>
 

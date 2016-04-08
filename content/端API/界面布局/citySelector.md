@@ -22,7 +22,7 @@ Description: citySelector
 
 #**概述**
 
-citySelector是一个城市选择器，以选择器的形式将中国各个省市级城市弹出，供用户选择，开发者可自定义该选择器的样式。若想自定义数据源，可用[customSelector 模块](/端API/界面布局/customSelector)。
+citySelector是一个城市选择器，以选择器的形式将中国各个省市级城市弹出，供用户选择，开发者可自定义该选择器的样式。若想自定义数据源，可用[customSelector 模块](http://docs.apicloud.com/端API/界面布局/customSelector)或者[UIActionSelector](http://docs.apicloud.com/端API/界面布局/UIActionSelector)自定义。
 
 ![图片说明](/img/docImage/citySelector.jpg)
 
@@ -39,12 +39,6 @@ y：
 - 类型：数字
 - 默认值：当前设备屏幕下边缘减244
 - 描述：选择器视图上边缘距离当前设备屏幕顶部距离，可为空
-
-<del>height：</del>
-
-- <del>类型：数字</del>
-- <del>默认值：244</del>
-- <del>描述：选择器视图的高，可为空</del>
 
 cancelImg：
 
@@ -82,12 +76,6 @@ selectedColor：
 - 默认值：#8B0000
 - 描述：选中字体颜色，可为空
 
-<del>animation：</del>
-
-- <del>类型：布尔</del>
-- <del>默认值：false</del>
-- <del>描述：是否添加弹出动画，可为空</del>
-
 anim：
 
 - 类型：布尔
@@ -96,9 +84,9 @@ anim：
 
 fixedOn：
 
-- 类型：字符串
-- 默认值：当前主窗口的名字
-- 描述：将此模块视图添加到指定窗口的名字，可为空
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 ##callback(ret, err)
 
@@ -119,10 +107,16 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('citySelector');
-obj.open({
-},function(ret,err){
-	api.alert({msg:'选了'+ret.city+ret.province+ret.county});
+var citySelector = api.require('citySelector');
+citySelector.open({
+    y: api.frameHeight / 1.6,
+    fixedOn: api.frameName
+}, function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -136,36 +130,6 @@ IOS系统，安卓系统
 
 可提供的0.0.1及更高版本
 
-
-
-#**<del>hidden</del>**<div id="2"></div>
-
-<del>隐藏选择器</del>
-
-<del>hidden(params)</del>
-
-##<del>params</del>
-
-<del>animation：</del>
-
-- <del>类型：布尔</del>
-- <del>默认值：false</del>
-- <del>描述：是否添加动画，可为空</del>
-
-##<del><del>示例代码</del>
-
-	var obj = api.require('citySelector');
-	obj.hidden();
-
-##<del>补充说明</del>
-
-<del>隐藏选择器，只是移除到屏幕之外，还在内存里没有清除</del>
-
-##<del>可用性</del>
-
-<del>IOS系统，安卓系统</del>
-
-<del>可提供的0.0.1及更高版本</del>
 
 #**hide**<div id="5"></div>
 
@@ -183,8 +147,10 @@ anim：
 
 ##示例代码
 
-	var obj = api.require('citySelector');
-	obj.hide();
+```js
+	var citySelector = api.require('citySelector');
+	citySelector.hide();
+```
 
 ##补充说明
 
@@ -205,12 +171,6 @@ show(parmas)
 
 ##params
 
-<del>animation：</del>
-
-- <del>类型：布尔</del>
-- <del>默认值：false</del>
-- <del>描述：是否添加动画，可为空</del>
-
 anim：
 
 - 类型：布尔
@@ -219,8 +179,10 @@ anim：
 
 ##示例代码
 
-	var obj = api.require('citySelector');
-	obj.show();
+```js
+var citySelector = api.require('citySelector');
+citySelector.show();
+```
 
 ##补充说明
 
@@ -242,12 +204,6 @@ close(parmas)
 
 ##params
 
-<del>animation：</del>
-
-- <del>类型：布尔</del>
-- <del>默认值：false</del>
-- <del>描述：是否添加动画，可为空</del>
-
 anim：
 
 - 类型：布尔
@@ -256,8 +212,10 @@ anim：
 
 ##示例代码
 
-	var obj = api.require('citySelector');
-	obj.close();
+```js
+var citySelector = api.require('citySelector');
+citySelector.close();
+```
 
 ##补充说明
 

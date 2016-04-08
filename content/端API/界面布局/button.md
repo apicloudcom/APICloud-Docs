@@ -24,7 +24,7 @@ Description: button
 
 #**概述**
 
-button是一个按钮模块，用原生代码实现了一个可自定义的按钮，开发者使用此模块可以实现在一个模块视图上添加自定义按钮的功能
+button是一个按钮模块，用原生代码实现了一个可自定义的按钮，开发者使用此模块可以实现在一个模块视图上添加自定义按钮的功能。本模块已停止更新，建议使用优化升级版模块[UIButton](http://docs.apicloud.com/端API/界面布局/UIButton)
 
 
 #**open**<div id="1"></div>
@@ -67,9 +67,9 @@ corner：
 
 fixedOn：
 
-- 类型：字符串
-- 默认值：当前主窗口的名字
-- 描述：将此模块视图添加到指定窗口的名字，可为空
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 fixed:
 - 类型：布尔
@@ -84,7 +84,9 @@ bg:
 
 ```js
 {
-        normal:      //按钮常态下的背景，支持rgb，rgba，#，img，可为空        highlight:    //按钮高亮下的背景，支持rgb，rgba，#，img，可为空，为空则和normal效果一致
+        normal:      //按钮常态下的背景，支持rgb，rgba，#，img，可为空
+        highlight:    //按钮高亮下的背景，支持rgb，rgba，#，img，可为空，为空则和normal效果一致
+
 }
 ```
 
@@ -96,7 +98,13 @@ title:
 
 ```js
 {
-      size:            //标题字体大小，数字类型，默认13，可为空       normalTitle:      //按钮常态下的标题，字符串，可为空      highlightTitle:     //按钮高亮下的标题，字符串，可为空      normalColor:     //标题常态颜色，支持rgb，rgba，#，默认#ffffff，可为空      highlightColor:    //标题按下颜色，支持rgb，rgba，#，默认#ffffff，可为空      alignment:       //标题位置，取值范围：left，right，center，默认center，可为空
+      size:            //标题字体大小，数字类型，默认13，可为空 
+      normalTitle:      //按钮常态下的标题，字符串，可为空
+      highlightTitle:     //按钮高亮下的标题，字符串，可为空
+      normalColor:     //标题常态颜色，支持rgb，rgba，#，默认#ffffff，可为空
+      highlightColor:    //标题按下颜色，支持rgb，rgba，#，默认#ffffff，可为空
+      alignment:       //标题位置，取值范围：left，right，center，默认center，可为空
+
 }
 ```
 
@@ -107,19 +115,31 @@ ret：
 - 类型：json对象
 - 内部字段：
   
-  ```js
-  {
-       eventType:      //字符串类型；回调事件类型；取值范围如下：
-                       //show：打开成功并显示在UI上
-                       //click：用户点击事件
-       id:             //数字类型；打开模块的id
-  }
-  ```
+```js
+{
+     eventType:      //字符串类型；回调事件类型；取值范围如下：
+                     //show：打开成功并显示在UI上
+                     //click：用户点击事件
+     id:             //数字类型；打开模块的id
+}
+```
 
 ##示例代码
 ```js
-var obj = api.require('button');obj.open({  bg:{
-    normal:"#ff0000"  }},function(ret,err){   api.alert({msg:ret.id});});
+var button = api.require('button');
+button.open({
+    bg: {
+        normal: "#ff0000"
+    },
+    fixedOn: api.frameName
+},function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
+
 ```
 ##补充说明
 
@@ -153,13 +173,31 @@ title:
 
 ```js
 {
-      size:            //标题字体大小，数字类型，默认13，可为空       normalTitle:      //按钮常态下的标题，字符串，可为空      highlightTitle:     //按钮高亮下的标题，字符串，可为空      normalColor:     //标题常态颜色，支持rgb，rgba，#，默认#ffffff，可为空      highlightColor:    //标题按下颜色，支持rgb，rgba，#，默认#ffffff，可为空      alignment:       //标题位置，取值范围：left，right，center，默认center，可为空
+      size:            //标题字体大小，数字类型，默认13，可为空 
+      normalTitle:      //按钮常态下的标题，字符串，可为空
+      highlightTitle:     //按钮高亮下的标题，字符串，可为空
+      normalColor:     //标题常态颜色，支持rgb，rgba，#，默认#ffffff，可为空
+      highlightColor:    //标题按下颜色，支持rgb，rgba，#，默认#ffffff，可为空
+      alignment:       //标题位置，取值范围：left，right，center，默认center，可为空
+
 }
 ```
 
 ##示例代码
 ```js
-var obj = api.require('button');obj.setTitle({   id:1,   title:{normalTitle:"按钮"}},function(ret,err){   api.alert({msg:ret.index+ret.id});});
+var button = api.require('button');
+button.setTitle({
+   id: 1,
+   title:{
+       normalTitle: "按钮"
+    }
+},function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
 ```
 ##补充说明
 
@@ -217,7 +255,11 @@ anim ：
 
 ##示例代码
 ```js
-var obj = api.require('button');obj.setFrame({x:80,w:45});
+var button = api.require('button');
+button.setFrame({
+    x: 80,
+    w: 45
+});
 ```
 ##补充说明
 
@@ -246,9 +288,9 @@ id ：
 
 ##示例代码
 ```js
-var obj = api.require('button');
-obj.close({
-    id:1
+var button = api.require('button');
+button.close({
+    id: 1
 });
 ```
 ##补充说明
@@ -277,9 +319,9 @@ id ：
 
 ##示例代码
 ```js
-var obj = api.require('button');
-obj.hide({
-    id:1
+var button = api.require('button');
+button.hide({
+    id: 1
 });
 ```
 ##补充说明
@@ -308,9 +350,9 @@ id ：
 
 ##示例代码
 ```js
-var obj = api.require('button');
-obj.show({
-    id:1
+var button = api.require('button');
+button.show({
+    id: 1
 });
 ```
 ##补充说明

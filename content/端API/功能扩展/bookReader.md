@@ -46,52 +46,51 @@ open({params}, callback(ret, err))
 x：
 
 - 类型：数字	
-- 默认值： 0
 - 描述：（可选项）模块视图左上角点的坐标
+- 默认值： 0
 
 y：
 
 - 类型：数字	
-- 默认值：0
 - 描述：（可选项）模块视图左上角点的坐标
+- 默认值：0
 
 w：
 
 - 类型：数字	
+- 描述：（可选项）模块视图的宽
 - 默认值：当前设备屏幕的宽
-- 描述：（可选项）模块视图左上角点的宽
 
 h：
 
 - 类型：数字	
+- 描述：（可选项）模块视图的高
 - 默认值：当前设备屏幕的高
-- 描述：（可选项）模块视图左上角点的高
 
 bg：
 
 - 类型：字符串	
-- 默认值：#FFFFF0
 - 描述：（可选项）阅读器的背景色，支持rgb，rgba，img，#
+- 默认值：#FFFFF0
 
 animType：
 
 - 类型：字符串
-- 默认值：curl
 - 描述：翻页动画效果，可为空。（保留使用）
+- 默认值：curl
 
 progress：
 
 - 类型：数字
-- 默认值：0
 - 描述：（可选项）阅读器打开时的进度的百分比，取值范围0-100
+- 默认值：最近一次关闭时的进度百分比
 
 textStyle：
 
 - 类型：json对象
-- 默认值：见内部字段
 - 描述：（可选项）阅读文本字体样式设置
-
-内部字段：
+- 默认值：见内部字段
+- 内部字段：
 
 ```js
 {
@@ -103,57 +102,53 @@ textStyle：
 filePath：
 
 - 类型：字符串
-- 默认值：无
 - 描述：阅读器数据源文件地址，支持widget等本地路径协议，必传
 
 codingType：
 
 - 类型：字符串
-- 默认值：gbk
 - 描述：（可选项）所要阅读的文本的编码格式，取值范围:gbk、utf8
+- 默认值：gbk
 
 fixedOn：
 
-- 类型：字符串
-- 默认值：当前主窗口的名字
-- 描述：（可选项）将模块视图添加到指定窗口的名字
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 fixed:
 - 类型：布尔
-- 默认值：true
 - 描述：（可选项）是否将模块视图固定到窗口上，不跟随窗口上下滚动
+- 默认值：true
 
 ##callback(ret, err)
 
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	eventType://事件类型，字符串，取值范围见事件类型
-	progress：//阅读当前进度（翻页时）
+	eventType:      //事件类型，字符串，取值范围见事件类型
+	progress:       //阅读当前进度（翻页时）
 }
 ```
 
 ##示例代码
 
 ```js
-var obj = api.require('bookReader');
-obj.open({
-   filePath : "widget://res/test.txt"
-},function(ret, err){
-   if(ret){
-        api.alert({msg:ret.eventType+ret.progress});
+var bookReader = api.require('bookReader');
+bookReader.open({
+   filePath: 'widget://res/test.txt'
+},function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
     }
 });
 ```
-
-##补充说明
-
-打开阅读器
 
 ##可用性
 
@@ -173,29 +168,29 @@ setValue({params}, callback(ret, err))
 bg：
 
 - 类型：字符串
-- 默认值：#FFFFFF
 - 描述：（可选项）阅读器的背景色，支持rgb，rgba，img，#
+- 默认值：#FFFFFF
 - 备注：若不传或传空字符串，则不刷新背景 
 
 animType：
 
 - 类型：字符串
-- 默认值：curl
 - 描述：翻页动画效果，可为空。（保留使用）
+- 默认值：curl
 
 progress：
 
 - 类型：数字
-- 默认值：0
 - 描述：（可选项）阅读器打开时的进度百分比，取值范围0-100
+- 默认值：0
 - 备注：若不传或传空，则表示不刷新进度
 
 textStyle：
 
 - 类型：json对象
-- 默认值：见内部字段
 - 描述：（可选项）阅读文本字体样式设置
 - 备注：若不传或传空，则表示不刷新文本字体样式
+- 默认值：见内部字段
 - 内部字段：
 
 ```js
@@ -208,7 +203,6 @@ textStyle：
 filePath：
 
 - 类型：字符串
-- 默认值：无
 - 描述：（可选项）阅读器数据源文件地址，支持widget等本地路径协议
 - 备注：不传或传空则不刷新数据源
 
@@ -217,8 +211,7 @@ filePath：
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
@@ -229,8 +222,7 @@ ret：
 err：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
@@ -241,26 +233,23 @@ err：
 ##示例代码
 
 ```js
-var obj= api.require('bookReader');
-obj.setValue({
-	bg:"#000000",
-	textStyle:{
-		color:"#FFFFFF",
-		size:20
-	}
+var bookReader = api.require('bookReader');
+bookReader.setValue({
+	bg: '#f00'
+},function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
-
-##补充说明
-
-无
 
 ##可用性
 
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
-
 
 
 #**show**<div id="3"></div>
@@ -274,8 +263,7 @@ show(callBack(ret,err))
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
@@ -286,24 +274,31 @@ ret：
 err：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	msg:""//错误描述，字符串
+	msg:""               //错误描述，字符串
 }
 ```
 
 ##示例代码
 
-	var obj= api.require('bookReader');
-	obj.show();
-
-##补充说明
-
-无
-
+```js
+var bookReader= api.require('bookReader');
+bookReader.show({
+	textStyle:{
+		size: 15
+	}
+},function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
+```
+	
 ##可用性
 
 iOS系统，Android系统
@@ -323,8 +318,7 @@ hide(callBack(ret,err))
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
@@ -335,23 +329,26 @@ ret：
 err：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	msg:""//错误描述，字符串
+	msg: ''                //错误描述，字符串
 }
 ```
 
 ##示例代码
 
-	var obj= api.require('bookReader');
-	obj.hide();
-
-##补充说明
-
-无
+```js
+var bookReader= api.require('bookReader');
+bookReader.hide(function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
+```
 
 ##可用性
 
@@ -371,8 +368,7 @@ close(callBack(ret,err))
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
@@ -383,23 +379,26 @@ ret：
 err：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	msg:""//错误描述,字符串
+	msg: ''               //错误描述,字符串
 }
 ```
 
 ##示例代码
 
-	var obj= api.require('bookReader');
-	obj.close();
-
-##补充说明
-
-无
+```js
+var bookReader= api.require('bookReader');
+bookReader.close(function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
+```
 
 ##可用性
 
@@ -419,7 +418,6 @@ getProgress(params,callBack(ret,err))
 filePath：
 
 - 类型：字符串
-- 默认值：无
 - 描述：所要获取当前阅读进度的文件地址
 
 ##callback(ret, err)
@@ -427,8 +425,7 @@ filePath：
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
@@ -440,23 +437,28 @@ ret：
 err：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	msg: ""//错误描述,字符串
+	msg: ""            //错误描述,字符串
 }
 ```
 
 ##示例代码
 
-	var obj = api.require('bookReader');
-	obj.getProgress({filePath:"widget://res/test.txt"});
-
-##补充说明
-
-无
+```js
+var bookReader= api.require('bookReader');
+bookReader.getProgress({
+    filePath: 'widget://README.md'
+},function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
+```
 
 ##可用性
 
@@ -467,7 +469,7 @@ iOS系统，Android系统
 
 #**setBrightness**<div id="7"></div>
 
-设置屏幕亮度
+设置屏幕亮度，ios 平台上设置的是系统屏幕亮度，android 平台上设置的是本 app 内的屏幕亮度
 
 setBrightness(params,callBack(ret,err))
 
@@ -476,16 +478,15 @@ setBrightness(params,callBack(ret,err))
 brightness：
 
 - 类型：数字
-- 默认值：80
 - 描述：（可选项）设置的屏幕的亮度，取值范围0-100
+- 默认值：80
 
 ##callback(ret, err)
 
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
@@ -496,23 +497,28 @@ ret：
 err：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	msg: ""//错误描述,字符串
+	msg: ""          //错误描述,字符串
 }
 ```
 
 ##示例代码
 
-	var obj = api.require('bookReader');
-	obj.setBrightness();
-
-##补充说明
-
-无
+```js
+var bookReader= api.require('bookReader');
+bookReader.setBrightness({
+    brightness: 80
+},function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
+```
 
 ##可用性
 
@@ -523,7 +529,7 @@ iOS系统，Android系统
 
 #**getBrightness**<div id="8"></div>
 
-获取屏幕亮度
+获取屏幕亮度，ios 平台上获取的是系统屏幕亮度，android 平台上获取的是本 app 内的屏幕亮度
 
 getBrightness(callBack(ret,err))
 
@@ -532,8 +538,7 @@ getBrightness(callBack(ret,err))
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
@@ -545,19 +550,26 @@ ret：
 err：
 
 - 类型：JSON对象
+- 内部字段：
 
-内部字段：
-
-```
+```js
 {
-	msg: “”		//错误描述,字符串
+	msg: ''		       //错误描述,字符串
 }
 ```
 
 ##示例代码
 
-	var obj = api.require('bookReader');
-	obj.getBrightness();
+```js
+var bookReader= api.require('bookReader');
+bookReader.getBrightness(function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
+```
 
 ##补充说明
 
@@ -572,7 +584,7 @@ iOS系统，Android系统
 
 #**brightness**<div id="9"></div>
 
-获取、设置屏幕亮度
+获取、设置屏幕亮度，ios 平台上操作的是系统屏幕亮度，android 平台上操作的是本 app 内的屏幕亮度
 
 brightness(params,callBack(ret,err))
 
@@ -581,7 +593,6 @@ brightness(params,callBack(ret,err))
 brightness：
 
 - 类型：数字
-- 默认值：无
 - 描述：（可选项）设置的屏幕的亮度，取值范围0-100
 - 备注：若不传则本接口返回当前屏幕亮度
 
@@ -590,8 +601,7 @@ brightness：
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
@@ -602,23 +612,26 @@ ret：
 err：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	msg: “”//错误描述,字符串
+	msg: “”            //错误描述,字符串
 }
 ```
 
 ##示例代码
 
 ```js
-var obj = api.require('bookReader');
-obj.brightness(function(ret,err){
-	if(ret.status){
-		api.alert({msg:ret.brightness});
-	}
+var bookReader= api.require('bookReader');
+bookReader.brightness({
+    brightness: 80
+},function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -643,8 +656,10 @@ callBack事件的类型。字符串
 
 ##取值范围：
 
-- click				//点击
-- page_up			   //向上翻页
-- page_down        	//向下翻页
-- page_over         //在最后一页时的下翻页事件
+- show  				//打开完成并显示
+- click				//点击（中间区域）
+- page_up			   //向上翻页（点击左边或向右滑动）
+- page_down        	//向下翻页（点击右边或向左滑动）
+- page_over         //在最后一页时的下翻页事件（deprecated）
+- page_end          //在最后一页时的下翻页事件
 - page_begin        //在第一页时的上翻页事件

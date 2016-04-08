@@ -103,12 +103,14 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('epubReader');
-obj.open({
-   path : "fs://test.epub"
-},function(ret, err){
-   if(ret){
-        api.alert({msg:ret.eventType+ret.progress});
+var epubReader = api.require('epubReader');
+epubReader.open({
+   path: 'fs://test.epub'
+},function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -153,11 +155,11 @@ textSize：
 ##示例代码
 
 ```js
-var obj= api.require('epubReader');
-obj.setValue({
-	bg:"#000",
-	textColor:"#fff",
-	textSize:15
+var epubReader= api.require('epubReader');
+epubReader.setValue({
+	bg: '#000',
+	textColor: '#fff',
+	textSize: 15
 });
 ```
 
@@ -209,16 +211,14 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('epubReader');
-obj.getChapters(
-	function(ret,err){
-		if (ret){
-			var chapters = ret.chapters;
-		}else{
-			var msg = err.msg;
-		}
-	}
-);
+var epubReader = api.require('epubReader');
+epubReader.getChapters(function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
 ```
 
 ##补充说明
@@ -276,14 +276,15 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('epubReader');
-obj.openChapter({
-	index:2
-},function(ret, err){
-	if(ret){
-        var currentPage = ret.currentPage;
-        var totalPage = ret.totalPage;
-	}
+var epubReader = api.require('epubReader');
+epubReader.openChapter({
+	index: 2
+},function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -333,16 +334,14 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('epubReader');
-obj.getBrightness(
-	function(ret, err){
-		if (ret){
-			var brightness = ret.brightness;
-		}else{
-			var msg = err.msg;
-		}
-	}
-);
+var epubReader = api.require('epubReader');
+epubReader.getBrightness(function( ret, err ){
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
 ```
 
 ##补充说明
@@ -373,8 +372,8 @@ brightness：
 ##示例代码
 
 ```js
-var obj = api.require('epubReader');
-obj.setBrightness();
+var epubReader = api.require('epubReader');
+epubReader.setBrightness();
 ```
 
 ##补充说明
@@ -397,8 +396,8 @@ show()
 ##示例代码
 
 ```js
-var obj= api.require('epubReader');
-obj.show();
+var epubReader= api.require('epubReader');
+epubReader.show();
 ```
 
 ##补充说明
@@ -423,8 +422,8 @@ hide()
 ##示例代码
 
 ```js
-var obj= api.require('epubReader');
-obj.hide();
+var epubReader= api.require('epubReader');
+epubReader.hide();
 ```
 
 ##补充说明
@@ -447,8 +446,8 @@ close()
 ##示例代码
 
 ```js
-var obj = api.require('epubReader');
-obj.close();
+var epubReader = api.require('epubReader');
+epubReader.close();
 ```
 
 ##补充说明

@@ -11,41 +11,29 @@ Description: fs
 
 <div class="outline">
 [createDir](#1)
-
 [rmdir](#m1)
-
 [createFile](#2)
-
 [remove](#3)
-
 [copyTo](#4)
-
 [moveTo](#5)
-
 [rename](#6)
-
 [readDir](#7)
-
 [open](#8)
-
 [read](#9)
-
 [readUp](#10)
-
 [readDown](#11)
-
 [write](#12)
-
 [close](#13)
-
 [exist](#14)
-
 [getAttribute](#15)
+[readByLength](#16)
+[writeByLength](#17)
+[getMD5](#18)
 </div>
 
 #**概述**
 
-fs封装了对文件操作的接口，通过此模块可对文件进行创建、删除，读取、写入等相关操作。开发者简单几个接口即可操作文件，极大简化了前端代码的组织
+fs封装了对文件操作的接口，通过此模块可对文件或文件夹进行创建、删除，读取、写入等相关操作。开发者简单几个接口即可操作文件，极大简化了前端代码的组织
 
 #**createDir**<div id="1"></div>
 
@@ -58,33 +46,30 @@ createDir({params}, callback(ret, err))
 path：
 
 - 类型：字符串
-- 默认值：无
-- 描述：目标路径，不能为空
+- 描述：目标路径
 
 ##callback(ret, err)
 
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	status:true           //操作成功状态值
+	status:true           //布尔类型；操作成功状态值，true|false
 }
 ```
 
 err：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	code:0,           //错误码（详见文件操作错误码常量）
-	msg:""            //错误描述
+	code:0,           //数字类型；错误码（详见文件操作错误码常量）
+	msg:""            //字符串；错误描述
 }
 ```
 
@@ -93,20 +78,15 @@ err：
 ```js
 var fs = api.require('fs');
 fs.createDir({
-	path:'fs://newDir'
-},function(ret,err){
-	var status = ret.status;
-	if (status) {
-		api.alert({msg:'创建目录成功'});
-	}else {	
-		api.alert({msg:err.msg});
-	}
+	path: 'fs://floder'
+},function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
-
-##补充说明
-
-创建目录
 
 ##可用性
 
@@ -118,7 +98,7 @@ iOS系统，Android系统
 
 #**rmdir**
 
-删除文件目录，**里面的所有文件一起删除，慎用**
+删除文件目录，**里面的所有文件将会一起被删除**
 
 rmdir({params}, callback(ret, err))
 
@@ -134,25 +114,23 @@ path：
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	status: true           //操作成功状态值
+	status: true           //布尔类型；操作成功状态值，true|false
 }
 ```
 
 err：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	code: 0,           //错误码（详见文件操作错误码常量）
-	msg: ""            //错误描述
+	code: 0,           //数字类型；错误码（详见文件操作错误码常量）
+	msg: ""            //字符串类型；错误描述
 }
 ```
 
@@ -161,14 +139,13 @@ err：
 ```js
 var fs = api.require('fs');
 fs.rmdir({
-	path: 'fs://newDir'
-},function(ret,err){
-	var status = ret.status;
-	if (status) {
-		api.alert({msg:'删除目录成功'});
-	}else {	
-		api.alert({msg:err.msg});
-	}
+	path: 'fs://floder'
+},function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -189,33 +166,30 @@ createFile({params}, callback(ret, err))
 path：
 
 - 类型：字符串
-- 默认值：无
-- 描述：目标路径，不能为空
+- 描述：目标路径
 
 ##callback(ret, err)
 
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	status:true           //操作成功状态值
+	status:true           //布尔类型；操作成功状态值，true| false
 }
 ```
 
 err：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	code:0,              //错误码（详见文件操作错误码常量）
-	msg:""              //错误描述
+	code:0,              //数字类型；错误码（详见文件操作错误码常量）
+	msg:""               //字符串类型；错误描述
 }
 ```
 
@@ -224,20 +198,15 @@ err：
 ```js
 var fs = api.require('fs');
 fs.createFile({
-	path: 'fs://a.txt'
-},function(ret,err){
-	var status = ret.status;
-	if (status) {
-		api.alert({msg:'创建文件成功'});
-	}else {		
-		api.alert({msg:err.msg});
-	}
+	path: 'fs://file.txt'
+},function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
-
-##补充说明
-
-创建文件
 
 ##可用性
 
@@ -256,33 +225,30 @@ remove({params}, callback(ret, err))
 path：
 
 - 类型：字符串
-- 默认值：无
-- 描述：目标路径，不能为空
+- 描述：目标路径
 
 ##callback(ret, err)
 
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	status:true           //操作成功状态值
+	status:true            //布尔类型；操作成功状态值，true| false
 }
 ```
 
 err：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	code:0,              //错误码（详见文件操作错误码常量）
-	msg:""               //错误描述
+	code:0,              //数字类型错误码（详见文件操作错误码常量）
+	msg:""               //字符串类型；错误描述
 }
 ```
 
@@ -291,20 +257,15 @@ err：
 ```js
 var fs = api.require('fs');
 fs.remove({
-	path: 'fs://a.txt'
-},function(ret,err){
-	var status = ret.status;
-	if (status) {
-		api.alert({msg:'删除文件成功'});
-	}else {
-		api.alert({msg:err.msg});
-	}
+	path: 'fs://file.txt'
+},function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
-
-##补充说明
-
-删除文件
 
 ##可用性
 
@@ -324,39 +285,35 @@ copyTo({params}, callback(ret, err))
 oldPath：
 
 - 类型：字符串
-- 默认值：无
-- 描述：源路径，不能为空
+- 描述：源路径
 
 newPath：
 
 - 类型：字符串
-- 默认值：无
-- 描述：目标路径，不能为空
+- 描述：目标路径
 
 ##callback(ret, err)
 
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	status:true           //操作成功状态值
+	status:true           //布尔类型；操作成功状态值，true| false
 }
 ```
 
 err：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	code:0,             //错误码（详见文件操作错误码常量）
-	msg:""              //错误描述
+	code:0,             //数字类型；错误码（详见文件操作错误码常量）
+	msg:""              //字符串类型；错误描述
 }
 ```
 
@@ -365,21 +322,16 @@ err：
 ```js
 var fs = api.require('fs');
 fs.copyTo({
-	oldPath: 'fs://a.txt',
-	newPath: 'fs://newDir'
-},function(ret,err){
-	var status = ret.status;
-	if (status) {
-		api.alert({msg:'拷贝文件成功'});
-	}else {
-		api.alert({msg:err.msg});
-	}
+	oldPath: 'fs://file.txt',
+	newPath: 'fs://floder'
+},function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
-
-##补充说明
-
-拷贝文件
 
 ##可用性
 
@@ -399,39 +351,35 @@ moveTo({params}, callback(ret, err))
 oldPath：
 
 - 类型：字符串
-- 默认值：无
-- 描述：源路径，不能为空
+- 描述：源路径
 
 newPath：
 
 - 类型：字符串
-- 默认值：无
-- 描述：目标路径，不能为空
+- 描述：目标路径
 
 ##callback(ret, err)
 
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	status:true           //操作成功状态值
+	status:true           //布尔类型；操作成功状态值，true| false
 }
 ```
 
 err：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	code:0,              //错误码（详见文件操作错误码常量）
-	msg:""               //错误描述
+	code:0,              //数字类型；错误码（详见文件操作错误码常量）
+	msg:""               //字符串类型；错误描述
 }
 ```
 
@@ -440,21 +388,16 @@ err：
 ```js
 var fs = api.require('fs');
 fs.moveTo({
-	oldPath: 'fs://a.txt',
-	newPath: 'fs://newDir'
-},function(ret,err){
-	var status = ret.status;
-	if (status) {
-		api.alert({msg:'移动文件成功'});
-	}else {
-		api.alert({msg:err.msg});
-	}
+	oldPath: 'fs://file.txt',
+	newPath: 'fs://floder'
+},function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
-
-##补充说明
-
-移动文件
 
 ##可用性
 
@@ -474,39 +417,35 @@ rename({params}, callback(ret, err))
 oldPath：
 
 - 类型：字符串
-- 默认值：无
-- 描述：源路径，不能为空
+- 描述：源路径
 
 newPath：
 
 - 类型：字符串
-- 默认值：无
-- 描述：目标路径，不能为空
+- 描述：目标路径
 
 ##callback(ret, err)
 
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	status:true           //操作成功状态值
+	status:true           //布尔类型；操作成功状态值，true| false
 }
 ```
 
 err：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	code:0,               //错误码（详见文件操作错误码常量）
-	msg:""                //错误描述
+	code:0,              //数字类型；错误码（详见文件操作错误码常量）
+	msg:""               //字符串类型；错误描述
 }
 ```
 
@@ -515,21 +454,16 @@ err：
 ```js
 var fs = api.require('fs');
 fs.rename({
-	oldPath: 'fs://a.txt',
-	newPath: 'fs://b.txt'
-},function(ret,err){
-	var status = ret.status;
-	if (status) {
-		api.alert({msg:'重命名文件成功'});
-	}else {
-		api.alert({msg:err.msg});
-	}
+	oldPath: 'fs://file.txt',
+	newPath: 'fs://rename.txt'
+},function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
-
-##补充说明
-
-重命名
 
 ##可用性
 
@@ -549,33 +483,30 @@ readDir({params}, callback(ret, err))
 path：
 
 - 类型：字符串
-- 默认值：无
-- 描述：目标路径，不能为空
+- 描述：目标路径
 
 ##callback(ret, err)
 
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	status:true,         //操作成功状态值
-	data:[]              //文件夹内的所有子文件名称，数组类型
+	status:true,         //布尔类型；操作成功状态值，true| false
+	data:[]              //数组；文件夹内的所有子文件名称
 }
 ```
 err：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	code:0,              //错误码（详见文件操作错误码常量）
-	msg:""               //错误描述
+	code:0,              //数字类型；错误码（详见文件操作错误码常量）
+	msg:""               //字符串类型；错误描述
 }
 ```
 
@@ -585,25 +516,14 @@ err：
 var fs = api.require('fs');
 fs.readDir({
 	path:'fs://'
-},function(ret,err){
-	var status = ret.status;
-	if (status) {
-		var data = ret.data;
-		if (data) {
-			var jsonStr = JSON.stringify(data);
-			api.alert({msg:jsonStr});
-		} else{
-			api.alert({msg:'此目录下为空'});
-		}
-	}else{
-		api.alert({msg:err.msg});
-	}
+},function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
-
-##补充说明
-
-列出目录内容
 
 ##可用性
 
@@ -623,40 +543,37 @@ open({params}, callback(ret, err))
 path：
 
 - 类型：字符串
-- 默认值：无
-- 描述：目标路径，不能为空
+- 描述：目标路径
 
 flags：
 
 - 类型：字符串
 - 默认值：read
-- 描述：文件打开方式（详见[文件打开方式](!Constant)常量），不能为空
+- 描述：（可选项）文件打开方式（详见[文件打开方式](!Constant)常量）
 
 ##callback(ret, err)
 
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	status: true,            //操作状态
-	fd:'14143124'            //文件句柄
+	status: true,            //布尔类型；操作成功状态值，true| false
+	fd:'14143124'            //字符串类型；操作文件的句柄
 }
 ```
 
 err：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	code:0,                //错误码（详见文件操作错误码常量）
-	msg:""                 //错误描述
+	code:0,                //数字类型；错误码（详见文件操作错误码常量）
+	msg:""                 //字符串类型；错误描述
 }
 ```
 
@@ -664,23 +581,17 @@ err：
 
 ```js
 var fs = api.require('fs');
-var fd=null;
 fs.open({
-	path: 'fs://a.txt',
+	path: 'fs://file.txt',
 	flags: 'read_write'
-},function(ret,err){
-	if (ret.status) {
-		api.alert({msg:'open操做成功'});
-		fd = ret.fd;
-	}else{
-		api.alert({msg:err.msg});
-	}
+},function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
-
-##补充说明
-
-打开文件
 
 ##可用性
 
@@ -700,51 +611,49 @@ read({params}, callback(ret, err))
 fd：
 
 - 类型：字符串
-- 描述：open方法得到的文件句柄，不能为空
+- 描述：open方法得到的文件句柄
 
 offset：
 
 - 类型：数字
+- 描述：（可选项）当前文件偏移量，**以byte为单位**
 - 默认值：0
-- 描述：当前文件偏移量
 
 length：
 
 - 类型：数字
-- 默认值：原文件文本内容的长度
-- 描述：读取内容长度
+- 描述：（可选项）读取内容长度
+- 默认值：原文件文本内容的长度，**以byte为单位**
 
 codingType：
 
 - 类型：字符串
+- 描述：（可选项）所要阅读的文本的编码格式，取值范围:gbk、utf8
 - 默认值：utf8
-- 描述：所要阅读的文本的编码格式，取值范围:gbk、utf8，可为空
 
 ##callback(ret, err)
 
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	status:true,         //操作成功状态值
-	data:""              //文件内容，字符串
+	status:true,         //布尔类型；操作成功状态值，false |true
+	data:""              //字符串类型；文件内容
 }
 ```
 
 err：
 
 类型：JSON对象
-
 内部字段：
 
 ```js
 {
-	code:0,             //错误码（详见文件操作错误码常量）
-	msg:""              //错误描述
+	code:0,             //数字类型；错误码（详见文件操作错误码常量）
+	msg:""              //字符串类型；错误描述
 }
 ```
 
@@ -753,15 +662,15 @@ err：
 ```js
 var fs = api.require('fs');
 fs.read({
-	fd:fd,
-	offset:0,
-	length:0
-},function(ret,err){
-	if (ret.status) {
-		api.alert({msg:ret.data});
-	}else{
-		api.alert({msg:err.msg});
-	}
+	fd: 'open方法得到的文件句柄',
+	offset: 0,
+	length: 0
+},function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -787,46 +696,44 @@ readUp({params},callback(ret, err))
 fd：
 
 - 类型：字符串
+- 描述：（可选项）open方法得到的文件句柄
 - 默认值：当前文件句柄
-- 描述：open方法得到的文件句柄，可为空
 
 length：
 
 - 类型：数字
-- 默认值：当前最近一次读取数据的length
-- 描述：此次向上读取数据的长度，可为空
+- 默认值：（可选项）当前最近一次读取数据的length，**以byte为单位**
+- 描述：此次向上读取数据的长度
 
 codingType：
 
 - 类型：字符串
+- 描述：（可选项）所要阅读的文本的编码格式，取值范围:gbk、utf8
 - 默认值：utf8
-- 描述：所要阅读的文本的编码格式，取值范围:gbk、utf8，可为空
 
 ##callback(ret, err)
 
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	status:true                //操作成功状态值
-	data:""                    //文件内容，字符串
+	status:true                //布尔类型；操作成功状态值，true|false
+	data:""                    //字符串类型；返回的文件内容
 }
 ```
 
 err：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	code:0,                  //错误码（详见文件操作错误码常量）
-	msg:""                   //错误描述
+	code:0,                  //数字类型；错误码（详见文件操作错误码常量）
+	msg:""                   //字符串类型；错误描述
 }
 ```
 
@@ -834,14 +741,13 @@ err：
 
 ```js
 var fs = api.require('fs');
-fs.readUp(function(ret,err){
-	if (ret.status) {
-		api.alert({msg:ret.data});
-	}else{
-		api.alert({msg:err.msg});
-	}
+fs.readUp(function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
-
 ```
 
 ##补充说明
@@ -866,21 +772,21 @@ read({params},callback(ret, err))
 fd：
 
 - 类型：字符串
+- 描述：（可选项）open 方法得到的文件句柄
 - 默认值：当前文件句柄
-- 描述：open方法得到的文件句柄，可为空
 
 length：
 
 - 类型：数字
-- 默认值：当前最近一次读取数据的length
-- 描述：此次向下读取数据的长度，可为空
+- 描述：（可选项）此次向下读取数据的长度，**以byte为单位**
+- 默认值：当前最近一次读取数据的 length
 
 
 codingType：
 
 - 类型：字符串
+- 描述：（可选项）所要阅读的文本的编码格式，取值范围:gbk、utf8
 - 默认值：utf8
-- 描述：所要阅读的文本的编码格式，取值范围:gbk、utf8，可为空
 
 
 ##callback(ret, err)
@@ -888,26 +794,24 @@ codingType：
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	status:true              //操作成功状态值
-	data:""                  //文件内容，字符串
+	status:true              //布尔类型；操作成功状态值，true|false
+	data:""                  //字符串类型；文件内容
 }
 ```
 
 err：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	code:0,               //错误码（详见文件操作错误码常量）
-	msg:""                //错误描述
+	code:0,               //数字类型；错误码（详见文件操作错误码常量）
+	msg:""                //字符串类型，错误描述
 }
 ```
 
@@ -915,14 +819,13 @@ err：
 
 ```js
 var fs = api.require('fs');
-fs.readDown(function(ret,err){
-	if (ret.status) {
-		api.alert({msg:ret.data});
-	}else{
-		api.alert({msg:err.msg});
-	}
+fs.readDown(function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
-
 ```
 
 ##补充说明
@@ -947,7 +850,7 @@ write({params}, callback(ret, err))
 fd：
 
 - 类型：字符串
-- 描述：open方法得到的文件句柄，不能为空
+- 描述：open 方法得到的文件句柄
 
 data：
 
@@ -957,32 +860,31 @@ data：
 offset：
 
 - 类型：数字
+- 描述：（可选项）写入内容的起始位置**以byte为单位**
 - 默认值：原文件文本内容的长度
-- 描述：写入内容的起始位置
 
 overwrite：
 
 - 类型：布尔
+- 描述：（可选项）是否覆盖指定偏移位置后面的内容
 - 默认值：false
-- 描述：是否覆盖指定偏移位置后面的内容
 
 codingType：
 
 - 类型：字符串
+- 描述：（可选项）所要阅读的文本的编码格式，取值范围:gbk、utf8
 - 默认值：utf8
-- 描述：所要阅读的文本的编码格式，取值范围:gbk、utf8，可为空
 
 ##callback(ret, err)
 
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	status:true		//操作成功状态值
+	status:true		    //布尔类型；操作成功状态值，true|false
 }
 ```
 
@@ -994,8 +896,8 @@ err：
 
 ```js
 {
-	code:0,                //错误码（详见文件操作错误码常量）
-	msg:""                 //错误描述
+	code:0,               //数字类型；错误码（详见文件操作错误码常量）
+	msg:""                //字符串类型；错误描述
 }
 ```
 
@@ -1004,15 +906,15 @@ err：
 ```js
 var fs = api.require('fs');
 fs.write({
-	fd:fd,
-	data:'testtext',
-	offset:0
-},function(ret,err){
-	if (ret.status) {
-		api.alert({msg:'write操作成功'});
-	}else{
-		api.alert({msg:err.msg});
-	}
+	fd: 'open方法得到的文件句柄',
+	data: 'test',
+	offset: 0
+},function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -1038,33 +940,30 @@ close({params}, callback(ret, err))
 fd：
 
 - 类型：字符串
-- 默认值：无
-- 描述：open方法得到的文件句柄，不能为空
+- 描述：open方法得到的文件句柄
 
 ##callback(ret, err)
 
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	status:true		//操作成功状态值
+	status:true		//布尔类型；操作成功状态值，true|false
 }
 ```
 
 err：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	code:0,                //错误码（详见文件操作错误码常量）
-	msg:""                 //错误描述
+	code:0,                //数字类型；错误码（详见文件操作错误码常量）
+	msg:""                 //字符串类型；错误描述
 }
 ```
 
@@ -1073,26 +972,21 @@ err：
 ```js
 var fs = api.require('fs');
 fs.close({
-	fd: fd
-},function(ret,err){
-	if (ret.status) {
-		api.alert({msg:'close操作成功'});
-	}else{
-		api.alert({msg:err.msg});
-	}
+	fd: 'open方法得到的文件句柄'
+},function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
-
-##补充说明
-
-关闭文件
 
 ##可用性
 
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
-
 
 
 #**exist**<div id="14"></div>
@@ -1106,20 +1000,18 @@ exist({params}, callback(ret, err))
 path：
 
 - 类型：字符串
-- 默认值：无
-- 描述：要判断的文件路径，不能为空
+- 描述：要判断的文件路径
 
 ##callback(ret, err)
 
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	exist:true                //文件是否存在
+	exist:true                //布尔类型；操作成功状态值，true|false在
 	directory:false           //文件是否是文件夹
 }
 ```
@@ -1127,26 +1019,21 @@ ret：
 ##示例代码
 
 ```js
-
-var obj = api.require('fs');
-obj.exist({
-	path: "widget://res/test.text"
+var fs = api.require('fs');
+fs.exist({
+	path: 'fs://file.txt'
 },function(ret,err){
-	if(ret.exist){
-		if(ret.directory){
-			api.alert({msg:'该路径指向一个文件夹'});
-		}else{
-			api.alert({msg:'该路径指向一个文件'});
+	if( ret.exist ){
+		if( ret.directory ){
+            alert( '文件夹' );
+		}else {
+            alert( '文件' );
 		}
-	}else{
-		api.alert({msg:'该路径不存在任何文件'});
+	}else {
+        alert( JSON.stringify( err ) );
 	}
 });
 ```
-
-##补充说明
-
-判断文件是否存在
 
 ##可用性
 
@@ -1165,38 +1052,35 @@ getAttribute({params}, callback(ret, err))
 path：
 
 - 类型：字符串
-- 默认值：无
-- 描述：目标路径，不能为空
+- 描述：目标路径
 
 ##callback(ret, err)
 
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	status:            //操作状态
-   attribute:          //文件属性
-   内部字段：{
-      creationDate:  //创建日期 ，字符串类型（仅ios支持此字段）
-      modificationDate：//修改日期，字符串类型
-      size：        //文件大小，数字类型，以B为单位
-      type：       //表示文件类型，字符串类型，取值范围：folder、file
-   } 
+   status:                //布尔类型；操作状态；true||false
+   attribute:             //JSON对象；文件属性
+                          //内部字段：{
+                            creationDate:    //字符串类型；创建日期 （时间戳），仅 IOS 支持此字段
+                            modificationDate://字符串类型；修改日期（时间戳）
+                            size:            //数字类型；文件大小，以Byte为单位
+                            type:            //字符串类型；表示文件类型，取值范围：folder（文件夹）、file（文件）
+                           } 
 }
 ```
 err：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-	msg:            //错误描述
+	msg:            //字符串类型；错误描述
 }
 ```
 
@@ -1205,27 +1089,240 @@ err：
 ```js
 var fs = api.require('fs');
 fs.getAttribute({
-    path: 'fs://a.txt'
-},function(ret,err){
-    if (ret.status) {
-        api.alert({msg:'获取属性成功'});
+    path: 'fs://file.txt'
+},function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
     }else{
-        api.alert({msg:err.msg});
+        alert( JSON.stringify( err ) );
     }
 });
 ```
-
-##补充说明
-
-获取指定路径的文件属性
 
 ##可用性
 
 iOS系统，Android系统
 
 可提供的1.0.1及更高版本
-</div>
 
+#**readByLength**<div id="16"></div>
+
+按照字符串长度读取文件，本接口针对纯文本文件有效。**无需 open**
+
+readByLength({params}, callback(ret, err))
+
+##params
+
+path：
+
+- 类型：字符串
+- 描述：目标文件路径，要求本地路径（fs://、widget://）
+
+substring： 
+
+- 类型：JSON对象
+- 描述：(可选项) 读取字符串范围，**以字符为单位**
+- 默认值：见内部字段
+- 内部字段：
+
+```js
+{
+	start:	0,     //（可选项）非负整数；规定要提取的子串的第一个字符在文件中的位置；默认：0
+	length:199     //（可选项）非负整数；所要读取的文本字符串长度；默认：原文件文本内容的总长
+}
+```
+
+##callback(ret, err)
+
+ret：
+
+- 类型：JSON对象
+- 内部字段：
+
+```js
+{
+	status:true,         //布尔类型；操作成功状态值，false |true
+	content:"",          //字符串类型；读取指定文件的内容
+	codingType:'utf8'    //字符串类型；文件编码类型，取值范围： utf8、gbk
+}
+```
+
+err：
+
+- 类型：JSON对象
+- 内部字段：
+
+```js
+{
+	code:0,             //数字类型；错误码（详见文件操作错误码常量）
+	msg:""              //字符串类型；错误描述
+}
+```
+
+##示例代码
+
+```js
+var fs = api.require('fs');
+fs.readByLength({
+	path: 'fs://file.txt',
+	substring:{
+	  start: 0,
+	  length: 10
+	}
+},function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
+```
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.0.1及更高版本
+
+#**writeByLength**<div id="17"></div>
+
+将字符串写入指定位置的文件，**无需 open**
+
+writeByLength({params}, callback(ret, err))
+
+##params
+
+path：
+
+- 类型：字符串
+- 描述：目标文件路径，要求本地路径（fs://），**不支持 widget 协议**
+
+content：
+
+- 类型：字符串
+- 描述：写入的数据
+
+place：
+
+- 类型：JSON对象
+- 描述：(可选项) 写入文件位置	**以字符为单位**
+- 默认值：见内部字段
+- 内容字段：
+
+```js
+{
+	start: 0,      //（可选项）非负的整数；写入文件起始位置；默认：0
+	strategy: 199  //（可选项）数字类型；默认：-1；取值范围：
+	               // -1 (覆盖起始位置后所有)
+	               // 0 (不覆盖，插入)
+	               //大于零的整数 (起始位置向后覆盖指定字符的长度)
+}
+```
+
+codingType：
+
+- 类型：字符串
+- 描述：（可选项）保存的文本的编码格式，取值范围:gbk、utf8
+- 默认值：utf8
+
+##callback(ret, err)
+
+ret：
+
+- 类型：JSON对象
+- 内部字段：
+
+```js
+{
+	status:true		    //布尔类型；操作成功状态值，true|false
+}
+```
+
+err：
+
+- 类型：JSON对象
+- 内部字段：
+
+```js
+{
+	code:0,               //数字类型；错误码（详见文件操作错误码常量）
+	msg:""                //字符串类型；错误描述
+}
+```
+
+##示例代码
+
+```js
+var fs = api.require('fs');
+fs.writeByLength({
+	path: 'fs://file.txt',
+	content: 'test',
+	place: {
+	   start: 0, 
+	   strategy: 0
+	}
+},function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
+```
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.0.1及更高版本
+
+#**getMD5**<div id="18"></div>
+
+获取文件 md5 值
+
+getMD5({params}, callback(ret, err))
+
+##params
+
+path：
+
+- 类型：字符串
+- 描述：要获取其 md5 值的文件路径
+
+##callback(ret, err)
+
+ret：
+
+- 类型：JSON对象
+- 内部字段：
+
+```js
+{
+	status:true,        //布尔类型；操作成功状态值，true|false在
+	md5Str:''           //字符串类型；文件的 md5 值
+}
+```
+
+##示例代码
+
+```js
+var fs = api.require('fs');
+fs.getMD5({
+	path: 'fs://file.txt'
+},function(ret){
+	if( ret.status ){
+         alert( ret.md5Str );
+	}
+});
+```
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.0.1及更高版本
+
+</div>
 
 <div id="const-content">
 

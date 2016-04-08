@@ -35,14 +35,14 @@ appname：
 ##示例代码
 
 ```js
-if (api.systemType =="android"){
+if ( api.systemType =='android' ){
 	var smarket = api.require('marketScore');
-	var param = {appname:"com.tencent.mm"};
-	smarket.myScore(param);
+	smarket.myScore({
+        appname:'com.tencent.mm'
+    });
 }else{
 	api.openApp({
 		iosUrl: 'https://itunes.apple.com/cn/app/wei-xin/id414478124?mt=8'
-	},function(ret,err){
 	});
 }
 ```

@@ -100,18 +100,21 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('pullMenu');
-var arrayPath = new Array();
-for(var i=0;i<17;i++){
-	arrayPath[i]={
-		normal: 'widget://res/pullMenu_btn1light.png',
-		highlight: 'widget://res/pullMenu_btn1.png'
-	};
-}
-obj.open({
-	btnArray:arrayPath
-},function(ret,err){
-	api.alert({msg:ret.index});
+var pullMenu = api.require('pullMenu');
+pullMenu.open({
+	btnArray:[{
+		normal: 'widget://res/img/ic/small-bell.png',
+		highlight: 'widget://res/img/ic/small-bell.png'
+	},{
+		normal: 'widget://res/img/ic/small-bell.png',
+		highlight: 'widget://res/img/ic/small-bell.png'
+	}]
+},function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 ##补充说明
@@ -133,8 +136,10 @@ iOS系统，Android系统
 
 ##<del>示例代码</del>
 
-    var obj = api.require('pullMenu');
-    obj.hidden();
+```js
+var pullMenu = api.require('pullMenu');
+pullMenu.hidden();
+```
 
 ##<del>补充说明</del>
 
@@ -168,11 +173,13 @@ index：
 
 ##示例代码
 
-    var obj = api.require('pullMenu');
-    obj.setSelected({
-       index:2,
-       selected:true
-    });
+```js
+var pullMenu = api.require('pullMenu');
+pullMenu.setSelected({
+    index: 2,
+    selected: true
+});
+```
 
 ##补充说明
 
@@ -192,8 +199,10 @@ hide()
 
 ##示例代码
 
-    var obj = api.require('pullMenu');
-    obj.hide();
+```js
+var pullMenu = api.require('pullMenu');
+pullMenu.hide();
+```
 
 ##补充说明
 
@@ -214,8 +223,10 @@ show()
 
 ##示例代码
 
-    var obj = api.require('pullMenu');
-    obj.show();
+```js
+var pullMenu = api.require('pullMenu');
+pullMenu.show();
+```
 
 ##补充说明
 
@@ -236,8 +247,10 @@ close()
 
 ##示例代码
 
-	var obj = api.require('pullMenu');
-	obj.close();
+```js
+var pullMenu = api.require('pullMenu');
+pullMenu.close();
+```
 
 ##补充说明
 

@@ -16,7 +16,7 @@ Description: UIGraph
 
 #**概述**
 
-UIGraph是一个贝塞尔曲线模块。开发者可自定义背景、线条、坐标系等UI样式和数据源，可监听用户点击结点事件。用于实现数据可视化的功能。
+UIGraph是一个贝塞尔曲线模块。开发者可自定义背景、线条、坐标系等UI样式和数据源，可监听用户点击结点事件。用于实现数据可视化的功能。**UIGraph 模块是 graph 模块的优化版。**
 
 ![图片说明](/img/docImage/UIGraph.jpg)
 
@@ -38,8 +38,8 @@ rect：
 
 ```js
 {
-    x: 0,       //（可选项）数字类型；模块左上角的 x 坐标（相对于所属的 Window 或 Frame）；默认：15
-    y: 0,       //（可选项）数字类型；模块左上角的 y 坐标（相对于所属的 Window 或 Frame）；默认：64
+    x: 0,       //（可选项）数字类型；模块左上角的 x 坐标（相对于所属的 Window 或 Frame）；默认：0
+    y: 0,       //（可选项）数字类型；模块左上角的 y 坐标（相对于所属的 Window 或 Frame）；默认：0
     w: 320,     //（可选项）数字类型；模块的宽度；默认：所属 Window 或 Frame 的宽度
     h: 220      //（可选项）数字类型；模块的高度；默认：w - 100
 }
@@ -56,7 +56,7 @@ yAxis：
     max: 80,            //数字类型；y轴最大值
     min: 0,             //数字类型；y轴最小值
     step: 20,           //数字类型；y轴刻度间隔
-    unit: '%'          //字符串类型；y轴数据单位
+    unit: '%'           //字符串类型；y轴数据单位
 }
 ```
 
@@ -69,10 +69,10 @@ data：
 ```js
 [{
     xAxis: '一月',                //字符串类型；关键结点的x轴数据
-    yAxis: [80, 81, 56, 55]      //数组类型；关键结点的y轴数据
+    yAxis: 80                     //数字类型；关键结点的y轴数据
 },{
     xAxis: '二月',                //字符串类型；关键结点的x轴数据
-    yAxis: [70, 81, 56, 55]      //数组类型；关键结点的y轴数据，
+    yAxis: 56                     //数字类型；关键结点的y轴数据
 }]
 ```
 
@@ -86,15 +86,14 @@ styles：
 {
     bg: '#fff',                   //（可选项）字符串类型；曲线图的背景，支持rgb，rgba，#，图片路径（本地路径，fs://，widget://）；默认：'#fff'
     axisColor: '#A9A9A9',         //（可选项）字符串类型；曲线图的坐标轴颜色，支持rgb，rgba，#；默认：'#A9A9A9'
-    nodeColor: '#000',            //（可选项）字符串类型；曲线图的结点颜色，支持rgb，rgba，#；默认：'#000'
-    nodeSize: 2,                  //（可选项）数字类型；曲线图的结点处小圆圈的半径；默认：2
+    nodeColor: '#000',            //（可选项）字符串类型；曲线图的结点边框的颜色，支持rgb，rgba，#；默认：'#000'
     lineColor: '#1E90FF',         //（可选项）字符串类型；曲线的颜色，支持rgb，rgba，#；默认：'#1E90FF'
-    lineWidth: 1,                 //（可选项）数字类型；曲线条的宽；默认：1
-    makeColor: '#000',            //（可选项）字符串类型；标注的字体颜色，支持rgb，rgba，#；默认：'#000'
-    makeSize:  16,                //（可选项）数字类型；标注的字体大小，；默认：16
+    lineWidth: 1,                 //（可选项）数字类型；曲线的宽度；默认：1
+    markColor: '#000',            //（可选项）字符串类型；坐标轴文字的字体颜色，支持rgb，rgba，#；默认：'#000'
+    markSize:  16,                //（可选项）数字类型；坐标轴文字的字体大小；默认：16
     bubble: {                     //（可选项）JSON对象；点击结点弹出气泡的样式
-        bgImg: 'widget://'        //（可选项）字符串类型；点击结点弹出气泡的背景图
-        size:  14,                //（可选项）数字类型；点击结点弹出气泡的字体大小，；默认：14
+        bgImg: 'widget://',       //（可选项）字符串类型；点击结点弹出气泡的背景图，android 暂不支持此参数
+        size: 14                  //（可选项）数字类型；点击结点弹出气泡的字体大小；默认：14
     }
 }
 ```
@@ -105,11 +104,11 @@ showNode：
 - 描述：（可选项）是否默认显示结点
 - 默认值：true
 
-
 fixedOn：
 
-- 类型：字符串
-- 描述：（可选项）模块所属 Frame 的名字，若不传则模块归属于当前 Window
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 fixed:
 
@@ -129,11 +128,11 @@ ret：
     id: 1,                          //数字类型；模块的 id，用于区分模块的多个实例
 	eventType: 'reachLeftmost',     //字符串类型；交互事件类型
                                     //取值范围：
+                                    //show（打开模块成功）
                                     //reachLeftmost（拖动曲线图至左边缘）
                                     //reachRightmost（拖动曲线图至右边缘）
                                     //zoomIn（放大曲线图）
                                     //zoomOut（缩小曲线图）
-                                    //narrow（缩小曲线图小于模块宽）
     index: 6                        //数字类型；缩放曲线图时，返回缩放中心结点的数据在 data 数组中的索引
 }
 ```
@@ -141,26 +140,26 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('UIGraph');
-obj.open({
+var UIGraph = api.require('UIGraph');
+UIGraph.open({
     rect: {
-        x: 0,
-        y: 0,
-        w: 320,
-        h: 200
+		x: 30,
+		y: api.frameHeight / 2 - 170,
+		w: api.frameWidth - 60,
+		h: 340
     },
     yAxis: {
         max: 80,
         min: 0,
         step: 20,
-        unit: '℃'
+        unit: '%'
     },
     data: [{
         xAxis: '一月',
         yAxis: 15
     },{
         xAxis: '二月',
-        yAxis: [65, 59, 80, 81]
+        yAxis: 65
     },{
         xAxis: '三月',
         yAxis: 55
@@ -173,16 +172,22 @@ obj.open({
         axisColor: '#A9A9A9',
         nodeColor: '#000',
         lineColor: '#1E90FF',
+        lineWidth: 1,
+        markColor: '#000',
+        markSize:  16,
         bubble: {
-            bgImg: ''
+            bgImg: '',
+            size:  14
         }
     },
     showNode: true,
-    fixedOn: '',
+    fixedOn: api.frameName,
     fixed: true
-}, function(ret, err){
-    if(ret){
-        alert(JSON.stringify(ret));
+}, function( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -211,8 +216,10 @@ id：
 ##示例代码
 
 ```js
-var obj = api.require('UIGraph');
-obj.close({id: 1});
+var UIGraph = api.require('UIGraph');
+UIGraph.close({
+    id: 1
+});
 ```
 
 ##可用性
@@ -239,8 +246,10 @@ id：
 ##示例代码
 
 ```js
-var obj = api.require('UIGraph');
-obj.show({id: 1});
+var UIGraph = api.require('UIGraph');
+UIGraph.show({
+    id: 1
+});
 ```
 
 ##可用性
@@ -267,8 +276,10 @@ id：
 ##示例代码
 
 ```js
-var obj = api.require('UIGraph');
-obj.hide({id: 1});
+var UIGraph = api.require('UIGraph');
+UIGraph.hide({
+    id: 1
+});
 ```
 
 ##可用性
@@ -311,18 +322,18 @@ data：
 ```js
 [{
     xAxis: '一月',                //字符串类型；关键结点的x轴数据
-    yAxis: [80, 81, 56, 55]      //数组类型；关键结点的y轴数据
+    yAxis: 80                     //数字类型；关键结点的y轴数据
 },{
     xAxis: '二月',                //字符串类型；关键结点的x轴数据
-    yAxis: [70, 81, 56, 55]      //数组类型；关键结点的y轴数据，
+    yAxis: 56                     //数字类型；关键结点的y轴数据，
 }]
 ```
 
 ##示例代码
 
 ```js
-var obj = api.require('UIGraph');
-obj.reloadData({
+var UIGraph = api.require('UIGraph');
+UIGraph.reloadData({
     id: 1,
     type: 'prepend',
 	data: [{

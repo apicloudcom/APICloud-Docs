@@ -25,6 +25,7 @@ Description: multiSelector
 #**概述**
 
 multiSelector封装了一个支持多选的选择器，开发者可自定义该选择器的样式及其数据源
+本模块已停止更新，建议使用[UIMultiSelector](http://docs.apicloud.com/端API/界面布局/UIMultiSelector)
 
 ![图片说明](/img/docImage/multiSelector.jpg)
 
@@ -84,12 +85,6 @@ selectedColor：
 - 默认值：#79CDCD
 - 描述：（可选项）选中字体颜色，支持rgb，rgba，#
 
-<del>animation：</del>
-
-- <del>类型：布尔值</del>
-- <del>默认值：true</del>
-- <del>描述：（可选项）打开关闭时是否添加动画</del>
-
 anim：
 
 - 类型：布尔值
@@ -104,9 +99,9 @@ content：
 
 fixedOn：
 
-- 类型：字符串
-- 默认值：当前主窗口的名字
-- 描述：（可选项）将此模块视图添加到指定窗口的名字
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 selectedItems：
 
@@ -147,21 +142,21 @@ ret：
 ##示例代码
 
 ```js
-var arrayTitle = new Array();
-arrayTitle[0]='第一条';
-arrayTitle[1]='第二条';
-arrayTitle[2]='第三条';
-var obj = api.require('multiSelector');
-obj.open({
-         content:arrayTitle
-     },function(ret,err){
-         var selectObj=":";
-         for (var index in ret.selectAry)
-         {
-             selectObj = selectObj + ret.selectAry[index];
-         }
-         api.alert({msg:'选择器选取的数据是'+ selectObj});
- });
+var multiSelector = api.require('multiSelector');
+multiSelector.open({
+    content:[
+        '第一条',
+        '第二条',
+        '第三条'
+    ],
+    fixedOn: api.frameName
+},function( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
+});
 ```
 
 ##补充说明
@@ -193,7 +188,10 @@ indexs：
 ##示例代码
 
 ```js
- var obj = api.require('multiSelector'); obj.setSelect({      index:[-1] });
+var multiSelector = api.require('multiSelector');
+multiSelector.setSelect({
+    index: [-1]
+});
 ```
 
 ##补充说明
@@ -215,8 +213,10 @@ close()
 
 ##示例代码
 
-	var obj = api.require('multiSelector');
-	obj.close();
+```js
+var multiSelector = api.require('multiSelector');
+multiSelector.close();
+```
 
 ##补充说明
 
@@ -238,8 +238,10 @@ show()
 
 ##示例代码
 
-	var obj = api.require('multiSelector');
-	obj.show();
+```js
+var multiSelector = api.require('multiSelector');
+multiSelector.show();
+```
 
 ##补充说明
 
@@ -252,27 +254,6 @@ IOS系统 android系统
 可提供的1.0.1及更高版本
 
 
-#**<del>hidden</del>**<div id="4"></div>
-
-<del>隐藏选择器</del>
-
-<del>hidden()</del>
-
-##<del>示例代码</del>
-
-	var obj = api.require('multiSelector');
-	obj.hidden();
-
-##<del>补充说明</del>
-
-<del>无</del>
-
-##<del>可用性</del>
-
-<del>IOS系统 android系统</del>
-
-<del>可提供的1.0.1及更高版本</del>
-
 #**hide**<div id="5"></div>
 
 隐藏选择器
@@ -281,8 +262,10 @@ hide()
 
 ##示例代码
 
-	var obj = api.require('multiSelector');
-	obj.hide();
+```js
+var multiSelector = api.require('multiSelector');
+multiSelector.hide();
+```
 
 ##补充说明
 

@@ -22,7 +22,7 @@ Description: navigationMenu
 
 #**概述**
 
-navigationMenu是一个导航栏菜单，可以实现在导航栏上弹出一个菜单，然后子菜单左右铺展开来的动画效果，开发者可自定义其中的样式和按钮个数，超出屏幕部分可左右拖动查看
+navigationMenu是一个导航栏菜单，可以实现在导航栏上弹出一个菜单，然后子菜单左右铺展开来的动画效果，开发者可自定义其中的样式和按钮个数，超出屏幕部分可左右拖动查看。本模块已停止更新，建议使用优化升级版模块[MNNavigationMenu](http://docs.apicloud.com/端API/导航菜单/MNNavigationMenu)
 
 ![图片说明](/img/docImage/navigationMenu.jpg)
 
@@ -65,9 +65,9 @@ btnInfo：
 
 fixedOn：
 
-- 类型：字符串
-- 默认值：当前主窗口的名字
-- 描述：将此模块视图添加到指定窗口的名字，可为空
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 ##callback(ret, err)
 
@@ -86,20 +86,25 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('navigationMenu');
-var arrayPath = new Array();
-for(var i=0;i<17;i++){
-	arrayPath[i] = {
-		normal: 'widget://res/navigationMenu_normal.png',
-		highlight: 'widget://res/ navigationMenu_highlight.png',
-		selected: 'widget://res/navigationMenu_selected.png',
-		title: '收藏'
-	};
-}
-obj.open({
-	btnInfo: arrayPath
-},function(ret,err){
-     api.alert({msg:ret.index});
+var navigationMenu = api.require('navigationMenu');
+navigationMenu.open({
+	btnInfo: [{
+		normal: 'widget://res/img/ic/small-bell.png',
+		highlight: 'widget://res/img/ic/small-bell.png',
+		selected: 'widget://res/img/ic/small-bell.png',
+		title: '按钮一'
+	},{
+		normal: 'widget://res/img/ic/small-bell.png',
+		highlight: 'widget://res/img/ic/small-bell.png',
+		selected: 'widget://res/img/ic/small-bell.png',
+		title: '按钮一'
+	}]
+},function( ret, err ){		
+	if( ret ){
+		alert( JSON.stringify( ret ) );
+	}else{
+		alert( JSON.stringify( err ) );
+	}
 });
 ```
 
@@ -122,8 +127,10 @@ iOS系统，Android系统
 
 ##<del>示例代码</del>
 
-    var obj = api.require('navigationMenu');
-    obj.hidden();
+```js
+var navigationMenu = api.require('navigationMenu');
+navigationMenu.hidden();
+```
 
 ##<del>补充说明</del>
 
@@ -143,8 +150,10 @@ hide()
 
 ##示例代码
 
-    var obj = api.require('navigationMenu');
-    obj.hide();
+```js
+var navigationMenu = api.require('navigationMenu');
+navigationMenu.hide();
+```
 
 ##补充说明
 
@@ -163,8 +172,10 @@ show()
 
 ##示例代码
 
-    var obj = api.require('navigationMenu');
-    obj.show();
+```js
+var navigationMenu = api.require('navigationMenu');
+navigationMenu.show();
+```
 
 ##补充说明
 
@@ -185,8 +196,10 @@ close()
 
 ##示例代码
 
-    var obj = api.require('navigationMenu');
-    obj.close();
+```js
+var navigationMenu = api.require('navigationMenu');
+navigationMenu.close();
+```
 
 ##补充说明
 

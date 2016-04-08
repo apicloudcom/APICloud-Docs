@@ -24,7 +24,7 @@ Description: tabBar
 
 #**概述**
 
-tabBar是一个底部导航条模块，开发者可自定义其样式，当子按钮个数超出屏幕时，用户可左右拖动查看
+tabBar是一个底部导航条模块，开发者可自定义每个按钮样式及其显示的徽章（badge），当子按钮个数超出屏幕时，用户可左右拖动查看
 
 ![图片说明](/img/docImage/tabBar.jpg)
 
@@ -39,100 +39,109 @@ open({params}, callback(ret, err))
 bgImg：
 
 - 类型：字符串
-- 默认值：无
-- 描述：tabBar的背景图片路径，不能为空
+- 描述：tabBar的背景图片路径，要求本地路径（fs://、widget://）
 
 selectImg：
 
 - 类型：字符串
-- 默认值：无
-- 描述：选中按钮后的按钮背景效果图片路径，可为空
+- 描述：选中按钮后的按钮背景效果图片路径
 
 perScreenBtn：
 
 - 类型：数字
 - 默认值：5
-- 描述：每屏显示按钮的个数，可为空
+- 描述：（可选项）每屏显示按钮的个数
 
 items：
 
 - 类型：数组
-- 默认值：无
-- 描述：多个按钮的信息组成的数组，不能为空
-
-内部字段：
+- 描述：多个按钮的信息组成的数组
+- 内部字段：
 
 ```js
 [{
-	 img:                //按钮图片路径，字符串，不可为空
-    highlight：          //按钮按下时的背景图片，字符串，可为空
-    selected:            //按钮选中后的图片，字符串，可为空
-    title:               //按钮的标题，字符串，不可为空
-    color：              //标题的颜色，字符串，可为空，默认白色
-    selectedTitleColor:  //选中后的按钮标题颜色，默认白色，支持rgb,rgba,#,可为空
-    badge：			     //按钮左上角的badge，字符串类型，可为空，为空时不显示badge
+	img:                 //字符串类型；按钮图片路径，要求本地路径（fs://、widget://）
+    highlight:           //字符串类型；按钮按下时的背景图片，要求本地路径（fs://、widget://）
+    selected:            //字符串类型；按钮选中后的图片，要求本地路径（fs://、widget://）
+    title:               //字符串类型；按钮的标题
+    color:               //（可选项）字符串类型；标题的颜色，支持rgba、rgb、#；默认：#fff
+    selectedTitleColor:  //（可选项）字符串类型；选中后的按钮标题颜色，支持rgb、rgba、#；默认：#fff
+    badge:               //（可选项）字符串类型；按钮左上角的badge，不传时不显示badge
 }]
 ```
-
-fixedOn：
-
-- 类型：字符串
-- 默认值：当前主窗口的名字
-- 描述：将此模块视图添加到指定窗口的名字，可为空
 
 selecteIndex：
 
 - 类型：数字
-- 默认值：无
-- 描述：默认选中按钮的下标，可为空，若为空则都不选中
+- 描述：（可选项）默认选中按钮的下标，不传则都不选中
 
 h：
 
 - 类型：数字
+- 描述：（可选项）模块视图的高
 - 默认值：50
-- 描述：模块视图的高，可为空
+
+fixedOn：
+
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
+
+
+badgeAlignment：
+
+- 类型：字符串
+- 描述：（可选项）徽章位置
+- 默认值：left
+- 取值范围：
+   - left：中间偏左（相对于所在 item）显示
+   - right：中间偏右（相对于所在 item）显示 
 
 ##callback(ret, err)
 
 ret：
 
 - 类型：JSON对象
-
-内部字段：
+- 内部字段：
 
 ```js
 {
-    index:		//点击某个按钮返回其下标
+    index:		    //数字类型；点击某个按钮返回其索引值
 }
 ```
 
 ##示例代码
 
 ```js
-var obj = api.require('tabBar');
-obj.open({
-	bgImg:'widget://res/tabBar_bg.png',
-	selectImg:'widget://res/selecte_tabBar.png',
-	items:[{title:'item1',img:'widget://res/tabBar_item1.png',badge:'1'},
-          {title:'item2',img:'widget://res/tabBar_item1.png'},
-          {title:'item3',img:'widget://res/tabBar_item1.png',badge:'2'},
-          {title:'item4',img:'widget://res/tabBar_item1.png'},
-          {title:'item5',img:'widget://res/tabBar_item1.png',badge:'2'},
-          {title:'item6',img:'widget://res/tabBar_item1.png',badge:'200000'},
-          {title:'item7',img:'widget://res/tabBar_item1.png',badge:'2'},
-          {title:'item8',img:'widget://res/tabBar_item1.png',badge:'2'},
-          {title:'item9',img:'widget://res/tabBar_item1.png',badge:'2'},
-          {title:'item10',img:'widget://res/tabBar_item1.png',badge:'2'},
-          {title:'item11',img:'widget://res/tabBar_item1.png',badge:'2'}]
-},function(ret,err){
-	api.alert({msg:ret.index});
+var tabBar = api.require('tabBar');
+tabBar.open({
+    bgImg: 'widget://res/img/bg.png',
+	items: [{
+        title: '标题一',
+        img: 'widget://res/img/ic/item.png',
+        badge: '1'
+    },{
+        title: '标题二',
+        img: 'widget://res/img/ic/item.png',
+        badge: '2'
+    },{
+        title: '标题三',
+        img: 'widget://res/img/ic/item.png',
+        badge: '1'
+    },{
+        title: '标题四',
+        img: 'widget://res/img/ic/item.png',
+        badge: '2'
+    }],
+    fixedOn: api.frameName
+},function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
-
-##补充说明
-
-打开tabBar
-
 ##可用性
 
 iOS系统，Android系统
@@ -151,56 +160,28 @@ setBadge(params)
 index:
 
 - 类型：数字
-- 默认值：无
-- 说明：要设置的按钮的下标，不可为空
+- 说明：要设置的按钮的下标
 
 badge：
 
 - 类型：字符串
-- 默认值：无
-- 说明：要设置的标注，可为空
+- 说明：（可选项）要设置的标注，不传则设置为不显示徽章
 
 ##示例代码
 
 ```js
-var obj = api.require('tabBar');
-obj.setBadge({
-	index:3,
-    badge:'说明'
+var tabBar = api.require('tabBar');
+tabBar.setBadge({
+	index: 3,
+    badge: '说明'
 });
 ```
-
-##补充说明
-
-无
 
 ##可用性
 
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
-
-#**<del>hidden</del>**<div id="3"></div>
-
-<del>隐藏tabBar</del>
-
-<del>hidden();</del>
-
-##<del>示例代码</del>
-
-    var obj = api.require('tabBar');
-    obj.hidden();
-
-##<del>补充说明</del>
-
-<del>将打开的tabBar以移动动画的形式移出到屏幕下方</del>
-
-##<del>可用性</del>
-
-<del>iOS系统，Android系统</del>
-
-<del>可提供的1.0.1及更高版本</del>
-
 
 #**hide**<div id="3"></div>
 
@@ -210,12 +191,14 @@ hide();
 
 ##示例代码
 
-    var obj = api.require('tabBar');
-    obj.hide();
+```js
+var tabBar = api.require('tabBar');
+tabBar.hide();
+```
 
 ##补充说明
 
-将打开的tabBar以移动动画的形式移出到屏幕下方</del>
+将已打开的tabBar以移动动画的形式移出到屏幕下方
 
 ##可用性
 
@@ -232,12 +215,14 @@ show();
 
 ##示例代码
 
-    var obj = api.require('tabBar');
-    obj.show();
+```js
+var tabBar = api.require('tabBar');
+tabBar.show();
+```
 
 ##补充说明
 
-无
+将已打开的tabBar以移动动画的形式弹出
 
 ##可用性
 
@@ -254,12 +239,10 @@ close()
 
 ##示例代码
 
-    var obj = api.require('tabBar');
-    obj.close();
-
-##补充说明
-
-将打开的tabBar从内存清除
+```js
+var tabBar = api.require('tabBar');
+tabBar.close();
+```
 
 ##可用性
 
@@ -277,17 +260,17 @@ setSelect({params})
  
 index：
 - 类型：数字
+- 描述：（可选项）要设置的按钮的下标
 - 默认值：0
-- 描述：要设置的按钮的下标，可为空
 
 ##示例代码
 
-    var obj = api.require('tabBar');
-    obj.setSelect({index:1});
-
-##补充说明
-
-无
+```js
+var tabBar = api.require('tabBar');
+tabBar.setSelect({
+    index: 1
+});
+```
 
 ##可用性
 

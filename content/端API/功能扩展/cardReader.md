@@ -10,7 +10,7 @@ Description: cardReader
 
 #**概述**
 
-cardReader封装了PayPal的cardio识别库，用户只需用摄像头扫描信用可即可实现卡号的输入
+cardReader封装了PayPal的cardio识别库，用户只需用摄像头扫描信用卡即可实现卡号的输入
 
 注意：本模块在ios上仅支持ios6（含）以上版本
 
@@ -51,13 +51,13 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('cardReader');
-obj.open(function(ret,err){
-	if(ret.status){
-		api.alert({msg:ret.cardNum+ret.expiryMonth+ret.expiryYear+ret.cvv});
-	} else{
-		api.alert({msg:err.msg});
-	}
+var cardReader = api.require('cardReader');
+cardReader.open(function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 

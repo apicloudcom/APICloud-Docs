@@ -31,7 +31,8 @@ patternLock 提供很方便的手势解锁功能呢。只需简单的几个步�
 				"frame": "{{0,100},{320,300}}",//手势锁视图大小
 				"mode": "2",//手势锁的类型
 				"rightCode": "0123"//已有的密码
-			};
+			};
+
 		详细解释：
 
 			viewName
@@ -93,67 +94,25 @@ patternLock 提供很方便的手势解锁功能呢。只需简单的几个步�
 
 ##示例代码
 
-	<script type="text/javascript">
-		function callBack(ret, err){
-			if(err) {
-				alert("error :" + err.desc);
-			} else {
-				switch(ret.status)
-			{
-				case 0:
-				{
-					alert("Unlock Right");
-				}
-				break;
-				case 1:
-				{
-					alert("Unlock Wrong");
-				}
-				break;
-				case 2:
-				{	
-					alert("Repeat It");
-				}
-				break;
-				case 3:
-				{
-					alert("Repeat It Worng");
-				}
-				break;
-				case 4:
-				{
-					alert("Repeat It Right" + ret.code);
-				}
-				break;
-				case 5:
-				{
-					alert("Verify For Chg Worng");
-				}
-				break;
-				case 6:
-				{
-					alert("Verify For Chg Right");
-				}
-				break;
-				default:
-			}
-		}
+```js
+var patternLock = api.require('patternLock');
+patternLock.addPatternLock({
+	viewName: 'main',
+	rightColor: '#00FF00',
+	drawColor: '#222222',
+	wrongColor: '#FF0000',
+	normalColor: '#000000',
+	frame: '{{0,100},{320,300}}',
+	mode: '2',
+	rightCode: '0123'
+}, function( ret, err ){		
+	if( ret ){
+		alert( JSON.stringify( ret ) );
+	}else{
+		alert( JSON.stringify( err ) );
 	}
-	apiready = function(){
-		var demo = api.require('patternLock');
-		var param = {
-			"viewName":"main",
-			"rightColor":"#00FF00",
-			"drawColor":"#222222",
-			"wrongColor":"#FF0000",
-			"normalColor":"#000000",
-			"frame": "{{0,100},{320,300}}",
-			"mode": "2",
-			"rightCode": "0123"//已有的密码，用于验证密码输入是否正确，密码为0-9数字且不能有重复
-		};
-		demo.addPatternLock(param, callBack);
-	};
-	</script>
+});
+```
 
 ##详细功能
 - 验证密码

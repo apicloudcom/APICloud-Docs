@@ -16,7 +16,7 @@ Description: calendar
 
 #**概述**
 
-calendar是一个简单的日历模块，原生实现了公历历法列表，开发者可添加特殊日期标注，只需简单配置参数即可实现一个复杂的日历效果界面。**UICalendar 模块是 calendar 模块的优化版，建议使用  UICalendar 模块，此模块已停止更新。**
+calendar是一个简单的日历模块，原生实现了公历历法列表，开发者可添加特殊日期标注，只需简单配置参数即可实现一个复杂的日历效果界面。**UICalendar 模块是 calendar 模块的优化版，建议使用  [UICalendar](http://docs.apicloud.com/端API/界面布局/UICalendar) 模块，此模块已停止更新。**
 
 ![图片说明](/img/docImage/calendar.jpg)
 
@@ -39,18 +39,6 @@ y:
 - 默认值：100
 - 描述：日历视图左上角点的y坐标，可为空
 
-<del>width:</del>
-
-- <del>类型：数字</del>
-- <del>默认值：无</del>
-- <del>描述：日历视图宽，不能为空</del>
-
-<del>height:</del>
-
-- <del>类型：数字</del>
-- <del>默认值：无</del>
-- <del>描述：日历视图高，不能为空</del>
-
 w:
 
 - 类型：数字
@@ -71,9 +59,9 @@ specialDate:
 
 fixedOn：
 
-- 类型：字符串
-- 默认值：当前主窗口的名字
-- 描述：将此模块视图添加到指定窗口的名字，可为空
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 ##callback(ret, err)
 

@@ -1,25 +1,25 @@
 /*
-Title: IDE
-Description: IDE
+Title: APICloud Studio
+Description: APICloud Studio
 Sort: 4
 */
 
-**1.APICloud IDE有哪些功能，开发过程中可以进行js调试、查看运行log输出、真机同步以及本地打包吗？**<div id="5"></div>
+**1.APICloud Studio有哪些功能，开发过程中可以进行js调试、查看运行log输出、真机同步以及本地打包吗？**<div id="5"></div>
 
-APICloud IDE中包含：打开向导页面、创建移动应用、同步本地应用到云端资源库、从云端资源库下载应用到本地、使用云端svn同步功能、真机同步测试、运行PC模拟器、本地打包、云端编译、输出手机调试日志、在线文档、APICloud代码提示以及自动补全等功能
+APICloud Studio中包含：打开向导页面、创建移动应用、同步本地应用到云端资源库、从云端资源库下载应用到本地、使用云端svn同步功能、真机同步测试、运行PC模拟器、本地打包、云端编译、输出手机调试日志、在线文档、APICloud代码提示以及自动补全等功能
 
 查看运行log：
 
 - 首先通过一键真机同步测试功能将要调试的应用同步到android手机中的
-- 开启APICloud IDE的日志输出功能按钮 
+- 开启APICloud Studio的日志输出功能按钮 
 
 ![图片说明](/img/docImage/167.png)
 
-- APICloud IDE控制台会提示出开启监听…
+- APICloud Studio控制台会提示出开启监听…
 
 ![图片说明](/img/docImage/168.png)
  
-如果开发人员自己输入了日志，或者js报错就会出现在APICloud IDE控制台中。（如何定义输出日志请参考文档）
+如果开发人员自己输入了日志，或者js报错就会出现在APICloud Studio控制台中。（如何定义输出日志请参考文档）
 
 
 真机同步
@@ -27,7 +27,7 @@ APICloud IDE中包含：打开向导页面、创建移动应用、同步本地�
 真机同步测试有2个入口：
 
 - 首先在我的APP项目视图中选择一个需要真机测试的应用，然后在应用上右键选择一件真机同步测试。
-- 在APICloud IDE 中找到按钮 ，点击后在弹出的窗口中选择需要真机测试的应用。运行即可。
+- 在APICloud Studio 中找到按钮 ，点击后在弹出的窗口中选择需要真机测试的应用。运行即可。
 
 ![图片说明](/img/docImage/169.png)
 
@@ -45,13 +45,13 @@ APICloud IDE中包含：打开向导页面、创建移动应用、同步本地�
 
 ![图片说明](/img/docImage/171.png)
  
-或者在APICloud IDE 中找到按钮 ，点击后在弹出的窗口中选择需要打包的应用。点击运行。
+或者在APICloud Studio 中找到按钮 ，点击后在弹出的窗口中选择需要打包的应用。点击运行。
 
 - 在弹出的窗口中选择需要生成测试包的类型(ios/android)，然后点击完成即可生成对应的快速安装包。
 
 ![图片说明](/img/docImage/172.png)
  
-生成测试安装包后，APICl IDE会自动帮您打开生成安装包对应的路径的文件夹。
+生成测试安装包后，APICloud Studio会自动帮您打开生成安装包对应的路径的文件夹。
 
 **2.我已经下载了安卓手机助手或者ITunes,但还是提示需要下载手机助手**
 
@@ -71,9 +71,9 @@ APICloud IDE中包含：打开向导页面、创建移动应用、同步本地�
 
 遇到上述情况建议手动安装我们提供的apploader.ipa然后重新尝试.
 
-Apploader.ipa存放路径为”APICloud_IDE\dropins\com.uzmap.ide.tools.ios_1.0.7\base”
+Apploader.ipa存放路径为“apicloud-studio\dropins\com.uzmap.ide.tools.ios_1.0.7\base”
 
-A apploader.apk存放路径为” APICloud_IDE\dropins\com.uzmap.ide.tools.android_1.0.7\base”
+A apploader.apk存放路径为“apicloud-studio\dropins\com.uzmap.ide.tools.android_1.0.7\base”
 
 (注：路径中版本号会随当前apploader的版本变化)
 
@@ -90,9 +90,9 @@ IOS版Apploader为企业级应用，无需越狱即可通过第三方工具安�
 
 答：linux，mac暂时不支持，以后版本会支持。
 
-**8.APICloud IDE IDE，在mac下能用吗？**
+**8.APICloud Studio，在mac下能用吗？**
 
-答：暂时没有MAC版本的IDE，现在只能通过虚拟机的方式在MAC使用IDE。
+答：暂时没有MAC版本的APICloud Studio，现在只能通过虚拟机的方式在MAC使用APICloud Studio。
 
 **9.ide生成的快速测试包怎么在ios上不能安装？**
       

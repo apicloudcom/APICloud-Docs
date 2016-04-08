@@ -24,7 +24,7 @@ Description: barChart
 
 #**概述**
 
-barChart是一个柱状图模块，非常形象的显示出数据走势。开发者只需简单的配置相应的参数，即可实现一个立体的柱状图。极大的简化了前端实现柱状图开发的代码。开发者可自定义x，y轴以及柱子的个数和颜色
+barChart是一个柱状图模块，非常形象的显示出数据走势。开发者只需简单的配置相应的参数，即可实现一个立体的柱状图。极大的简化了前端实现柱状图开发的代码。开发者可自定义x，y轴以及柱子的个数和颜色。本模块已停止更新，建议使用优化升级版模块[UIBarChart](http://docs.apicloud.com/端API/界面布局/UIBarChart)
 
 ![图片说明](/img/docImage/barChart.jpg)
 
@@ -47,18 +47,6 @@ y ：
 - 类型：数字
 - 默认值：100
 - 描述：（可选项）视图左上角点坐标
-
-<del>width ：</del>
-
--<del> 类型：数字</del>
-- <del>默认值：无</del>
-- <del>描述：视图的宽，可为空</del>
-
-<del>height ：</del>
-
-- <del>类型：数字</del>
-- <del>默认值：无</del>
-- <del>描述：视图的高，可为空</del>
 
 w ：
 
@@ -98,9 +86,9 @@ datas：
 
 fixedOn：
 
-- 类型：字符串
-- 默认值：当前主窗口的名字
-- 描述：（可选项）将此模块视图添加到指定窗口的名字
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 fixed:
 - 类型：布尔
@@ -115,7 +103,16 @@ style:
 
 ```js
 {
-      yAxisBg:       //（可选项）y轴背景色，支持rgb，rgba，#，img，默认绿色      yAxisMark:     //（可选项）y轴标注色，支持rgb，rgba，#，默认白色      yAxisMarkSize: //（可选项）y轴标注字体大小，数字类型，默认12      xAxisBg:       //（可选项）x轴背景设置，支持rgb，rgba，#，img，默认蓝色      xAxisMark:     //（可选项）x轴标注色，支持rgb，rgba，#，默认白色      xAxisMarkSize: //（可选项）x轴标注字体大小，数字类型，默认12      xAxisInterval: //（可选项）x轴上边背景设置，支持rgb，rgba，#，img，默认黄      bg:            //（可选项）模块视图背景设置，支持rgb，rgba，#，img，默认背景图      barBg：        //（可选项）柱子背景设置，支持rgb，rgba，#，img，默认灰色      bar:           //（可选项）柱子显示设置，支持rgb，rgba，#，img，默认蓝色
+      yAxisBg:       //（可选项）y轴背景色，支持rgb，rgba，#，img，默认绿色
+      yAxisMark:     //（可选项）y轴标注色，支持rgb，rgba，#，默认白色
+      yAxisMarkSize: //（可选项）y轴标注字体大小，数字类型，默认12
+      xAxisBg:       //（可选项）x轴背景设置，支持rgb，rgba，#，img，默认蓝色
+      xAxisMark:     //（可选项）x轴标注色，支持rgb，rgba，#，默认白色
+      xAxisMarkSize: //（可选项）x轴标注字体大小，数字类型，默认12
+      xAxisInterval: //（可选项）x轴上边背景设置，支持rgb，rgba，#，img，默认黄
+      bg:            //（可选项）模块视图背景设置，支持rgb，rgba，#，img，默认背景图
+      barBg：        //（可选项）柱子背景设置，支持rgb，rgba，#，img，默认灰色
+      bar:           //（可选项）柱子显示设置，支持rgb，rgba，#，img，默认蓝色
       barWidth:      //（可选项）柱子的宽度，数字类型，默认27
       interval:      //（可选项）柱子之间的间距，数字类型，默认18
 }
@@ -128,31 +125,31 @@ ret：
 - 类型：json对象
 - 内部字段：
   
-  ```js
-  {
-       id:  //打开视图的id
-       index: //点击柱状图柱子的下标 
-  }
- ```
+```js
+{
+     id:  //打开视图的id
+     index: //点击柱状图柱子的下标 
+}
+```
  
 ##示例代码
 
-	```js
-	var obj = api.require('barChart');
-	obj.open({
-		x:0,
-		y:64,
-		width:320,
-		height:300,
-		yAxisMax:50,
-		yAxisStep:10,
-		xAxisMarks:[1,2,3,4,5,6,7,8,9],
-		datas:[10,30,40,5,3,49,55,23],
-		id:1
-	},function(ret,err){
-		api.alert({msg:ret.index+ret.id});
-	});
-	```
+```js
+var obj = api.require('barChart');
+obj.open({
+	x:0,
+	y:64,
+	width:320,
+	height:300,
+	yAxisMax:50,
+	yAxisStep:10,
+	xAxisMarks:[1,2,3,4,5,6,7,8,9],
+	datas:[10,30,40,5,3,49,55,23],
+	id:1
+},function(ret,err){
+	api.alert({msg:ret.index+ret.id});
+});
+```
 	
 ##补充说明
 
@@ -192,7 +189,13 @@ datas：
 
 ##示例代码
 ```js
-var obj = api.require('barChart');obj.reloadData({   xAxisMarks:[1,2,3,4,5,6,7,8,9],   datas:[15,30,40,5,3,49,55,23]},function(ret,err){   api.alert({msg:ret.index+ret.id});});
+var obj = api.require('barChart');
+obj.reloadData({
+   xAxisMarks:[1,2,3,4,5,6,7,8,9],
+   datas:[15,30,40,5,3,49,55,23]
+},function(ret,err){
+   api.alert({msg:ret.index+ret.id});
+});
 ```
 ##补充说明
 
@@ -250,7 +253,8 @@ anim ：
 
 ##示例代码
 ```js
-var obj = api.require('barChart');obj.setFrame({x:10,w:300});
+var obj = api.require('barChart');
+obj.setFrame({x:10,w:300});
 ```
 ##补充说明
 

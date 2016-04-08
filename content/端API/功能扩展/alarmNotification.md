@@ -106,28 +106,22 @@ err：
 ##示例代码
 
 ```js
-var tickerText = "默认提示语";
-var title = "默认标题";
-var content = "默认内容";
-var interval = 10000;
-var isClearOldNotifiy = true;
-var isViberate = true;
-var isLed = true;
-var param = {
-	tickerText : tickerText,
-	title : title,
-	content : content,
-	interval : interval,
-	isClearOldNotifiy : isClearOldNotifiy,
-	isViberate : isViberate,
-	isLed : isLed
-};
-var resultCallback = function(ret, err){
-	alert(JSON.stringify(ret));
-};
-
 var alarmNotification = api.require('alarmNotification');
-alarmNotification.setAlarm(param, resultCallback);
+alarmNotification.setAlarm({
+	tickerText: '默认提示语',
+	title: '默认标题',
+	content: '默认内容',
+	interval: 10000,
+	isClearOldNotifiy: true,
+	isViberate: true,
+	isLed: true
+}, function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
 ```
 
 ##补充说明
@@ -175,23 +169,23 @@ err：
 
 ```js
 {
-    msg:""      //错误描述
+    msg: ''     //错误描述
 }
 ```
 
 ##示例代码
 
 ```js
-var param = {
-	id : 1
-};
-
-var resultCallback = function(ret, err){
-	alert(JSON.stringify(ret));
-};
-
 var alarmNotification = api.require('alarmNotification');
-alarmNotification.cancelAlarm(param, resultCallback);
+alarmNotification.cancelAlarm({
+	id: 1
+},function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
 ```
 
 ##补充说明
@@ -237,12 +231,14 @@ err：
 ##示例代码
 
 ```js
-var resultCallback = function(ret, err){
-	alert(JSON.stringify(ret));
-};
-
 var alarmNotification = api.require('alarmNotification');
-alarmNotification.cancelAlarm(resultCallback);
+alarmNotification.cancelAlarm(function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
 ```
 
 ##补充说明

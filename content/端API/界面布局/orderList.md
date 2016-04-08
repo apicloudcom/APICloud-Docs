@@ -132,9 +132,9 @@ datas：
 
 fixedOn：
 
-- 类型：字符串
-- 默认值：当前主窗口的名字
-- 描述：将此模块视图添加到指定窗口的名字，可为空
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 ##callback(ret, err)
 
@@ -447,25 +447,25 @@ rightBtn：
 ##示例代码
 
 ```js
-            var obj = api.require('orderList');
-            obj.setRightButtons({
-               index:0,
-               rightBtn: [{
-                 bg:  "#556B2F",  //按钮背景色，支持rgb，rgba，#，默认#ee8262.
-                 title: "取消", //按钮名字，字符串类型，默认‘按钮’
-                 titleSize: 13,      //按钮标题大小，默认12
-                 titleColor: "#000000", // 按钮标题颜色，支持rgb，rgba，#，默认#ffffff
-                 selectedColor: "#FFFFFF",  //按钮选中时候的颜色值,支持rgb，rgba，#
-                 icon:"widget://image/orderList/ok.png"
-               }, {
-                 bg:  "#4EEE94",  //按钮背景色，支持rgb，rgba，#，默认#ee8262.
-                 title: "确定", //按钮名字，字符串类型，默认‘按钮’
-                 titleSize: 13,      //按钮标题大小，默认12
-                 titleColor: "#000000", // 按钮标题颜色，支持rgb，rgba，#，默认#ffffff
-                 selectedColor: "ffffff",  //按钮选中时候的颜色值,支持rgb，rgba，#
-                 icon:"widget://image/orderList/ok.png"
-               }]
-            });
+var obj = api.require('orderList');
+obj.setRightButtons({
+   index:0,
+   rightBtn: [{
+     bg:  "#556B2F",  //按钮背景色，支持rgb，rgba，#，默认#ee8262.
+     title: "取消", //按钮名字，字符串类型，默认‘按钮’
+     titleSize: 13,      //按钮标题大小，默认12
+     titleColor: "#000000", // 按钮标题颜色，支持rgb，rgba，#，默认#ffffff
+     selectedColor: "#FFFFFF",  //按钮选中时候的颜色值,支持rgb，rgba，#
+     icon:"widget://image/orderList/ok.png"
+   }, {
+     bg:  "#4EEE94",  //按钮背景色，支持rgb，rgba，#，默认#ee8262.
+     title: "确定", //按钮名字，字符串类型，默认‘按钮’
+     titleSize: 13,      //按钮标题大小，默认12
+     titleColor: "#000000", // 按钮标题颜色，支持rgb，rgba，#，默认#ffffff
+     selectedColor: "ffffff",  //按钮选中时候的颜色值,支持rgb，rgba，#
+     icon:"widget://image/orderList/ok.png"
+   }]
+});
 ```
 
 ##补充说明

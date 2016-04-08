@@ -3,12 +3,12 @@ Title: sideMenu
 Description: sideMenu
 */
 
-<ul id="tab" class="clearfix">
-	<li class="active"><a href="#method-content">Method</a></li>
+<ul id='tab' class='clearfix'>
+	<li class='active'><a href='#method-content'>Method</a></li>
 </ul>
-<div id="method-content">
+<div id='method-content'>
 
-<div class="outline">
+<div class='outline'>
 [open](#1)
 
 [hidden](#2)
@@ -24,7 +24,7 @@ sideMenu是一个从边框弹出的菜单，允许开发者自定义子按钮的
 
 ![图片说明](/img/docImage/sideMenu.jpg)
 
-#**open**<div id="1"></div>
+#**open**<div id='1'></div>
 
 打开菜单
 
@@ -76,11 +76,12 @@ btnArray：
 	bgImg:                     //字符串，按钮背景图标，支持本地协议，不可为空
 }]
 ```
+
 fixedOn：
 
-- 类型：字符串
-- 默认值：当前主窗口的名字
-- 描述：将此模块视图添加到指定窗口的名字，可为空
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 clickHide：
 
@@ -106,17 +107,37 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('sideMenu');
-var arrayPath = new Array();
-arrayPath[0]={icon:'widget://res/sideMemu_icon.png',bgImg:'widget://res/sideMenu_bg.png' };
-arrayPath[1]={icon: 'widget://res/sideMemu_icon.png',bgImg: 'widget://res/sideMenu_bg1.png' };
-arrayPath[2]={icon: 'widget://res/sideMemu_icon.png',bgImg: 'widget://res/sideMenu_bg.png' };
-arrayPath[3]={icon: 'widget://res/sideMemu_icon.png',bgImg: 'widget://res/sideMenu_bg1.png' };
-
-obj.open({
-	btnArray:arrayPath
-},function(ret,err){
-	api.alert({msg:'点击了菜单id为'+ret.id+'的第'+ret.index+'个按钮'});
+var sideMenu = api.require('sideMenu');
+sideMenu.open({
+    trajectoryColor: '#3F9FEA',
+	btnArray:[{
+        title: '图标1',
+        'icon': 'widget://res/center/0.png',
+        'bgImg': 'widget://res/sideMenu/bg.png'
+    },{
+        title: '图标2',
+        'icon': 'widget://res/center/1.png',
+        'bgImg': 'widget://res/sideMenu/bg.png'
+    },{
+        title: '图标3',
+        'icon': 'widget://res/center/2.png',
+        'bgImg': 'widget://res/sideMenu/bg.png'
+    },{
+        title: '图标4',
+        'icon': 'widget://res/center/3.png',
+        'bgImg': 'widget://res/sideMenu/bg.png'
+    },{
+        title: '图标5',
+        'icon': 'widget://res/center/4.png',
+        'bgImg': 'widget://res/sideMenu/bg.png'
+    }],
+    fixedOn: api.frameName
+},function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -148,9 +169,9 @@ id：
 ##示例代码
 
 ```js
-var obj = api.require('sideMenu');
-obj.hidden({
-	id:1
+var sideMenu = api.require('sideMenu');
+sideMenu.hidden({
+	id: 1
 });
 ```
 
@@ -183,9 +204,9 @@ id：
 ##示例代码
 
 ```js
-var obj = api.require('sideMenu');
-obj.show({
-	id:1
+var sideMenu = api.require('sideMenu');
+sideMenu.show({
+	id: 1
 });
 ```
 
@@ -218,9 +239,9 @@ id：
 ##示例代码
 
 ```js
-var obj = api.require('sideMenu');
-obj.close({
-	id:1
+var sideMenu = api.require('sideMenu');
+sideMenu.close({
+	id: 1
 });
 ```
 

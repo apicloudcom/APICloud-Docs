@@ -116,7 +116,7 @@ Android系统
 
 #**setListener**<div id="2"></div>
 
-设置消息监听
+设置消息监听，若iOS应用在前台运行，此时收到推送后也通过此方法回调
 
 setListener(callback(ret, err))
 
@@ -373,7 +373,7 @@ endHour：
 
 - 类型：数字
 - 默认值：无
-- 描述：允许推送的开始时间（24小时制：endHour的范围为0到23），不能为空
+- 描述：允许推送的结束时间（24小时制：endHour的范围为0到23），不能为空
 
 ##callback(ret, err)
 
@@ -705,9 +705,7 @@ api.addEventListener({name:'appintent'}, function(ret,err) {
 })
 ```
 
-在iOS平台，当应用在后台时，使用极光推送发送通知时（消息只有应用在前台才能收到），系统会往设备发送通知。
-
-当通知被点击后，若应用已启动，则通过上面的setListener回调给开发者；若应用未启动，APICloud会将本次推送的内容通过事件监听回调的方式交给开发者。具体使用如下：
+在iOS平台，使用极光推送发送通知时，若应用在前台运行，则推送内容可以通过setListener方法监听到，若应用在后台，系统会往设备通知栏发送通知，当通知被点击后，APICloud会将本次推送的内容通过事件监听回调的方式交给开发者。具体使用如下：
 
 ```js
 api.addEventListener({name:'noticeclicked'}, function(ret,err) {

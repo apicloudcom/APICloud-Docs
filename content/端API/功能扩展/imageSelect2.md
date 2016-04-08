@@ -64,13 +64,12 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('imageSelect');
-obj.select(
-   function(ret,err){
-	if(ret.status) {
-		api.alert({msg:ret.image});
-	} else{
-		api.alert({msg:err.msg});
+var imageSelect = api.require('imageSelect');
+imageSelect.select(function( ret, err ){		
+	if( ret.status ){
+		alert( JSON.stringify( ret ) );
+	}else{
+		alert( JSON.stringify( err ) );
 	}
 });
 ```
@@ -132,14 +131,14 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('imageSelect');
-obj.crop({
-	imgPath:''
-},function(ret,err){
-	if(ret.status) {
-		api.alert({msg:ret.image});
+var imageSelect = api.require('imageSelect');
+imageSelect.crop({
+	imgPath: 'fs://album.png'
+},function( ret, err ){		
+	if( ret.status ){
+		alert( JSON.stringify( ret ) );
 	}else{
-		api.alert(err.msg);
+		alert( JSON.stringify( err ) );
 	}
 });
 ```

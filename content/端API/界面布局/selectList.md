@@ -132,11 +132,11 @@ contents：
 }]
 ```
 
-fixedOn:
+fixedOn：
 
-- 类型：字符串
-- 默认值：当前主窗口名
-- 描述：（可选项）将模块视图添加在某个窗口上的名字
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 
 ##callback(ret, err)
@@ -161,11 +161,39 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('selectList');
-obj.open({
-	contents:[{title:"阿宝",subTitle:"131313131313"},{title:"阿宝",subTitle:"131313131313"},{title:"阿宝",subTitle:"131313131313"},{title:"阿宝",subTitle:"131313131313"},{title:"阿宝",subTitle:"131313131313"},{title:"阿宝",subTitle:"131313131313"},{title:"阿宝",subTitle:"131313131313"},{title:"阿宝",subTitle:"131313131313"}]
-},function(ret,err){
-	 api.alert({msg:ret.section+"*"+ret.index});
+var selectList = api.require('selectList');
+selectList.open({
+	contents: [{
+      title:"阿宝",
+      subTitle:"131313131313"
+    },{
+      title:"阿宝",
+      subTitle:"131313131313"
+    },{
+      title:"阿宝",
+      subTitle:"131313131313"
+    },{
+      title:"阿宝",
+      subTitle:"131313131313"
+    },{
+      title:"阿宝",
+      subTitle:"131313131313"
+    },{
+      title:"阿宝",
+      subTitle:"131313131313"
+    },{
+      title:"阿宝",
+      subTitle:"131313131313"
+    },{
+      title:"阿宝",
+      subTitle:"131313131313"
+    }]
+},function( ret, err ){
+	if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -196,8 +224,12 @@ id:
 
 ##示例代码
 
-	var obj = api.require('selectList');
-	obj.close({id:1});
+```js
+var selectList = api.require('selectList');
+selectList.close({
+    id:1
+});
+```
 
 ##补充说明
 
@@ -241,12 +273,40 @@ id:
 ##示例代码
 
 ```js
-var obj = api.require('selectList');
-obj.reloadData({
+var selectList = api.require('selectList');
+selectList.reloadData({
     id:1,
-	contents:[{title:"阿宝",subTitle:"131313131313"},{title:"阿宝",subTitle:"131313131313"},{title:"阿宝",subTitle:"131313131313"},{title:"阿宝",subTitle:"131313131313"},{title:"阿宝",subTitle:"131313131313"},{title:"阿宝",subTitle:"131313131313"},{title:"阿宝",subTitle:"131313131313"},{title:"阿宝",subTitle:"131313131313"}]
-},function(ret,err){
-				api.alert({msg:ret.section+"*"+ret.index});
+	contents: [{
+      title:"阿宝",
+      subTitle:"131313131313"
+    },{
+      title:"阿宝",
+      subTitle:"131313131313"
+    },{
+      title:"阿宝",
+      subTitle:"131313131313"
+    },{
+      title:"阿宝",
+      subTitle:"131313131313"
+    },{
+      title:"阿宝",
+      subTitle:"131313131313"
+    },{
+      title:"阿宝",
+      subTitle:"131313131313"
+    },{
+      title:"阿宝",
+      subTitle:"131313131313"
+    },{
+      title:"阿宝",
+      subTitle:"131313131313"
+    }]
+},function( ret, err ){
+	if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -318,24 +378,21 @@ showTime：
 ##示例代码
 
 ```js
-var loadingImgae = 'widget://res/selectList_arrow.png';		//刷新的小箭头，不可为空
-var bgColor = '#F5F5F5';									//下拉刷新的背景颜色，有默认值，可为空
-var textColor= '#8E8E8E';									//提示语颜色，有默认值，可为空
-var textDown= '下拉可以刷新...';								//尚未触发刷新时间的提示语，有默认值，可为空
-var textUp= '松开开始刷新...';								//触发刷新事件的提示语，有默认值，可为空
-var showTime= true;											//是否显示时间，有默认值，可为空
-
-var obj = api.require('selectList');
-obj.setRefreshHeader({
-       id:1,
-		loadingImg : loadingImgae,
-		bgColor:bgColor,
-		textColor:textColor,
-		textDown:textDown,
-		textUp:textUp,
-		showTime : showTime
-},function(ret,err){
-	//触发加载事件
+var selectList = api.require('selectList');
+selectList.setRefreshHeader({
+    id: 1,
+	loadingImg : 'widget://res/selectList_arrow.png',
+	bgColor: '#F5F5F5',
+	textColor: '#8E8E8E',
+	textDown: '下拉可以刷新...',
+	textUp: '松开开始刷新...',
+	showTime : true
+},function( ret, err ){
+	if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -408,23 +465,21 @@ showTime：
 ##示例代码
  
 ```js
-var loadingImgae = 'widget://res/listView_arrow.png';       //刷新的小箭头，不可为空
-var bgColor = '#F5F5F5';                                    //下拉刷新的背景颜色 ，有默认值，可为空
-var textColor= '#8E8E8E';                                   //提示语颜色，有默认值，可为空
-var textDown= '下拉可加载更多...';                             //尚未触发刷新时间的提示语，有默认值，可为空
-var textUp= '松开开始加载...';                                 //触发刷新事件的提示语，有默认值，可为空
-var showTime= true;                                         //是否显示时间，有默认值，可为空        
-var obj = api.require('selectList');
-obj.setRefreshFooter({
-    id:1,
-    loadingImg:loadingImgae,
-    bgColor:bgColor,
-    textColor:textColor,
-    textDown:textDown,
-    textUp:textUp,
-    showTime:showTime
-},function(ret,err){
-    //触发加载事件
+var selectList = api.require('selectList');
+selectList.setRefreshFooter({
+    id: 1,
+    loadingImg : 'widget://res/selectList_arrow.png',
+	bgColor: '#F5F5F5',
+	textColor: '#8E8E8E',
+	textDown: '下拉可以刷新...',
+	textUp: '松开开始刷新...',
+	showTime : true
+},function( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
 });
  
 ```
@@ -455,10 +510,12 @@ id:
 
 ##示例代码
 
-	var obj = api.require('selectList');
-	obj.hide({
-	 id:1
-	});
+```js
+var selectList = api.require('selectList');
+selectList.hide({
+    id: 1
+});
+```
 
 ##补充说明
 
@@ -486,8 +543,12 @@ id:
 
 ##示例代码
 
-	var obj = api.require('selectList');
-	obj.show({id:1});
+```js
+var selectList = api.require('selectList');
+selectList.show({
+    id: 1
+});
+```
 
 ##补充说明
 
@@ -522,11 +583,11 @@ id:
 ##示例代码
 
 ```js
-var obj = api.require('selectList');
- obj.deleteItem({
-      id:1,
-      index:2
- });
+var selectList = api.require('selectList');
+selectList.deleteItem({
+	  id: 1,
+	  index: 2
+});
 ```
 
 ##补充说明
@@ -576,11 +637,14 @@ content：
 ##示例代码
 
 ```js
-var obj = api.require('selectList');
-obj.refreshItem({
-      id:1,
-      index:2,
-      content:{title:"APICloud",subTitle:"000000000"}
+var selectList = api.require('selectList');
+selectList.refreshItem({
+    id: 1,
+    index: 2,
+    content: {
+         title: "APICloud",
+         subTitle: "000000000"
+    }
 });
 ```
 
@@ -631,12 +695,15 @@ content：
 ##示例代码
 
 ```js
-var obj = api.require('selectList');
- obj.insertItem({
-    id:1,
-    index:2,
-    content:{title:"APICloud",subTitle:"000000000"}
- });
+var selectList = api.require('selectList');
+selectList.insertItem({
+    id: 1,
+    index: 2,
+    content: {
+         title: "APICloud",
+         subTitle: "000000000"
+    }
+});
 ```
 
 ##补充说明
@@ -678,10 +745,10 @@ selected：
 ##示例代码
 
 ```js
-var obj = api.require('selectList');
-obj.setSelected({
-      id:1,
-      index:2
+var selectList = api.require('selectList');
+selectList.setSelected({
+      id: 1,
+      index: 2
 });
 ```
 
@@ -729,9 +796,15 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('selectList');
-obj.getSelected({id:1},fucntion(ret,err){
-    api.alert({msg:ret.indexs[0]});
+var selectList = api.require('selectList');
+selectList.getSelected({
+    id: 1
+},fucntion( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -786,13 +859,19 @@ ret：
 
 ##示例代码
 
-	var obj = api.require('selectList');
-	obj.getIndex({
-	     key:"uid",
-	     value:"0000001"
-	},function(ret,err){
-	     api.alert({msg:ret.index})
-	});
+```js
+var selectList = api.require('selectList');
+selectList.getIndex({
+     key: "uid",
+     value: "0000001"
+},function( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
+});
+```
 
 ##补充说明
 
@@ -842,12 +921,18 @@ ret：
 ```
 ##示例代码
 
-	var obj = api.require('selectList');
-	obj.getData({
-	     index:0
-	},function(ret,err){
-	     api.alert({msg:ret.data});
-	});
+```js
+var selectList = api.require('selectList');
+selectList.getData({
+     index: 0
+},function( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
+});
+```
 
 ##补充说明
 
@@ -891,12 +976,18 @@ ret：
 ```
 ##示例代码
 
-	var obj = api.require('selectList');
-	obj. getSortedData({
-	     id:1
-	},function(ret,err){
-	     api.alert({msg:ret.data});
-	});
+```js
+var selectList = api.require('selectList');
+selectList.getSortedData({
+     id: 1
+},function( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
+});
+```
 
 ##补充说明
 

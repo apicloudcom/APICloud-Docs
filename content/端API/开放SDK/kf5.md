@@ -8,7 +8,7 @@ Description: Domob APICloud 接口文档
 	<li><a href="#const-content">Constant</a></li>
 </ul>
 <div id="method-content">
-
+</div>
 <div class="outline">
 [initKF5](#a1)
 [showHelpCenter](#a2)
@@ -19,6 +19,7 @@ Description: Domob APICloud 接口文档
 
 概述
 =================
+本模块已停止更新维护，可使用其升级版[kf5sdk](http://docs.apicloud.com/%E7%AB%AFAPI/%E5%BC%80%E6%94%BESDK/kf5sdk)
 kf5提供给开发者发送工单、查看工单列表、查看知识库等功能。本模块封装了kf5的相关接口，使用此模块需先注册kf5来获取appid和hostName。注册kf5：登录kf5官网( www.kf5.com )注册kf5账号,进入控制面板 - 系统设置 - 支持渠道 - 移动APP SDK中添加一个APP以获取appid，hostName为你注册的域名，例如：kf5.kf5.com。
 
 #**initKF5**<div id="a1"></div>

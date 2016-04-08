@@ -78,12 +78,11 @@ h:
 - 描述：（可选项）模块视图的高度
 - 默认值：所属的Window或Frame的高度
 
-fixedOn:
+fixedOn：
 
-- 类型：字符串
-- 描述：（可选项）模块视图所属的Window或Frame的名字
-- 默认值：当前Window的名字
-
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 style:
 

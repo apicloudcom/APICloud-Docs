@@ -28,11 +28,32 @@ open({params}, callback(ret))
 
 ##params
 
+type：
+
+- 类型：字符串
+- 描述：返回的资源种类；默认：'all'
+- 取值范围：
+    * all（图片和视频）
+    * picture（图片）
+    * video（视频）
+
 column：
 
 - 类型：数字
 - 描述：（可选项）图片显示的列数，须大于1
 - 默认值：4
+
+classify：
+
+- 类型：布尔
+- 描述：（可选项）是否将图片分类显示（为 true 时，会首先跳转到相册分类列表页面）
+- 默认值：false
+
+max：
+
+- 类型：数字
+- 描述：（可选项）最多选择几张图片
+- 默认值：5
 
 sort：
 
@@ -89,7 +110,7 @@ styles：
         bg: '#eee',                     //（可选项）字符串类型；导航栏背景，支持 rgb，rgba，#；默认：'#eee'
         stateColor: '#000',             //（可选项）字符串类型；状态文字颜色，支持rgb，rgba，#；默认：'#000'
         stateSize: 18,                  //（可选项）数字类型；状态文字大小，默认：18
-        cancleBg: 'rgba(0,0,0,0)',      //（可选项）字符串类型；取消按钮背景，支持rgb，rgba，#；默认：'rgba(0,0,0,0)'
+        cancelBg: 'rgba(0,0,0,0)',      //（可选项）字符串类型；取消按钮背景，支持rgb，rgba，#；默认：'rgba(0,0,0,0)'
         cancelColor: '#000',            //（可选项）字符串类型；取消按钮的文字颜色；支持rgb，rgba，#；默认：'#000'
         cancelSize: 18,                 //（可选项）数字类型；取消按钮的文字大小；默认：18
         finishBg: 'rgba(0,0,0,0)',      //（可选项）字符串类型；完成按钮的背景，支持rgb，rgba，#；默认：'rgba(0,0,0,0)'
@@ -98,6 +119,32 @@ styles：
     }
 }
 ```
+
+scrollToBottom：
+
+- 类型：JSON
+- 默认值：见内部字段
+- 描述：（可选项）打开媒体资源界面后间隔一段时间开始自动滚动到底部设置
+- 内部字段：
+
+```js
+{
+   intervalTime:       //（可选项）数字类型；打开媒体资源界面后间隔的时间开始自动滚动到底部，单位秒（s），小于零的数表示不滚动到底部；默认：-1
+   anim:               //（可选项）布尔类型；滚动时是否添加动画，android 平台不支持动画效果；默认true
+}
+```
+
+exchange：
+
+- 类型：布尔
+- 默认值：false
+- 描述：是否交换‘确定’和‘取消’按钮的位置（默认‘取消’按钮在右边，‘确定’按钮在左边）
+
+rotation：
+
+- 类型：布尔
+- 默认值：false
+- 描述：是否禁止屏幕旋转（禁止横屏）
 
 ##callback(ret)
 
@@ -121,8 +168,9 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('UIMediaScanner');
-obj.open({
+var UIMediaScanner = api.require('UIMediaScanner');
+UIMediaScanner.open({
+    type: 'picture',
     column: 4,
     classify: true,
     max: 4,
@@ -146,17 +194,24 @@ obj.open({
             bg: '#eee',
             stateColor: '#000',
             stateSize: 18,
-            cancleBg: 'rgba(0,0,0,0)',
+            cancelBg: 'rgba(0,0,0,0)',
             cancelColor: '#000',
             cancelSize: 18,
             finishBg: 'rgba(0,0,0,0)',
             finishColor: '#000',
             finishSize: 18
         }
-    }
-}, function(ret){
-    if(ret){
-        alert(JSON.stringify(ret.list));
+    },
+    scrollToBottom:{
+       intervalTime: 3,
+       anim: true
+    },
+    exchange: true
+}, function( ret, err ){
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -189,7 +244,8 @@ type：
 count：
 
 - 类型：数字
-- 描述：（可选项）每次返回的资源数量；默认：返回全部资源
+- 描述：（可选项）每次返回的资源数量；
+- 默认：全部资源数量
 
 sort：
 
@@ -224,7 +280,7 @@ ret：
         thumbPath: '',               //字符串类型；缩略图路径，返回资源在本地的绝对路径
         suffix: '',                  //字符串类型；文件后缀名，如：png，jpg, mp4
         size: 1048576,               //数字类型；资源大小，单位（Bytes）
-        time: '2015-06-29 15:49'     //字符串类型；资源创建时间，格式：yyyy-MM-dd HH:mm:ss
+        time: '2015-06-29 15:49:22   //字符串类型；资源创建时间，格式：yyyy-MM-dd HH:mm:ss
 	}]
 }
 ```
@@ -232,17 +288,19 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('UIMediaScanner');
-obj.scan({
+var UIMediaScanner = api.require('UIMediaScanner');
+UIMediaScanner.scan({
     type: 'all',
     count: 10,
     sort: {
         key: 'time',
         order: 'desc'
     }
-}, function(ret){
-    if(ret){
-        alert(JSON.stringify(ret.list));
+}, function( ret, err ){
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -282,25 +340,13 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('UIMediaScanner');
-obj.scan({
-    type: 'all',
-    count: 10,
-    sort: {
-        key: 'time',
-        order: 'desc'
+var UIMediaScanner = api.require('UIMediaScanner');
+UIMediaScanner.fetch(function( ret, err ){
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
     }
-}, function(ret){
-    if(ret){
-        alert(JSON.stringify(ret.list));
-    }
-});
-api.addEventListener({
-    name: 'scrolltobottom'
-}, function(){
-    obj.fetch(function(ret){
-        alert(JSON.stringify(ret.list));
-    });
 });
 ```
 
@@ -340,11 +386,15 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('UIMediaScanner');
-obj.transPath({
+var UIMediaScanner = api.require('UIMediaScanner');
+UIMediaScanner.transPath({
    path: ''
-}, function(ret){
-   alert(ret.path);
+}, function( ret, err ){
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 

@@ -59,11 +59,10 @@ buttons：
 
 ```js
 [{
-    frame:         //（可选项）按钮图标的坐标和宽高，json对象，默认值见内部字段
-                     内部字段：{
-                       w:  //（可选项）按钮图标的宽度，数字类型，默认20
-                       h:  //（可选项）按钮图标的高度，数字类型，默认20
-                     } 
+    frame: {    //（可选项）按钮图标的坐标和宽高，json对象，默认值见内部字段
+            w:  //（可选项）按钮图标的宽度，数字类型，默认20
+            h:  //（可选项）按钮图标的高度，数字类型，默认20
+    } 
 	normal:        //按钮常态下的背景图片路径，支持widget，fs等本地路径
     highlight：     //（可选项）按钮高亮态下的背景图片路径，支持widget，fs等本地路径，若不传或传空则显示normal
     selected：     //（可选项）按钮选中后的背景图片路径，支持widget，fs等本地路径，若不传或传空则显示normal
@@ -101,24 +100,36 @@ ret：
 ##示例代码
 
 ```js
-       var obj = api.require('tuberBar');
-       obj.open({
-		   bg:'widget://res/tuberBar_bg.png',
-		   selectedIndex:3,
-		   buttons:[{title:'buttons1',normal:"widget://image/tabBar_bg.png"},
-		          {title:'buttons2',normal:"widget://image/tabBar_bg.png"},
-		          {title:'buttons3',normal:"widget://image/tabBar_bg.png"},
-		          {title:'buttons4',normal:"widget://image/tabBar_bg.png"},
-		          {title:'buttons5',normal:"widget://image/tabBar_bg.png"},
-		          {title:'buttons6',normal:"widget://image/tabBar_bg.png"},
-		          {title:'buttons7',normal:"widget://image/tabBar_bg.png"},
-		          {title:'buttons8',normal:"widget://image/tabBar_bg.png"},
-		          {title:'buttons9',normal:"widget://image/tabBar_bg.png"},
-		          {title:'buttons10',normal:"widget://image/tabBar_bg.png"},
-		          {title:'buttons11',normal:"widget://image/tabBar_bg.png"}]
-	},function(ret,err){
-         alert(JSON.stringify(ret) + JSON.stringify(err));
-	});
+var tuberBar = api.require('tuberBar');
+tuberBar.open({
+    bg: 'widget://res/img/bg.png',
+    selectedIndex: 1,
+    buttons: [{
+        title: '标题一',
+        normal: 'widget://res/img/ic/item.png'
+    },{
+        title: '标题一',
+        normal: 'widget://res/img/ic/item.png'
+    },{
+        title: '标题一',
+        normal: 'widget://res/img/ic/item.png'
+    },{
+        title: '标题一',
+        normal: 'widget://res/img/ic/item.png'
+    },{
+        title: '标题一',
+        normal: 'widget://res/img/ic/item.png'
+    },{
+        title: '标题一',
+        normal: 'widget://res/img/ic/item.png'
+    }]
+},function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
 ```
 
 ##补充说明
@@ -151,8 +162,12 @@ selected：
 
 ##示例代码
 
-    var obj = api.require('tuberBar');
-    obj.setSelected({index:1});
+```js
+var tuberBar = api.require('tuberBar');
+tuberBar.setSelected({
+    index: 1
+});
+```
 
 ##补充说明
 
@@ -188,10 +203,10 @@ badge：
 ##示例代码
 
 ```js
-var obj = api.require('tuberBar');
-obj.setBadge({
-	index:3,
-    badge:'说明'
+var tuberBar = api.require('tuberBar');
+tuberBar.setBadge({
+	index: 3,
+    badge: '说明'
 });
 ```
 
@@ -214,8 +229,10 @@ hide();
 
 ##示例代码
 
-    var obj = api.require('tuberBar');
-    obj.hide();
+```js
+var tuberBar = api.require('tuberBar');
+tuberBar.hide();
+```
 
 ##补充说明
 
@@ -236,8 +253,10 @@ show();
 
 ##示例代码
 
-    var obj = api.require('tuberBar');
-    obj.show();
+```js
+var tuberBar = api.require('tuberBar');
+tuberBar.show();
+```
 
 ##补充说明
 
@@ -257,10 +276,10 @@ iOS系统，Android系统
 close()
 
 ##示例代码
-
-    var obj = api.require('tuberBar');
-    obj.close();
-
+```js
+var tuberBar = api.require('tuberBar');
+tuberBar.close();
+```
 ##补充说明
 
 将打开的tuberBar从内存清除
@@ -279,8 +298,10 @@ bringToFront()
 
 ##示例代码
 
-    var obj = api.require('tuberBar');
-    obj.bringToFront();
+```js
+var tuberBar = api.require('tuberBar');
+tuberBar.bringToFront();
+```
 
 ##可用性
 

@@ -46,18 +46,6 @@ y：
 - 默认值：64
 - 描述：选择器视图左上角点坐标，可为空
 
-<del>width：</del>
-
-- <del>类型：数字</del>
-- <del>默认值：当前设备屏幕的宽度</del>
-- <del>描述：选择器视图宽，可为空</del>
-
-<del>height：</del>
-
-- <del>类型：数字</del>
-- <del>默认值：宽度减70px</del>
-- <del>描述：选择器视图高，可为空</del>
-
 w：
 
 - 类型：数字
@@ -75,12 +63,6 @@ hour：
 - 类型：数字
 - 默认值：0
 - 描述：设置时，取值范围0-23，可为空
-
-<del>minit：</del>
-
-- <del>类型：数字</del>
-- <del>默认值：0</del>
-- <del>描述：设置分，取值范围0-59，可为空</del>
 
 minute：
 
@@ -120,9 +102,9 @@ titleColor：
 
 fixedOn：
 
-- 类型：字符串
-- 默认值：当前主窗口的名字
-- 描述：将此模块视图添加到指定窗口的名字，可为空
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 fixed:
 - 类型：布尔
@@ -148,15 +130,19 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('timeSelector');
-obj.open({
-	x: 0,
-	y:64,
-	width:320,
-	height:250
+var timeSelector = api.require('timeSelector');
+timeSelector.open({
+	x: 30,
+	y: api.frameHeight / 2 - 130,
+	width: api.frameWidth - 60,
+	height: 260,
+    fixedOn: api.frameName
 }, function(ret, err){
-	var hour = ret.hour;
-	var minit = ret.minit;
+	if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -185,12 +171,6 @@ hour：
 - 默认值：当前时间
 - 描述：设置小时，可为空
 
-<del>minit：</del>
-
-- <del>类型：数字</del>
-- <del>默认值：当前时间</del>
-- <del>描述：设置分钟，可为空</del>
-
 minute：
 
 - 类型：数字
@@ -200,11 +180,10 @@ minute：
 ##示例代码
 
 ```js
-var obj = api.require('timeSelector');
-
-obj.open({
-	hour:20,
-	minute:25
+var timeSelector = api.require('timeSelector');
+timeSelector.set({
+	hour: 20,
+	minute: 25
 });
 ```
 
@@ -227,8 +206,10 @@ close()
 
 ##示例代码
 
-    var obj = api.require('timeSelector');
-    obj.close();
+```js
+var timeSelector = api.require('timeSelector');
+timeSelector.close();
+```
 
 ##补充说明
 
@@ -249,8 +230,10 @@ hide()
 
 ##示例代码
 
-    var obj = api.require('timeSelector');
-    obj.hide();
+```js
+var timeSelector = api.require('timeSelector');
+timeSelector.hide();
+```
 
 ##补充说明
 
@@ -270,8 +253,10 @@ show()
 
 ##示例代码
 
-    var obj = api.require('timeSelector');
-    obj.show();
+```js
+var timeSelector = api.require('timeSelector');
+timeSelector.show();
+```
 
 ##补充说明
 

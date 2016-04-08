@@ -25,7 +25,7 @@ Description: scanner
 
 #**概述**
 
-二维码/条码扫描器，本模块底层集成了ZXing，Zbar条码/二维码分析库，调用open接口可打开默认UI的二维码/条码扫描页面，此页面内添加了闪光灯开关、从相册读取图片扫描按钮。开发者亦可通过openView接口打开自定义扫描区域（大小和位置）的扫码视图。本模块亦实现了对图片解码，对字符串编码的功能，按照接口规范调用decode、encode接口即可实现。开发者可通过调整接口参数可将扫描结果保存到系统相册、指定位置。**FNScanner 模块是 scanner 模块的优化版，建议使用 FNScanner 模块，此模块已停止更新。**
+二维码/条码扫描器，本模块底层集成了ZXing，Zbar条码/二维码分析库，调用open接口可打开默认UI的二维码/条码扫描页面，此页面内添加了闪光灯开关、从相册读取图片扫描按钮。开发者亦可通过openView接口打开自定义扫描区域（大小和位置）的扫码视图。本模块亦实现了对图片解码，对字符串编码的功能，按照接口规范调用decode、encode接口即可实现。开发者可通过调整接口参数可将扫描结果保存到系统相册、指定位置。**[FNScanner 模块](/端API/功能扩展/FNScanner)是 scanner 模块的优化版，建议使用 FNScanner 模块，此模块已停止更新。**
 
 ![图片说明](/img/docImage/scanner.jpg)
 
@@ -87,17 +87,13 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('scanner');
-obj.open(function(ret,err) {
-	 if("cancel" == ret.eventType){
-         api.alert({msg:"用户取消扫码！"});
-     }else if("image" == ret.eventType){
-         api.alert({msg:"用户选择扫码相册内图片"});
-     }else if("success" == ret.eventType){
-         api.alert({msg:"扫码（摄像图\相册）成功"});
-     }else{
-         api.alert({msg:"扫码（摄像图\相册）失败，失败信息是"+ret.msg});
-     }
+var scanner = api.require('scanner');
+scanner.open(function( ret, err ){		
+	if( ret ){
+		alert( JSON.stringify( ret ) );
+	}else{
+		alert( JSON.stringify( err ) );
+	}
 });
 ```
 
@@ -144,9 +140,9 @@ h：
 
 fixedOn：
 
-- 类型：字符串
-- 默认值：当前主窗口名字
-- 描述：（可选项）将模块视图添加到指定窗口的名字
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 needBr：
 
@@ -193,15 +189,19 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('scanner');
-obj.openView({
-	x:40,
-	y:160,
-	w:200,
-	h:240,
-	sound:'widget://res/beep.caf'
-},function(ret,err){
-	ret.msg;
+var scanner = api.require('scanner');
+scanner.openView({
+	x: 40,
+	y: 160,
+	w: 200,
+	h: 240,
+	sound: 'widget://test.wav'
+},function( ret, err ){		
+	if( ret ){
+		alert( JSON.stringify( ret ) );
+	}else{
+		alert( JSON.stringify( err ) );
+	}
 });
 ```
 
@@ -220,8 +220,10 @@ closeView()
 
 ##示例代码
 
-	var obj = api.require('scanner');
-	obj.closeview();
+```js
+var scanner = api.require('scanner');
+scanner.closeview();
+```
 
 ##可用性
 
@@ -274,11 +276,15 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('scanner');
-obj.decode({
-	sound:'widget://res/beep.caf'
-},function(ret,err){
-	ret.msg;
+var scanner = api.require('scanner');
+scanner.decode({
+	sound: 'widget://test.wav'
+}, function( ret, err ){		
+	if( ret ){
+		alert( JSON.stringify( ret ) );
+	}else{
+		alert( JSON.stringify( err ) );
+	}
 });
 ```
 
@@ -342,15 +348,19 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('scanner');
-obj.encode({
-	string:"123456789",
-	save:{
-		imgPath:"fs://barImage",
-		imgName:"barImage.png"
+var scanner = api.require('scanner');
+scanner.encode({
+	string: '123456789',
+	save: {
+		imgPath: 'fs://',
+		imgName: 'album.png'
 	}
-},function(ret,err){
-	ret.status;
+},function( ret, err ){		
+	if( ret.status ){
+		alert( JSON.stringify( ret ) );
+	}else{
+		alert( JSON.stringify( err ) );
+	}
 });
 ```
 
@@ -377,9 +387,9 @@ turnOn：
 ##示例代码
 
 ```js
-var obj = api.require('scanner');
-obj.lightSwitch({
-	turnOn:false
+var scanner = api.require('scanner');
+scanner.lightSwitch({
+	turnOn: false
 });
 ```
 

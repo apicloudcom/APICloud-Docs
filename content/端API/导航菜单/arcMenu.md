@@ -53,7 +53,12 @@ mainMenu：
 
 ```js
 {
-    x:0,			//（可选项）起点x坐标，数字，默认0     y:0,			//（可选项）起点y坐标，数字，默认0    w:50,			//（可选项）宽度，数字，默认50    h:50,			//（可选项）高度，数字，默认50    img:’’			//背景图片路径，支持widget、fs等本地协议路径    imgLight:’’		//高亮状态下背景图片路径，支持widget、fs等本地协议路径
+    x:0,			//（可选项）起点x坐标，数字，默认0 
+    y:0,			//（可选项）起点y坐标，数字，默认0
+    w:50,			//（可选项）宽度，数字，默认50
+    h:50,			//（可选项）高度，数字，默认50
+    img:’’			//背景图片路径，支持widget、fs等本地协议路径
+    imgLight:’’		//高亮状态下背景图片路径，支持widget、fs等本地协议路径
 }
 ```
 
@@ -67,7 +72,10 @@ items：
 
 ```js
 [{
-    w:40,			//（可选项）宽度，数字，默认40    h:40,			//（可选项）高度，数字 ，默认40    img:’’			//背景图片路径，支持widget、fs等本地协议路径    imgLight:’’		//高亮状态下背景图片路径，支持widget、fs等本地协议路径
+    w:40,			//（可选项）宽度，数字，默认40
+    h:40,			//（可选项）高度，数字 ，默认40
+    img:’’			//背景图片路径，支持widget、fs等本地协议路径
+    imgLight:’’		//高亮状态下背景图片路径，支持widget、fs等本地协议路径
 }]
 ```
 
@@ -91,9 +99,9 @@ radius：
 
 fixedOn：
 
-- 类型：字符串
-- 默认值：当前主窗口的名字
-- 描述：（可选项）将此模块视图添加到指定窗口的名字
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 fixed:
 - 类型：布尔
@@ -123,28 +131,57 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('arcMenu');
-obj.open({
-	type:1,
-	mainMenu:{
-		x:140,
-		y:360,
-		w:50,
-		h:30,
-		img: 'widget://res/arcMenue_centerImg.png',
-		imgLight: 'widget://res/arcMenue_centerImgLight.png'
+var arcMenu = api.require('arcMenu');
+arcMenu.open({
+	type: 'arc',
+	mainMenu: {
+		x: api.frameWidth / 2,
+		y: api.frameHeight / 2,
+		w: 50,
+		h: 50,
+		img: 'widget://res/img/ic/color-lump-square.png',
+		imgLight: 'widget://res/img/ic/color-lump-square.png'
 	},
-	items:[{ w:40,h:40,img:'widget://res/item1.png',imgLight:'widget://res/item1Light.png'},
-		{w:40,h:40,img:'widget://res/item2.png',imgLight:'widget://res/item2Light.png'},
-		{w:40,h:40,img:'widget://res/item3.png',imgLight:'widget://res/item3Light.png'},
-		{w:40,h:40,img:'widget://res/item4.png',imgLight:'widget://res/item4Light.png'},
-		{w:40,h:40,img:'widget://res/item5.png',imgLight:'widget://res/item5Light.png'},
-		{w:40,h:40,img:'widget://res/item6.png',imgLight:'widget://res/item6Light.png'}],
-	startAngle:0,
-	wholeAngle:180,
-	radius:100
-},function(ret,err){
-	api.alert({msg:ret.id+'*'+ret.index});
+	items: [{ 
+			w: 40,
+			h: 40,
+			img: 'widget://res/img/ic/small-bell.png',
+			imgLight: 'widget://res/img/ic/small-bell.png'
+		},{ 
+			w: 40,
+			h: 40,
+			img: 'widget://res/img/ic/count.png',
+			imgLight: 'widget://res/img/ic/count.png'
+		},{ 
+			w: 40,
+			h: 40,
+			img: 'widget://res/img/ic/color-lump-triangle.png',
+			imgLight: 'widget://res/img/ic/color-lump-triangle.png'
+		},{ 
+			w: 40,
+			h: 40,
+			img: 'widget://res/img/ic/compass.png',
+			imgLight: 'widget://res/img/ic/compass.png'
+		},{ 
+			w: 40,
+			h: 40,
+			img: 'widget://res/img/ic/message.png',
+			imgLight: 'widget://res/img/ic/message.png'
+		},{ 
+			w: 40,
+			h: 40,
+			img: 'widget://res/img/ic/clock.png',
+			imgLight: 'widget://res/img/ic/clock.png'
+		}],
+    wholeAngle: 180,
+    radius: 100,
+    fixedOn: api.frameName
+},function( ret, err ){		
+	if( ret ){
+		alert( JSON.stringify( ret ) );
+	}else{
+		alert( JSON.stringify( err ) );
+	}
 });
 ```
 
@@ -173,8 +210,12 @@ id：
 
 ##示例代码
 
-    var obj = api.require('arcMenu');
-    obj.close({id:1});
+```js
+var arcMenu = api.require('arcMenu');
+arcMenu.close({
+	id: 1
+});
+```
 
 ##补充说明
 
@@ -201,8 +242,12 @@ id：
 
 ##示例代码
 
-    var obj = api.require('arcMenu');
-    obj.hide({id:1});
+```js
+var arcMenu = api.require('arcMenu');
+arcMenu.hide({
+	id: 1
+});
+```
 
 ##补充说明
 
@@ -228,8 +273,12 @@ id：
 
 ##示例代码
 
-    var obj = api.require('arcMenu');
-    obj.show({id:1});
+```js
+var arcMenu = api.require('arcMenu');
+arcMenu.show({
+	id: 1
+});
+```
 
 ##补充说明
 

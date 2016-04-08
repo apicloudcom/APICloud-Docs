@@ -68,11 +68,17 @@ ret：
 
 ```js
 var ttsModule = api.require('ttsModule');
-
-var result=function(ret, err){alert(ret.state);};
-var param = {language:0,str:"Hello ,welcome to Beijing!",speechRate:0.8};
-ttsModule.initTts(param,result);
-
+ttsModule.initTts({
+	language: 0,
+	str: 'Hello ,welcome to Beijing!',
+	speechRate: 0.8
+},function( ret, err ){		
+	if( ret ){
+		alert( JSON.stringify( ret ) );
+	}else{
+		alert( JSON.stringify( err ) );
+	}
+});
 ```
 
 ##补充说明
@@ -99,8 +105,6 @@ speakTts()
 
 ```js
 var ttsModule = api.require('ttsModule');
-
-
 ttsModule.speakTts();
 ```
 
@@ -128,8 +132,6 @@ closeTts()
 
 ```js
 var ttsModule = api.require('ttsModule');
-
-
 ttsModule.closeTts();
 ```
 

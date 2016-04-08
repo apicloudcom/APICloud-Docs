@@ -150,9 +150,9 @@ datas：
 
 fixedOn：
 
-- 类型：字符串
-- 默认值：当前主窗口的名字
-- 描述：将此模块视图添加到指定窗口的名字，可为空
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 clearBg：
 
@@ -297,17 +297,7 @@ messageList.open({
     }, // 单元格样式配置.
     datas: datas
 },function(ret,err){
-    if("item" == ret.eventType){
-        alert("您点击了第 " + ret.index + " 个单元格");
-    }
-
-    if("leftBtn" == ret.eventType){
-        alert("您点击了第 " + ret.index + " 个单元格的左边的第 " + ret.btnIndex + " 个按钮");
-    }
-
-    if("rightBtn" == ret.eventType){
-        alert("您点击了第 " + ret.index + " 个单元格的右边的第 " + ret.btnIndex + " 个按钮");
-    }
+   alert(JSON.stringify(ret));
 });
 ```
 

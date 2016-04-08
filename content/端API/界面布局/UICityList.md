@@ -151,15 +151,15 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('UICityList');
-obj.open({
+var UICityList = api.require('UICityList');
+UICityList.open({
     rect: {
         x: 0,
         y: 0,
-        w: 320,
-        h: 480
+        w: api.frameWidth,
+        h: api.frameHeight
     },
-    resource: 'widget://res/UICityList.json',
+    resource: 'widget://res/cityList.json',
     styles: {
         searchBar: {
             bgColor: '#696969',
@@ -189,10 +189,13 @@ obj.open({
     currentCity: '北京',
     locationWay: 'GPS',
     hotTitle: '热门城市',
+    fixedOn: api.frameName,
     placeholder: '输入城市名或首字母查询'
-}, function(ret, err) {
-    if(ret.eventType == 'selected'){
-        alert(JSON.stringify(ret.cityInfo));
+}, function( ret, err ) {
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -213,8 +216,8 @@ close()
 ##示例代码
 
 ```js
-var obj = api.require('UICityList');
-obj.close();
+var UICityList = api.require('UICityList');
+UICityList.close();
 ```
 
 ##可用性
@@ -233,8 +236,8 @@ show()
 ##示例代码
 
 ```js
-var obj = api.require('UICityList');
-obj.show();
+var UICityList = api.require('UICityList');
+UICityList.show();
 ```
 
 ##可用性
@@ -253,8 +256,8 @@ hide()
 ##示例代码
 
 ```js
-var obj = api.require('UICityList');
-obj.hide();
+var UICityList = api.require('UICityList');
+UICityList.hide();
 ```
 
 ##可用性

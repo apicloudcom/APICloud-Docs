@@ -44,13 +44,14 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('bluetooth');
-obj.connect(
-	function(ret,err){
-		var progress = ret.progress;
-		var message = ret.message;
-	}
-);
+var bluetooth = api.require('bluetooth');
+bluetooth.connect(function( ret, err ){
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
 ```
 
 ##补充说明
@@ -86,10 +87,10 @@ data：
 ##示例代码
 
 ```js
-var obj = api.require('bluetooth');
-obj.send({
-    type:0,
-    data:'bluetooth send string test'
+var bluetooth = api.require('bluetooth');
+bluetooth.send({
+    type: 0,
+    data: 'bluetooth send string test'
 });
 ```
 
@@ -112,8 +113,10 @@ cancel()
 
 ##示例代码
 
-    var obj = api.require('bluetooth');
-    obj.cancel();
+```js
+var bluetooth = api.require('bluetooth');
+bluetooth.cancel();
+```
 
 ##补充说明
 

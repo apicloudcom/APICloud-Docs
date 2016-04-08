@@ -45,18 +45,6 @@ y：
 - 默认值：0
 - 描述：视图左上角坐标点，可为空
 
-<del>width：</del>
-
-- <del>类型：数字</del>
-- <del>默认值：屏幕宽度</del>
-- <del>描述：视图的宽，可为空</del>
-
-<del>height：</del>
-
-- <del>类型：数字</del>
-- <del>默认值：屏幕的高的一半</del>
-- <del>描述：视图的高，可为空</del>
-
 w：
 
 - 类型：数字
@@ -77,9 +65,9 @@ imgPath：
 
 fixedOn：
 
-- 类型：字符串
-- 默认值：当前主窗口的名字
-- 描述：将此模块视图添加到指定窗口的名字，可为空
+- 类型：字符串类型
+- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 默认：模块依附于当前 window
 
 
 callback(ret, err)
@@ -112,19 +100,20 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('panorama');
-obj.open({
-	x:0,
-	y:64,
-	w:320,
-	h:300,
-	imgPath:'widget://res/360viewtest.jpg'
-},function(ret,err){
-	if(ret.status){
-		api.alert({msg:'视图的id是'+ret.id});
-	}else{
-		api.alert({msg:ret.msg});
-	}
+var panorama = api.require('panorama');
+panorama.open({
+	x: 0,
+	y: 64,
+	w: api.winWidth,
+	h: 300,
+	imgPath: 'widget://res/img/ic/360viewtest.jpg',
+    fixedOn: api.frameName
+},function( ret, err ){
+	if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -156,8 +145,8 @@ id：
 ##示例代码
 
 ```js
-var obj = api.require('panorama');
-obj.close({
+var panorama = api.require('panorama');
+panorama.close({
 	id:1
 });
 ```
@@ -189,8 +178,8 @@ id：
 ##示例代码
 
 ```js
-var obj = api.require('panorama');
-obj.hide({
+var panorama = api.require('panorama');
+panorama.hide({
 	id:1
 });
 ```
@@ -222,8 +211,8 @@ id：
 ##示例代码
 
 ```js
-var obj = api.require('panorama');
-obj.show({
+var panorama = api.require('panorama');
+panorama.show({
 	id:1
 });
 ```
