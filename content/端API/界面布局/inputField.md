@@ -3,6 +3,8 @@ Title: inputField
 Description: inputField
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -36,7 +38,7 @@ Description: inputField
 
 #**概述**
 
-inputField是一个输入框，开发者可根据需求自定义其样式。该模块能巧妙的适配键盘高度，自定调整位置，始终紧贴软键盘
+inputField 是一个输入框，开发者可根据需求自定义其样式。该模块能巧妙的适配键盘高度，自定调整位置，始终紧贴软键盘
 
 ![图片说明](/img/docImage/inputField.jpg)
 
@@ -44,32 +46,32 @@ inputField是一个输入框，开发者可根据需求自定义其样式。该�
 
 打开输入框
 
-open({parmas},callback(ret))
+open({parmas}, callback(ret, err))
 
 ##params
 
 bgColor:
 
 - 类型：字符串
-- 描述：（可选项）输入视图背景色设置，支持rgba、rgb、#
+- 描述：（可选项）输入视图背景色设置，支持 rgba、rgb、#
 - 默认值：#696969
 
 lineColor:
 
 - 类型：字符串
-- 描述：（可选项）输入框视图最上边的分割线色设置，支持rgba、rgb、#
+- 描述：（可选项）输入框视图最上边的分割线色设置，支持 rgba、rgb、#
 - 默认值：#000
 
 borderColor:
 
 - 类型：字符串
-- 描述：（可选项）输入框边框色设置，支持rgba、rgb、#
+- 描述：（可选项）输入框边框色设置，支持 rgba、rgb、#
 - 默认值：#ff0000
 
 fileBgColor:
 
 - 类型：字符串
-- 描述：（可选项）输入框背景色设置，支持rgba、rgb、#
+- 描述：（可选项）输入框背景色设置，支持 rgba、rgb、#
 - 默认值：#fff
 
 sendImg:
@@ -94,11 +96,11 @@ placeholder：
 - 描述：（可选项）输入框的提示文字
 - 备注：若不传则不显示占位提示文字
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -110,17 +112,19 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('inputField');
-obj.open({
+var inputField = api.require('inputField');
+inputField.open({
 	bgColor:'#708090',
 	lineColor:'#C71585',
 	fileBgColor:'#90EE90',
 	borderColor:'#FFB6C1',
 	sendImg:'widget://res/img/sendImg.png',
 	fixedOn: api.frameName
-},function( ret ){		
+}, function(ret, err){   
     if( ret.status ){
         alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -135,13 +139,13 @@ iOS系统，Android系统
 
 设置输入框监听
 
-setInputFieldListener(callback(ret))
+setInputFieldListener(callback(ret, err))
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -159,8 +163,12 @@ ret：
 
 ```js
 var inputField = api.require('inputField');
-inputField.setInputFieldListener(function(ret,err){
-    alert(JSON.stringify(ret) + JSON.stringify(err));
+inputField.setInputFieldListener(function(ret, err){    
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -175,13 +183,13 @@ iOS系统，Android系统
 
 关闭输入框
 
-close(callBack(ret,err));
+close(callback(ret, err));
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -192,8 +200,10 @@ ret：
 
 ##示例代码
 
-    var obj = api.require('inputField');
-    obj.close();
+```js
+var inputField = api.require('inputField');
+inputField.close();
+```
 
 ##可用性
 
@@ -205,13 +215,13 @@ iOS系统，Android系统
 
 隐藏输入框，并没有从内存里清除
 
-hide(callBack(ret,err))
+hide(callback(ret, err))
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -222,10 +232,16 @@ ret：
 
 ##示例代码
 
-    var obj = api.require('inputField');
-    obj.hide(function(ret,err){
-    });
-
+```js
+var inputField = api.require('inputField');
+inputField.hide(function(ret, err){   
+  if( ret ){
+      alert( JSON.stringify( ret ) );
+  }else{
+      alert( JSON.stringify( err ) );
+  }
+});
+```
 
 ##可用性
 
@@ -237,13 +253,13 @@ iOS系统，Android系统
 
 显示输入框
 
-show(callBack(ret,err));
+show(callback(ret, err));
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -254,9 +270,10 @@ ret：
 
 ##示例代码
 
-    var obj = api.require('inputField');
-    obj.show();
-
+```js
+var inputField = api.require('inputField');
+inputField.show();
+```
 
 ##可用性
 
@@ -268,13 +285,13 @@ iOS系统，Android系统
 
 弹出键盘
 
-becomeFirstResponder(callBack(ret))
+becomeFirstResponder(callback(ret, err))
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -285,10 +302,16 @@ ret：
 
 ##示例代码
 
-    var obj = api.require('inputField');
-    obj.becomeFirstResponder(function(ret,err){
-
-    });
+```js
+var inputField = api.require('inputField');
+inputField.becomeFirstResponder(function(ret, err){   
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
+```
 
 ##可用性
 
@@ -300,13 +323,13 @@ iOS系统，Android系统
 
 隐藏键盘
 
-resignFirstResponder(callBack(ret))
+resignFirstResponder(callback(ret, err))
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -317,9 +340,10 @@ ret：
 
 ##示例代码
 
-    var obj = api.require('inputField');
-    obj. resignFirstResponder ();
-
+```js
+var inputField = api.require('inputField');
+inputField.resignFirstResponder();
+```
 
 ##可用性
 
@@ -331,7 +355,7 @@ iOS系统，Android系统
 
 设置输入框内的文字
 
-setMsg({params},callback(ret))
+setMsg({params},callback( ret, err))
 
 ##params
 
@@ -341,11 +365,11 @@ msg：
 - 描述：（可选项）要设置的输入框内的文字内容
 - 默认值：空字符串
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -356,14 +380,16 @@ ret：
 ##示例代码
 
 ```js
-   var obj = api.require('inputField');
-   obj.setMsg({
-      msg:"设置的文字"
-   },function(ret,err){
-      if(ret.status){
-        api.alert({msg:"设置成功"});
-      }
-   });
+var inputField = api.require('inputField');
+inputField.setMsg({
+    msg:'设置的文字'
+}, function(ret, err){   
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
 ```
 
 ##可用性
@@ -382,7 +408,7 @@ setMsg(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -393,9 +419,13 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('inputField');
-obj.getMsg(function(ret,err){
-    api.alert({msg:ret.msg });
+var inputField = api.require('inputField');
+inputField.getMsg(function(ret, err){   
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -409,7 +439,7 @@ iOS系统，Android系统
 
 配置当前输入框内的文字
 
-configMsg({params},callback(ret, err))
+configMsg({params}, callback(ret, err))
 
 ##params
 
@@ -417,13 +447,13 @@ msg：
 
 - 类型：字符串
 - 描述：（可选项）要设置的输入框内的文字内容
-- 备注：若不传则此接口callBack当前值
+- 备注：若不传则此接口 callBack 当前值
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -435,10 +465,12 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('inputField');
-obj.configMsg(function(ret,err){
-    if(ret.status){
-      api.alert({msg:ret.msg });
+var inputField = api.require('inputField');
+inputField.configMsg(function(ret, err){    
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -472,8 +504,8 @@ msg：
 ##示例代码
 
 ```js
-var obj = api.require('inputField');
-obj.insertMsg({
+var inputField = api.require('inputField');
+inputField.insertMsg({
    msg:'这里是插入的字符串'
 });
 ```
@@ -502,8 +534,8 @@ placeholder：
 ##示例代码
 
 ```js
-var obj = api.require('inputField');
-obj. setPlaceholder({
+var inputField = api.require('inputField');
+inputField.setPlaceholder({
    placeholder:'我是占位提示文字'
 });
 ```

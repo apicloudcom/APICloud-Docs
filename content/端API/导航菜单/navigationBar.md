@@ -3,6 +3,8 @@ Title: navigationBar
 Description: navigationBar
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -22,7 +24,7 @@ Description: navigationBar
 
 #**概述**
 
-本模块用来以原生方式实现应用中常用的导航条功能. 配合apicloud 平台的frameGroup功能(api.openFrameGroup)与 tabBar 模块可实现复杂内容的优雅导航和展示
+本模块用来以原生方式实现应用中常用的导航条功能. 配合 apicloud 平台的 frameGroup 功能( api.openFrameGroup )与 tabBar 模块可实现复杂内容的优雅导航和展示
 
 ![图片说明](/img/docImage/navigationBar.jpg)
 
@@ -30,7 +32,7 @@ Description: navigationBar
 
 打开
 
-open(params, callback)
+open({params}, callback(ret, err))
 
 ##params
 
@@ -50,19 +52,19 @@ w：
 
 - 类型：数字
 - 描述：（可选项）导航条宽度
-- 默认值：当前frame宽度.默认值,仅在style参数为"left_to_right"时有效
+- 默认值：当前frame宽度.默认值,仅在style参数为'left_to_right'时有效
 
 h：
 
 - 类型：数字
 - 描述：（可选项）导航条高度
-- 默认值：当前frame高度.默认值,仅在style参数为"up_to_down "时有效
+- 默认值：当前frame高度.默认值,仅在style参数为'up_to_down '时有效
 
 style：
 
 - 类型：字符串
 - 描述：（可选项）导航条风格
-- 默认值："left_to_right"
+- 默认值：'left_to_right'
 - 取值范围：
 	- left_to_right	：item从左到右排列
 	- up_to_down   ：item从上到下排列
@@ -77,8 +79,8 @@ items：
 [{
 	title:			// 标题.字符串类型.不可为空
 	titleSelected: 	// 选中后的标题.字符串.默认与title相同.可为空.
-	bg:				// 背景,支持rgb,rgba,# , img. 字符串，默认#696969，可为空
-	bgSelected:   	//  选中后背景,支持rgb,rgba,# , img.字符串.默认与bg相同.可为空.
+	bg:				// 背景,支持 rgb,rgba,# , img. 字符串，默认#696969，可为空
+	bgSelected:   	//  选中后背景,支持 rgb,rgba,# , img.字符串.默认与bg相同.可为空.
 	alpha: 		    // 背景透明度. 数字.取值范围0-1，默认1，可为空
 }]
 ```
@@ -90,7 +92,7 @@ selectedIndex：
 
 font：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 默认值：与系统设置相同
 - 描述：导航项字体的大小和颜色
 - 内部字段:
@@ -108,7 +110,7 @@ font：
 bg：
 
 - 类型：字符串
-- 描述：（可选项）导航条背景，支持rgb、rgba、#、img
+- 描述：（可选项）导航条背景，支持 rgb、rgba、#、img
 - 默认值：#6b6b6b
 
 alpha：
@@ -120,14 +122,14 @@ alpha：
 
 itemSize：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）单个导航项的宽度和高度
 - 内部字段:
 
 ```js
 {
-	w:// 单个导航项的宽度.数字.默认为导航条宽度/导航项个数. 可不传.仅在导航条style参数为 "left_to_right"时有效.
-	h:// 单个导航项的高度.数字.默认为导航条高度/导航项个数.可不传.仅在导航条style参数为 "up_to_down"时有效.
+	w:// 单个导航项的宽度.数字.默认为导航条宽度/导航项个数. 可不传.仅在导航条style参数为 'left_to_right'时有效.
+	h:// 单个导航项的高度.数字.默认为导航条高度/导航项个数.可不传.仅在导航条style参数为 'up_to_down'时有效.
 }
 ```
 
@@ -147,7 +149,7 @@ fixed:
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：包含被点击的导航项的相关信息
 - 内部字段：
 
@@ -183,8 +185,8 @@ navigationBar.open({
     w: api.frameWidth,
     h: 42,
     itemSize : {
-					w : 150
-				},
+		w : 150
+	},
     items: [{
         title: '标题一',
         bg: '#ffff00',
@@ -210,7 +212,7 @@ navigationBar.open({
         color: '#333'
     },
     fixedOn: api.frameName
-},function( ret, err ){		
+}, function(ret, err){		
 	if( ret ){
 		alert( JSON.stringify( ret ) );
 	}else{
@@ -242,7 +244,7 @@ iOS系统，Android系统
 
 关闭
 
-close(params)
+close({params})
 
 ##params
 
@@ -270,7 +272,7 @@ iOS系统，Android系统
 
 隐藏
 
-hide(params)
+hide({params})
 
 ##params
 
@@ -296,7 +298,7 @@ iOS系统，Android系统
 
 显示
 
-show(params)
+show({params})
 
 ##params
 
@@ -318,13 +320,11 @@ iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
-
-
 #**config**<div id="5"></div>
 
 设置或获取模块配置的值
 
-config(params, callback)
+config({params}, callback(ret, err))
 
 ##params
 
@@ -347,7 +347,7 @@ value：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：设置属性成功时返回
 - 内部字段：
 
@@ -377,7 +377,7 @@ err:
 var navigationBar = api.require('navigationBar');
 navigationBar.config({
 	key: 'y'
-},function( ret, err ){		
+}, function(ret, err){		
 	if( ret ){
 		alert( JSON.stringify( ret ) );
 	}else{
@@ -396,4 +396,3 @@ navigationBar.config({
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
-

@@ -3,6 +3,8 @@ Title: timeSelector
 Description: timeSelector
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -22,7 +24,7 @@ Description: timeSelector
 
 #**概述**
 
-timeSelector是时间选择器，由两个可上下滚动的滚轮组成。原生实现滚轮效果，流畅无卡顿
+timeSelector 是时间选择器，由两个可上下滚动的滚轮组成。原生实现滚轮效果，流畅无卡顿
 
 ![图片说明](/img/docImage/timeSelector.jpg)
 
@@ -74,31 +76,31 @@ bgColor：
 
 - 类型：字符串
 - 默认值：#FFFFFF
-- 描述：选中条目的背景色值，支持rgb，rgba，#，可为空
+- 描述：选中条目的背景色值，支持 rgb，rgba，#，可为空
 
 normalColor：
 
 - 类型：字符串
 - 默认值：#959595
-- 描述：未选中条目的数字色值，支持rgb，rgba，#，可为空
+- 描述：未选中条目的数字色值，支持 rgb，rgba，#，可为空
 
 selectedColor：
 
 - 类型：字符串
 - 默认值：#3685dd
-- 描述：选中条目的数字色值，支持rgb，rgba，#，可为空
+- 描述：选中条目的数字色值，支持 rgb，rgba，#，可为空
 
 separateColor：
 
 - 类型：字符串
 - 默认值：#575757
-- 描述：中间分割线的色值，支持rgb，rgba，#，可为空
+- 描述：中间分割线的色值，支持 rgb，rgba，#，可为空
 
 titleColor：
 
 - 类型：字符串
 - 默认值：#3685dd
-- 描述：时分文字的色值，支持rgb，rgba，#，可为空
+- 描述：时分文字的色值，支持 rgb，rgba，#，可为空
 
 fixedOn：
 
@@ -115,7 +117,7 @@ fixed:
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -152,7 +154,7 @@ timeSelector.open({
 
 ##可用性
 
-IOS系统 ，Android系统
+iOS系统 ，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -193,7 +195,7 @@ timeSelector.set({
 
 ##可用性
 
-IOS系统 ，Android系统
+iOS系统 ，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -217,7 +219,7 @@ timeSelector.close();
 
 ##可用性
 
-IOS系统 ，Android系统
+iOS系统 ，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -241,7 +243,7 @@ timeSelector.hide();
 
 ##可用性
 
-IOS系统 ，Android系统
+iOS系统 ，Android系统
 
 可提供的1.0.1及更高版本
 
@@ -264,6 +266,6 @@ timeSelector.show();
 
 ##可用性
 
-IOS系统 ，Android系统
+iOS系统 ，Android系统
 
 可提供的1.0.1及更高版本

@@ -3,6 +3,8 @@ Title: stackMenu
 Description: stackMenu
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 	<li><a href="#const-content">Constant</a></li>
@@ -21,7 +23,7 @@ Description: stackMenu
 
 #**概述**
 
-stackMenu是一个栈菜单，高度模仿mac系统下的dock管理器。同时允许开发者自定义按钮样式和个数，让开发者轻松实现复杂的ui效果。本模块已停止更新，建议使用优化升级版模块[MNStack](http://docs.apicloud.com/端API/导航菜单/MNStack)
+stackMenu 是一个栈菜单，高度模仿 mac 系统下的 dock 管理器。同时允许开发者自定义按钮样式和个数，让开发者轻松实现复杂的ui效果。本模块已停止更新，建议使用优化升级版模块 [MNStack](http://docs.apicloud.com/端API/导航菜单/MNStack)
 
 ![图片说明](/img/docImage/stackMenu.jpg)
 
@@ -82,7 +84,7 @@ items：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -104,7 +106,7 @@ stackMenu.open({
         title: '标题二',
         icon: 'widget://res/img/ic/clock.png'
     }]
-},function( ret, err ){		
+}, function(ret, err){		
     if( ret ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -115,11 +117,11 @@ stackMenu.open({
 
 ##补充说明
 
-打开stack菜单
+打开 stack 菜单
 
 ##可用性
 
-IOS系统，安卓系统
+iOS系统，Android系统
 
 可提供的0.0.1及更高版本
 
@@ -143,10 +145,9 @@ stackMenu.close();
 
 ##可用性
 
-IOS系统，安卓系统
+iOS系统，Android系统
 
 可提供的0.0.1及更高版本
-
 
 #**show**<div id="3"></div>
 
@@ -167,7 +168,7 @@ stackMenu.show();
 
 ##可用性
 
-IOS系统，安卓系统
+iOS系统，Android系统
 
 可提供的0.0.1及更高版本
 
@@ -191,7 +192,7 @@ stackMenu.hide();
 
 ##可用性
 
-IOS系统，安卓系统
+iOS系统，Android系统
 
 可提供的0.0.1及更高版本
 
@@ -207,6 +208,3 @@ IOS系统，安卓系统
 - right_down 	//向右边向下弹出
 - left_up		//往左边向上弹出
 - left_down		//向左边向下弹出
-
-
-

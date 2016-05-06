@@ -3,6 +3,8 @@ Title: citySelector
 Description: citySelector
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -92,7 +94,7 @@ fixedOn：
 
 ret：
 
-类型：JSON对象
+类型：JSON 对象
 
 内部字段：
 
@@ -111,7 +113,7 @@ var citySelector = api.require('citySelector');
 citySelector.open({
     y: api.frameHeight / 1.6,
     fixedOn: api.frameName
-}, function( ret, err ){		
+}, function(ret, err){		
     if( ret ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -126,7 +128,7 @@ citySelector.open({
 
 ##可用性
 
-IOS系统，安卓系统
+iOS系统，安卓系统
 
 可提供的0.0.1及更高版本
 
@@ -135,7 +137,7 @@ IOS系统，安卓系统
 
 隐藏选择器
 
-hide(params)
+hide({params})
 
 ##params
 
@@ -158,7 +160,7 @@ anim：
 
 ##可用性
 
-IOS系统，安卓系统
+iOS系统，安卓系统
 
 可提供的0.0.1及更高版本
 
@@ -190,7 +192,7 @@ citySelector.show();
 
 ##可用性
 
-IOS系统，安卓系统
+iOS系统，安卓系统
 
 可提供的0.0.1及更高版本
 
@@ -223,7 +225,7 @@ citySelector.close();
 
 ##可用性
 
-IOS系统，安卓系统
+iOS系统，安卓系统
 
 可提供的0.0.1及更高版本
 

@@ -3,6 +3,8 @@ Title: listView
 Description: listView
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -40,7 +42,7 @@ Description: listView
 
 #**概述**
 
-listView封装了一个列表控件，可实现一个可左右拖动item的列表视图。开发者可根据需求自定义列表的数据源，亦可自定义相关字段的样式。支持设置下拉刷新和上拉加载更多事件。**UIListView 模块是 listView 模块的优化版，建议使用 [UIListView](http://docs.apicloud.com/端API/界面布局/UIListView) 模块，此模块已停止更新。**
+listView 封装了一个列表控件，可实现一个可左右拖动item的列表视图。开发者可根据需求自定义列表的数据源，亦可自定义相关字段的样式。支持设置下拉刷新和上拉加载更多事件。**UIListView 模块是 listView 模块的优化版，建议使用 [UIListView](http://docs.apicloud.com/端API/界面布局/UIListView) 模块，此模块已停止更新。**
 
 ![图片说明](/img/docImage/listView.jpg)
 
@@ -86,9 +88,9 @@ leftBtn：
 
 ```js
 [{
-	color:                  //按钮背景色，支持rgb，rgba，#
+	color:                  //按钮背景色，支持 rgb，rgba，#
 	title:                  //（可选项）按钮名字，不传则不显示
-    selectedColor    	    //按钮选中时候的颜色值，支持rgb，rgba，#
+    selectedColor    	    //按钮选中时候的颜色值，支持 rgb，rgba，#
 }]
 ```
 
@@ -108,11 +110,11 @@ rightBtn：
 
 ```js
   [{
-      bg:         	  //（可选项）按钮背景色，支持rgb，rgba，#，默认#388e8e
+      bg:         	  //（可选项）按钮背景色，支持 rgb，rgba，#，默认#388e8e
       title:          //（可选项）按钮标题，字符串类型，默认空字符串
       titleSize:      //（可选项）按钮标题字体大小，数字类型，默认12
-      titleColor:      //（可选项）按钮标题颜色，支持rgb，rgba，#，默认#ffffff，可为空
-      highlightColor  //（可选项）按钮选中时的颜色值,支持rgb，rgba，#，默认无
+      titleColor:      //（可选项）按钮标题颜色，支持 rgb，rgba，#，默认#ffffff，可为空
+      highlightColor  //（可选项）按钮选中时的颜色值,支持 rgb，rgba，#，默认无
       icon            //（可选项）按钮标题前图标图片路径，图标大小20*20，默认无，可不传，支持本地协议路径，如widget：//、fs://等
    }]
 ```
@@ -121,25 +123,25 @@ rightBg：
 
 - 类型：字符串
 - 默认值：#6c7b8b
-- 描述：（可选项）往左滑动item露出的视图的背景色，支持rgb，rgba，#
+- 描述：（可选项）往左滑动item露出的视图的背景色，支持 rgb，rgba，#
 
 borderColor：
 
 - 类型：字符串
 - 默认值：#696969
-- 描述：（可选项）每个item之间分割线的颜色，支持rgb，rgba，#
+- 描述：（可选项）每个item之间分割线的颜色，支持 rgb，rgba，#
 
 cellBgColor：
 
 - 类型：字符串
 - 默认值:#AFEEEE
-- 描述：（可选项）item的背景色，支持rgb，rgba，#
+- 描述：（可选项）item的背景色，支持 rgb，rgba，#
 
 cellSelectColor：
 
 - 类型：字符串
 - 默认值：#F5F5F5
-- 描述：（可选项）选中item时的颜色，支持rgb，rgba，#
+- 描述：（可选项）选中item时的颜色，支持 rgb，rgba，#
 
 cellHeight：
 
@@ -187,7 +189,7 @@ data：
 	subTitle:               //（可选项）item的子标题，若不传或为空字符串则title上下位置居中显示
 	titleLocation           //（可选项）标题在水平线上的位置，取值范围：center,left,right，默认left
 	titleSize               //（可选项）标题字体的大小，默认12
-	titleColor              //（可选项）标题字体的颜色值，默认#000000，支持rgb,rgba,#
+	titleColor              //（可选项）标题字体的颜色值，默认#000000，支持 rgb,rgba,#
 	subTitleLocation        //（可选项）子标题在水平线上的位置，取值范围：center,left,right默认left
 	subTitleSize            //（可选项）子标题字体的大小，默认12
 	subTitleColor           //（可选项）子标题字体的颜色值,默认黑色,rgb,rgba,#
@@ -196,11 +198,11 @@ data：
     rightBtn:   //(可选项)数组对象,往左滑动item露出的按钮信息组成的数组，无默认值，若为空则以open接口内data参数外的rightBtn参数为准，若open接口内data参数外的rightBtn参数和本参数都不传，则不可向左滑动
 	            内部字段：
 	            [{
-		           bg:         	  //（可选项）按钮背景色，支持rgb，rgba，#，默认#388e8e
+		           bg:         	  //（可选项）按钮背景色，支持 rgb，rgba，#，默认#388e8e
 		           title:        //（可选项）按钮标题，字符串类型，默认空字符串
 		           titleSize:    //（可选项）按钮标题字体大小，数字类型，默认12
-		           titleColor:    //（可选项）按钮标题颜色，支持rgb，rgba，#，默认#ffffff，可为空
-		           highlightColor//（可选项）按钮选中时的颜色值,支持rgb，rgba，#，默认无
+		           titleColor:    //（可选项）按钮标题颜色，支持 rgb，rgba，#，默认#ffffff，可为空
+		           highlightColor//（可选项）按钮选中时的颜色值,支持 rgb，rgba，#，默认无
 		           icon          //（可选项）按钮标题前图标图片路径，图标大小20*20，默认无，可不传，支持本地协议路径，如widget：//、fs://等
 	             }]
 	rightSlipDistance:		//（可选项）向左滑动露出右边按钮时，item的滑动距离占item宽的百分比，默认50，取值范围30-100
@@ -222,7 +224,7 @@ leftSlipDistance：
 
 markStyle：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：见内部字段
 - 描述：（可选项）item右边的arrow，remark样式配置
 - 内部字段：
@@ -230,7 +232,7 @@ markStyle：
 ```js
 {
      remarkMargin:   //（可选项）备注距离右边的边距，数字类型，默认10
-     remarkColor:    //（可选项）备注距字体颜色，支持rgb，rgba，#，默认#000000
+     remarkColor:    //（可选项）备注距字体颜色，支持 rgb，rgba，#，默认#000000
      remarkSize:     //（可选项）备注字体大小，数字类型，默认16
      arrowSize:      //（可选项）右边图标大小，数字类型，默认30
 }
@@ -240,7 +242,7 @@ markStyle：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -262,15 +264,19 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('listView');
-obj.open({
+var listView = api.require('listView');
+listView.open({
     h:300,
     leftBtn:[{color:'#8B0000',title:'左按钮1'},{color:'#228B22',title:'左按钮2'}],
     rightBtn:[{color:'#8B0000',title:'右按钮1'},{color:'#228B22',title:'右按钮2'}],
     placeholderImg: 'widget://res/listview.png',
     data:[{ img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',title:'标题',subTitle:'子标题，说明文字。。。。。。'},{ title:'标题',subTitle:'子标题'},{title:'标题',subTitle:'子标题'},{ title:'标题',subTitle:'子标题'},{ title:'标题',subTitle:'子标题'},{ title:'标题',subTitle:'子标题'},{ title:'标题',subTitle:'子标题'},{ title:'标题',subTitle:'子标题 '},{title:'标题',subTitle:'子标题'},{ title:'标题',subTitle:'子标题 '},{ title:'标题',subTitle:'子标题'}]
-},function(ret,err){
-    api.alert({msg:ret.index});
+}, function(ret, err){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -288,7 +294,7 @@ iOS系统，Android系统
 
 重设模块视图的y，和h
 
-setFrame({params })
+setFrame({params})
 
 ##params
 
@@ -314,11 +320,13 @@ h：
 
 ##示例代码
 
-	var obj = api.require('listView');
-	obj.setFrame({
-		anim:true ,
-		y:0
-	});
+```js
+var listView = api.require('listView');
+listView.setFrame({
+	anim:true ,
+	y:0
+});
+```
 
 ##补充说明
 
@@ -334,7 +342,7 @@ iOS系统，Android系统
 
 根据唯一标识查找该item在列表中的下标
 
-getIndex({params },callBack(ret,err))
+getIndex({params}, callBack(ret, err))
 
 ##params
 
@@ -350,11 +358,11 @@ value：
 - 默认值：无
 - 描述：每条item数据的唯一标识
 
-##callBack
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -365,13 +373,19 @@ ret：
 
 ##示例代码
 
-	var obj = api.require('listView');
-	obj.getIndex({
-	key:"uid",
-	     value:"00000001"
-	},function(ret,err){
-	     api.alert({msg:ret.index});
-	});
+```js
+var listView = api.require('listView');
+listView.getIndex({
+	key: 'uid',
+	value: '00000001'
+}, function(ret, err){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
+```
 
 ##补充说明
 
@@ -387,7 +401,7 @@ iOS系统，Android系统
 
 设置侧滑item显示出来按钮
 
-setRightButtons({params })
+setRightButtons({params})
 
 ##params
 
@@ -407,11 +421,11 @@ rightBtn：
 
 ```js
    [{
-        bg:         	  //（可选项）按钮背景色，支持rgb，rgba，#，默认#388e8e
+        bg:         	  //（可选项）按钮背景色，支持 rgb，rgba，#，默认#388e8e
         title:        //（可选项）按钮标题，字符串类型，默认空字符串
         titleSize:    //（可选项）按钮标题字体大小，数字类型，默认12
-        titleColor:    //（可选项）按钮标题颜色，支持rgb，rgba，#，默认#ffffff，可为空
-        highlightColor//（可选项）按钮选中时的颜色值,支持rgb，rgba，#，默认无
+        titleColor:    //（可选项）按钮标题颜色，支持 rgb，rgba，#，默认#ffffff，可为空
+        highlightColor//（可选项）按钮选中时的颜色值,支持 rgb，rgba，#，默认无
         icon          //（可选项）按钮标题前图标图片路径，图标大小20*20，默认无，可不传，支持本地协议路径，如widget：//、fs://等
    }]
 ```
@@ -419,23 +433,23 @@ rightBtn：
 ##示例代码
 
 ```js
-var obj = api.require('messageList');
-obj.setRightButtons({
+var listView = api.require('messageList');
+listView.setRightButtons({
      index:0,
      rightBtn: [{
-            bg:  "#556B2F",  //按钮背景色，支持rgb，rgba，#，默认#ee8262.
-            title: "取消", //按钮名字，字符串类型，默认‘按钮’
-            titleSize: 13,      //按钮标题大小，默认12
-            titleColor: "#000000", // 按钮标题颜色，支持rgb，rgba，#，默认#ffffff
-            selectedColor: "#FFFFFF",  //按钮选中时候的颜色值,支持rgb，rgba，#
-            icon:"widget://image/messageList/delete.png"
+            bg:  '#556B2F',  			//按钮背景色，支持 rgb，rgba，#，默认#ee8262.
+            title: '取消', 				//按钮名字，字符串类型，默认‘按钮’
+            titleSize: 13,      		//按钮标题大小，默认12
+            titleColor: '#000000',  	// 按钮标题颜色，支持 rgb，rgba，#，默认#ffffff
+            selectedColor: '#FFFFFF',   //按钮选中时候的颜色值,支持 rgb，rgba，#
+            icon:'widget://image/messageList/delete.png'
         }, {
-            bg:  "#4EEE94",  //按钮背景色，支持rgb，rgba，#，默认#ee8262.
-            title: "取消置顶", //按钮名字，字符串类型，默认‘按钮’
-            titleSize: 13,      //按钮标题大小，默认12
-            titleColor: "#000000", // 按钮标题颜色，支持rgb，rgba，#，默认#ffffff
-            selectedColor: "ffffff",  //按钮选中时候的颜色值,支持rgb，rgba，#
-            icon:"widget://image/messageList/delete.png"
+            bg:  '#4EEE94',  			//按钮背景色，支持 rgb，rgba，#，默认#ee8262.
+            title: '取消置顶', 			//按钮名字，字符串类型，默认‘按钮’
+            titleSize: 13,      		//按钮标题大小，默认12
+            titleColor: '#000000', 		// 按钮标题颜色，支持 rgb，rgba，#，默认#ffffff
+            selectedColor: 'ffffff',  	//按钮选中时候的颜色值,支持 rgb，rgba，#
+            icon:'widget://image/messageList/delete.png'
         }]
 });
 ```
@@ -458,8 +472,10 @@ close()
 
 ##示例代码
 
-    var obj = api.require('listView');
-    obj.close();
+```js
+var listView = api.require('listView');
+listView.close();
+```
 
 ##补充说明
 
@@ -495,7 +511,7 @@ data：
 	subTitle:               //（可选项）item的子标题，若不传或为空字符串则title上下位置居中显示
 	titleLocation           //（可选项）标题在水平线上的位置，取值范围：center,left,right，默认left
 	titleSize               //（可选项）标题字体的大小，默认12
-	titleColor              //（可选项）标题字体的颜色值，默认#000000，支持rgb,rgba,#
+	titleColor              //（可选项）标题字体的颜色值，默认#000000，支持 rgb,rgba,#
 	subTitleLocation        //（可选项）子标题在水平线上的位置，取值范围：center,left,right默认left
 	subTitleSize            //（可选项）子标题字体的大小，默认12
 	subTitleColor           //（可选项）子标题字体的颜色值,默认黑色,rgb,rgba,#
@@ -504,11 +520,11 @@ data：
     rightBtn:   //(可选项)数组对象,往左滑动item露出的按钮信息组成的数组，无默认值，若为空则以open接口内data参数外的rightBtn参数为准，若open接口内data参数外的rightBtn参数和本参数都不传，则不可向左滑动
                   内部字段：
                   [{
-	                  bg:         	  //（可选项）按钮背景色，支持rgb，rgba，#，默认#388e8e
+	                  bg:         	  //（可选项）按钮背景色，支持 rgb，rgba，#，默认#388e8e
 	                  title:        //（可选项）按钮标题，字符串类型，默认空字符串
 	                  titleSize:    //（可选项）按钮标题字体大小，数字类型，默认12
-	                  titleColor:    //（可选项）按钮标题颜色，支持rgb，rgba，#，默认#ffffff，可为空
-	                  highlightColor//（可选项）按钮选中时的颜色值,支持rgb，rgba，#，默认无
+	                  titleColor:    //（可选项）按钮标题颜色，支持 rgb，rgba，#，默认#ffffff，可为空
+	                  highlightColor//（可选项）按钮选中时的颜色值,支持 rgb，rgba，#，默认无
 	                  icon          //（可选项）按钮标题前图标图片路径，图标大小20*20，默认无，可不传，支持本地协议路径，如widget：//、fs://等
                   }]
 }]
@@ -517,8 +533,8 @@ data：
 ##示例代码
 
 ```js
-var obj = api.require('listView');
-obj.reloadData({
+var listView = api.require('listView');
+listView.reloadData({
 	data:[{title:'标题',subTitle:'子标题，说明文字'},
 		{title:'标题',subTitle:'子标题'},
 		{title:'标题',subTitle:'子标题，说明文字'},
@@ -562,10 +578,10 @@ index：
 ##示例代码
 
 ```js
-var obj = api.require('listView');
- obj.deleteItem({
-      index:2
- });
+var listView = api.require('listView');
+listView.deleteItem({
+	index: 2
+});
 ```
 
 ##补充说明
@@ -594,7 +610,7 @@ index：
 
 data：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：见内部字段
 - 描述：（可选项）要刷新的item的数据源
 - 内部字段：
@@ -607,7 +623,7 @@ data：
 	subTitle:               //（可选项）item的子标题，若不传或为空字符串则title上下位置居中显示
 	titleLocation           //（可选项）标题在水平线上的位置，取值范围：center,left,right，默认left
 	titleSize               //（可选项）标题字体的大小，默认12
-	titleColor              //（可选项）标题字体的颜色值，默认#000000，支持rgb,rgba,#
+	titleColor              //（可选项）标题字体的颜色值，默认#000000，支持 rgb,rgba,#
 	subTitleLocation        //（可选项）子标题在水平线上的位置，取值范围：center,left,right默认left
 	subTitleSize            //（可选项）子标题字体的大小，默认12
 	subTitleColor           //（可选项）子标题字体的颜色值,默认黑色,rgb,rgba,#
@@ -616,11 +632,11 @@ data：
     rightBtn:   //(可选项)数组对象,往左滑动item露出的按钮信息组成的数组，无默认值，若为空则以open接口内data参数外的rightBtn参数为准，若open接口内data参数外的rightBtn参数和本参数都不传，则不可向左滑动
                   内部字段：
                   [{
-	                  bg:         	  //（可选项）按钮背景色，支持rgb，rgba，#，默认#388e8e
+	                  bg:         	  //（可选项）按钮背景色，支持 rgb，rgba，#，默认#388e8e
 	                  title:        //（可选项）按钮标题，字符串类型，默认空字符串
 	                  titleSize:    //（可选项）按钮标题字体大小，数字类型，默认12
-	                  titleColor:    //（可选项）按钮标题颜色，支持rgb，rgba，#，默认#ffffff，可为空
-	                  highlightColor//（可选项）按钮选中时的颜色值,支持rgb，rgba，#，默认无
+	                  titleColor:    //（可选项）按钮标题颜色，支持 rgb，rgba，#，默认#ffffff，可为空
+	                  highlightColor//（可选项）按钮选中时的颜色值,支持 rgb，rgba，#，默认无
 	                  icon          //（可选项）按钮标题前图标图片路径，图标大小20*20，默认无，可不传，支持本地协议路径，如widget：//、fs://等
                   }]
 }
@@ -628,10 +644,13 @@ data：
 ##示例代码
 
 ```js
-var obj = api.require('listView');
-obj.refreshItem({
-      index:2,
-      data: {title:'刷新指定下标的标题', subTitle:'刷新指定下标的子标题'}
+var listView = api.require('listView');
+listView.refreshItem({
+	index:2,
+	data: {
+		title:'刷新指定下标的标题', 
+		subTitle:'刷新指定下标的子标题'
+	}
 });
 ```
 
@@ -661,7 +680,7 @@ index：
 
 data：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：见内部字段
 - 描述：数据源
 - 内部字段：
@@ -674,7 +693,7 @@ data：
 	subTitle:               //（可选项）item的子标题，若不传或为空字符串则title上下位置居中显示
 	titleLocation           //（可选项）标题在水平线上的位置，取值范围：center,left,right，默认left
 	titleSize               //（可选项）标题字体的大小，默认12
-	titleColor              //（可选项）标题字体的颜色值，默认#000000，支持rgb,rgba,#
+	titleColor              //（可选项）标题字体的颜色值，默认#000000，支持 rgb,rgba,#
 	subTitleLocation        //（可选项）子标题在水平线上的位置，取值范围：center,left,right默认left
 	subTitleSize            //（可选项）子标题字体的大小，默认12
 	subTitleColor           //（可选项）子标题字体的颜色值,默认黑色,rgb,rgba,#
@@ -683,11 +702,11 @@ data：
     rightBtn:   //(可选项)数组对象,往左滑动item露出的按钮信息组成的数组，无默认值，若为空则以open接口内data参数外的rightBtn参数为准，若open接口内data参数外的rightBtn参数和本参数都不传，则不可向左滑动
                   内部字段：
                   [{
-	                  bg:         	  //（可选项）按钮背景色，支持rgb，rgba，#，默认#388e8e
+	                  bg:         	  //（可选项）按钮背景色，支持 rgb，rgba，#，默认#388e8e
 	                  title:        //（可选项）按钮标题，字符串类型，默认空字符串
 	                  titleSize:    //（可选项）按钮标题字体大小，数字类型，默认12
-	                  titleColor:    //（可选项）按钮标题颜色，支持rgb，rgba，#，默认#ffffff，可为空
-	                  highlightColor//（可选项）按钮选中时的颜色值,支持rgb，rgba，#，默认无
+	                  titleColor:    //（可选项）按钮标题颜色，支持 rgb，rgba，#，默认#ffffff，可为空
+	                  highlightColor//（可选项）按钮选中时的颜色值,支持 rgb，rgba，#，默认无
 	                  icon          //（可选项）按钮标题前图标图片路径，图标大小20*20，默认无，可不传，支持本地协议路径，如widget：//、fs://等
                   }]
 }
@@ -695,16 +714,16 @@ data：
 ##示例代码
 
 ```js
-var obj = api.require('listView');
- obj.insertItem({
-    index:2,
-data:{
-   img:' http://d.hiphotos.baidu.com/image/pic/item/4d086e061d950a7b29a788c209d162d9f2d3c922.jpg ',
-    title:'12:00',
-    subTitle:'APICloud粉丝互动会',
-        remark:'完成'
-      }
- });
+var listView = api.require('listView');
+listView.insertItem({
+	index: 2,
+	data: {
+		img: 'http://d.hiphotos.baidu.com/image/pic/item/4d086e061d950a7b29a788c209d162d9f2d3c922.jpg ',
+		title: '12:00',
+		subTitle: 'APICloud粉丝互动会',
+		remark: '完成'
+	}
+});
 ```
 
 ##补充说明
@@ -741,7 +760,7 @@ data：
 	subTitle:               //（可选项）item的子标题，若不传或为空字符串则title上下位置居中显示
 	titleLocation           //（可选项）标题在水平线上的位置，取值范围：center,left,right，默认left
 	titleSize               //（可选项）标题字体的大小，默认12
-	titleColor              //（可选项）标题字体的颜色值，默认#000000，支持rgb,rgba,#
+	titleColor              //（可选项）标题字体的颜色值，默认#000000，支持 rgb,rgba,#
 	subTitleLocation        //（可选项）子标题在水平线上的位置，取值范围：center,left,right默认left
 	subTitleSize            //（可选项）子标题字体的大小，默认12
 	subTitleColor           //（可选项）子标题字体的颜色值,默认黑色,rgb,rgba,#
@@ -750,11 +769,11 @@ data：
     rightBtn:   //(可选项)数组对象,往左滑动item露出的按钮信息组成的数组，无默认值，若为空则以open接口内data参数外的rightBtn参数为准，若open接口内data参数外的rightBtn参数和本参数都不传，则不可向左滑动
                   内部字段：
                   [{
-	                  bg:         	  //（可选项）按钮背景色，支持rgb，rgba，#，默认#388e8e
+	                  bg:         	  //（可选项）按钮背景色，支持 rgb，rgba，#，默认#388e8e
 	                  title:        //（可选项）按钮标题，字符串类型，默认空字符串
 	                  titleSize:    //（可选项）按钮标题字体大小，数字类型，默认12
-	                  titleColor:    //（可选项）按钮标题颜色，支持rgb，rgba，#，默认#ffffff，可为空
-	                  highlightColor//（可选项）按钮选中时的颜色值,支持rgb，rgba，#，默认无
+	                  titleColor:    //（可选项）按钮标题颜色，支持 rgb，rgba，#，默认#ffffff，可为空
+	                  highlightColor//（可选项）按钮选中时的颜色值,支持 rgb，rgba，#，默认无
 	                  icon          //（可选项）按钮标题前图标图片路径，图标大小20*20，默认无，可不传，支持本地协议路径，如widget：//、fs://等
                   }]
 }]
@@ -763,8 +782,8 @@ data：
 ##示例代码
  
 ```js
-var obj = api.require('listView');
-obj.appendData({
+var listView = api.require('listView');
+listView.appendData({
  	data:[{title:'标题',subTitle:'子标题，说明文字'},
  		{title:'标题',subTitle:'子标题'},
  		{title:'标题',subTitle:'子标题，说明文字'},
@@ -807,13 +826,13 @@ bgColor：
  
 - 类型：字符串
 - 默认值：#f5f5f5
-- 描述：（可选项）下拉刷新视图的背景色，支持rgb，rgba，#
+- 描述：（可选项）下拉刷新视图的背景色，支持 rgb，rgba，#
  
 textColor：
  
 - 类型：字符串
 - 默认值：#8e8e8e
-- 描述：（可选项）提示文字颜色，支持rgb，rgba，#
+- 描述：（可选项）提示文字颜色，支持 rgb，rgba，#
  
 textDown：
  
@@ -849,16 +868,20 @@ var textDown= '下拉可以刷新...';                             //尚未触�
 var textUp= '松开开始刷新...';                               //触发刷新事件的提示语，有默认值，可为空
 var showTime= true;                                       //是否显示时间，有默认值，可为空
  
-var obj = api.require('listView');
-obj.setRefreshHeader({
+var listView = api.require('listView');
+listView.setRefreshHeader({
     loadingImg : loadingImgae,
     bgColor:bgColor,
     textColor:textColor,
     textDown:textDown,
     textUp:textUp,
     showTime : showTime
-},function(ret,err){
-    //触发加载事件
+}, function(ret, err){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 
 ```
@@ -891,13 +914,13 @@ bgColor：
  
 - 类型：字符串
 - 默认值：#f5f5f5
-- 描述：（可选项）上拉加载更多视图的背景色，支持rgb，rgba，#
+- 描述：（可选项）上拉加载更多视图的背景色，支持 rgb，rgba，#
  
 textColor：
  
 - 类型：字符串
 - 默认值：#8e8e8e
-- 描述：（可选项）提示文字颜色，支持rgb，rgba，#
+- 描述：（可选项）提示文字颜色，支持 rgb，rgba，#
  
 textDown：
  
@@ -932,16 +955,20 @@ var textColor= '#8E8E8E';                                   //提示语颜色，
 var textDown= '下拉可加载更多...';                             //尚未触发刷新时间的提示语，有默认值，可为空
 var textUp= '松开开始加载...';                                 //触发刷新事件的提示语，有默认值，可为空
 var showTime= true;                                         //是否显示时间，有默认值，可为空        
-var obj = api.require('listView');
-obj.setRefreshFooter({
+var listView = api.require('listView');
+listView.setRefreshFooter({
     loadingImg:loadingImgae,
     bgColor:bgColor,
     textColor:textColor,
     textDown:textDown,
     textUp:textUp,
     showTime:showTime
-},function(ret,err){
-    //触发加载事件
+}, function(ret, err){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
  
 ```
@@ -965,8 +992,8 @@ hide()
 ##示例代码
  
 ```js    
-var obj = api.require('listView');
-obj.hide();
+var listView = api.require('listView');
+listView.hide();
  
 ```
  
@@ -990,9 +1017,8 @@ show()
 ##示例代码
  
 ```js    
-var obj = api.require('listView');
-obj.show();
- 
+var listView = api.require('listView');
+listView.show();
 ```
  
 ##补充说明

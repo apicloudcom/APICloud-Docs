@@ -3,6 +3,8 @@ Title: MNRotationMenu
 Description: MNRotationMenu
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -24,7 +26,7 @@ Description: MNRotationMenu
 
 #**概述**
 
-MNRotationMenu 是一个图片旋转轮播控件，实现了类似扑克牌效果的图片轮播展示。开发者可自定义图片的数量，点击图片时会有回调，让开发者自定义点击跳转连接
+MNRotationMenu 是一个图片旋转轮播控件，实现了类似扑克牌效果的图片轮播展示。开发者可自定义图片的数量，点击图片时会有回调，比如开发者可以自定义点击跳转连接
 
 ![图片说明](/img/docImage/MNRotationMenu.jpg)
 
@@ -115,14 +117,14 @@ fixedOn：
 fixed:
 
 - 类型：布尔
-- 描述：（可选项）模块是否随所属 Window 或 Frame 滚动
+- 描述：（可选项）模块是否随所属 window 或 frame 滚动
 - 默认值：true（不随之滚动）
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -296,6 +298,6 @@ MNRotationMenu.clearCache();
 
 ##可用性
 
-IOS系统，Android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本

@@ -3,6 +3,8 @@ Title: navigationMenu
 Description: navigationMenu
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -22,7 +24,7 @@ Description: navigationMenu
 
 #**概述**
 
-navigationMenu是一个导航栏菜单，可以实现在导航栏上弹出一个菜单，然后子菜单左右铺展开来的动画效果，开发者可自定义其中的样式和按钮个数，超出屏幕部分可左右拖动查看。本模块已停止更新，建议使用优化升级版模块[MNNavigationMenu](http://docs.apicloud.com/端API/导航菜单/MNNavigationMenu)
+navigationMenu 是一个导航栏菜单，可以实现在导航栏上弹出一个菜单，然后子菜单左右铺展开来的动画效果，开发者可自定义其中的样式和按钮个数，超出屏幕部分可左右拖动查看。本模块已停止更新，建议使用优化升级版模块 [MNNavigationMenu](http://docs.apicloud.com/端API/导航菜单/MNNavigationMenu)
 
 ![图片说明](/img/docImage/navigationMenu.jpg)
 
@@ -38,13 +40,13 @@ color：
 
 - 类型：字符串
 - 默认值：#FFFFFF
-- 描述：按钮文字颜色，支持rgb，rgba，#，可为空
+- 描述：按钮文字颜色，支持 rgb，rgba，#，可为空
 
 highlight：
 
 - 类型：字符串
 - 默认值：#d36bff
-- 描述：按钮文字选中后的颜色，支持rgb，rgba，#，可为空
+- 描述：按钮文字选中后的颜色，支持 rgb，rgba，#，可为空
 
 btnInfo：
 
@@ -73,7 +75,7 @@ fixedOn：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -99,7 +101,7 @@ navigationMenu.open({
 		selected: 'widget://res/img/ic/small-bell.png',
 		title: '按钮一'
 	}]
-},function( ret, err ){		
+}, function(ret, err){		
 	if( ret ){
 		alert( JSON.stringify( ret ) );
 	}else{
@@ -186,7 +188,6 @@ navigationMenu.show();
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
-
 
 #**close**<div id="4"></div>
 

@@ -3,6 +3,8 @@ Title: beecloud
 Description: beecloud
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：BeeCloud</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -52,7 +54,7 @@ beecloud 封装了支付宝(ALI\_APP)，微信(WX\_APP)，银联(UN\_APP)，百�
 支付
 
 ```
-pay(params, callback);
+pay({params}, callback(ret, err))
 ```
 
 ## params
@@ -90,7 +92,7 @@ optional：
 
 ret:  
 
- * 类型：JSON对象  
+ * 类型：JSON 对象  
  
 内部字段：
 
@@ -108,20 +110,23 @@ err:
 ## 示例代码
 
 ```js
-var payData = {
+var beecloud = api.require('beecloud');
+beecloud.pay({
 	channel: "UN_APP",
 	title: "apicloud",
 	totalfee: 1,
 	billno: "201508191436987",
-	optional: {'userID':'张三','mobile':'0512-86861620'}    
-};
-
-var demo = api.require('beecloud');
-demo.pay(payData, payCallBack);
-
-function payCallBack(ret, err) {
-	api.toast({msg:ret.result_msg});
-}	
+	optional: {
+		'userID':'张三',
+		'mobile':'0512-86861620'
+	}    
+}, function(ret, err){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
 ```
 
 ## 补充说明
@@ -153,14 +158,14 @@ iOS系统，Android系统
 获取API版本
 
 ```  
-getApiVersion(callback);
+getApiVersion(callback(ret, err))
 ```
 
 ## callBack(ret, err)
 
 ret:  
 
- * 类型：JSON对象  
+ * 类型：JSON 对象  
  
 内部字段：
 
@@ -172,12 +177,14 @@ ret:
 ## 示例代码
 
 ```js
-var demo = api.require('beecloud');
-demo.getApiVersion(callBack);
-
-function callBack(ret, err) {
-	api.toast({msg:ret.apiVersion});
-}
+var beecloud = api.require('beecloud');
+beecloud.getApiVersion(function( ret, err ){		
+	if( ret ){
+	    alert( JSON.stringify( ret ) );
+	}else{
+	    alert( JSON.stringify( err ) );
+	}
+});
 ```
 
 
@@ -192,14 +199,14 @@ iOS系统，Android系统
 检测微信是否安装
   
 ```
-isWXAppInstalled(callback);
+isWXAppInstalled(callback(ret, err))
 ```
 
 ## callBack(ret, err)
 
 ret:  
 
- * 类型：JSON对象  
+ * 类型：JSON 对象  
  
 内部字段：
 
@@ -211,15 +218,15 @@ ret:
 ## 示例代码
 
 ```js
-var demo = api.require('beecloud');
-demo.isWXAppInstalled(callBack);
-
-function callBack(ret, err) {
-	api.toast({msg:ret.flag});
-}
+var beecloud = api.require('beecloud');
+beecloud.isWXAppInstalled(function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
 ```
-
-
 
 ## 可用性
 
@@ -231,14 +238,14 @@ iOS系统，Android系统
 获取是否是沙箱模式
   
 ```
-isSandboxMode(callback);
+isSandboxMode(callback(ret, err))
 ```
 
 ## callBack(ret, err)
 
 ret:  
 
- * 类型：JSON对象  
+ * 类型：JSON 对象  
  
 内部字段：
 
@@ -250,12 +257,14 @@ ret:
 ## 示例代码
 
 ```js
-var demo = api.require('beecloud');
-demo.isSandboxMode(callBack);
-
-function callBack(ret, err) {
-	api.toast({msg:ret.flag});
-}
+var beecloud = api.require('beecloud');
+beecloud.isSandboxMode(function( ret, err ){		
+    if( ret.flag ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
 ```
 
 

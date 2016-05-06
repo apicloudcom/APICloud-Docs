@@ -3,6 +3,8 @@ Title: circularMenu
 Description: circularMenu
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 	<li><a href="#const-content">Constant</a></li>
@@ -21,7 +23,7 @@ Description: circularMenu
 
 #**概述**
 
-circularMenu是一个转盘菜单。本模块是原生实现的，动画流畅，开发者可自定义菜单上按钮的个数和样式。简单几行代码即可开发出转盘效果的炫酷UI
+circularMenu 是一个转盘菜单。本模块是原生实现的，动画流畅，开发者可自定义菜单上按钮的个数和样式。简单几行代码即可开发出转盘效果的炫酷UI
 
 ![图片说明](/img/docImage/circularMenu.jpg)
 
@@ -88,7 +90,7 @@ items：
 	normal:             //字符串类型；按钮常态背景图片路径，要求本地路径（widget://、fs://）
 	highlight:          //（可选项）字符串类型；按钮高亮背景图片路径，要求本地路径（widget://、fs://）
 	title:              //（可选项）字符串类型；按钮标题
-	titleColor:         //（可选项）字符串类型；标题字体颜色，支持rgb、rgba、#；默认：#919191
+	titleColor:         //（可选项）字符串类型；标题字体颜色，支持 rgb、rgba、#；默认：#919191
 	titleSize:          //（可选项）数字类型；标题字体大小；默认：13
 }]
 ```
@@ -103,7 +105,7 @@ fixedOn：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -155,7 +157,7 @@ circularMenu.open({
     bgImg: 'widget://res/circularMenu/bg.png',
     centerBtnImg: 'widget://res/circularMenu/center.png',
 	fixedOn: api.frameName
-},function( ret, err ){		
+}, function(ret, err){		
 	if( ret ){
 		alert( JSON.stringify( ret ) );
 	}else{

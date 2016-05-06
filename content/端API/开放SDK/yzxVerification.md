@@ -3,6 +3,8 @@ Title: yzxVerification
 Description: yzxVerification
 */
 
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">方法</a></li>
 </ul>
@@ -46,7 +48,7 @@ url：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -58,7 +60,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -79,7 +81,7 @@ uzyzxVerification.getSign({
     phonenum: '18612345678'
 },function(ret,err){
     if(ret.status){
-        api.alert({msg:'获得签名成功 sign='+ret.sign});
+        api.alert({msg:'获得签名成功 sign="+ret.sign});
     }else{
         api.alert({msg:'获取签名失败 返回值:'+err.result});
     }
@@ -141,7 +143,7 @@ seconds：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -153,7 +155,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -237,7 +239,7 @@ appid：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -249,7 +251,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 

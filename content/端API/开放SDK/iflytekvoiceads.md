@@ -3,6 +3,8 @@ Title: iflytekvoiceads
 Description: iflytekvoiceads
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：科大讯飞</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -67,7 +69,7 @@ adid：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -151,7 +153,7 @@ Android系统
 
 加载旗帜广告
 
-loadAd(params,callBack(ret,err))
+loadAd({params}, callBack(ret, err))
 
 ##params
 
@@ -174,7 +176,7 @@ w：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -185,7 +187,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -235,13 +237,13 @@ Android系统
 
 显示加载好的广告
 
-showAd(callBack(ret, err))
+showAd(callback(ret, err))
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -252,7 +254,7 @@ ret：
 
 ##示例代码
 
-	见loadAd(params,callBack(ret,err))示例代码
+	见loadAd({params}, callBack(ret, err))示例代码
 
 ##补充说明
 
@@ -307,7 +309,7 @@ adid：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -398,13 +400,13 @@ Android系统
 
 加载插屏广告
 
-loadAd(callBack(ret,err))
+loadAd(callback(ret, err))
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -415,7 +417,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -464,13 +466,13 @@ Android系统
 
 显示加载好的广告
 
-showAd(callBack(ret,err))
+showAd(callback(ret, err))
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -481,7 +483,7 @@ ret：
 
 ##示例代码
 
-	见loadAd(params,callBack(ret,err))示例代码
+	见loadAd({params}, callBack(ret, err))示例代码
 
 ##补充说明
 
@@ -510,7 +512,7 @@ adid：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -609,13 +611,13 @@ Android系统
 
 加载插屏广告
 
-loadAd(callBack(ret,err))
+loadAd(callback(ret, err))
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -625,7 +627,7 @@ ret：
 ```
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -674,13 +676,13 @@ Android系统
 
 显示加载完成的广告
 
-showAd(callBack(ret,err))
+showAd(callback(ret, err))
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -691,7 +693,7 @@ ret：
 
 ##示例代码
 
-	见loadAd(params,callBack(ret,err))示例代码
+	见loadAd({params}, callBack(ret, err))示例代码
 
 ##补充说明
 

@@ -2,6 +2,9 @@
 Title: UICustomPicker
 Description: UICustomPicker
 */
+
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <div class="outline">
 [open](#m1)
 
@@ -31,7 +34,7 @@ open({params}, callback(ret, err))
 
 rect：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）模块的位置及尺寸
 - 内部字段：
 
@@ -46,24 +49,24 @@ rect：
 
 styles：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）模块各部分的样式
 - 内部字段：
 
 ```js
 {
-    bg: 'rgba(0,0,0,0)',        //（可选项）字符串类型；选中内容区域的背景，支持 rgb，rgba，#，图片路径（本地路径，fs://，widget://）；默认：'rgba(0,0,0,0)'
-    normalColor: '#959595',     //（可选项）字符串类型；未选中内容的字体颜色，支持rgb，rgba，#；默认：'#959595'
-    selectedColor: '#3685dd',   //（可选项）字符串类型；选中内容的字体颜色，支持rgb，rgba，#；默认：'#3685dd'
+    bg: 'rgba(0,0,0,0)',        //（可选项）字符串类型；选中内容区域的背景，支持 rgb，rgba，#，图片路径（本地路径，fs://、widget://）；默认：'rgba(0,0,0,0)'
+    normalColor: '#959595',     //（可选项）字符串类型；未选中内容的字体颜色，支持 rgb，rgba，#；默认：'#959595'
+    selectedColor: '#3685dd',   //（可选项）字符串类型；选中内容的字体颜色，支持 rgb，rgba，#；默认：'#3685dd'
     selectedSize: 36,           //（可选项）数字类型；选中内容的字体大小；默认：36.0
-    tagColor: '#3685dd',        //（可选项）字符串类型；内容标签的字体颜色，支持rgb，rgba，# ；默认：'#3685dd'
+    tagColor: '#3685dd',        //（可选项）字符串类型；内容标签的字体颜色，支持 rgb，rgba，# ；默认：'#3685dd'
     tagSize: 12                 //（可选项）数字类型；内容标签的字体大小；默认：12
 }
 ```
 
 data：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：自定义选择器的标签和内容取值范围；若数组长度大于1，则显示多个选择器实例，彼此仍是一个整体，各个实例宽度 = 模块整体宽度（w）/ 实例个数
 - 内部字段：
 
@@ -103,14 +106,14 @@ fixedOn：
 
 fixed:
 - 类型：布尔
-- 描述：（可选项）模块是否随所属 Window 或 Frame 滚动
+- 描述：（可选项）模块是否随所属 window 或 frame 滚动
 - 默认值：true（不随之滚动）
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -148,12 +151,12 @@ UICustomPicker.open({
         scope: '0-23'
     }, {
         tag: '分',
-        scope: ["a","b","c","d"]
+        scope: ['a','b','c','d']
     }],
     rows: 3,
     fixedOn: api.frameName,
     fixed: true
-}, function( ret, err ){
+}, function(ret, err){
     if( ret ){
          alert( JSON.stringify( ret ) );
     }else{

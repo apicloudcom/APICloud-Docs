@@ -3,6 +3,8 @@ Title: FNImageClip
 Description: FNImageClip
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -89,11 +91,11 @@ fixedOn：
 - 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
 - 默认：模块依附于当前 window
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -128,12 +130,11 @@ FNImageClip.open({
         }
     },
     fixedOn: api.frameName
-},
-function(ret, err) {
-    if (ret) {
-        alert(JSON.stringify(ret));
-    } else {
-        alert(JSON.stringify(err));
+}, function(ret, err){        
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -152,7 +153,7 @@ iOS系统，Android系统
 
 保存截图
 
-save (params,callback(ret))
+save({params}, callback(ret, err))
 
 ##params
 
@@ -173,11 +174,11 @@ quality：
 - 描述：（可选项）保存图片的质量，取值范围 0 至 1 的浮点数
 - 默认：1
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -196,8 +197,7 @@ FNImageClip.save({
     destPath: 'fs://imageClip/result.png',
     copyToAlbum: false,
     quality: 1
-},
-function(ret, err){		
+},function(ret, err){		
     if(ret) {
         alert(JSON.stringify(ret));
     } else{

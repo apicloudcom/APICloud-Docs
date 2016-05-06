@@ -3,6 +3,8 @@ Title: pushGeTui
 Description: pushGeTui
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：个推</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#basic-content">基础接口</a></li>
 	<li><a href="#extended-content">扩展接口</a></li>
@@ -90,18 +92,18 @@ type类型参数说明：
         2、1：成功
         3、-100：不支持的接口   
 ```js
-function callback(ret,err){
+function callback(ret, err){
       var log;
       switch(ret.type)
       {
           case 'cid':
-          log='cid:'+ret.cid;
+          log="cid:'+ret.cid;
           break;
           case 'payload':
-          log='payload:'+ret.payload;
+          log="payload:'+ret.payload;
           break;
           case'occurError':
-          log='occurError';
+          log="occurError';
           break;
       }
     }
@@ -124,7 +126,7 @@ initialize(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -153,7 +155,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -204,7 +206,7 @@ registerDeviceToken(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -223,7 +225,7 @@ function registerDeviceToken(){
             deviceToken:api.deviceToken,
         };
         push.registerDeviceToken(param,function(ret,err){
-            var log='registerDeviceToken:'+ret.result;
+            var log="registerDeviceToken:'+ret.result;
             printfLog(log);
         });
     }
@@ -260,7 +262,7 @@ iOS系统
 
 为用户设置标签。针对单个CID设置标签（tag）列表，服务端推送可以指定标签进行定向群发
 
-setTag({params},callback(ret, err))
+setTag({params}, callback(ret, err))
 
 ##params
 
@@ -274,7 +276,7 @@ tags：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -286,7 +288,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -322,7 +324,7 @@ iOS系统，Android系统
 
 绑定用户别名。针对单个CID设置别名，一个别名可以对应多个CID。可以指定别名进行消息推送
 
-bindAlias({params},callback(ret, err))
+bindAlias({params}, callback(ret, err))
 
 ##params
 
@@ -336,7 +338,7 @@ alias：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -348,7 +350,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -384,7 +386,7 @@ iOS系统，Android系统
 
 解绑用户别名。针对单个CID取消设置别名。
 
-unBindAlias({params},callback(ret, err))
+unBindAlias({params}, callback(ret, err))
 
 ##params
 
@@ -398,7 +400,7 @@ alias：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -410,7 +412,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -452,7 +454,7 @@ stopService(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -464,7 +466,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -499,7 +501,7 @@ Android系统
 
 上行第三方自定义回执。第三方指定自定义actionid，便于对推送效果做统计分析。
 
-sendFeedbackMessage({params},callback(ret, err))
+sendFeedbackMessage({params}, callback(ret, err))
 
 ##params
 
@@ -525,7 +527,7 @@ actionid：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -537,7 +539,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -578,7 +580,7 @@ fetchClientId(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -642,7 +644,7 @@ turnOnPush(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -654,7 +656,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -695,7 +697,7 @@ turnOffPush(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -707,7 +709,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -748,7 +750,7 @@ isPushTurnedOn(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -761,7 +763,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -802,7 +804,7 @@ getVerison(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -815,7 +817,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -851,7 +853,7 @@ Android系统，iOS系统
 
 设置SDK静默时间。在指定时间段内，暂停推送服务联网，可以避免用户打扰，同时起到省电省流量的作用。
 
-setSilentTime({params},callback(ret, err))
+setSilentTime({params}, callback(ret, err))
 
 ##params
 
@@ -875,7 +877,7 @@ duration：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -887,7 +889,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -924,7 +926,7 @@ Android系统
 
 发送上行消息，服务端使用MMP SDK接收客户端发送的上行消息。
 
-sendMessage({params},callback(ret,err))
+sendMessage({params}, callback(ret, err))
 
 ##params
 
@@ -944,7 +946,7 @@ extraData：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段
 ```js
@@ -955,7 +957,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -997,7 +999,7 @@ payloadMessage(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -1009,7 +1011,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 

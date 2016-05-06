@@ -3,6 +3,8 @@ Title: slider
 Description: slider
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -24,7 +26,7 @@ Description: slider
 
 #**概述**
 
-slider封装了一个滑动器，开发者可自定义最大值、最小值、当前值以及拖动滑块时的气泡提示信息等各种滑动器用到的功能。原生代码比前端实现更加流畅稳定。本模块已停止更新，建议使用 [UISlider](http://docs.apicloud.com/端API/界面布局/UISlider)
+slider 封装了一个滑动器，开发者可自定义最大值、最小值、当前值以及拖动滑块时的气泡提示信息等各种滑动器用到的功能。原生代码比前端实现更加流畅稳定。本模块已停止更新，建议使用 [UISlider](http://docs.apicloud.com/端API/界面布局/UISlider)
 
 ![图片说明](/img/docImage/slider.jpg)
 
@@ -92,7 +94,7 @@ selectedBgImg：
 
 bar：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：见内部字段
 - 描述：（可选项）气泡设置
 - 备注：若不传则不显示滑块
@@ -102,13 +104,13 @@ bar：
 {
 	barWidth：  //（可选项）滑块宽，数字，默认30
 	barHeight： //（可选项）滑块的高，数字，默认18
-	barImg：    //（可选项）滑块背景，字符串，默认#4f94dc，支持rgb，rgba，#，img
+	barImg：    //（可选项）滑块背景，字符串，默认#4f94dc，支持 rgb，rgba，#，img
 }
 ```
 
 bubble：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：（可选项）气泡设置
 - 内部字段：
@@ -117,9 +119,9 @@ bubble：
 {
 	bubbleWidth：  //（可选项）数字类型，默认60，气泡的宽
 	bubbleHeight： //（可选项）数字类型，默认40，气泡的高
-	bubbleImg：    //（可选项）字符串，默认#5cacee，气泡背景，支持rgb,rgba,#,img
+	bubbleImg：    //（可选项）字符串，默认#5cacee，气泡背景，支持 rgb,rgba,#,img
 	titleSuffix：  //（可选项）字符串，默认℃，气泡后缀
-	titleColor：   //（可选项）字符串，默认#000000，支持rgb，rgba，#
+	titleColor：   //（可选项）字符串，默认#000000，支持 rgb，rgba，#
 	titleSize：    //（可选项）数字类型，默认13.0，气泡上字体大小
 	titlePosition：//（可选项）字符串类型，气泡标题位置，取值范围：left、right、center，默认center
 }
@@ -164,7 +166,7 @@ fixed:
 
 ret：
 
-- 类型：JSON对象内部字段：
+- 类型：JSON 对象内部字段：
 
 ```js
 {
@@ -183,19 +185,19 @@ slider.open({
      y: api.frameHeight - 60,
      width: api.frameWidth - 60,
      height: 6,
-     bgImg: "widget://res/img/slider_bg.png",
-     selectedBgImg: "widget://res/img/slider_selected.png",
+     bgImg: 'widget://res/img/slider_bg.png',
+     selectedBgImg: 'widget://res/img/slider_selected.png',
      barW: 30,
      barH: 20,
-     barImg: "widget://res/img/slider_bar.png",
+     barImg: 'widget://res/img/slider_bar.png',
      bubbleW: 60,
      bubbleH: 40,
-     bubbleImg: "widget://res/img/slider_bubble.png",
+     bubbleImg: 'widget://res/img/slider_bubble.png',
      minValue: 0,
      maxValue: 100,
      defValue: 30,
      fixedOn: api.frameName
-},function( ret, err ){
+}, function(ret, err){
     if( ret ){
          alert( JSON.stringify( ret ) );
     }else{
@@ -228,7 +230,7 @@ id：
 - 类型：数字
 - 默认值：打开的第一个菜单的id
 - 描述：（可选项）菜单id
-- 备注：若open接口内multiOpen不传或传false，则本参数被忽略
+- 备注：若 open 接口内 multiOpen 不传或传 false，则本参数被忽略
 
 value:
 
@@ -240,13 +242,13 @@ minValue：
 
 - 类型：数字
 - 默认值：旧值
-- 描述：（可选项）slider最小值
+- 描述：（可选项）slider 最小值
 
 maxValue：
 
 - 类型：数字
 - 默认值：旧值
-- 描述：（可选项）slider最大值
+- 描述：（可选项）slider 最大值
 
 step：
 
@@ -259,8 +261,8 @@ step：
 ```js
 var slider = api.require('slider');
 slider.setValue({
-    id:1,
-    value:51
+    id: 1,
+    value: 51
 });
 ```
 
@@ -287,22 +289,22 @@ id：
 
 - 类型：数字
 - 默认值：无
-- 描述：操作菜单id
-- 备注：若open接口内multiOpen不传或传false，则本参数被忽略
+- 描述：操作菜单 id
+- 备注：若 open 接口内 multiOpen 不传或传 false，则本参数被忽略
 
 lock:
 
 - 类型：布尔
 - 默认值：true
-- 描述：（可选项）是否锁定当前slider的值
+- 描述：（可选项）是否锁定当前 slider 的值
 
 ##示例代码
 
 ```js
 var slider = api.require('slider');
 slider.lock({
-	id:1,
-	lock:true
+	id: 1,
+	lock: true
 });
 ```
 
@@ -337,7 +339,7 @@ id：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -348,7 +350,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -362,7 +364,7 @@ err：
 ```js
 var slider = api.require('slider');
 slider.close({
-   id:1
+   id: 1
 });
 ```
 
@@ -381,7 +383,7 @@ iOS系统，Android系统
 
 显示滑动器
 
-show(callBack(ret,err))
+show(callback(ret, err))
 
 ##params
 
@@ -397,7 +399,7 @@ id：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -408,12 +410,12 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```
 {
-	msg:“”	//错误描述，字符串
+	msg: ''            	//错误描述，字符串
 }
 ```
 
@@ -422,7 +424,7 @@ err：
 ```js
 var slider= api.require('slider');
 slider.show({
-  id:1
+  id: 1
 });
 ```
 
@@ -440,7 +442,7 @@ iOS系统，Android系统
 
 隐藏滑动器
 
-hide(callBack(ret,err))
+hide(callback(ret, err))
 
 ##params
 
@@ -448,15 +450,15 @@ id：
 
 - 类型：数字
 - 默认值：无
-- 描述：菜单id
-- 备注：若open接口内multiOpen不传或传false，则本参数被忽略
+- 描述：菜单 id
+- 备注：若 open 接口内 multiOpen 不传或传 false，则本参数被忽略
 
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```
@@ -468,12 +470,12 @@ ret：
 err：
 
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
 {
-	msg:“”	//错误描述，字符串
+	msg: ''	//错误描述，字符串
 }
 ```
 
@@ -482,7 +484,7 @@ err：
 ```js
 var slider = api.require('slider');
 slider.hide({
-  id:1
+  id: 1
 });
 ```
 

@@ -197,11 +197,11 @@ Restful API可以让您用任何可以发送 http 请求的设备来与 API Clou
 当调用 APICloud 云开发接口时，我们需要对头部信息中X-APICloud-AppKey 进行验证，X-APICloud-AppKey 的生成规则如下：
 
 ```js
-your app key = SHA1（你的应用ID + 'UZ' + 你的应用KEY +'UZ' + 当前时间毫秒数）.当前时间毫秒数
+var appKey = SHA1（应用ID + 'UZ' + 应用KEY +'UZ' + 当前时间毫秒数）+ '.' +当前时间毫秒数
 ```
 
-例如：你的应用ID是A6968565094002，而你的应用KEY是62FB16B2-0ED6-B460-1F60-EB61954C823B，则你在请求头部信息X-APICloud-AppKey中设置的值应为
-"A6968565094002"+"UZ"+"62FB16B2-0ED6-B460-1F60-EB61954C823B"+"UZ"+当前时间毫秒数组合字符串后通过SHA1加密后返回的字符串＋.当前时间毫秒数。
+例如：您的应用ID是A6968565094002，而您的应用KEY是62FB16B2-0ED6-B460-1F60-EB61954C823B，则您在请求头部信息X-APICloud-AppKey中设置的值应为
+"A6968565094002"+"UZ"+"62FB16B2-0ED6-B460-1F60-EB61954C823B"+"UZ"+当前时间毫秒数组合字符串后通过SHA1加密后，返回的字符串＋.当前时间毫秒数。
 
 
 示例代码如下：
@@ -324,7 +324,7 @@ $.ajax({
 
 ##获取对象
 
-当你创建了一个对象时，你可以通过发送一个 GET 请求以获取它的内容。例如，为了得到我们上面创建的对象：
+当您创建了一个对象时，您可以通过发送一个 GET 请求以获取它的内容。例如，为了得到我们上面创建的对象：
 **curl**
 ```js
 curl -X GET \
@@ -2287,7 +2287,9 @@ GET /mcm/api/car?filter={ "fields": {"id": true, "make": true, "model": true} }
 var client = new Resource("appId", "appKey");
 var Model = client.Factory("Company");
 Model.query({
-	fields:{"id": true, "make": true, "model": true}//或者["id","make","model"]
+	filter:
+		fields:{"id": true, "make": true, "model": true}//或者["id","make","model"]
+	}
 }, function(ret,err){
 	if(err){
 		//处理错误 err
@@ -2356,7 +2358,9 @@ GET /mcm/api/car?filter={ "fields": {"vin": false} }
 var client = new Resource("appId", "appKey");
 var Model = client.Factory("Company");
 Model.query({
-	fields:{"vin": false}
+	filter:{
+		fields:{"vin": false}
+	}
 }, function(ret,err){
 	if(err){
 		//处理错误 err
@@ -2417,7 +2421,9 @@ GET /mcm/api/cars?filter={"limit": 5}
 var client = new Resource("appId", "appKey");
 var Model = client.Factory("Company");
 Model.query({
-	limit:5
+	filter:{
+		limit:5
+	}
 }, function(ret,err){
 	if(err){
 		//处理错误 err
@@ -2491,8 +2497,10 @@ GET /mcm/api/weapons?filter={"order": "audibleRange DESC", "limit": 3 }
 var client = new Resource("appId", "appKey");
 var Model = client.Factory("Company");
 Model.query({
-	"order": "audibleRange DESC", 
-	"limit": 3
+	filter:{
+		"order": "audibleRange DESC", 
+		"limit": 3
+	}
 }, function(ret,err){
 	if(err){
 		//处理错误 err
@@ -2552,8 +2560,10 @@ GET /mcm/api/cars?filter={"limit":10,"skip":20}
 var client = new Resource("appId", "appKey");
 var Model = client.Factory("Company");
 Model.query({
-	"limit":10,
-	"skip":20
+	filter:{
+		"limit":10,
+		"skip":20
+	}
 }, function(ret,err){
 	if(err){
 		//处理错误 err
@@ -2612,7 +2622,9 @@ GET /mcm/api/cars?filter={"where":{"carClass":"fullsize"}}
 var client = new Resource("appId", "appKey");
 var Model = client.Factory("Company");
 Model.query({
-	"where":{"carClass":"fullsize"}
+	filter:{
+		"where":{"carClass":"fullsize"}
+	}
 }, function(ret,err){
 	if(err){
 		//处理错误 err
@@ -2685,9 +2697,11 @@ GET /mcm/api/weapons?filter={"where":{"audibleRange":{"lt":10}}}
 var client = new Resource("appId", "appKey");
 var Model = client.Factory("Company");
 Model.query({
-	"where":{
-		"effectiveRange":{"gt":900},
-		"audibleRange":{"lt":10}
+	filter:{
+		"where":{
+			"effectiveRange":{"gt":900},
+			"audibleRange":{"lt":10}
+		}
 	}
 }, function(ret,err){
 	if(err){
@@ -2743,11 +2757,13 @@ GET /mcm/api/cars?filter={"where": {"and": [{"title": "My Post"}, {"content": "H
 var client = new Resource("appId", "appKey");
 var Model = client.Factory("Company");
 Model.query({
-	"where": {
-		"and": [
-			{"title": "My Post"}, 
-			{"content": "Hello"}
-		]
+	filter:{
+		"where": {
+			"and": [
+				{"title": "My Post"}, 
+				{"content": "Hello"}
+			]
+		}
 	}
 }, function(ret,err){
 	if(err){
@@ -2801,8 +2817,10 @@ GET /mcm/api/cars?filter={"where":{"price":{"between":[0,7]}}}
 var client = new Resource("appId", "appKey");
 var Model = client.Factory("Company");
 Model.query({
-	"where": {
-		"price":{"between":[0,7]}
+	filter:{
+		"where": {
+			"price":{"between":[0,7]}
+		}
 	}
 }, function(ret,err){
 	if(err){
@@ -2855,12 +2873,14 @@ GET /mcm/api//locations?filter={"where":{"geo":{"near":"-28.1,153.536"}},"limit"
 var client = new Resource("appId", "appKey");
 var Model = client.Factory("Company");
 Model.query({
-	"where":{
-		"geo":{
-			"near":"-28.1,153.536"
-		}
-	},
-	"limit":3
+	filter:{
+		"where":{
+			"geo":{
+				"near":"-28.1,153.536"
+			}
+		},
+		"limit":3
+	}
 }, function(ret,err){
 	if(err){
 		//处理错误 err
@@ -2913,13 +2933,15 @@ GET /mcm/api//locations?filter={"where":{"geo":{"near":"-28.1,153.536","maxDista
 var client = new Resource("appId", "appKey");
 var Model = client.Factory("Company");
 Model.query({
-	"where":{
-		"geo":{
-			"near":"-28.1,153.536",
-			"maxDistance":1000
-		}
-	},
-	"limit":3
+	filter:{
+		"where":{
+			"geo":{
+				"near":"-28.1,153.536",
+				"maxDistance":1000
+			}
+		},
+		"limit":3
+	}
 }, function(ret,err){
 	if(err){
 		//处理错误 err
@@ -2981,14 +3003,16 @@ GET /mcm/api//locations?filter={"where":{"geo":{"near":"-28.1,153.536","maxDista
 var client = new Resource("appId", "appKey");
 var Model = client.Factory("Company");
 Model.query({
-	"where":{
-		"geo":{
-			"near":"-28.1,153.536",
-			"maxDistance":1000,
-			"type":"kilometers"
-		}
-	},
-	"limit":3
+	filter:{
+		"where":{
+			"geo":{
+				"near":"-28.1,153.536",
+				"maxDistance":1000,
+				"type":"kilometers"
+			}
+		},
+		"limit":3
+	}
 }, function(ret,err){
 	if(err){
 		//处理错误 err
@@ -3048,12 +3072,14 @@ GET /mcm/api/User?filter={"where": {"name": {"nlike": "M%XY"}}}
 var client = new Resource("appId", "appKey");
 var Model = client.Factory("Company");
 Model.query({
-	"where":{
-		"title":{
-			"like":"M.+st"
-		},
-		"name::{
-			"nlike":"M%XY"
+	filter:{
+		"where":{
+			"title":{
+				"like":"M.+st"
+			},
+			"name::{
+				"nlike":"M%XY"
+			}
 		}
 	}
 }, function(ret,err){
@@ -3109,8 +3135,10 @@ GET /mcm/api/medias?filter={"where": {"keywords": {"inq": ["foo", "bar"]}}}
 var client = new Resource("appId", "appKey");
 var Model = client.Factory("Company");
 Model.query({
-	"where":{
-		"keywords": {"inq": ["foo", "bar"]}
+	filter:{
+		"where":{
+			"keywords": {"inq": ["foo", "bar"]}
+		}
 	}
 }, function(ret,err){
 	if(err){
@@ -3172,7 +3200,9 @@ GET /mcm/api/members?filter={"include":"posts"}
 var client = new Resource("appId", "appKey");
 var Model = client.Factory("Company");
 Model.query({
-	"include":"posts"
+	filter:{
+		"include":"posts"
+	}
 }, function(ret,err){
 	if(err){
 		//处理错误 err
@@ -3256,7 +3286,9 @@ GET /mcm/api/members?filter={"include":{"posts":"authorPointer"}}
 var client = new Resource("appId", "appKey");
 var Model = client.Factory("Company");
 Model.query({
-	"include":{"posts":"authorPointer"}
+	filter:{
+		"include":{"posts":"authorPointer"}
+	}
 }, function(ret,err){
 	if(err){
 		//处理错误 err
@@ -3358,8 +3390,10 @@ GET /api/members?filter={"include":{"posts":"authorPointer"},"where":{"age":21}}
 var client = new Resource("appId", "appKey");
 var Model = client.Factory("Company");
 Model.query({
-	"include":{"posts":"authorPointer"},
-	"where":{"age":21}
+	filter:{
+		"include":{"posts":"authorPointer"},
+		"where":{"age":21}
+	}
 }, function(ret,err){
 	if(err){
 		//处理错误 err
@@ -3446,8 +3480,10 @@ GET /mcm/api/members?filter={"include":{"posts":"authorPointer"},"limit":2}
 var client = new Resource("appId", "appKey");
 var Model = client.Factory("Company");
 Model.query({
-	"include":{"posts":"authorPointer"},
-	"limit":2
+	filter:{
+		"include":{"posts":"authorPointer"},
+		"limit":2
+	}
 }, function(ret,err){
 	if(err){
 		//处理错误 err
@@ -3551,7 +3587,9 @@ GET /mcm/api/members?filter={"include":["posts","passports"]}
 var client = new Resource("appId", "appKey");
 var Model = client.Factory("Company");
 Model.query({
-	"include":["posts","passports"]
+	filter:{
+		"include":["posts","passports"]
+	}
 }, function(ret,err){
 	if(err){
 		//处理错误 err
@@ -3667,8 +3705,10 @@ GET /mcm/api/members?filter={"include":"posts","includefilter":{"Posts":{"limit"
 var client = new Resource("appId", "appKey");
 var Model = client.Factory("Company");
 Model.query({
-	"include":"posts",
-	"includefilter":{"Posts":{"limit":2}}
+	filter:{
+		"include":"posts",
+		"includefilter":{"Posts":{"limit":2}}
+	}
 }, function(ret,err){
 	if(err){
 		//处理错误 err
@@ -3747,8 +3787,10 @@ GET /mcm/api/members?filter={"include":{"posts":"authorPointer"},"includefilter"
 var client = new Resource("appId", "appKey");
 var Model = client.Factory("Company");
 Model.query({
-	"include":{"posts":"authorPointer"},
-	"includefilter":{"author":{"fields":["id","name"]}}
+	filter:{
+		"include":{"posts":"authorPointer"},
+		"includefilter":{"author":{"fields":["id","name"]}}
+	}
 }, function(ret,err){
 	if(err){
 		//处理错误 err
@@ -3848,11 +3890,13 @@ GET /api/members?filter={"include":{"posts":"authorPointer"},"where":{"age":21},
 var client = new Resource("appId", "appKey");
 var Model = client.Factory("Company");
 Model.query({	
-	"where":{"age":21},
-	"include":{"posts":"authorPointer"},
-	"includefilter":{
-		"post":{"where":{"title":"Post A"}},
-		"author":{"fields":["id","name"]}
+	filter:{
+		"where":{"age":21},
+		"include":{"posts":"authorPointer"},
+		"includefilter":{
+			"post":{"where":{"title":"Post A"}},
+			"author":{"fields":["id","name"]}
+		}
 	}
 }, function(ret,err){
 	if(err){
@@ -3925,9 +3969,11 @@ GET /mcm/api/members?filter={"include":{"posts":"authorPointer"},"limit":2,"incl
 var client = new Resource("appId", "appKey");
 var Model = client.Factory("Company");
 Model.query({	
-	"include":{"posts":"authorPointer"},
-	"limit":2,
-	"includefilter":{"post":{"limit":2}}
+	filter:{
+		"include":{"posts":"authorPointer"},
+		"limit":2,
+		"includefilter":{"post":{"limit":2}}
+	}
 }, function(ret,err){
 	if(err){
 		//处理错误 err
@@ -4022,12 +4068,14 @@ GET /mcm/api/members?filter={"include":["posts","passports"],"limit":5,"includef
 ```js
 var client = new Resource("appId", "appKey");
 var Model = client.Factory("Company");
-Model.query({	
-	"include":["posts","passports"],
-	"limit":5,
-	"includefilter":{
-		post:{"limit":1},
-		"passport":{"limit":1}
+Model.query({
+	filter:{	
+		"include":["posts","passports"],
+		"limit":5,
+		"includefilter":{
+			post:{"limit":1},
+			"passport":{"limit":1}
+		}
 	}
 }, function(ret,err){
 	if(err){

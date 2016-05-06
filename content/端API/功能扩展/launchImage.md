@@ -2,6 +2,9 @@
 Title: launchImage
 Description: 获取APP的启动图，可用来做类似网易新闻客户端那种启动页广告。
 */
+
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <div class="outline">
 [get](#a1)
 
@@ -10,7 +13,7 @@ Description: 获取APP的启动图，可用来做类似网易新闻客户端那�
 
 #**概述**
 
-launchImage 模块可以用来获取当前APP使用的那张经过云编译打包后的启动图，并自动缓存。其目的是用来制作类似网易新闻客户端的那种带Logo的启动广告页。且可以自己开发服务端接口，后台更换启动广告。[开发思路和演示Demo请看此帖](http://community.apicloud.com/bbs/forum.php?mod=viewthread&tid=20729)
+launchImage 模块可以用来获取当前 APP 使用经过云编译打包后的启动图，并自动缓存。其目的是用来制作类似网易新闻客户端的那种带 Logo 的启动广告页。且可以自己开发服务端接口，后台更换启动广告。[开发思路和演示Demo请看此帖](http://community.apicloud.com/bbs/forum.php?mod=viewthread&tid=20729)
 
     
 <div id="a1"></div>
@@ -38,7 +41,7 @@ debug：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -50,7 +53,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -69,17 +72,17 @@ var launchImage= api.require('launchImage');
 launchImage.get({
     debug: false,
     isPortrait: true
-}, function(ret, err){
-    if(ret.status){
-        api.alert({msg: ret.src});
+}, function(ret, err){        
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
     }else{
-        api.alert({msg: err.msg});
+        alert( JSON.stringify( err ) );
     }
 });
 ```
 ##补充说明
 
-iOS机型需要在 控制台=>端设置=>启动页 中上传精准分辨率的启动页！
+IOS 机型需要在 控制台=>端设置=>启动页 中上传精准分辨率的启动页！
 
 ##可用性
 
@@ -112,7 +115,7 @@ isPortrait：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -124,7 +127,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -143,11 +146,11 @@ var launchImage= api.require('launchImage');
 launchImage.clearCache({
     reGet: false,
     isPortrait: true
-}, function(ret, err){
-    if(ret.status){
-        api.alert({msg: "操作成功"});
+}, function(ret, err){        
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
     }else{
-        api.alert({msg: err.msg});
+        alert( JSON.stringify( err ) );
     }
 });
 ```

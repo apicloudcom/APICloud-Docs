@@ -3,6 +3,8 @@ Title: superID
 Description: superID
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：一登</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 	<li><a href="#const-content">Constant</a></li>
@@ -33,7 +35,7 @@ superID封装了一登人脸登录的SDK，使用此模块可为应用提供「�
 
 #配置
 
-在```config.xml```中配置下列字段：
+在 [config.xml](/APICloud/技术专题/app-config-manual) 中配置下列字段：
 
 ```
 <feature name="SuperID">
@@ -80,7 +82,7 @@ phone：
 
 ret：
 
-- 类型：JSON对象  用户信息说明
+- 类型：JSON 对象  用户信息说明
 
 内部字段：
 
@@ -115,7 +117,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -131,7 +133,7 @@ err：
 ```js
 var superID = api.require('superID');
 superID.registerApp();
-superID.obtainLoginView(callBack);
+superID.obtainLoginView(callback(ret, err));
 function callBack(ret, err){
     var msg = "登录成功：" + ret.userInfo.name;
     api.toast({
@@ -176,7 +178,7 @@ openid：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -189,7 +191,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -223,13 +225,13 @@ superID.queryUserState(param,function(ret, err){
 
 取消授权
 
-cancelAuthorization(callback)
+cancelAuthorization(callback(ret, err))
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -242,7 +244,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -273,7 +275,7 @@ superID.cancelAuthorization(function(ret, err){
 
 更新用户信息
 
-updateAppUserInfo({params},callback)
+updateAppUserInfo({params}, callback(ret, err))
 
 ##params
 
@@ -287,7 +289,7 @@ info：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -300,7 +302,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -336,13 +338,13 @@ superID.updateAppUserInfo(param,function(ret, err){
 
 获取人脸信息
 
-obtainFaceFeatureView(callback)
+obtainFaceFeatureView(callback(ret, err))
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -430,7 +432,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 

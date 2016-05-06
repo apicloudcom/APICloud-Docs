@@ -3,6 +3,8 @@ Title: googleAnalytics
 Description: googleAnalytics
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -47,7 +49,7 @@ Google Analytics是著名互联网公司Google为提供的数据统计服务。�
 
 ***ios 平台上配置跟踪 ID***
 
-在 ios 平台上点击下图中入门指南按钮进入 Google [开发者中心](https://developers.google.com/analytics/devguides/collection/ios/v3/)，填写相关信息获取并下载配置文件 GoogleService-Info.plist。
+在 iOS 平台上点击下图中入门指南按钮进入 Google [开发者中心](https://developers.google.com/analytics/devguides/collection/ios/v3/)，填写相关信息获取并下载配置文件 GoogleService-Info.plist。
 
 ![申请注册](/img/docImage/googleAnalytics/g5.png)
 
@@ -57,13 +59,13 @@ Google Analytics是著名互联网公司Google为提供的数据统计服务。�
 
 在 android 平台上点击上图中入门指南按钮进入 Google [开发者中心](https://developers.google.com/analytics/devguides/collection/android/v4/)，填写相关信息配置 android 平台的相关文件，**注意（与 ios 平台不同）此文件无需下载，只需配置即可。**
 
-**4，配置 config.xml 文件**
+**4，配置 [config.xml](/APICloud/技术专题/app-config-manual) 文件**
 
-在 ios 平台上获取到的 GoogleService-Info.plist 文件全名是：Property List，属性列表文件，它是一种用来存储串行化后的对象的文件。属性列表文件的扩展名为.plist ，因此通常被称为 plist文件。文件是xml格式的。Plist文件通常用于储存用户设置，也可以用于存储捆绑的信息。 如下图所示：
+在 iOS 平台上获取到的 GoogleService-Info.plist 文件全名是：Property List，属性列表文件，它是一种用来存储串行化后的对象的文件。属性列表文件的扩展名为.plist ，因此通常被称为 plist文件。文件是xml格式的。Plist文件通常用于储存用户设置，也可以用于存储捆绑的信息。 如下图所示：
 
 ![申请注册](/img/docImage/googleAnalytics/g7.png)
 
-如果你是在 mac 系统下可用 xcode 以列表的形式打开此文件，如果你是在 window 系统下可直接用文本编辑器打开。将上图中红色框部分的字段配置在 config.xml 文件内，配置方法如下：
+如果你是在 mac 系统下可用 xcode 以列表的形式打开此文件，如果你是在 window 系统下可直接用文本编辑器打开。将上图中红色框部分的字段配置在 [config.xml](/APICloud/技术专题/app-config-manual) 文件内，配置方法如下：
 
 ```js
    
@@ -142,7 +144,7 @@ ga.onPageStart({pageName:'首页'});
 　　 
 ##可用性  
 
-IOS系统，Android系统  
+iOS系统，Android系统  
 
 可提供的1.0.0及更高版本
 
@@ -172,7 +174,7 @@ ga.onPageEnd({pageName:'首页'});
 　　 
 ##可用性  
 
-IOS系统，Android系统  
+iOS系统，Android系统  
 
 可提供的1.0.0及更高版本
 
@@ -218,6 +220,6 @@ ga.onEvent({
 　　 
 ##可用性  
 
-IOS系统，Android系统  
+iOS系统，Android系统  
 
 可提供的1.0.0及更高版本

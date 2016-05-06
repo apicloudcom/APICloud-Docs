@@ -2,6 +2,9 @@
 Title: UICalendar
 Description: UICalendar
 */
+
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <div class="outline">
 [open](#m1)
 
@@ -34,7 +37,12 @@ UICalendar 是一个日历选择模块；可自定义日历的样式，添加特
 
 ![图片说明](/img/docImage/UICalendar.jpg)
 
+***该模块源码已开源，地址：https://github.com/apicloudcom/UICalendar***
+
+#模块接口
+
 <div id="m1"></div>
+
 #**open**
 
 打开日历
@@ -45,7 +53,7 @@ open({params}, callback(ret, err))
 
 rect：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）模块的位置及尺寸
 - 内部字段：
 
@@ -60,31 +68,31 @@ rect：
 
 styles：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）模块各部分的样式
 - 内部字段：
 
 ```js
 {
-    bg: 'rgba(0,0,0,0)',            //（可选项）字符串类型；日历整体背景，支持rgb、rgba、#、图片路径，要求本地路径（fs://，widget://）；默认：'rgba(0,0,0,0)'
+    bg: 'rgba(0,0,0,0)',            //（可选项）字符串类型；日历整体背景，支持 rgb、rgba、#、图片路径，要求本地路径（fs://、widget://）；默认：'rgba(0,0,0,0)'
     week: {                         //（可选项）JSON对象，星期的样式
-        weekdayColor: '#3b3b3b',    //（可选项）字符串类型；平日文字的颜色，支持rgb、rgba、#；默认：'#3b3b3b'
-        weekendColor: '#a8d400',    //（可选项）字符串类型；周末文字的颜色，支持rgb、rgba、#；默认：'#a8d400'
+        weekdayColor: '#3b3b3b',    //（可选项）字符串类型；平日文字的颜色，支持 rgb、rgba、#；默认：'#3b3b3b'
+        weekendColor: '#a8d400',    //（可选项）字符串类型；周末文字的颜色，支持 rgb、rgba、#；默认：'#a8d400'
         size: 24                    //（可选项）数字类型；星期文字的大小；默认：24
     },
     date: {                         //（可选项）JSON对象，普通日期的样式
-        color: '#3b3b3b',           //（可选项）字符串类型；普通日期文字的颜色；支持rgb、rgba、#；默认：'#3b3b3b'
-        selectedColor: '#fff',      //（可选项）字符串类型；普通日期选中后的文字颜色，支持rgb、rgba、#；默认：'#fff'
-        selectedBg: '#a8d500',      //（可选项）字符串类型；普通日期选中后的背景，支持rgb、rgba、#，图片路径，要求本地路径（fs://，widget://）；默认：'#a8d500'
+        color: '#3b3b3b',           //（可选项）字符串类型；普通日期文字的颜色；支持 rgb、rgba、#；默认：'#3b3b3b'
+        selectedColor: '#fff',      //（可选项）字符串类型；普通日期选中后的文字颜色，支持 rgb、rgba、#；默认：'#fff'
+        selectedBg: '#a8d500',      //（可选项）字符串类型；普通日期选中后的背景，支持 rgb、rgba、#，图片路径，要求本地路径（fs://、widget://）；默认：'#a8d500'
         size: 24                    //（可选项）数字类型；普通日期文字的大小；默认：24
     },
     today: {                        //（可选项）JSON对象，设备当前日期的样式
-        color: '#a8d500',           //（可选项）字符串类型；当前日期的文字颜色，支持rgb、rgba、#；默认：'#a8d500'
-        bg: 'widget://'             //（可选项）字符串类型；当前日期的背景，支持rgb、rgba、#，图片路径，要求本地路径（fs://，widget://）
+        color: '#a8d500',           //（可选项）字符串类型；当前日期的文字颜色，支持 rgb、rgba、#；默认：'#a8d500'
+        bg: 'widget://'             //（可选项）字符串类型；当前日期的背景，支持 rgb、rgba、#，图片路径，要求本地路径（fs://、widget://）
     },
     specialDate: {                  //（可选项）JSON对象，需要标记的特殊日期的通用样式                  
-        color: '#3b3b3b',           //（可选项）字符串类型；文字颜色，支持rgb、rgba、#；默认：与普通日期文字颜色一致
-        bg: 'widget://'             //（可选项）字符串类型；支持rgb、rgba、#，图片路径，要求本地路径（fs://，widget://）；默认：与普通日期选中后的背景一致
+        color: '#3b3b3b',           //（可选项）字符串类型；文字颜色，支持 rgb、rgba、#；默认：与普通日期文字颜色一致
+        bg: 'widget://'             //（可选项）字符串类型；支持 rgb、rgba、#，图片路径，要求本地路径（fs://、widget://）；默认：与普通日期选中后的背景一致
     }
 }
 ```
@@ -98,8 +106,8 @@ specialDate：
 ```js
 [{
     date: '2015-07-27'          //字符串类型；日期字符串，格式为：yyyy-MM-dd
-    color: '#3b3b3b',           //（可选项）字符串类型；文字颜色，支持rgb、rgba、#；默认：与 styles->specialDate->color 一致
-    bg: 'widget://'             //（可选项）字符串类型；支持rgb、rgba、#，图片路径，要求本地路径（fs://，widget://）；默认：与 styles->specialDate->bg 一致
+    color: '#3b3b3b',           //（可选项）字符串类型；文字颜色，支持 rgb、rgba、#；默认：与 styles->specialDate->color 一致
+    bg: 'widget://'             //（可选项）字符串类型；支持 rgb、rgba、#，图片路径，要求本地路径（fs://、widget://）；默认：与 styles->specialDate->bg 一致
 }]
 ```
 
@@ -122,14 +130,14 @@ fixedOn：
 fixed：
 
 - 类型：布尔
-- 描述：（可选项）模块是否随所属 Window 或 Frame 滚动
+- 描述：（可选项）模块是否随所属 window 或 frame 滚动
 - 默认值：true（不随之滚动）
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -149,8 +157,8 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('UICalendar');
-obj.open({
+var UICalendar = api.require('UICalendar');
+UICalendar.open({
     rect: {
 		x: 30,
 		y: api.frameHeight / 2 - 170,
@@ -218,27 +226,25 @@ specialDates：
 ```js
 [{
     date: '2015-07-27'          //字符串类型；日期字符串，格式为：yyyy-MM-dd
-    color: '#3b3b3b',           //（可选项）字符串类型；文字颜色，支持rgb、rgba、#；默认：与 styles->specialDate->color 一致
-    bg: 'widget://'             //（可选项）字符串类型；支持rgb、rgba、#，图片路径，要求本地路径（fs://，widget://）；默认：与 styles->specialDate->bg 一致
+    color: '#3b3b3b',           //（可选项）字符串类型；文字颜色，支持 rgb、rgba、#；默认：与 styles->specialDate->color 一致
+    bg: 'widget://'             //（可选项）字符串类型；支持 rgb、rgba、#，图片路径，要求本地路径（fs://、widget://）；默认：与 styles->specialDate->bg 一致
 }]
 ```
 ##示例代码
 
 ```js
-{
-   var obj = api.require('UICalendar');
-   obj.setSpecialDates({
-        specialDates:[{
-           date: '2015-12-07',
-           color: '#abckde',
-           bg: '#ff0000'
-        },{
-           date: '2015-12-08',
-           color: '#abckde',
-           bg: '#ff0000'
-        }]
-   });
-}
+var UICalendar = api.require('UICalendar');
+UICalendar.setSpecialDates({
+    specialDates:[{
+       date: '2015-12-07',
+       color: '#abckde',
+       bg: '#ff0000'
+    },{
+       date: '2015-12-08',
+       color: '#abckde',
+       bg: '#ff0000'
+    }]
+});
 ```
 ##可用性
 
@@ -263,12 +269,10 @@ specialDates：
 ##示例代码
 
 ```js
-{
-   var obj = api.require('UICalendar');
-   obj.cancelSpecialDates({
-        specialDates:['2015-12-08','2015-12-07']
-   });
-}
+var UICalendar = api.require('UICalendar');
+UICalendar.cancelSpecialDates({
+    specialDates:['2015-12-08','2015-12-07']
+});
 ```
 ##可用性
 
@@ -286,8 +290,8 @@ close()
 ##示例代码
 
 ```js
-var obj = api.require('UICalendar');
-obj.close();
+var UICalendar = api.require('UICalendar');
+UICalendar.close();
 ```
 
 ##可用性
@@ -306,8 +310,8 @@ show()
 ##示例代码
 
 ```js
-var obj = api.require('UICalendar');
-obj.show();
+var UICalendar = api.require('UICalendar');
+UICalendar.show();
 ```
 
 ##可用性
@@ -326,8 +330,8 @@ hide()
 ##示例代码
 
 ```js
-var obj = api.require('UICalendar');
-obj.hide();
+var UICalendar = api.require('UICalendar');
+UICalendar.hide();
 ```
 
 ##可用性
@@ -341,13 +345,13 @@ iOS系统，Android系统
 
 显示下个月
 
-nextMonth(callback(ret))
+nextMonth(callback(ret, err))
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -360,10 +364,12 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('UICalendar');
-obj.nextMonth(function(ret){
-    if(ret){
-        alert(JSON.stringify(ret));
+var UICalendar = api.require('UICalendar');
+UICalendar.nextMonth(function(ret, err){      
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -379,13 +385,13 @@ iOS系统，Android系统
 
 显示上个月
 
-prevMonth(callback(ret))
+prevMonth(callback(ret, err))
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -398,11 +404,13 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('UICalendar');
-obj.prevMonth(function(ret,err){
-    if(ret){
-        alert(JSON.stringify(ret));
-    }  
+var UICalendar = api.require('UICalendar');
+UICalendar.prevMonth(function(ret, err){      
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -417,13 +425,13 @@ iOS系统，Android系统
 
 显示下一年
 
-nextYear(callback(ret))
+nextYear(callback(ret, err))
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -436,11 +444,13 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('UICalendar');
-obj.nextYear(function(ret,err){
-    if(ret){
-        alert(JSON.stringify(ret));
-    }  
+var UICalendar = api.require('UICalendar');
+UICalendar.nextYear(function(ret, err){      
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -455,13 +465,13 @@ iOS系统，Android系统
 
 显示上一年
 
-prevYear(callback(ret))
+prevYear(callback(ret, err))
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -474,11 +484,13 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('UICalendar');
-obj.prevYear(function(ret,err){
-    if(ret){
-        alert(JSON.stringify(ret));
-    }  
+var UICalendar = api.require('UICalendar');
+UICalendar.prevYear(function(ret, err){      
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -509,11 +521,11 @@ ignoreSelected：
 - 描述：（可选项）选中日期是否忽略选中日期样式（open -> styles -> date -> selectedColor、selectedBg）
 - 默认值：false
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -525,14 +537,16 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('UICalendar');
-obj.setDate({
+var UICalendar = api.require('UICalendar');
+UICalendar.setDate({
     date: '2015-08-08',
     ignoreSelected: false
-},function(ret,err){
-    if(ret.status){
-        alert('设置指定日期');
-    }  
+}, function(ret, err){      
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 

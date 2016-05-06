@@ -3,6 +3,8 @@ Title: miniVideoRecord
 Description: miniVideoRecord
 */
 
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -22,7 +24,7 @@ miniVideoRecord封装了秒拍的视频拍摄功能（去掉后期编辑功能�
 
 初始化SDK
 
-init({params}, callback(ret))
+init({params}, callback(ret, err))
 
 ##params
 
@@ -44,11 +46,11 @@ timeMax：
 - 描述：视频录制最大时间，单位：毫秒。
 - 默认值：10000
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -96,13 +98,13 @@ Android系统
 
 打开录制窗口
 
-open(callback(ret))
+open(callback(ret, err))
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js

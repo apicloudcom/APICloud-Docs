@@ -3,6 +3,8 @@ Title: polyVideo
 Description: polyVideo
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -88,7 +90,7 @@ open({params},function(ret))
 
 rect：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）模块的位置及尺寸，（仅对视频有效）
 - 内部字段：
 
@@ -126,15 +128,15 @@ fixedOn：
 fixed：
 
 - 类型：布尔
-- 描述：（可选项）模块是否随所属 Window 或 Frame 滚动
+- 描述：（可选项）模块是否随所属 window 或 frame 滚动
 - 默认值：true（不随之滚动）
 
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：本回调函数在开始播放后每秒执行四次，直至播放结束、暂停、停止
 - 内部字段：
 
@@ -156,8 +158,8 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('polyVideo');
-obj.open({
+var polyVideo = api.require('polyVideo');
+polyVideo.open({
     rect: {
       x: 0,
       y: 0,
@@ -196,8 +198,8 @@ path：
 ##示例代码
 
 ```js
-var obj= api.require('polyVideo');
-obj.setPath({
+var polyVideo= api.require('polyVideo');
+polyVideo.setPath({
     path:'fs://res/video.mp4',
 });
 ```
@@ -216,8 +218,8 @@ start()
 
 ##示例代码
 
-	var obj= api.require('polyVideo');
-	obj.start();
+	var polyVideo= api.require('polyVideo');
+	polyVideo.start();
 
 ##可用性
 
@@ -233,8 +235,8 @@ pause()
 
 ##示例代码
 
-	var obj= api.require('polyVideo');
-	obj.pause();
+	var polyVideo= api.require('polyVideo');
+	polyVideo.pause();
 
 ##可用性
 
@@ -250,8 +252,8 @@ stop()
 
 ##示例代码
 
-	var obj= api.require('polyVideo');
-	obj.stop();
+	var polyVideo= api.require('polyVideo');
+	polyVideo.stop();
 
 ##可用性
 
@@ -267,8 +269,8 @@ close()
 
 ##示例代码
 
-	var obj= api.require('polyVideo');
-	obj.close();
+	var polyVideo= api.require('polyVideo');
+	polyVideo.close();
 
 ##可用性
 
@@ -284,8 +286,8 @@ show()
 
 ##示例代码
 
-	var obj= api.require('polyVideo');
-	obj.show();
+	var polyVideo= api.require('polyVideo');
+	polyVideo.show();
 
 ##可用性
 
@@ -301,8 +303,8 @@ hide()
 
 ##示例代码
 
-	var obj= api.require('polyVideo');
-	obj.hide();
+	var polyVideo= api.require('polyVideo');
+	polyVideo.hide();
 
 ##可用性
 
@@ -319,8 +321,8 @@ fullScreen()
 
 ##示例代码
 
-	var obj= api.require('polyVideo');
-	obj.fullScreen();
+	var polyVideo= api.require('polyVideo');
+	polyVideo.fullScreen();
 
 ##可用性
 
@@ -336,8 +338,8 @@ cancelFullScreen()
 
 ##示例代码
 
-	var obj= api.require('polyVideo');
-	obj.cancelFullScreen();
+	var polyVideo= api.require('polyVideo');
+	polyVideo.cancelFullScreen();
 
 ##可用性
 
@@ -349,7 +351,7 @@ iOS系统，Android系统
 
 快进
 
-forward(params)
+forward({params})
 
 ##params
 
@@ -360,8 +362,8 @@ seconds：
 
 ##示例代码
 
-	var obj= api.require('polyVideo');
-	obj.forward({
+	var polyVideo= api.require('polyVideo');
+	polyVideo.forward({
 		seconds:5
 	});
 
@@ -376,7 +378,7 @@ iOS系统，Android系统
 
 快退
 
-rewind(params)
+rewind({params})
 
 ##params
 
@@ -387,8 +389,8 @@ seconds：
 
 ##示例代码
 
-	var obj= api.require('polyVideo');
-	obj.rewind({
+	var polyVideo= api.require('polyVideo');
+	polyVideo.rewind({
 		seconds:5
 	});
 
@@ -402,7 +404,7 @@ iOS系统，Android系统
 
 跳转
 
-seekTo(params)
+seekTo({params})
 
 ##params
 
@@ -413,8 +415,8 @@ seconds：
 
 ##示例代码
 
-	var obj= api.require('polyVideo');
-	obj.seekTo({
+	var polyVideo= api.require('polyVideo');
+	polyVideo.seekTo({
 		seconds:20
 	});
 
@@ -428,21 +430,21 @@ iOS系统，Android系统
 
 设置屏幕亮度
 
-setBrightness(params)
+setBrightness({params})
 
 ##params
 
 brightness：
 
 - 类型：数字
-- 描述：（可选项）设置的屏幕的亮度，取值范围：0-100，**在 IOS 平台上设置的是系统屏幕亮度。Android 平台上设置的本应用内的屏幕亮度**
+- 描述：（可选项）设置的屏幕的亮度，取值范围：0-100，**在 iOS 平台上设置的是系统屏幕亮度。Android 平台上设置的本应用内的屏幕亮度**
 - 默认值：80
 
 
 ##示例代码
 
-	var obj = api.require('polyVideo');
-	obj.setBrightness({
+	var polyVideo = api.require('polyVideo');
+	polyVideo.setBrightness({
 		brightness:50
 	});
 
@@ -460,14 +462,14 @@ iOS系统，Android系统
 
 获取当前屏幕亮度值
 
-getBrightness(callBack(ret))
+getBrightness(callback(ret, err))
 
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -478,8 +480,8 @@ ret：
 
 ##示例代码
 
-	var obj = api.require('polyVideo');
-	obj.getBrightness(function(ret,err){
+	var polyVideo = api.require('polyVideo');
+	polyVideo.getBrightness(function(ret,err){
 			alert(ret.brightness);
 		}
 	);
@@ -509,8 +511,8 @@ volume：
 ##示例代码
 
 ```js
-var obj = api.require('polyVideo');
-obj.setVolume({
+var polyVideo = api.require('polyVideo');
+polyVideo.setVolume({
 	volume:0.6
 });
 ```
@@ -525,13 +527,13 @@ iOS系统，Android系统
 
 获取当前播放音量
 
-getVolume(callBack(ret,err))
+getVolume(callback(ret, err))
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -543,8 +545,8 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('polyVideo');
-obj.getVolume(function(ret){
+var polyVideo = api.require('polyVideo');
+polyVideo.getVolume(function(ret){
 		alert(ret.volume)
 	}
 );
@@ -561,7 +563,7 @@ iOS系统，Android系统
 
 添加动作监听(当全屏或者fixed为true且页面不能被左右滑动时有效)
 
-addEventListener({params}，callBack(ret,err))
+addEventListener({params}，callback(ret, err))
 
 ##params
 
@@ -578,11 +580,11 @@ name：
    - 'swipeRight'：播放器上的右滑事件，每滑动5（百分比）回调执行一次
    - 'click'：点击播放器事件（单击手势）
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -598,8 +600,8 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('polyVideo');
-obj.addEventListener({
+var polyVideo = api.require('polyVideo');
+polyVideo.addEventListener({
 	name:'leftUp'
 },function(ret){
 	alert('leftUp');
@@ -637,8 +639,8 @@ name：
 ##示例代码
 
 ```js
-var obj = api.require('polyVideo');
-obj.removeEventListener({
+var polyVideo = api.require('polyVideo');
+polyVideo.removeEventListener({
 		name:'leftUp'
 	}
 );

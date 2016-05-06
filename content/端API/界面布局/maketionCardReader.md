@@ -3,6 +3,8 @@ Title: maketionCardReader
 Description: maketionCardReader
 */
 
+<p style="color: #ccc;margin-bottom: 30px;">来自于：脉可寻 </p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -28,20 +30,20 @@ Description: maketionCardReader
 
 #**概述**
 
-maketionCardReader模块封装了脉可寻名片识别的sdk，可通过摄像头扫描名片读取名片信息。
+maketionCardReader 模块封装了脉可寻名片识别的 sdk，可通过摄像头扫描名片读取名片信息。
 
-在集成此模块之前可先配置config文件，也可不配置config文件直接从前端js将apiKey和apiSecret传入模块原生代码。在config里添加如下字段：
+在集成此模块之前可先配置 config 文件，也可不配置 config 文件直接从前端js将 apiKey 和 apiSecret 传入模块原生代码。在 config 里添加如下字段：
 
 - 名称：maketionCardReader
 - 参数：apiKey、apiSecret
-- 描述：apiKey即是从脉可寻云名片识别服务器申请获得的appkey，apiSecret即是从脉可寻云名片识别服务器申请获得的secure	
+- 描述：apiKey 即是从脉可寻云名片识别服务器申请获得的 appkey，apiSecret 即是从脉可寻云名片识别服务器申请获得的 secure	
 
 配置示例：
 
 ```js
 <feature name="maketionCardReader">
-					<param name="apiKey" value=" AD1B0E942E0D7240CCFD355A28476E7E" />
-					<param name="apiSecret" value="b2235093fac07c7bb4fdace94ca97007cd336ba8fccbcdf3e8e575e60e28d23e5fb3d972a203fd7e4553380a1233f6ff96e034650228c557cf6313de7c3ee9f7" />
+	<param name="apiKey' value=" AD1B0E942E0D7240CCFD355A28476E7E' />
+	<param name="apiSecret' value="b2235093fac07c7bb4fdace94ca97007cd336ba8fccbcdf3e8e575e60e28d23e5fb3d972a203fd7e4553380a1233f6ff96e034650228c557cf6313de7c3ee9f7' />
 </feature>
 ```
 
@@ -72,59 +74,53 @@ apiKey：
 
 - 类型：字符串
 - 默认值：无
-- 描述：从脉可寻名片识别服务器申请获得，可为空，若为空则从config.xml读取
+- 描述：从脉可寻名片识别服务器申请获得，可为空，若为空则从 [config.xml](/APICloud/技术专题/app-config-manual) 读取
 
 apiSecret：
 
 - 类型：字符串
 - 默认值：无
-- 描述：从脉可寻名片识别服务器申请获得，可为空，若为空则从config.xml读取
+- 描述：从脉可寻名片识别服务器申请获得，可为空，若为空则从 [config.xml](/APICloud/技术专题/app-config-manual) 读取
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
 ```js
 {
-	status: //授权成功状态值
-	uid：  //统用户标识(获取数据可根据此标识来获取)
+	status: 	//授权成功状态值
+	uid：  		//统用户标识(获取数据可根据此标识来获取)
 }
 ```
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
 ```js
 {
-	msg: //错误描述
-	code：//错误码
+	msg: 	//错误描述
+	code：	//错误码
 }
 ```
 
 ##示例代码
 
 ```js
-var obj = api.require('maketionCardReader');
-obj.auth({
-	uid:123456
-}, function(ret, err){
-	if(ret.status){
-		api.alert({
-            title: "提示",
-			msg:ret.uid
-        });
-}else{
-	api.alert({
-		title: "出错了",
-		msg: err.msg
-        });
+var maketionCardReader = api.require('maketionCardReader');
+maketionCardReader.auth({
+	uid: 123456
+}, function(ret, err){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -149,7 +145,7 @@ isAuth(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -162,13 +158,12 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('maketionCardReader');
-obj.isAuth(function(ret, err){
-	if(ret.status){
-		api.alert({
-        	title: "提示",
-			msg:"验证成功"
-        });
+var maketionCardReader = api.require('maketionCardReader');
+maketionCardReader.isAuth(function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -193,7 +188,7 @@ clearAuth(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -206,13 +201,12 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('maketionCardReader');
-obj.clearAuth(function(ret, err){
-	if(ret.status){
-		api.alert({
-			title: "提示",
-			msg:"清除验证成功"
-        });
+var maketionCardReader = api.require('maketionCardReader');
+maketionCardReader.clearAuth(function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -237,23 +231,23 @@ open(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
 ```js
 {
-	state：  //上传图片状态值，字符串类型，取值范围：
-	uploading：开始上传
-	uploaded：上传完成
-	err：    上传错误
-	uuid：         //图片标识，上传完成后可以根据UUID获取数据
+	state：  		//上传图片状态值，字符串类型，取值范围：
+	uploading：		//开始上传
+	uploaded： 		//上传完成
+	err：    		//上传错误
+	uuid：          //图片标识，上传完成后可以根据UUID获取数据
 }
 ```
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -266,12 +260,13 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('maketionCardReader');
-obj.open(function(ret, err){
-	api.alert({
-		title: "提示",
-		msg:ret.state+'*'+ret.uuid
-	});
+var maketionCardReader = api.require('maketionCardReader');
+maketionCardReader.open(function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -304,7 +299,7 @@ uuids：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -317,7 +312,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -331,20 +326,14 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('maketionCardReader');
-obj.getDataWithUuid({
-	uuids:['987654']
-}, function(ret, err){
-	if(ret.status){
-		api.alert({
-			title: "提示",
-			msg:ret.datas
-		});
-	}else{
-		api.alert({
-            title: "出错了",
-			msg: err.msg
-        });
+var maketionCardReader = api.require('maketionCardReader');
+maketionCardReader.getDataWithUuid({
+	uuids: ['987654']
+}, function(ret, err){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -377,7 +366,7 @@ time：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -390,7 +379,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -404,20 +393,14 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('maketionCardReader');
-obj.getDataWithTime({
-	uuid:0
-}, function(ret, err){
-	if(ret.status){
-		api.alert({
-            title: "提示",
-			msg:ret.datas
-        });
-	}else{
-		api.alert({
-            title: "出错了",
-			msg: err.msg
-        });
+var maketionCardReader = api.require('maketionCardReader');
+maketionCardReader.getDataWithTime({
+	uuid: 0
+}, function(ret, err){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -450,7 +433,7 @@ uuid：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -466,7 +449,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -479,12 +462,13 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('maketionCardReader');
-obj.uploadImg(function(ret, err){
-	api.alert({
-		title: "提示",
-		msg:ret.state+'*'+ret.uuid
-	});
+var maketionCardReader = api.require('maketionCardReader');
+maketionCardReader.uploadImg(function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -514,7 +498,7 @@ uuid：
 
 save：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：见内部字段
 - 描述：获取的图片保存位置，可为空
 
@@ -532,7 +516,7 @@ save：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -543,7 +527,7 @@ ret：
 ```
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -556,12 +540,13 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('maketionCardReader');
-obj.getCardImg(function(ret, err){
-	api.alert({
-		title: "提示",
-		msg:ret.status
-	});
+var maketionCardReader = api.require('maketionCardReader');
+maketionCardReader.getCardImg(function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 

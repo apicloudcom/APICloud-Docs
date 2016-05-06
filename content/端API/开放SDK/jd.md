@@ -3,6 +3,8 @@ Title: jd
 Description: jd
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -16,9 +18,9 @@ Description: jd
 
 jd模块封装了京东授权登录SDK，使用之前需要去[京东云网站](http://jos.jd.com)创建应用。
 
-使用时可以通过login方法以参数的形式将appKey、appSecret等信息传进去，也可以在config.xml里面进行配置，模块会优先使用方法里面传进去的信息。
+使用时可以通过login方法以参数的形式将appKey、appSecret等信息传进去，也可以在[config.xml](/APICloud/技术专题/app-config-manual)里面进行配置，模块会优先使用方法里面传进去的信息。
 
-**config.xml配置示例如下：**
+**[config.xml](/APICloud/技术专题/app-config-manual)配置示例如下：**
 
     <feature name="jd">
         <param name="appKey" value="F7E188290D59BD58FDA262E03A355542" />
@@ -63,7 +65,7 @@ naviColor：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -80,7 +82,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 

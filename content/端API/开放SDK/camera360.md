@@ -3,6 +3,8 @@ Title: camera360
 Description: camera360
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -18,7 +20,7 @@ Description: camera360
 
 camera360模块封装了 Camera360 的开放 SDK，使用本模块可实现对图片的特效、虚化、裁剪、旋转、光影、边框等处理。 使用本模块需要到 http://sdk.camera360.com 申请 camera360 的开发者账号并创建应用并获取到key，由于Android camera360的开放sdk问题，在处理某些图片时可能会出现未知错误。
 
-**使用此模块之前需先配置  config.xml 文件，配置完毕，需通过云端编译生效，配置方法如下：**
+**使用此模块之前需先配置  [config.xml](/APICloud/技术专题/app-config-manual) 文件，配置完毕，需通过云端编译生效，配置方法如下：**
 
 - 名称：camera360
 - 参数：apiKey
@@ -33,7 +35,7 @@ camera360模块封装了 Camera360 的开放 SDK，使用本模块可实现对�
 
 - 字段描述:
 
-   **apiKey**：（必须配置）在 camera360 开放平台创建应用后，该平台会为每个应用分配一个Key，在 IOS 平台上注意包名（应用概览里可以查看）和 Key 要对应。
+   **apiKey**：（必须配置）在 camera360 开放平台创建应用后，该平台会为每个应用分配一个Key，在 iOS 平台上注意包名（应用概览里可以查看）和 Key 要对应。
     
 
 
@@ -41,7 +43,7 @@ camera360模块封装了 Camera360 的开放 SDK，使用本模块可实现对�
 
 打开 camera360 开始编辑图片
 
-open({params}, callback(ret)) 
+open({params}, callback(ret, err)) 
 
 ##params
 
@@ -56,11 +58,11 @@ savePath:
 - 描述： 处理完毕后，图片的保存路径，要求本地路径（fs://）,不支持 widget 协议**
 
 
-##callback(ret)
+##callback(ret, err)
 
 ret:
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
   
 ```js
@@ -78,17 +80,13 @@ ret:
 ##示例代码
 
 ```js
-
-	var obj = api.require('camera360');
-	var msg = {
-
-	  path:'fs://test.jpg',
-	  savePath:'fs://processed_test.jpg'
-
-	}
-	obj.open(msg, function(ret){
-		api.alert({msg:JSON.stringify(ret)});
-	}); 
+var camera360 = api.require('camera360');
+camera360.open({
+    path:'fs://test.jpg',
+    savePath:'fs://processed_test.jpg'
+}, function(ret){
+    api.alert({msg:JSON.stringify(ret)});
+}); 
 ```
 
 ##可用性

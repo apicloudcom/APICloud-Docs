@@ -3,6 +3,8 @@ Title: tencentPush
 Description: 封装腾讯信鸽推送的SDK.
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：腾讯信鸽</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#basic-content">方法</a></li>
 	<li class=""><a href="#const-content">常量</a></li>
@@ -89,7 +91,7 @@ api.require('tencentPush').registerPush(function(ret, err){
 - 注册设备并绑定账号（需要通过参数传递）
 - 注册设备并解除账号的绑定关系
 
-registerPush(params, callback)
+registerPush({params}, callback(ret, err))
 
 ##params
 
@@ -115,7 +117,7 @@ registerPush(params, callback)
 
 ### err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```
@@ -189,7 +191,7 @@ iOS系统，Android系统
 
 配置相关的内容, 如是否打开调试模式.
 
-config(params)
+config({params})
 
 ##params
 
@@ -222,7 +224,7 @@ Android系统
 
 向后台发送反注册包，将该设备从后台的注册信息表中删除，不再接收推送。
 
-unregisterPush(callback)
+unregisterPush(callback(ret, err))
 
 ##callBack
 
@@ -240,7 +242,7 @@ unregisterPush(callback)
 
 ### err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -277,7 +279,7 @@ iOS系统，Android系统
 
 设置标签
 
-setTag(params, callback)
+setTag({params}, callback(ret, err))
 
 ##params
 
@@ -304,7 +306,7 @@ setTag(params, callback)
 
 ### err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -347,7 +349,7 @@ iOS系统，Android系统
 
 删除标签
 
-delTag(params, callback)
+delTag({params}, callback(ret, err))
 
 ##params
 
@@ -374,7 +376,7 @@ delTag(params, callback)
 
 ### err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -415,7 +417,7 @@ iOS系统，Android系统
 
 添加本地通知
 
-addlocalNotification(params, callback)
+addlocalNotification({params}, callback(ret, err))
 
 ##params
 
@@ -490,7 +492,7 @@ addlocalNotification(params, callback)
 
 ### err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -565,7 +567,7 @@ iOS系统，Android系统
 
 在通知栏清除已展示的通知
 
-cancelNotifaction(params)
+cancelNotifaction({params})
 
 ##params
 
@@ -581,7 +583,7 @@ cancelNotifaction(params)
 // 清除展示的通知
 var tencentPush = api.require('tencentPush');
 var params = {nid: -1};	
-tencentPush.cancelNotifaction(params);
+tencentPush.cancelNotifaction({params});
 ```
 
 ##补充说明
@@ -598,7 +600,7 @@ iOS系统，Android系统
 
 设置JS的回调函数，一般只用于设置消息透传的回调。
 
-setListener(params, callback)
+setListener({params}, callback(ret, err))
 
 ##params
 
@@ -613,7 +615,7 @@ setListener(params, callback)
   
 - 描述: 设置回调函数，当操作发生时（通常是接收到透传消息，又称消息命令字）的回调接口 
 
-##callBack(ret)
+##callback(ret, err)
 
 ### ret
 

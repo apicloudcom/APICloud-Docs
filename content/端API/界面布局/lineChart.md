@@ -3,6 +3,8 @@ Title: lineChart
 Description: lineChart
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -16,7 +18,7 @@ Description: lineChart
 
 #**概述**
 
-lineChart模块封装了k线图的绘制方法，开发者可自定义图表的样式，只需传入相应的数据，即可在图表上显示多条折线。亦可自定义结点点击事件。本模块已停止更新，建议使用优化升级版模块[UILineChart](http://docs.apicloud.com/端API/界面布局/UILineChart)
+lineChart 模块封装了k线图的绘制方法，开发者可自定义图表的样式，只需传入相应的数据，即可在图表上显示多条折线。亦可自定义结点点击事件。本模块已停止更新，建议使用优化升级版模块 [UILineChart](http://docs.apicloud.com/端API/界面布局/UILineChart)
 
 ![图片说明](/img/docImage/lineChart.jpg)
 
@@ -54,7 +56,7 @@ h：
 
 yAxis：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：K线图坐标系y轴配置参数，不可为空
 
@@ -70,7 +72,7 @@ yAxis：
 
 xAxis：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：K线图坐标系x轴配置参数，不可为空
  
@@ -78,8 +80,8 @@ xAxis：
  
  ```js
  {
-        indexs:['一月’,’二月’,’三月'] //x轴标注（本字段是个数组对象），不可为空
-        screenXcount:               //每屏显示纵轴个数，数字类型，不可为空
+        indexs: ['一月’,’二月’,’三月'] 		//x轴标注（本字段是个数组对象），不可为空
+        screenXcount:               		//每屏显示纵轴个数，数字类型，不可为空
  }
  ```
 
@@ -103,19 +105,19 @@ lines：
 
 - 类型：字符串
 - 默认值：#FFFFFF
-- 描述：K线图背景颜色，支持rgb，rgba，#，可为空
+- 描述：K线图背景颜色，支持 rgb，rgba，#，可为空
 
 coorLineColor：
 
 - 类型：字符串
 - 默认值：#000000
-- 描述：K线图折线的颜色，支持rgb，rgba，#，不可为空
+- 描述：K线图折线的颜色，支持 rgb，rgba，#，不可为空
 
 markColor：
 
 - 类型：字符串
 - 默认值：#000000
-- 描述：K线图xy轴标记字体颜色，支持rgb，rgba，#，不可为空
+- 描述：K线图xy轴标记字体颜色，支持 rgb，rgba，#，不可为空
 
 fixedOn：
 
@@ -128,28 +130,28 @@ fixed:
 - 默认值：true
 - 描述：是否将模块视图固定到窗口上，不跟随窗口上下滚动，可为空
 
-callback(ret, err)
+callback( ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
 ```js
 {
-	status:              //状态值
-	index:               //点击的k线的结点的下标，数字
-	id: （deprecated）   //点击的K线的id ，数字（将要废弃此参数）
-	chartId:         //模块视图的id，数字类型
-    lineId:          //点击的K线的id，数字类型
+	status:              		//状态值
+	index:               		//点击的k线的结点的下标，数字
+	id: （deprecated）   		//点击的K线的id ，数字（将要废弃此参数）
+	chartId:         		    //模块视图的id，数字类型
+    lineId:          		    //点击的K线的id，数字类型
 
 }
 ```
 
 err:
 
-- 类型：json对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -169,12 +171,12 @@ lineChart.open({
 	w: 320,
 	h: 300,
 	yAxis: {
-	    "max": 1000,
-	    "step": 200
+	    'max': 1000,
+	    'step': 200
 	},
 	xAxis: {
-	    "indexs": ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月','一月'],
-	    "screenXcount": 7
+	    'indexs': ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月','一月'],
+	    'screenXcount': 7
 	},
 	lines: [{
 	    'color': '#800080', 
@@ -211,7 +213,7 @@ iOS系统，Android系统
 
 隐藏K线图视图
 
-hide(params)
+hide({params})
 
 ##param
 
@@ -236,7 +238,7 @@ lineChart.hide({
 
 ##可用性
 
-IOS系统，安卓系统
+iOS系统，安卓系统
 
 可提供的1.0.1及更高版本
 
@@ -244,7 +246,7 @@ IOS系统，安卓系统
 
 显示K线图视图
 
-show(params)
+show({params})
 
 ##params
 
@@ -267,7 +269,7 @@ lineChart.show();
 
 ##可用性
 
-IOS系统，安卓系统
+iOS系统，安卓系统
 
 可提供的1.0.1及更高版本
 
@@ -275,7 +277,7 @@ IOS系统，安卓系统
 
 关闭K线图
 
-close()
+close({params})
 
 ##params
 

@@ -2,6 +2,9 @@
 Title: paypal
 Description: paypal
 */
+
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <div class="outline">
 [pay](#a1)
 </div>
@@ -86,11 +89,11 @@ mode：
 	- noNetwork：不跟 PayPal 服务器交互，可伪装支付成功状态。用于单元测试
 
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -134,6 +137,6 @@ ret：
 
 ##可用性
 
-IOS系统  Android系统
+iOS系统  Android系统
 
 可提供的1.0.0及更高版本

@@ -3,6 +3,8 @@ Title: tulingapi
 Description: 图灵机器人
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：图灵机器人</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#basic-content">方法</a></li>
 	<li class=""><a href="#const-content">常量</a></li>
@@ -24,7 +26,7 @@ tulingDemo封装了图灵开放平台的SDK，使用此模块可轻松实现接�
 
 模块进行初始化
 
-getTulingResult(params, callback)
+getTulingResult({params}, callback(ret, err))
 
 ##params
 
@@ -59,7 +61,7 @@ getTulingResult(params, callback)
 
 ### err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 

@@ -37,13 +37,13 @@ UIPullRefreshFlash 模块对引擎新推出的下拉刷新接口进行了一层�
 
 **模块使用攻略**
 
-对于 APICloud 平台上的普通模块，在相应接口调用前需要先 require 该模块，但由于本模块是基于引擎下拉刷新功能扩展的模块，所以本模块使用方法比较特殊。可以不必 require 模块，改为在 config.xml 文件内配置模块。
+对于 APICloud 平台上的普通模块，在相应接口调用前需要先 require 该模块，但由于本模块是基于引擎下拉刷新功能扩展的模块，所以本模块使用方法比较特殊。可以不必 require 模块，改为在 [config.xml](/APICloud/技术专题/app-config-manual) 文件内配置模块。
 
-config.xml 文件配置示例如下：
+[config.xml](/APICloud/技术专题/app-config-manual) 文件配置示例如下：
 
-	<preference name="customRefreshHeader" value="UIPullRefreshFlash"/>
+	<preference name="customRefreshHeader' value="UIPullRefreshFlash'/>
 
-在 config.xml 配置后，则本模块为全局对象，可以在任意可弹动的窗体（frame、window）中调用 api.setCustomRefreshHeaderInfo 接口设置该下拉刷新样式，以及开始、停止刷新加载状态（api.refreshHeaderLoading、api.refreshHeaderLoadDone）。
+在 [config.xml](/APICloud/技术专题/app-config-manual) 配置后，则本模块为全局对象，可以在任意可弹动的窗体（frame、window）中调用 api.setCustomRefreshHeaderInfo 接口设置该下拉刷新样式，以及开始、停止刷新加载状态（api.refreshHeaderLoading、api.refreshHeaderLoadDone）。
 
 若想在不同的 window 或 frame 使用不同的下拉刷新模块，开发者可以在 window 或 frame 打开时传入参数 customRefreshHeader:'下拉刷新模的块名'，以指定该窗体的下拉刷新模块。如：
 
@@ -84,7 +84,7 @@ api.setCustomRefreshHeaderInfo({params}, callback())
 
 ```js
 {
-	bgColor: '#C0C0C0',                             //（可选项）字符串类型；下拉刷新的背景设置，支持rgb、rgba、#，该背景大小同当前 window 或 frame 的宽高；默认：#C0C0C0
+	bgColor: '#C0C0C0',                             //（可选项）字符串类型；下拉刷新的背景设置，支持 rgb、rgba、#，该背景大小同当前 window 或 frame 的宽高；默认：#C0C0C0
 	image: {                                        //JSON 对象类型；下拉刷新相关图片设置
 		pull: ['fs://t1.png','fs://t2.png',...],    //数组类型；组成下拉过程的动画关键帧图片数组，这组图片随下拉高度同步放大缩小，同时自动播放关键帧图片：每下拉一定距离（阈值/图片数量），播放一帧关键帧图片；图片规格为正方形，如：50*50、100*100
 		load: ['fs://t1.png','fs://t2.png',...]     //数组类型；组成下拉刷新加载状态动画的关键帧图片数组，图片为正方形的，如：50*50、100*100，建议开发者传大小合适的图片以适配高分辨率手机屏幕
@@ -132,7 +132,7 @@ api.setCustomRefreshHeaderInfo({
 
 ##可用性
 
-IOS系统，Android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -153,7 +153,7 @@ api.refreshHeaderLoading()
 
 ##可用性
 
-IOS系统，Android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -174,6 +174,6 @@ api.refreshHeaderLoadDone()
 
 ##可用性
 
-IOS系统，Android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本

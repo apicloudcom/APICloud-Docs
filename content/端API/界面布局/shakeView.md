@@ -3,6 +3,8 @@ Title: shakeView
 Description: shakeView
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 	<li><a href="#const-content">Constant</a></li>
@@ -23,7 +25,7 @@ Description: shakeView
 
 #**概述**
 
-shakeView封装了一个可供开发者自定义的摇一摇界面，包括动画方向，震动，声音等摇一摇时特定的效果，都可自定义。使用此模块有效的解决了前端实现摇一摇动画不流畅问题
+shakeView 封装了一个可供开发者自定义的摇一摇界面，包括动画方向，震动，声音等摇一摇时特定的效果，都可自定义。使用此模块有效的解决了前端实现摇一摇动画不流畅问题
 
 ![图片说明](/img/docImage/shakeView.jpg)
 
@@ -67,7 +69,7 @@ type：
 
 anim：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）视图动画的参数配置
 - 内部字段：
 
@@ -82,14 +84,14 @@ anim：
 
 img：
 
-- 类型：JSON对象
-- 描述：（可选项）视图界面图片配置
+- 类型：JSON 对象
+- 描述：视图界面图片配置
 - 内部字段：
 
 ```js
 {
-	leftUp:           //（可选项）字符串类型；左边（上面）的图片路径，要求本地路径（widget://、fs://）；默认：灰色视图
-	rightDown:        //（可选项）字符串类型；右边（下面）的图片路径，要求本地路径（widget://、fs://）；默认：灰色视图
+	leftUp:           //字符串类型；左边（上面）的图片路径，要求本地路径（widget://、fs://）；默认：灰色视图
+	rightDown:        //字符串类型；右边（下面）的图片路径，要求本地路径（widget://、fs://）；默认：灰色视图
 	bg:               //（可选项）字符串类型；背景图片路径，要求本地路径（widget://、fs://）；默认：绿色视图
 	shake：           //（可选项）字符串类型；震动效果动画时震动（抖动）的图片路径，要求本地路径（widget://、fs://），当type为up_down或left_right时忽略此参数
 }
@@ -104,14 +106,32 @@ fixedOn：
 fixed:
 
 - 类型：布尔
-- 描述：（可选项）模块是否随所属 Window 或 Frame 滚动
+- 描述：（可选项）模块是否随所属 window 或 frame 滚动
 - 默认值：true（不随之滚动）
 
 ##示例代码
 
 ```js
 var shakeView = api.require('shakeView');
-shakeView.open();
+shakeView.open({
+	x: 0,
+	y: 300,
+	w: api.winWidth,
+	h: 300,
+	type: 'left_right',
+	img: {
+		leftUp: 'widget://res/1.png',
+		rightDown: 'widget://res/2.png',
+		bg: 'widget://res/3.png'
+		
+	},
+	anim: {
+		time: '2',
+		sound: '',
+		isShake: true, 
+		percent: 50
+	}
+});
 ```
 
 ##可用性
@@ -125,13 +145,13 @@ iOS系统，Android系统
 
 触发摇一摇事件
 
-shake({params},callback(ret,err))
+shake({params}, callback(ret, err))
 
 ##params
 
 anim：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）视图动画的参数配置
 - 内部字段：
 
@@ -144,7 +164,7 @@ anim：
 }
 ```
 
-##callback(ret,err)
+##callback(ret, err)
 
 回调摇一摇动画结束事件
 

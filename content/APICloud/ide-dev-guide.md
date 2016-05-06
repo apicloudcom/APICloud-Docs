@@ -45,15 +45,15 @@ Sort: 4
 
 ##概述
 
-APICloud Studio是基于Eclipse和Aptana Studio3进行扩展，集成了包括：应用管理、模版框架、云端同步、代码管理、代码提示、本地打包、真机同步、AppLoader管理，编译自定义AppLoader等功能。企业和开发者也可以在此开源代码的基础上定制自己的APICloud开发工具。 开源地址：https://gitcafe.com/APICloud
+APICloud Studio是基于Eclipse和Aptana Studio3进行扩展，集成了包括：应用管理、模版框架、云端同步、代码管理、代码提示、本地打包、真机同步、AppLoader管理，编译自定义AppLoader等功能。企业和开发者也可以在此开源代码的基础上定制自己的APICloud开发工具。 开源地址：https://github.com/apicloudcom/APICloud-Studio
 
 ##名词解释 
 
 * **APICloud Studio**：由APICloud提供的移动应用集成开发环境。
 
-* **本地打包**：APICloud Studio把APICloud引擎和开发人员创建的APICloud移动应用结合在一起打成apk或者ipa安装包。
+* **本地打包**：APICloud Studio把APICloud引擎和开发人员创建的APICloud移动应用结合在一起打成Android(apk)或者iOS(ipa)安装包。
 
-* **真机同步**：APICloud Studio为开发者提供了Android和iOS平台的真机调试器，将本地开发的应用代码放入真机调试器的指定目录，即可实现真机模拟、调试，与最终完成的原生应用别无二致。
+* **真机同步**：APICloud Studio为开发者提供了Android和iOS平台的真机调试器，将本地开发的应用代码放入真机调试器的指定目录，即可实现真机模拟、调试，与最终完成的原生应用功能、体验保持统一。
 
 * **自定义Loader**：添加了自定义模块或第三方模块的AppLoader，不需要云端编译即可用于真机同步调试。
 
@@ -82,13 +82,13 @@ APICloud Studio是绿色版，不用修改注册表。下载后解压缩，运�
 
 **说明**
 
-在APICloud中一个移动应用可以对应生成android和ios 两个平台的应用。并且APICloud Studio中的操作都是以移动应用为单位进行的。
+在APICloud中一套应用代码可以对应生成 Android 和 iOS 两个平台的应用。并且APICloud Studio中的操作都是以移动应用为单位进行的。
 
 **操作流程**
 
 创建一个应用有3个入口。
 
-- 在向导页面中的创建app项目中创建移动应用。如下图。
+- 在向导页面中“创建app项目”中创建移动应用。如下图。
 
 ![图片说明](/img/docImage/173.png)
  
@@ -100,7 +100,7 @@ APICloud Studio是绿色版，不用修改注册表。下载后解压缩，运�
 
 ![图片说明](/img/docImage/175.png)
 
-在打开向导中输入应用名称（必需）和应用说明（非必需），也可以选择需要的应用框架（或空白应用），然后点击完成。即可创建一个APICloud应用。
+在打开的向导中输入应用名称（必需）和应用说明（非必需），也可以选择需要的应用框架（或空白应用），然后点击完成。即可创建一个APICloud应用。
 
 ![图片说明](/img/docImage/177.jpg)
 
@@ -210,7 +210,7 @@ APICloud Studio开发工具提供了云端下载应用的功能。开发者通�
 
 **说明**
 
-本地打包是APICloud Studio把APICloud核心引擎和开发人员创建的APICloud移动应用结合在一起打成包。达到快速测试的效果。（IOS的测试包是不能在正版系统中安装的，只能安装在越狱手机中）如果需要打正式版本的安装包，请访问www.apicloud.com或者参考文档
+本地打包是APICloud Studio把APICloud核心引擎和开发人员创建的APICloud移动应用结合在一起打成包。达到快速测试的效果。（IOS的测试包是不能在正版系统中安装的，只能安装在越狱手机中）如果需要打正式版本的安装包，请参考[云编译说明](#a12)
 
 **操作流程**
 
@@ -226,7 +226,7 @@ APICloud Studio开发工具提供了云端下载应用的功能。开发者通�
 
 ![图片说明](/img/docImage/189.jpg)
  
-- 生成测试安装包后，APICloud Studio会自动帮您打开生成安装包对应的路径的文件夹。
+- 生成测试安装包后，APICloud Studio会自动帮您打开安装包所在文件夹。
 
 <div id="a12"></div>
 ##云端编译
@@ -237,7 +237,7 @@ APICloud Studio开发工具提供了云端下载应用的功能。开发者通�
 
 **操作说明**
 
-- 在APICloud Studio 中找到按钮 ，点击后APICloud Studio 会帮您连接到云端编译页面。
+- 在APICloud Studio 中找到按钮 ，点击后APICloud Studio会帮您连接到云端编译页面。
 
 ![图片说明](/img/docImage/190.png)
  
@@ -250,20 +250,20 @@ APICloud Studio开发工具提供了云端下载应用的功能。开发者通�
 
 **说明**
 
-APICloud Studio通过真机调试可以连接android手机的日志，当用户可以自己输入日志调试程序，并且当js报错时，错误日志也会输出到APICloud Studio的控制台中，方便开发人员进行错误分析，bug调试。
+APICloud Studio通过真机调试可以连接Android手机的日志，用户可以使用console.log输出日志以调试程序，而当js报错时，错误日志也会输出到APICloud Studio的控制台中，方便开发人员进行错误分析，bug调试。
 
 **操作流程**
 
-- 首先通过一键真机同步测试功能将要调试的应用同步到android手机中的
+- 首先通过一键真机同步测试功能将要调试的应用同步到Android手机中的
 - 开启APICloud Studio的日志输出功能按钮
 
 ![图片说明](/img/docImage/192.jpg)
  
-- APICloud Studio控制台会提示出开启监听…
+- APICloud Studio控制台会提示开启监听…
 
 ![图片说明](/img/docImage/193.png)
  
-- 如果开发人员自己输入了日志，或者js报错就会出现在APICloud Studio控制台中。（如何定义输出日志请参考文档）
+- 如果开发人员自己输出了日志，或者js报错就会出现在APICloud Studio控制台中。（如何定义输出日志请参考文档）
 
 <div id="a14"></div>
 ##在线文档
@@ -283,7 +283,7 @@ APICloud提供了在线开发文档，通过阅读开发文档可以是开发人
 
 **说明**
 
-APICloud 中提供了自己定义的api对象以及大量的模块（db、fs等）。通过这些api可以大大减少用户的开发，并且开发人员只需要掌握html5和js技术就可以发开出和ios/android相媲美的本地应用，同时，APICloud Studio也提供了这些api的代码提示功能。
+APICloud 中提供了自己定义的api对象以及大量的模块（如db、fs等）。通过这些api可以大大减少用户的开发，并且开发人员只需要掌握html5和js技术就可以发开出和iOS/Android相媲美的本地应用，同时，APICloud Studio也提供了这些api的代码提示功能。
 
 
 
@@ -292,11 +292,11 @@ APICloud 中提供了自己定义的api对象以及大量的模块（db、fs等�
 - 开发人员需要先熟悉APICloud提供的api文档。
 - 在APICloud Studio的编辑器中，找到js编辑区域。
 - 输入api对象后在输入一个”.”就会触发APICloud Studio的代码提示功能。
-- 其中代码提示栏分为2部分：左侧是提示的属性或者方法名（属性：P，方法：F）右侧是该提示的内容包括：描述、参数、回调函数、可用性等说明。
+- 其中代码提示栏分为2部分：左侧是提示的属性或者方法名（属性：P，方法：F）右侧是该提示的内容，包括：描述、参数、回调函数、可用性等说明。
 
 ![图片说明](/img/docImage/195.jpg)
  
-- 当选择一个提示后APICloud Studio会自动帮你补全代码。
+- 当选择一个提示后APICloud Studio会自动帮您补全代码。
 
 ![图片说明](/img/docImage/196.jpg)
 
@@ -306,7 +306,7 @@ APICloud 中提供了自己定义的api对象以及大量的模块（db、fs等�
 
 ![图片说明](/img/docImage/197.png)
  
-- 输入alt+/，APICloud Studio会根据这个函数提示出相应的param参数。
+- 使用组合键"Alt"+"/"，APICloud Studio会根据这个函数提示出相应的param参数。
 
 ![图片说明](/img/docImage/198.png)
 

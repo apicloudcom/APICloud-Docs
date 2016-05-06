@@ -3,6 +3,8 @@ Title: baiduNavigation
 Description: baiduNavigation
 */
 
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -16,7 +18,7 @@ Description: baiduNavigation
 
 #**概述**
 
-baiduNavigation模块封装了百度导航的sdk，支持语音导航功能。用户可自行选择路线类型。开发者只需输入起点终点经纬度即可轻松集成百度导航功能，本模块是由第三方模块开发者提供，使用本模块需在线云编译安装包。
+baiduNavigation 模块封装了百度导航的 sdk，支持语音导航功能。用户可自行选择路线类型。开发者只需输入起点终点经纬度即可轻松集成百度导航功能，本模块是由第三方模块开发者提供，使用本模块需在线云编译安装包。
 
 在集成此模块之前需先配置config文件。在config里添加如下字段：
 

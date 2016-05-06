@@ -3,6 +3,8 @@ Title: phoneInfo
 Description: phoneInfo
 */
 
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
   
@@ -21,11 +23,9 @@ Description: phoneInfo
 [getDisplayInfo](#a5)
 </div>
 
-
-
 #**概述**
 
-phoneInfo封装了获取手机基本信息、CPU信息、内存信息、存储信息、显示信息等功能，使用phoneInof模块基本上可以获取所有常用的手机设备信息。**本模块暂仅支持 Aandroid 平台**
+phoneInfo 封装了获取手机基本信息、CPU 信息、内存信息、存储信息、显示信息等功能，使用 phoneInfo 模块基本上可以获取所有常用的手机设备信息。
 
 
 #**getBaseInfo**<div id="a1"></div>
@@ -38,7 +38,7 @@ getBaseInfo(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -57,7 +57,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -103,7 +103,7 @@ getCpuInfo(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -118,7 +118,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -160,7 +160,7 @@ getMemoryInfo(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -173,7 +173,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -213,7 +213,7 @@ getStorageInfo(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -240,7 +240,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -286,7 +286,7 @@ getDisplayInfo(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -300,7 +300,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js

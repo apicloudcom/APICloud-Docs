@@ -3,6 +3,8 @@ Title: iap
 Description: iap
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 	<li><a href="#const-content">Constant</a></li>
@@ -29,7 +31,7 @@ Description: iap
 
 #**概述**
 
-iap模块封装了iOS系统应用内购买相关功能，部分功能如商品内容下载，在iOS系统6.0之前不可用
+iap 模块封装了 IOS 系统应用内购买相关功能，部分功能如商品内容下载，在 IOS 系统6.0之前不可用
 
 #**getProducts**<div id="1"></div>
 
@@ -49,35 +51,35 @@ productIds：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
 ```js
 {
-	invalidProductIds:			//无效的商品id列表，字符串数组
-	products:				//有效商品列表，JSON数组
+	invalidProductIds:		       //无效的商品id列表，字符串数组
+	products:				       //有效商品列表，JSON数组
 	[{
-		productId:			//商品id，字符串类型
-		title:				//商品标题，字符串类型
-		description:			//商品描述，字符串类型
-		price:				//商品价格，数字类型
-		formattedPrice:			//商品格式化后的价格，如￥6.00，字符串类型
-		downloadable:			//是否有下载内容，只iOS6.0及以后系统有效，布尔类型
-		downloadContentLengths:		//下载内容长度，数字组成的数组
-		downloadContentVersion:		//下载内容的版本，字符串类型
+		productId:			       //商品id，字符串类型
+		title:				       //商品标题，字符串类型
+		description:		       //商品描述，字符串类型
+		price:				       //商品价格，数字类型
+		formattedPrice:		       //商品格式化后的价格，如￥6.00，字符串类型
+		downloadable:		       //是否有下载内容，只 IOS 6.0及以后系统有效，布尔类型
+		downloadContentLengths:	   //下载内容长度，数字组成的数组
+		downloadContentVersion:	   //下载内容的版本，字符串类型
 	}]
 }
 ```
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
 ```js
 {
-	msg:''    //错误描述
+	msg: ''    //错误描述
 }
 ```
 
@@ -89,7 +91,7 @@ iap.getProducts({
 	productIds: [
         'com.apicloud.iap.free'
     ]
-},function( ret, err ){		
+},function(  ret, err ){		
     if( ret ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -104,7 +106,7 @@ iap.getProducts({
 
 ##可用性
 
-iOS系统
+ IOS 系统
 
 可提供的1.0.0及更高版本
 
@@ -127,43 +129,43 @@ productId：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
 ```js
 {
-	state:					//交易状态，详见交易状态常量，数字类型
-	productId:				//商品id，字符串类型
-	transactionId:				//交易id，字符串类型
-	originalTransactionId:			//原始交易id，只在state为恢复购买时有效，字符串类型
-	receipt:				//交易凭证，经过base64编码，用于验证交易是否合法和有效，避免因越狱破解内购后造成损失，只在state为购买成功时有效，字符串类型
-	errorCode:				//交易失败时的错误码，详见错误码常量，数字类型
-	downloads:				//有下载内容时的下载信息列表，iOS6.0之前无效
+	state:					  //交易状态，详见交易状态常量，数字类型
+	productId:				  //商品id，字符串类型
+	transactionId:			  //交易id，字符串类型
+	originalTransactionId:	  //原始交易id，只在state为恢复购买时有效，字符串类型
+	receipt:				  //交易凭证，经过base64编码，用于验证交易是否合法和有效，避免因越狱破解内购后造成损失，只在state为购买成功时有效，字符串类型
+	errorCode:				  //交易失败时的错误码，详见错误码常量，数字类型
+	downloads:				  //有下载内容时的下载信息列表， IOS 6.0之前无效
 	[{
-		transactionId：			//下载内容所属交易id，字符串类型
-		contentId:			//下载内容id，字符串类型
-		downloadState:			//下载状态，详见下载状态常量，数字类型
-		progress：			//下载进度，取值范围0~1，数字类型
-		contentLength:			//文件内容大小，数字类型
-		timeRemaining:			//下载剩余时间，-1时表示未知，数字类型
-		contentVersion:			//下载内容的版本，字符串类型
-		contentURL:			//下载成功后文件路径，字符串类型
-		errorCode:			//下载失败时的错误码，数字类型
-		errorMsg:			//下载失败时的错误描述，字符串类型
+		transactionId：		  //下载内容所属交易id，字符串类型
+		contentId:			  //下载内容id，字符串类型
+		downloadState:		  //下载状态，详见下载状态常量，数字类型
+		progress：			  //下载进度，取值范围0~1，数字类型
+		contentLength:		  //文件内容大小，数字类型
+		timeRemaining:		  //下载剩余时间，-1时表示未知，数字类型
+		contentVersion:		  //下载内容的版本，字符串类型
+		contentURL:			  //下载成功后文件路径，字符串类型
+		errorCode:			  //下载失败时的错误码，数字类型
+		errorMsg:			  //下载失败时的错误描述，字符串类型
 	}]
 }
 ```
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
 ```js
 {
-	msg:'' 		//其它错误，如参数错误、如当前用户不能使用应用内购买等
+	msg: '' 		//其它错误，如参数错误、如当前用户不能使用应用内购买等
 }
 ```
 
@@ -173,7 +175,7 @@ err：
 var iap = api.require('iap');
 iap.purchase({
     productId: 'com.company.app.productid'
-},function( ret, err ){		
+},function(  ret, err ){		
     if( ret ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -188,7 +190,7 @@ iap.purchase({
 
 ##可用性
 
-iOS系统
+ IOS 系统
 
 可提供的1.0.0及更高版本
 
@@ -203,7 +205,7 @@ restoreTransactions(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -214,18 +216,18 @@ ret：
 	{
 		state:					//交易状态，详见交易状态常量，数字类型
 		productId:				//商品id，字符串类型
-		transactionId:				//交易id，字符串类型
-		originalTransactionId:			//原始交易id，只在state为恢复购买时有效，字符串类型
+		transactionId:			//交易id，字符串类型
+		originalTransactionId:	//原始交易id，只在state为恢复购买时有效，字符串类型
 		receipt:				//交易凭证，经过base64编码，用于验证交易是否合法和有效，避免因越狱破解内购后造成损失，只在state为购买成功时有效，字符串类型
-		downloads:				//有下载内容时的下载信息列表，iOS6.0之前无效
+		downloads:				//有下载内容时的下载信息列表， IOS 6.0之前无效
 		[{
-			transactionId：			//下载内容所属交易id，字符串类型
+			transactionId：		//下载内容所属交易id，字符串类型
 			contentId:			//下载内容id，字符串类型
-			downloadState:			//下载状态，详见下载状态常量，数字类型
+			downloadState:		//下载状态，详见下载状态常量，数字类型
 			progress：			//下载进度，取值范围0~1，数字类型
-			contentLength:			//文件内容大小，数字类型
-			timeRemaining:			//下载剩余时间，-1时表示未知，数字类型
-			contentVersion:			//下载内容的版本，字符串类型
+			contentLength:		//文件内容大小，数字类型
+			timeRemaining:		//下载剩余时间，-1时表示未知，数字类型
+			contentVersion:		//下载内容的版本，字符串类型
 			contentURL:			//下载成功后文件路径，字符串类型
 			errorCode:			//下载失败时的错误码，数字类型
 			errorMsg:			//下载失败时的错误描述，字符串类型
@@ -236,7 +238,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -250,7 +252,7 @@ err：
 
 ```js
 var iap = api.require('iap');
-iap.restoreTransactions(function( ret, err ){		
+iap.restoreTransactions(function(  ret, err ){		
     if( ret ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -265,7 +267,7 @@ iap.restoreTransactions(function( ret, err ){
 
 ##可用性
 
-iOS系统
+ IOS 系统
 
 可提供的1.0.0及更高版本
 
@@ -274,13 +276,13 @@ iOS系统
 
 设置下载监听，所有的下载进度通过此回调返回
 
-setDownloadListener(callback(ret))
+setDownloadListener(callback(ret, err))
 
-##callback(ret)
+##callBack(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -288,13 +290,13 @@ ret：
 {
 	downloads:			//下载状态和进度变化的下载列表，JSON数组
 	[{
-		transactionId：		//下载内容所属交易id，字符串类型
+		transactionId：	//下载内容所属交易id，字符串类型
 		contentId:		//下载内容id，字符串类型
-		downloadState:		//下载状态，详见下载状态常量，数字类型
+		downloadState:	//下载状态，详见下载状态常量，数字类型
 		progress：		//下载进度，取值范围0~1，数字类型
-		contentLength:		//文件内容大小，数字类型
-		timeRemaining:		//下载剩余时间，-1时表示未知，数字类型
-		contentVersion:		//下载内容的版本，字符串类型
+		contentLength:	//文件内容大小，数字类型
+		timeRemaining:	//下载剩余时间，-1时表示未知，数字类型
+		contentVersion:	//下载内容的版本，字符串类型
 		contentURL:		//下载成功后文件路径，字符串类型
 		errorCode:		//下载失败时的错误码，数字类型
 		errorMsg:		//下载失败时的错误描述，字符串类型
@@ -306,7 +308,7 @@ ret：
 
 ```js
 var iap = api.require('iap');
-iap.setDownloadListener(function( ret, err ){		
+iap.setDownloadListener(function(  ret, err ){		
     if( ret ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -321,7 +323,7 @@ iap.setDownloadListener(function( ret, err ){
 
 ##可用性
 
-iOS系统
+ IOS 系统
 
 可提供的1.0.0及更高版本
 
@@ -357,7 +359,7 @@ iap.startDownloads({
 
 ##可用性
 
-iOS系统
+ IOS 系统
 
 可提供的1.0.0及更高版本
 
@@ -393,7 +395,7 @@ iap.pauseDownloads({
 
 ##可用性
 
-iOS系统
+ IOS 系统
 
 可提供的1.0.0及更高版本
 
@@ -429,7 +431,7 @@ iap.resumeDownloads({
 
 ##可用性
 
-iOS系统
+ IOS 系统
 
 可提供的1.0.0及更高版本
 
@@ -465,7 +467,7 @@ iap.cancelDownloads({
 
 ##可用性
 
-iOS系统
+ IOS 系统
 
 可提供的1.0.0及更高版本
 </div>
@@ -518,4 +520,4 @@ iOS系统
 - 1		//交易完成
 - 2		//交易失败
 - 3		//恢复购买
-- 4		//交易等待被确认，iOS8.0及以后有效
+- 4		//交易等待被确认， IOS 8.0及以后有效

@@ -3,6 +3,8 @@ Title: aMapNavigation
 Description: aMapNavigation
 */
 
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 	<li><a href="#const-content">Constant</a></li>
@@ -19,9 +21,9 @@ Description: aMapNavigation
 
 #**概述**
 
-aMapNavigation模块封装了高德导航的sdk，支持语音导航功能。用户可自行算路策略类型。开发者只需输入起点终点经纬度即可轻松集成高德导航功能，本模块是由第三方模块开发者提供，使用本模块需在线云编译安装包。
+aMapNavigation 模块封装了高德导航的sdk，支持语音导航功能。用户可自行算路策略类型。开发者只需输入起点终点经纬度即可轻松集成高德导航功能，本模块是由第三方模块开发者提供，使用本模块需在线云编译安装包。
 
-**在集成此模块之前需先配置config文件。在config里添加如下字段：**
+**在集成此模块之前需先配置 config 文件。在 config 里添加如下字段：**
 
 - 名称：aMap
 - 参数：android_api_key、ios_api_key
@@ -123,17 +125,17 @@ mode：
 
 styles：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）模块各部分的样式
 - 内部字段：
 
 ```js
 {
 		image: {            //（可选项）JSON对象；标注图标配置
-			start: ,        //（可选项）字符串类型；起点图标路径，要求本地路径（fs://，widget://），若不传则显示公用的图标
-			end: ,          //（可选项）字符串类型；终点图标路径，要求本地路径（fs://，widget://），若不传则显示公用的 图标
-			way: ,          //（可选项）字符串类型；途经点图标路径，要求本地路径（fs://，widget://），若不传则显示公用的图标
-			camera:         //（可选项）字符串类型；摄像头图标（只适用于驾车导航）路径，要求本地路径（fs://，widget://），若不传则显示公用的图标
+			start: ,        //（可选项）字符串类型；起点图标路径，要求本地路径（fs://、widget://），若不传则显示公用的图标
+			end: ,          //（可选项）字符串类型；终点图标路径，要求本地路径（fs://、widget://），若不传则显示公用的 图标
+			way: ,          //（可选项）字符串类型；途经点图标路径，要求本地路径（fs://、widget://），若不传则显示公用的图标
+			camera:         //（可选项）字符串类型；摄像头图标（只适用于驾车导航）路径，要求本地路径（fs://、widget://），若不传则显示公用的图标
 		},
 		preference: {       //（可选项）JSON对象；偏好设置
 		    night: false,   //（可选项）布尔类型；是否显示黑夜模式；默认：false
@@ -143,7 +145,7 @@ styles：
 		    yawReCal: false,//（可选项）数字类型；偏航时是否重新计算路径；默认：false
 		    alwaysBright: , //（可选项）数字类型；导航状态下屏幕是否一直开启；默认：false
 		    jamReCal: false,//（可选项）数字类型；前方拥堵时是否重新计算路径，暂仅支持Android平台；默认：false
-		    allowsBackgroundLocationUpdates: ''  //（可选项）布尔类型；是否允许后台定位，暂仅支持 IOS 平台且只在iOS 9.0及之后起作用；默认：false，为 true 时必须保证 config.xml 文件内把后台定位和后台音频播放打开，否则会异常，具体操作见 config.xml 文件配置文档	    }
+		    allowsBackgroundLocationUpdates: ''  //（可选项）布尔类型；是否允许后台定位，暂仅支持 IOS 平台且只在iOS 9.0及之后起作用；默认：false，为 true 时必须保证 conifg.xml 文件内把后台定位和后台音频播放打开，否则会异常，具体操作见 config.xml 文件配置文档	    }
 }
 ```	
 
@@ -151,7 +153,7 @@ styles：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```
@@ -175,21 +177,21 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
 {
-	 code:      //数字类型；错误码，取值范围如下：
-				//2 网络超时或网络失败
-				//3 起点错误
-				//4 协议解析错误
-				//6 终点错误
-				//10 起点没有找到道路
-				//11 没有找到通向终点的道路
-				//12 没有找到通向途经点的道路
-				//13 路径长度超过限制
-				//14 其他错误
+	 code:      //		数字类型；错误码，取值范围如下：
+				//2 	网络超时或网络失败
+				//3 	起点错误
+				//4 	协议解析错误
+				//6 	终点错误
+				//10 	起点没有找到道路
+				//11 	没有找到通向终点的道路
+				//12 	没有找到通向途经点的道路
+				//13 	路径长度超过限制
+				//14 	其他错误
 }
 ```
 
@@ -232,15 +234,18 @@ aMapNavigation.start({
 		    alwaysBright: false
 		}
     }
-}, function(ret, err){
-	alert(JSON.stringify(ret));
-	alert(JSON.stringify(err));
+}, function(ret, err){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
 ##可用性
 
-IOS系统，Android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -260,6 +265,6 @@ aMapNavigation.close();
 
 ##可用性
 
-IOS系统，Android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本

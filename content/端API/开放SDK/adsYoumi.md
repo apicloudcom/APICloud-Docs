@@ -3,13 +3,14 @@ Title: adsYoumi
 Description: adsYoumi
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：有米</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 	<li><a href="#const-content">Constant</a></li>
 </ul>
 
 <div id="method-content">
-
 
 <div class="outline">
 [init](#a0)
@@ -44,7 +45,7 @@ Description: adsYoumi
 
 初始化模块
 
-init({params},callback)
+init({params}, callback(ret, err))
 
 ##params
 
@@ -70,11 +71,11 @@ isTestModel：
 		3. 已上传并通过审核，但是后续版本应用 ID 和密钥与应用的包名不对应
 	+ 嵌入好的app需要上传到有米审核才算通过，才可以不用测试模式
 
-##callback(ret,err)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -85,7 +86,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 ```js
 {
@@ -97,25 +98,24 @@ err：
 ##示例代码
 
 ```js
-	var adsYoumi = api.require('adsYoumi');
-
-	adsYoumi.init({ appId:"7f9cda62c051e0a2" , appSecret:"8b82c13f3330417c" , isTestModel: true } , function( ret , err ){
-		//成功返回
-		if(ret.status==1){
-			//
-		}
-		else{
-			//输出错误信息
-			api.alert({ msg : err.msg });
-		}
-	});
+var adsYoumi = api.require('adsYoumi');
+adsYoumi.init({ appId:"7f9cda62c051e0a2" , appSecret:"8b82c13f3330417c" , isTestModel: true } , function( ret , err ){
+	//成功返回
+	if(ret.status==1){
+		//
+	}
+	else{
+		//输出错误信息
+		api.alert({ msg : err.msg });
+	}
+});
 ```
 
 ##补充说明
 
-可以在config.xml里面写feature,基本的三个参数将参数写在里面，然后直接调用init()也可以。
+可以在[config.xml](/APICloud/技术专题/app-config-manual)里面写feature,基本的三个参数将参数写在里面，然后直接调用init()也可以。
 
-config.xml中配置如下
+[config.xml](/APICloud/技术专题/app-config-manual)中配置如下
 ```xml
 	<feature name="adsYoumi">
     		<param name="appId" value="7f9cda62c051e0a2"/>
@@ -135,7 +135,7 @@ Android系统
 
 初始化积分墙
 
-initWall({params},callback)
+initWall({params}, callback(ret, err))
 
 ##params
 
@@ -155,11 +155,11 @@ userId：
 - 类型：字符串
 - 描述：如果使用了服务器回调，建议传入APP系统中的用户id，为空或长度超过50则无效
 
-##callback(ret,err)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -170,7 +170,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 ```js
 {
@@ -244,7 +244,7 @@ Android系统
 
 显示积分墙
 
-showWall(params,callback(ret,err))
+showWall({params}, callBack(ret, err))
 
 
 ##params
@@ -265,11 +265,11 @@ h：
 - 默认值：无
 - 描述：当类型为对话框积分墙的时候生效，为对话框积分墙的高度
 
-##callback(ret,err)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -280,7 +280,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -321,13 +321,13 @@ Android系统
 
 查询积分
 
-queryPoints(callback(ret,err))
+queryPoints(callback(ret, err))
 
-##callback(ret,err)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -339,7 +339,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -377,7 +377,7 @@ Android系统
 
 获取积分
 
-awardPoints(params,callback(ret,err))
+awardPoints({params}, callBack(ret, err))
 
 ##params
 	
@@ -386,11 +386,11 @@ points：
 - 类型：数字
 - 描述：增加的积分值
 
-##callback(ret,err)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -401,7 +401,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -438,7 +438,7 @@ Android系统
 
 消费积分
 
-spendPoints(params,callback(ret,err))
+spendPoints({params}, callBack(ret, err))
 
 ##params
 	
@@ -447,11 +447,11 @@ points：
 - 类型：数字
 - 描述：消费的积分值
 
-##callback(ret,err)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -462,7 +462,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -499,7 +499,7 @@ Android系统
 
 添加监听器
 
-setListener(params,callback(ret,err))
+setListener({params}, callBack(ret, err))
 
 ##params
 	
@@ -513,11 +513,11 @@ listenerType：
 - 类型：数字
 - 描述：监听器的类型，具体可以看文档中的[监听器类型常量](!Constant)
 
-##callback(ret,err)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 当监听器类型为全屏积分墙关闭监听器/对话框积分墙关闭监听器时：
@@ -571,7 +571,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -620,7 +620,7 @@ Android系统
 
 移除监听器
 
-removeListener(params,callback(ret,err))
+removeListener({params}, callBack(ret, err))
 
 ##params
 	
@@ -634,11 +634,11 @@ listenerType：
 - 类型：数字
 - 描述：监听器的类型，具体可以看文档中的[监听器类型常量](!Constant)
 
-##callback(ret,err)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -649,7 +649,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -687,7 +687,7 @@ Android系统
 
 设置积分墙的配置
 
-setWallBrowserConfig(params,callback(ret,err))
+setWallBrowserConfig({params}, callBack(ret, err))
 
 ##params
 
@@ -709,11 +709,11 @@ isShowPointsBalance：
 - 默认值：true
 - 描述：是否显示标题栏右上角的积分余额
 
-##callback(ret,err)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -724,7 +724,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 ```js
 {
@@ -762,7 +762,7 @@ Android系统
 
 有米广告全局设置
 
-setGlobalConfig(params,callback(ret,err))
+setGlobalConfig({params}, callBack(ret, err))
 
 ##params
 	
@@ -784,11 +784,11 @@ enableInstalledTips：
 - 默认值：true
 - 描述：设置是否允许有米显示广告安装过程中的提示语
 
-##callback(ret,err)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -799,7 +799,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js

@@ -51,7 +51,7 @@ SuperWebview在继承系统Webview接口能力的基础上，主要提供以下�
 
 #### 3.1.2 工程设置：
 
-1. 找到项目工程的TARGETS -> Build Phases -> Link Binary With Libraries，添加SDK用到的必需的库libz.dylib、libicucore.dylib、libstdc++.dylib。若使用了模块可能还需要额外添加一些相应的库。
+1. 找到项目工程的TARGETS -> Build Phases -> Link Binary With Libraries，添加SDK用到的必需的库WebKit.framework、libz.dylib、libicucore.dylib、libstdc++.dylib。若使用了模块可能还需要额外添加一些相应的库。
 2. 找到项目工程的TARGETS -> Build Settings -> Other Linker Flags，添加-ObjC关键字。
 3. 若是Xcode7，找到项目工程的TARGETS -> Build Settings -> Enable Bitcode，设置为NO。
 4. 添加了模块用到的第三方framework到工程后，若编译时报ld: framework not found xxx之类的错误，那么找到项目工程的TARGETS -> Build Settings -> Framework Search Paths，添加一下framework库所在的目录路径。
@@ -120,7 +120,7 @@ Samples目录下为使用本SDK的几个不同场景下的Demo，包含详细的
 
 1. 将lib/Engine目录下的库和头文件添加到ProjectFirst工程中，添加时选择Create groups选项。
 2. 将lib/Modules目录下的所有文件添加到ProjectFirst工程中，添加时选择Create groups选项，再把该目录下的所有文件夹也添加到工程中，添加时务必选择Create folder references选项。
-3. 找到项目工程的TARGETS ->Build Phases ->Link Binary With Libraries，添加SDK用到的必需的库libz.dylib、libicucore.dylib、libstdc++.dylib。
+3. 找到项目工程的TARGETS ->Build Phases ->Link Binary With Libraries，添加SDK用到的必需的库WebKit.framework、libz.dylib、libicucore.dylib、libstdc++.dylib。
 4. 找到项目工程的TARGETS->Build Settings->Other Linker Flags，添加-ObjC关键字。
 5. 若是Xcode7，找到项目工程的TARGETS -> Build Settings->Enable Bitcode，设置为NO。
 

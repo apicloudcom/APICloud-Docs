@@ -3,6 +3,8 @@ Title: patternLock
 Description: patternLock
 */
 
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 #**概述**
 
 patternLock 提供很方便的手势解锁功能呢。只需简单的几个步骤，您就可以很快将这一实用的功能集成到您的项目中。patternLock允许您自定义解锁界面颜色参数，满足您自定义UI的要求；patternLock还封装了设置密码，解锁密码和重置密码的三个常用功能，这些您只需要简单的传入一个参数就可以了实现了，极大地节省了您的时间。
@@ -20,7 +22,7 @@ patternLock 提供很方便的手势解锁功能呢。只需简单的几个步�
 
 	- param  
 
-		类型：JSON对象
+		类型：JSON 对象
 		
 			var param = {
 				"viewName":"main",//父视图的id
@@ -84,7 +86,7 @@ patternLock 提供很方便的手势解锁功能呢。只需简单的几个步�
 	
 		错误对象
 
-		类型：JSON对象
+		类型：JSON 对象
 		
 		内部字段:
 
@@ -105,7 +107,7 @@ patternLock.addPatternLock({
 	frame: '{{0,100},{320,300}}',
 	mode: '2',
 	rightCode: '0123'
-}, function( ret, err ){		
+}, function(ret, err){		
 	if( ret ){
 		alert( JSON.stringify( ret ) );
 	}else{

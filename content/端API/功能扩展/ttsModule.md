@@ -3,6 +3,8 @@ Title: ttsModule
 Description: ttsModule
 */
 
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -18,7 +20,7 @@ Description: ttsModule
 
 #**概述**
 
-ttsModule封装了android的本地TTS语音合成模块，使用此模块可轻松实现对文本转换为语音（UK/US）的功能
+ttsModule 封装了 android 的本地 TTS 语音合成模块，使用此模块可轻松实现对文本转换为语音（UK/US）的功能
 
 
 #**initTts**<div id="a1"></div>
@@ -28,8 +30,6 @@ ttsModule封装了android的本地TTS语音合成模块，使用此模块可轻�
 initTts({params}, callback(ret, err))
 
 ##params
-
-
 
 language：
 
@@ -53,7 +53,7 @@ speechRate：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -72,7 +72,7 @@ ttsModule.initTts({
 	language: 0,
 	str: 'Hello ,welcome to Beijing!',
 	speechRate: 0.8
-},function( ret, err ){		
+}, function(ret, err){		
 	if( ret ){
 		alert( JSON.stringify( ret ) );
 	}else{
@@ -87,7 +87,7 @@ ttsModule.initTts({
 
 ##可用性
 
-Android系统
+Android 系统
 
 可提供的1.0.0及更高版本
 
@@ -95,11 +95,7 @@ Android系统
 
 读出文本
 
-
 speakTts()
-
-
-
 
 ##示例代码
 
@@ -114,19 +110,15 @@ ttsModule.speakTts();
 
 ##可用性
 
-Android系统
+Android 系统
 
 可提供的1.0.
 
 #**closeTts**<div id="a3"></div>
 
-关闭TTS
-
+关闭 TTS
 
 closeTts()
-
-
-
 
 ##示例代码
 
@@ -141,7 +133,7 @@ ttsModule.closeTts();
 
 ##可用性
 
-Android系统
+Android 系统
 
 可提供的1.0.0及更高版本
 

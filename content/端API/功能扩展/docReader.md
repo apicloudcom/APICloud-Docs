@@ -3,6 +3,8 @@ Title: docReader
 Description: docReader
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -13,26 +15,26 @@ Description: docReader
 
 #**概述**
 
-docReader模块封装了对文档阅读的功能，开发者直接传进来一个文档，即可读出文档的内容显示出来，目前支持的文档格式主要有excel，doc，pdf等
+docReader 模块封装了对文档阅读的功能，开发者直接传进来一个文档，即可读出文档的内容显示出来，目前支持的文档格式主要有 excel、doc、pdf 等
 
 #**open**<div id="1"></div>
 
-打开一个文档，文档类型可以是excel，doc，pdf等格式
+打开一个文档
 
-open({params},callback(ret,err))
+open({params}, callback(ret, err))
 
 ##params
 
 path：
 
 - 类型：字符串
-- 描述：打开文档的路径，要求本地路径（widget://，fs://）
+- 描述：打开文档的路径，要求本地路径（ widget://，fs:// ）
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -42,7 +44,7 @@ ret：
 ```
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -60,7 +62,7 @@ err：
 var docReader = api.require('docReader');
 docReader.open({
     path: 'widget://res/test.docx'
-},function( ret, err ){		
+}, function(ret, err){		
     if( ret.status ){
         alert( JSON.stringify( ret ) );
     }else{

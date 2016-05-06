@@ -2,6 +2,9 @@
 Title: mobShare
 Description: mobShare
 */
+
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <div class="outline">
 [share](#m1)
 
@@ -11,7 +14,7 @@ Description: mobShare
 <div id="m1"></div>
 #**概述**
 
-mobShare封装了 mob 开发者服务平台的 shareSDK，使用此模块可实现分享文字、图片、图文、音乐、视频、链接到微信、微博、Facebook、Twitter等多个平台。调用 share 接口，模块会弹出可分享平台列表（可通过 config.xml 和 key.xml 文件配置信息自定义数量）菜单供用户选择分享。使用本模块需要到 http://www.mob.com 申请 shareSDK 模块的开发者账号，并创建应用获取到 shareSDK 的 Appkey。申请教程参考[mob论坛技术贴](http://bbs.mob.com/forum.php?mod=viewthread&tid=8212&extra=page%3D1)。
+mobShare封装了 mob 开发者服务平台的 shareSDK，使用此模块可实现分享文字、图片、图文、音乐、视频、链接到微信、微博、Facebook、Twitter等多个平台。调用 share 接口，模块会弹出可分享平台列表（可通过 [config.xml](/APICloud/技术专题/app-config-manual) 和 key.xml 文件配置信息自定义数量）菜单供用户选择分享。使用本模块需要到 http://www.mob.com 申请 shareSDK 模块的开发者账号，并创建应用获取到 shareSDK 的 Appkey。申请教程参考[mob论坛技术贴](http://bbs.mob.com/forum.php?mod=viewthread&tid=8212&extra=page%3D1)。
 
 **本模块封装了两套分享方案：**
 
@@ -19,9 +22,9 @@ mobShare封装了 mob 开发者服务平台的 shareSDK，使用此模块可实�
 
 方案二，开发者自定义分享平台列表，通过调用 shareTo 接口，达到分享到某平台的目的。
 
-**使用此模块之前需先配置  config.xml、key.xml 文件，key.xml 文件里配置了哪些平台，则弹出的分享菜单列表里就显示哪些平台。配置完毕，需通过云端编译生效。**
+**使用此模块之前需先配置  [config.xml](/APICloud/技术专题/app-config-manual)、key.xml 文件，key.xml 文件里配置了哪些平台，则弹出的分享菜单列表里就显示哪些平台。配置完毕，需通过云端编译生效。**
 
-**config.xml 配置详解：**
+**[config.xml](/APICloud/技术专题/app-config-manual) 配置详解：**
 
 - 名称：mobShare
 - 参数：urlScheme、apiKey、apiSecret
@@ -134,7 +137,7 @@ mobShare封装了 mob 开发者服务平台的 shareSDK，使用此模块可实�
 
 开始分享
 
-share({params},callback(ret, err))
+share({params}, callback(ret, err))
 
 
 ##params
@@ -170,7 +173,7 @@ url:
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -181,7 +184,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -219,7 +222,7 @@ iOS系统，Android系统
 
 分享到指定平台
 
-shareTo({params},callback(ret, err))
+shareTo({params}, callback(ret, err))
 
 
 ##params
@@ -288,7 +291,7 @@ url:
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -299,7 +302,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js

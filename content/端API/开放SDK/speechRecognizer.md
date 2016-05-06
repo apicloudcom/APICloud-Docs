@@ -3,6 +3,8 @@ Title: speechRecognizer
 Description: speechRecognizer
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -38,7 +40,7 @@ speechRecognizer模块封装了科大讯飞语音识别的sdk。开发者只需�
 
 识别语音返回文字
 
-record({params},callback(ret, err))
+record({params}, callback(ret, err))
 
 ##params
 
@@ -76,7 +78,7 @@ audioPath：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -88,7 +90,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -101,8 +103,8 @@ err：
 
 ```js
 {
-var obj = api.require('speechRecognizer');
-obj.record({
+var speechRecognizer = api.require('speechRecognizer');
+speechRecognizer.record({
   vadbos:5000,
   vadeos:5000,
   rate:16000,
@@ -135,8 +137,8 @@ stopRecord()
 
 ```js
 {
-    var obj = api.require('speechRecognizer');
-    obj.stopRecord();
+    var speechRecognizer = api.require('speechRecognizer');
+    speechRecognizer.stopRecord();
 }
 ```
 
@@ -156,8 +158,8 @@ cancelRecord()
 
  ```js
  {
-   var obj = api.require('speechRecognizer');
-   obj.cancelRecord();
+   var speechRecognizer = api.require('speechRecognizer');
+   speechRecognizer.cancelRecord();
  }
  ```
 
@@ -172,7 +174,7 @@ iOS系统，Android系统
 
 添加录音音量显示器
 
-addRecordHUD(params,callBack(ret,err))
+addRecordHUD({params}, callBack(ret, err))
 
 ##params
 
@@ -203,7 +205,7 @@ transparentR：
 bg：
 
 - 类型：字符串
-- 描述：（可选项）录音标识的背景色，支持rgb，rgba，#
+- 描述：（可选项）录音标识的背景色，支持 rgb，rgba，#
 - 默认值：#AAAAAA
 
 fixedOn：
@@ -215,14 +217,14 @@ fixedOn：
 fixed:
 
 - 类型：布尔
-- 描述：（可选项）模块是否随所属 Window 或 Frame 滚动
+- 描述：（可选项）模块是否随所属 window 或 frame 滚动
 - 默认值：true（不随之滚动）
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -233,7 +235,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -245,8 +247,8 @@ err：
 
 ```js
 {
-    var obj = api.require('speechRecognizer');
-    obj.addRecordHUD({
+    var speechRecognizer = api.require('speechRecognizer');
+    speechRecognizer.addRecordHUD({
 		centerX: 160,
 		centerY: 120,
 		radius: 80,
@@ -277,8 +279,8 @@ showRecordHUD()
 
 ```js
 {
-    var obj = api.require('speechRecognizer');
-    obj.showRecordHUD();
+    var speechRecognizer = api.require('speechRecognizer');
+    speechRecognizer.showRecordHUD();
 }
 ```
 
@@ -298,8 +300,8 @@ hideRecordHUD()
 
 ```js
 {
-    var obj = api.require('speechRecognizer');
-    obj.hideRecordHUD();
+    var speechRecognizer = api.require('speechRecognizer');
+    speechRecognizer.hideRecordHUD();
 }
 ```
 
@@ -357,7 +359,7 @@ audioPath：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -369,7 +371,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -381,8 +383,8 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('speechRecognizer');
-obj.read({
+var speechRecognizer = api.require('speechRecognizer');
+speechRecognizer.read({
 	readStr: 'APICloud平台',
 	speed: 60,
 	volume: 60,
@@ -415,8 +417,8 @@ stopReead()
 
 ```js
 {
-    var obj = api.require('speechRecognizer');
-    obj.stopRead();
+    var speechRecognizer = api.require('speechRecognizer');
+    speechRecognizer.stopRead();
 }
 ```
 
@@ -436,8 +438,8 @@ pauseRead()
 
 ```js
 {
-    var obj = api.require('speechRecognizer');
-    obj.pauseRead();
+    var speechRecognizer = api.require('speechRecognizer');
+    speechRecognizer.pauseRead();
 }
 ```
 
@@ -457,8 +459,8 @@ resumeRead()
 
 ```js
 {
-    var obj = api.require('speechRecognizer');
-    obj.resumeRead();
+    var speechRecognizer = api.require('speechRecognizer');
+    speechRecognizer.resumeRead();
 }
 ```
 

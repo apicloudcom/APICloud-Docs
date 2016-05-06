@@ -3,6 +3,8 @@ Title: imageTool
 Description: imageTool
 */
 
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -14,7 +16,7 @@ Description: imageTool
 
 #**概述**
 
-imageTool封装了android的系统相册，使用此模块可轻松实现对相册中图片名称，大小，路径读取功能
+imageTool 封装了 Android 的系统相册，使用此模块可轻松实现对相册中图片名称，大小，路径读取功能
 
 
 #**openImage**<div id="a1"></div>
@@ -30,13 +32,13 @@ openImage(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
 ```js
 {
-	imgName:		//图片名称
+	imgName:				//图片名称
 	imgSize:                //图片大小
 	imgPath:                //图片路径
 }
@@ -62,8 +64,6 @@ imageTool.openImage(function( ret, err ){
 
 ##可用性
 
-Android系统
+Android 系统
 
 可提供的1.0.0及更高版本
-
-

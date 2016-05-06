@@ -2,6 +2,9 @@
 Title: weibo
 Description: weibo
 */
+
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <div class="outline">
 [shareText](#1)
 
@@ -34,7 +37,7 @@ weibo 封装了新浪微博开放平台的移动端 SDK，使用此模块可实�
 
 ##模块使用攻略
 
-**使用此模块之前建议先配置  config.xml 文件，配置完毕，需通过云端编译生效，配置方法如下：**
+**使用此模块之前建议先配置  [config.xml](/APICloud/技术专题/app-config-manual) 文件，配置完毕，需通过云端编译生效，配置方法如下：**
 
 - 名称：weibo
 - 参数：urlScheme、apiKey、registUrl
@@ -55,6 +58,8 @@ weibo 封装了新浪微博开放平台的移动端 SDK，使用此模块可实�
 
     **registUrl**：在新浪微博开放平台创建应用时（应用信息 -> 高级信息 -> 授权设置）自定义填写的回调 url。
 
+***微博 apiKey 申请参考[微博平台接入指南](http://docs.apicloud.com/APICloud/开放平台接入指南/sina)***
+
 #**模块接口**
 
 <div id="1"></div>
@@ -71,7 +76,7 @@ shareText({params}, callback(ret, err))
 apiKey：
 
 - 类型：字符串
-- 描述：（可选项）从新浪开放平台申请的 App Key ，若不传则从当前 widget 的 `config.xml` 文件读取
+- 描述：（可选项）从新浪开放平台申请的 App Key ，若不传则从当前 widget 的 [config.xml](/APICloud/技术专题/app-config-manual) 文件读取
 
 text：
 
@@ -82,7 +87,7 @@ text：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -93,7 +98,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -143,7 +148,7 @@ shareImage({params}, callback(ret, err))
 apiKey：
 
 - 类型：字符串
-- 描述：（可选项）从新浪开放平台申请的 App Key ，若不传则从当前 widget 的 `config.xml` 文件读取
+- 描述：（可选项）从新浪开放平台申请的 App Key ，若不传则从当前 widget 的 [config.xml](/APICloud/技术专题/app-config-manual) 文件读取
 
 text：
 
@@ -153,13 +158,13 @@ text：
 imageUrl：
 
 - 类型：字符串
-- 描述：分享的图片路径，要求本地路径（fs://，widget://），**大小不能超过10M**
+- 描述：分享的图片路径，要求本地路径（fs://、widget://），**大小不能超过10M**
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -170,7 +175,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -221,7 +226,7 @@ shareMusic({params}, callback(ret, err))
 apiKey：
 
 - 类型：字符串
-- 描述：（可选项）从新浪开放平台申请的 App Key ，若不传则从当前 widget 的 `config.xml` 文件读取
+- 描述：（可选项）从新浪开放平台申请的 App Key ，若不传则从当前 widget 的 [config.xml](/APICloud/技术专题/app-config-manual) 文件读取
 
 text：
 
@@ -241,7 +246,7 @@ description：
 thumb：
 
 - 类型：字符串
-- 描述：分享网络音频的缩略图地址，要求本地路径（fs://，widget://），**大小小于32k**
+- 描述：分享网络音频的缩略图地址，要求本地路径（fs://、widget://），**大小小于32k**
 
 contentUrl：
 
@@ -252,7 +257,7 @@ contentUrl：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -263,7 +268,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -315,7 +320,7 @@ shareVideo({params}, callback(ret, err))
 apiKey：
 
 - 类型：字符串
-- 描述：（可选项）从新浪开放平台申请的 App Key ，若不传则从当前 widget 的 `config.xml` 文件读取
+- 描述：（可选项）从新浪开放平台申请的 App Key ，若不传则从当前 widget 的 [config.xml](/APICloud/技术专题/app-config-manual) 文件读取
 
 text：
 
@@ -335,7 +340,7 @@ description：
 thumb：
 
 - 类型：字符串
-- 描述：分享网络视频的缩略图地址，要求本地路径（fs://，widget://），**大小小于32k**
+- 描述：分享网络视频的缩略图地址，要求本地路径（fs://、widget://），**大小小于32k**
 
 contentUrl：
 
@@ -346,7 +351,7 @@ contentUrl：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -357,7 +362,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -409,7 +414,7 @@ shareWebPage({params}, callback(ret, err))
 apiKey：
 
 - 类型：字符串
-- 描述：（可选项）从新浪开放平台申请的 App Key ，若不传则从当前 widget 的 `config.xml` 文件读取
+- 描述：（可选项）从新浪开放平台申请的 App Key ，若不传则从当前 widget 的 [config.xml](/APICloud/技术专题/app-config-manual) 文件读取
 
 text：
 
@@ -429,7 +434,7 @@ description：
 thumb：
 
 - 类型：字符串
-- 描述：分享网页的缩略图地址，要求本地路径（fs://，widget://），**大小小于32k**
+- 描述：分享网页的缩略图地址，要求本地路径（fs://、widget://），**大小小于32k**
 
 contentUrl：
 
@@ -440,7 +445,7 @@ contentUrl：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -451,7 +456,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -503,18 +508,18 @@ auth({params}, callback(ret, err))
 apiKey：
 
 - 类型：字符串
-- 描述：（可选项）从新浪微博开放平台申请的 App Key，若不传则从当前 widget 的 `config.xml` 中读取，不传或传入错误的 apiKey，则无法打开新浪微博进行登录。
+- 描述：（可选项）从新浪微博开放平台申请的 App Key，若不传则从当前 widget 的 [config.xml](/APICloud/技术专题/app-config-manual) 中读取，不传或传入错误的 apiKey，则无法打开新浪微博进行登录。
 
 registUrl：
 
 - 类型：字符串
-- 描述：（可选项）在新浪微博开放平台创建应用时（应用信息 -> 高级信息 -> 授权设置）自定义填写的回调 url，若为空则从当前 widget 的 `config.xml` 中读取
+- 描述：（可选项）在新浪微博开放平台创建应用时（应用信息 -> 高级信息 -> 授权设置）自定义填写的回调 url，若为空则从当前 widget 的 [config.xml](/APICloud/技术专题/app-config-manual) 中读取
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -528,7 +533,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -573,7 +578,7 @@ cancelAuth(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -584,7 +589,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -638,7 +643,7 @@ userId：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：返回结果 userInfo 详情参考[获取用户信息-返回结果](http://open.weibo.com/wiki/2/users/show)
 
 ```js
@@ -650,7 +655,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -697,13 +702,13 @@ isInstalled({params}, callback(ret, err))
 apiKey：
 
 - 类型：字符串
-- 描述：（可选项）从新浪微博开放平台申请的 App Key，若不传则从当前 widget 的 `config.xml` 中读取，不传或传入错误的 apiKey，则无法判断是否已安装新浪微博客户端。
+- 描述：（可选项）从新浪微博开放平台申请的 App Key，若不传则从当前 widget 的 [config.xml](/APICloud/技术专题/app-config-manual) 中读取，不传或传入错误的 apiKey，则无法判断是否已安装新浪微博客户端。
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 ```js
 {
@@ -716,7 +721,7 @@ ret：
 ```js
 var weibo = api.require('weibo');
 weibo.isInstalled(
-	function(ret,err){
+	function(ret){
     	if (ret.status) {
         	alert('已安装新浪微博客户端');
     	}else{
@@ -728,6 +733,6 @@ weibo.isInstalled(
 
 ##可用性
 
-Android系统
+Android系统，iOS系统
 
 可提供的1.0.0及更高版本

@@ -3,6 +3,8 @@ Title: graph
 Description: graph
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 	<li><a href="#const-content">Constant</a></li>
@@ -23,7 +25,7 @@ Description: graph
 
 #**概述**
 
-graph底层通过复杂的逻辑和代码实现了一个贝塞尔曲线。可接受用户点击结点事件，开发者可自定义背景、线条、坐标系等等相关ui元素的样式和数据源。功能全面，性能强劲。**UIGraph 模块是 graph 模块的优化版，建议使用  [UIGraph](http://docs.apicloud.com/端API/界面布局/UIGraph) 模块，此模块已停止更新。**
+graph 底层通过复杂的逻辑和代码实现了一个贝塞尔曲线。可接受用户点击结点事件，开发者可自定义背景、线条、坐标系等等相关 ui 元素的样式和数据源。功能全面，性能强劲。**UIGraph 模块是 graph 模块的优化版，建议使用  [UIGraph](http://docs.apicloud.com/端API/界面布局/UIGraph) 模块，此模块已停止更新。**
 
 ![图片说明](/img/docImage/graph.jpg)
 
@@ -50,38 +52,38 @@ y：
 w：
 
 - 类型：数字
-- 默认值：当前设备屏幕宽减30
+- 默认值：当前设备屏幕宽减 30
 - 描述：曲线图视图的宽,可为空
 
 h：
 
 - 类型：数字
-- 默认值：当前设备屏幕的宽减170
+- 默认值：当前设备屏幕的宽减 170
 - 描述：曲线图视图的高，可为空
 
 bgColor：
 
 - 类型：字符串
 - 默认值：#FFFFFF
-- 描述：曲线图视图的背景色，支持rgb，rgba，#，可为空
+- 描述：曲线图视图的背景色，支持 rgb，rgba，#，可为空
 
 coordColor：
 
 - 类型：字符串
 - 默认值：#A9A9A9
-- 描述：曲线图视图的坐标系颜色，支持rgb，rgba，#，可为空
+- 描述：曲线图视图的坐标系颜色，支持 rgb，rgba，#，可为空
 
 markColor：
 
 - 类型：字符串
 - 默认值：#000000
-- 描述：曲线图视图的坐标系标注颜色，支持rgb，rgba，#，可为空
+- 描述：曲线图视图的坐标系标注颜色，支持 rgb，rgba，#，可为空
 
 lineColor：
 
 - 类型：字符串
 - 默认值：#1E90FF
-- 描述：曲线颜色，支持rgb，rgba，#，可为空
+- 描述：曲线颜色，支持 rgb，rgba，#，可为空
 
 bubbleUp：
 
@@ -105,9 +107,9 @@ data：
 
 ```js
 [{
-	time:”15：00”,     //时间点
-	data:”50”,         // 数据
-	isonline:’1’       //保留使用
+	time: '15：00',     //时间点
+	data: '50',         // 数据
+	isonline: '1'       //保留使用
 }]
 ```
 
@@ -126,7 +128,7 @@ fixed:
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -139,66 +141,69 @@ ret：
 ##示例代码
 
 ```js
-var array = [{
-  "time": "12:05",
-  "data": "15",
-  "isonline": "1"
-}, {
-  "time": "13:10",
-  "data": "45",
-  "isonline": "1"
-}, {
-  "time": "14:22",
-  "data": "55",
-  "isonline": "1"
-}, {
-  "time": "15:08",
-  "data": "0",
-  "isonline": "1"
-}, {
-  "time": "16:19",
-  "data": "70",
-  "isonline": "1"
-}, {
-  "time": "17:31",
-  "data": "45",
-  "isonline": "0"
-}, {
-  "time": "12:05",
-  "data": "60",
-  "isonline": "1"
-}, {
-  "time": "13:10",
-  "data": "35",
-  "isonline": "1"
-}, {
-  "time": "14:22",
-  "data": "85",
-  "isonline": "1"
-}, {
-  "time": "15:08",
-  "data": "20",
-  "isonline": "0"
-}, {
-  "time": "16:19",
-  "data": "70",
-  "isonline": "1"
-}, {
-  "time": "17:31",
-  "data": "47",
-  "isonline": "1"
-}, {
-  "time": "17:31",
-  "data": "45",
-  "isonline": "1"
-}];
-var obj = api.require('graph');
-obj.open({
+var graph = api.require('graph');
+graph.open({
   bubbleUp: 'widget://res/graph_bubble_up.png',
   bubbleDown: 'widget://res/graph_bubble_down.png',
-  data: array
-}, function(ret, err) {
-
+  data: [{
+    'time': '12:05',
+    'data': '15',
+    'isonline': '1'
+  }, {
+    'time': '13:10',
+    'data': '45',
+    'isonline': '1'
+  }, {
+    'time': '14:22',
+    'data': '55',
+    'isonline': '1'
+  }, {
+    'time': '15:08',
+    'data': '0',
+    'isonline': '1'
+  }, {
+    'time': '16:19',
+    'data': '70',
+    'isonline': '1'
+  }, {
+    'time': '17:31',
+    'data': '45',
+    'isonline': '0'
+  }, {
+    'time': '12:05',
+    'data': '60',
+    'isonline': '1'
+  }, {
+    'time': '13:10',
+    'data': '35',
+    'isonline': '1'
+  }, {
+    'time': '14:22',
+    'data': '85',
+    'isonline': '1'
+  }, {
+    'time': '15:08',
+    'data': '20',
+    'isonline': '0'
+  }, {
+    'time': '16:19',
+    'data': '70',
+    'isonline': '1'
+  }, {
+    'time': '17:31',
+    'data': '47',
+    'isonline': '1'
+  }, {
+    'time': '17:31',
+    'data': '45',
+    'isonline': '1'
+  }]
+}, function(ret, err){    
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -211,8 +216,6 @@ obj.open({
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
-
-
 
 #**reload**<div id="2"></div>
 刷新曲线数据
@@ -237,83 +240,70 @@ data：
 
 ```js
 [{
-	time:”15：00”,     //时间点，x轴标记，字符串，不可为空
-	data:”50”,         // 数据，数字类型，不可为空
-	isonline:’1’       //保留使用
+	time: '15：00',     //时间点，x轴标记，字符串，不可为空
+	data: 50,         // 数据，数字类型，不可为空
+	isonline: '1'       //保留使用
 }]
 ```
 ##示例代码
 
 ```js
-var array = [
-		{
-         "time": "12:05",
-         "data": "15",
-         "isonline": "1"
-        },
-        {
-         "time": "13:10",
-         "data": "45",
-         "isonline": "1"
-		},
-        {
-         "time": "14:22",
-         "data": "55",
-         "isonline": "1"
-        },
-        {
-		 "time": "15:08",
-         "data": "0",
-         "isonline": "1"
-        },
-        {
-		 "time": "16:19",
-		 "data": "70",
-		 "isonline": "1"
-        },
-        {
-         "time": "17:31",
-         "data": "45",
-		 "isonline": "0"
-		},
-        {
-		 "time": "12:05",
-         "data": "60",
-		 "isonline": "1"
-        },
-        {
-         "time": "13:10",
-         "data": "35",
-         "isonline": "1"
-		},
-        {
-         "time": "14:22",
-         "data": "85",
-         "isonline": "1"
-        },
-        {
-         "time": "15:08",
-         "data": "20",
-		 "isonline": "0"
-        },
-        {
-         "time": "16:19",
-         "data": "70",
-         "isonline": "1"
-        },
-        {
-		 "time": "17:31",
-		 "data": "47",
-		 "isonline": "1"
-		},
-		{
-		 "time": "17:31",
-		 "data": "45",
-		 "isonline": "1"
-        }];
-var obj = api.require('graph');
-obj.reload({
-	data:array
+var array = ;
+var graph = api.require('graph');
+graph.reload({
+	data: [{
+    'time': '12:05',
+    'data': '15',
+    'isonline': '1'
+  },{
+    'time': '13:10',
+    'data': '45',
+    'isonline': '1'
+  },{
+    'time': '14:22',
+    'data': '55',
+    'isonline': '1'
+  },{
+    'time': '15:08',
+    'data': '0',
+    'isonline': '1'
+  },{
+    'time': '16:19',
+    'data': '70',
+    'isonline': '1'
+  },{
+    'time': '17:31',
+    'data': '45',
+    'isonline': '0'
+  },{
+    'time': '12:05',
+    'data': '60',
+    'isonline': '1'
+  },{
+    'time': '13:10',
+    'data': '35',
+    'isonline': '1'
+  },{
+    'time': '14:22',
+    'data': '85',
+    'isonline': '1'
+  },{
+    'time': '15:08',
+    'data': '20',
+    'isonline': '0'
+  },{
+    'time': '16:19',
+    'data': '70',
+    'isonline': '1'
+  },{
+    'time': '17:31',
+    'data': '47',
+    'isonline': '1'
+  },{
+    'time': '17:31',
+    'data': '45',
+    'isonline': '1'
+  }]
 });
 ```
 
@@ -335,8 +325,10 @@ close()
 
 ##示例代码
 
-	var obj = api.require('graph');
-	obj.close();
+```js
+var graph = api.require('graph');
+graph.close();
+```
 
 ##补充说明
 
@@ -356,8 +348,10 @@ hide()
 
 ##示例代码
 
-	var obj = api.require('graph');
-	obj.hide();
+```js
+var graph = api.require('graph');
+graph.hide();
+```
 
 ##补充说明
 
@@ -365,7 +359,7 @@ hide()
 
 ##可用性
 
-IOS系统，安卓系统
+iOS系统，安卓系统
 
 可提供的1.0.1及更高版本
 
@@ -377,8 +371,10 @@ show()
 
 ##示例代码
 
-	var obj = api.require('graph');
-	obj.show();
+```js
+var graph = api.require('graph');
+graph.show();
+```
 
 ##补充说明
 
@@ -386,7 +382,7 @@ show()
 
 ##可用性
 
-IOS系统，安卓系统
+iOS系统，安卓系统
 
 可提供的1.0.1及更高版本
 

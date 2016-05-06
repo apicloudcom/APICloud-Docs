@@ -3,10 +3,12 @@ Title: slipList
 Description: slipList
 */
 
-<ul id="tab" class="clearfix">
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
+<ul id="tab" class="clearfix">e
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
-<div id="method-content">
+<div id="mthod-content">
 
 <div class="outline">
 [open](#1)
@@ -34,7 +36,7 @@ Description: slipList
 
 #**概述**
 
-slipList封装了一个列表控件，可实现一个可左右拖动item的列表视图。开发者可根据需求自定义列表的元素布局，亦可自定义相关字段的样式。支持设置下拉刷新和上拉加载更多事件。支持删除、刷新、插入指定下标（index）的item数据。本模块是有第三方模块开发者提供，使用本模块需在线云编译安装包
+slipList 封装了一个列表控件，可实现一个可左右拖动item的列表视图。开发者可根据需求自定义列表的元素布局，亦可自定义相关字段的样式。支持设置下拉刷新和上拉加载更多事件。支持删除、刷新、插入指定下标（index）的item数据。本模块是由第三方模块开发者提供，使用本模块需在线云编译安装包
 
 ![图片说明](/img/docImage/slipList.jpg)
 
@@ -74,17 +76,17 @@ leftBtn：
 
 - 类型：数组对象
 - 默认值：无
-- 描述：往右滑动item露出的按钮组成的数组，可为空，为空时则表示item不可向右滑动
+- 描述：往右滑动 item 露出的按钮组成的数组，可为空，为空时则表示 item 不可向右滑动
 
 内部字段：
 
 ```js
 [{
-	bg:         	//按钮背景色，支持rgb，rgba，#，默认#ee8262，可为空
+	bg:         	//按钮背景色，支持 rgb，rgba，#，默认#ee8262，可为空
     title:         //按钮名字，字符串类型，默认‘按钮’，可为空
 	titleSize:      //按钮标题大小，数字类型，默认13，可为空
-	titleColor:     //按钮标题颜色，支持rgb，rgba，#，默认#ffffff，可为空
-	selectedColor//按钮选中时候的颜色值,支持rgb，rgba，#，可为空,为空则无选中变化
+	titleColor:     //按钮标题颜色，支持 rgb，rgba，#，默认#ffffff，可为空
+	selectedColor//按钮选中时候的颜色值,支持 rgb，rgba，#，可为空,为空则无选中变化
 }]
 ```
 
@@ -92,7 +94,7 @@ leftBg：
 
 - 类型：字符串
 - 默认值：#5cacee
-- 描述：往右滑动item露出的视图的背景色，支持rgb，rgba，#，可为空
+- 描述：往右滑动item露出的视图的背景色，支持 rgb，rgba，#，可为空
 
 rightBtn：
 
@@ -104,10 +106,10 @@ rightBtn：
 
 ```js
 [{
-	bg:         	//按钮背景色，支持rgb，rgba，#，默认#388e8e，可为空
+	bg:         	//按钮背景色，支持 rgb，rgba，#，默认#388e8e，可为空
     title:         //按钮名字，字符串类型，默认‘按钮’，可为空
-	titleColor:     //按钮标题颜色，支持rgb，rgba，#，默认#ffffff，可为空
-	selectedColor//按钮选中时候的颜色值,支持rgb，rgba，#，可为空,为空则无选中变化
+	titleColor:     //按钮标题颜色，支持 rgb，rgba，#，默认#ffffff，可为空
+	selectedColor//按钮选中时候的颜色值,支持 rgb，rgba，#，可为空,为空则无选中变化
 }]
 ```
 
@@ -115,11 +117,11 @@ rightBg：
 
 - 类型：字符串
 - 默认值：#6c7b8b
-- 描述：往左滑动item露出的视图的背景色，支持rgb，rgba，#，可为空
+- 描述：往左滑动item露出的视图的背景色，支持 rgb，rgba，#，可为空
 
 itemStyle：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：见内部字段
 - 描述：item样式配置，可为空
 
@@ -127,21 +129,21 @@ itemStyle：
 
 ```js
 {
-	borderColor:  //item间分割线颜色，支持rgb，rgba，#，默认#696969，可为空
-	bgColor:     //item背景色，支持rgb，rgba，#，默认#AFEEEE，可为空
-	selectedColor//item背景选中色,支持rgb，rgba，#，默认#f5f5f5可为空
+	borderColor:  //item间分割线颜色，支持 rgb，rgba，#，默认#696969，可为空
+	bgColor:     //item背景色，支持 rgb，rgba，#，默认#AFEEEE，可为空
+	selectedColor//item背景选中色,支持 rgb，rgba，#，默认#f5f5f5可为空
     height:       //一条item的高度，数字类型，默认55，可为空
 	avatarH：//头像（上下居中）的高(不可超过height)，数字类型，默认45，可为空
 	avatarW:     //头像（距左边框距离和上下相等）的宽，数字类型，默认45，可为空
 	placeholderImg//头像为网络资源时的占位图,仅支持本地路径协议,有默认图标，可为空
 	titleSize：//标题字体大小，数字类型，默认10，可为空
-	titleColor     //标题字体颜色，支持rgb,rgba,#，默认：#696969,可为空
+	titleColor     //标题字体颜色，支持 rgb,rgba,#，默认：#696969,可为空
 	headlineSize：//大标题字体大小，数字类型，默认15，可为空
-	headlineColor //大标题字体颜色，支持rgb,rgba,#，默认：#388e8e,可为空
+	headlineColor //大标题字体颜色，支持 rgb,rgba,#，默认：#388e8e,可为空
 	subTitleSize   //子标题字体大小，数字类型，默认13，可为空
-	subTitleColor  //子标题字体颜色，支持rgb,rgba,#，默认：#000000,可为空
+	subTitleColor  //子标题字体颜色，支持 rgb,rgba,#，默认：#000000,可为空
 	remarkSize:   //备注字体的大学，数字类型，默认15，可为空
-	remarkColor:  //备注字体的颜色，支持rgb,rgba,#,默认#696969，可为空
+	remarkColor:  //备注字体的颜色，支持 rgb,rgba,#,默认#696969，可为空
 	remarkMargin //备注距离右边的边距，数字类型，默认10，可为空
 }
 ```
@@ -181,7 +183,7 @@ fixed:
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -289,7 +291,7 @@ slipList.open({
 		subTitleIcon: 'widget://res/img/ic/slipList_star.png',
 		remark: '完成'
 	}]
-},function( ret, err ){
+}, function(ret, err){
 	if( ret ){
          alert( JSON.stringify( ret ) );
     }else{
@@ -516,7 +518,7 @@ index：
 
 data：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：数据源，不可为空
 
@@ -524,13 +526,13 @@ data：
 
 ```js
 {
-	img:       //头像图片路径,支持本地和网络路径资源,网络图片会被缓存到本地,可为空若为空，则item内其余内容占位(与边框距离和remarkMargin一致)显示
-	title:       //标题，字符串类型，可为空，为空时不显示
-	headline:   //大标题，可为空，为空时不显示,且subTitleIcon和sutTitle占位显示
-	subTitle//子标题，字符串类型，可为空，为空时不显示
-	remark     //备注，字符串类型，可为空，为空时不显示
-	titleIcon:   //标题icon图片路径,仅支持本地协议,可为空,为空则不显示且title占位显示
-	subTitleIcon//小标题icon图片路径,本地路径,可为空,若空不显示且subTitle占位显示
+	img:       		//头像图片路径,支持本地和网络路径资源,网络图片会被缓存到本地,可为空若为空，则 item 内其余内容占位(与边框距离和remarkMargin一致)显示
+	title:       	//标题，字符串类型，可为空，为空时不显示
+	headline:   	//大标题，可为空，为空时不显示,且subTitleIcon和sutTitle占位显示
+	subTitle 		//子标题，字符串类型，可为空，为空时不显示
+	remark     		//备注，字符串类型，可为空，为空时不显示
+	titleIcon:   	//标题icon图片路径,仅支持本地协议,可为空,为空则不显示且title占位显示
+	subTitleIcon	//小标题icon图片路径,本地路径,可为空,若空不显示且subTitle占位显示
 }
 ```
 
@@ -578,7 +580,7 @@ index：
 
 data：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：数据源，不可为空
 
@@ -586,13 +588,13 @@ data：
 
 ```js
 {
-	img:       //头像图片路径,支持本地和网络路径资源,网络图片会被缓存到本地,可为空若为空，则item内其余内容占位(与边框距离和remarkMargin一致)显示
-	title:       //标题，字符串类型，可为空，为空时不显示
-	headline:   //大标题，可为空，为空时不显示,且subTitleIcon和sutTitle占位显示
-	subTitle//子标题，字符串类型，可为空，为空时不显示
-	remark     //备注，字符串类型，可为空，为空时不显示
-	titleIcon:   //标题icon图片路径,仅支持本地协议,可为空,为空则不显示且title占位显示
-	subTitleIcon//小标题icon图片路径,本地路径,可为空,若空不显示且subTitle占位显示
+	img:       		//头像图片路径,支持本地和网络路径资源,网络图片会被缓存到本地,可为空若为空，则item内其余内容占位(与边框距离和remarkMargin一致)显示
+	title:       	//标题，字符串类型，可为空，为空时不显示
+	headline:   	//大标题，可为空，为空时不显示,且subTitleIcon和sutTitle占位显示
+	subTitle 		//子标题，字符串类型，可为空，为空时不显示
+	remark     		//备注，字符串类型，可为空，为空时不显示
+	titleIcon:   	//标题icon图片路径,仅支持本地协议,可为空,为空则不显示且title占位显示
+	subTitleIcon	//小标题icon图片路径,本地路径,可为空,若空不显示且subTitle占位显示
 }
 ```
 
@@ -642,13 +644,13 @@ datas：
 
 ```js
 [{
-	img:       //头像图片路径,支持本地和网络路径资源,网络图片会被缓存到本地,可为空若为空，则item内其余内容占位(与边框距离和remarkMargin一致)显示
-	title:       //标题，字符串类型，可为空，为空时不显示
-	headline:   //大标题，可为空，为空时不显示,且subTitleIcon和sutTitle占位显示
-	subTitle//子标题，字符串类型，可为空，为空时不显示
-	remark     //备注，字符串类型，可为空，为空时不显示
-	titleIcon:   //标题icon图片路径,仅支持本地协议,可为空,为空则不显示且title占位显示
-	subTitleIcon//小标题icon图片路径,本地路径,可为空,若空不显示且subTitle占位显示
+	img:       		//头像图片路径,支持本地和网络路径资源,网络图片会被缓存到本地,可为空若为空，则item内其余内容占位(与边框距离和remarkMargin一致)显示
+	title:       	//标题，字符串类型，可为空，为空时不显示
+	headline:   	//大标题，可为空，为空时不显示,且subTitleIcon和sutTitle占位显示
+	subTitle 		//子标题，字符串类型，可为空，为空时不显示
+	remark     		//备注，字符串类型，可为空，为空时不显示
+	titleIcon:   	//标题icon图片路径,仅支持本地协议,可为空,为空则不显示且title占位显示
+	subTitleIcon	//小标题icon图片路径,本地路径,可为空,若空不显示且subTitle占位显示
 }]
 ```
 
@@ -763,7 +765,7 @@ iOS系统，Android系统
 
 设置下拉刷新样式
 
-setRefreshHeader({params} ,callback(ret,err))
+setRefreshHeader({params} ,callback(ret, err))
 
 ##params
 
@@ -777,13 +779,13 @@ bgColor:
 
 - 类型：字符串
 - 默认值：#f5f5f5
-- 描述：下拉刷新视图的背景色，支持rgb，rgba，#，可为空
+- 描述：下拉刷新视图的背景色，支持 rgb，rgba，#，可为空
 
 textColor：
 
 - 类型：字符串
 - 默认值：#8e8e8e
-- 描述：提示文字颜色，支持rgb，rgba，#，可为空
+- 描述：提示文字颜色，支持 rgb，rgba，#，可为空
 
 textDown：
 
@@ -818,7 +820,7 @@ slipList.setRefreshHeader({
 	textDown: '下拉可以刷新...',
 	textUp: '松开开始刷新...',
 	showTime : true
-},function( ret, err ){
+}, function(ret, err){
     if( ret ){
          alert( JSON.stringify( ret ) );
     }else{
@@ -841,7 +843,7 @@ iOS系统，Android系统
 
 设置上拉加载更多样式
 
-setRefreshFooter({params} ,callback(ret,err))
+setRefreshFooter({params} ,callback(ret, err))
 
 ##params
 
@@ -855,13 +857,13 @@ bgColor:
 
 - 类型：字符串
 - 默认值：#f5f5f5
-- 描述：上拉加载视图的背景色，支持rgb，rgba，#，可为空
+- 描述：上拉加载视图的背景色，支持 rgb，rgba，#，可为空
 
 textColor：
 
 - 类型：字符串
 - 默认值：#8e8e8e
-- 描述：提示文字颜色，支持rgb，rgba，#，可为空
+- 描述：提示文字颜色，支持 rgb，rgba，#，可为空
 
 textDown：
 
@@ -892,7 +894,7 @@ slipList.setRefreshFooter({
 	textDown: '上拉可加载更多...',
 	textUp: '松开开始加载...',
 	showTime : true
-},function( ret, err ){
+}, function(ret, err){
     if( ret ){
          alert( JSON.stringify( ret ) );
     }else{
@@ -957,4 +959,3 @@ slipList.hide();
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
-

@@ -11,7 +11,7 @@ Sort: 2
 
 [应用包结构](#4)
 
-[Config.xml 配置文件](#5)
+[config.xml 配置文件](#5)
 
 [前端开发框架](#6)
 
@@ -31,7 +31,7 @@ Sort: 2
 
 #**一、准备工作**<div id="2"></div>
 
-[下载](http://apicloud.com/dev)并安装APICloud Studio开发环境，APICloud Studio当前支持Windows系统。
+[下载](http://apicloud.com/dev)并安装APICloud Studio开发环境，APICloud Studio当前支持Windows，Mac系统。
 
 #**二、创建应用**<div id="3"></div>
 
@@ -80,7 +80,7 @@ APICloud提供了两种应用创建方式，方便开发者在云端和APICloud 
 
 4) 同步本地应用到云端资源库
 
-开发者在APICLoud Studio创建的应用会和云端资源库建立连接。项目代码改动后，可以使用APICLoud Studio的代码提交功能提交代码到云端资源库。
+开发者在APICloud Studio创建的应用会和云端资源库建立连接。项目代码改动后，可以使用APICloud Studio的代码提交功能提交代码到云端资源库。
 
 **操作流程**
 
@@ -119,7 +119,7 @@ APICloud提供了两种应用创建方式，方便开发者在云端和APICloud 
 
 “config.xml”和 “index.html” 必须包含，其它均为可选。“config.xml”是配置文件，“index.html”是启动页面，“icon”为图标文件目录，“launch”为启动图片目录（更多介绍详见[Widget包结构说明](/APICloud/技术专题/widget-package-structure-manual)文档）。
 
-#**四、Config.xml 配置文件**<div id="5"></div>
+#**四、config.xml 配置文件**<div id="5"></div>
 
 ```js
 <widget id="A12345678901"  version="0.0.1">
@@ -152,11 +152,11 @@ APICloud提供了两种应用创建方式，方便开发者在云端和APICloud 
 
 我们提供了核心的api.css和api.js前端框架，可与第三方前端框架混用，也可不用我们的框架；api.css 处理不同平台浏览器的默认样式，api.js 提供最基础的 JavaScript 方法，所有方法在 window.$api 对象下。
 
-（详细文档见[Framework开发指南](/APICloud/技术专题/framework-dev-guide)文档）
+（详细文档见[前端框架开发指南](/APICloud/技术专题/framework-dev-guide)文档）
 
 #**六、端API调用**<div id="7"></div>
 1. 核心模块在 window.api 对象下，默认提供该模块，不需要单独引用。
-1. 扩展模块在相应的模块对象下（例如：文件系统模块在fs对象下），需要require引入（var fs = api.require('fs')）。API核心模块已经覆盖一般应用的绝大部分功能。
+1. 扩展模块在相应的模块对象下（例如：文件系统模块在fs对象下），需要require引入（var fs = api.require('fs');）。API核心模块已经覆盖一般应用的绝大部分功能。
 1. 模块中所有方法均遵循 api.functionName(params, callback)格式，params为JSON格式，callback是Function类型，callback返回两个参数，均为JSON格式：callback(ret, err)，ret处理成功信息，err处理错误信息。
 1. apiready 方法在所有核心API模块准备完毕时执行。
 
@@ -170,7 +170,7 @@ APICloud提供了两种应用创建方式，方便开发者在云端和APICloud 
 
 ![图片说明](/img/docImage/134.png)
 
-等待同步完成，项目代码被拷贝到移动设备指定目录，移动设备上的APP Loader自动启动，即可实现真机同步调试。
+等待同步完成，项目代码被拷贝到移动设备指定目录，移动设备上的apploader自动启动，即可实现真机同步调试。
 
 点击顶部的“启动日志”按钮，当真机调试的应用有JavaScript错误时，APICloud Studio的控制台会有日志输出。
  

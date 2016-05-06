@@ -3,6 +3,8 @@ Title: chanceAd
 Description: chanceAd
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：畅思广告</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">方法</a></li>
 	<li><a href="#const-content">常量</a></li>
@@ -74,7 +76,7 @@ iOS系统，Android系统
 
 展示横幅广告(banner)
 
-showBanner(params, callback)
+showBanner({params}, callback(ret, err))
 
 ##params
 
@@ -112,7 +114,7 @@ displayTime：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -125,7 +127,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -167,7 +169,7 @@ iOS系统，Android系统
 
 移除横幅广告(banner)
 
-removeBanner(params, callback)
+removeBanner({params}, callback(ret, err))
 
 ##params
 为空即可
@@ -189,7 +191,7 @@ chance.removeBanner({}, function(ret, err) {
 
 展现插屏广告(interstitial)
 
-showInterstitial(params, callback)
+showInterstitial({params}, callback(ret, err))
 
 ##params
 
@@ -212,7 +214,7 @@ scale：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -225,7 +227,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -254,7 +256,7 @@ iOS系统，Android系统
 
 关闭插屏广告(Interstitial)
 
-closeInterstitial(params, callback)
+closeInterstitial({params}, callback(ret, err))
 
 ##params
 
@@ -264,7 +266,7 @@ closeInterstitial(params, callback)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -277,7 +279,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -307,7 +309,7 @@ iOS系统，Android系统
 
 展示精品推荐广告(MoreGame)
 
-showMoreGame(params, callback)
+showMoreGame({params}, callback(ret, err))
 
 ##params
 
@@ -330,7 +332,7 @@ scale：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -343,7 +345,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -373,7 +375,7 @@ iOS系统，Android系统
 
 关闭精品推荐广告(MoreGame)
 
-closeMoreGame(params, callback)
+closeMoreGame({params}, callback(ret, err))
 
 ##params
 
@@ -383,7 +385,7 @@ closeMoreGame(params, callback)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -396,7 +398,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 

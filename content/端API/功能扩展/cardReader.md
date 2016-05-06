@@ -3,6 +3,8 @@ Title: cardReader
 Description: cardReader
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -10,9 +12,9 @@ Description: cardReader
 
 #**概述**
 
-cardReader封装了PayPal的cardio识别库，用户只需用摄像头扫描信用卡即可实现卡号的输入
+cardReader 封装了 PayPal 的 cardio 识别库，用户只需用摄像头扫描信用卡即可实现卡号的输入
 
-注意：本模块在ios上仅支持ios6（含）以上版本
+注意：本模块在 IOS 上仅支持 IOS6（含）以上版本
 
 ![图片说明](/img/docImage/cardReader.jpg)
 
@@ -26,7 +28,7 @@ open(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 ```js
@@ -40,7 +42,7 @@ ret：
 ```
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 ```js

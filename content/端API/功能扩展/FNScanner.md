@@ -2,6 +2,9 @@
 Title: FNScanner
 Description: FNScanner
 */
+
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <div class="outline">
 [openScanner](#1)
 
@@ -21,7 +24,7 @@ Description: FNScanner
 
 #**概述**
 
-FNScanner 模块是一个二维码/条形码扫描器，是 scanner 模块的优化升级版。在 iOS 平台上本模块底层集成了 Zbar 和系统自带的条形码/二维码分析库，由于 iOS 系统平台在 iOS7.0 以上才开放了二维码/条码的相关接口，所以在 iOS6 上运行时模块会调用开源库 Zbar 去读取解析二维码/条码。只有在 iOS7 以上版本才会调用系统自带扫码功能。
+FNScanner 模块是一个二维码/条形码扫描器，是 scanner 模块的优化升级版。在 iOS 平台上本模块底层集成了 Zbar 和系统自带的条形码/二维码分析库，由于 IOS 系统平台在 IOS7.0 以上才开放了二维码/条码的相关接口，所以在 IOS6 上运行时模块会调用开源库 Zbar 去读取解析二维码/条码。只有在 IOS7 以上版本才会调用系统自带扫码功能。
 
 **本模块封装了两套扫码方案：**
 
@@ -29,17 +32,19 @@ FNScanner 模块是一个二维码/条形码扫描器，是 scanner 模块的优
 
 开发者通过调用 openScanner 接口直接打开自带默认 UI 效果的二维码/条形码扫描页面，本界面相当于打开一个 window 窗口，其界面内容不支持自定义。用户可在此界面实现功能如下：
  
-1.打开关闭闪关灯
+1. 打开关闭闪关灯
 
-2.从系统相册选取二维码/条码图片进行解密操作
+2. 从系统相册选取二维码/条码图片进行解密操作
 
-3.打开摄像头，自动对焦扫码想要解析的二维码/条码
+3. 打开摄像头，自动对焦扫码想要解析的二维码/条码
 
 ***方案二***
 
-通过 openView 接口打开一个自定义大小的扫描区域（本区域相当于打开一个 frame）进行扫描。开发者可自行 open 一个 frame 贴在模块上，从而实现自定义扫描界面的功能。然后配合使用serFrame、closeView、switchLight等接口实现开关闪光灯、重设扫描界面位置大小、图片解码、字符串编码等相关功能。详情请参考模块接口参数。
+通过 openView 接口打开一个自定义大小的扫描区域（本区域相当于打开一个 frame）进行扫描。开发者可自行 open 一个 frame 贴在模块上，从而实现自定义扫描界面的功能。然后配合使用 setFrame、closeView、switchLight 等接口实现开关闪光灯、重设扫描界面位置大小、图片解码、字符串编码等相关功能。详情请参考模块接口参数。
 
 ![图片说明](/img/docImage/scanner.jpg)
+
+***该模块源码已开源，地址：https://github.com/apicloudcom/FNScanner***
 
 ##**模块接口**
 
@@ -49,14 +54,14 @@ FNScanner 模块是一个二维码/条形码扫描器，是 scanner 模块的优
 
 打开二维码/条码扫描器
 
-openScanner({params}, callback(ret))
+openScanner({params}, callback(ret, err))
 
 ##params
 
 sound：
 
 - 类型：字符串
-- 描述：（可选项）扫描结束后的提示音文件路径，要求本地路径（fs://，widget://），**为保证兼容性，推荐使用  wav 格式的短音频文件**
+- 描述：（可选项）扫描结束后的提示音文件路径，要求本地路径（fs://、widget://），**为保证兼容性，推荐使用 wav 格式的短音频文件**
 
 autorotation:
 
@@ -72,7 +77,7 @@ saveToAlbum:
 
 saveImg：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）扫描的二维码/条形码图片保存所需要的参数，若不传则不保存
 - 内部字段：
 
@@ -84,11 +89,11 @@ saveImg：
 }
 ```
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -111,8 +116,8 @@ ret：
 ```js
 var FNScanner = api.require('FNScanner');
 FNScanner.openScanner({
-    autorotation: true,
-},function( ret, err ){		
+    autorotation: true
+}, function(ret, err){		
     if( ret ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -133,13 +138,13 @@ iOS系统，Android系统
 
 打开可自定义的二维码/条形码扫描器
 
-openView({params},callback(ret))
+openView({params}, callback(ret, err))
 
 ##params
 
 rect：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）扫描器的位置及尺寸，**在安卓平台宽高比须跟屏幕宽高比一致，否则摄像头可视区域的图像可能出现少许变形**
 - 内部字段：
 
@@ -155,7 +160,7 @@ rect：
 sound：
 
 - 类型：字符串
-- 描述：（可选项）扫描结束后的提示音文件路径，要求本地路径（fs://，widget://），**为保证兼容性，推荐使用  wav 格式的短音频文件**
+- 描述：（可选项）扫描结束后的提示音文件路径，要求本地路径（fs://、widget://），**为保证兼容性，推荐使用 wav 格式的短音频文件**
 
 autorotation:
 
@@ -171,13 +176,13 @@ saveToAlbum:
 
 saveImg：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）扫描的二维码/条形码图片保存所需要的参数，若不传则不保存
 - 内部字段：
 
 ```js
 {
-    path: 'fs://a.jpg',   //字符串类型；保存的文件路径；若路径不存在，则创建此路径，只支持fs://协议
+    path: 'fs://a.jpg',   //字符串类型；保存的文件路径；若路径不存在，则创建此路径，只支持 fs:// 协议
     w: 200,               //（可选项）数字类型；生成图片的宽度，默认：200
     h: 200                //（可选项）数字类型；生成图片的高度，默认：200
 }
@@ -192,14 +197,14 @@ fixedOn：
 fixed:
 
 - 类型：布尔
-- 描述：（可选项）模块是否随所属 Window 或 Frame 滚动
+- 描述：（可选项）模块是否随所属 window 或 frame 滚动
 - 默认值：true（不随之滚动）
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -221,7 +226,7 @@ ret：
 var FNScanner = api.require('FNScanner');
 FNScanner.openView({
     autorotation: true
-},function( ret, err ){		
+}, function(ret, err){		
     if( ret ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -315,25 +320,25 @@ iOS系统，Android系统
 
 二维码/条形码图片解码
 
-decodeImg({params},callback(ret))
+decodeImg({params}, callback(ret, err))
 
 ##params
 
 sound：
 
 - 类型：字符串
-- 描述：（可选项）扫描结束后的提示音文件路径，要求本地路径（fs://，widget://），**为保证兼容性，推荐使用  wav 格式的短音频文件**
+- 描述：（可选项）扫描结束后的提示音文件路径，要求本地路径（fs://、widget://），**为保证兼容性，推荐使用  wav 格式的短音频文件**
 
 path：
 
 - 类型：字符串
-- 描述：（可选项）要识别的图片路径，要求本地路径（fs://，widget://），**若不传则打开系统相册**
+- 描述：（可选项）要识别的图片路径，要求本地路径（fs://、widget://），**若不传则打开系统相册**
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -349,7 +354,7 @@ ret：
 var FNScanner = api.require('FNScanner');
 FNScanner.decodeImg({
     path: 'widget://res/img/apicloud.png'
-},function( ret, err ){		
+}, function(ret, err){		
     if( ret.status ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -370,7 +375,7 @@ iOS系统，Android系统
 
 将字符串生成二维码/条形码图片
 
-encodeImg({params},callback(ret))
+encodeImg({params}, callback(ret, err))
 
 ##params
 
@@ -395,7 +400,7 @@ saveToAlbum:
 
 saveImg：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）扫描的二维码/条形码图片保存所需要的参数，若不传则不保存
 - 内部字段：
 
@@ -407,11 +412,11 @@ saveImg：
 }
 ```
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -434,7 +439,7 @@ FNScanner.encodeImg({
         w: 200,
         h: 200
     }
-},function( ret, err ){		
+}, function(ret, err){		
     if( ret.status ){
         alert( JSON.stringify( ret ) );
     }else{

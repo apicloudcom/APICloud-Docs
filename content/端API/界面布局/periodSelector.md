@@ -3,6 +3,8 @@ Title: periodSelector
 Description: periodSelector
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -22,7 +24,7 @@ Description: periodSelector
 
 #**概述**
 
-periodSelector是一个时段选择器，由四个非常流畅的滚轮组成。使用此模块避免了网页实现上下滚轮效果不流畅的问题
+periodSelector 是一个时段选择器，由四个非常流畅的滚轮组成。使用此模块避免了网页实现上下滚轮效果不流畅的问题
 
 ![图片说明](/img/docImage/periodSelector.jpg)
 
@@ -89,31 +91,31 @@ bgColor：
 
 - 类型：字符串
 - 默认值：#FFFFFF
-- 描述：选中条目的背景色值，支持rgb，rgba，#，可为空
+- 描述：选中条目的背景色值，支持 rgb，rgba，#，可为空
 
 normalColor：
 
 - 类型：字符串
 - 默认值：#959595
-- 描述：未选中条目的数字色值，支持rgb，rgba，#，可为空
+- 描述：未选中条目的数字色值，支持 rgb，rgba，#，可为空
 
 selectedColor：
 
 - 类型：字符串
 - 默认值：#3685dd
-- 描述：选中条目的数字色值，支持rgb，rgba，#，可为空
+- 描述：选中条目的数字色值，支持 rgb，rgba，#，可为空
 
 separateColor：
 
 - 类型：字符串
 - 默认值：#575757
-- 描述：中间分割线的色值，支持rgb，rgba，#，可为空
+- 描述：中间分割线的色值，支持 rgb，rgba，#，可为空
 
 titleColor：
 
 - 类型：字符串
 - 默认值：#3685dd
-- 描述：时分文字的色值，支持rgb，rgba，#，可为空
+- 描述：时分文字的色值，支持 rgb，rgba，#，可为空
 
 fixedOn：
 
@@ -130,7 +132,7 @@ fixed:
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -157,7 +159,7 @@ periodSelector.open({
 	w: api.frameWidth - 60,
 	h: 340,
     fixedOn: api.frameName
-}, function( ret, err ){
+}, function(ret, err){
 	if( ret ){
          alert( JSON.stringify( ret ) );
     }else{
@@ -175,8 +177,6 @@ periodSelector.open({
 iOS系统、 android系统
 
 可提供的1.0.0及更高版本
-
-
 
 #**set**<div id="2"></div>
 

@@ -3,6 +3,8 @@ Title: sinaWeiBo
 Description: sinaWeiBo
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 	<li><a href="#const-content">Constant</a></li>
@@ -46,7 +48,7 @@ sinaWeiBo封装了新浪微博开放平台的sdk，使用此模块可实现新�
 
 授权
 
-auth({params},callback(ret, err))
+auth({params}, callback(ret, err))
 
 ##params
 
@@ -72,7 +74,7 @@ isAuth：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -86,7 +88,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -128,13 +130,13 @@ iOS系统，Android系统
 
 登出当前账号
 
-cancelAuth(callback(ret,err))
+cancelAuth(callback(ret, err))
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -146,7 +148,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -208,7 +210,7 @@ imageUrl：
 
 media：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：多媒体内容，contentType为text或image时可以为空
 
@@ -229,7 +231,7 @@ media：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -241,7 +243,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -340,7 +342,7 @@ uid：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -353,7 +355,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 

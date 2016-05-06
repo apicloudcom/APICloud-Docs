@@ -2,6 +2,9 @@
 Title: hanvonCloudBcardReader
 Description: hanvonCloudBcardReader
 */
+
+<p style="color: #ccc; margin-bottom: 30px;">来自于：汉王云</p>
+
 <div class="outline">
 [recognitionBcard](#a1)
 
@@ -58,7 +61,7 @@ picpath：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 ```js
 {
@@ -91,7 +94,7 @@ ret：
 ```
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 ```js
 {

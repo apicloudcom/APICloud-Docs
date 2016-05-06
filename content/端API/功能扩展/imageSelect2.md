@@ -37,7 +37,7 @@ viewtype:
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -50,13 +50,13 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
 ```js
 {
-	code:0,	  //错误码 （详见错误码常量）
+	code:0,	  		//错误码 （详见错误码常量）
     msg:            //错误信息
     }
 ```
@@ -89,7 +89,7 @@ Android系统
 
 图片裁剪。可以单独裁剪图片，也可以先选取图片再裁剪图片。
 
-crop({params },callback(ret,err))
+crop({params },callback(ret, err))
 
 ##params
 
@@ -104,7 +104,7 @@ imgPath:
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -117,7 +117,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -134,7 +134,7 @@ err：
 var imageSelect = api.require('imageSelect');
 imageSelect.crop({
 	imgPath: 'fs://album.png'
-},function( ret, err ){		
+}, function(ret, err){		
 	if( ret.status ){
 		alert( JSON.stringify( ret ) );
 	}else{

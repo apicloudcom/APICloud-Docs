@@ -3,6 +3,8 @@ Title: sendSms
 Description: sendSms
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：开发者</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -32,7 +34,7 @@ sendSms实现了注册时短信验证，取回密码手机验证功能，使用�
 
 注册应用
 
-regSms(params)
+regSms({params})
 
 ##params
 
@@ -79,7 +81,7 @@ phone：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -133,7 +135,7 @@ code：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 

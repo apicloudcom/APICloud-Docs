@@ -3,6 +3,8 @@ Title: bubbleMenu
 Description: bubbleMenu
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -58,18 +60,18 @@ open({params}, callback(ret, err))
 
 style：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：见内部字段
 - 描述：气泡样式设置，可为空
 
  内部字段:
 ```js
 {
-     bgColor:   //菜单按钮背景色，支持rgb,rgba,#,默认#000000，可为空
-     lightColor:  //菜单按钮点击色，支持rgb,rgba,#,默认#009ACD，可为空
-     borderColor:// 菜单边框色，支持rgb,rgba,#,默认#000000，可为空 
-     cutLineColor:// 菜单按钮分割线色，支持rgb,rgba,#,默认#636363，可为空
-     titleColor:   //菜单按钮标题色，支持rgb,rgba,#,默认#ffffff，可为空
+     bgColor:   //菜单按钮背景色，支持 rgb,rgba,#,默认#000000，可为空
+     lightColor:  //菜单按钮点击色，支持 rgb,rgba,#,默认#009ACD，可为空
+     borderColor:// 菜单边框色，支持 rgb,rgba,#,默认#000000，可为空 
+     cutLineColor:// 菜单按钮分割线色，支持 rgb,rgba,#,默认#636363，可为空
+     titleColor:   //菜单按钮标题色，支持 rgb,rgba,#,默认#ffffff，可为空
  }
  ```
 
@@ -111,7 +113,7 @@ fixedOn：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -136,7 +138,7 @@ bubbleMenu.open({
 		title: '按钮'
 	}],
     fixedOn: api.frameName
-},function( ret, err ){		
+}, function(ret, err){		
 	if( ret ){
 		alert( JSON.stringify( ret ) );
 	}else{

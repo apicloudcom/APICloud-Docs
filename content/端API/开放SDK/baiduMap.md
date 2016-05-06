@@ -3,6 +3,8 @@ Title: baiduMap
 Description: baiduMap
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 	<li><a href="#const-content">Constant</a></li>
@@ -120,7 +122,7 @@ baiduMap封装了百度地图的SDK，对百度地图的相关接口做了一层
 
 打开百度地图
 
-open({params},callback(ret, err))
+open({params}, callback(ret, err))
 
 ##params
 x:
@@ -187,28 +189,30 @@ fixed:
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
 {
-	status:1	 //操作成功状态值
+	status: 1	 //操作成功状态值
 }
 ```
 
 ##示例代码
 
 ```js
-var map = api.require('baiduMap');
-map.open({
+var baiduMap = api.require('baiduMap');
+baiduMap.open({
 	x: 0,
 	y: 64,
 	w: 320,
 	h: 400
-},function(ret,err){
-	if(ret.status){
-
-	}
+}, function(ret, err){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -227,8 +231,10 @@ close()
 
 ##示例代码
 
-    var map = api.require('baiduMap');
-    map.close();
+```js
+var baiduMap = api.require('baiduMap');
+baiduMap.close();
+```
 
 ##可用性
 
@@ -260,9 +266,9 @@ type:
 ##示例代码
 
 ```js
-var map = api.require('baiduMap');
-map.setType({
-	type:'standard'
+var baiduMap = api.require('baiduMap');
+baiduMap.setType({
+	type: 'standard'
 });
 ```
 
@@ -302,7 +308,7 @@ autoStop：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -318,7 +324,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -335,18 +341,12 @@ baiduMap.startLocation({
 	accuracy: '100m',
 	filter:1,
 	autoStop: true
-},function(ret, err){
-	var sta = ret.status;
-	var lat = ret.lat;
-	var lon = ret.lon;
-	var t = ret.timestamp;
-	if(sta){
-		var str = '经度：'+ lon +'<br>';
-		str += '纬度：'+ lat +'<br>';
-		str += '更新时间：'+ t +'<br>';
-	} else{
-		api.alert({msg:err.msg});
-	}
+}, function(ret, err){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -373,8 +373,10 @@ stopLocation()
 
 ##示例代码
 
-    var baiduMap = api.require('baiduMap');
-    baiduMap.stopLocation();
+```js
+var baiduMap = api.require('baiduMap');
+baiduMap.stopLocation();
+```
 
 ##可用性
 
@@ -393,7 +395,7 @@ getLocation(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -407,7 +409,7 @@ ret：
 ```
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -424,22 +426,13 @@ err：
 
 ```js
 var baiduMap = api.require('baiduMap');
-baiduMap.getLocation(
-	function(ret, err){
-		var sta = ret.status;
-		var lat = ret.lat;
-		var lon = ret.lon;
-		var t = ret.timestamp;
-		if(sta){
-			var str = '经度：'+ lon +'<br>';
- 			str += '纬度：'+ lat +'<br>';
-			str += '更新时间：'+ t +'<br>';
-			api.alert({msg:str});
-		} else{
-			api.alert({msg:err.msg});
-		}
-	}
-);
+baiduMap.getLocation(function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
 ```
 
 ##可用性
@@ -478,7 +471,7 @@ mcode：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 ```js
 {
@@ -488,7 +481,7 @@ ret：
 ```
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ````js
@@ -503,16 +496,18 @@ err：
 ##示例代码
 
 ```js
-    var map = api.require('baiduMap');
-	map.getBaiduFromGoogle ({
-		lon:116.351,
-		lat:39.283,	mcode:'0B:13:25:D7:85:46:0A:67:12:F3:29:88:64:56:63:10:7A:9C:C4:59;com.apicloud.A6985734480360'
-	}, function(ret, err){
-		api.alert({
-			msg: JSON.stringify(ret) +" "+ JSON.stringify(err)
-		});
-	});
-
+var baiduMap = api.require('baiduMap');
+baiduMap.getBaiduFromGoogle ({
+	lon: 116.351,
+	lat: 39.283,	
+	mcode: '0B:13:25:D7:85:46:0A:67:12:F3:29:88:64:56:63:10:7A:9C:C4:59;com.apicloud.A6985734480360'
+}, function(ret, err){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
 ```
 
 ##可用性
@@ -543,10 +538,10 @@ lat：
 
 ##示例代码
 ```js
-var map = api.require('baiduMap');
-map.setCenter({
-	lon:116.351,
-	lat:39.283
+var baiduMap = api.require('baiduMap');
+baiduMap.setCenter({
+	lon: 116.351,
+	lat: 39.283
 });
 ```
 ##可用性
@@ -571,9 +566,9 @@ level：
 ##示例代码
 
 ```js
-var map = api.require('baiduMap');
-map.setZoomLevel({
-	level:3
+var baiduMap = api.require('baiduMap');
+baiduMap.setZoomLevel({
+	level: 3
 });
 ```
 
@@ -601,9 +596,9 @@ enable：
 ##示例代码
 
 ```js
-var map = api.require('baiduMap');
-map.setZoomEnable({
-	enable:false
+var baiduMap = api.require('baiduMap');
+baiduMap.setZoomEnable({
+	enable: false
 });
 ```
 
@@ -630,9 +625,9 @@ enable：
 
 示例代码
 ```js
-var map = api.require('baiduMap');
-map.setScrollEnable({
-    enable:false
+var baiduMap = api.require('baiduMap');
+baiduMap.setScrollEnable({
+    enable: false
 });
 ```
 ##可用性
@@ -657,9 +652,9 @@ rotation：
 
 ##示例代码
 ```js
-var map = api.require('baiduMap');
-map.setRotation({
-   rotation:10
+var baiduMap = api.require('baiduMap');
+baiduMap.setRotation({
+   rotation: 10
 });
 ```
 ##可用性
@@ -684,9 +679,9 @@ overlook：
 
 ##示例代码
 ```js
-var map = api.require('baiduMap');
-map.setOverlook({
-   overlook:-10
+var baiduMap = api.require('baiduMap');
+baiduMap.setOverlook({
+   overlook: -10
 });
 ```
 ##可用性
@@ -711,9 +706,9 @@ hidden：
 
 ##示例代码
 ```js
-var map = api.require('baiduMap');
-map.setHidden({
-    hidden:false
+var baiduMap = api.require('baiduMap');
+baiduMap.setHidden({
+    hidden: false
 });
 ```
 ##可用性
@@ -746,10 +741,10 @@ trackingMode：
 ##示例代码
 
 ```js
-var map = api.require('baiduMap');
-map.showUserLocation({
-	isShow:true,
-	trackingMode:'none'
+var baiduMap = api.require('baiduMap');
+baiduMap.showUserLocation({
+	isShow: true,
+	trackingMode: 'none'
 });
 ```
 
@@ -768,8 +763,10 @@ zoomOut()
 
 ##示例代码
 
-    var map = api.require('baiduMap');
-    map.zoomOut();
+```js
+var baiduMap = api.require('baiduMap');
+baiduMap.zoomOut();
+```
 
 ##可用性
 
@@ -786,8 +783,10 @@ zoomIn()
 
 ##示例代码
 
-    var map = api.require('baiduMap');
-    map.zoomIn();
+```js
+var baiduMap = api.require('baiduMap');
+baiduMap.zoomIn();
+```
 
 ##可用性
 
@@ -834,7 +833,7 @@ pinImg：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -850,13 +849,17 @@ ret：
 ##示例代码
 
 ```js
-var map = api.require('baiduMap');
-map.addAnnotations({
+var baiduMap = api.require('baiduMap');
+baiduMap.addAnnotations({
 	annoArray:[{id:1,lon:116.297,lat:40.109,title:'第一个',subTitle:'子标题'},
 			{id:2,lon:116.29,lat:40.109,title:'第二个',subTitle:'子标题'},
 			{id:3,lon:116.298,lat:40.11,title:'第三个',subTitle:'子标题'}]
-},function(ret,err){
-	api.alert({msg:'点击了标记气泡'+ret.bubbleID});
+}, function(ret, err){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -871,7 +874,7 @@ iOS系统，Android系统
 
 设置大头针上气泡的类型
 
-setBubbleStyle(params)
+setBubbleStyle({params})
 
 ##params
 
@@ -902,11 +905,11 @@ id：
 ##示例代码
 
 ```js
-var map = api.require('baiduMap');
-map.setBubbleStyle({
-	bubbleBgimg:'widget://res/bubble_bg.png',
-	imgPath:'widget://res/bubble_head.png',
-	id:2
+var baiduMap = api.require('baiduMap');
+baiduMap.setBubbleStyle({
+	bubbleBgimg: 'widget://res/bubble_bg.png',
+	imgPath: 'widget://res/bubble_head.png',
+	id: 2
 });
 ```
 
@@ -920,7 +923,7 @@ iOS系统，Android系统
 
 设置大头针上的气泡为一个头像加三个标题的类型
 
-setThreeTitleBubble(params)
+setThreeTitleBubble({params})
 
 ##params
 
@@ -939,14 +942,14 @@ style:
 
 ```js
 {
-    titleSize:       //（可选项）数字类型；标题的颜色，支持rgb、rgba、#；默认值为：14.0
+    titleSize:       //（可选项）数字类型；标题的颜色，支持 rgb、rgba、#；默认值为：14.0
     titleColor:      //（可选项）字符串类型；标题的字体大小；默认值为：#000000
     preSize:         //（可选项）数字类型；子标题后缀的字体大小；默认值为：12.0
-    preColor:        //（可选项）字符串类型；子标题后缀的颜色，支持rgb、rgba、#；默认值为：#969696
+    preColor:        //（可选项）字符串类型；子标题后缀的颜色，支持 rgb、rgba、#；默认值为：#969696
     subTitleSize:    //（可选项）数字类型；子标题的字体大小；默认值为：14.0
-    subTitleColor:   //（可选项）字符串类型；子标题的颜色，支持rgb、rgba、#；默认值为：#8B6508
+    subTitleColor:   //（可选项）字符串类型；子标题的颜色，支持 rgb、rgba、#；默认值为：#8B6508
     descriptionSize: //（可选项）数字类型；描述文字的字体大小；默认值为：12.0
-    descriptionColor://（可选项）字符串类型；描述文字的颜色，支持rgb、rgba、#；默认值为：#698B22
+    descriptionColor://（可选项）字符串类型；描述文字的颜色，支持 rgb、rgba、#；默认值为：#698B22
     avatarSize:      //（可选项）数字类型；头像图片显示区域的大小；默认值为：40.0
     avatarMarginLeft://（可选项）数字类型；头像图片显示区域左边距；默认值为：5.0
     avatarMarginUp:  //（可选项）数字类型；头像图片显示区域上边距；默认值为：5.0
@@ -991,8 +994,8 @@ text:
 ##示例代码
 
 ```js
-var map = api.require('baiduMap');
-map.setThreeTitleBubble({
+var baiduMap = api.require('baiduMap');
+baiduMap.setThreeTitleBubble({
 	id:1,
 	image:{
 		bg:'widget://image/baidu_bubble_bg.png',
@@ -1048,7 +1051,7 @@ marks：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -1060,13 +1063,17 @@ ret：
 ##示例代码
 
 ```js
-var map = api.require('baiduMap');
-map.addMarks ({
+var baiduMap = api.require('baiduMap');
+baiduMap.addMarks ({
 	marks:[{id:1,lon:116.297,lat:40.109,title:'第一个',subTitle:'子标题'},
 		{id:2,lon:116.298,lat:40.109,title:'第二个',subTitle:'子标题'},
 		{id:3,lon:116.298,lat:40.111,title:'第三个',subTitle:'子标题'}]
-},function(ret,err){
-	api.alert({msg:'点击了的布告牌的id是'+ret.markID});
+}, function(ret, err){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -1081,7 +1088,7 @@ iOS系统，Android系统
 
 设置布告牌的类型
 
-setMarkStyle(params);
+setMarkStyle({params});
 
 ##params
 
@@ -1106,8 +1113,8 @@ id：
 ##示例代码
 
 ```js
-var map = api.require('baiduMap');
-map.setMarkStyle ({
+var baiduMap = api.require('baiduMap');
+baiduMap.setMarkStyle ({
 	bgImg:'widget://res/mark_bg_test.png',
 	headImg:'widget://res/mark_test.png',
 	id:6
@@ -1138,8 +1145,8 @@ idArray：
 ##示例代码
 
 ```js
-var map = api.require('baiduMap');
-map.removeAnnotations({
+var baiduMap = api.require('baiduMap');
+baiduMap.removeAnnotations({
 	idArray:[1,3,5,7]
 });
 ```
@@ -1161,7 +1168,7 @@ addLine({params})
 
 style：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：画线的类型
 
@@ -1193,8 +1200,8 @@ pointArray：
 ##示例代码
 
 ```js
-var map = api.require('baiduMap');
-map.addLine({
+var baiduMap = api.require('baiduMap');
+baiduMap.addLine({
 	style:{
 		id:100,
 		fillColor:'#FF0000',
@@ -1223,7 +1230,7 @@ addPolygon({params})
 
 style：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：画线的类型
 
@@ -1257,8 +1264,8 @@ pointArray：
 ##示例代码
 
 ```js
-var map = api.require('baiduMap');
-map.addPolygon ({
+var baiduMap = api.require('baiduMap');
+baiduMap.addPolygon ({
     style:{
 	    id:100,
 	    fillColor:'#FF0000',
@@ -1331,8 +1338,8 @@ radius：
 ##示例代码
 
 ```js
-var map = api.require('baiduMap');
-map.addCircle({
+var baiduMap = api.require('baiduMap');
+baiduMap.addCircle({
 	id:101,
 	lon:116.298,
 	lat:40.11,
@@ -1397,8 +1404,8 @@ rtLat：
 ##示例代码
 
 ```js
-var map = api.require('baiduMap');
-map.addOverMark({
+var baiduMap = api.require('baiduMap');
+baiduMap.addOverMark({
 	id:200,
 	lbLon:116.297,
 	lbLat:40.109,
@@ -1431,8 +1438,8 @@ idArray：
 
 ##示例代码
 ```js
-var map = api.require('baiduMap');
-map.removeOverlay({
+var baiduMap = api.require('baiduMap');
+baiduMap.removeOverlay({
     idArray:[1,3,5,7]
 });
 ```
@@ -1441,8 +1448,6 @@ map.removeOverlay({
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
-
-
 
 #**addRoute**<div id="26"></div>
 
@@ -1472,7 +1477,7 @@ policy：
 
 startPoint：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：起点信息
 - 内部字段：
@@ -1487,7 +1492,7 @@ startPoint：
 ```
 endPoint：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：终点信息
 - 内部字段：
@@ -1504,7 +1509,7 @@ endPoint：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -1517,7 +1522,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -1551,8 +1556,8 @@ err：
 ##示例代码
 
 ```js
-var map = api.require('baiduMap');
-map.addRoute({
+var baiduMap = api.require('baiduMap');
+baiduMap.addRoute({
 	id:300,
 	type:'drive',
 	startPoint:{
@@ -1567,12 +1572,12 @@ map.addRoute({
 		lon:116.384,
 		lat:39.989
 	}
-},function(ret,err){
-	if(ret.status){
-		api.alert({msg:"路线添加完成"});
-	} else{
-		api.alert({msg:err.msg});
-	}
+}, function(ret, err){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -1605,9 +1610,9 @@ planIndex：
 ##示例代码
 
 ```js
-var map = api.require('baiduMap');
-map.setRoutePlan({
-	planIndex:1
+var baiduMap = api.require('baiduMap');
+baiduMap.setRoutePlan({
+	planIndex: 1
 });
 ```
 ##补充说明
@@ -1646,9 +1651,9 @@ idArray：
 
 ##示例代码
 ```js
-var map = api.require('baiduMap');
-map.removeRoute({
-	idArray:[300,301,302]
+var baiduMap = api.require('baiduMap');
+baiduMap.removeRoute({
+	idArray: [300,301,302]
 });
 ```
 ##可用性
@@ -1682,7 +1687,7 @@ key：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -1709,7 +1714,7 @@ ret：
 ```
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -1721,15 +1726,19 @@ err：
 ##示例代码
 
 ```js
-var city='北京';
-var key='学校';
+var city="北京';
+var key="学校';
 var index= 0;
-var map = api.require('baiduMap');
-map.searchInCity({
+var baiduMap = api.require('baiduMap');
+baiduMap.searchInCity({
 	city:city,
 	key:key
-},function(ret,err){
-	api.alert({title:'搜索结果总条数',msg:ret.totalNum}); 
+}, function(ret, err){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -1776,7 +1785,7 @@ radius：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -1804,7 +1813,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -1815,18 +1824,18 @@ err：
 ##示例代码
 
 ```js
-var map = api.require('baiduMap');
-map.searchNearBy({
+var baiduMap = api.require('baiduMap');
+baiduMap.searchNearBy({
 	key:'KTV',
 	lon:116.384767,
 	lat:39.989539,
 	radius:2000
-},function(ret,err){
-	if (ret.status){
-		api.alert({title:'NearBy搜索结果总条数',msg:ret.totalNum});
-	} else{
-		api.alert({title:'搜索错误代码',msg:err.msg});
-	}
+}, function(ret, err){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -1883,7 +1892,7 @@ rtLat：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -1911,7 +1920,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -1923,30 +1932,19 @@ err：
 ##示例代码
 
 ```js
-var map = api.require('baiduMap');
+var baiduMap = api.require('baiduMap');
 
-map.searchInBounds({
+baiduMap.searchInBounds({
     key: '图书馆', // 要搜索的关键字.
     lbLon: 112.47723797622677, // 左下角经度.
     lbLat: 34.556480000000015, // 左下角纬度.
     rtLon: 109.77539000000002, // 右上角经度.
     rtLat: 33.43144 // 右上角纬度.
-},function(ret,err){
-    if( ! ret.status){
-        api.alert({
-            title: "提示",
-            msg: err.msg
-        });
+}, function(ret, err){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
     }else{
-        var msg = "总结果数: " + ret.totalNum +
-            "\n当前页结果数: " + ret.currNum +
-            "\n本次搜索的总页数: " + ret.totalPage +
-            "\n当前页的索引: " + ret.pageIndex +
-            "\n搜索结果: " + JSON.stringify(ret.resultArray);
-        api.alert({
-            title: "搜索结果",
-            msg: msg
-        });
+        alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -1986,7 +1984,7 @@ address：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -1999,7 +1997,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -2011,16 +2009,16 @@ err：
 ##示例代码
 
 ```js
-var map = api.require('baiduMap');
-map.getLocationFromName({
+var baiduMap = api.require('baiduMap');
+baiduMap.getLocationFromName({
 	city:'北京',
 	address:'泰翔商务楼'
-},function(ret,err){
-	if (ret.status){
-		api.alert({title:'搜索结果',msg:ret.lon+'*'+ret.lat});
-	} else{
-		api.alert({title:'搜索错误代码',msg:err.msg});
-	}
+}, function(ret, err){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -2059,7 +2057,7 @@ lat：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -2078,7 +2076,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -2090,16 +2088,16 @@ err：
 ##示例代码
 
 ```js
-var map = api.require('baiduMap');
-map.getNameFromLocation({
+var baiduMap = api.require('baiduMap');
+baiduMap.getNameFromLocation({
 	lon:116.384767,
 	lat:39.989539
-},function(ret,err){
-	if (ret.status){
-		api.alert({title:'搜索结果',msg:ret.province});
-	} else{
-		api.alert({title:'搜索错误代码',msg:err.msg});
-	}
+}, function(ret, err){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -2112,8 +2110,6 @@ map.getNameFromLocation({
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
-
-
 
 #**getBusRouteFromLineNum**<div id="33"></div>
 
@@ -2139,7 +2135,7 @@ callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -2155,7 +2151,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -2166,16 +2162,16 @@ err：
 ##示例代码
 
 ```js
-var map = api.require('baiduMap');
-map.getBusRouteFromLineNum({
+var baiduMap = api.require('baiduMap');
+baiduMap.getBusRouteFromLineNum({
 	city:'北京',
 	line:'345'
-},function(ret,err){
-	if (ret.status){
-		api.alert({title:'搜索结',msg:ret.busName+'*'+ret.company});
-	} else{
-		api.alert({title:'搜索错误代码',msg:err.msg});
-	}
+}, function(ret, err){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -2198,8 +2194,10 @@ removeBusRoute()
 
 ##示例代码
 
-    var map = api.require('baiduMap');
-    map.removeBusRoute();
+```js
+var baiduMap = api.require('baiduMap');
+baiduMap.removeBusRoute();
+```
 
 ##可用性
 
@@ -2212,7 +2210,7 @@ iOS系统，Android系统
 
 在地图上添加长按手势，返回该点经纬度
 
-longPressGesture(params,callBack(ret,err))
+longPressGesture({params}, callBack(ret, err))
 
 ##params
 
@@ -2222,11 +2220,11 @@ add:
 - 默认值：true
 - 描述：（可选项）是否添加长按手势，若false则移除之前添加的长按手势
 
-##callBack(ret,err)
+##callBack(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -2239,9 +2237,13 @@ ret：
 ##示例代码
 
 ```js
-var map = api.require('baiduMap');
-map.longPressGesture(function(ret,err){
-	api.alert({msg:ret.lon+"*"+ret.lat});
+var baiduMap = api.require('baiduMap');
+baiduMap.longPressGesture(function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -2255,7 +2257,7 @@ iOS系统，Android系统
 
 在地图上添加视角改变监听，返回当前地图中心坐标，视角倾斜度，地图旋转角度，地图缩放度
 
-setMapListener(params,callBack(ret,err))
+setMapListener({params}, callBack(ret, err))
 
 ##params
 
@@ -2265,11 +2267,11 @@ add:
 - 默认值：true
 - 描述：（可选项）是否添加监听，若false则移除之前添加的监听
 
-##callBack(ret,err)
+##callBack(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -2285,9 +2287,13 @@ ret：
 ##示例代码
 
 ```js
-var map = api.require('baiduMap');
-map. setMapListener (function(ret,err){
-  api.alert({msg:ret.lon+"*"+ret.lat});
+var baiduMap = api.require('baiduMap');
+baiduMap.setMapListener(function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -2300,7 +2306,7 @@ iOS系统，Android系统
 
 在地图上添加单击监听
 
-setMapTapListener(params,callBack(ret,err))
+setMapTapListener({params}, callBack(ret, err))
 
 ##params
 
@@ -2310,11 +2316,11 @@ add:
 - 默认值：true
 - 描述：（可选项）是否添加监听，若false则移除之前添加的监听
 
-##callBack(ret,err)
+##callBack(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -2331,14 +2337,14 @@ ret：
 ##示例代码
 
 ```js
-var map = api.require("baiduMap");
-
-map.open();
-
-map. setMapTapListener (function(ret,err){
-    alert(JSON.stringify(ret) + JSON.stringify(err));
+var baiduMap = api.require("baiduMap");
+baiduMap.setMapTapListener(function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
-
 ```
 
 ##可用性

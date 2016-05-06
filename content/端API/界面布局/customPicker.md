@@ -3,6 +3,8 @@ Title: customPicker
 Description: customPicker
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -21,7 +23,7 @@ Description: customPicker
 
 #**概述**
 
-customPicker是自定义选择器模块，支持多列，各列数据之间相互独立。本模块已停止更新，建议使用优化升级版模块[UICustomPicker](http://docs.apicloud.com/端API/界面布局/UICustomPicker)
+customPicker是自定义选择器模块，支持多列，各列数据之间相互独立。本模块已停止更新，建议使用优化升级版模块 [UICustomPicker](http://docs.apicloud.com/端API/界面布局/UICustomPicker)
 
 #**open**<div id="1"></div>
 
@@ -69,7 +71,7 @@ showHeader：
 
 header：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：见内部字段
 - 描述：（可选项）设置选择器的header
 
@@ -192,7 +194,7 @@ fixed：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -204,7 +206,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -220,8 +222,8 @@ err：
 var first = [{title: '简体中文'},{title: '英语'},{title: '法语'}];
 var dataSource = [];
 dataSource[0] = first;
-var obj = api.require('customPicker');
-obj.open({
+var customPicker = api.require('customPicker');
+customPicker.open({
     dataSource: dataSource,
     header:{
         title:'选择语言'
@@ -254,8 +256,8 @@ close()
 
 ##示例代码
 
-	var obj = api.require('customPicker');
-	obj.close();
+	var customPicker = api.require('customPicker');
+	customPicker.close();
 
 ##补充说明
 
@@ -275,8 +277,8 @@ hide()
 
 ##示例代码
 
-    var obj = api.require('customPicker');
-    obj.hide();
+    var customPicker = api.require('customPicker');
+    customPicker.hide();
 
 ##补充说明
 
@@ -296,8 +298,8 @@ show()
 
 ##示例代码
 
-    var obj = api.require('customPicker');
-    obj.show();
+    var customPicker = api.require('customPicker');
+    customPicker.show();
 
 ##补充说明
 

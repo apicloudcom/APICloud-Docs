@@ -3,6 +3,8 @@ Title: selectList
 Description: selectList
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -79,25 +81,25 @@ h：
 
 style：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：列表数据源
 - 内部字段：
 
 ```js
 {
-		bg:            //（可选项）列表背景设置，支持rgb、rgba、#、img，默认#FFFFFF
-		borderColor:   //（可选项）每个cell之间分割线的颜色，支持rgb，rgba，#，默认#696969
-		itemNormal:    //（可选项）item的常态下背景色，支持rgb，rgba，#，默认#ffffff
-		itemHighlight: //（可选项）item的常态下背景色，支持rgb，rgba，#，默认#ffffff
-		itemSelected:  //（可选项）item的选中后的背景色，支持rgb，rgba，#，默认#696969
+		bg:            //（可选项）列表背景设置，支持 rgb、rgba、#、img，默认#FFFFFF
+		borderColor:   //（可选项）每个cell之间分割线的颜色，支持 rgb，rgba，#，默认#696969
+		itemNormal:    //（可选项）item的常态下背景色，支持 rgb，rgba，#，默认#ffffff
+		itemHighlight: //（可选项）item的常态下背景色，支持 rgb，rgba，#，默认#ffffff
+		itemSelected:  //（可选项）item的选中后的背景色，支持 rgb，rgba，#，默认#696969
 		itemHeight     //（可选项）item的高度，数字类型，默认44
 		normalImg      //（可选项）选择标识常态图标路径，支持widget、fs等本地路径协议，若不传则不显示
 		selectedImg    //（可选项）选择标识选中后图标路径，支持widget、fs等本地路径协议，若不传则不显示
 		selectImgSize  //（可选项）选择标识的大小，数字类型，默认20
-		titleColor     //（可选项）标题字体的颜色值，默认#696969，支持rgb，rgba，#
+		titleColor     //（可选项）标题字体的颜色值，默认#696969，支持 rgb，rgba，#
 		titleSize      //（可选项）标题字体的大小,默认18
-		subTitleColor  //（可选项）子标题标题字体的颜色值，默认#696969，支持rgb，rgba，#
+		subTitleColor  //（可选项）子标题标题字体的颜色值，默认#696969，支持 rgb，rgba，#
 		subTitleSize   //（可选项）子标题字体的大小,默认18
 		titleWidth     //（可选项）标题的宽度，数字类型，默认50
 }
@@ -105,7 +107,7 @@ style：
 
 indicator:
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：（可选项）是否添加右边索引导航条
 - 备注：若不传则不显示右边索引导航条
@@ -113,8 +115,8 @@ indicator:
 
 ```js
 {
-	bgColor:       	//（可选项）背景色，字符串，默认透明，支持rgb，rgba，#
-	color:          //（可选项）索引指器颜色,字符串类型，默认#A1A1A1,支持rgb，rgba，#
+	bgColor:       	//（可选项）背景色，字符串，默认透明，支持 rgb，rgba，#
+	color:          //（可选项）索引指器颜色,字符串类型，默认#A1A1A1,支持 rgb，rgba，#
 }
 ```
 
@@ -143,7 +145,7 @@ fixedOn：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -164,31 +166,31 @@ ret：
 var selectList = api.require('selectList');
 selectList.open({
 	contents: [{
-      title:"阿宝",
-      subTitle:"131313131313"
+      title:'阿宝',
+      subTitle:'131313131313'
     },{
-      title:"阿宝",
-      subTitle:"131313131313"
+      title:'阿宝',
+      subTitle:'131313131313'
     },{
-      title:"阿宝",
-      subTitle:"131313131313"
+      title:'阿宝',
+      subTitle:'131313131313'
     },{
-      title:"阿宝",
-      subTitle:"131313131313"
+      title:'阿宝',
+      subTitle:'131313131313'
     },{
-      title:"阿宝",
-      subTitle:"131313131313"
+      title:'阿宝',
+      subTitle:'131313131313'
     },{
-      title:"阿宝",
-      subTitle:"131313131313"
+      title:'阿宝',
+      subTitle:'131313131313'
     },{
-      title:"阿宝",
-      subTitle:"131313131313"
+      title:'阿宝',
+      subTitle:'131313131313'
     },{
-      title:"阿宝",
-      subTitle:"131313131313"
+      title:'阿宝',
+      subTitle:'131313131313'
     }]
-},function( ret, err ){
+}, function(ret, err){
 	if( ret ){
          alert( JSON.stringify( ret ) );
     }else{
@@ -212,7 +214,7 @@ iOS系统，Android系统
 
 关闭selectList
 
-close(params)
+close({params})
 
 ##params
 
@@ -227,7 +229,7 @@ id:
 ```js
 var selectList = api.require('selectList');
 selectList.close({
-    id:1
+    id: 1
 });
 ```
 
@@ -277,31 +279,31 @@ var selectList = api.require('selectList');
 selectList.reloadData({
     id:1,
 	contents: [{
-      title:"阿宝",
-      subTitle:"131313131313"
+      title:'阿宝',
+      subTitle:'131313131313'
     },{
-      title:"阿宝",
-      subTitle:"131313131313"
+      title:'阿宝',
+      subTitle:'131313131313'
     },{
-      title:"阿宝",
-      subTitle:"131313131313"
+      title:'阿宝',
+      subTitle:'131313131313'
     },{
-      title:"阿宝",
-      subTitle:"131313131313"
+      title:'阿宝',
+      subTitle:'131313131313'
     },{
-      title:"阿宝",
-      subTitle:"131313131313"
+      title:'阿宝',
+      subTitle:'131313131313'
     },{
-      title:"阿宝",
-      subTitle:"131313131313"
+      title:'阿宝',
+      subTitle:'131313131313'
     },{
-      title:"阿宝",
-      subTitle:"131313131313"
+      title:'阿宝',
+      subTitle:'131313131313'
     },{
-      title:"阿宝",
-      subTitle:"131313131313"
+      title:'阿宝',
+      subTitle:'131313131313'
     }]
-},function( ret, err ){
+}, function(ret, err){
 	if( ret ){
          alert( JSON.stringify( ret ) );
     }else{
@@ -325,7 +327,7 @@ iOS系统，Android系统
 
 设置下拉刷新样式
 
-setRefreshHeader({params} ,callback(ret,err))
+setRefreshHeader({params} ,callback(ret, err))
 
 ##params
 
@@ -381,13 +383,13 @@ showTime：
 var selectList = api.require('selectList');
 selectList.setRefreshHeader({
     id: 1,
-	loadingImg : 'widget://res/selectList_arrow.png',
-	bgColor: '#F5F5F5',
-	textColor: '#8E8E8E',
-	textDown: '下拉可以刷新...',
-	textUp: '松开开始刷新...',
-	showTime : true
-},function( ret, err ){
+    loadingImg : 'widget://res/selectList_arrow.png',
+    bgColor: '#F5F5F5',
+    textColor: '#8E8E8E',
+    textDown: '下拉可以刷新...',
+    textUp: '松开开始刷新...',
+    showTime : true
+}, function(ret, err){
 	if( ret ){
          alert( JSON.stringify( ret ) );
     }else{
@@ -430,13 +432,13 @@ bgColor：
  
 - 类型：字符串
 - 默认值：#f5f5f5
-- 描述：（可选项）上拉加载更多视图的背景色，支持rgb，rgba，#
+- 描述：（可选项）上拉加载更多视图的背景色，支持 rgb，rgba，#
  
 textColor：
  
 - 类型：字符串
 - 默认值：#8e8e8e
-- 描述：（可选项）提示文字颜色，支持rgb，rgba，#
+- 描述：（可选项）提示文字颜色，支持 rgb，rgba，#
  
 textDown：
  
@@ -467,14 +469,14 @@ showTime：
 ```js
 var selectList = api.require('selectList');
 selectList.setRefreshFooter({
-    id: 1,
-    loadingImg : 'widget://res/selectList_arrow.png',
-	bgColor: '#F5F5F5',
-	textColor: '#8E8E8E',
-	textDown: '下拉可以刷新...',
-	textUp: '松开开始刷新...',
-	showTime : true
-},function( ret, err ){
+  id: 1,
+  loadingImg : 'widget://res/selectList_arrow.png',
+  bgColor: '#F5F5F5',
+  textColor: '#8E8E8E',
+  textDown: '下拉可以刷新...',
+  textUp: '松开开始刷新...',
+  showTime : true
+}, function(ret, err){
     if( ret ){
          alert( JSON.stringify( ret ) );
     }else{
@@ -642,8 +644,8 @@ selectList.refreshItem({
     id: 1,
     index: 2,
     content: {
-         title: "APICloud",
-         subTitle: "000000000"
+         title: 'APICloud',
+         subTitle: '000000000'
     }
 });
 ```
@@ -700,8 +702,8 @@ selectList.insertItem({
     id: 1,
     index: 2,
     content: {
-         title: "APICloud",
-         subTitle: "000000000"
+         title: 'APICloud',
+         subTitle: '000000000'
     }
 });
 ```
@@ -747,8 +749,8 @@ selected：
 ```js
 var selectList = api.require('selectList');
 selectList.setSelected({
-      id: 1,
-      index: 2
+    id: 1,
+    index: 2
 });
 ```
 
@@ -766,7 +768,7 @@ iOS系统，Android系统
 
 获取当前选中的条目
 
-getSelected({params},callBack(ret,err))
+getSelected({params} ,callback(ret, err))
 
 ##params
 
@@ -776,11 +778,11 @@ id:
 - 默认值：无
 - 描述：要操作的模块视图id
 
-##callBack(ret,err)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -822,7 +824,7 @@ iOS系统，Android系统
 
 根据唯一标识查找该item在列表中的下标
 
-getIndex({params },callBack(ret,err))
+getIndex({params}, callBack(ret, err))
 
 ##params
 
@@ -848,7 +850,7 @@ value：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -862,13 +864,13 @@ ret：
 ```js
 var selectList = api.require('selectList');
 selectList.getIndex({
-     key: "uid",
-     value: "0000001"
-},function( ret, err ){
+   key: 'uid',
+   value: '0000001'
+}, function(ret, err){
     if( ret ){
-         alert( JSON.stringify( ret ) );
+        alert( JSON.stringify( ret ) );
     }else{
-         alert( JSON.stringify( err ) );
+        alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -887,7 +889,7 @@ iOS系统，Android系统
 
 根据item的索引获取item的数据
 
-getData({params },callBack(ret,err))
+getData({params}, callBack(ret, err))
 
 ##params
 
@@ -907,7 +909,7 @@ index：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -925,7 +927,7 @@ ret：
 var selectList = api.require('selectList');
 selectList.getData({
      index: 0
-},function( ret, err ){
+}, function(ret, err){
     if( ret ){
          alert( JSON.stringify( ret ) );
     }else{
@@ -948,7 +950,7 @@ iOS系统，Android系统
 
 获取排序后的所有的数据
 
-getSortedData({params },callBack(ret,err))
+getSortedData({params}, callBack(ret, err))
 
 ##params
 
@@ -962,7 +964,7 @@ id:
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -979,12 +981,12 @@ ret：
 ```js
 var selectList = api.require('selectList');
 selectList.getSortedData({
-     id: 1
-},function( ret, err ){
+    id: 1
+}, function(ret, err){
     if( ret ){
-         alert( JSON.stringify( ret ) );
+       alert( JSON.stringify( ret ) );
     }else{
-         alert( JSON.stringify( err ) );
+       alert( JSON.stringify( err ) );
     }
 });
 ```

@@ -3,6 +3,8 @@ Title: baiduMTJ
 Description: baiduMTJ
 */
 
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -19,7 +21,7 @@ Description: baiduMTJ
 
 #**概述**
 
-baiduMTJ模块封装了百度移动统计SDK，通过调用本模块可实现百度移动统计功能。使用之前需要到[百度移动统计](http://mtj.baidu.com)创建应用。可以通过init接口以参数的形式将appKey传进去，也可以配置config文件，设置appkey，程序优先使用init初始化中传入的appkey，如未设置则在调用config文件中的appkey，其他方法需在初始化后才能使用。
+baiduMTJ 模块封装了百度移动统计SDK，通过调用本模块可实现百度移动统计功能。使用之前需要到[百度移动统计](http://mtj.baidu.com)创建应用。可以通过init接口以参数的形式将appKey传进去，也可以配置config文件，设置appkey，程序优先使用init初始化中传入的appkey，如未设置则在调用config文件中的appkey，其他方法需在初始化后才能使用。
 
 **使用此模块之前可以配置  config 文件（如不进行配置，则一定要在init方法中做相关配置）配置方法如下：**
 
@@ -29,18 +31,18 @@ baiduMTJ模块封装了百度移动统计SDK，通过调用本模块可实现百
 - 配置示例:
 
 ```js
-    <feature name="baiduMTJ">
-       <param name="android_appkey" value="f7344363432as" />
-       <param name="ios_appkey" value="81qz3dBY3432" />       
-       <param name="android_channel" value="apicloud" /> 
-       <param name="ios_channel" value="appstore" /> 
-    </feature>
+<feature name="baiduMTJ">
+   <param name="android_appkey" value="f7344363432as" />
+   <param name="ios_appkey" value="81qz3dBY3432" />       
+   <param name="android_channel" value="apicloud" /> 
+   <param name="ios_channel" value="appstore" /> 
+</feature>
 ```
 
 - 字段描述:
 
 		1. android_appkey：通过百度移动统计网站获得Android系统的key
-		2. ios_appkey:通过百度移动统计网站获得IOS系统的key
+		2. ios_appkey:通过百度移动统计网站获得iOS系统的key
 		3. ios_channel: IOS渠道号
 		4. android_channel: Android的渠道号
 
@@ -48,7 +50,7 @@ baiduMTJ模块封装了百度移动统计SDK，通过调用本模块可实现百
 
 模块初始化
 
-init({parmas},callback(ret))
+init({parmas}, callback(ret, err))
 
 ##params
 
@@ -63,11 +65,11 @@ path：
 - 描述：（可选项）app发布路径或渠道名称，自定义渠道名称(无需申请)后在统计时加以分别。若不传则从 confgi.xml 文件内读取相关字段
 
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -80,27 +82,27 @@ ret：
 ##示例代码
 
 ```js
-    //1、未配置config.xml中的参数时使用如下代码
-    var MTJ = api.require('baiduMTJ');
-    MTJ.init({
-        appid:'e98dje263d',
-        path:'google'
-    },function(ret,err){
-        if(ret){
-            alert(JSON.stringify(ret));
-        }else{
-            alert(JSON.stringify(err));
-        }
-    });
-    //2、已配置config.xml中的参数时可使用如下代码
-    var MTJ = api.require('baiduMTJ');
-    MTJ.init({},function(ret,err){
-        if(ret){
-            alert(JSON.stringify(ret));
-        }else{
-            alert(JSON.stringify(err));
-        }
-    });
+  //1、未配置 config.xml 中的参数时使用如下代码
+  var baiduMTJ = api.require('baiduMTJ');
+  baiduMTJ.init({
+      appid:'e98dje263d',
+      path:'google'
+  },function(ret,err){
+      if(ret){
+          alert(JSON.stringify(ret));
+      }else{
+          alert(JSON.stringify(err));
+      }
+  });
+  //2、已配置 config.xml 中的参数时可使用如下代码
+  var baiduMTJ = api.require('baiduMTJ');
+  baiduMTJ.init({},function(ret,err){
+      if(ret){
+          alert(JSON.stringify(ret));
+      }else{
+          alert(JSON.stringify(err));
+      }
+  });
 ```
 
 ##可用性
@@ -115,7 +117,7 @@ iOS系统，Android系统
 
 自定义事件统计，可将APP中需要统计的事件先在百度移动统计的应用中进行设定，然后把设定的事件ID写入方法中，并自定义一个标签用以区别相同事件。
 
-onEvent({parmas},callback(ret, err))
+onEvent({parmas}, callback(ret, err))
 
 ##params
 
@@ -134,7 +136,7 @@ label：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -148,17 +150,17 @@ ret：
 ##示例代码
 
 ```js
-     var MTJ = api.require('baiduMTJ');
-       MTJ.onEvent({ 
-        eventid:'buy',
-        label:'open'       
-        },function(ret,err){
-        if(ret){
-            alert(JSON.stringify(ret));
-        }else{
-            alert(JSON.stringify(err));
-        }
-     });
+var baiduMTJ = api.require('baiduMTJ');
+baiduMTJ.onEvent({ 
+  eventid:'buy',
+  label:'open'       
+}, function(ret, err){   
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
 ```
 
 ##可用性
@@ -174,7 +176,7 @@ iOS系统，Android系统
   
 **注意：本方法不会随页面打开自动调用，一定要在页面的初始化中写入。**
 
-onPageStart({parmas},callback(ret))
+onPageStart({parmas}, callback(ret, err))
 
 ##params
 
@@ -184,11 +186,11 @@ pagename：
 - 描述：自定义的页面名称，统计开始和结束统计的页面名称必须一致。
 
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -201,16 +203,16 @@ ret：
 ##示例代码
 
 ```js
-    var MTJ = api.require('baiduMTJ');
-    MTJ.onPageStart({
-      pagename:'main',
-    },function(ret,err){
-        if(ret){
-            alert(JSON.stringify(ret));
-        }else{
-            alert(JSON.stringify(err));
-        }
-    });
+var baiduMTJ = api.require('baiduMTJ');
+baiduMTJ.onPageStart({
+  pagename:'main',
+}, function(ret, err){   
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
 ```
 
 ##可用性
@@ -225,7 +227,7 @@ iOS系统，Android系统
   
 **注意：本方法不会随页面关闭自动调用，需要写在关闭页面的api.closeWin()或api.closeFrame()方法前有效。**
 
-onPageEnd({parmas},callback(ret))
+onPageEnd({parmas}, callback(ret, err))
 
 ##params
 
@@ -235,11 +237,11 @@ pagename：
 - 描述：自定义的页面名称，统计开始和结束统计的页面名称必须一致。
 
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -252,16 +254,16 @@ ret：
 ##示例代码
 
 ```js
-    var MTJ = api.require('baiduMTJ');
-    MTJ.onPageEnd({
-      pagename:'main',
-    },function(ret,err){
-        if(ret){
-            alert(JSON.stringify(ret));
-        }else{
-            alert(JSON.stringify(err));
-        }
-    });
+var baiduMTJ = api.require('baiduMTJ');
+baiduMTJ.onPageEnd({
+    pagename:'main',
+}, function(ret, err){   
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
 ```
 
 ##可用性

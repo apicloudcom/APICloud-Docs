@@ -3,6 +3,8 @@ Title: UIPullRefresh
 Description: UIPullRefresh
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <div class="outline">
 [setCustomRefreshHeaderInfo](#m2)
 
@@ -35,17 +37,17 @@ Description: UIPullRefresh
 
 UIPullRefresh 模块对引擎新推出的下拉刷新接口进行了一层封装，App 可以通过此模块来实现带炫酷动画效果的下拉刷新功能。使用此模块，在用户下拉时本模块会随用户下拉高度而放大缩小下拉出的提示图标；当下拉高度到一定阈值后出发加载事件，与此同时，下拉提示图标会改变为播放一组关键帧图片，该图片数组是通过 api.setCustomRefreshHeaderInfo 接口以图片数组（参考下文transform参数）的形式传给模块的，此过程播放每帧时间间隔为 100 毫秒；当下拉刷新进入加载状态时，刷新提示图标开始播放加载关键帧图片数组，此时图片每帧间隔为 50 毫秒，同时将下拉刷新事件回发给前端。前端得到下拉刷新事件后开始加载数据；数据加载完毕，调用接口 api.refreshHeaderLoadDone 以停止加载状态；
 
-***由于系统风格迥异，在 android 平台上需完成一次下拉刷新动作后加载动画才能播放，在 ios 平台上处在加载状态时可随页面上下拖动***
+***由于系统风格迥异，在 android 平台上需完成一次下拉刷新动作后加载动画才能播放，在 iOS 平台上处在加载状态时可随页面上下拖动***
 
 **模块使用攻略**
 
-对于 APICloud 平台上的普通模块，在相应接口调用前需要先 require 该模块，但由于本模块是基于引擎下拉刷新功能扩展的模块，所以本模块使用方法比较特殊。可以不必 require 模块，改为在 config.xml 文件内配置模块。
+对于 APICloud 平台上的普通模块，在相应接口调用前需要先 require 该模块，但由于本模块是基于引擎下拉刷新功能扩展的模块，所以本模块使用方法比较特殊。可以不必 require 模块，改为在 [config.xml](/APICloud/技术专题/app-config-manual) 文件内配置模块。
 
-config.xml 文件配置示例如下：
+[config.xml](/APICloud/技术专题/app-config-manual) 文件配置示例如下：
 
 	<preference name="customRefreshHeader" value="下拉刷新的模块名"/>
 
-在 config.xml 配置后，则本模块为全局对象，可以在任意可弹动的窗体（frame、window）中调用 api.setCustomRefreshHeaderInfo 接口设置该下拉刷新样式，以及开始、停止刷新加载状态（api.refreshHeaderLoading、api.refreshHeaderLoadDone）。
+在 [config.xml](/APICloud/技术专题/app-config-manual) 配置后，则本模块为全局对象，可以在任意可弹动的窗体（frame、window）中调用 api.setCustomRefreshHeaderInfo 接口设置该下拉刷新样式，以及开始、停止刷新加载状态（api.refreshHeaderLoading、api.refreshHeaderLoadDone）。
 
 若想在不同的 window 或 frame 使用不同的下拉刷新模块，开发者可以在 window 或 frame 打开时传入参数 customRefreshHeader:'下拉刷新模的块名'，以指定该窗体的下拉刷新模块。如：
 
@@ -88,7 +90,7 @@ api.setCustomRefreshHeaderInfo({params}, callback())
 
 ```js
 {
-	bgColor: '#C0C0C0',                             //（可选项）字符串类型；下拉刷新的背景设置，支持rgb、rgba、#，该背景大小同当前 window 或 frame 的宽高；默认：#C0C0C0
+	bgColor: '#C0C0C0',                             //（可选项）字符串类型；下拉刷新的背景设置，支持 rgb、rgba、#，该背景大小同当前 window 或 frame 的宽高；默认：#C0C0C0
 	image: {                                        //JSON 对象类型；下拉刷新相关图片设置
 		pull: 'fs://res/puling.png',                //字符串类型；下拉过程中的图片，随下拉高度同步伸缩，图片规格为正方形，如：50*50、100*100
 		transform:['fs://t1.png','fs://t2.png',...],//（可选项）数组类型；当下拉距离达到阈值时将下拉提示图片变为加载中的一组图片，此转变过程中会有一个转变动画，本参数即为组成此转换动画关键帧图片组成的数组，图片规格是正方形，建议开发者传大小合适的图片以适配高分辨率手机屏幕，若不传本参数则直接由 pull 变为 load
@@ -138,7 +140,7 @@ api.setCustomRefreshHeaderInfo({
 
 ##可用性
 
-IOS系统，Android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -159,7 +161,7 @@ api.refreshHeaderLoading()
 
 ##可用性
 
-IOS系统，Android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -180,6 +182,6 @@ api.refreshHeaderLoadDone()
 
 ##可用性
 
-IOS系统，Android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本

@@ -3,6 +3,8 @@ Title: searchBar
 Description: searchBar
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -20,7 +22,7 @@ Description: searchBar
 
 #**概述**
 
-searchBar定义了一个搜索界面的模板，开发者可自定义该模板的样式。可将搜索记录归档到本地。**UISearchBar 模块是 searchBar 模块的优化版，建议使用  [UISearchBar](http://docs.apicloud.com/端API/界面布局/UISearchBar) 模块，此模块已停止更新。**
+searchBar 定义了一个搜索界面的模板，开发者可自定义该模板的样式。可将搜索记录归档到本地。**UISearchBar 模块是 searchBar 模块的优化版，建议使用  [UISearchBar](http://docs.apicloud.com/端API/界面布局/UISearchBar) 模块，此模块已停止更新。**
 
 ![图片说明](/img/docImage/searchBar.jpg)
 
@@ -48,7 +50,7 @@ cancelColor：
 
 - 类型：字符串
 - 默认值： #D2691E
-- 描述：（可选项）取消按钮的颜色，支持rgb，rgba，#
+- 描述：（可选项）取消按钮的颜色，支持 rgb，rgba，#
 
 cancelSize：
 
@@ -60,7 +62,7 @@ textColor：
 
 - 类型：字符串
 - 默认值：#000000
-- 描述：（可选项）搜索输入文本的字体颜色，支持rgb，rgba，#
+- 描述：（可选项）搜索输入文本的字体颜色，支持 rgb，rgba，#
 
 textFielWidth：
 
@@ -90,19 +92,19 @@ barBgColor：
 
 - 类型：字符串
 - 默认值：#FFFFFF
-- 描述：（可选项）导航条背景色，支持rgb，rgba，#
+- 描述：（可选项）导航条背景色，支持 rgb，rgba，#
 
 listBgColor：
 
 - 类型：字符串
 - 默认值：#FFFFFF
-- 描述：（可选项）历史记录表背景色，支持rgb，rgba，#
+- 描述：（可选项）历史记录表背景色，支持 rgb，rgba，#
 
 listColor：
 
 - 类型：字符串
 - 默认值：#696969
-- 描述：（可选项）搜索历史记录文本字体颜色，支持rgb，rgba，#
+- 描述：（可选项）搜索历史记录文本字体颜色，支持 rgb，rgba，#
 
 listSize：
 
@@ -114,7 +116,7 @@ cleanColor：
 
 - 类型：字符串
 - 默认值：#000000
-- 描述：（可选项）清除历史记录字体颜色，支持rgb，rgba，#
+- 描述：（可选项）清除历史记录字体颜色，支持 rgb，rgba，#
 
 cleanSize：
 
@@ -138,7 +140,7 @@ showRecord：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -152,13 +154,13 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('searchBar');
-obj.open(function(ret,err){
-	if(ret.isRecord){
-		api.alert({msg:'点击了录音按钮'});
-	}else{
-		ret.text;
-	}
+var searchBar = api.require('searchBar');
+searchBar.open(function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -192,9 +194,9 @@ text：
 ##示例代码
 
 ```js
-var obj = api.require('searchBar');
-obj.setText({
-     text:'可以用来设置语音识别后的文本'
+var searchBar = api.require('searchBar');
+searchBar.setText({
+     text: '可以用来设置语音识别后的文本'
  });
 ```
 
@@ -208,7 +210,6 @@ iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
-
 #**close**<div id="3"></div>
 
 关闭页面
@@ -217,8 +218,10 @@ close()
 
 ##示例代码
 
-    var obj = api.require('searchBar');
-    obj.close();
+```js
+var searchBar = api.require('searchBar');
+searchBar.close();
+```
 
 ##补充说明
 
@@ -238,8 +241,10 @@ cleanHistory()
 
 ##示例代码
 
-    var obj = api.require('searchBar');
-    obj. cleanHistory();
+```js
+var searchBar = api.require('searchBar');
+searchBar.cleanHistory();
+```
 
 ##补充说明
 

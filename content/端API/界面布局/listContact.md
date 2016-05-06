@@ -3,6 +3,8 @@ Title: listContact
 Description: listContact
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -72,11 +74,11 @@ bgColor：
 
 - 类型：字符串
 - 默认值：#FFFFFF
-- 描述：（可选项）当前屏幕宽度列表的背景色，支持rgb，rgba，#
+- 描述：（可选项）当前屏幕宽度列表的背景色，支持 rgb，rgba，#
 
 groupTitle:
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：见内部字段
 - 描述：（可选项）配置组标题的字体颜色和大小
 
@@ -84,9 +86,9 @@ groupTitle:
 
 ```js
 {
-    color:          //（可选项）字符串类型，默认#949494,支持rgb，rgba，#
+    color:          //（可选项）字符串类型，默认#949494,支持 rgb，rgba，#
     size:           //（可选项）数字类型，默认13
-	 bgColor:        //（可选项）标题背景色，默认#DBDBDB,支持rgb，rgba，#
+	 bgColor:        //（可选项）标题背景色，默认#DBDBDB,支持 rgb，rgba，#
 }
 ```
 
@@ -100,9 +102,9 @@ leftBtn：
 
 ```js
 [{
-    color:         	//按钮背景色，支持rgb，rgba，#
+    color:         	//按钮背景色，支持 rgb，rgba，#
     title:          //按钮名字
-	selectColor		//按钮选中时候的颜色值，支持rgb，rgba，#
+	selectColor		    //按钮选中时候的颜色值，支持 rgb，rgba，#
 }]
 ```
 
@@ -110,7 +112,7 @@ leftBg：
 
 - 类型：字符串
 - 默认值：#5cacee
-- 描述：（可选项）往右滑动cell露出的视图的背景色，支持rgb，rgba，#
+- 描述：（可选项）往右滑动cell露出的视图的背景色，支持 rgb，rgba，#
 
 rightBtn：
 
@@ -122,9 +124,9 @@ rightBtn：
 
 ```js
 [{
-    color:        		//按钮背景色，支持rgb，rgba，#
-    title:           	//按钮名字，支持rgb，rgba，#
-	 selectColor			//按钮选中时候的颜色值，支持rgb，rgba，#
+    color:        		  //按钮背景色，支持 rgb，rgba，#
+    title:           	  //按钮名字，支持 rgb，rgba，#
+	 selectColor			    //按钮选中时候的颜色值，支持 rgb，rgba，#
 }]
 ```
 
@@ -132,25 +134,25 @@ rightBg：
 
 - 类型：字符串
 - 默认值：#6c7b8b
-- 描述：（可选项）往左滑动cell露出的视图的背景色，支持rgb，rgba，#
+- 描述：（可选项）往左滑动cell露出的视图的背景色，支持 rgb，rgba，#
 
 borderColor：
 
 - 类型：字符串
 - 默认值：#696969
-- 描述：（可选项）每个cell之间分割线的颜色，支持rgb，rgba，#
+- 描述：（可选项）每个cell之间分割线的颜色，支持 rgb，rgba，#
 
 cellBgColor：
 
 - 类型：字符串
 - 默认值:#AFEEEE
-- 描述：（可选项）cell的背景色，支持rgb，rgba，#
+- 描述：（可选项）cell的背景色，支持 rgb，rgba，#
 
 cellSelectColor：
 
 - 类型：字符串
 - 默认值：#F5F5F5
-- 描述：（可选项）选中cell时的颜色，支持rgb，rgba，#
+- 描述：（可选项）选中cell时的颜色，支持 rgb，rgba，#
 
 cellHeight：
 
@@ -172,24 +174,24 @@ imgWidth：
 
 data：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：列表数据源，必传项
 - 内部字段：
 
 ```js
 {
-	common: [{                 //区域标题，字符串类型
-		img:               		//（可选项）cell的头像，，支持http、https、widget、fs等网络和本地图片路径协议，网络图片会被缓存到本地
-		placeholderImg:         //（可选项）头像,本地路径,加载网络图片时显示界面上的图，可为空
-		title:               	//（可选项）cell的标题，若subtitle为空时，title上下居中位置
-		subTitle:           	//（可选项）cell的子标题，为空时title上下居中显示
-		titleLocation 			//（可选项）标题在水平线上的位置center,left,right，默认left
-		titleSize				//（可选项）标题字体的大小，默认12
-		titleColor				//（可选项）标题字体的颜色值，默认黑色，支持rgb，rgba，#
-		subTitleLocation 		//（可选项）子标题在水平线上的位置center,left,right默认left
-		subTitleSize			//（可选项）子标题字体的大小，默认12
-		subTitleColor			//（可选项）子标题字体的颜色值,默认黑色,支持rgb，rgba，#
+	common: [{               //区域标题，字符串类型
+		img:               		 //（可选项）cell的头像，，支持http、https、widget、fs等网络和本地图片路径协议，网络图片会被缓存到本地
+		placeholderImg:        //（可选项）头像,本地路径,加载网络图片时显示界面上的图，可为空
+		title:               	 //（可选项）cell的标题，若subtitle为空时，title上下居中位置
+		subTitle:           	 //（可选项）cell的子标题，为空时title上下居中显示
+		titleLocation 			   //（可选项）标题在水平线上的位置center,left,right，默认left
+		titleSize				       //（可选项）标题字体的大小，默认12
+		titleColor				     //（可选项）标题字体的颜色值，默认黑色，支持 rgb，rgba，#
+		subTitleLocation 		   //（可选项）子标题在水平线上的位置center,left,right默认left
+		subTitleSize			     //（可选项）子标题字体的大小，默认12
+		subTitleColor			     //（可选项）子标题字体的颜色值,默认黑色,支持 rgb，rgba，#
 }],
 A:[{}],
 B:[{}],,,,,,
@@ -198,7 +200,7 @@ B:[{}],,,,,,
 
 indicator:
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：（可选项）是否添加右边索引导航条
 - 备注：若不传则不显示右边索引导航条
@@ -206,8 +208,8 @@ indicator:
 
 ```js
 {
-	bgColor:       	//（可选项）背景色，字符串，默认透明，支持rgb，rgba，#
-	color：			//（可选项）索引指器颜色,字符串类型，默认#A1A1A1,支持rgb，rgba，#
+	bgColor:       	//（可选项）背景色，字符串，默认透明，支持 rgb，rgba，#
+	color：			//（可选项）索引指器颜色,字符串类型，默认#A1A1A1,支持 rgb，rgba，#
 }
 ```
 
@@ -219,7 +221,7 @@ fixedOn：
 
 searchBar:
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：（可选项）搜索条设置
 - 备注：若不传则不显示搜索条
@@ -227,8 +229,8 @@ searchBar:
 
 ```js
 {
-	bgColor:       	//（可选项）搜索条背景色，字符串，默认透明，支持rgb，rgba，#
-	cancelColor:    //（可选项）取消文字的颜色，字符串类型，默认#A1A1A1,支持rgb，rgba，#
+	bgColor:       	//（可选项）搜索条背景色，字符串，默认透明，支持 rgb，rgba，#
+	cancelColor:    //（可选项）取消文字的颜色，字符串类型，默认#A1A1A1,支持 rgb，rgba，#
 	placeholder:    //（可选项）搜索条提示文字，字符串类型，默认空，不传则不显示提示文字
 	h:              //（可选项）搜索框的高度，数字类型，默认44
 }
@@ -238,7 +240,7 @@ searchBar:
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -248,7 +250,7 @@ ret：
 	section:            //被点击的cell所在的区域的下标 
 	key：               //被点击的cell的区域的key
 	clickType:        	//点击类型，0-cell；1-右边按钮；2-左边的按钮
-	btnIndex:       	//点击按钮时返回其下标
+	btnIndex:       	  //点击按钮时返回其下标
 }
 ```
 
@@ -356,7 +358,7 @@ reloadData({params})
 
 data：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：（可选项）刷新的数据源，若不传则仅停止下拉刷新状态
 
@@ -371,10 +373,10 @@ data：
 		subTitle:           	//（可选项）cell的子标题，为空时title上下居中显示
 		titleLocation 			//（可选项）标题在水平线上的位置center,left,right，默认left
 		titleSize				//（可选项）标题字体的大小，默认12
-		titleColor				//（可选项）标题字体的颜色值，默认黑色，支持rgb，rgba，#
+		titleColor				//（可选项）标题字体的颜色值，默认黑色，支持 rgb，rgba，#
 		subTitleLocation 		//（可选项）子标题在水平线上的位置center,left,right默认left
 		subTitleSize			//（可选项）子标题字体的大小，默认12
-		subTitleColor			//（可选项）子标题字体的颜色值,默认黑色,支持rgb，rgba，#
+		subTitleColor			//（可选项）子标题字体的颜色值,默认黑色,支持 rgb，rgba，#
 }],
 A:[{}],
 B:[{}],,,,,,
@@ -439,7 +441,7 @@ iOS系统，Android系统
 
 设置下拉刷新样式
 
-setRefreshHeader({params} ,callback(ret,err))
+setRefreshHeader({params} ,callback(ret, err))
 
 ##params
 
@@ -479,7 +481,7 @@ showTime：
 - 默认值：true
 - 描述：（可选项）是否显示刷新时间
 
-##callback
+##callback(ret, err)
 
 返回触发刷新事件
 
@@ -494,8 +496,12 @@ listContact.setRefreshHeader({
 	textDown: '下拉可以刷新...',
 	textUp: '松开开始刷新...',
 	showTime : true
-},function( ret ){
-    alert( '刷新事件');
+}, function(ret, err){   
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -580,9 +586,9 @@ key：
 ```js
 var listContact = api.require('listContact');
  listContact.deleteItem({
-      index: 2,
-      key: A
- });
+    index: 2,
+    key: A
+});
 ```
 
 ##补充说明
@@ -618,7 +624,7 @@ key：
 
 data：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：要刷新的item的数据源
 
@@ -632,10 +638,10 @@ data：
     subTitle:             //（可选项）cell的子标题，可为空，为空时title上下居中显示
     titleLocation         //（可选项）标题在水平线上的位置center,left,right，默认left
     titleSize             //（可选项）标题字体的大小，默认12
-    titleColor            //（可选项）标题字体的颜色值，默认黑色，支持rgb，rgba，#
+    titleColor            //（可选项）标题字体的颜色值，默认黑色，支持 rgb，rgba，#
     subTitleLocation      //（可选项）子标题在水平线上的位置center,left,right默认left
     subTitleSize          //（可选项）子标题字体的大小，默认12
-    subTitleColor         //（可选项）子标题字体的颜色值,默认黑色, 支持rgb，rgba，#
+    subTitleColor         //（可选项）子标题字体的颜色值,默认黑色, 支持 rgb，rgba，#
 }
 ```
 ##示例代码
@@ -643,11 +649,11 @@ data：
 ```js
 var listContact = api.require('listContact');
 listContact.refreshItem({
-      index: 2,
-      data: {
-           title: '刷新指定下标的标题', 
-           subTitle: '刷新指定下标的子标题'
-      }
+    index: 2,
+    data: {
+       title: '刷新指定下标的标题', 
+       subTitle: '刷新指定下标的子标题'
+    }
 });
 ```
 
@@ -684,7 +690,7 @@ key：
 
 data：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：要插入的item的数据源
 
@@ -698,10 +704,10 @@ data：
     subTitle:             //（可选项）cell的子标题，可为空，为空时title上下居中显示
     titleLocation         //（可选项）标题在水平线上的位置center,left,right，默认left
     titleSize             //（可选项）标题字体的大小，默认12
-    titleColor            //（可选项）标题字体的颜色值，默认黑色，支持rgb，rgba，#
+    titleColor            //（可选项）标题字体的颜色值，默认黑色，支持 rgb，rgba，#
     subTitleLocation      //（可选项）子标题在水平线上的位置center,left,right默认left
     subTitleSize          //（可选项）子标题字体的大小，默认12
-    subTitleColor         //（可选项）子标题字体的颜色值,默认黑色, 支持rgb，rgba，#
+    subTitleColor         //（可选项）子标题字体的颜色值,默认黑色, 支持 rgb，rgba，#
 }
 ```
 ##示例代码
@@ -711,10 +717,10 @@ var listContact = api.require('listContact');
 listContact.insertItem({
     index:2,
     data:{
-          img: 'widget://res/img/ic/listContact.jpg',
-          title: '12:00',
-          subTitle: 'APICloud粉丝互动会',
-          remark: '完成'
+        img: 'widget://res/img/ic/listContact.jpg',
+        title: '12:00',
+        subTitle: 'APICloud粉丝互动会',
+        remark: '完成'
     }
 });
 ```
@@ -752,8 +758,8 @@ key：
 ```js
 var listContact = api.require('listContact');
 listContact.scrollToItem({
-      index: 2,    
-      key: 'B'
+    index: 2,    
+    key: 'B'
 });
 ```
 

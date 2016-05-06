@@ -3,6 +3,8 @@ Title: UISlider
 Description: UISlider
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -148,7 +150,7 @@ fixed:
 
 ret：
 
-- 类型：JSON对象内部字段：
+- 类型：JSON 对象内部字段：
 
 ```js
 {
@@ -314,7 +316,7 @@ iOS系统，Android系统
 
 关闭滑动控件
 
-close()
+close({params})
 
 ##params
 
@@ -344,7 +346,7 @@ iOS系统，Android系统
 
 显示滑动器
 
-show(callBack(ret,err))
+show(callback(ret, err))
 
 ##params
 
@@ -373,7 +375,7 @@ iOS系统，Android系统
 
 隐藏滑动器
 
-hide(callBack(ret,err))
+hide(callback(ret, err))
 
 ##params
 

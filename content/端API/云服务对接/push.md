@@ -54,7 +54,7 @@ userName：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -66,7 +66,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -83,7 +83,7 @@ var push = api.require('push');
 push.bind({
 	userName: 'testName',
 	userId: 'testId'
-},function( ret, err ){
+}, function(ret, err){
 	if( ret ){
         alert( JSON.stringify( ret) );
     }else{
@@ -127,7 +127,7 @@ userName：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -139,7 +139,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -156,7 +156,7 @@ var push = api.require('push');
 push.unbind({
 	userName: 'testName',
 	userId: 'testId'
-},function( ret, err ){
+}, function(ret, err){
 	 if( ret ){
         alert( JSON.stringify( ret) );
      }else{
@@ -195,7 +195,7 @@ groupName：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -207,7 +207,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -223,7 +223,7 @@ err：
 var push = api.require('push');
 push.joinGroup({
 	groupName: 'department'
-},function( ret, err ){
+}, function(ret, err){
 	 if( ret ){
         alert( JSON.stringify( ret) );
      }else{
@@ -262,7 +262,7 @@ groupName：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -274,7 +274,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -290,7 +290,7 @@ err：
 var push = api.require('push');
 push.leaveGroup({
 	groupName: 'department'
-},function( ret, err ){
+}, function(ret, err){
 	 if( ret ){
         alert( JSON.stringify( ret) );
      }else{
@@ -321,7 +321,7 @@ leaveAllGroup(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -333,7 +333,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -379,7 +379,7 @@ setListener(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -459,7 +459,7 @@ updateCurrent：
 
 silenceTime：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：（可选项）设置通知的静默时间段。在设置的时间段内收到推送时，将有通知弹出到手机状态栏，但不会有响铃，震动等行为。设置0，0，0，0则清除设置。仅Android平台生效
 - 内部字段：

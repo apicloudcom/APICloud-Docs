@@ -2,6 +2,9 @@
 Title: dkSDK
 Description: dkSDK
 */
+
+<p style="color: #ccc; margin-bottom: 30px;">来自于：点开科技</p>
+
 <div class="outline">
 [registerKey](#a1)
 
@@ -26,7 +29,7 @@ Description: dkSDK
 		
 注册key:开发者需要在http://www.alldk.com/index.php?action=main.register注册key,注册成功后才能使用模块
 
-registerKey(params);
+registerKey({params});
    	
 ##params   
 
@@ -56,7 +59,7 @@ DIANKAI_BANNER_KEY:
   ```
 
 ##可用性: 
-android ios系统 
+android iOS系统 
 
 <div id="a2"></div>   
 
@@ -64,7 +67,7 @@ android ios系统
 
 banner广告展示(展示之前先要注册key)
 
-getBannerAD(params);
+getBannerAD({params});
 
 ## params
 
@@ -112,7 +115,7 @@ android 系统
 
 关闭插屏广告时间设置
 
-setHideDate(params);
+setHideDate({params});
 
 
 ##params  
@@ -140,21 +143,21 @@ android 系统
 
 移除广告 
 
-removeBannerAD(params);
+removeBannerAD({params});
     
 - msg:
 - 类型:String
 - 描述:移除广告
     
 ```
-    function removeBannerAD (){ 
+    function removeBannerAD(){ 
     		var par = {msg:"Hello diankai!"};
     		dkapi.removeBannerAD(par); 		
     }
 ```
 
 ##可用性:
-android ios系统
+android iOS系统
  
 <div id="a5"></div> 
    
@@ -162,7 +165,7 @@ android ios系统
 
 插屏广告展示
 
-getIntAD(params);
+getIntAD({params});
 
 ##params 
 	
@@ -185,6 +188,6 @@ function getIntAD(){
 ```
 
 ##可用性:
-android ios系统
+android iOS系统
 		
 警告:调用广告之前 必须先执行注册key

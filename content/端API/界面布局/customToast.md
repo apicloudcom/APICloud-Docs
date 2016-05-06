@@ -6,10 +6,11 @@ Description: 自定义Toast，让Toast更完美的融入应用，不影响应用
 [toast](#a1)
 </div>
 
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
 
 #**概述**
 
-customToast 弹出一个定时自动关闭的提示框，自定义Toast，自定义提示框颜色、透明度、字体大小、字体颜色、圆角幅度，显示时间；让Toast更完美的融入应用，不影响应用的整体美观
+customToast 弹出一个定时自动关闭的提示框，自定义 Toast，自定义提示框颜色、透明度、字体大小、字体颜色、圆角幅度，显示时间；让 Toast 更完美的融入应用，不影响应用的整体美观
 
 ![](/img/docImage/customToast.jpg)
 
@@ -85,7 +86,7 @@ alpha：
 
 ```js
 var toastApi = api.require('ToastApi');
-var param = {
+toastApi.toast({
 	msg : "holle world!!",
 	msgSize : "23",
 	msgColor : "#D52B2B",
@@ -96,8 +97,7 @@ var param = {
 	roundRadius : "100",
 	roundRadiusIos : "10",
 	alpha : "100"
-};
-toastApi.toast(param);
+});
 ```
 
 ##可用性

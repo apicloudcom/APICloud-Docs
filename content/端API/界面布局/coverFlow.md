@@ -3,6 +3,8 @@ Title: coverFlow
 Description: coverFlow
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -60,7 +62,7 @@ bgColor：
 
 - 类型：字符串
 - 默认值：rgba(0,0,0,0)
-- 描述：背景颜色十六进制值,支持rgb，rgba，#，可为空
+- 描述：背景颜色十六进制值,支持 rgb，rgba，#，可为空
 
 paths：
 
@@ -89,7 +91,7 @@ fixed:
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -124,7 +126,7 @@ coverFlow.open({
         'widget://res/a1.png'
     ],
     fixedOn: api.frameName
-},function( ret, err ){		
+}, function(ret, err){		
     if( ret ){
         alert( JSON.stringify( ret ) );
     }else{

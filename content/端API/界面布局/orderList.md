@@ -3,6 +3,8 @@ Title: orderList
 Description: orderList
 */
 
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -42,7 +44,7 @@ Description: orderList
 
 #**概述**
 
-orderList封装了一个列表控件，可实现一个可左右拖动item的列表视图。开发者可根据需求自定义列表的元素布局，亦可自定义相关字段的样式。支持设置下拉刷新和上拉加载更多事件。支持删除、刷新、插入指定下标（index）的item数据。可动态设置item侧滑按钮图标、头像。本模块是有第三方模块开发者提供，使用本模块需在线云编译安装包。
+orderList 封装了一个列表控件，可实现一个可左右拖动 item 的列表视图。开发者可根据需求自定义列表的元素布局，亦可自定义相关字段的样式。支持设置下拉刷新和上拉加载更多事件。支持删除、刷新、插入指定下标（index）的 item 数据。可动态设置 item 侧滑按钮图标、头像。本模块是由第三方模块开发者提供，使用本模块需在线云编译安装包。
 
 #**open**<div id="1"></div>
 
@@ -78,7 +80,7 @@ h：
 
 itemStyle：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：见内部字段
 - 描述：item样式配置，可为空
 
@@ -86,17 +88,17 @@ itemStyle：
 
 ```js
 {
-    borderColor:  //item间分割线颜色，支持rgb，rgba，#，默认#696969，可为空
-    bgColor:      //item背景色，支持rgb，rgba，#，默认#AFEEEE，可为空
-    selectedColor  // item背景选中色,支持rgb，rgba，#，默认#f5f5f5可为空
+    borderColor:  //item间分割线颜色，支持 rgb，rgba，#，默认#696969，可为空
+    bgColor:      //item背景色，支持 rgb，rgba，#，默认#AFEEEE，可为空
+    selectedColor  // item背景选中色,支持 rgb，rgba，#，默认#f5f5f5可为空
     height:       //一条item的高度，数字类型，默认55，可为空
     avatarH：    //头像（上下居中）的高(不可超过height)，数字类型，默认45，可为空
     avatarW:     //头像（距左边框距离和上下相等）的宽，数字类型，默认45，可为空
     placeholderImg//头像为网络资源时的占位图,仅支持本地路径协议,有默认图标，可为空
     titleSize：    //标题字体大小，数字类型，默认16，可为空
-    titleColor     //标题字体颜色，支持rgb,rgba,#，默认：#000000,可为空
+    titleColor     //标题字体颜色，支持 rgb,rgba,#，默认：#000000,可为空
     subTitleSize   //子标题字体大小，数字类型，默认13，可为空
-    subTitleColor  //子标题字体颜色，支持rgb,rgba,#，默认：#000000,可为空
+    subTitleColor  //子标题字体颜色，支持 rgb,rgba,#，默认：#000000,可为空
     total：       //总价位置区域显示的文字，字符串类型，默认:总价，可为空
     amount：      //数量位置区域显示的文字，字符串类型，默认:数量，可为空
 }
@@ -120,11 +122,11 @@ datas：
     rightBtn：  //数组对象,往左滑动item露出的按钮信息组成的数组，无默认值，可为空，为空时表示item不可向左滑动
 				内部字段：
 				[{
-					bg:             //按钮背景色，支持rgb，rgba，#，默认#388e8e，可为空
+					bg:             //按钮背景色，支持 rgb，rgba，#，默认#388e8e，可为空
 					title:         	//按钮标题，字符串类型，默认空字符串，可为空
 					titleSize:      //按钮标题字体大小，数字类型，默认12，可为空
-					titleColor:     //按钮标题颜色，支持rgb，rgba，#，默认#ffffff，可为空
-					highlightColor: //按钮选中时的颜色值,支持rgb，rgba，#，可为空,为空则无选中变化
+					titleColor:     //按钮标题颜色，支持 rgb，rgba，#，默认#ffffff，可为空
+					highlightColor: //按钮选中时的颜色值,支持 rgb，rgba，#，可为空,为空则无选中变化
 					icon:           //按钮标题前图标图片路径，图标大小20*20，默认无，可为空，支持本地协议路径，如widget：//、fs://等
 				}]
 }]
@@ -140,7 +142,7 @@ fixedOn：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -167,26 +169,26 @@ var orderList = api.require('orderList');
 
 var datas = []; // 数据源.
 
-var imgs = ["widget://image/orderList/avatar.png",
-    "widget://image/orderList/avatar.png",
-    "widget://image/orderList/avatar.png",
-    "widget://image/orderList/avatar.png",
-    "http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/948bec8a4df2adb27581319d8a8c014e.png",
-    "http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/3cd8bd01f9f474664ff0b2f41611797e.png",
-    "http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/5b67af4da9ce31f101c3326fbef10e5e.png",
-    "http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/3531bbb5db7f920a4f17887449aa5d7d.png",
-    "http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/cbf1074f44df8e0f40ca277e31f559ce.png",
-    "http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/87a9ad42f49140f1168b0caebf0cb6c3.png",
-    "http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/da1cdf8ecba5775f8b54f12cd2a00735.png",
-    "http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/a4db2d1809fa57cc91d0173e1c33caf9.png",
-    "http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/3e0afb28a7cb0437ea860087cef39fd3.png",
-    "http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/893e222cdd8158391f7a01aee3723784.png",
-    "http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/59ea90c458f3708279de79b0c7a60693.png",
-    "http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/69bff6064593e92c8e4102f174d0bdbf.png",
-    "http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/ca2aa9b8246bc0bfd97ba284dc087e62.png",
-    "http://file.apicloud.com/mcm/A6965066817858/d7d1d308fe165b984c09728e7118e9f1.jpg",
-    "http://file.apicloud.com/mcm/A6965066817858/83dede361c4597ccfe2d815a76a7b1c2.png",
-    "http://file.apicloud.com/mcm/A6965066817858/f23301da3bd6c2c214a464b27c9897c2.jpg"];
+var imgs = ['widget://image/orderList/avatar.png',
+    'widget://image/orderList/avatar.png',
+    'widget://image/orderList/avatar.png',
+    'widget://image/orderList/avatar.png',
+    'http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/948bec8a4df2adb27581319d8a8c014e.png',
+    'http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/3cd8bd01f9f474664ff0b2f41611797e.png',
+    'http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/5b67af4da9ce31f101c3326fbef10e5e.png',
+    'http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/3531bbb5db7f920a4f17887449aa5d7d.png',
+    'http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/cbf1074f44df8e0f40ca277e31f559ce.png',
+    'http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/87a9ad42f49140f1168b0caebf0cb6c3.png',
+    'http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/da1cdf8ecba5775f8b54f12cd2a00735.png',
+    'http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/a4db2d1809fa57cc91d0173e1c33caf9.png',
+    'http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/3e0afb28a7cb0437ea860087cef39fd3.png',
+    'http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/893e222cdd8158391f7a01aee3723784.png',
+    'http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/59ea90c458f3708279de79b0c7a60693.png',
+    'http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/69bff6064593e92c8e4102f174d0bdbf.png',
+    'http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/ca2aa9b8246bc0bfd97ba284dc087e62.png',
+    'http://file.apicloud.com/mcm/A6965066817858/d7d1d308fe165b984c09728e7118e9f1.jpg',
+    'http://file.apicloud.com/mcm/A6965066817858/83dede361c4597ccfe2d815a76a7b1c2.png',
+    'http://file.apicloud.com/mcm/A6965066817858/f23301da3bd6c2c214a464b27c9897c2.jpg'];
 
 for(var i = 0; i < 20; i ++){ // 使用1000条数据,进行极限测试.
     var data =     {
@@ -195,23 +197,23 @@ for(var i = 0; i < 20; i ++){ // 使用1000条数据,进行极限测试.
     title: '刘德华' + i, // 标题.
     total: '100' + i, // 子标题.
     amount:'10' + i,
-    state:"支付",
+    state:'支付',
     rightBtn: [
     {
-    bg:  "#556B2F",  //按钮背景色，支持rgb，rgba，#，默认#ee8262.
-    title: "结束", //按钮名字，字符串类型，默认‘按钮’
+    bg:  '#556B2F',  //按钮背景色，支持 rgb，rgba，#，默认#ee8262.
+    title: '结束', //按钮名字，字符串类型，默认‘按钮’
     titleSize: 13,      //按钮标题大小，默认12
-    titleColor: "#000000", // 按钮标题颜色，支持rgb，rgba，#，默认#ffffff
-    selectedColor: "#FFFFFF",  //按钮选中时候的颜色值,支持rgb，rgba，#
-    icon:"widget://image/orderList/delete.png"
+    titleColor: '#000000', // 按钮标题颜色，支持 rgb，rgba，#，默认#ffffff
+    selectedColor: '#FFFFFF',  //按钮选中时候的颜色值,支持 rgb，rgba，#
+    icon:'widget://image/orderList/delete.png'
     },
     {
-    bg:  "#4EEE94",  //按钮背景色，支持rgb，rgba，#，默认#ee8262.
-    title: "取消置顶", //按钮名字，字符串类型，默认‘按钮’
+    bg:  '#4EEE94',  //按钮背景色，支持 rgb，rgba，#，默认#ee8262.
+    title: '取消置顶', //按钮名字，字符串类型，默认‘按钮’
     titleSize: 13,      //按钮标题大小，默认12
-    titleColor: "#000000", // 按钮标题颜色，支持rgb，rgba，#，默认#ffffff
-    selectedColor: "ffffff",  //按钮选中时候的颜色值,支持rgb，rgba，#
-    icon:"widget://image/orderList/delete.png"
+    titleColor: '#000000', // 按钮标题颜色，支持 rgb，rgba，#，默认#ffffff
+    selectedColor: 'ffffff',  //按钮选中时候的颜色值,支持 rgb，rgba，#
+    icon:'widget://image/orderList/delete.png'
     }
     ] // 左滑单元格露出的按钮组.
     };
@@ -221,7 +223,7 @@ var dataT =     {
 uId:1100,
 title: '这是标题', // 标题.
 total: '$10', // 子标题.
-amount:"#100",
+amount:'#100',
 state:'支付'
 };
 datas.push(dataT);
@@ -238,24 +240,24 @@ orderList.open({
     w: 320, // 宽度, 默认设备屏幕宽度.
     h: 320, // 高度, 默认 视图高度 + 100.
     itemStyle: {
-        borderColor: "#696969", // 单元格间分割线颜色，支持rgb，rgba，#，默认#696969
-        bgColor: "#AFEEEE", // 单元格背景色，支持rgb，rgba，#，默认#AFEEEE
-        selectedColor: "#f5f5f5",  // item背景选中色,支持rgb，rgba，#，默认#f5f5f5
+        borderColor: '#696969', // 单元格间分割线颜色，支持 rgb，rgba，#，默认#696969
+        bgColor: '#AFEEEE', // 单元格背景色，支持 rgb，rgba，#，默认#AFEEEE
+        selectedColor: '#f5f5f5',  // item背景选中色,支持 rgb，rgba，#，默认#f5f5f5
         height: 100,       // 单元格高度，默认55
         avatarH: 80,    //头像的高度，默认45
         avatarW: 80,     //头像的宽度，默认45
-        placeholderImg: "widget://image/orderList/placeholder.png",//头像为网络资源时的占位图,仅支持本地路径协议,有默认图标，可为空
+        placeholderImg: 'widget://image/orderList/placeholder.png',//头像为网络资源时的占位图,仅支持本地路径协议,有默认图标，可为空
         titleSize: 15, //标题字体大小，默认13
-        titleColor: "#000000", // 标题字体颜色，支持rgb,rgba,#，默认：#000000
+        titleColor: '#000000', // 标题字体颜色，支持 rgb,rgba,#，默认：#000000
         subTitleSize: 10,  // 子标题字体大小，默认13
-        subTitleColor: "#696969", // 子标题字体颜色，支持rgb,rgba,#，默认：#696969
-        total:"总价",
-        amount:"数量"
+        subTitleColor: '#696969', // 子标题字体颜色，支持 rgb,rgba,#，默认：#696969
+        total:'总价',
+        amount:'数量'
     },
     itemSlipDistance:60,
     datas: datas
     },function(ret,err){
-    alert("您点击了第 " + ret.index + " 个单元格的" + ret.eventType);
+    alert('您点击了第 ' + ret.index + ' 个单元格的' + ret.eventType);
 });
 ```
 
@@ -274,7 +276,7 @@ iOS系统，Android系统
 
 重设模块视图的y，和h
 
-setFrame({params })
+setFrame({params})
 
 ##params
 
@@ -298,11 +300,13 @@ h：
 
 ##示例代码
 
-	var obj = api.require('orderList');
-	obj.setFrame({
-		anim:true ,
-		y:40
-	});
+```js
+var orderList = api.require('orderList');
+orderList.setFrame({
+  anim: true,
+  y: 40
+});
+```
 
 ##补充说明
 
@@ -318,7 +322,7 @@ iOS系统，Android系统
 
 根据唯一标识查找该item在列表中的下标
 
-getIndex({params },callBack(ret,err))
+getIndex({params}, callBack(ret, err))
 
 ##params
 
@@ -326,7 +330,7 @@ key：
 
 - 类型：字符串
 - 默认值：无
-- 描述：唯一标识的key,不可为空
+- 描述：唯一标识的 key,不可为空
 
 value：
 
@@ -338,7 +342,7 @@ value：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -349,13 +353,19 @@ ret：
 
 ##示例代码
 
-	var obj = api.require('orderList');
-	obj.getIndex({
-	     key:"uid",
-	     value:"00000001"
-	},function(ret,err){
-	     api.alert({msg:ret.index});
-	});
+```js
+var orderList = api.require('orderList');
+orderList.getIndex({
+    key: 'uid',
+    value: '00000001'
+}, function(ret, err){   
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
+```
 
 ##补充说明
 
@@ -371,7 +381,7 @@ iOS系统，Android系统
 
 根据item的索引获取item的数据
 
-getData({params },callBack(ret,err))
+getData({params}, callBack(ret, err))
 
 ##params
 
@@ -385,7 +395,7 @@ index：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -395,12 +405,18 @@ ret：
 
 ##示例代码
 
-	var obj = api.require('orderList');
-	obj.getData({
-	     index:0
-	},function(ret,err){
-	     api.alert({msg:ret.data});
-	});
+```js
+var orderList = api.require('orderList');
+orderList.getData({
+    index:0
+}, function(ret, err){   
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
+```
 
 ##补充说明
 
@@ -435,11 +451,11 @@ rightBtn：
 
 ```js
 	[{
-		bg:         	//按钮背景色，支持rgb，rgba，#，默认#388e8e，可为空
+		bg:         	//按钮背景色，支持 rgb，rgba，#，默认#388e8e，可为空
 	    title:          //按钮标题，字符串类型，默认空字符串，可为空
 	    titleSize:      //按钮标题字体大小，数字类型，默认12，可为空
-	    titleColor:     //按钮标题颜色，支持rgb，rgba，#，默认#ffffff，可为空
-	    highlightColor  //按钮选中时的颜色值,支持rgb，rgba，#，可为空,为空则无选中变化
+	    titleColor:     //按钮标题颜色，支持 rgb，rgba，#，默认#ffffff，可为空
+	    highlightColor  //按钮选中时的颜色值,支持 rgb，rgba，#，可为空,为空则无选中变化
 	    icon            //按钮标题前图标图片路径，图标大小自适应文字大小，默认无，可为空，支持本地协议路径，如widget：//、fs://等
 	}]
 ```
@@ -447,23 +463,23 @@ rightBtn：
 ##示例代码
 
 ```js
-var obj = api.require('orderList');
-obj.setRightButtons({
+var orderList = api.require('orderList');
+orderList.setRightButtons({
    index:0,
    rightBtn: [{
-     bg:  "#556B2F",  //按钮背景色，支持rgb，rgba，#，默认#ee8262.
-     title: "取消", //按钮名字，字符串类型，默认‘按钮’
+     bg:  '#556B2F',  //按钮背景色，支持 rgb，rgba，#，默认#ee8262.
+     title: '取消', //按钮名字，字符串类型，默认‘按钮’
      titleSize: 13,      //按钮标题大小，默认12
-     titleColor: "#000000", // 按钮标题颜色，支持rgb，rgba，#，默认#ffffff
-     selectedColor: "#FFFFFF",  //按钮选中时候的颜色值,支持rgb，rgba，#
-     icon:"widget://image/orderList/ok.png"
+     titleColor: '#000000', // 按钮标题颜色，支持 rgb，rgba，#，默认#ffffff
+     selectedColor: '#FFFFFF',  //按钮选中时候的颜色值,支持 rgb，rgba，#
+     icon:'widget://image/orderList/ok.png'
    }, {
-     bg:  "#4EEE94",  //按钮背景色，支持rgb，rgba，#，默认#ee8262.
-     title: "确定", //按钮名字，字符串类型，默认‘按钮’
+     bg:  '#4EEE94',  //按钮背景色，支持 rgb，rgba，#，默认#ee8262.
+     title: '确定', //按钮名字，字符串类型，默认‘按钮’
      titleSize: 13,      //按钮标题大小，默认12
-     titleColor: "#000000", // 按钮标题颜色，支持rgb，rgba，#，默认#ffffff
-     selectedColor: "ffffff",  //按钮选中时候的颜色值,支持rgb，rgba，#
-     icon:"widget://image/orderList/ok.png"
+     titleColor: '#000000', // 按钮标题颜色，支持 rgb，rgba，#，默认#ffffff
+     selectedColor: 'ffffff',  //按钮选中时候的颜色值,支持 rgb，rgba，#
+     icon:'widget://image/orderList/ok.png'
    }]
 });
 ```
@@ -486,8 +502,10 @@ close()
 
 ##示例代码
 
-	var obj = api.require('orderList');
-	obj.close();
+```js
+var orderList = api.require('orderList');
+orderList.close();
+```
 
 ##补充说明
 
@@ -525,11 +543,11 @@ datas：
     rightBtn： //数组对象,往左滑动item露出的按钮信息组成的数组，无默认值，可为空，为空时表示item不可向左滑动
 			    内部字段：
 				[{
-					bg:         	//按钮背景色，支持rgb，rgba，#，默认#388e8e，可为空
+					bg:         	//按钮背景色，支持 rgb，rgba，#，默认#388e8e，可为空
 					title:          //按钮标题，字符串类型，默认空字符串，可为空
 					titleSize:      //按钮标题字体大小，数字类型，默认12，可为空
-					titleColor:     //按钮标题颜色，支持rgb，rgba，#，默认#ffffff，可为空
-					highlightColor  //按钮选中时的颜色值,支持rgb，rgba，#，可为空,为空则无选中变化
+					titleColor:     //按钮标题颜色，支持 rgb，rgba，#，默认#ffffff，可为空
+					highlightColor  //按钮选中时的颜色值,支持 rgb，rgba，#，可为空,为空则无选中变化
 					icon            //按钮标题前图标图片路径，图标大小20*20，默认无，可为空，支持本地协议路径，如widget：//、fs://等
 				}]
 }]
@@ -540,26 +558,26 @@ datas：
 ```js
 var datas = []; // 数据源.
 
-var imgs = ["http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/e4dba38175efac7d07adcae8be8d1223.png",
-    "http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/9c212a6c2753103e4deed8aa47bda909.png",
-    "http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/be9ced29de96129b6a1e2f19c40de85e.png",
-    "http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/94a135721ae675fbccd2484f616a98e1.png",
-    "http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/948bec8a4df2adb27581319d8a8c014e.png",
-    "http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/3cd8bd01f9f474664ff0b2f41611797e.png",
-    "http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/5b67af4da9ce31f101c3326fbef10e5e.png",
-    "http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/3531bbb5db7f920a4f17887449aa5d7d.png",
-    "http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/cbf1074f44df8e0f40ca277e31f559ce.png",
-    "http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/87a9ad42f49140f1168b0caebf0cb6c3.png",
-    "http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/da1cdf8ecba5775f8b54f12cd2a00735.png",
-    "http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/a4db2d1809fa57cc91d0173e1c33caf9.png",
-    "http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/3e0afb28a7cb0437ea860087cef39fd3.png",
-    "http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/893e222cdd8158391f7a01aee3723784.png",
-    "http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/59ea90c458f3708279de79b0c7a60693.png",
-    "http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/69bff6064593e92c8e4102f174d0bdbf.png",
-    "http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/ca2aa9b8246bc0bfd97ba284dc087e62.png",
-    "http://file.apicloud.com/mcm/A6965066817858/d7d1d308fe165b984c09728e7118e9f1.jpg",
-    "http://file.apicloud.com/mcm/A6965066817858/83dede361c4597ccfe2d815a76a7b1c2.png",
-    "http://file.apicloud.com/mcm/A6965066817858/f23301da3bd6c2c214a464b27c9897c2.jpg"];
+var imgs = ['http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/e4dba38175efac7d07adcae8be8d1223.png',
+    'http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/9c212a6c2753103e4deed8aa47bda909.png',
+    'http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/be9ced29de96129b6a1e2f19c40de85e.png',
+    'http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/94a135721ae675fbccd2484f616a98e1.png',
+    'http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/948bec8a4df2adb27581319d8a8c014e.png',
+    'http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/3cd8bd01f9f474664ff0b2f41611797e.png',
+    'http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/5b67af4da9ce31f101c3326fbef10e5e.png',
+    'http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/3531bbb5db7f920a4f17887449aa5d7d.png',
+    'http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/cbf1074f44df8e0f40ca277e31f559ce.png',
+    'http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/87a9ad42f49140f1168b0caebf0cb6c3.png',
+    'http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/da1cdf8ecba5775f8b54f12cd2a00735.png',
+    'http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/a4db2d1809fa57cc91d0173e1c33caf9.png',
+    'http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/3e0afb28a7cb0437ea860087cef39fd3.png',
+    'http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/893e222cdd8158391f7a01aee3723784.png',
+    'http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/59ea90c458f3708279de79b0c7a60693.png',
+    'http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/69bff6064593e92c8e4102f174d0bdbf.png',
+    'http://abfc6f80482f86f9ccf4.b0.upaiyun.com/apicloud/ca2aa9b8246bc0bfd97ba284dc087e62.png',
+    'http://file.apicloud.com/mcm/A6965066817858/d7d1d308fe165b984c09728e7118e9f1.jpg',
+    'http://file.apicloud.com/mcm/A6965066817858/83dede361c4597ccfe2d815a76a7b1c2.png',
+    'http://file.apicloud.com/mcm/A6965066817858/f23301da3bd6c2c214a464b27c9897c2.jpg'];
 
 for(var i = 0; i < 20; i ++){ // 使用1000条数据,进行极限测试.
     var data =     {
@@ -568,30 +586,30 @@ for(var i = 0; i < 20; i ++){ // 使用1000条数据,进行极限测试.
         title: '张学友' + i, // 标题.
         total: '200' + i, // 子标题.
         amount:'20' + i,
-        state:"已支付",
+        state:'已支付',
         rightBtn: [
         {
-        bg:  "#556B2F",  //按钮背景色，支持rgb，rgba，#，默认#ee8262.
-        title: "结束", //按钮名字，字符串类型，默认‘按钮’
+        bg:  '#556B2F',  //按钮背景色，支持 rgb，rgba，#，默认#ee8262.
+        title: '结束', //按钮名字，字符串类型，默认‘按钮’
         titleSize: 13,      //按钮标题大小，默认12
-        titleColor: "#000000", // 按钮标题颜色，支持rgb，rgba，#，默认#ffffff
-        selectedColor: "#FFFFFF",  //按钮选中时候的颜色值,支持rgb，rgba，#
-        icon:"widget://image/orderList/delete.png"
+        titleColor: '#000000', // 按钮标题颜色，支持 rgb，rgba，#，默认#ffffff
+        selectedColor: '#FFFFFF',  //按钮选中时候的颜色值,支持 rgb，rgba，#
+        icon:'widget://image/orderList/delete.png'
         },
         {
-        bg:  "#4EEE94",  //按钮背景色，支持rgb，rgba，#，默认#ee8262.
-        title: "取消置顶", //按钮名字，字符串类型，默认‘按钮’
+        bg:  '#4EEE94',  //按钮背景色，支持 rgb，rgba，#，默认#ee8262.
+        title: '取消置顶', //按钮名字，字符串类型，默认‘按钮’
         titleSize: 13,      //按钮标题大小，默认12
-        titleColor: "#000000", // 按钮标题颜色，支持rgb，rgba，#，默认#ffffff
-        selectedColor: "ffffff",  //按钮选中时候的颜色值,支持rgb，rgba，#
-        icon:"widget://image/orderList/delete.png"
+        titleColor: '#000000', // 按钮标题颜色，支持 rgb，rgba，#，默认#ffffff
+        selectedColor: 'ffffff',  //按钮选中时候的颜色值,支持 rgb，rgba，#
+        icon:'widget://image/orderList/delete.png'
         }
         ] // 左滑单元格露出的按钮组.
     };
     datas.push(data);
 }
-var obj = api.require('orderList');
-obj.reloadData({
+var orderList = api.require('orderList');
+orderList.reloadData({
    datas:datas
  });
 ```
@@ -622,10 +640,12 @@ index：
 
 ##示例代码
 
-	var obj = api.require('orderList');
-	obj.deleteItem({
-	   index:0
-	});
+```js
+var orderList = api.require('orderList');
+orderList.deleteItem({
+    index: 0
+});
+```
 
 ##补充说明
 
@@ -653,7 +673,7 @@ index：
 
 data：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：数据源，不可为空
 
@@ -669,11 +689,11 @@ data：
 	rightBtn： //数组对象,往左滑动item露出的按钮信息组成的数组，无默认值，可为空，为空时表示item不可向左滑动
 			    内部字段：
 				[{
-					bg:         	//按钮背景色，支持rgb，rgba，#，默认#388e8e，可为空
+					bg:         	//按钮背景色，支持 rgb，rgba，#，默认#388e8e，可为空
 					title:          //按钮标题，字符串类型，默认空字符串，可为空
 					titleSize:      //按钮标题字体大小，数字类型，默认12，可为空
-					titleColor:     //按钮标题颜色，支持rgb，rgba，#，默认#ffffff，可为空
-					highlightColor  //按钮选中时的颜色值,支持rgb，rgba，#，可为空,为空则无选中变化
+					titleColor:     //按钮标题颜色，支持 rgb，rgba，#，默认#ffffff，可为空
+					highlightColor  //按钮选中时的颜色值,支持 rgb，rgba，#，可为空,为空则无选中变化
 					icon            //按钮标题前图标图片路径，图标大小20*20，默认无，可为空，支持本地协议路径，如widget：//、fs://等
 				}]
 
@@ -683,32 +703,32 @@ data：
 ##示例代码
 
 ```js
-var obj = api.require('orderList');
-obj.insertItem({
+var orderList = api.require('orderList');
+orderList.insertItem({
     index:2,
     data:{
       uId:'00000000121',
       img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
       title:'123456',
       total:'APICloud粉丝交流会',
-      amount:"100",
-      state:"未支付",
+      amount:'100',
+      state:'未支付',
       rightBtn: [
       {
-      bg:  "#556B2F",  //按钮背景色，支持rgb，rgba，#，默认#ee8262.
-      title: "结束", //按钮名字，字符串类型，默认‘按钮’
+      bg:  '#556B2F',  //按钮背景色，支持 rgb，rgba，#，默认#ee8262.
+      title: '结束', //按钮名字，字符串类型，默认‘按钮’
       titleSize: 13,      //按钮标题大小，默认12
-      titleColor: "#000000", // 按钮标题颜色，支持rgb，rgba，#，默认#ffffff
-      selectedColor: "#FFFFFF",  //按钮选中时候的颜色值,支持rgb，rgba，#
-      icon:"widget://image/orderList/delete.png"
+      titleColor: '#000000', // 按钮标题颜色，支持 rgb，rgba，#，默认#ffffff
+      selectedColor: '#FFFFFF',  //按钮选中时候的颜色值,支持 rgb，rgba，#
+      icon:'widget://image/orderList/delete.png'
       },
       {
-      bg:  "#4EEE94",  //按钮背景色，支持rgb，rgba，#，默认#ee8262.
-      title: "取消置顶", //按钮名字，字符串类型，默认‘按钮’
+      bg:  '#4EEE94',  //按钮背景色，支持 rgb，rgba，#，默认#ee8262.
+      title: '取消置顶', //按钮名字，字符串类型，默认‘按钮’
       titleSize: 13,      //按钮标题大小，默认12
-      titleColor: "#000000", // 按钮标题颜色，支持rgb，rgba，#，默认#ffffff
-      selectedColor: "ffffff",  //按钮选中时候的颜色值,支持rgb，rgba，#
-      icon:"widget://image/orderList/delete.png"
+      titleColor: '#000000', // 按钮标题颜色，支持 rgb，rgba，#，默认#ffffff
+      selectedColor: 'ffffff',  //按钮选中时候的颜色值,支持 rgb，rgba，#
+      icon:'widget://image/orderList/delete.png'
       }
       ] // 左滑单元格露出的按钮组.
      }
@@ -740,7 +760,7 @@ index：
 
 data：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：数据源，不可为空
 
@@ -756,11 +776,11 @@ data：
   	rightBtn： //数组对象,往左滑动item露出的按钮信息组成的数组，无默认值，可为空，为空时表示item不可向左滑动
 			    内部字段：
 				[{
-					bg:         	//按钮背景色，支持rgb，rgba，#，默认#388e8e，可为空
+					bg:         	//按钮背景色，支持 rgb，rgba，#，默认#388e8e，可为空
 					title:          //按钮标题，字符串类型，默认空字符串，可为空
 					titleSize:      //按钮标题字体大小，数字类型，默认12，可为空
-					titleColor:     //按钮标题颜色，支持rgb，rgba，#，默认#ffffff，可为空
-					highlightColor  //按钮选中时的颜色值,支持rgb，rgba，#，可为空,为空则无选中变化
+					titleColor:     //按钮标题颜色，支持 rgb，rgba，#，默认#ffffff，可为空
+					highlightColor  //按钮选中时的颜色值,支持 rgb，rgba，#，可为空,为空则无选中变化
 					icon            //按钮标题前图标图片路径，图标大小20*20，默认无，可为空，支持本地协议路径，如widget：//、fs://等
 				}]
 }
@@ -769,16 +789,16 @@ data：
 ##示例代码
 
 ```js
-var obj = api.require('orderList');
- obj.refreshItem({
+var orderList = api.require('orderList');
+ orderList.refreshItem({
     index:2,
     data:{
       uId:'00000000121',
       img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
       title:'789708',
       total:'-100',
-      amount:"-10",
-      state:"未知"
+      amount:'-10',
+      state:'未知'
     }
  });
 ```
@@ -819,11 +839,11 @@ datas：
     rightBtn： //数组对象,往左滑动item露出的按钮信息组成的数组，无默认值，可为空，为空时表示item不可向左滑动
 			    内部字段：
 				[{
-					bg:         	//按钮背景色，支持rgb，rgba，#，默认#388e8e，可为空
+					bg:         	//按钮背景色，支持 rgb，rgba，#，默认#388e8e，可为空
 					title:          //按钮标题，字符串类型，默认空字符串，可为空
 					titleSize:      //按钮标题字体大小，数字类型，默认12，可为空
-					titleColor:     //按钮标题颜色，支持rgb，rgba，#，默认#ffffff，可为空
-					highlightColor  //按钮选中时的颜色值,支持rgb，rgba，#，可为空,为空则无选中变化
+					titleColor:     //按钮标题颜色，支持 rgb，rgba，#，默认#ffffff，可为空
+					highlightColor  //按钮选中时的颜色值,支持 rgb，rgba，#，可为空,为空则无选中变化
 					icon            //按钮标题前图标图片路径，图标大小20*20，默认无，可为空，支持本地协议路径，如widget：//、fs://等
 				}]
 }]
@@ -832,86 +852,86 @@ datas：
 ##示例代码
 
 ```js
-var obj = api.require('orderList');
- obj.appendData({
+var orderList = api.require('orderList');
+ orderList.appendData({
   datas:[{
       uId:'00000000141',
-  img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-  title:'APICloud',
-  total:'+100',
-  amount:"+10",
-  state:"确定"
-},{ 
-      uId:'00000000140',
-  img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-  title: 'APICloud',
-  total:'+100',
-  amount:"+10",
-  state:"确定"
-},{
-      uId:'00000000139',
-  img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-  title: 'APICloud',
-  total:'+100',
-  amount:"+10",
-  state:"确定"
-},{ 
-      uId:'00000000138',
-  img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-  title: 'APICloud',
-  total:'+100',
-  amount:"+10",
-  state:"确定"
-},{
-      uId:'00000000137',
-  img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-  title: 'APICloud',
-  total:'+100',
-  amount:"+10",
-  state:"确定"
-},{
-      uId:'00000000136',
-  img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-  title: 'APICloud',
-  total:'+100',
-  amount:"+10",
-  state:"确定"
-},{
-      uId:'00000000135',
-  img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-  title: 'APICloud',
-  total:'+100',
-  amount:"+10",
-  state:"确定"
-},{ 
-      uId:'000000001334',
-  img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-  title: 'APICloud',
-  total:'+100',
-  amount:"+10",
-  state:"确定"
-},{
-      uId:'00000000133',
-  img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-  title: 'APICloud',
-  total:'+100',
-  amount:"+10",
-  state:"确定"
-},{ 
-      uId:'00000000132',
-  img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-  title: 'APICloud',
-  total:'+100',
-  amount:"+10",
-  state:"确定"
-},{ 
-      uId:'00000000131',
-  img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
-  title: 'APICloud',
-  total:'+100',
-  amount:"+10",
-  state:"确定"
-    }]
+    img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
+    title:'APICloud',
+    total:'+100',
+    amount:'+10',
+    state:'确定'
+  },{ 
+        uId:'00000000140',
+    img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
+    title: 'APICloud',
+    total:'+100',
+    amount:'+10',
+    state:'确定'
+  },{
+        uId:'00000000139',
+    img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
+    title: 'APICloud',
+    total:'+100',
+    amount:'+10',
+    state:'确定'
+  },{ 
+        uId:'00000000138',
+    img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
+    title: 'APICloud',
+    total:'+100',
+    amount:'+10',
+    state:'确定'
+  },{
+        uId:'00000000137',
+    img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
+    title: 'APICloud',
+    total:'+100',
+    amount:'+10',
+    state:'确定'
+  },{
+        uId:'00000000136',
+    img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
+    title: 'APICloud',
+    total:'+100',
+    amount:'+10',
+    state:'确定'
+  },{
+        uId:'00000000135',
+    img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
+    title: 'APICloud',
+    total:'+100',
+    amount:'+10',
+    state:'确定'
+  },{ 
+        uId:'000000001334',
+    img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
+    title: 'APICloud',
+    total:'+100',
+    amount:'+10',
+    state:'确定'
+  },{
+        uId:'00000000133',
+    img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
+    title: 'APICloud',
+    total:'+100',
+    amount:'+10',
+    state:'确定'
+  },{ 
+        uId:'00000000132',
+    img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
+    title: 'APICloud',
+    total:'+100',
+    amount:'+10',
+    state:'确定'
+  },{ 
+        uId:'00000000131',
+    img:'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
+    title: 'APICloud',
+    total:'+100',
+    amount:'+10',
+    state:'确定'
+  }]
 });
 ```
 
@@ -929,7 +949,7 @@ iOS系统，Android系统
 
 设置下拉刷新样式
 
-setRefreshHeader({params} ,callback(ret,err))
+setRefreshHeader({params} ,callback(ret, err))
 
 ##params
 
@@ -943,13 +963,13 @@ bgColor:
 
 - 类型：字符串
 - 默认值：#f5f5f5
-- 描述：下拉刷新视图的背景色，支持rgb，rgba，#，可为空
+- 描述：下拉刷新视图的背景色，支持 rgb，rgba，#，可为空
 
 textColor：
 
 - 类型：字符串
 - 默认值：#8e8e8e
-- 描述：提示文字颜色，支持rgb，rgba，#，可为空
+- 描述：提示文字颜色，支持 rgb，rgba，#，可为空
 
 textDown：
 
@@ -976,22 +996,20 @@ showTime：
 ##示例代码
 
 ```js
-var loadingImgae = 'widget://res/orderList_arrow.png';//刷新的小箭头
-var bgColor = '#F5F5F5';//下拉刷新的背景颜色，有默认值，可为空
-var textColor= '#8E8E8E';//提示语颜色，有默认值，可为空
-var textDown= '下拉可以刷新...';//尚未触发刷新时间的提示语，有默认值，可为空
-var textUp= '松开开始刷新...';//触发刷新事件的提示语，有默认值，可为空
-var showTime= true;//是否显示时间，有默认值，可为空
-var obj = api.require('orderList');
-obj.setRefreshHeader({
-   loadingImg : loadingImgae,
-   bgColor:bgColor,
-   textColor:textColor,
-   textDown:textDown,
-   textUp:textUp,
-   showTime : showTime
-},function(ret,err){
-//触发加载事件
+var orderList = api.require('orderList');
+orderList.setRefreshHeader({
+   loadingImg : 'widget://res/orderList_arrow.png',
+   bgColor: '#F5F5F5',
+   textColor: '#8E8E8E',
+   textDown: '下拉可以刷新...',
+   textUp: '松开开始刷新...',
+   showTime : true
+}, function(ret, err){   
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -1009,7 +1027,7 @@ iOS系统，Android系统
 
 设置上拉加载更多样式
 
-setRefreshFooter({params} ,callback(ret,err))
+setRefreshFooter({params}, callBack(ret, err))
 
 ##callback(ret, err)
 
@@ -1027,13 +1045,13 @@ bgColor:
 
 - 类型：字符串
 - 默认值：#f5f5f5
-- 描述：上拉加载视图的背景色，支持rgb，rgba，#，可为空
+- 描述：上拉加载视图的背景色，支持 rgb，rgba，#，可为空
 
 textColor：
 
 - 类型：字符串
 - 默认值：#8e8e8e
-- 描述：提示文字颜色，支持rgb，rgba，#，可为空
+- 描述：提示文字颜色，支持 rgb，rgba，#，可为空
 
 textDown：
 
@@ -1056,22 +1074,20 @@ showTime：
 ##示例代码
 
 ```js
-var loadingImgae = 'widget://res/orderList_arrow.png';//刷新的小箭头
-var bgColor = '#F5F5F5';//下拉刷新的背景颜色，有默认值，可为空
-var textColor= '#8E8E8E';//提示语颜色，有默认值，可为空
-var textDown= '上拉可加载更多...';//尚未触发刷新时间的提示语，有默认值，可为空
-var textUp= '松开开始加载...';//触发刷新事件的提示语，有默认值，可为空
-var showTime= true;//是否显示时间，有默认值，可为空
-var obj = api.require('orderList');
-obj.setRefreshFooter({
-   loadingImg : loadingImgae,
-   bgColor:bgColor,
-   textColor:textColor,
-   textDown:textDown,
-   textUp:textUp,
-   showTime : showTime
-},function(ret,err){
-        //触发加载事件
+var orderList = api.require('orderList');
+orderList.setRefreshFooter({
+   loadingImg : 'widget://res/orderList_arrow.png',
+   bgColor: '#F5F5F5',
+   textColor: '#8E8E8E',
+   textDown: '上拉可加载更多...',
+   textUp: '松开开始加载...',
+   showTime : true
+}, function(ret, err){   
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -1094,8 +1110,10 @@ show()
 
 ##示例代码
 
-	var obj = api.require('orderList');
-	obj.show();
+```js
+var orderList = api.require('orderList');
+orderList.show();
+```
 
 ##补充说明
 
@@ -1115,8 +1133,10 @@ hide()
 
 ##示例代码
 
-	var obj = api.require('orderList');
-	obj.hide();
+```js
+var orderList = api.require('orderList');
+orderList.hide();
+```
 
 ##补充说明
 

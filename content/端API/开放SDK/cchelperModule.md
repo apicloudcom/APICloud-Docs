@@ -3,6 +3,8 @@ Title: cchelperModule
 Description: cchelperModule
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：领通科技</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -26,7 +28,7 @@ cchelperModule 模块封装了领通科技CChelper移动应用远程协助服务
 
 启动CChelper远程协助服务
 
-start({params},callback(ret,err))
+start({params}, callback(ret, err))
 
 ##params
 
@@ -60,7 +62,7 @@ custom_data:
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -83,7 +85,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 

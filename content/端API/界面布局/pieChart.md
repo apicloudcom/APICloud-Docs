@@ -3,6 +3,8 @@ Title: pieChart
 Description: pieChart
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -32,7 +34,7 @@ pieChart是一个饼图数据展示控件，可识别手势转动该饼图，旋
 
 打开饼图视图
 
-open({params},callback)
+open({params}, callback(ret, err))
 
 ##params
 
@@ -56,7 +58,7 @@ radius：
 
 center：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）饼形图中间标题样式设置
 - 默认值：见内部字段
 - 内部字段：
@@ -64,12 +66,12 @@ center：
 ```js
 {
     r:’’,           //（可选项）数字类型；中间圆圈的半径；默认：radius/3.0
-    bg:’’           //（可选项）字符串类型；中间圆背景颜色，支持rgb、rgba、# ；默认：#fff
+    bg:’’           //（可选项）字符串类型；中间圆背景颜色，支持 rgb、rgba、# ；默认：#fff
     title：         //（可选项）字符串类型；饼图中间的说明文字，默认：标题 
-    titleColor:     //（可选项）字符串类型；标题的颜色，支持rgb、rgba、#；默认：#000000
+    titleColor:     //（可选项）字符串类型；标题的颜色，支持 rgb、rgba、#；默认：#000000
     titleSize       //（可选项）数字类型；标题的字体大小；默认：12
     subTitle：      //（可选项）字符串类型；饼图中间的说明文字；默认：子标题
-    subTitleColor   //（可选项）字符串类型；子标题的颜色，支持rgb、rgba、#；默认：#696969
+    subTitleColor   //（可选项）字符串类型；子标题的颜色，支持 rgb、rgba、#；默认：#696969
     subTitleSize    //（可选项）数字类型；子标题的字体大小；默认：12
 }
 ```
@@ -83,9 +85,9 @@ elements：
 ```js
 [{
     value:     //数字类型；本部分的数值大小
-    color:     //字符串类型；本部分颜色，支持rgb、rgba、# 
+    color:     //字符串类型；本部分颜色，支持 rgb、rgba、# 
     title：    //（可选项）字符串类型；单元格显示的标题，若不传则显示百分比，若传空字符串则显示空字符串
-    titleColor//（可选项）字符串类型；标题的颜色，支持rgb、rgba、#；默认：#ffffff
+    titleColor//（可选项）字符串类型；标题的颜色，支持 rgb、rgba、#；默认：#ffffff
     titleSize //（可选项）数字类型；标题的字体大小；默认：12
 }]
 ```
@@ -93,14 +95,14 @@ elements：
 fixed:
 
 - 类型：布尔
-- 描述：（可选项）模块是否随所属 Window 或 Frame 滚动
+- 描述：（可选项）模块是否随所属 window 或 frame 滚动
 - 默认值：true（不随之滚动）
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -147,11 +149,11 @@ pieChart.open({
 	fixedOn: api.frameName,
 	fixed: false
 }, function(ret, err) {
-      if( ret ){
-         alert( JSON.stringify( ret ) );
-      }else{
-         alert( JSON.stringify( err ) );
-      }
+    if( ret ){
+       alert( JSON.stringify( ret ) );
+    }else{
+       alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -165,7 +167,7 @@ iOS系统，Android系统
 
 刷新展示数据
 
-close({params},callback(ret))
+close({params}, callback(ret, err))
 
 ##params
 
@@ -183,16 +185,16 @@ elements：
 ```js
 [{
     value:       //数字类型；组成部分的大小
-    color:       //字符串类型；组成部分的颜色值 ，支持rgb，rgba，# 
+    color:       //字符串类型；组成部分的颜色值 ，支持 rgb，rgba，# 
     title：      //（可选项）字符串类型；单元格显示的标题，若为空则显示百分比
 }]
 ```
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
   
   ```js
@@ -224,7 +226,7 @@ pieChart.reloadData({
             value: 15, 
             color: '#00CCFF'
       }]
-},function( ret, err ){
+}, function(ret, err){
     if( ret ){
          alert( JSON.stringify( ret ) );
     }else{

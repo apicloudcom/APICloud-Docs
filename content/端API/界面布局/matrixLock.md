@@ -3,6 +3,8 @@ Title: matrixLock
 Description: matrixLock
 */
 
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -33,13 +35,13 @@ Description: matrixLock
 
 #**概述**
 
-matrixLock模块是一个矩阵锁，可加锁屏幕，让用户通过输入特定的矩阵路线来解锁屏幕。手势密码会被加密存储到本地。本模块允许开发者自定义矩阵锁屏大小，矩阵的行列数，每个矩阵的元素亦可自定义其样式。模块内接口列表可分为两部分：设置手势密码界面、验证手势密码界面，通过设置手势密码界面可让用户设置自己的手势密码，然后通过验证界面验证设置的密码。本模块属于第三方模块开发者提供，所以平台开发者不能通过APICloud Studio真机同步调试，仅支持在线云编译调试
+matrixLock 模块是一个矩阵锁，可加锁屏幕，让用户通过输入特定的矩阵路线来解锁屏幕。手势密码会被加密存储到本地。本模块允许开发者自定义矩阵锁屏大小，矩阵的行列数，每个矩阵的元素亦可自定义其样式。模块内接口列表可分为两部分：设置手势密码界面、验证手势密码界面，通过设置手势密码界面可让用户设置自己的手势密码，然后通过验证界面验证设置的密码。
 
 #**openSetView**<div id="1"></div>
 
 打开设置密码页面
 
-openSetView ({params}, callback(ret, err))
+openSetView({params}, callback(ret, err))
 
 ##params
 
@@ -75,7 +77,7 @@ h:
 
 tips：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：见内部字段
 - 描述：提示文字配置，可为空
 
@@ -92,7 +94,7 @@ tips：
 
 matrix：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：见内部字段
 - 描述：矩阵配置，可为空
 
@@ -100,17 +102,17 @@ matrix：
 
 ```js
 { 
-	row:        //矩阵行数，数字类型，默认3，可为空
-	column:     //矩阵列数，数字类型，默认3，可为空
-	radius：//矩阵元素的半径，数字类型，默认80，可为空
-	activeBg:   //滑动经过元素的背景，字符串，默认#8deeee圆环加圆点,支持#,rgb,rgba,img,可空
-	inactiveBg：//元素常态时的背景，字符串，默认#e8e8e8圆环,支持#,rgb,rgba,img,可空
-	errorBg://报错时滑动经过元素的背景，字符串，默认#FF3030圆环加圆点,支持#,rgb,rgba,img,可空
-	normalLine: //常态时元素间连接线颜色,字符串,默认#9ac0cd,支持#,rgb,rgba,可空
-	errorLine: //错误时元素间连接线颜色,字符串,默认#a0522d,支持#,rgb,rgba,可空
-	lineWidth：//连接线线条的粗细，数字类型，默认5，可为空
-	arrow：//手势走向指示箭头色值，支持rgb，rgba，#，默认#8deee，可为空
-	arrowError://报错时手势走向指示箭头色值，支持rgb，rgba，#，默认#8deee，可为空
+	row:        		//矩阵行数，数字类型，默认3，可为空
+	column:     		//矩阵列数，数字类型，默认3，可为空
+	radius：			//矩阵元素的半径，数字类型，默认80，可为空
+	activeBg:   		//滑动经过元素的背景，字符串，默认#8deeee圆环加圆点,支持#,rgb,rgba,img,可空
+	inactiveBg：		//元素常态时的背景，字符串，默认#e8e8e8圆环,支持#,rgb,rgba,img,可空
+	errorBg:			//报错时滑动经过元素的背景，字符串，默认#FF3030圆环加圆点,支持#,rgb,rgba,img,可空
+	normalLine: 		//常态时元素间连接线颜色,字符串,默认#9ac0cd,支持#,rgb,rgba,可空
+	errorLine: 			//错误时元素间连接线颜色,字符串,默认#a0522d,支持#,rgb,rgba,可空
+	lineWidth：			//连接线线条的粗细，数字类型，默认5，可为空
+	arrow：				//手势走向指示箭头色值，支持 rgb，rgba，#，默认#8deee，可为空
+	arrowError:			//报错时手势走向指示箭头色值，支持 rgb，rgba，#，默认#8deee，可为空
 }
 ```
 
@@ -136,7 +138,7 @@ fixed：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -148,7 +150,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -165,12 +167,12 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('matrixLock');
-obj.openSetView (function(ret, err){
-	if(ret.status){
-		api.alert({msg:'设置成功'});
-	}else{
-		api.alert({msg:err.code});
+var matrixLock = api.require('matrixLock');
+matrixLock.openSetView(function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -190,31 +192,35 @@ iOS系统，Android系统
 
 检查是否已设置手势密码
 
-checkGesture(callBack(ret,err))
+checkGesture(callback(ret, err))
 
-##callBack(ret,err)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
 ```js
 {
 	code:       //手势密码设置状态码，取值范围及其信息如下：
-	-1：//未知错误
-	0：//用户已设计手势密码
-	1：//用户未设置手势密码
+	-1：		//未知错误
+	0：			//用户已设计手势密码
+	1：			//用户未设置手势密码
 }
 ```
 
 ##示例代码
 
 ```js
-var obj = api.require('matrixLock');
-obj.checkGesture(function(ret){
-	api.alert({msg:ret.code});
+var matrixLock = api.require('matrixLock');
+matrixLock.checkGesture(function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -233,13 +239,13 @@ iOS系统，Android系统
 
 清空设置的手势密码
 
-clearGesture(callBack(ret,err))
+clearGesture(callback(ret, err))
 
-##callBack(ret,err)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -249,7 +255,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -259,8 +265,10 @@ err：
 
 ##示例代码
 
-	var obj = api.require('matrixLock');
-	obj.clearGesture();
+```js
+var matrixLock = api.require('matrixLock');
+matrixLock.clearGesture();
+```
 
 ##补充说明
 
@@ -277,7 +285,7 @@ iOS系统，Android系统
 
 显示矩阵锁视图
 
-showSetView(params)
+showSetView({params})
 
 ##params
 
@@ -289,8 +297,10 @@ anim：
 
 ##示例代码
 
-	var obj = api.require('matrixLock');
-	obj.showSetView();
+```js
+var matrixLock = api.require('matrixLock');
+matrixLock.showSetView();
+```
 
 ##补充说明
 
@@ -306,7 +316,7 @@ iOS系统，Android系统
 
 隐藏矩阵锁视图
 
-hideSetView(params)
+hideSetView({params})
 
 ##params
 
@@ -318,8 +328,10 @@ anim：
 
 ##示例代码
 
-	var obj = api.require('matrixLock');
-	obj.hideSetView();
+```js
+var matrixLock = api.require('matrixLock');
+matrixLock.hideSetView();
+```
 
 ##补充说明
 
@@ -335,7 +347,7 @@ iOS系统，Android系统
 
 关闭设置密码页面
 
-closeSetView(params)
+closeSetView({params})
 
 ##params
 
@@ -347,8 +359,10 @@ anim：
 
 ##示例代码
 
-	var obj = api.require('matrixLock');
-	obj.closeSetView();
+```js
+var matrixLock = api.require('matrixLock');
+matrixLock.closeSetView();
+```
 
 ##补充说明
 
@@ -365,7 +379,7 @@ iOS系统，Android系统
 
 打开验证手势密码视图
 
-openEnterView ({params}, callback(ret, err))
+openEnterView({params}, callback(ret, err))
 
 ##params
 
@@ -401,7 +415,7 @@ h:
 
 matrix：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：见内部字段
 - 描述：矩阵配置，可为空
 
@@ -409,17 +423,17 @@ matrix：
 
 ```js
 { 
-	row:        //矩阵行数，数字类型，默认3，可为空
-	column:     //矩阵列数，数字类型，默认3，可为空
-	radius：//矩阵元素的半径，数字类型，默认80，可为空
-	activeBg:   //滑动经过元素的背景，字符串，默认#8deeee圆环加圆点,支持#,rgb,rgba,img,可空
-	inactiveBg：//元素常态时的背景，字符串，默认#e8e8e8圆环,支持#,rgb,rgba,img,可空
-	errorBg://报错时滑动经过元素的背景，字符串，默认#FF3030圆环加圆点,支持#,rgb,rgba,img,可空
-	normalLine: //常态时元素间连接线颜色,字符串,默认#9ac0cd,支持#,rgb,rgba,可空
-	errorLine: //错误时元素间连接线颜色,字符串,默认#a0522d,支持#,rgb,rgba,可空
-	lineWidth：//连接线线条的粗细，数字类型，默认5，可为空
-	arrow：//手势走向指示箭头色值，支持rgb，rgba，#，默认#8deee，可为空
-	arrowError://报错时手势走向指示箭头色值，支持rgb，rgba，#，默认#8deee，可为空
+	row:        		//矩阵行数，数字类型，默认3，可为空
+	column:     		//矩阵列数，数字类型，默认3，可为空
+	radius：			//矩阵元素的半径，数字类型，默认80，可为空
+	activeBg:   		//滑动经过元素的背景，字符串，默认#8deeee圆环加圆点,支持#,rgb,rgba,img,可空
+	inactiveBg：		//元素常态时的背景，字符串，默认#e8e8e8圆环,支持#,rgb,rgba,img,可空
+	errorBg:			//报错时滑动经过元素的背景，字符串，默认#FF3030圆环加圆点,支持#,rgb,rgba,img,可空
+	normalLine: 		//常态时元素间连接线颜色,字符串,默认#9ac0cd,支持#,rgb,rgba,可空
+	errorLine: 			//错误时元素间连接线颜色,字符串,默认#a0522d,支持#,rgb,rgba,可空
+	lineWidth：			//连接线线条的粗细，数字类型，默认5，可为空
+	arrow：				//手势走向指示箭头色值，支持 rgb，rgba，#，默认#8deee，可为空
+	arrowError:			//报错时手势走向指示箭头色值，支持 rgb，rgba，#，默认#8deee，可为空
 }
 ```
 
@@ -445,7 +459,7 @@ fixed：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -455,28 +469,28 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
 ```js
 {
 	code:       //验证手势密码错误码，取值范围及其错误信息如下：
-	-1：//未知错误
-	0：//尚未设置手势密码
-	1：//用户输入手势密码错误
+	-1：		//未知错误
+	0：			//尚未设置手势密码
+	1：			//用户输入手势密码错误
 }
 ```
 
 ##示例代码
 
 ```js
-var obj = api.require('matrixLock');
-obj.openEnterView (function(ret, err){
-	if(ret.status){
-		api.alert({msg:'验证通过'});
-	}else{
-		api.alert({msg:err.code});
+var matrixLock = api.require('matrixLock');
+matrixLock.openEnterView(function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -495,7 +509,7 @@ iOS系统，Android系统
 
 显示手势密码验证视图
 
-showEnterView(params)
+showEnterView({params})
 
 ##params
 
@@ -507,8 +521,10 @@ anim：
 
 ##示例代码
 
-	var obj = api.require('matrixLock');
-	obj.showEnterView();
+```js
+var matrixLock = api.require('matrixLock');
+matrixLock.showEnterView();
+```
 
 ##补充说明
 
@@ -525,7 +541,7 @@ iOS系统，Android系统
 
 隐藏手势密码验证矩阵锁视图
 
-hideEnterView(params)
+hideEnterView({params})
 
 ##params
 
@@ -537,8 +553,10 @@ anim：
 
 ##示例代码
 
-	var obj = api.require('matrixLock');
-	obj.hideEnterView();
+```js
+var matrixLock = api.require('matrixLock');
+matrixLock.hideEnterView();
+```
 
 ##补充说明
 
@@ -554,7 +572,7 @@ iOS系统，Android系统
 
 关闭手势验证视图
 
-closeEnterView(params)
+closeEnterView({params})
 
 ##params
 
@@ -566,8 +584,10 @@ anim：
 
 ##示例代码
 
-	var obj = api.require('matrixLock');
-	obj.closeEnterView();
+```js
+var matrixLock = api.require('matrixLock');
+matrixLock.closeEnterView();
+```
 
 ##补充说明
 

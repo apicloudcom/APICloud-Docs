@@ -3,6 +3,7 @@ Title: gizWifiSDK
 Description: gizWifiSDK
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：机智云</p>
 
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
@@ -141,7 +142,7 @@ appID:
 
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -151,7 +152,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -182,7 +183,7 @@ getVersion(callback(ret, err))
 
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -239,7 +240,7 @@ getPhoneSSID(callback(ret, err))
 
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -248,7 +249,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -323,7 +324,7 @@ gagentTypes:
 
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -335,7 +336,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -374,7 +375,7 @@ getSSIDList(callback(ret, err))
 
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -386,7 +387,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -428,7 +429,7 @@ productKey:
 
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -437,7 +438,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -488,7 +489,7 @@ specialProductKeys:
 
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -510,7 +511,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -577,7 +578,7 @@ remark:
 
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -586,7 +587,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -638,7 +639,7 @@ did:
 ###callback(ret, err)
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -647,7 +648,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -682,7 +683,7 @@ userLoginAnonymous(callback(ret, err))
 
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -692,7 +693,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -737,7 +738,7 @@ password:
 
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -747,7 +748,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -799,7 +800,7 @@ thirdAccountType:
 
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -809,7 +810,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -852,7 +853,7 @@ phone:
 ###callback(ret, err)
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -862,7 +863,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -900,7 +901,7 @@ appSecret:
 ###callback(ret, err)
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -911,7 +912,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -967,7 +968,7 @@ phone:
 ###callback(ret, err)
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -977,7 +978,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -1030,7 +1031,7 @@ phone:
 ###callback(ret, err)
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -1040,7 +1041,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -1086,7 +1087,7 @@ password:
 
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -1096,7 +1097,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -1148,7 +1149,7 @@ code:
 
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -1158,7 +1159,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -1205,7 +1206,7 @@ password:
 ###callback(ret, err)
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -1215,7 +1216,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -1268,7 +1269,7 @@ password:
 ###callback(ret, err)
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -1278,7 +1279,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -1336,7 +1337,7 @@ code:
 
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -1346,7 +1347,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -1399,7 +1400,7 @@ newPassword:
 
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -1409,7 +1410,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -1452,7 +1453,7 @@ email:
 r)
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -1462,7 +1463,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -1514,7 +1515,7 @@ newPassword:
 
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -1524,7 +1525,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -1571,7 +1572,7 @@ email:
 
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -1581,7 +1582,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -1633,7 +1634,7 @@ code:
 ###callback(ret, err)
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -1643,7 +1644,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -1698,7 +1699,7 @@ additionalInfo:
 ###callback(ret, err)
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -1708,7 +1709,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -1753,7 +1754,7 @@ token:
 
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -1771,7 +1772,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -1821,7 +1822,7 @@ specialProductKeys:
 
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -1832,7 +1833,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -1905,7 +1906,7 @@ specialDevices:
 ###callback(ret, err)
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -1916,7 +1917,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -1969,7 +1970,7 @@ gid:
 ###callback(ret, err)
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -1980,7 +1981,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -2051,7 +2052,7 @@ specialDevices:
 ###callback(ret, err)
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -2062,7 +2063,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -2125,7 +2126,7 @@ device:
 ###callback(ret, err)
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -2137,7 +2138,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -2218,7 +2219,7 @@ data:
 
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -2245,7 +2246,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -2308,7 +2309,7 @@ device:
 
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -2337,7 +2338,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -2391,7 +2392,7 @@ device:
 
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -2404,7 +2405,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -2464,7 +2465,7 @@ uid:
 
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -2477,7 +2478,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -2531,7 +2532,7 @@ device:
 
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -2552,7 +2553,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -2604,7 +2605,7 @@ device:
 ###callback(ret, err)
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -2626,7 +2627,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -2685,7 +2686,7 @@ device:
 
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -2705,7 +2706,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -2758,7 +2759,7 @@ device:
 
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -2781,7 +2782,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -2835,7 +2836,7 @@ device:
 
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -2858,7 +2859,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -2920,7 +2921,7 @@ device:
 
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -2943,7 +2944,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -3021,7 +3022,7 @@ data:
 
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -3049,7 +3050,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -3116,7 +3117,7 @@ device:
 
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -3145,7 +3146,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -3201,7 +3202,7 @@ device:
 
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -3220,7 +3221,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -3278,7 +3279,7 @@ group:
 ###callback(ret, err)
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -3294,7 +3295,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -3355,7 +3356,7 @@ device:
 ###callback(ret, err)
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -3371,7 +3372,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -3438,7 +3439,7 @@ device:
 
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -3454,7 +3455,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -3507,7 +3508,7 @@ group:
 ###callback(ret, err)
 ret
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{
@@ -3520,7 +3521,7 @@ ret
 
 err
 
-* 类型：JSON对象
+* 类型：JSON 对象
 * 内部字段
 
 	{

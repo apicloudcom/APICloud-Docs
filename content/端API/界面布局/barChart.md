@@ -3,6 +3,8 @@ Title: barChart
 Description: barChart
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -24,7 +26,7 @@ Description: barChart
 
 #**概述**
 
-barChart是一个柱状图模块，非常形象的显示出数据走势。开发者只需简单的配置相应的参数，即可实现一个立体的柱状图。极大的简化了前端实现柱状图开发的代码。开发者可自定义x，y轴以及柱子的个数和颜色。本模块已停止更新，建议使用优化升级版模块[UIBarChart](http://docs.apicloud.com/端API/界面布局/UIBarChart)
+barChart是一个柱状图模块，非常形象的显示出数据走势。开发者只需简单的配置相应的参数，即可实现一个立体的柱状图。极大的简化了前端实现柱状图开发的代码。开发者可自定义x，y轴以及柱子的个数和颜色。本模块已停止更新，建议使用优化升级版模块 [UIBarChart](http://docs.apicloud.com/端API/界面布局/UIBarChart)
 
 ![图片说明](/img/docImage/barChart.jpg)
 
@@ -103,26 +105,26 @@ style:
 
 ```js
 {
-      yAxisBg:       //（可选项）y轴背景色，支持rgb，rgba，#，img，默认绿色
-      yAxisMark:     //（可选项）y轴标注色，支持rgb，rgba，#，默认白色
+      yAxisBg:       //（可选项）y轴背景色，支持 rgb，rgba，#，img，默认绿色
+      yAxisMark:     //（可选项）y轴标注色，支持 rgb，rgba，#，默认白色
       yAxisMarkSize: //（可选项）y轴标注字体大小，数字类型，默认12
-      xAxisBg:       //（可选项）x轴背景设置，支持rgb，rgba，#，img，默认蓝色
-      xAxisMark:     //（可选项）x轴标注色，支持rgb，rgba，#，默认白色
+      xAxisBg:       //（可选项）x轴背景设置，支持 rgb，rgba，#，img，默认蓝色
+      xAxisMark:     //（可选项）x轴标注色，支持 rgb，rgba，#，默认白色
       xAxisMarkSize: //（可选项）x轴标注字体大小，数字类型，默认12
-      xAxisInterval: //（可选项）x轴上边背景设置，支持rgb，rgba，#，img，默认黄
-      bg:            //（可选项）模块视图背景设置，支持rgb，rgba，#，img，默认背景图
-      barBg：        //（可选项）柱子背景设置，支持rgb，rgba，#，img，默认灰色
-      bar:           //（可选项）柱子显示设置，支持rgb，rgba，#，img，默认蓝色
+      xAxisInterval: //（可选项）x轴上边背景设置，支持 rgb，rgba，#，img，默认黄
+      bg:            //（可选项）模块视图背景设置，支持 rgb，rgba，#，img，默认背景图
+      barBg：        //（可选项）柱子背景设置，支持 rgb，rgba，#，img，默认灰色
+      bar:           //（可选项）柱子显示设置，支持 rgb，rgba，#，img，默认蓝色
       barWidth:      //（可选项）柱子的宽度，数字类型，默认27
       interval:      //（可选项）柱子之间的间距，数字类型，默认18
 }
 ```
 
-##callBack(ret,err)
+##callback(ret, err)
 
 ret：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 内部字段：
   
 ```js
@@ -135,8 +137,8 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('barChart');
-obj.open({
+var barChart = api.require('barChart');
+barChart.open({
 	x:0,
 	y:64,
 	width:320,
@@ -189,8 +191,8 @@ datas：
 
 ##示例代码
 ```js
-var obj = api.require('barChart');
-obj.reloadData({
+var barChart = api.require('barChart');
+barChart.reloadData({
    xAxisMarks:[1,2,3,4,5,6,7,8,9],
    datas:[15,30,40,5,3,49,55,23]
 },function(ret,err){
@@ -253,8 +255,8 @@ anim ：
 
 ##示例代码
 ```js
-var obj = api.require('barChart');
-obj.setFrame({x:10,w:300});
+var barChart = api.require('barChart');
+barChart.setFrame({x:10,w:300});
 ```
 ##补充说明
 
@@ -271,7 +273,7 @@ iOS系统，Android系统
 
 关闭柱状图
 
-close(params)
+close({params})
 
 ##params
 
@@ -283,8 +285,8 @@ id ：
 
 ##示例代码
 ```js
-var obj = api.require('barChart');
-obj.close({
+var barChart = api.require('barChart');
+barChart.close({
     id:1
 });
 ```
@@ -302,7 +304,7 @@ iOS系统，Android系统
 
 隐藏柱状图视图
 
-hide(params)
+hide({params})
 
 ##params
 
@@ -314,8 +316,8 @@ id ：
 
 ##示例代码
 ```js
-var obj = api.require('barChart');
-obj.hide({
+var barChart = api.require('barChart');
+barChart.hide({
     id:1
 });
 ```
@@ -333,7 +335,7 @@ iOS系统，Android系统
 
 显示柱状图
 
-show(params)
+show({params})
 
 ##params
 
@@ -345,8 +347,8 @@ id ：
 
 ##示例代码
 ```js
-var obj = api.require('barChart');
-obj.show({
+var barChart = api.require('barChart');
+barChart.show({
     id:1
 });
 ```

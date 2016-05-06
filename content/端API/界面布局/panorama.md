@@ -3,6 +3,8 @@ Title: panorama
 Description: panorama
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -20,7 +22,7 @@ Description: panorama
 
 #**概述**
 
-panorama封装了用openGL实现的一个全景展示的库，开发者自需传入一张全景的图片，即可实现拖动查看全景图的功能
+panorama 封装了用 openGL 实现的一个全景展示的库，开发者自需传入一张全景的图片，即可实现拖动查看全景图的功能
 
 ![图片说明](/img/docImage/panorama.jpg)
 
@@ -28,7 +30,7 @@ panorama封装了用openGL实现的一个全景展示的库，开发者自需传
 
 打开全景展示视图
 
-open({params},callback(ret,err))
+open({params}, callback(ret, err))
 
 ##params
 
@@ -70,11 +72,11 @@ fixedOn：
 - 默认：模块依附于当前 window
 
 
-callback(ret, err)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -87,7 +89,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -108,7 +110,7 @@ panorama.open({
 	h: 300,
 	imgPath: 'widget://res/img/ic/360viewtest.jpg',
     fixedOn: api.frameName
-},function( ret, err ){
+}, function(ret, err){
 	if( ret ){
          alert( JSON.stringify( ret ) );
     }else{

@@ -3,6 +3,8 @@ Title: zip
 Description: zip
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -16,7 +18,7 @@ Description: zip
 
 #**概述**
 
-zip模块封装了zip文件解压缩的相关操作，开发者只需简单地调用相关接口，即可实现对zip文件的操作，易学简单易掌握
+zip 模块封装了 zip 文件解压缩的相关操作，开发者只需简单地调用相关接口，即可实现对 zip 文件的操作，易学简单易掌握
 
 #**archive**<div id="1"></div>
 
@@ -55,7 +57,7 @@ toPath：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -67,7 +69,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -83,7 +85,7 @@ err：
 var zip = api.require('zip');
 zip.archive({
 	files: [ 'fs://test.txt' ]
-},function( ret, err ){		
+}, function(ret, err){		
 	if( ret.status ){
 		alert( JSON.stringify( ret ) );
 	}else{
@@ -94,7 +96,7 @@ zip.archive({
 
 ##补充说明
 
-压缩文件，如果压缩的是单个文件，则压缩后的文件放在同目录下，并且保持原文件名以.zip为后缀。若为多个文件，则压缩后的文件放在与第一个文件同目录文件夹下，命名为UZArchive.zip
+压缩文件，如果压缩的是单个文件，则压缩后的文件放在同目录下，并且保持原文件名以 .zip 为后缀。若为多个文件，则压缩后的文件放在与第一个文件同目录文件夹下，命名为 UZArchive.zip
 
 ##可用性
 
@@ -107,7 +109,7 @@ iOS系统，Android系统
 
 解压文件
 
-unarchive({params },callback(ret,err))
+unarchive({params}, callback(ret, err))
 
 ##params
 
@@ -133,7 +135,7 @@ toPath：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -145,7 +147,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -162,7 +164,7 @@ var zip = api.require('zip');
 zip.unarchive({
 	file: 'fs://fitest.zip',
 	password: '123'
-},function( ret, err ){		
+}, function(ret, err){		
 	if( ret.status ){
 		alert( JSON.stringify( ret ) );
 	}else{

@@ -2,6 +2,9 @@
 Title: shortCut
 Description: shortCut
 */
+
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <div class="outline">
 [showLaunch](#a1)
 
@@ -26,7 +29,7 @@ shortCut 是用来给软件添加一个快捷方式的工具，但是快捷方�
 
 为当前app添加快捷方式
 
-showLaunch(param)
+showLaunch( param )
 
 ##params
 
@@ -54,6 +57,6 @@ shortCut.showLaunch({
 
 ##可用性
 
-Android系统
+Android 系统
 
 可提供的1.0.0及更高版本

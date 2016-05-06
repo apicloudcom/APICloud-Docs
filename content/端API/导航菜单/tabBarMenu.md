@@ -3,6 +3,8 @@ Title: tabBarMenu
 Description: tabBarMenu
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -30,7 +32,7 @@ Description: tabBarMenu
 
 #**概述**
 
-tabBarMenu生成一个应用底部导航菜单模块，类似qq空间的底部导航菜单，开发者可自定义菜单各种样式
+tabBarMenu 生成一个应用底部导航菜单模块，类似qq空间的底部导航菜单，开发者可自定义菜单各种样式
 
 ![图片说明](/img/docImage/tabBarMenu.jpg)
 
@@ -51,7 +53,7 @@ autoLayout:
 
 - 类型: 布尔值.
 - 默认值: true
-- 描述: 是否自动智能调整当前页面webView的位置: 使其距离屏幕底部距离变为 49.可为空
+- 描述: 是否自动智能调整当前页面 webView 的位置: 使其距离屏幕底部距离变为 49可为空
 
 barItems：
 
@@ -89,7 +91,7 @@ barItemConfig：
 
 barConfig：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：标签栏配置
 
@@ -119,7 +121,7 @@ menuItems：
 
 menuItemConfig：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：菜单项配置(必填)
 
@@ -127,16 +129,16 @@ menuItemConfig：
 
 ```js
 {
-		titleColor:				//文本颜色,默认“#ffffff”(白色),格式为#fff、#ffffff、rgba(r,g,b,a)等.
-		titleSelectColor:		//选中状态时,按钮文本的颜色, 默认“#ffffff”(白色).
-		fontSize:				//文字大小,默认11.0.
-		textMarginTop:			//文本距离按钮上边界的距离,默认90.0.
+	titleColor:				//文本颜色,默认“#ffffff”(白色),格式为#fff、#ffffff、rgba(r,g,b,a)等.
+	titleSelectColor:		//选中状态时,按钮文本的颜色, 默认“#ffffff”(白色).
+	fontSize:				//文字大小,默认11.0.
+	textMarginTop:			//文本距离按钮上边界的距离,默认90.0.
 }
 ```
 
 menuConfig：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：菜单配置(必填)
 
@@ -144,9 +146,9 @@ menuConfig：
 
 ```js
 {
-		coverBgColor:	//遮罩背景色,默认“#000000”(黑色)格式为#fff、#ffffff、rgba(r,g,b,a)
-		coverAlpha:		//遮罩的透明度, ,默认0.8,取值范围0.0~1.0.
-		rows:			//单页每行显示的按钮数,默认4.
+	coverBgColor:	//遮罩背景色,默认“#000000”(黑色)格式为#fff、#ffffff、rgba(r,g,b,a)
+	coverAlpha:		//遮罩的透明度, ,默认0.8,取值范围0.0~1.0.
+	rows:			//单页每行显示的按钮数,默认4.
 }
 ```
 
@@ -154,7 +156,7 @@ menuConfig：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述: 包含被点击的按钮的相关信息
 
 内部字段：
@@ -173,9 +175,9 @@ err:
 - 描述: 
 - 内部字段:
 ```js
-	{
-		msg:			//错误信息.
-	}
+{
+	msg:			//错误信息.
+}
 ```
 
 ##示例代码
@@ -270,7 +272,7 @@ tabBarMenu.open({
             bgImg: 'widget://image/tabBarMenu/' + theme + '/tabbar_btn_popup_place.png', 
             bgImgClick: 'widget://image/tabBarMenu/' + theme + '/tabbar_btn_popup_place_click.png'  
         }]	
-},function( ret, err ){		
+}, function(ret, err){		
     if( ret ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -354,7 +356,7 @@ iOS系统，Android系统
 
 设置徽章
 
-setBadge(params)
+setBadge({params})
 
 ##params
 
@@ -438,7 +440,7 @@ iOS系统，Android系统
 
 移除徽章
 
-removeBadge(params)
+removeBadge({params})
 
 ##params
 

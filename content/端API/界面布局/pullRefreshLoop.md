@@ -3,6 +3,8 @@ Title: pullRefreshLoop
 Description: pullRefreshLoop
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <div class="outline">
 [setCustomRefreshHeaderInfo](#m2)
 
@@ -37,30 +39,30 @@ pullRefreshLoop 模块对引擎新推出的下拉刷新接口进行了一层封�
 
 **模块使用攻略**
 
-对于 APICloud 平台上的普通模块，在相应接口调用前需要先 require 该模块，但由于本模块是基于引擎下拉刷新功能扩展的模块，所以本模块使用方法比较特殊。可以不必 require 模块，改为在 config.xml 文件内配置模块。
+对于 APICloud 平台上的普通模块，在相应接口调用前需要先 require 该模块，但由于本模块是基于引擎下拉刷新功能扩展的模块，所以本模块使用方法比较特殊。可以不必 require 模块，改为在 [config.xml](/APICloud/技术专题/app-config-manual) 文件内配置模块。
 
-config.xml 文件配置示例如下：
+[config.xml](/APICloud/技术专题/app-config-manual) 文件配置示例如下：
 
-	<preference name="customRefreshHeader" value="pullRefreshLoop"/>
+	<preference name="customRefreshHeader' value="pullRefreshLoop'/>
 
-在 config.xml 配置后，则本模块为全局对象，可以在任意可弹动的窗体（frame、window）中调用 api.setCustomRefreshHeaderInfo 接口设置该下拉刷新样式，以及开始、停止刷新加载状态（api.refreshHeaderLoading、api.refreshHeaderLoadDone）。
+在 [config.xml](/APICloud/技术专题/app-config-manual) 配置后，则本模块为全局对象，可以在任意可弹动的窗体（frame、window）中调用 api.setCustomRefreshHeaderInfo 接口设置该下拉刷新样式，以及开始、停止刷新加载状态（api.refreshHeaderLoading、api.refreshHeaderLoadDone）。
 
 若想在不同的 window 或 frame 使用不同的下拉刷新模块，开发者可以在 window 或 frame 打开时传入参数 customRefreshHeader:'下拉刷新模的块名'，以指定该窗体的下拉刷新模块。如：
 
 ```js
 {
-api.openFrame({
-            name: 'pullRefreshLoop-con',
-            url: './pullRefreshLoop-con.html',
-            customRefreshHeader: '下拉刷新模块名',
-            bounces: true,
-            rect: {
-                x: offset.l,
-                y: offset.t + offset.h,
-                w: offset.w,
-                h: bodyHeight - offset.h
-            }
-        });
+    api.openFrame({
+        name: 'pullRefreshLoop-con',
+        url: './pullRefreshLoop-con.html',
+        customRefreshHeader: '下拉刷新模块名',
+        bounces: true,
+        rect: {
+            x: offset.l,
+            y: offset.t + offset.h,
+            w: offset.w,
+            h: bodyHeight - offset.h
+        }
+    });
 }
 ```
 
@@ -84,7 +86,7 @@ api.setCustomRefreshHeaderInfo({params}, callback())
 
 ```js
 {
-	bgColor: '#C0C0C0',               //（可选项）字符串类型；下拉刷新的背景设置，支持rgb、rgba、#，该背景大小同当前 window 或 frame 的宽高；默认：#C0C0C0
+	bgColor: '#C0C0C0',               //（可选项）字符串类型；下拉刷新的背景设置，支持 rgb、rgba、#，该背景大小同当前 window 或 frame 的宽高；默认：#C0C0C0
 	image: {                          //JSON 对象类型；下拉刷新相关图片设置
 		icon: 'fs://res/miao.png',    //（可选项）字符串类型；下拉过程中的背景图片，图片规格为正方形，如50*50、100*100，为适配高清屏幕建议开发者传大小合适的图片，若不传则不显示
         borderColor: '#f00',          //字符串类型；下拉刷新的边线颜色
@@ -116,7 +118,7 @@ api.setCustomRefreshHeaderInfo({
 
 ##可用性
 
-IOS系统，Android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -132,12 +134,12 @@ api.refreshHeaderLoading()
 ##示例代码
 
 ```js
-   api.refreshHeaderLoading();
+api.refreshHeaderLoading();
 ```
 
 ##可用性
 
-IOS系统，Android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -153,11 +155,11 @@ api.refreshHeaderLoadDone()
 ##示例代码
 
 ```js
-  api.refreshHeaderLoadDone();
+api.refreshHeaderLoadDone();
 ```
 
 ##可用性
 
-IOS系统，Android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本

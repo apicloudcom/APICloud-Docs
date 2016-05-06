@@ -2,6 +2,9 @@
 Title: playModule
 Description: playModule
 */
+
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <div class="outline">
 [init](#a1)
 [play](#a2)
@@ -37,8 +40,8 @@ defaultBtn：
 ##示例代码
 
 ```js
-var obj= api.require('playModule');
-obj.init({defaultBtn:false},function(ret, err){
+var playModule =api.require('playModule');
+playModule.init({defaultBtn:false},function(ret, err){
 alert(JSON.stringify(ret));
 });
 ```
@@ -88,7 +91,7 @@ fixedOn：
 fixed：
 
 - 类型：布尔
-- 描述：（（可选项）模块是否随所属 Window 或 Frame 滚动
+- 描述：（（可选项）模块是否随所属 window 或 frame 滚动
 - 默认值：true（不随之滚动）
 
 url：
@@ -100,7 +103,7 @@ url：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -111,7 +114,7 @@ status: true   //布尔型；true||false
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -123,8 +126,8 @@ msg: ""
 ##示例代码
 
 ```js
-var obj= api.require('playModule');
-obj.play({
+var playModule =api.require('playModule');
+playModule.play({
 x: 0,
 y: 45,
 h: 200,
@@ -152,8 +155,8 @@ pause(callback(ret, err))
 ##示例代码
 
 ```js
-var obj= api.require('playModule');
-obj.pause(function(ret, err){
+var playModule =api.require('playModule');
+playModule.pause(function(ret, err){
 alert(JSON.stringify(ret));
 });
 ```
@@ -175,8 +178,8 @@ start(callback(ret, err))
 ##示例代码
 
 ```js
-var obj= api.require('playModule');
-obj.start(function(ret, err){
+var playModule =api.require('playModule');
+playModule.start(function(ret, err){
 alert(JSON.stringify(ret));
 });
 ```
@@ -196,8 +199,8 @@ stop(callback(ret, err))
 ##示例代码
 
 ```js
-var obj= api.require('playModule');
-obj.stop(function(ret, err){
+var playModule =api.require('playModule');
+playModule.stop(function(ret, err){
 alert(JSON.stringify(ret));
 });
 ```
@@ -217,8 +220,8 @@ getDuration(callback(ret, err))
 ##示例代码
 
 ```js
-var obj= api.require('playModule');
-obj.getDuration(function(ret, err){
+var playModule =api.require('playModule');
+playModule.getDuration(function(ret, err){
 alert(JSON.stringify(ret));
 });
 ```
@@ -239,8 +242,8 @@ getCurrentPosition(callback(ret, err))
 ##示例代码
 
 ```js
-var obj= api.require('playModule');
-obj.getCurrentPosition(function(ret, err){
+var playModule =api.require('playModule');
+playModule.getCurrentPosition(function(ret, err){
 alert(JSON.stringify(ret));
 });
 ```
@@ -262,8 +265,8 @@ full(callback(ret, err))
 ##示例代码
 
 ```js
-var obj= api.require('playModule');
-obj.full(function(ret, err){
+var playModule =api.require('playModule');
+playModule.full(function(ret, err){
 alert(JSON.stringify(ret));
 });
 ```
@@ -286,8 +289,8 @@ unfull()
 ##示例代码
 
 ```js
-var obj= api.require('playModule');
-obj.unfull();
+var playModule =api.require('playModule');
+playModule.unfull();
 ```
 
 ##可用性
@@ -308,8 +311,8 @@ isfull()
 ##示例代码
 
 ```js
-var obj= api.require('playModule');
-obj.isfull();
+var playModule =api.require('playModule');
+playModule.isfull();
 ```
 
 ##可用性

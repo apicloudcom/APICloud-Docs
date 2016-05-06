@@ -2,6 +2,9 @@
 Title: qCloudVODPlayer
 Description: qCloudVODPlayer
 */
+
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <div class="outline">
 [playInNewWin](#a1)
 [playInCurWin](#a2)
@@ -37,7 +40,7 @@ qCloudVODPlayer.playInNewWin(param);
 
 ##可用性
 
-Android系统 IOS系统
+Android系统 iOS系统
 
 可提供的1.0.0及更高版本
 
@@ -90,6 +93,6 @@ qCloudVODPlayer.playInCurWin(param);
 
 ##可用性
 
-Android系统 IOS系统
+Android系统 iOS系统
 
 可提供的1.0.0及更高版本

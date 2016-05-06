@@ -3,6 +3,8 @@ Title: clipBoard
 Description: clipBoard
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 	<li><a href="#const-content">Constant</a></li>
@@ -42,7 +44,7 @@ value：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -54,7 +56,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -70,7 +72,7 @@ err：
 var clipBoard = api.require('clipBoard');
 clipBoard.set({
 	value: 'test'
-}, function( ret, err ){
+}, function(ret, err){
 	if( ret ){
 		alert( JSON.stringify( ret ) );
 	}else{
@@ -100,7 +102,7 @@ get(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -144,7 +146,7 @@ setListener(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -188,7 +190,7 @@ removeListener()
 
 ```js
 var clipBoard = api.require('clipBoard');
-clipBoard.removeListener ();
+clipBoard.removeListener();
 ```
 
 ##补充说明

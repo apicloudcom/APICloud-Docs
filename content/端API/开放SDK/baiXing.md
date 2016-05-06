@@ -3,6 +3,8 @@ Title: baiXing
 Description: 百姓⺴移动端的SDK
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：百姓网</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#basic-content">方法</a></li>
 </ul>
@@ -24,7 +26,7 @@ baixing模块封装了百姓网移动端的SDK,在百姓网开发者中心申请
 
 模块进行初始化
 
-init(params)
+init({params})
 
 ##params
 
@@ -44,10 +46,9 @@ init(params)
 
 ```js
 var baiXing = api.require("baiXing");
-
 baiXing.init({
-    apiKey:"ausdk_test",
-    apiSecret:"cd864410365753c2ea6bf70c74a7e625"
+    apiKey: "ausdk_test",
+    apiSecret: "cd864410365753c2ea6bf70c74a7e625"
 });
 ```
 
@@ -66,7 +67,7 @@ Android系统
 
 跳转到百姓Ad⻚面
 
-startActivity(param);
+startActivity({params});
 
 ##params
 
@@ -110,21 +111,14 @@ startActivity(param);
 
 ```js
 var baiXing = api.require("baiXing");
-baiXing.init({
-    apiKey:"ausdk_test",
-    apiSecret:"cd864410365753c2ea6bf70c74a7e625"
-});
-
-var param = {
+baiXing.startActivity({
     title:"⼆手汽车",
     city:"上海",
     queryId:"aq2",
     keywords:"⼤大众",
     showLocation:true,
     showPost:true
-};
-
-baiXing.startActivity(param);
+});
 ```
 
 ##补充说明

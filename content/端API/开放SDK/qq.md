@@ -3,6 +3,8 @@ Title: qq
 Description: qq
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -35,6 +37,9 @@ Description: qq
 qq 模块封装了 qq 开放平台的移动端 SDK，开发者集成此模块可以实现登陆、获取用户信息、分享内容到 QQ 客户端等功能。登陆授权时，模块内部会先判断当前设备是否已安装 QQ 客户端，若没安装则弹出网页版登陆页面，若已安装则跳转到 QQ 客户端提示用户登陆授权。
 
 开发者使用本模块之前需要先到[腾讯开放平台](http://open.qq.com)申请开发者账号，并在账号内填写相应信息创建自己的 APP，从而获取 APP ID。详情参考[腾讯开放平台应用接入简介](http://opensns.qq.com/apps/)
+
+
+## [实例widget下载地址](https://github.com/XM-Right/QQ-Example/archive/master.zip)
 
 ##模块使用攻略
 
@@ -69,7 +74,7 @@ installed(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -81,8 +86,8 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('qq');
-obj.installed(function(ret,err){
+var qq = api.require('qq');
+qq.installed(function(ret,err){
     if(ret.status){
        api.alert({msg: "安装"});
     }else{
@@ -114,7 +119,7 @@ apiKey：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -127,7 +132,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -139,8 +144,8 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('qq');
-obj.login(function(ret,err){
+var qq = api.require('qq');
+qq.login(function(ret,err){
 	api.alert({
         title: 'id和token',
 		msg: ret.openId + ret.accessToken
@@ -165,7 +170,7 @@ logout(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -176,7 +181,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -188,8 +193,8 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('qq');
-obj.logout(function(ret,err) {
+var qq = api.require('qq');
+qq.logout(function(ret,err) {
 	if (ret.status) {
 		api.alert({msg:'登出成功'});
 	}else{
@@ -215,7 +220,7 @@ getUserInfo(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -233,14 +238,14 @@ ret：
 					        // level    	 ：用户账号级别
 					        // nickname  ：用户昵称
 					        // province    ：用户所在省份
-					        // year    ：用户出生年份
+					       
 					        // yellow_vip_level   ：用户账户黄钻等级               
 }
 ```
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -252,8 +257,8 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('qq');
-obj.getUserInfo(function(ret,err) {
+var qq = api.require('qq');
+qq.getUserInfo(function(ret,err) {
    if (ret.status) {
       api.alert({msg:'获取成功'});
    }else{
@@ -272,7 +277,7 @@ iOS系统，Android系统
 
 分享纯文本到好友，**在 android 平台上此接口不支持回调**
 
-shareText({params},callBack(ret,err))
+shareText({params}, callback(ret, err))
 
 ##params
 
@@ -285,7 +290,7 @@ text：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -296,7 +301,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -322,8 +327,8 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('qq');
-obj.shareText({
+var qq = api.require('qq');
+qq.shareText({
 	text:'testtext'
 });
 ```
@@ -340,7 +345,7 @@ iOS系统，Android系统
 
 分享图片（本地）到好友
 
-shareImage({params},callBack(ret,err))
+shareImage({params}, callback(ret, err))
 
 ##params
 
@@ -363,7 +368,7 @@ imgPath：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -374,7 +379,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -400,8 +405,8 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('qq');
-obj.shareImage({
+var qq = api.require('qq');
+qq.shareImage({
 	title:'test',
 	description:'testd',
 	imgPath:'widget://res/filterMe.png'
@@ -419,7 +424,7 @@ iOS系统，Android系统
 
 分享新闻到空间/好友
 
-shareNews({params},callBack(ret,err))
+shareNews({params}, callback(ret, err))
 
 ##params
 
@@ -453,7 +458,7 @@ type：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -464,7 +469,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -490,8 +495,8 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('qq');
-obj.shareNews({
+var qq = api.require('qq');
+qq.shareNews({
 	url:'http://www.uzmap.com',
     title:'新闻分享',
     description:'新闻描述',
@@ -510,7 +515,7 @@ iOS系统，Android系统
 
 分享音乐到空间/好友
 
-shareMusic({params},callBack(ret,err))
+shareMusic({params}, callback(ret, err))
 
 ##params
 
@@ -544,7 +549,7 @@ type：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -555,7 +560,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -581,8 +586,8 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('qq');
-obj.shareMusic({
+var qq = api.require('qq');
+qq.shareMusic({
 	url:'http://7xq864.com1.z0.glb.clouddn.com/apicloud/591bde468d4e44b21cc225b7b6e1129a.mp3',
     title:'桔子香水',
     description:'任贤齐',
@@ -601,7 +606,7 @@ iOS系统，Android系统
 
 分享视频到空间/好友
 
-shareVideo({params},callBack(ret,err))
+shareVideo({params}, callback(ret, err))
 
 ##params
 
@@ -635,7 +640,7 @@ type：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -646,7 +651,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -672,8 +677,8 @@ err：
 示例代码
 
 ```js
-var obj = api.require('qq');
-obj.shareVideo({
+var qq = api.require('qq');
+qq.shareVideo({
 	url:'http://7xq864.com1.z0.glb.clouddn.com/apicloud/903ca10851a482ccd1383b62abb3ec5c.mp4',
 	title:'视频',
 	description:'王力宏',

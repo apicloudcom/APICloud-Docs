@@ -3,6 +3,8 @@ Title: baiduLocation
 Description: baiduLocation
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 	<li><a href="#const-content">Constant</a></li>
@@ -40,7 +42,7 @@ baiduLocation 封装了百度地图定位的 SDK。百度地图定位 SDK 是为
 
     **apiKey**：在百度地图开放平台申请的 ak
 
-如果不配置 config.xml 则模块会去读 baiduMap 模块的 key（其实两个key都是在百度地图开放平台申请的同一个key）。但 baiduMap 模块现已停止更新，用bMap模块替换。所以最好还是每个模块单独配置每个模块的key，模块之间相互独立，互不干涉依赖。
+如果不配置 [config.xml](/APICloud/技术专题/app-config-manual) 则模块会去读 baiduMap 模块的 key（其实两个key都是在百度地图开放平台申请的同一个key）。但 baiduMap 模块现已停止更新，用bMap模块替换。所以最好还是每个模块单独配置每个模块的key，模块之间相互独立，互不干涉依赖。
 
 注意：getLocation 接口无法设置 accuracy、filter、autoStop 这些参数，当调用getLocation 时，模块底层会先做个判断，如果已经调用过 startLocation 并且已经定位成功获取位置信息，则将此位置信息返回（所以这个位置信息有很大可能不是实时的）。若没调用过startLocation 则模块内部自己先 startLocation，此时 accuracy、filter、autoStop 这些参数取默认值。定位到信息后则返回定位到的信息。所以建议先调用 startLocation 再getLocation。
 
@@ -50,7 +52,7 @@ baiduLocation 封装了百度地图定位的 SDK。百度地图定位 SDK 是为
 
 开始定位
 
-startLocation({params},callback(ret, err))
+startLocation({params}, callback(ret, err))
 ##params
 accuracy：
 
@@ -74,7 +76,7 @@ autoStop：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -89,7 +91,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -105,19 +107,13 @@ err：
 var baiduLocation = api.require('baiduLocation');
 baiduLocation.startLocation({
     accuracy: '100m',
-    filter:1,
+    filter: 1,
     autoStop: true
-}, function(ret, err){
-    var sta = ret.status;
-    var lat = ret.latitude;
-    var lon = ret.longitude;
-    var t = ret.timestamp;
-    if(sta){
-        var str = '经度：'+ lon +'<br>';
-        str += '纬度：'+ lat +'<br>';
-        str += '更新时间：'+ t +'<br>';
-    } else{
-        api.alert({msg:err.msg});
+}, function(ret, err){        
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -166,7 +162,7 @@ getLocation(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -180,7 +176,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -194,22 +190,13 @@ err：
 
 ```js
 var baiduLocation = api.require('baiduLocation');
-baiduLocation.getLocation(
-    function(ret, err){
-        var sta = ret.status;
-        var lat = ret.latitude;
-        var lon = ret.longitude;
-        var t = ret.timestamp;
-        if(sta){
-            var str = '经度：'+ lon +'<br>';
-            str += '纬度：'+ lat +'<br>';
-            str += '更新时间：'+ t +'<br>';
-            api.alert({msg:str});
-        } else{
-            api.alert({msg:err.msg});
-        }
+baiduLocation.getLocation(function(ret, err){     
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
     }
-);
+});
 ```
 
 ##补充说明

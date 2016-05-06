@@ -3,6 +3,8 @@ Title: tabBar
 Description: tabBar
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -64,8 +66,8 @@ items：
     highlight:           //字符串类型；按钮按下时的背景图片，要求本地路径（fs://、widget://）
     selected:            //字符串类型；按钮选中后的图片，要求本地路径（fs://、widget://）
     title:               //字符串类型；按钮的标题
-    color:               //（可选项）字符串类型；标题的颜色，支持rgba、rgb、#；默认：#fff
-    selectedTitleColor:  //（可选项）字符串类型；选中后的按钮标题颜色，支持rgb、rgba、#；默认：#fff
+    color:               //（可选项）字符串类型；标题的颜色，支持 rgba、rgb、#；默认：#fff
+    selectedTitleColor:  //（可选项）字符串类型；选中后的按钮标题颜色，支持 rgb、rgba、#；默认：#fff
     badge:               //（可选项）字符串类型；按钮左上角的badge，不传时不显示badge
 }]
 ```
@@ -101,7 +103,7 @@ badgeAlignment：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -134,7 +136,7 @@ tabBar.open({
         badge: '2'
     }],
     fixedOn: api.frameName
-},function( ret, err ){		
+}, function(ret, err){		
     if( ret ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -153,7 +155,7 @@ iOS系统，Android系统
 
 设置按钮左上角的badge标注
 
-setBadge(params)
+setBadge({params})
 
 ##params
 
@@ -229,7 +231,6 @@ tabBar.show();
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
-
 
 #**close**<div id="5"></div>
 

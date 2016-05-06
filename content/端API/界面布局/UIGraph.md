@@ -2,6 +2,9 @@
 Title: UIGraph
 Description: UIGraph
 */
+
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <div class="outline">
 [open](#m1)
 
@@ -16,7 +19,7 @@ Description: UIGraph
 
 #**概述**
 
-UIGraph是一个贝塞尔曲线模块。开发者可自定义背景、线条、坐标系等UI样式和数据源，可监听用户点击结点事件。用于实现数据可视化的功能。**UIGraph 模块是 graph 模块的优化版。**
+UIGraph 是一个贝塞尔曲线模块。开发者可自定义背景、线条、坐标系等UI样式和数据源，可监听用户点击结点事件。用于实现数据可视化的功能。**UIGraph 模块是 graph 模块的优化版。**
 
 ![图片说明](/img/docImage/UIGraph.jpg)
 
@@ -32,7 +35,7 @@ open({params}, callback(ret, err))
 
 rect：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）模块的位置及尺寸
 - 内部字段：
 
@@ -47,7 +50,7 @@ rect：
 
 yAxis：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：曲线图的y轴信息
 - 内部字段：
 
@@ -78,18 +81,18 @@ data：
 
 styles：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）模块各部分的样式
 - 内部字段：
 
 ```js
 {
-    bg: '#fff',                   //（可选项）字符串类型；曲线图的背景，支持rgb，rgba，#，图片路径（本地路径，fs://，widget://）；默认：'#fff'
-    axisColor: '#A9A9A9',         //（可选项）字符串类型；曲线图的坐标轴颜色，支持rgb，rgba，#；默认：'#A9A9A9'
-    nodeColor: '#000',            //（可选项）字符串类型；曲线图的结点边框的颜色，支持rgb，rgba，#；默认：'#000'
-    lineColor: '#1E90FF',         //（可选项）字符串类型；曲线的颜色，支持rgb，rgba，#；默认：'#1E90FF'
+    bg: '#fff',                   //（可选项）字符串类型；曲线图的背景，支持 rgb，rgba，#，图片路径（本地路径，fs://、widget://）；默认：'#fff'
+    axisColor: '#A9A9A9',         //（可选项）字符串类型；曲线图的坐标轴颜色，支持 rgb，rgba，#；默认：'#A9A9A9'
+    nodeColor: '#000',            //（可选项）字符串类型；曲线图的结点边框的颜色，支持 rgb，rgba，#；默认：'#000'
+    lineColor: '#1E90FF',         //（可选项）字符串类型；曲线的颜色，支持 rgb，rgba，#；默认：'#1E90FF'
     lineWidth: 1,                 //（可选项）数字类型；曲线的宽度；默认：1
-    markColor: '#000',            //（可选项）字符串类型；坐标轴文字的字体颜色，支持rgb，rgba，#；默认：'#000'
+    markColor: '#000',            //（可选项）字符串类型；坐标轴文字的字体颜色，支持 rgb，rgba，#；默认：'#000'
     markSize:  16,                //（可选项）数字类型；坐标轴文字的字体大小；默认：16
     bubble: {                     //（可选项）JSON对象；点击结点弹出气泡的样式
         bgImg: 'widget://',       //（可选项）字符串类型；点击结点弹出气泡的背景图，android 暂不支持此参数
@@ -113,14 +116,14 @@ fixedOn：
 fixed:
 
 - 类型：布尔
-- 描述：（可选项）模块是否随所属 Window 或 Frame 滚动
+- 描述：（可选项）模块是否随所属 window 或 frame 滚动
 - 默认值：true（不随之滚动）
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -183,7 +186,7 @@ UIGraph.open({
     showNode: true,
     fixedOn: api.frameName,
     fixed: true
-}, function( ret, err ){
+}, function(ret, err){
     if( ret ){
          alert( JSON.stringify( ret ) );
     }else{
@@ -254,7 +257,7 @@ UIGraph.show({
 
 ##可用性
 
-IOS系统，安卓系统
+iOS系统，安卓系统
 
 可提供的1.0.1及更高版本
 
@@ -284,7 +287,7 @@ UIGraph.hide({
 
 ##可用性
 
-IOS系统，安卓系统
+iOS系统，安卓系统
 
 可提供的1.0.1及更高版本
 
@@ -357,6 +360,3 @@ UIGraph.reloadData({
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
-
-
-

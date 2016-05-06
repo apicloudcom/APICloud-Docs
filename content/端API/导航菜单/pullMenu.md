@@ -3,6 +3,8 @@ Title: pullMenu
 Description: pullMenu
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -22,7 +24,7 @@ Description: pullMenu
 
 #**概述**
 
-pullMenu是一个可上下拖动的菜单，可随手指上下滑动。其子菜单按钮都可自定义样式，超过部分可拖动查看。性能强，流畅度高
+pullMenu 是一个可上下拖动的菜单，可随手指上下滑动。其子菜单按钮都可自定义样式，超过部分可拖动查看。性能强，流畅度高
 
 ![图片说明](/img/docImage/pullMenu.jpg)
 
@@ -62,7 +64,7 @@ bgColor：
 
 - 类型：字符串
 - 默认值：#FFFFFF
-- 描述：（可选项）菜单背景色，支持rgb，rgba，#
+- 描述：（可选项）菜单背景色，支持 rgb，rgba，#
 
 btnArray：
 
@@ -88,7 +90,7 @@ selectedIndex：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -109,7 +111,7 @@ pullMenu.open({
 		normal: 'widget://res/img/ic/small-bell.png',
 		highlight: 'widget://res/img/ic/small-bell.png'
 	}]
-},function( ret, err ){		
+}, function(ret, err){		
     if( ret ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -237,7 +239,6 @@ pullMenu.show();
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
-
 
 #**close**<div id="4"></div>
 

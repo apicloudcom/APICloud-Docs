@@ -3,6 +3,8 @@ Title: meChat
 Description: meChat
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：开发者</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -41,7 +43,7 @@ meChat是一款实现手机用户与企业保持随时随刻沟通的客服工�
 	
 初始化美洽
 
-initMeChat(params)
+initMeChat({params})
 
 ##params
 

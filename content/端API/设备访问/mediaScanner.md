@@ -3,6 +3,8 @@ Title: mediaScanner
 Description: mediaScanner
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 	<li><a href="#const-content">Constant</a></li>
@@ -33,7 +35,7 @@ bgColor：
 
 - 类型：字符串
 - 默认值：#FFFFFF
-- 描述：（可选项）背景色，支持rgb，rgba，#，imgPath
+- 描述：（可选项）背景色，支持 rgb，rgba，#，imgPath
 
 row：
 
@@ -43,14 +45,14 @@ row：
 
 mark：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：见内部字段
 - 描述：（可选项）选中标记图标配置
 - 内部字段：
 
 ```js
 {
-	icon:  		//（可选项）标记的图标，字符串，支持rgb，rgba，#，imgPath，默认#696969
+	icon:  		//（可选项）标记的图标，字符串，支持 rgb，rgba，#，imgPath，默认#696969
 	position:  	//（可选项）标记的位置，取值范围见标记位置，默认left_down
 	size:  		//（可选项）标记的大小，数字类型，默认图片宽度的三分之一
 }
@@ -58,36 +60,36 @@ mark：
 
 navigation：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：见内部字段
 - 描述：（可选项）导航栏设置
 - 内部字段：
 
 ```js
 {
-	bg:  		   //（可选项）背景配置,字符串,支持rgb,rgba,#,img，默认rgba(0.5,0.5,0.5,0.8)
+	bg:  		   //（可选项）背景配置,字符串,支持 rgb,rgba,#,img，默认rgba(0.5,0.5,0.5,0.8)
 	state：		//（可选项）状态文字配置，json对象,默认值见内部字段
 					内部字段：
 					{
 						title:       //（可选项）字符串类型, 默认已选择*项，可为空
-						color：      //（可选项）字符串，字体颜色，默认蓝色，支持rgb，rgba，#
+						color：      //（可选项）字符串，字体颜色，默认蓝色，支持 rgb，rgba，#
 						size：       //（可选项）数字类型，字体大小，默认18
 					}
 	cancel: 	  //（可选项）取消按钮配置，json对象,默认值见内部字段
 					内部字段：
 					{
 						title:       //（可选项）字符串类型, 默认取消
-						titleColor： //（可选项）字符串，字体颜色，默认蓝色，支持rgb，rgba，#
+						titleColor： //（可选项）字符串，字体颜色，默认蓝色，支持 rgb，rgba，#
 						titleSize：  //（可选项）数字类型，字体大小，默认18
-						bg:          //（可选项）字符串,默认rgba(0,0,0,0)，支持rgb、rgba、#、img
+						bg:          //（可选项）字符串,默认rgba(0,0,0,0)，支持 rgb、rgba、#、img
 				    }
 	finish: 	 //完成按钮配置，json对象,默认值见内部字段
 					内部字段：
 					{
 				        title:        //（可选项）字符串类型, 默认完成
-						titleColor:   //（可选项）字符串，字体颜色，默认蓝色，支持rgb，rgba，#
+						titleColor:   //（可选项）字符串，字体颜色，默认蓝色，支持 rgb，rgba，#
 						titleSize:    //（可选项）数字类型，字体大小，默认18
-						bg:           //（可选项）字符串,默认rgba(0,0,0,0)，支持rgb，rgba，#，img
+						bg:           //（可选项）字符串,默认rgba(0,0,0,0)，支持 rgb，rgba，#，img
 					}
 }
 ```
@@ -124,7 +126,7 @@ sort：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -144,8 +146,8 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('mediaScanner');
-obj.open(function( ret, err ){
+var mediaScanner = api.require('mediaScanner');
+mediaScanner.open(function( ret, err ){
     if( ret ){
          alert( JSON.stringify( ret ) );
     }else{
@@ -174,7 +176,7 @@ scan(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -194,8 +196,8 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('mediaScanner');
-obj.scan( function(ret, err){
+var mediaScanner = api.require('mediaScanner');
+mediaScanner.scan( function(ret, err){
 	api.alert({msg:ret.list});
 });
 ```

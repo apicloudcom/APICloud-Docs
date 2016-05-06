@@ -3,6 +3,8 @@ Title: bluetooth
 Description: bluetooth
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -18,7 +20,7 @@ Description: bluetooth
 
 #**概述**
 
-bluetooth模块封装了系统的蓝牙功能，使用此模块可实现两台设备间无缝传输数据。可传输字符串，图片，视频，文件等各种数据。使用此模块需打开设备蓝牙功能
+bluetooth 模块封装了系统的蓝牙功能，使用此模块可实现两台设备间无缝传输数据。可传输字符串、图片、视频、文件等各种数据。使用此模块需打开设备蓝牙功能
 
 #**connect**<div id="1"></div>
 
@@ -30,7 +32,7 @@ connect(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 

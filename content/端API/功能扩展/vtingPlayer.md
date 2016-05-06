@@ -2,6 +2,9 @@
 Title: vtingPlayer
 Description: vtingPlayer封装了网络音频播放功能
 */
+
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <div class="outline">
 [play](#a1)
 
@@ -17,12 +20,12 @@ Description: vtingPlayer封装了网络音频播放功能
 
 #**概述**
 
-vtingPlayer封装了网络音频播放功能，可播放纯音频m3u8，在线FM首选格式，实现对音频资源的播放、暂停、继续、停止、设置播放位置等相关操作。在ios上如需支持后台播放功能请参看下例配置。
+vtingPlayer 封装了网络音频播放功能，可播放纯音频 m3u8，在线 FM 首选格式，实现对音频资源的播放、暂停、继续、停止、设置播放位置等相关操作。在 ios 上如需支持后台播放功能请参看下例配置。
 
 - 配置后台运行示例:
 
 ```xml
-   <preference name="backgroundMode" value="audio"/>
+   <preference name="backgroundMode' value="audio'/>
 ```
 - 描述:
 
@@ -33,7 +36,7 @@ vtingPlayer封装了网络音频播放功能，可播放纯音频m3u8，在线FM
 
 播放网络音频，支持m3u8纯音频播放
 
-play({params},callback(ret, err))
+play({params}, callback(ret, err))
 
 ##params
 
@@ -46,7 +49,7 @@ url:
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -62,7 +65,7 @@ ret：
 var vtingPlayer = api.require('vtingPlayer');
 vtingPlayer.play({
     url: 'widget://test.wav'
-},function( ret, err ){		
+}, function(ret, err){		
 	if( ret ){
 		alert( JSON.stringify( ret ) );
 	}else{
@@ -187,6 +190,6 @@ vtingPlayer.nowPlaying({
 
 ##可用性
 
-仅支持IOS
+仅支持 IOS
 
 可提供的1.0.0及更高版本

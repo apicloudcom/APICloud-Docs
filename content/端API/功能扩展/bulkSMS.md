@@ -75,7 +75,7 @@ name：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -116,7 +116,7 @@ bulkSMS.sends({
         '祝新年快乐'
     ],
     name: '郭xx'
-},function( ret, err ){		
+}, function(ret, err){		
     if( ret.results == '0' ){
         alert( JSON.stringify( ret ) );
     }else{

@@ -3,6 +3,8 @@ Title: imageClip
 Description: imageClip
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -21,7 +23,7 @@ Description: imageClip
 
 #**概述**
 
-imageClip模块封装了图片裁剪功能，本模块已停止更新，建议使用优化升级版[FNImageClip](http://docs.apicloud.com/端API/功能扩展/FNImageClip)
+imageClip 模块封装了图片裁剪功能，本模块已停止更新，建议使用优化升级版[FNImageClip](http://docs.apicloud.com/端API/功能扩展/FNImageClip)
 
 #**open**<div id="a1"></div>
 
@@ -69,7 +71,7 @@ h:
 
 clipRect：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 默认值：根据图片大小在整个区域居中显示
 - 描述：（可选项）图片裁剪区域位置和大小
 
@@ -107,7 +109,7 @@ borderWidth：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -119,7 +121,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -135,7 +137,7 @@ err：
 var imageClip = api.require('imageClip');
 imageClip.open({
     path: 'widget://res/img/apicloud.png'
-},function( ret, err ){		
+},function(  ret, err ){		
     if( ret.status ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -159,7 +161,7 @@ iOS系统，Android系统
 
 保存截图到指定位置
 
-save ({params}, callback(ret, err))
+save({params}, callback(ret, err))
 
 ##params
 
@@ -184,7 +186,7 @@ quality：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -196,7 +198,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -210,7 +212,7 @@ err：
 
 ```js
 var imageClip = api.require('imageClip');
-imageClip.save(function( ret, err ){		
+imageClip.save(function(  ret, err ){		
     if( ret ){
         alert( JSON.stringify( ret ) );
     }else{

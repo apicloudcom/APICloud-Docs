@@ -3,6 +3,8 @@ Title: geeTest
 Description: geeTest
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -28,7 +30,7 @@ geeTest封装了极验验证的sdk，开发者必须配置开从*[极验验证�
 ##openGTView <div id="openGTView"></div>
 配置验证，并且开启验证
 
-openGTView({params},callback(ret,err))
+openGTView({params}, callback(ret, err))
 
 ###param
 api_1:
@@ -72,7 +74,7 @@ success:
 * 默认值：'true'
 * 描述：如果不用api_1和api_2两个参数配置验证，则此参数就必须要配置。用于验证的Success参数。
 
-###callback(ret,err)
+###callback(ret, err)
 ret:
 
 * 类型:json对象

@@ -42,7 +42,7 @@ Sort: 5
 [使用 subversion](#a16)
 
 <div id="a0"></div>
-<h2>开源地址：https://gitcafe.com/APICloud</h2>
+<h2>开源地址：https://github.com/apicloudcom/WebStorm-APICloud-Plugins</h2>
   
 <div id="a1"></div>
 
@@ -61,7 +61,7 @@ Sort: 5
 
 ##首先下载插件
 
-1、通过APICloud官方网站下载webStorm-APICloud.zip文件。
+1、通过APICloud官方网站下载[webStorm-APICloud.zip](http://www.apicloud.com/devtools#webstorm)文件。
 
 2、把webStorm-APICloud.zip解压到WebStorm的工作空间中。
 
@@ -83,7 +83,7 @@ Windows
 
 <div id="a3"></div>
 
-##安装创建新应用插件
+##安装"创建新应用"插件
 
 1.新建空白应用。在 'External Tools'选项中，点击 '+' 。在Create Tool中，填写如下内容：
 
@@ -113,7 +113,7 @@ Parameters : -jar $ProjectFileDir$/webStorm-APICloud/webStorm_app.jar $ProjectFi
 
 <div id="a4"></div>
 
-##安装创建APICloud文件插件
+##安装"创建APICloud文件"插件
 
 在 'External Tools'选项中，点击 '+' 。在Create Tool中，填写如下内容：
 
@@ -126,7 +126,7 @@ Parameters : -jar $ProjectFileDir$/webStorm-APICloud/webStorm_app.jar $ProjectFi
 
 <div id="a5"></div>
 
-##安装android真机同步
+##安装"android真机同步"插件
 
 在 'External Tools'选项中，点击 '+' 。在Create Tool中，填写如下内容：
 
@@ -138,7 +138,7 @@ Parameters : -jar $ProjectFileDir$/webStorm-APICloud/webStorm_loader.jar $Projec
 
 <div id="a6"></div>
 
-##安装Android本地打包
+##安装"Android本地打包"插件
 
 在 'External Tools'选项中，点击 '+' 。在Create Tool中，填写如下内容：
 
@@ -150,7 +150,7 @@ Parameters : -jar $ProjectFileDir$/webStorm-APICloud/webStorm_pkg.jar $ProjectFi
 
 <div id="a7"></div>
 
-##安装Android 日志输出插件
+##安装"Android日志输出"插件
 
 在 'External Tools'选项中，点击 '+' 。在Create Tool中，填写如下内容：
 
@@ -160,7 +160,7 @@ Parameters : -jar $ProjectFileDir$/webStorm-APICloud/webStorm_log.jar $ProjectFi
 
 <div id="a17"></div>
 
-##安装ios真机同步
+##安装"ios真机同步"插件
 
 在 'External Tools'选项中，点击 '+' 。在Create Tool中，填写如下内容：
 
@@ -172,7 +172,7 @@ Parameters : -jar $ProjectFileDir$/webStorm-APICloud/webStorm_loader.jar $Projec
 
 <div id="a8"></div>
 
-##安装ios本地打包
+##安装"ios本地打包"插件
 
 在 'External Tools'选项中，点击 '+' 。在Create Tool中，填写如下内容：
 

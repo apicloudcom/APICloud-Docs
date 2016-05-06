@@ -3,6 +3,8 @@ Title: multiSelector
 Description: multiSelector
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -24,7 +26,7 @@ Description: multiSelector
 
 #**概述**
 
-multiSelector封装了一个支持多选的选择器，开发者可自定义该选择器的样式及其数据源
+multiSelector 封装了一个支持多选的选择器，开发者可自定义该选择器的样式及其数据源
 本模块已停止更新，建议使用[UIMultiSelector](http://docs.apicloud.com/端API/界面布局/UIMultiSelector)
 
 ![图片说明](/img/docImage/multiSelector.jpg)
@@ -77,13 +79,13 @@ fontColor：
 
 - 类型：字符串
 - 默认值：#828282
-- 描述：（可选项）常态字体颜色，支持rgb，rgba，#
+- 描述：（可选项）常态字体颜色，支持 rgb，rgba，#
 
 selectedColor：
 
 - 类型：字符串
 - 默认值：#79CDCD
-- 描述：（可选项）选中字体颜色，支持rgb，rgba，#
+- 描述：（可选项）选中字体颜色，支持 rgb，rgba，#
 
 anim：
 
@@ -108,19 +110,19 @@ selectedItems：
 - 类型：数组
 - 默认值：无
 - 描述：（可选项）默认选中的条目的下标组成的数组，下标从0开始，-1表示全选
-- 备注：不传则open时未有选中项
+- 备注：不传则 open 时未有选中项
 
 selectIcon:
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：见内部字段
 - 描述：（可选项）表示选中、未选中的图标设置
 - 内部字段：
 
 ```js
   {
-       normal:    //（可选项）选中提示图标常态图片路径，支持fs、widget等本地路径协议，有默认图标
-       selected:  //（可选项）选中后的图标路径，支持fs、widget等本地路径协议，有默认图片
+       normal:        //（可选项）选中提示图标常态图片路径，支持fs、widget等本地路径协议，有默认图标
+       selected:      //（可选项）选中后的图标路径，支持fs、widget等本地路径协议，有默认图片
   } 
 ```
 
@@ -128,7 +130,7 @@ selectIcon:
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -150,7 +152,7 @@ multiSelector.open({
         '第三条'
     ],
     fixedOn: api.frameName
-},function( ret, err ){
+}, function(ret, err){
     if( ret ){
          alert( JSON.stringify( ret ) );
     }else{
@@ -165,7 +167,7 @@ multiSelector.open({
 
 ##可用性
 
-IOS系统 android系统
+iOS系统 android系统
 
 可提供的1.0.0及更高版本
 
@@ -200,7 +202,7 @@ multiSelector.setSelect({
 
 ##可用性
 
-IOS系统 android系统
+iOS系统 android系统
 
 可提供的1.0.1及更高版本
 
@@ -224,11 +226,9 @@ multiSelector.close();
 
 ##可用性
 
-IOS系统 android系统
+iOS系统 android系统
 
 可提供的1.0.1及更高版本
-
-
 
 #**show**<div id="3"></div>
 
@@ -249,7 +249,7 @@ multiSelector.show();
 
 ##可用性
 
-IOS系统 android系统
+iOS系统 android系统
 
 可提供的1.0.1及更高版本
 
@@ -273,6 +273,6 @@ multiSelector.hide();
 
 ##可用性
 
-IOS系统 android系统
+iOS系统 android系统
 
 可提供的1.0.1及更高版本

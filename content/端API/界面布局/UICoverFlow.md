@@ -3,6 +3,8 @@ Title: UICoverFlow
 Description: UICoverFlow
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
     <li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -113,7 +115,7 @@ fixed:
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -214,8 +216,8 @@ close()
 ##示例代码
 
 ```js
-    var UICoverFlow = api.require('UICoverFlow');
-    UICoverFlow.close();
+var UICoverFlow = api.require('UICoverFlow');
+UICoverFlow.close();
 ```
 
 ##可用性
@@ -233,8 +235,8 @@ hide()
 ##示例代码
 
 ```js
-    var UICoverFlow = api.require('UICoverFlow');
-    UICoverFlow.hide();
+var UICoverFlow = api.require('UICoverFlow');
+UICoverFlow.hide();
 ```
 
 ##补充说明
@@ -256,8 +258,8 @@ show()
 ##示例代码
 
 ```js
-    var UICoverFlow = api.require('UICoverFlow');
-    UICoverFlow.show();
+var UICoverFlow = api.require('UICoverFlow');
+UICoverFlow.show();
 ```
 
 ##可用性
@@ -282,6 +284,6 @@ UICoverFlow.clearCache();
 
 ##可用性
 
-IOS系统，Android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本

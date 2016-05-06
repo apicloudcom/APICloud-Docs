@@ -2,6 +2,9 @@
 Title: UIInput
 Description: UIInput
 */
+
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <div class="outline">
 [open](#m1)
 
@@ -18,13 +21,21 @@ Description: UIInput
 [popupKeyboard](#m7)
 
 [closeKeyboard](#m8)
+
+[addEventListener](#m9)
 </div>
 
 #**概述**
 
-UIInput 是一个输入框模块；输入框可自动获取焦点，并弹出键盘，可自定义输入框的位置及样式，监听输入框内容的变化；用于实现搜索框及弹出键盘功能。
+某些 App 具有打开某一页面即可默认弹出键盘的功能，如某些登陆授权、评论页面。但是一个纯 html 的输入框标签，无法实现这一功能。为满足 APICloud 平台开发者对这一功能的需求，特推出了 UIInput 模块。
+
+UIInput 是一个输入框模块，开发者可通过配置相应参数来控制输入框自动获取焦点，并弹出键盘。同普通的 UI 类的模块一样，本模块也可通过 rect 来设置其位置和大小，通过 styles参数设置其样式。为增强输入框功能，模块开放了 keyboardType 参数，开发者可通过设置该参数来控制其键盘类型。
+
+模块效果图如下：
 
 ![UIInput](/img/docImage/UIInput.jpg)
+
+#模块接口
 
 **注意：**
 
@@ -44,7 +55,7 @@ open({params}, callback(ret, err))
 
 rect：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）模块的位置及尺寸
 - 内部字段：
 
@@ -59,15 +70,15 @@ rect：
 
 styles：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）模块各部分的样式
 - 内部字段：
 
 ```js
 {
-    bgColor: '#fff',        //（可选项）字符串类型；输入框的背景色，支持rgb、rgba、#；默认：'#fff'
+    bgColor: '#fff',        //（可选项）字符串类型；输入框的背景色，支持 rgb、rgba、#；默认：'#fff'
     size: 14,               //（可选项）数字类型；输入框的文字大小；默认：14
-    color: '#000',          //（可选项）字符串类型；输入框内的字体颜色，支持rgb、rgba、#；默认：'#000'
+    color: '#000',          //（可选项）字符串类型；输入框内的字体颜色，支持 rgb、rgba、#；默认：'#000'
     placeholder: {
         color: '#ccc'       //（可选项）字符串类型；输入框占位文字的颜色；默认：'#ccc'
     }
@@ -112,7 +123,7 @@ fixedOn：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -150,7 +161,7 @@ UIInput.open({
     placeholder: '这是一个输入框',
     keyboardType: 'number',
     fixedOn: api.frameName
-}, function( ret, err ){
+}, function(ret, err){
     if( ret ){
          alert( JSON.stringify( ret ) );
     }else{
@@ -243,11 +254,11 @@ msg：
 - 类型：字符串
 - 描述：（可选项）输入框的内容，若不传则返回输入框的值
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -261,12 +272,10 @@ ret：
 
 ```js
 var UIInput = api.require('UIInput');
-//设置输入框的值
 UIInput.value({
     msg: '设置输入框的值'
 });
 
-//获取输入框的值
 UIInput.value(function( ret, err ){
     if( ret ){
          alert( JSON.stringify( ret ) );
@@ -354,6 +363,45 @@ closeKeyboard()
 ```js
 var UIInput = api.require('UIInput');
 UIInput.closeKeyboard();
+```
+
+##可用性
+
+iOS系统，Android系统
+
+可提供的1.0.0及更高版本
+
+<div id="m9"></div>
+
+#**addEventListener**
+
+事件监听
+
+addEventListener({params}, callback(ret, err))
+
+##params
+
+name：
+
+- 类型：字符串
+- 描述：监听的事件类型
+- 取值范围：
+   - becomeFirstResponder（输入框获得焦点事件）
+   - resignFirstResponder（输入框失去焦点事件）
+
+##callback()
+
+触发相应的事件
+
+##示例代码
+
+```js
+var UIInput = api.require('UIInput');
+UIInput.addEventListener({
+    name: 'resignFirstResponder'
+}, function(){
+    alert("输入框失去焦点！");
+});
 ```
 
 ##可用性

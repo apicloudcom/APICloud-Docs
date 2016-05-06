@@ -52,7 +52,7 @@ config({param})
 appId：
 
 - 类型：字符串
-- 默认值：widget目录下config.xml里面的id
+- 默认值：widget目录下[config.xml](/APICloud/技术专题/app-config-manual)里面的id
 - 描述：应用的id，在APICloud上应用概览里获取，可以为空
 
 appKey：
@@ -104,7 +104,7 @@ class：
 
 value：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：插入的键值对，与服务器上class中键值对应，不能为空
 
@@ -112,12 +112,12 @@ value：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：插入成功后对应的该条数据在服务器的所有键值
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：错误信息
 
 ##示例代码
@@ -129,7 +129,7 @@ model.insert({
     value: {
          name : 'text'
     }
-},function( ret, err ){
+}, function(ret, err){
     if( ret ){
          alert( JSON.stringify( ret ) );
     }else{
@@ -173,12 +173,12 @@ id：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：成功信息
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：错误信息
 
 ##示例代码
@@ -188,7 +188,7 @@ var model = api.require('model');
 model.deleteById({
     class: 'user',
     id: 'A0000000001'
-},function( ret, err ){
+}, function(ret, err){
     if( ret ){
          alert( JSON.stringify( ret ) );
     }else{
@@ -238,12 +238,12 @@ value：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：更新成功后对应的该条数据在服务器的所有键值
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：错误信息
 
 ##示例代码
@@ -256,7 +256,7 @@ model.updateById({
     value: {
         nickname: 'Tom'
     }
-},function( ret, err ){
+}, function(ret, err){
     if( ret ){
          alert( JSON.stringify( ret ) );   
     }else{
@@ -300,12 +300,12 @@ id：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：查找成功后对应的该条数据在服务器的所有键值
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：错误信息
 
 ##示例代码
@@ -315,7 +315,7 @@ var model = api.require('model');
 model.findById({
     class: 'user',
     id: 'A00001'
-},function( ret, err ){
+}, function(ret, err){
     if( ret ){
          alert( JSON.stringify( ret ) );   
     }else{
@@ -364,7 +364,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：错误信息
 
 ##示例代码
@@ -418,12 +418,12 @@ qid：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：成功信息
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：错误信息
 
 ##示例代码
@@ -476,12 +476,12 @@ id：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：成功信息
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：错误信息
 
 ##示例代码
@@ -519,7 +519,7 @@ uploadFile({params}, callback(ret, err))
 
 data：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：提交的文件及相关数据，不能为空
 - 内部字段：
@@ -548,7 +548,7 @@ report：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：成功信息，依赖于report字段，report为false时为上传完成时，服务器返回的数据
 
 ```js
@@ -562,7 +562,7 @@ report为true时内部字段：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：错误信息
 
 ##示例代码
@@ -581,7 +581,7 @@ model.uploadFile({
 			key2: 'value2'
 		}
 	}
-},function( ret, err ){
+}, function(ret, err){
     if( ret ){
          alert( JSON.stringify( ret ) );   
     }else{
@@ -636,7 +636,7 @@ report：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：下载信息
 - 内部字段：
 
@@ -651,7 +651,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：错误信息
 
 ##示例代码
@@ -662,7 +662,7 @@ model.downloadFile({
 	report: true,
 	id: 'asfdasfasfasfasf',
 	savePath: ''
-},function( ret, err ) {
+}, function(ret, err) {
     if( ret ){
          alert( JSON.stringify( ret ) );   
     }else{
@@ -746,7 +746,7 @@ createQuery(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 字段：
 
@@ -1820,7 +1820,7 @@ column：
 
 value：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：插入的键值对，与服务器上class中键值对应，不能为空
 
@@ -1828,12 +1828,12 @@ value：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：成功信息
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：错误信息
 
 ##示例代码
@@ -1847,7 +1847,7 @@ relation.insert({
     value: {
         name: 'value'
     }
-},function( ret, err ){
+}, function(ret, err){
      if( ret ){
         alert( JSON.stringify( ret) );
      }else{
@@ -1897,12 +1897,12 @@ column：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：成功信息
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：错误信息
 
 ##示例代码
@@ -1913,7 +1913,7 @@ relation.count({
     class: 'user',
     id: 'A00001',
     column: 'column'
-},function( ret, err ){
+}, function(ret, err){
      if( ret ){
         alert( JSON.stringify( ret) );
      }else{
@@ -1968,7 +1968,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：错误信息
 
 ##示例代码
@@ -2029,12 +2029,12 @@ column：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：成功信息
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：错误信息
 
 ##示例代码
@@ -2045,7 +2045,7 @@ relation.deleteAll({
     class: 'user',
     id: 'A00001',
     column: 'column'
-},function( ret, err ){
+}, function(ret, err){
      if( ret ){
         alert( JSON.stringify( ret) );
      }else{
@@ -2105,12 +2105,12 @@ password：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：成功信息
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：错误信息
 
 ##示例代码
@@ -2170,12 +2170,12 @@ email：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：成功信息
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：错误信息
 
 ##示例代码
@@ -2216,12 +2216,12 @@ logout(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：成功信息
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：错误信息
 
 ##示例代码
@@ -2266,12 +2266,12 @@ password：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：成功信息
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：错误信息
 
 ##示例代码

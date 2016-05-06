@@ -3,6 +3,8 @@ Title: groupList
 Description: groupList
 */
 
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -65,22 +67,22 @@ styles：
 
 ```js
 {
-    bg: '#eee',                        //（可选项）字符串类型；列表背景，支持rgb、rgba、#、img；默认：'rgba(0,0,0,0)'
+    bg: '#eee',                        //（可选项）字符串类型；列表背景，支持 rgb、rgba、#、img；默认：'rgba(0,0,0,0)'
     title: {                           //（可选项）JSON 对象类型，分组标题的通用样式设置
-    	bg: '#E0E0E0',                 //（可选项）字符串类型；分组标题的背景，支持rgb、rgba、#、img；默认：'#E0E0E0'
+    	bg: '#E0E0E0',                 //（可选项）字符串类型；分组标题的背景，支持 rgb、rgba、#、img；默认：'#E0E0E0'
     	h: 25,                         //（可选项）数字类型；分组标题的高度；默认：25
     	align: 'left',                 //（可选项）字符串类型；分组标题的对齐方式，可为 left|center|right；默认：left
-    	color: '#838383',              //（可选项）字符串类型；分组标题的字体颜色，支持rgb、rgba、#；默认：#838383
+    	color: '#838383',              //（可选项）字符串类型；分组标题的字体颜色，支持 rgb、rgba、#；默认：#838383
     	size: 15,                      //（可选项）数字类型；分组标题的字体大小；默认：15
         marginT: 7,                    //（可选项）数字类型；分组标题的上边距；默认：7
         marginL: 18                    //（可选项）数字类型；分组标题的左边距；默认：18
     },
     cell: {                            //（可选项）JSON 对象类型，分组子项的通用样式
-    	bg: '#fff',                    //（可选项）字符串类型；分组子项的背景，支持rgb、rgba、#、img；默认：#fff
+    	bg: '#fff',                    //（可选项）字符串类型；分组子项的背景，支持 rgb、rgba、#、img；默认：#fff
     	h: 68,                         //（可选项）数字类型；分组子项的高度；默认：68
     	main: {                        //（可选项）JSON 类型；主标题样式设置，当未设置副标题时不显示副标题且不占高度，主标题会自己上下居中显示
     		marginL: 74,               //（可选项）数字类型；主标题相对于分组子项左边的间距大小；默认：74
-    		color: '#636363',          //（可选项）字符串类型；主标题文字颜色，支持rgb、rgba、#；默认：#636363
+    		color: '#636363',          //（可选项）字符串类型；主标题文字颜色，支持 rgb、rgba、#；默认：#636363
     		size: 13,                  //（可选项）数字类型；主标题字体大小；默认：13
     	},
     	sub: {                         //（可选项）JSON 类型；副标题样式设置；当未设置时不显示副标题且不占高度，主标题会自己上下居中显示
@@ -105,11 +107,11 @@ styles：
     	},
     	options:[{                     //（可选项）数组类型；cell 左滑后显示的选项按钮样式组成的数组；未设置则 cell 不可侧滑，侧滑距离为当前cell所有侧滑按钮总宽度。侧滑按钮从右依次往左排列，其索引由0开始
 			w: 76,                     //（可选项）数字类型；每个 option 的宽度；默认：76
-			bg: 'rgba(0,0,0,0)' ,      //（可选项）字符串类型；每个 option 的背景，支持rgb、rgba、#、img；默认：'rgba(0,0,0,0)'
+			bg: 'rgba(0,0,0,0)' ,      //（可选项）字符串类型；每个 option 的背景，支持 rgb、rgba、#、img；默认：'rgba(0,0,0,0)'
 			title: '关注',              //（可选项）字符串类型；侧滑按钮上的标题，若不传则不显示
     	    align: 'center',           //（可选项）字符串类型；侧滑按钮标题的对齐方式，可为 left|center|right；默认：center
 			marginB: 13,               //（可选项）数字类型；侧滑按钮标题距离按钮下边间隙大小；默认：13
-			color: '#fff',             //（可选项）字符串类型；侧滑按钮标题的颜色，支持rgb、rgba、#；默认：'#fff'
+			color: '#fff',             //（可选项）字符串类型；侧滑按钮标题的颜色，支持 rgb、rgba、#；默认：'#fff'
 			size: 11                   //（可选项）数字类型；侧滑按钮标题文字大小；默认：11
 		}],
 	    line: {                        //（可选项）JSON 类型；同 group 下的 cell 之间的分隔线样式
@@ -137,11 +139,11 @@ datas：
 		sub: '活跃值：200' ,           //（可选项）字符串类型；副标题
     	options:[{                    //（可选项）数组类型；cell 左滑后显示的选项按钮样式组成的数组；若未设置则以styles->cell->options为准，若亦未设置，则该cell不可侧滑
 			w: 76,                    //（可选项）数字类型；每个 option 的宽度；默认：76
-			bg: 'rgba(0,0,0,0)' ,     //（可选项）字符串类型；每个 option 的背景，支持rgb、rgba、#、img；默认：'rgba(0,0,0,0)'
+			bg: 'rgba(0,0,0,0)' ,     //（可选项）字符串类型；每个 option 的背景，支持 rgb、rgba、#、img；默认：'rgba(0,0,0,0)'
 			title: '关注',             //（可选项）字符串类型；侧滑按钮上的标题，若不传则不显示
     	    align: 'center',          //（可选项）字符串类型；侧滑按钮标题的对齐方式，可为 left|center|right；默认：center
 			marginB: 13,              //（可选项）数字类型；侧滑按钮标题距离按钮下边间隙大小；默认：13
-			color: '#fff',            //（可选项）字符串类型；侧滑按钮标题的颜色，支持rgb、rgba、#；默认：'#fff'
+			color: '#fff',            //（可选项）字符串类型；侧滑按钮标题的颜色，支持 rgb、rgba、#；默认：'#fff'
 			size: 11                  //（可选项）数字类型；侧滑按钮标题文字大小；默认：11
 		}],
     	handler: {                    //（可选项）JSON 类型；cell右边拉手图标的样式设置；若不传则以styles->cell->handler为准，若亦未设置，则该cell不显示拉手图标
@@ -171,7 +173,7 @@ fixed：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -186,7 +188,7 @@ ret：
 	groupIndex: 0,      //数字类型；点击目标对应数据源的 group 的索引
 	cellIndex: 1,       //数字类型；点击目标对应数据源中 cell 的索引
     optionIndex: 0 ,    //数字类型；eventType 为 clickOption 时有效，被点击 option 对应的索引
-    cellData:{}         //JSON对象；open时传入的 cell 的原始数据              
+    cellData: {}         //JSON对象；open时传入的 cell 的原始数据              
 }
 ```
 
@@ -303,15 +305,15 @@ iOS系统，Android系统
 
 #**close**<div id="2"></div>
 
-关闭groupList列表视图
+关闭 groupList 列表视图
 
 close()
 
 ##示例代码
 
 ```js
-var obj = api.require('groupList');
-obj.close();
+var groupList = api.require('groupList');
+groupList.close();
 ```
 
 ##可用性
@@ -343,11 +345,11 @@ datas：
 		sub: '活跃值：200' ,           //（可选项）字符串类型；副标题
     	options:[{                    //（可选项）数组类型；cell 左滑后显示的选项按钮样式组成的数组；若未设置则以open->styles->cell->options为准，若亦未设置，则该cell不可侧滑
 			w: 76,                    //（可选项）数字类型；每个 option 的宽度；默认：76
-			bg: 'rgba(0,0,0,0)' ,     //（可选项）字符串类型；每个 option 的背景，支持rgb、rgba、#、img；默认：'rgba(0,0,0,0)'
+			bg: 'rgba(0,0,0,0)' ,     //（可选项）字符串类型；每个 option 的背景，支持 rgb、rgba、#、img；默认：'rgba(0,0,0,0)'
 			title: '关注',             //（可选项）字符串类型；侧滑按钮上的标题，若不传则不显示
     	    align: 'center',          //（可选项）字符串类型；侧滑按钮标题的对齐方式，可为 left|center|right；默认：center
 			marginB: 13,              //（可选项）数字类型；侧滑按钮标题距离按钮下边间隙大小；默认：13
-			color: '#fff',            //（可选项）字符串类型；侧滑按钮标题的颜色，支持rgb、rgba、#；默认：'#fff'
+			color: '#fff',            //（可选项）字符串类型；侧滑按钮标题的颜色，支持 rgb、rgba、#；默认：'#fff'
 			size: 11                  //（可选项）数字类型；侧滑按钮标题文字大小；默认：11
 		}],
     	handler: {                    //（可选项）JSON 类型；cell右边拉手图标的样式设置；若不传则以open->styles->cell->handler为准，若亦未设置，则该cell不显示拉手图标
@@ -465,11 +467,11 @@ cell：
 	sub: '活跃值：200' ,           //（可选项）字符串类型；副标题
 	options:[{                    //（可选项）数组类型；cell 左滑后显示的选项按钮样式组成的数组；若未设置则以open->styles->cell->options为准，若亦未设置，则该cell不可侧滑
 		w: 76,                    //（可选项）数字类型；每个 option 的宽度；默认：76
-		bg: 'rgba(0,0,0,0)' ,     //（可选项）字符串类型；每个 option 的背景，支持rgb、rgba、#、img；默认：'rgba(0,0,0,0)'
+		bg: 'rgba(0,0,0,0)' ,     //（可选项）字符串类型；每个 option 的背景，支持 rgb、rgba、#、img；默认：'rgba(0,0,0,0)'
 		title: '关注',             //（可选项）字符串类型；侧滑按钮上的标题，若不传则不显示
 	    align: 'center',          //（可选项）字符串类型；侧滑按钮标题的对齐方式，可为 left|center|right；默认：center
 		marginB: 13,              //（可选项）数字类型；侧滑按钮标题距离按钮下边间隙大小；默认：13
-		color: '#fff',            //（可选项）字符串类型；侧滑按钮标题的颜色，支持rgb、rgba、#；默认：'#fff'
+		color: '#fff',            //（可选项）字符串类型；侧滑按钮标题的颜色，支持 rgb、rgba、#；默认：'#fff'
 		size: 11                  //（可选项）数字类型；侧滑按钮标题文字大小；默认：11
 	}],
 	handler: {                    //（可选项）JSON 类型；cell右边拉手图标的样式设置；若不传则以open->styles->cell->handler为准，若亦未设置，则该cell不显示拉手图标
@@ -552,11 +554,11 @@ cell：
 		sub: '活跃值：200' ,           //（可选项）字符串类型；副标题
     	options:[{                    //（可选项）数组类型；cell 左滑后显示的选项按钮样式组成的数组；若未设置则以open->styles->cell->options为准，若亦未设置，则该cell不可侧滑
 			w: 76,                    //（可选项）数字类型；每个 option 的宽度；默认：76
-			bg: 'rgba(0,0,0,0)' ,     //（可选项）字符串类型；每个 option 的背景，支持rgb、rgba、#、img；默认：'rgba(0,0,0,0)'
+			bg: 'rgba(0,0,0,0)' ,     //（可选项）字符串类型；每个 option 的背景，支持 rgb、rgba、#、img；默认：'rgba(0,0,0,0)'
 			title: '关注',             //（可选项）字符串类型；侧滑按钮上的标题，若不传则不显示
     	    align: 'center',          //（可选项）字符串类型；侧滑按钮标题的对齐方式，可为 left|center|right；默认：center
 			marginB: 13,              //（可选项）数字类型；侧滑按钮标题距离按钮下边间隙大小；默认：13
-			color: '#fff',            //（可选项）字符串类型；侧滑按钮标题的颜色，支持rgb、rgba、#；默认：'#fff'
+			color: '#fff',            //（可选项）字符串类型；侧滑按钮标题的颜色，支持 rgb、rgba、#；默认：'#fff'
 			size: 11                  //（可选项）数字类型；侧滑按钮标题文字大小；默认：11
 		}],
     	handler: {                    //（可选项）JSON 类型；cell右边拉手图标的样式设置；若不传则以open->styles->cell->handler为准，若亦未设置，则该cell不显示拉手图标
@@ -611,7 +613,7 @@ iOS系统，Android系统
 
 设置下拉刷新样式
 
-setRefreshHeader({params} ,callback(ret,err))
+setRefreshHeader({params} ,callback(ret, err))
 
 ##params
 
@@ -624,13 +626,13 @@ loadingImg：
 bgColor：
 
 - 类型：字符串类型
-- 描述：（可选项）下拉刷新视图的背景色，支持rgb、rgba、#、img
+- 描述：（可选项）下拉刷新视图的背景色，支持 rgb、rgba、#、img
 - 默认：#f5f5f5
 
 textColor：
 
 - 类型：字符串类型
-- 描述：（可选项）提示文字颜色，支持rgb、rgba、#
+- 描述：（可选项）提示文字颜色，支持 rgb、rgba、#
 - 默认：#8e8e8e
 
 textDown：

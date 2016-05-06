@@ -3,6 +3,8 @@ Title: wifi
 Description: wifi
 */
 
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -48,7 +50,7 @@ currentWifi(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -62,7 +64,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -75,8 +77,8 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('wifi');
-obj.currentWifi(function(ret,err){
+var wifi = api.require('wifi');
+wifi.currentWifi(function(ret,err){
 	if(ret.status){
 		api.alert({msg:ret.ssid+"*"+ret.bssid});
 	}else{
@@ -105,7 +107,7 @@ getWifiState(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -124,8 +126,8 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('wifi');
-obj.getWifiState(function(ret,err){ 
+var wifi = api.require('wifi');
+wifi.getWifiState(function(ret,err){ 
 	if(ret.status){
       api.alert({msg:ret.wifiState });
     }
@@ -153,7 +155,7 @@ scanWifiList(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -174,8 +176,8 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('wifi');
-obj.scanWifiList(function(ret,err){ 
+var wifi = api.require('wifi');
+wifi.scanWifiList(function(ret,err){ 
    if(ret.status){
    api.alert({msg:ret.scanWifiList[0].ssid});
    }
@@ -202,7 +204,7 @@ getConfiguredNetworks(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -224,8 +226,8 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('wifi');
-obj.getConfiguredNetworks (function(ret,err){ 
+var wifi = api.require('wifi');
+wifi.getConfiguredNetworks (function(ret,err){ 
     if(ret.status){
       api.alert({msg:ret.configuredNetworks[0].ssid});
     }
@@ -253,7 +255,7 @@ openWifi(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -273,8 +275,8 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('wifi');
-obj.openWifi(function( ret, err ){		
+var wifi = api.require('wifi');
+wifi.openWifi(function( ret, err ){		
     if( ret.status ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -303,7 +305,7 @@ closeWifi(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -323,8 +325,8 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('wifi');
-obj.closeWifi(function(ret,err){ 
+var wifi = api.require('wifi');
+wifi.closeWifi(function(ret,err){ 
    if(ret.status){
       api.alert({msg:ret.result });
    }
@@ -346,7 +348,7 @@ Android系统
 
 获取指定wifi（已配置）密码
 
-getWifiPassword({params},callback(ret, err))
+getWifiPassword({params}, callback(ret, err))
 
 ##params
 
@@ -359,7 +361,7 @@ ssid:
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -372,7 +374,7 @@ ret：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -385,8 +387,8 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('wifi');
-obj.getWifiPassword({
+var wifi = api.require('wifi');
+wifi.getWifiPassword({
    ssid:"abc",
 },function(ret,err){ 
     if(ret.status){
@@ -418,7 +420,7 @@ disconnect(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -431,8 +433,8 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('wifi');
-obj.disconnect (function(ret,err){ 
+var wifi = api.require('wifi');
+wifi.disconnect (function(ret,err){ 
    if(ret.status){
       api.alert({msg:'断开连接成功'});
    }else{
@@ -455,7 +457,7 @@ Android系统
 
 禁用某网络
 
-disableNetwork({params},callback(ret, err))
+disableNetwork({params}, callback(ret, err))
 
 ##params
 
@@ -469,7 +471,7 @@ ssid:
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -481,7 +483,7 @@ ret：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -494,8 +496,8 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('wifi');
-obj.disableNetwork({
+var wifi = api.require('wifi');
+wifi.disableNetwork({
    ssid:"abc",
 },function(ret,err){ 
    if(ret.status){
@@ -520,7 +522,7 @@ Android系统
 
 删除某网络
 
-removeNetwork({params},callback(ret, err))
+removeNetwork({params}, callback(ret, err))
 
 ##params
 
@@ -534,7 +536,7 @@ ssid:
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -546,7 +548,7 @@ ret：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -559,8 +561,8 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('wifi');
-obj.removeNetwork({
+var wifi = api.require('wifi');
+wifi.removeNetwork({
    ssid:"abc",
 },function(ret,err){ 
    if(ret.status){
@@ -591,7 +593,7 @@ manageWifiBySystem(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -604,8 +606,8 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('wifi');
-obj.manageWifiBySystem (function(ret,err){ 
+var wifi = api.require('wifi');
+wifi.manageWifiBySystem (function(ret,err){ 
    if(ret.status){
      api.alert({msg:'跳转成功'});
    }
@@ -626,7 +628,7 @@ Android系统
 
 链接某网络
 
-connect({params},callback(ret, err))
+connect({params}, callback(ret, err))
 
 ##params
 
@@ -656,7 +658,7 @@ type:
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -668,7 +670,7 @@ ret：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -681,8 +683,8 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('wifi');
-obj.connect({
+var wifi = api.require('wifi');
+wifi.connect({
    	ssid:'abc',
 	password:'12345678',
 	type:'wpa'

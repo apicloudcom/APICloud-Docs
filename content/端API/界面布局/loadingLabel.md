@@ -3,6 +3,8 @@ Title: loadingLabel
 Description: loadingLabel
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -24,13 +26,13 @@ Description: loadingLabel
 
 #**概述**
 
-loadingLabel是一个加载标签，可开启暂停关闭，开发者可自定义其色值和位置
+loadingLabel 是一个加载标签，可开启暂停关闭，开发者可自定义其色值和位置
 
 #**open**<div id="1"></div>
 
 打开加载标签
 
-open({params},callBack(ret,err))
+open({params}, callBack(ret, err))
 
 ##params
 
@@ -38,13 +40,13 @@ bgColor：
 
 - 类型：字符串
 - 默认值：#474747
-- 描述：（可选项）非活跃色，支持rgb，rgba，#
+- 描述：（可选项）非活跃色，支持 rgb，rgba，#
 
 lightColor：
 
 - 类型：字符串
 - 默认值：#7A8B8B
-- 描述：（可选项）活跃色，支持rgb，rgba，#
+- 描述：（可选项）活跃色，支持 rgb，rgba，#
 
 centerX：
 
@@ -92,7 +94,7 @@ gifPath：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 - 内部字段：
 
@@ -104,6 +106,7 @@ ret：
 
 ##示例代码
 
+```js
 var loadingLabel = api.require('loadingLabel');
 loadingLabel.open(function( ret, err ){
     if( ret ){
@@ -112,6 +115,7 @@ loadingLabel.open(function( ret, err ){
          alert( JSON.stringify( err ) );
     }
 });
+```
 
 ##补充说明
 
@@ -122,7 +126,6 @@ loadingLabel.open(function( ret, err ){
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
-
 
 #**stop**<div id="2"></div>
 
@@ -141,7 +144,7 @@ id：
 ##示例代码
 
 ```js
-var loadingLabel = api.require("loadingLabel");
+var loadingLabel = api.require('loadingLabel');
 loadingLabel.stop({
     id: 1
 });
@@ -210,7 +213,7 @@ id：
 ```js
 var loadingLabel = api.require('loadingLabel');
 loadingLabel.close({
-    id:1
+    id: 1
 });
 ```
 

@@ -3,6 +3,8 @@ Title: UILinkedPicker
 Description: UILinkedPicker
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -37,7 +39,7 @@ open({params}, callback(ret, err))
 
 rect：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）模块的位置及尺寸
 - 内部字段：
 
@@ -51,23 +53,23 @@ rect：
 ```
 styles：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）模块各部分的样式
 - 内部字段：
 
 ```js
 {
-    bg: 'rgba(0,0,0,0)',     //（可选项）字符串类型；模块背景，支持 rgb、rgba、#，图片路径（本地路径，fs://，widget://）；默认：'rgba(0,0,0,0)'
+    bg: 'rgba(0,0,0,0)',     //（可选项）字符串类型；模块背景，支持 rgb、rgba、#，图片路径（本地路径，fs://、widget://）；默认：'rgba(0,0,0,0)'
 	text:{                   //（可选项）JSON对象；字体样式；默认值见内部字段
 	   size: 22,             //（可选项）数字类型；字体大小；默认值：22
-	   selected: '#fff',     //（可选项）字符串类型；选中字体色，支持rgb、rgba、#；默认#fff
-	   normal: '#000'        //（可选项）字符串类型；常态字体色；支持rgb、rgba、#；默认#000
+	   selected: '#fff',     //（可选项）字符串类型；选中字体色，支持 rgb、rgba、#；默认#fff
+	   normal: '#000'        //（可选项）字符串类型；常态字体色；支持 rgb、rgba、#；默认#000
 	},
 	item:{                   //（可选项）JSON对象；item 样式；默认值见内部字段
       w: 80,                 //（可选项）数字类型；背景视图的宽；默认值：单元格宽-20
       h: 45,                 //（可选项）数字类型；背景视图的高；默认值：单元格高-20
-	  normal: '#87ceeb',     //（可选项）字符串类型；常态背景色，支持rgb、rgba、#；默认值：#87ceeb
-	  selected: '#218868',   //（可选项）字符串类型；选中后的背景色，支持rgb、rgba、#；默认值：#218868
+	  normal: '#87ceeb',     //（可选项）字符串类型；常态背景色，支持 rgb、rgba、#；默认值：#87ceeb
+	  selected: '#218868',   //（可选项）字符串类型；选中后的背景色，支持 rgb、rgba、#；默认值：#218868
 	  zoomIn: 1.2            //（可选项）数字类型；选中后放大倍数，；默认值：1.2
     }
 }
@@ -87,408 +89,408 @@ data：
 }]
                     //举例如下：
                     //一级选择器：[{
-                      "value":{
-                        "id":1,
-                        "name":"A"
+                      'value':{
+                        'id':1,
+                        'name':'A'
                       }
                     },{
-                      "value":{
-                        "id":2,
-                        "name":"B"
+                      'value':{
+                        'id':2,
+                        'name':'B'
                       }
                     },{
-                      "value":{
-                        "id":3,
-                        "name":"C"
+                      'value':{
+                        'id':3,
+                        'name':'C'
                       }
                     },{
-                      "value":{
-                        "id":4,
-                        "name":"D"
+                      'value':{
+                        'id':4,
+                        'name':'D'
                       }
                     }]
                     //二级选择器： [{
-                      "value":{
-                        "id":10,
-                        "name":"A"
+                      'value':{
+                        'id':10,
+                        'name':'A'
                       },
-                      "children":[{
-	                      "value":{
-	                        "id":11,
-	                        "name":"10"
+                      'children':[{
+	                      'value':{
+	                        'id':11,
+	                        'name':'10'
 	                      }
 	                    },{
-	                      "value":{
-	                        "id":12,
-	                        "name":"11"
+	                      'value':{
+	                        'id':12,
+	                        'name':'11'
 	                      }
 	                    },{
-	                      "value":{
-	                        "id":13,
-	                        "name":"12"
+	                      'value':{
+	                        'id':13,
+	                        'name':'12'
 	                      }
 	                    },{
-	                      "value":{
-	                        "id":14,
-	                        "name":"13"
+	                      'value':{
+	                        'id':14,
+	                        'name':'13'
 	                      }
 	                    }]
                     },{
-                      "value":{
-                        "id":20,
-                        "name":"B"
+                      'value':{
+                        'id':20,
+                        'name':'B'
                       },
-                      "children":[{
-	                      "value":{
-	                        "id":21,
-	                        "name":"20"
+                      'children':[{
+	                      'value':{
+	                        'id':21,
+	                        'name':'20'
 	                      }
 	                    },{
-	                      "value":{
-	                        "id":22,
-	                        "name":"21"
+	                      'value':{
+	                        'id':22,
+	                        'name':'21'
 	                      }
 	                    },{
-	                      "value":{
-	                        "id":23,
-	                        "name":"22"
+	                      'value':{
+	                        'id':23,
+	                        'name':'22'
 	                      }
 	                    },{
-	                      "value":{
-	                        "id":24,
-	                        "name":"23"
+	                      'value':{
+	                        'id':24,
+	                        'name':'23'
 	                      }
 	                    }]
                     },{
-                      "value":{
-                        "id":30,
-                        "name":"C"
+                      'value':{
+                        'id':30,
+                        'name':'C'
                       },
-                      "children":[{
-	                      "value":{
-	                        "id":31,
-	                        "name":"30"
+                      'children':[{
+	                      'value':{
+	                        'id':31,
+	                        'name':'30'
 	                      }
 	                    },{
-	                      "value":{
-	                        "id":32,
-	                        "name":"31"
+	                      'value':{
+	                        'id':32,
+	                        'name':'31'
 	                      }
 	                    },{
-	                      "value":{
-	                        "id":33,
-	                        "name":"32"
+	                      'value':{
+	                        'id':33,
+	                        'name':'32'
 	                      }
 	                    },{
-	                      "value":{
-	                        "id":34,
-	                        "name":"33"
+	                      'value':{
+	                        'id':34,
+	                        'name':'33'
 	                      }
 	                    }]
                     },{
-                      "value":{
-                        "id":40,
-                        "name":"D"
+                      'value':{
+                        'id':40,
+                        'name':'D'
                       },
-                      "children":[{
-	                      "value":{
-	                        "id":41,
-	                        "name":"40"
+                      'children':[{
+	                      'value':{
+	                        'id':41,
+	                        'name':'40'
 	                      }
 	                    },{
-	                      "value":{
-	                        "id":42,
-	                        "name":"41"
+	                      'value':{
+	                        'id':42,
+	                        'name':'41'
 	                      }
 	                    },{
-	                      "value":{
-	                        "id":43,
-	                        "name":"42"
+	                      'value':{
+	                        'id':43,
+	                        'name':'42'
 	                      }
 	                    },{
-	                      "value":{
-	                        "id":44,
-	                        "name":"43"
+	                      'value':{
+	                        'id':44,
+	                        'name':'43'
 	                      }
 	                    }]
                     }]
 				    //三级选择器：  [{
-                      "value":{
-                        "id":10,
-                        "name":"A"
+                      'value':{
+                        'id':10,
+                        'name':'A'
                       },
-                      "children":[{
-	                      "value":{
-	                        "id":11,
-	                        "name":"10"
+                      'children':[{
+	                      'value':{
+	                        'id':11,
+	                        'name':'10'
 	                      },
-	                      "children":[{
-		                         "value":{
-		                            "id":111,
-		                            "name":"301"
+	                      'children':[{
+		                         'value':{
+		                            'id':111,
+		                            'name':'301'
 		                         }
 		                      },{
-		                         "value":{
-		                            "id":112,
-		                            "name":"302"
+		                         'value':{
+		                            'id':112,
+		                            'name':'302'
 		                         }
 		                   }]
 	                    },{
-	                      "value":{
-	                        "id":12,
-	                        "name":"11"
+	                      'value':{
+	                        'id':12,
+	                        'name':'11'
 	                      },
-	                      "children":[{
-		                         "value":{
-		                            "id":211,
-		                            "name":"303"
+	                      'children':[{
+		                         'value':{
+		                            'id':211,
+		                            'name':'303'
 		                         }
 		                      },{
-		                         "value":{
-		                            "id":212,
-		                            "name":"304"
+		                         'value':{
+		                            'id':212,
+		                            'name':'304'
 		                         }
 		                   }]
 	                    },{
-	                      "value":{
-	                        "id":13,
-	                        "name":"12"
+	                      'value':{
+	                        'id':13,
+	                        'name':'12'
 	                      },
-	                      "children":[{
-		                         "value":{
-		                            "id":311,
-		                            "name":"331"
+	                      'children':[{
+		                         'value':{
+		                            'id':311,
+		                            'name':'331'
 		                         }
 		                      },{
-		                         "value":{
-		                            "id":312,
-		                            "name":"332"
+		                         'value':{
+		                            'id':312,
+		                            'name':'332'
 		                         }
 		                   }]
 	                    },{
-	                      "value":{
-	                        "id":14,
-	                        "name":"13"
+	                      'value':{
+	                        'id':14,
+	                        'name':'13'
 	                      },
-	                      "children":[{
-		                         "value":{
-		                            "id":411,
-		                            "name":"341"
+	                      'children':[{
+		                         'value':{
+		                            'id':411,
+		                            'name':'341'
 		                         }
 		                      },{
-		                         "value":{
-		                            "id":412,
-		                            "name":"342"
+		                         'value':{
+		                            'id':412,
+		                            'name':'342'
 		                         }
 		                   }]
 	                    }]
                     },{
-                      "value":{
-                        "id":20,
-                        "name":"B"
+                      'value':{
+                        'id':20,
+                        'name':'B'
                       },
-                      "children":[{
-	                      "value":{
-	                        "id":21,
-	                        "name":"20"
+                      'children':[{
+	                      'value':{
+	                        'id':21,
+	                        'name':'20'
 	                      },
-	                      "children":[{
-		                         "value":{
-		                            "id":213,
-		                            "name":"213"
+	                      'children':[{
+		                         'value':{
+		                            'id':213,
+		                            'name':'213'
 		                         }
 		                      },{
-		                         "value":{
-		                            "id":214,
-		                            "name":"214"
+		                         'value':{
+		                            'id':214,
+		                            'name':'214'
 		                         }
 		                   }]
 	                    },{
-	                      "value":{
-	                        "id":22,
-	                        "name":"21"
+	                      'value':{
+	                        'id':22,
+	                        'name':'21'
 	                      },
-	                      "children":[{
-		                         "value":{
-		                            "id":221,
-		                            "name":"221"
+	                      'children':[{
+		                         'value':{
+		                            'id':221,
+		                            'name':'221'
 		                         }
 		                      },{
-		                         "value":{
-		                            "id":222,
-		                            "name":"222"
+		                         'value':{
+		                            'id':222,
+		                            'name':'222'
 		                         }
 		                   }]
 	                    },{
-	                      "value":{
-	                        "id":23,
-	                        "name":"22"
+	                      'value':{
+	                        'id':23,
+	                        'name':'22'
 	                      },
-	                      "children":[{
-		                         "value":{
-		                            "id":231,
-		                            "name":"231"
+	                      'children':[{
+		                         'value':{
+		                            'id':231,
+		                            'name':'231'
 		                         }
 		                      },{
-		                         "value":{
-		                            "id":232,
-		                            "name":"232"
+		                         'value':{
+		                            'id':232,
+		                            'name':'232'
 		                         }
 		                   }]
 	                    },{
-	                      "value":{
-	                        "id":24,
-	                        "name":"23"
+	                      'value':{
+	                        'id':24,
+	                        'name':'23'
 	                      },
-	                      "children":[{
-		                         "value":{
-		                            "id":241,
-		                            "name":"241"
+	                      'children':[{
+		                         'value':{
+		                            'id':241,
+		                            'name':'241'
 		                         }
 		                      },{
-		                         "value":{
-		                            "id":242,
-		                            "name":"242"
+		                         'value':{
+		                            'id':242,
+		                            'name':'242'
 		                         }
 		                   }]
 	                    }]
                     },{
-                      "value":{
-                        "id":30,
-                        "name":"C"
+                      'value':{
+                        'id':30,
+                        'name':'C'
                       },
-                      "children":[{
-	                      "value":{
-	                        "id":31,
-	                        "name":"30"
+                      'children':[{
+	                      'value':{
+	                        'id':31,
+	                        'name':'30'
 	                      },
-	                      "children":[{
-		                         "value":{
-		                            "id":311,
-		                            "name":"311"
+	                      'children':[{
+		                         'value':{
+		                            'id':311,
+		                            'name':'311'
 		                         }
 		                      },{
-		                         "value":{
-		                            "id":312,
-		                            "name":"312"
+		                         'value':{
+		                            'id':312,
+		                            'name':'312'
 		                         }
 		                   }]
 	                    },{
-	                      "value":{
-	                        "id":32,
-	                        "name":"31"
+	                      'value':{
+	                        'id':32,
+	                        'name':'31'
 	                      },
-	                      "children":[{
-		                         "value":{
-		                            "id":321,
-		                            "name":"321"
+	                      'children':[{
+		                         'value':{
+		                            'id':321,
+		                            'name':'321'
 		                         }
 		                      },{
-		                         "value":{
-		                            "id":322,
-		                            "name":"322"
+		                         'value':{
+		                            'id':322,
+		                            'name':'322'
 		                         }
 		                   }]
 	                    },{
-	                      "value":{
-	                        "id":33,
-	                        "name":"32"
+	                      'value':{
+	                        'id':33,
+	                        'name':'32'
 	                      },
-	                      "children":[{
-		                         "value":{
-		                            "id":331,
-		                            "name":"331"
+	                      'children':[{
+		                         'value':{
+		                            'id':331,
+		                            'name':'331'
 		                         }
 		                      },{
-		                         "value":{
-		                            "id":331,
-		                            "name":"332"
+		                         'value':{
+		                            'id':331,
+		                            'name':'332'
 		                         }
 		                   }]
 	                    },{
-	                      "value":{
-	                        "id":34,
-	                        "name":"33"
+	                      'value':{
+	                        'id':34,
+	                        'name':'33'
 	                      },
-	                      "children":[{
-		                         "value":{
-		                            "id":341,
-		                            "name":"341"
+	                      'children':[{
+		                         'value':{
+		                            'id':341,
+		                            'name':'341'
 		                         }
 		                      },{
-		                         "value":{
-		                            "id":342,
-		                            "name":"342"
+		                         'value':{
+		                            'id':342,
+		                            'name':'342'
 		                         }
 		                   }]
 	                    }]
                     },{
-                      "value":{
-                        "id":40,
-                        "name":"D"
+                      'value':{
+                        'id':40,
+                        'name':'D'
                       },
-                      "children":[{
-	                      "value":{
-	                        "id":41,
-	                        "name":"40"
+                      'children':[{
+	                      'value':{
+	                        'id':41,
+	                        'name':'40'
 	                      },
-	                      "children":[{
-		                         "value":{
-		                            "id":411,
-		                            "name":"411"
+	                      'children':[{
+		                         'value':{
+		                            'id':411,
+		                            'name':'411'
 		                         }
 		                      },{
-		                         "value":{
-		                            "id":412,
-		                            "name":"412"
+		                         'value':{
+		                            'id':412,
+		                            'name':'412'
 		                         }
 		                   }]
 	                    },{
-	                      "value":{
-	                        "id":42,
-	                        "name":"41"
+	                      'value':{
+	                        'id':42,
+	                        'name':'41'
 	                      },
-	                      "children":[{
-		                         "value":{
-		                            "id":421,
-		                            "name":"421"
+	                      'children':[{
+		                         'value':{
+		                            'id':421,
+		                            'name':'421'
 		                         }
 		                      },{
-		                         "value":{
-		                            "id":422,
-		                            "name":"422"
+		                         'value':{
+		                            'id':422,
+		                            'name':'422'
 		                         }
 		                   }]
 	                    },{
-	                      "value":{
-	                        "id":43,
-	                        "name":"42"
+	                      'value':{
+	                        'id':43,
+	                        'name':'42'
 	                      },
-	                      "children":[{
-		                         "value":{
-		                            "id":431,
-		                            "name":"431"
+	                      'children':[{
+		                         'value':{
+		                            'id':431,
+		                            'name':'431'
 		                         }
 		                      },{
-		                         "value":{
-		                            "id":432,
-		                            "name":"432"
+		                         'value':{
+		                            'id':432,
+		                            'name':'432'
 		                         }
 		                   }]
 	                    },{
-	                      "value":{
-	                        "id":44,
-	                        "name":"43"
+	                      'value':{
+	                        'id':44,
+	                        'name':'43'
 	                      },
-	                      "children":[{
-		                         "value":{
-		                            "id":441,
-		                            "name":"441"
+	                      'children':[{
+		                         'value':{
+		                            'id':441,
+		                            'name':'441'
 		                         }
 		                      },{
-		                         "value":{
-		                            "id":442,
-		                            "name":"442"
+		                         'value':{
+		                            'id':442,
+		                            'name':'442'
 		                         }
 		                   }]
 	                    }]
@@ -504,7 +506,7 @@ indexs：
 
 - 类型：数组
 - 描述：（可选项）各列默认选中项 item 的下标(不可超过本列 item 总数)组成的数组
-- 默认值：[0,0...]//数组个数和级数对应
+- 默认值：[0,0...]		//数组个数和级数对应
 
 bounce：
 
@@ -520,14 +522,14 @@ fixedOn：
 
 fixed:
 - 类型：布尔
-- 描述：（可选项）模块是否随所属 Window 或 Frame 滚动
+- 描述：（可选项）模块是否随所属 window 或 frame 滚动
 - 默认值：true（不随之滚动）
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -538,7 +540,7 @@ ret：
                                    //selected（选择器选中内容）
    selects:[{                      //数组类型；从各级目录选取的内容信息组成的数组，若选择器是自定义的二级选择器，则本数组包含两个元素，若选择器是自定义的三级选择器，则此数组包含三个元素
        index: 1,                   //数字类型；选取的数据在所在数组内的索引
-       value: {"id":1,"name":"北京"}//JSON对象；可自定义的结点的信息
+       value: {'id':1,'name':'北京'}//JSON对象；可自定义的结点的信息
    }]
 }
 ```
@@ -575,54 +577,54 @@ UILinkedPicker.open({
    fixedOn: api.frameName,
    fixed: false,
    data: [{
-        "value": {
-          "id": 1,
-          "name": "A"
+        'value': {
+          'id': 1,
+          'name': 'A'
         }
       },{
-        "value": {
-          "id": 2,
-          "name": "B"
+        'value': {
+          'id': 2,
+          'name': 'B'
         }
       },{
-        "value": {
-          "id": 3,
-          "name": "C"
+        'value': {
+          'id': 3,
+          'name': 'C'
         }
       },{
-        "value": {
-          "id": 4,
-          "name": "D"
+        'value': {
+          'id': 4,
+          'name': 'D'
         }
       },{
-        "value": {
-          "id": 5,
-          "name": "E"
+        'value': {
+          'id': 5,
+          'name': 'E'
         }
       },{
-        "value": {
-          "id": 6,
-          "name": "F"
+        'value': {
+          'id': 6,
+          'name': 'F'
         }
       },{
-        "value": {
-          "id": 7,
-          "name": "G"
+        'value': {
+          'id': 7,
+          'name': 'G'
         }
       },{
-        "value": {
-          "id": 8,
-          "name": "H"
+        'value': {
+          'id': 8,
+          'name': 'H'
         }
       },{
-        "value": {
-          "id": 9,
-          "name": "I"
+        'value': {
+          'id': 9,
+          'name': 'I'
         }
       },{
-        "value": {
-          "id": 10,
-          "name": "J"
+        'value': {
+          'id': 10,
+          'name': 'J'
         }
     }]
 }, function( ret, err ) {
@@ -636,7 +638,7 @@ UILinkedPicker.open({
 
 ##可用性
 
-ios 系统，android 系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -666,7 +668,7 @@ UILinkedPicker.set({
 
 ##可用性
 
-ios 系统，android 系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -685,7 +687,7 @@ UILinkedPicker.close();
 
 ##可用性
 
-ios 系统，android 系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -709,7 +711,7 @@ UILinkedPicker.hide();
 
 ##可用性
 
-ios 系统，android 系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -729,8 +731,6 @@ UILinkedPicker.show();
 
 ##可用性
 
-ios 系统，android 系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
-
-

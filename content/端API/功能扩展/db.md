@@ -3,6 +3,8 @@ Title: db
 Description: db
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -22,15 +24,15 @@ Description: db
 
 #**概述**
 
-db模块封装了手机常用数据库sqlite的增删改查语句，可实现数据的本地存储，极大的简化了数据持久化问题
+db 模块封装了手机常用数据库 sqlite 的增删改查语句，可实现数据的本地存储，极大的简化了数据持久化问题
 
 #**openDatabase**<div id="1"></div>
 
 打开数据库，若数据库不存在则创建数据库。
 
-数据库打开后即使当前页面关闭了，数据库也不会关闭，除非手动调用closeDatabase()方法关闭，所以一旦打开在其它页面就可以直接使用。
+数据库打开后即使当前页面关闭了，数据库也不会关闭，除非手动调用 closeDatabase()方法关闭，所以一旦打开在其它页面就可以直接使用。
 
-若数据库放在widget目录下，那么需要先把数据库拷贝到fs://对应目录下面再使用
+若数据库放在 widget 目录下，那么需要先把数据库拷贝到 fs:// 对应目录下面再使用
 
 openDatabase({params}, callback(ret, err))
 
@@ -44,14 +46,14 @@ name：
 path：
 
 - 类型：字符串
-- 描述：（可选项）数据库所在路径，不传时使用默认创建的路径。支持fs://、widget://等协议（如fs://user.db）
+- 描述：（可选项）数据库所在路径，不传时使用默认创建的路径。支持 fs://、widget://等协议（如fs://user.db）
 - 默认值：自动创建的路径
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -61,7 +63,7 @@ ret：
 ```
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -76,7 +78,7 @@ err：
 var db = api.require('db');
 db.openDatabase({
 	name: 'test'
-},function( ret, err ){		
+}, function(ret, err){		
     if( ret.status ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -87,7 +89,7 @@ db.openDatabase({
 
 ##可用性
 
-iOS系统，Android系统，PC模拟器
+iOS系统，Android系统，PC 模拟器
 
 可提供的1.0.0及更高版本
 
@@ -109,17 +111,17 @@ name：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
 {
-	status:true           //布尔类型；操作成功状态值，true|false
+	status: true           //布尔类型；操作成功状态值，true|false
 }
 ```
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -133,7 +135,7 @@ err：
 var db = api.require('db');
 db.closeDatabase({
 	name: 'test'
-},function( ret, err ){		
+}, function(ret, err){		
     if( ret.status ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -144,7 +146,7 @@ db.closeDatabase({
 
 ##可用性
 
-iOS系统，Android系统，PC模拟器
+iOS系统，Android系统，PC 模拟器
 
 可提供的1.0.0及更高版本
 
@@ -174,23 +176,23 @@ operation：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
 {
-	status:true           //布尔类型；操作成功状态值，true|false
+	status: true           //布尔类型；操作成功状态值，true|false
 }
 ```
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
 {
-	msg:""                //字符串类型；错误描述
+	msg: ''                //字符串类型；错误描述
 }
 ```
 
@@ -201,7 +203,7 @@ var db = api.require('db');
 db.transaction({
 	name: 'test',
 	operation: 'begin'
-},function( ret, err ){		
+}, function(ret, err){		
     if( ret.status ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -212,14 +214,14 @@ db.transaction({
 
 ##可用性
 
-iOS系统，Android系统，PC模拟器
+iOS系统，Android系统，PC 模拟器
 
 可提供的1.0.0及更高版本
 
 
 #**executeSql**<div id="4"></div>
 
-执行sql
+执行 sql
 
 executeSql({params}, callback(ret, err))
 
@@ -233,29 +235,29 @@ name：
 sql：
 
 - 类型：字符串
-- 描述：sql语句
+- 描述：sql 语句
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
 {
-	status:true           //布尔类型；操作成功状态值，true|false
+	status: true           //布尔类型；操作成功状态值，true|false
 }
 ```
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
 {
-	msg:""                //字符串类型；错误描述
+	msg: ''                //字符串类型；错误描述
 }
 ```
 
@@ -266,7 +268,7 @@ var db = api.require('db');
 db.executeSql({
 	name: 'test',
 	sql: 'CREATE TABLE Persons(Id_P int, LastName varchar(255), FirstName varchar(255), Address varchar(255), City varchar(255))'	
-},function( ret, err ){		
+}, function(ret, err){		
     if( ret.status ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -304,7 +306,7 @@ sql：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -316,7 +318,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -332,7 +334,7 @@ var db = api.require('db');
 db.selectSql({
 	name: 'test',
 	sql: 'SELECT * FROM Persons'
-},function( ret, err ){		
+}, function(ret, err){		
     if( ret.status ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -343,7 +345,7 @@ db.selectSql({
 
 ##可用性
 
-iOS系统，Android系统，PC模拟器
+iOS系统，Android系统，PC 模拟器
 
 可提供的1.0.0及更高版本
 </div>

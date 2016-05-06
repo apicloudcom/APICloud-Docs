@@ -16,7 +16,7 @@ Description: mam
 
 #**概述**
 
-默认APICloud会自动检测版本更新，用户也可以在config.xml里配置autoUpdate为false，然后使用mam模块来检测更新，mam模块还提供自定义事件功能
+默认APICloud会自动检测版本更新，用户也可以在[config.xml](/APICloud/技术专题/app-config-manual)里配置autoUpdate为false，然后使用mam模块来检测更新，mam模块还提供自定义事件功能
 
 #**checkUpdate**<div id="1"></div>
 
@@ -28,7 +28,7 @@ checkUpdate(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -51,7 +51,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 

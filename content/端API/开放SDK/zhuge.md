@@ -3,6 +3,8 @@ Title: zhuge
 Description: zhuge
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：诸葛</p>
+
 <div class="outline">
 
 [配置Zhuge](#a1)
@@ -32,7 +34,8 @@ zhuge是[诸葛io](https://zhugeio.com/)的统计SDK，使用此模块可以使�
 ```js
 	<feature name="zhuge">
 		<param name="appKey" value="此处填写您在诸葛申请的APPKEY" />
-		<param name="appChannel" value="360" />	</feature>
+		<param name="appChannel" value="360" />
+	</feature>
 ```
 
 - 字段描述:
@@ -114,14 +117,15 @@ eventName：
 
 eventPro:
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）自定义事件属性，由事件属性与事件值组成
 
 
 ##示例代码
 
 ```js
-var zhuge = api.require('zhuge');var eventProperty = {
+var zhuge = api.require('zhuge');
+var eventProperty = {
 	'种类':'手机',
 	'金额':'2000',
 	'品牌':'华为'
@@ -139,7 +143,7 @@ zhuge.track({
 ##可用性
 
 iOS系统，Android系统
-可提供的1.0.0及更高版本
+可提供的1.0.0及更高版本
 
 #**identify**<div id="a4"></div>
 
@@ -156,13 +160,14 @@ uid：
 
 userPro:
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：用户属性，由用户属性与值组成
 
 ##示例代码
 
 ```js
-var zhuge = api.require('zhuge');var userProperties = {
+var zhuge = api.require('zhuge');
+var userProperties = {
 	'性别':'男',
 	'年龄':'20',
 	'等级':'vip'
@@ -192,7 +197,9 @@ flush()
 ##示例代码
 
 ```js
-var zhuge = api.require('zhuge');zhuge.flush();```
+var zhuge = api.require('zhuge');
+zhuge.flush();
+```
 
 
 ##补充说明

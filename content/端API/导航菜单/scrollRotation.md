@@ -3,6 +3,8 @@ Title: scrollRotation
 Description: scrollRotation
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -22,7 +24,7 @@ Description: scrollRotation
 
 #**概述**
 
-scrollRotation是一个图片旋转联播器，实现了类似扑克牌效果的图片转动联播。开发者可自定义图片的数量，点击中间图片时会有回调，让开发者自定义点击跳转连接
+scrollRotation 是一个图片旋转联播器，实现了类似扑克牌效果的图片转动联播。开发者可自定义图片的数量，点击中间图片时会有回调，让开发者自定义点击跳转连接
 
 ![图片说明](/img/docImage/scrollRotation.jpg)
 
@@ -68,7 +70,7 @@ items：
 [{
 	imgPath : 		//字符串类型；图片路径，要求本地协议（widget://、fs://）
 	title:          //字符串类型；说明文字
-	fontColor:      //字符串类型；字体颜色，支持rgba、rgb、#；默认：#fff
+	fontColor:      //字符串类型；字体颜色，支持 rgba、rgb、#；默认：#fff
 	fontSize:       //数字类型；字体大小；默认：13
 }]
 ```
@@ -107,14 +109,14 @@ fixedOn：
 fixed:
 
 - 类型：布尔
-- 描述：（可选项）模块是否随所属 Window 或 Frame 滚动
+- 描述：（可选项）模块是否随所属 window 或 frame 滚动
 - 默认值：true（不随之滚动）
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -155,7 +157,7 @@ scrollRotation.open({
         fontSize: 16 
     }],
     fixedOn: api.frameName
-},function( ret, err ){		
+}, function(ret, err){		
     if( ret ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -174,7 +176,7 @@ iOS系统，Android系统
 
 滚动到指定条目
 
-setIndex(params)
+setIndex({params})
 
 ##params
 
@@ -195,8 +197,8 @@ animation：
 ```js
 var scrollRotation = api.require('scrollRotation');
 scrollRotation.setIndex({
-    index:1,
-    animation:false
+    index: 1,
+    animation: false
 });
 ```
 
@@ -245,8 +247,6 @@ scrollRotation.hide();
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
-
-
 
 #**close**<div id="5"></div>
 

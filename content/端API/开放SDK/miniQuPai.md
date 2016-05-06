@@ -3,6 +3,8 @@ Title: miniQuPai
 Description: miniQuPai
 */
 
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 #**微视频云接入**
 
 开发者在使用miniQuPai模块时，需要开发者自行到趣拍的微视频云申请相应的AppKey和AppSecret。
@@ -106,7 +108,7 @@ alert(JSON.stringify(ret));
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -118,7 +120,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -209,7 +211,7 @@ timelineIndicatorOn：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -225,7 +227,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -301,7 +303,7 @@ tags：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -314,7 +316,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js

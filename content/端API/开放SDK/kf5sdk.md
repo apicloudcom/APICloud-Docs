@@ -3,6 +3,8 @@ Title: kf5sdk
 Description: kf5sdk
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：逸创云客服</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 	
@@ -26,7 +28,7 @@ kf5提供给开发者发送工单、查看工单列表、查看知识库等功�
 
 初始化kf5  
 
-initKF5({params},callback(ret,err))  
+initKF5({params}, callback(ret, err))  
 
 ###params   
 
@@ -43,7 +45,18 @@ appId:
 email:  
 
 - 类型：字符串  
-- 描述：用户的账号 
+- 描述：(手机和邮箱,必须传其一)用户的邮箱 
+
+phone:  
+
+- 类型：字符串  
+- 描述：(手机和邮箱,必须传其一)用户的手机号
+
+verifyUserType:
+
+- 类型：整型  
+- 描述：（可选项）用户信息验证方式,只能传1(验证邮箱)或2(验证手机号),只有当邮箱和手机号同时传入时才生效,默认为1(验证邮箱)
+- 默认值：1/2
 
 appName:  
 
@@ -61,16 +74,13 @@ userName:
 - 类型：字符串  
 - 描述：（可选项）用户的昵称 
 
-phone:  
 
-- 类型：字符串  
-- 描述：（可选项）用户的电话
 
-###callback(ret,err)  
+###callback(ret, err)  
 
 err:  
 
-- 类型：JSON对象  
+- 类型：JSON 对象  
 - 内部字段：  
 
 ```js
@@ -81,7 +91,7 @@ err:
 
 ret:  
 
-- 类型：JSON对象  
+- 类型：JSON 对象  
 - 内部字段：  
 
 ```js
@@ -91,8 +101,13 @@ ret:
 ```
 
 ###补充说明  
-
-使用此模块，必须先用initKF5进行初始化。email为用户账号，必须为email格式，如果你的kf5系统中没有该用户，则自动创建。password可不填。当为创建用户时，不填写password，则创建的用户没有密码。   
+使用此模块，必须先用initKF5进行初始化。手机和邮箱必须格式正确。    
+> 1.email和phone必须传其一,如果单独传入email或者phone,则verifyUserType无效;     
+> 2.如果email和phone都传入时以verifyPriorityType(用户信息验证方式)为主;     
+>> 2.1 如果verifyUserType设置为1,则验证kf5系统中有没有该email,有则验证成功,并修改该用户的手机号(如果手机号已在系统中存在,将不会修改,并会在ret.message中提示);    
+>> 2.2 如果verifyUserType设置为2,则验证kf5系统中有没有该phone,有则验证成功;     
+>>> 2.2.1 如果该用户不存在email则添加该email(如果该email已在系统中存在,将不会添加,并会在ret.message中提示);     
+>>> 2.2.1 如果该用户存在email,则email不能修改,并会在ret.message中提示;    
 
 ###示例代码  
 
@@ -101,12 +116,13 @@ var param = {
 	hostName : "",  
 	appId : "",  
 	email : "",  
-	userName : "",  
+    userName : "", 
+    verifyUserType  : 1 ,   
 	phone : ""  
 };  
 var kf5 = api.require('kf5sdk');  
 kf5.initKF5(param,callback); 
-function callback(ret,err){  
+function callback(ret, err){  
 	api.alert({  
 		msg: ret.message  
 	});
@@ -116,7 +132,7 @@ function callback(ret,err){
 
 iOS系统  Android系统(SDK10及以上)  
 
-可提供的1.0.0及更高版本  
+可提供的1.5.0及更高版本  
 
 
 #**showHelpCenter**<div id="a2"></div>  
@@ -140,7 +156,7 @@ var params = {
 	type: 0  
 };   
 var kf5 = api.require('kf5sdk');  
-kf5.showHelpCenter(params);  
+kf5.showHelpCenter({params});  
 ```
 ###补充说明  
 
@@ -150,7 +166,7 @@ kf5.showHelpCenter(params);
 
 iOS系统  Android系统(SDK10及以上)  
 
-可提供的1.0.0及更高版本  
+可提供的1.5.0及更高版本  
 
 
 #**showRequestCreation**<div id="a3"></div> 
@@ -174,7 +190,7 @@ kf5.showRequestCreation();
 
 iOS系统  Android系统(SDK10及以上)  
 
-可提供的1.0.0及更高版本  
+可提供的1.5.0及更高版本  
 
 
 #**showRequestList**<div id="a4"></div>  
@@ -198,7 +214,7 @@ kf5.showRequestList();
 
 iOS系统  Android系统(SDK10及以上)  
 
-可提供的1.0.0及更高版本  
+可提供的1.5.0及更高版本  
 
 
 #**showChatView**  <div id="a6"></div> 
@@ -304,7 +320,7 @@ kf5.showChatView(params,noAgentAlertActionCallback);
 
 iOS系统  Android系统(SDK10及以上)  
 
-可提供的1.0.0及更高版本 
+可提供的1.5.0及更高版本 
 
 
 
@@ -372,7 +388,7 @@ rightTextVisible    : true,
 backImgSrc          : api.wgtRootDir +"/image/refresh.png"
 }; 
 var kf5 = api.require('kf5sdk');  
-kf5.setTopBarColor(params);  
+kf5.setTopBarColor({params});  
 ```
 ###补充说明  
 
@@ -382,5 +398,5 @@ kf5.setTopBarColor(params);
 
 iOS系统  Android系统(SDK10及以上)  
 
-可提供的1.0.0及更高版本   
+可提供的1.5.0及更高版本   
 

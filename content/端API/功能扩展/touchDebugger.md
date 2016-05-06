@@ -6,6 +6,8 @@ Description: touchDebugger  for android debug on windows+Mac osx
 
 */
 
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <div class="outline">
 
 [setDebug](#1)
@@ -88,7 +90,7 @@ enable：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -99,7 +101,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js

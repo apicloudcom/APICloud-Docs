@@ -3,6 +3,9 @@ Title: imageBrowser
 Description: imageBrowser
 */
 
+
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -10,7 +13,7 @@ Description: imageBrowser
 
 #**概述**
 
-imageBrowser模仿系统相册，实现了对本地以及网络图片的查看浏览。可以是九宫格方式也可以是图片流方式，效果流畅，**本模块暂仅支持竖屏。本模块已有优化升级版[photoBrowser](http://docs.apicloud.com/端API/功能扩展/photoBrowser)**
+imageBrowser 模仿系统相册，实现了对本地以及网络图片的查看浏览。可以是九宫格方式也可以是图片流方式，效果流畅，**本模块暂仅支持竖屏。本模块已有优化升级版[photoBrowser](http://docs.apicloud.com/端API/功能扩展/photoBrowser)**
 
 ![图片说明](/img/docImage/imageBrowser.jpg)
 
@@ -50,7 +53,7 @@ bg：
 
 - 类型：字符串
 - 默认值：#32353b
-- 描述：列表展示时展示板的设置，支持rgb，rgba，#，img，可为空
+- 描述：列表展示时展示板的设置，支持 rgb，rgba，#，img，可为空
 
 tapClose：
 

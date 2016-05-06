@@ -2,6 +2,9 @@
 Title: contacts
 Description: contacts
 */
+
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <div class="outline">
 [select](#m1)
 
@@ -30,7 +33,7 @@ Description: contacts
 
 #**概述**
 
-contacts 模块封装了系统通讯录的相关接口；可实现联系人的增、删、改、查操作，创建、管理分组，移动联系人等功能；用于读取或管理通讯录联系人的数据。**contacts 模块是 contact 模块的优化版。注意在 Android 平台上使用此模块云编译时请添加通讯录访问权限**
+contacts 模块封装了系统通讯录的相关接口；可实现联系人的增、删、改、查的操作，创建、管理分组、移动联系人等功能；用于读取或管理通讯录联系人的数据。**contacts 模块是 contact 模块的优化版。注意在 Android 平台上使用此模块云编译时请添加通讯录访问权限**
 
 <div id="m1"></div>
 #**select**
@@ -43,7 +46,7 @@ select(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -76,7 +79,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -179,7 +182,7 @@ title：
 
 address：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）联系人地址
 - 内部字段：
 
@@ -202,7 +205,7 @@ note：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -213,7 +216,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -252,7 +255,7 @@ contacts.add({
 		ZIP: '100000'
 	},
 	note: '无'
-}, function( ret, err ){
+}, function(ret, err){
 	if( ret ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -285,7 +288,7 @@ ids：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -295,7 +298,7 @@ ret：
 ```
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -313,7 +316,7 @@ err：
 var contacts = api.require('contacts');
 contacts.delete({
 	ids: [1, 2]
-}, function( ret, err ){
+}, function(ret, err){
 	if( ret ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -397,7 +400,7 @@ title：
 
 address：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）联系人地址
 - 内部字段：
 
@@ -420,7 +423,7 @@ note：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -431,7 +434,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -471,7 +474,7 @@ contacts.update({
         ZIP: '100000'
     },
     note: '无'
-}, function( ret, err ){
+}, function(ret, err){
 	if( ret ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -509,7 +512,7 @@ groupId：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -519,7 +522,7 @@ ret：
 ```
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -539,7 +542,7 @@ var contacts = api.require('contacts');
 contacts.move({
     id: 10,
     groupId: 20
-}, function( ret, err ){
+}, function(ret, err){
     if( ret ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -568,11 +571,11 @@ ids：
 - 类型：数组
 - 描述：联系人 id 组成的数组，若 id 不存在则不处理
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -606,7 +609,7 @@ ret：
 ```
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -623,7 +626,7 @@ err：
 var contacts = api.require('contacts');
 contacts.query({
     ids: [1, 2]
-}, function( ret, err ){
+}, function(ret, err){
 	if( ret ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -652,11 +655,11 @@ keyword：
 - 类型：字符串
 - 描述：要查询的关键字 **注意：仅搜索 lastName 和 firstName 包含的关键字**
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -690,7 +693,7 @@ ret：
 ```
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -742,11 +745,11 @@ pageIndex：
 - 描述：（可选项）联系人的分页索引
 - 默认值：0
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -782,7 +785,7 @@ ret：
 ```
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -800,7 +803,7 @@ var contacts = api.require('contacts');
 contacts.queryByPage({
     count: 20,
     pageIndex: 0
-}, function( ret, err ){
+}, function(ret, err){
     if( ret ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -833,7 +836,7 @@ groupName：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -844,7 +847,7 @@ ret：
 ```
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -861,7 +864,7 @@ err：
 var contacts = api.require('contacts');
 contacts.createGroup({
     groupName: '同学'
-}, function( ret, err ){
+}, function(ret, err){
 	if( ret ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -894,7 +897,7 @@ groupId：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -904,7 +907,7 @@ ret：
 ```
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -922,7 +925,7 @@ err：
 var contacts = api.require('contacts');
 contacts.deleteGroup({
     groupId: 1
-}, function( ret, err ){
+}, function(ret, err){
    if( ret ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -948,7 +951,7 @@ queryGroups(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -962,7 +965,7 @@ ret：
 ```
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -1010,7 +1013,7 @@ groupId：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -1044,7 +1047,7 @@ ret：
 ```
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js

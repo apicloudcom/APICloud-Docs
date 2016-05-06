@@ -3,11 +3,18 @@ Title: ble
 Description: ble
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
+<ul id="tab" class="clearfix">
+	<li class="active"><a href="#method-content">Method</a></li>
+</ul>
+<div id="method-content">
+
 <div class="outline">
 [initManager](#1)
 [scan](#2)
 [getPeripheral](#3)
-[isScanning](4)
+[isScanning](#4)
 [stopScan](#5)
 [connect](#6)
 [disconnect](#7)
@@ -51,7 +58,9 @@ Description: ble
 
 ***注意：***
 
-若要支持后台使用蓝牙功能需配置 config.xml 文件 [bluetooth-central、bluetooth-peripheral](http://docs.apicloud.com/APICloud/%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/app-config-manual#14-2) 字段。
+若要支持后台使用蓝牙功能需配置 [config.xml](/APICloud/技术专题/app-config-manual) 文件 [bluetooth-central、bluetooth-peripheral](http://docs.apicloud.com/APICloud/%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/app-config-manual#14-2) 字段。
+
+***本模块源码已开源，地址为：https://github.com/apicloudcom/ble***
 
 **模块接口**
 
@@ -61,11 +70,11 @@ Description: ble
 
 initManager(cllback(ret))
 
-##callback(ret)
+##callback(ret, err)
 
 ret:
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -100,7 +109,7 @@ iOS系统，Android系统
 
 开始搜索蓝牙4.0设备，模块内部会不断的扫描跟新附近的蓝牙4.0设备信息，可通过 getPeripheral 接口来获取扫描到的设备信息。若要停止、清空扫描则调用 stopScan 接口
 
-scan({params}, callback(ret))
+scan({params}, callback(ret, err))
 
 ##params
 
@@ -109,11 +118,11 @@ serviceUUIDs
 - 类型：数组
 - 描述：（可选项）要扫描的蓝牙4.0设备的服务（service）的 UUID（字符串） 组成的数组，若不传则扫描附近的所有支持蓝牙4.0的设备
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -145,13 +154,13 @@ iOS系统，Android系统
 
 获取当前扫描到的所有外围设备信息
 
-getPeripheral(callback(ret))
+getPeripheral(callback(ret, err))
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：每发现新设备便会回调当前发现的所有蓝牙4.0设备信息
 - 内部字段：
 
@@ -160,8 +169,7 @@ ret：
     peripherals:[{ //数组类型；获取到的当前扫描到的蓝牙4.0设备
       uuid: '',    //字符串类型；扫描到的蓝牙设备的 UUID
       name: '',    //字符串类型；扫描到的蓝牙设备的名字
-      rssi:  ,     //数字类型；扫描到的蓝牙设备的信号强度
-      services:[]  //数组类型；扫描到的蓝牙设备的所有服务 UUID 的集合
+      rssi:        //数字类型；扫描到的蓝牙设备的信号强度
     },...]
 }
 ```
@@ -187,14 +195,14 @@ iOS系统，Android系统
 
 判断是否正在扫描
 
-isScanning(callback(ret))
+isScanning(callback(ret, err))
 
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -207,7 +215,7 @@ ret：
 
 ```js
 var ble = api.require('ble');
-ble.isConnected(function( ret ){
+ble.isScanning(function( ret ){
     if( ret ){
         alert( '正在扫描' );
     }
@@ -222,7 +230,7 @@ iOS系统，Android系统
 
 #**stopScan**<div id="5"></div>
 
-停止搜索附近的蓝牙设备，并情况已搜索到的记录在本地的外围设备信息
+停止搜索附近的蓝牙设备，并清空已搜索到的记录在本地的外围设备信息
 
 stopScan()
 
@@ -243,7 +251,7 @@ iOS系统，Android系统
 
 连接指定外围设备
 
-connect({params}, callback(ret,err))
+connect({params}, callback(ret, err))
 
 ##params
 
@@ -253,7 +261,7 @@ peripheralUUID：
 - 描述：要连接的外围设备的 UUID 
 
 
-##callback(ret,err)
+##callback(ret, err)
 
 ret:
 
@@ -307,7 +315,7 @@ iOS系统，Android系统
 
 断开与指定外围设备的连接
 
-disconnect({params},callback(ret))
+disconnect({params}, callback(ret, err))
 
 ##params
 
@@ -317,7 +325,7 @@ peripheralUUID：
 - 类型：字符串
 - 描述：要断开连接的外围设备的 UUID 
 
-##callback(ret)
+##callback(ret, err)
 
 ret:
 
@@ -353,7 +361,7 @@ iOS系统，Android系统
 
 判断与指定外围设备是否为连接状态
 
-isConnected({params},callback(ret))
+isConnected({params}, callback(ret, err))
 
 ##params
 
@@ -362,11 +370,11 @@ peripheralUUID：
 - 类型：字符串
 - 描述：指定外围设备的 UUID 
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -396,9 +404,9 @@ iOS系统，Android系统
 
 #**retrievePeripheral**<div id="9"></div>
 
-根据 UUID 找到所有匹配的蓝牙外围设备信息
+根据 UUID 找到所有匹配的蓝牙外围设备信息**Andaroid 平台暂不支持本接口**
 
-retrievePeripheral({params}, callback(ret))
+retrievePeripheral({params}, callback(ret, err))
 
 ##params
 
@@ -407,11 +415,12 @@ peripheralUUIDs：
 - 类型：字符串
 - 描述：指定的蓝牙外围设备的 UUID 组成的数组
 
-##callback(ret)
+
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：若没有则返回空
 - 内部字段：
 
@@ -441,15 +450,15 @@ ble.retrievePeripheral({
 
 ##可用性
 
-iOS系统，Android系统
+iOS系统
 
 可提供的1.0.0及更高版本
 
 #**retrieveConnectedPeripheral**<div id="10"></div>
 
-根据指定的服务，找到当前系统处于连接状态的蓝牙中包含这个服务的所有蓝牙外围设备信息
+根据指定的服务，找到当前系统处于连接状态的蓝牙中包含这个服务的所有蓝牙外围设备信息**Andaroid 平台暂不支持本接口**
 
-retrieveConnectedPeripheral({params}, callback(ret))
+retrieveConnectedPeripheral({params}, callback(ret, err))
 
 ##params
 
@@ -459,11 +468,12 @@ serviceUUIDs
 - 类型：数组
 - 描述：指定的蓝牙4.0设备的服务（service）的 UUID（字符串） 组成的数组
 
-##callback(ret)
+
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：若没有则返回空
 - 内部字段：
 
@@ -493,30 +503,24 @@ ble.retrieveConnectedPeripheral({
 
 ##可用性
 
-iOS系统，Android系统
+iOS系统
 
 可提供的1.0.0及更高版本
 
 #**discoverService**<div id="11"></div>
 
-根据指定的外围设备 UUID 及其服务 UUID 获取该外围设备的所有服务
+根据指定的外围设备 UUID 获取该外围设备的所有服务
 
-discoverService({params}, callback(ret,err))
+discoverService({params}, callback(ret, err))
 
 ##params
-
-serviceUUIDs
-
-- 类型：数组
-- 描述：（可选项）指定服务的 UUID 组成的数组，若不传则返回该设备的所有服务（servie）
-
 
 peripheralUUID：
 
 - 类型：字符串
 - 描述：指定的蓝牙外围设备的 UUID 
 
-##callback(ret,err)
+##callback(ret, err)
 
 ret:
 
@@ -567,7 +571,7 @@ iOS系统，Android系统
 
 根据指定的外围设备 UUID 及其服务 UUID 获取该外围设备的所有特征（Characteristic）
 
-discoverCharacteristics({params}, callback(ret,err))
+discoverCharacteristics({params}, callback(ret, err))
 
 ##params
 
@@ -582,7 +586,7 @@ peripheralUUID：
 - 类型：字符串
 - 描述：指定的蓝牙外围设备的 UUID 
 
-##callback(ret,err)
+##callback(ret, err)
 
 ret:
 
@@ -595,7 +599,6 @@ ret:
      characteristics:[{  //数组类型；获取的所有特征信息的集合
         uuid: '',        //字符串类型；特征的 UUID 
         serviceUUID: '', //字符串类型；服务的 UUID 
-        value:  ,        //字符串类型；特征的值
         permissions: '', //字符串类型；特征的权限，取值范围如下：
                          //readable：
                          //writeable：
@@ -655,7 +658,7 @@ iOS系统，Android系统
 
 根据指定的外围设备 UUID 及其服务 UUID 和特征 UUID 获取该外围设备的所有描述符（Descriptor）
 
-discoverDescriptorsForCharacteristic({params}, callback(ret,err))
+discoverDescriptorsForCharacteristic({params}, callback(ret, err))
 
 ##params
 
@@ -663,6 +666,7 @@ peripheralUUID：
 
 - 类型：字符串
 - 描述：指定的蓝牙外围设备的 UUID 
+
 
 serviceUUID
 
@@ -674,7 +678,7 @@ characteristicUUID
 - 类型：字符串
 - 描述：指定的特征的 UUID 
 
-##callback(ret,err)
+##callback(ret, err)
 
 ret:
 
@@ -737,7 +741,7 @@ iOS系统，Android系统
 
 根据指定的外围设备 UUID 及其服务 UUID 和特征 UUID 监听数据回发
 
-setNotify({params}, callback(ret,err))
+setNotify({params}, callback(ret, err))
 
 ##params
 
@@ -756,7 +760,7 @@ characteristicUUID
 - 类型：字符串
 - 描述：指定的特征的 UUID 
 
-##callback(ret,err)
+##callback(ret, err)
 
 ret:
 
@@ -834,7 +838,7 @@ iOS系统，Android系统
 
 根据指定的外围设备 UUID 及其服务 UUID 和特征 UUID 读取数据
 
-readValueForCharacteristic({params}, callback(ret,err))
+readValueForCharacteristic({params}, callback(ret, err))
 
 ##params
 
@@ -853,7 +857,7 @@ characteristicUUID
 - 类型：字符串
 - 描述：指定的特征的 UUID 
 
-##callback(ret,err)
+##callback(ret, err)
 
 ret:
 
@@ -931,7 +935,7 @@ iOS系统，Android系统
 
 根据指定的外围设备 UUID 及其服务 UUID 和特征 UUID 及其描述符获取数据
 
-readValueForDescriptor({params}, callback(ret,err))
+readValueForDescriptor({params}, callback(ret, err))
 
 ##params
 
@@ -939,6 +943,7 @@ peripheralUUID：
 
 - 类型：字符串
 - 描述：指定的蓝牙外围设备的 UUID 
+
 
 serviceUUID
 
@@ -955,7 +960,7 @@ descriptorUUID
 - 类型：字符串
 - 描述：指定的描述符的 UUID 
 
-##callback(ret,err)
+##callback(ret, err)
 
 ret:
 
@@ -1021,7 +1026,7 @@ iOS系统，Android系统
 
 根据指定的外围设备 UUID 及其服务 UUID 和特征 UUID 写数据
 
-writeValueForCharacteristic({params}, callback(ret,err))
+writeValueForCharacteristic({params}, callback(ret, err))
 
 ##params
 
@@ -1043,9 +1048,9 @@ characteristicUUID
 value
 
 - 类型：字符串
-- 描述：要写入的数据 
+- 描述：要写入的数据 ，十六进制的字符串
 
-##callback(ret,err)
+##callback(ret, err)
 
 ret:
 
@@ -1059,7 +1064,6 @@ ret:
      characteristic:{    //JSON对象；获取监听的特征的信息
         uuid: '',        //字符串类型；特征的 UUID 
         serviceUUID: '', //字符串类型；服务的 UUID 
-        value:  ,        //字符串类型；特征的值
         permissions: '', //字符串类型；特征的权限，取值范围如下：
                          //readable：
                          //writeable：
@@ -1125,7 +1129,7 @@ iOS系统，Android系统
 
 根据指定的外围设备 UUID 及其服务 UUID 和特征 UUID 及其描述符发送数据
 
-writeValueForDescriptor({params}, callback(ret,err))
+writeValueForDescriptor({params}, callback(ret, err))
 
 ##params
 
@@ -1152,9 +1156,9 @@ descriptorUUID
 value
 
 - 类型：字符串
-- 描述：要发送的数据
+- 描述：要发送的数据，十六进制的字符串
 
-##callback(ret,err)
+##callback(ret, err)
 
 ret:
 
@@ -1167,7 +1171,6 @@ ret:
      characteristic:{    //JSON对象；获取监听的特征的信息
         uuid: '',        //字符串类型；特征的 UUID 
         serviceUUID: '', //字符串类型；服务的 UUID 
-        value:  ,        //字符串类型；特征的值
         permissions: '', //字符串类型；特征的权限，取值范围如下：
                          //readable：
                          //writeable：

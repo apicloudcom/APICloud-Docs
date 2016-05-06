@@ -3,6 +3,8 @@ Title: privacy
 Description: privacy
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 ##基础类
 
 <div class="outline">
@@ -34,13 +36,13 @@ privacy 模块封装了 IOS 平台上设备访问权限判断的接口，包括�
 
 判断是否有定位权限
 
-location(callback(ret))
+location(callback(ret, err))
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -64,7 +66,7 @@ privacy.location(function( ret, err ){
 
 ##可用性
 
-iOS系统
+IOS 系统
 
 可提供的1.0.0及更高版本
 
@@ -74,13 +76,13 @@ iOS系统
 
 判断是否有访问联系人权限
 
-contacts(callback(ret))
+contacts(callback(ret, err))
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -104,7 +106,7 @@ privacy.contacts(function( ret, err ){
 
 ##可用性
 
-iOS系统
+IOS 系统
 
 可提供的1.0.0及更高版本
 
@@ -114,13 +116,13 @@ iOS系统
 
 判断是否有访问日历权限
 
-calendars(callback(ret))
+calendars(callback(ret, err))
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -144,7 +146,7 @@ privacy.calendars(function( ret, err ){
 
 ##可用性
 
-iOS系统
+IOS 系统
 
 可提供的1.0.0及更高版本
 
@@ -154,13 +156,13 @@ iOS系统
 
 判断是否有访问提醒事项的权限
 
-reminders(callback(ret))
+reminders(callback(ret, err))
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -184,7 +186,7 @@ privacy.reminders(function( ret, err ){
 
 ##可用性
 
-iOS系统
+IOS 系统
 
 可提供的1.0.0及更高版本
 
@@ -194,13 +196,13 @@ iOS系统
 
 判断是否有访问相册的权限
 
-photos(callback(ret))
+photos(callback(ret, err))
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -224,7 +226,7 @@ privacy.photos(function( ret, err ){
 
 ##可用性
 
-iOS系统
+IOS 系统
 
 可提供的1.0.0及更高版本
 
@@ -234,13 +236,13 @@ iOS系统
 
 判断是否有访问蓝牙的权限
 
-bluetooth(callback(ret))
+bluetooth(callback(ret, err))
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -264,7 +266,7 @@ privacy.bluetooth(function( ret, err ){
 
 ##可用性
 
-iOS系统
+IOS 系统
 
 可提供的1.0.0及更高版本
 
@@ -274,13 +276,13 @@ iOS系统
 
 判断是否有访问录音器的权限
 
-microphone(callback(ret))
+microphone(callback(ret, err))
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -304,7 +306,7 @@ privacy.microphone(function( ret, err ){
 
 ##可用性
 
-iOS系统
+IOS 系统
 
 可提供的1.0.0及更高版本
 
@@ -314,13 +316,13 @@ iOS系统
 
 判断是否有访问摄像头的权限
 
-camera(callback(ret))
+camera(callback(ret, err))
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -344,6 +346,6 @@ privacy.camera(function( ret, err ){
 
 ##可用性
 
-iOS系统
+IOS 系统
 
 可提供的1.0.0及更高版本

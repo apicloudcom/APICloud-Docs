@@ -3,6 +3,8 @@ Title: shareTool
 Description: shareTool
 */
 
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -16,7 +18,7 @@ Description: shareTool
 
 #**概述**
 
-shareTool封装了android的原生分享功能，使用此模块可轻松实现对文字和图片分享的功能。暂仅支持Android。
+shareTool 封装了 Android 的原生分享功能，使用此模块可轻松实现对文字和图片分享的功能。暂仅支持 Android。
 
 
 #**shareText**<div id="a1"></div>
@@ -56,7 +58,7 @@ shareTool.shareText({
 
 ##可用性
 
-Android系统
+Android 系统
 
 可提供的1.0.0及更高版本
 
@@ -98,7 +100,7 @@ shareTool.sharePicture({
 
 ##可用性
 
-Android系统
+Android 系统
 
 可提供的1.0.0及更高版本
 

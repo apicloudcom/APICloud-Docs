@@ -39,7 +39,7 @@ Sort: 5
 
 
 <div id="a0"></div>
-<h2>开源地址：https://gitcafe.com/APICloud</h2>
+<h2>开源地址：[Sublime-APICloud-Plugins](https://github.com/apicloudcom?utf8=✓&amp;query=sublime)</h2>
 
 
 <div id="a1"></div>
@@ -49,15 +49,15 @@ Sort: 5
     <li>Sublime Text 3</li>
     <li>Windows 或 Mac</li>
     <li>Android 手机</li>
-	<li>Ios 手机</li>
+	<li>iOS 手机</li>
 </ul>
 
 <div id="a2"></div>
 ##首先安装 Package Control
 
-1、通过快捷键 <code>ctrl+`</code> 或者 <code>View > Show Console</code> 菜单打开控制台
+1、通过快捷键 <code>ctrl+`</code> 或 <code>View > Show Console</code> 菜单打开控制台
 
-2、粘贴下面的代码后，回车安装
+2、粘贴下面的代码后，按回车进行安装
 
 3、参考资料[Package Control 安装](https://packagecontrol.io/installation)
 

@@ -3,6 +3,8 @@ Title: chatBox
 Description: chatBox
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -54,29 +56,29 @@ bgColor:
 
 - 类型：字符串
 - 默认值：#f2f2f2
-- 描述：（可选项）输入视图背景色的十六进制值，支持rgb，rgba，#
+- 描述：（可选项）输入视图背景色的十六进制值，支持 rgb，rgba，#
 
 lineColor:
 
 - 类型：字符串
 - 默认值：#d9d9d9
-- 描述：（可选项）输入框视图最上边的分割线色的十六进制值，支持rgb，rgba，#
+- 描述：（可选项）输入框视图最上边的分割线色的十六进制值，支持 rgb，rgba，#
 
 borderColor:
 
 - 类型：字符串
 - 默认值：#B3B3B3
-- 描述：（可选项）输入框边框色的十六进制值，支持rgb，rgba，#
+- 描述：（可选项）输入框边框色的十六进制值，支持 rgb，rgba，#
 
 fileBgColor:
 
 - 类型：字符串
 - 默认值：#FFFFFF
-- 描述：（可选项）输入框背景色的十六进制值，支持rgb，rgba，#
+- 描述：（可选项）输入框背景色的十六进制值，支持 rgb，rgba，#
 
 switchButton:
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：表情键盘加号的按钮图片
 - 内部字段：
@@ -118,7 +120,7 @@ addButtons：
 
 pageControl：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：参见内部字段
 - 描述：（可选项）表情和添加界面的页面控制器配置
 - 备注：若不传则不显示页面控制器
@@ -152,7 +154,7 @@ maxLines：
 
 leftButton：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：（可选项）输入框左边按钮设置
 - 备注：不传则不显示左边按钮
@@ -160,14 +162,14 @@ leftButton：
 
 ```js
 {
-        normal:               //左边按钮背景图片,支持widget等本地协议
-        selected:             //左边按钮选中后背景图片,支持widget等本地协议
+        normal:               //左边按钮背景图片,支持 widget 等本地协议
+        selected:             //左边按钮选中后背景图片,支持 widget 等本地协议
         record:{              //录音按钮设置 
-            normal:           //（可选项）按钮常态背景图片,支持rgb，rgba，#，img,默认#c4c4c4
-            highlight:        //（可选项）钮按下时背景图片,支持rgb，rgba，#，img,默认#999999,若normal为颜色值则highlight不支持img，若normal为img则highlight不支持色值，normal和highlight应保持一致，若为颜色值则必须同为颜色值，若为img则同为img
+            normal:           //（可选项）按钮常态背景图片,支持 rgb，rgba，#，img,默认#c4c4c4
+            highlight:        //（可选项）钮按下时背景图片,支持 rgb，rgba，#，img,默认#999999,若normal为颜色值则highlight不支持img，若normal为img则highlight不支持色值，normal和highlight应保持一致，若为颜色值则必须同为颜色值，若为img则同为img
             normalTitle：     //（可选项）按钮常态时的标题，默认'按住 说话'
             highlightTitle：  //（可选项）按钮按下时的标题，默认'松开 结束'
-            titleColor：      //（可选项）按钮标题文字的颜色，支持rgb，rgba，#，默认#000000
+            titleColor：      //（可选项）按钮标题文字的颜色，支持 rgb，rgba，#，默认#000000
             titleSize：       //（可选项）按钮标题文字的大小，数字类型，默认14
           }
 }
@@ -177,7 +179,7 @@ leftButton：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -204,8 +206,8 @@ var addButtonAry = [];
             title:"相册"
         };
     }
-var obj = api.require('chatBox');
-obj.open({
+var chatBox = api.require('chatBox');
+chatBox.open({
 	switchButton:{
         faceNormal : "widget://image/chatBox_face1.png",
         faceHighlight : "widget://image/chatBox_face1.png",
@@ -243,13 +245,13 @@ iOS系统，Android系统
 
 设置录音按钮监听
 
-setRecordButtonListener(callBack(ret,err))
+setRecordButtonListener(callback(ret, err))
 
-##callBack(ret,err)
+##callback(ret, err)
 
 ret：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -266,8 +268,8 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('chatBox');
-obj.setRecordButtonListener(function(ret,err){
+var chatBox = api.require('chatBox');
+chatBox.setRecordButtonListener(function(ret,err){
     api.alert({msg:ret.eventType});
 });
 
@@ -287,12 +289,12 @@ iOS系统，Android系统
 
 设置输入框监听
 
-setInputFieldListener(callBack(ret,err))
+setInputFieldListener(callback(ret, err))
 
-##callBack(ret,err)
+##callback(ret, err)
 
 ret：
-- 类型：json对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -308,8 +310,8 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('chatBox');
-obj.setInputFieldListener(function(ret,err){
+var chatBox = api.require('chatBox');
+chatBox.setInputFieldListener(function(ret,err){
    api.alert({msg:ret.eventType+'*'+ret.h});
 });
 
@@ -334,8 +336,8 @@ close()
 ##示例代码
 
 ```js
-	var obj = api.require('chatBox');
-	obj.close();
+	var chatBox = api.require('chatBox');
+	chatBox.close();
 ```
 
 ##补充说明
@@ -358,8 +360,8 @@ show()
 ##示例代码
 
 ```js
-	var obj = api.require('chatBox');
-	obj.show();
+	var chatBox = api.require('chatBox');
+	chatBox.show();
 ```
 
 ##补充说明
@@ -382,8 +384,8 @@ hide()
 ##示例代码
 
 ```js
-	var obj = api.require('chatBox');
-	obj.hide();
+	var chatBox = api.require('chatBox');
+	chatBox.hide();
 ```
 
 ##补充说明
@@ -406,7 +408,7 @@ becomeFirstResponder(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -417,8 +419,8 @@ ret：
 ```
 ##示例代码
 
-	var obj = api.require('chatBox');
-	obj.becomeFirstResponder();
+	var chatBox = api.require('chatBox');
+	chatBox.becomeFirstResponder();
 
 ##补充说明
 
@@ -440,7 +442,7 @@ resignFirstResponder(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -450,8 +452,8 @@ ret：
 ```
 ##示例代码
 
-	var obj = api.require('chatBox');
-	obj.resignFirstResponder();
+	var chatBox = api.require('chatBox');
+	chatBox.resignFirstResponder();
 
 ##补充说明
 
@@ -467,7 +469,7 @@ iOS系统，Android系统
 
 设置输入框内的文字
 
-setMsg({params},callback(ret, err))
+setMsg({params}, callback(ret, err))
 ##params
 
 msg：
@@ -480,7 +482,7 @@ msg：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -491,8 +493,8 @@ ret：
 ##示例代码
 
 ```js
-   var obj = api.require('chatBox');
-   obj.setMsg({
+   var chatBox = api.require('chatBox');
+   chatBox.setMsg({
       msg:"设置的文字"
    },function(ret,err){
       if(ret.status){
@@ -521,7 +523,7 @@ setMsg(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -532,8 +534,8 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('chatBox');
-obj.getMsg(function(ret,err){
+var chatBox = api.require('chatBox');
+chatBox.getMsg(function(ret,err){
     api.alert({msg:ret.msg });
 });
 ```
@@ -552,7 +554,7 @@ iOS系统，Android系统
 
 配置当前输入框内的文字
 
-configMsg({params},callback(ret, err))
+configMsg({params}, callback(ret, err))
 
 ##params
 
@@ -567,7 +569,7 @@ msg：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -579,8 +581,8 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('chatBox');
-obj.configMsg(function(ret,err){
+var chatBox = api.require('chatBox');
+chatBox.configMsg(function(ret,err){
     if(ret.status){
       api.alert({msg:ret.msg });
     }
@@ -620,8 +622,8 @@ msg：
 ##示例代码
 
 ```js
-var obj = api.require('chatBox');
-obj.insertMsg({
+var chatBox = api.require('chatBox');
+chatBox.insertMsg({
    msg:'这里是插入的字符串'
 });
 ```
@@ -654,8 +656,8 @@ placeholder：
 ##示例代码
 
 ```js
-var obj = api.require('hintChatBox');
-obj. setPlaceholder({
+var chatBox = api.require('chatBox');
+chatBox.setPlaceholder({
    placeholder:'我是占位提示文字'
 });
 ```

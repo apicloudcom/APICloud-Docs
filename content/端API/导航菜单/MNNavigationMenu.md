@@ -2,6 +2,7 @@
 Title: MNNavigationMenu
 Description: MNNavigationMenu
 */
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
 
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
@@ -22,7 +23,7 @@ Description: MNNavigationMenu
 
 #**概述**
 
-MNNavigationMenu 是一个导航栏菜单，可以实现在导航栏上弹出一个菜单，然后子菜单左右铺展开来的动画效果，开发者可自定义其中的样式和按钮个数，超出屏幕部分可左右拖动查看。**本模块是 navigationMenu 的优化版**
+MNNavigationMenu 是一个导航栏菜单，开发者可自定义其中的样式和按钮个数，超出屏幕部分可左右拖动查看。**本模块是 navigationMenu 的优化版**
 
 ![图片说明](/img/docImage/navigationMenu.jpg)
 
@@ -70,11 +71,11 @@ styles：
 ```js
 {
 	column: 4,                         //（可选项）数字类型；一屏显示的菜单项个数；默认：4
-    bg: '#eee',                        //（可选项）字符串类型；菜单显示区域背景，支持rgb、rgba、#、img；默认：'rgba(0,0,0,0)'
+    bg: '#eee',                        //（可选项）字符串类型；菜单显示区域背景，支持 rgb、rgba、#、img；默认：'rgba(0,0,0,0)'
     item: {                            //（可选项）JSON 对象类型，菜单项的通用样式
-    	bg: '#fff',                    //（可选项）字符串类型；菜单项的背景，支持rgb、rgba、#、img；默认：#fff
-    	active: '#eee',                //（可选项）字符串类型；菜单项选中背景，支持rgb、rgba、#、img；默认：同 bg
-    	highlight: '#eee',             //（可选项）字符串类型；菜单项高亮背景，支持rgb、rgba、#、img；默认：同 active
+    	bg: '#fff',                    //（可选项）字符串类型；菜单项的背景，支持 rgb、rgba、#、img；默认：#fff
+    	active: '#eee',                //（可选项）字符串类型；菜单项选中背景，支持 rgb、rgba、#、img；默认：同 bg
+    	highlight: '#eee',             //（可选项）字符串类型；菜单项高亮背景，支持 rgb、rgba、#、img；默认：同 active
     	title: {                       //（可选项）JSON 类型；菜单项标题样式设置
     		marginB: 6,                //（可选项）数字类型；菜单项标题底部与菜单项下边线的距离；默认：6
     		size: 14,                  //（可选项）数字类型；菜单项标题文字大小；默认：14
@@ -101,9 +102,9 @@ items：
 ```js
 [{                                     //一个菜单项的设置
 	title: '菜单项0',                  //（可选项）字符串类型；菜单项的标题内容；默认：未设置时不显示菜单项标题
-	icon: 'fs://menu/0.png',           //（可选项）字符串类型；菜单项的图标，支持 fs://，widget://，http://；默认：未设置时不显示菜单项图标
-	active: 'fs://menu/0.acitve.png',  //（可选项）字符串类型；菜单项选中时的图标，支持 fs://，widget://，http://；默认：同 icon
-	highlight: 'fs://menu/0.highlight.png', //（可选项）字符串类型；菜单项高亮时的图标，支持 fs://，widget://，http://；默认：同 active
+	icon: 'fs://menu/0.png',           //（可选项）字符串类型；菜单项的图标，支持 fs://、widget://，http://；默认：未设置时不显示菜单项图标
+	active: 'fs://menu/0.acitve.png',  //（可选项）字符串类型；菜单项选中时的图标，支持 fs://、widget://，http://；默认：同 icon
+	highlight: 'fs://menu/0.highlight.png', //（可选项）字符串类型；菜单项高亮时的图标，支持 fs://、widget://，http://；默认：同 active
 }]
 
 ```
@@ -124,7 +125,7 @@ fixed：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -200,8 +201,7 @@ MNNavigationMenu.open({
     }],
     fixedOn: api.frameName,
     fixed: false
-},
-function(ret, err) {
+}, function(ret, err) {
     if (ret) {
         alert(JSON.stringify(ret));
     } else {
@@ -233,7 +233,7 @@ index：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -249,8 +249,7 @@ ret：
 var MNNavigationMenu = api.require('MNNavigationMenu');
 MNNavigationMenu.setIndex({
     index: 0
-},
-function(ret, err) {
+}, function(ret, err) {
     if (ret) {
         alert(JSON.stringify(ret));
     } else {
@@ -277,7 +276,6 @@ close()
 ```js
 var MNNavigationMenu = api.require('MNNavigationMenu');
 MNNavigationMenu.close();
-
 ```
 
 ##补充说明
@@ -301,7 +299,6 @@ show()
 ```js
 var MNNavigationMenu = api.require('MNNavigationMenu');
 MNNavigationMenu.show();
-
 ```
 
 ##补充说明
@@ -326,7 +323,6 @@ hide()
 ```js
 var MNNavigationMenu = api.require('MNNavigationMenu');
 MNNavigationMenu.hide();
-
 ```
 
 ##补充说明
@@ -336,4 +332,5 @@ MNNavigationMenu.hide();
 ##可用性
 
 iOS系统，Android系统
+
 可提供的1.0.0及更高版本

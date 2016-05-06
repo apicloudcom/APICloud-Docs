@@ -3,6 +3,8 @@ Title: UIMultiSelector
 Description: UIMultiSelector
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -23,6 +25,11 @@ Description: UIMultiSelector
 UIMultiSelector 封装了一个支持多选的选择器，开发者可自定义该选择器的样式及其数据源。当您的 APP 需要为用户同时提供多种可选项的支持时可以选择该控件快速配置使用节省开发时间。**该模块是 multiSelector 模块的优化版本**
 
 ![图片说明](/img/docImage/multiSelector.jpg)
+
+
+## [实例widget下载地址](https://github.com/XM-Right/UIMultiSelector-Example/archive/master.zip)
+
+
 
 #**open**<div id="1"></div>
 
@@ -148,12 +155,11 @@ items：
 }]
 ```
 
-
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -171,104 +177,100 @@ ret：
 
 ```js
  var UIMultiSelector = api.require('UIMultiSelector');
-                        UIMultiSelector.open({
-                            rect : {
-                                h : 244
-                            },
-                            text : {
-                                title : 'UIMultiSelector',
-                                leftBtn : 'Cancel',
-                                rightBtn : 'Finish',
-                                selectAll : 'ALL'
-                            },
-                            max : 0,
-                            styles : {
-                                mask : 'rgba(0,0,0,0)',
-                                title : {
-                                    bg : 'rgb(0,64,128)',
-                                    color : 'rgb(184,209,5)',
-                                    size : 16,
-                                    h : 44
-                                },
-                                leftButton : {
-                                  //  bg : 'widget://res/tb.png',
-                                    w : 80,
-                                    h : 35,
-                                    marginT : 5,
-                                    marginL : 8,
-                                    color : 'rgb(0,0,0)',
-                                    size : 14,
-                                },
-                                rightButton : {
-                                  //  bg : 'widget://res/tb.png',
-                                    w : 80,
-                                    h : 35,
-                                    marginT : 5,
-                                    marginR : 8,
-                                    color : 'rgb(0,0,0)',
-                                    size : 14,
-                                },
-                                item : {
-                                    h : 35,
-                                    bg : 'rgb(121,82,173)',
-                                    bgActive : 'rgb(43,213,166)',
-                                    bgHighlight : 'rgb(238,17,150)',
-                                    color : 'rgb(22,112,233)',
-                                    active : 'rgb(201,118,126)',
-                                    highlight : 'rgb(255,255,0)',
-                                    size : 14,
-                                    lineColor : 'rgb(78,57,255)',
-                                    textAlign : 'center',
-                                },
-                                icon : {
-                                    w : 20,
-                                    h : 20,
-                                    marginT : 11,
-                                    marginH : 8,
-                                    bg : '#fff',
-                                   // bgActive : 'widget://res/dg.png',
-                                   // bgHighlight : 'widget://res/fangduigou.png',
-                                    align : 'left',
-                                }
-                            },
-                            animation : true,
-                            items : [{
-                                text : 'Monday',
-                                status : 'normal',
-                            }, {
-                                text : 'Tuesday',
-                                status : 'normal',
-                            }, {
-                                text : 'Wednesday',
-                                status : 'normal',
-                            }, {
-                                text : 'Thursday',
-                                status : 'normal',
-                            }, {
-                                text : 'Friday',
-                                status : 'normal',
-                            }, {
-                                text : 'Saturday',
-                                status : 'normal',
-                            }, {
-                                text : 'Sunday',
-                                status : 'normal',
-                            }, {
-                                text : 'from Monday to Sunday',
-                                status : 'normal',
-                            }]
-                        }, function(ret, err) {
-                            if (ret) {
-                                alert(JSON.stringify(ret));
-                            } else {
-                                alert(JSON.stringify(err));
-                            }
-                        });
+UIMultiSelector.open({
+    rect : {
+        h : 244
+    },
+    text : {
+        title : 'UIMultiSelector',
+        leftBtn : 'Cancel',
+        rightBtn : 'Finish',
+        selectAll : 'ALL'
+    },
+    max : 0,
+    styles : {
+        mask : 'rgba(0,0,0,0)',
+        title : {
+            bg : 'rgb(0,64,128)',
+            color : 'rgb(184,209,5)',
+            size : 16,
+            h : 44
+        },
+        leftButton : {
+            w : 80,
+            h : 35,
+            marginT : 5,
+            marginL : 8,
+            color : 'rgb(0,0,0)',
+            size : 14,
+        },
+        rightButton : {
+            w : 80,
+            h : 35,
+            marginT : 5,
+            marginR : 8,
+            color : 'rgb(0,0,0)',
+            size : 14,
+        },
+        item : {
+            h : 35,
+            bg : 'rgb(121,82,173)',
+            bgActive : 'rgb(43,213,166)',
+            bgHighlight : 'rgb(238,17,150)',
+            color : 'rgb(22,112,233)',
+            active : 'rgb(201,118,126)',
+            highlight : 'rgb(255,255,0)',
+            size : 14,
+            lineColor : 'rgb(78,57,255)',
+            textAlign : 'center',
+        },
+        icon : {
+            w : 20,
+            h : 20,
+            marginT : 11,
+            marginH : 8,
+            bg : '#fff',
+            align : 'left',
+        }
+    },
+    animation : true,
+    items : [{
+        text : 'Monday',
+        status : 'normal',
+    }, {
+        text : 'Tuesday',
+        status : 'normal',
+    }, {
+        text : 'Wednesday',
+        status : 'normal',
+    }, {
+        text : 'Thursday',
+        status : 'normal',
+    }, {
+        text : 'Friday',
+        status : 'normal',
+    }, {
+        text : 'Saturday',
+        status : 'normal',
+    }, {
+        text : 'Sunday',
+        status : 'normal',
+    }, {
+        text : 'from Monday to Sunday',
+        status : 'normal',
+    }]
+}, function(ret, err) {
+    if (ret) {
+        alert(JSON.stringify(ret));
+    } else {
+        alert(JSON.stringify(err));
+    }
+});
 ```
 
 ##可用性
 
-IOS系统 android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -287,7 +289,7 @@ UIMultiSelector.close();
 
 ##可用性
 
-IOS系统 android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -306,7 +308,7 @@ UIMultiSelector.show();
 
 ##可用性
 
-IOS系统 android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -325,6 +327,6 @@ UIMultiSelector.hide();
 
 ##可用性
 
-IOS系统 android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本

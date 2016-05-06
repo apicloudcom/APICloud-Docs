@@ -3,6 +3,8 @@ Title: ciaYi
 Description: ciaYi
 */
 
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -29,10 +31,14 @@ ciaYi封装了CIA身份验证的SDK，使用此模块可轻松替代短信验证
 备注:用户可以在CIA官网 http://www.ciaapp.cn 中通过项目的两个平台的包名来获取APPID和授权码,并同时配置在 config 文件中
 
 配置示例:
+
+```
   <feature name="CIASDK"> 
     <param name="appId" value="a031e97d464846ca873a86cb55d5d3dc"/>  
     <param name="authKey" value="b15e5591ea1f42f99cd68b64ec0658d8"/> 
   </feature>
+```
+
 字段描述:
 
 appId:官网申请的APPID
@@ -79,11 +85,11 @@ phonenum:
 - 类型：字符串
 - 描述：需要验证的手机号 
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -139,11 +145,11 @@ phonecode:
 - 类型：字符串
 - 描述：获取到的用户输入的验证码 
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js

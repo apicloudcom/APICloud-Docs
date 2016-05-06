@@ -2,6 +2,9 @@
 Title: shareAction
 Description: shareAction
 */
+
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <div class="outline">
 [share()](#m1)
 
@@ -41,7 +44,7 @@ type：
 path:
 
 - 类型：字符串
-- 描述：（可选项）分享文件的路径，要求本地路径（fs://，widget://）。**Android 平台不支持 widget:// 路径**
+- 描述：（可选项）分享文件的路径，要求本地路径（fs://、widget://）。**Android 平台不支持 widget:// 路径**
 
 
 ##示例代码

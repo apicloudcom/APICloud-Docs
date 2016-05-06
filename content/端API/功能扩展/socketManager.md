@@ -3,6 +3,8 @@ Title: socketManager
 Description: socketManager
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 	<li><a href="#const-content">Constant</a></li>
@@ -19,11 +21,11 @@ Description: socketManager
 
 #**概述**
 
-socketManager模块封装了socket的创建、关闭、发送数据等操作，使用此模块能实现即时通讯数据收发功能。
+socketManager 模块封装了 socket 的创建、关闭、发送数据等操作，使用此模块能实现即时通讯数据收发功能。
 
 #**createSocket**<div id="1"></div>
 
-创建socket并进行连接，连接状态以及接收到数据都通过回调返回
+创建 socket 并进行连接，连接状态以及接收到数据都通过回调返回
 
 createSocket({params}, callback(ret, err))
 
@@ -33,19 +35,19 @@ type：
 
 - 类型：字符串
 - 默认值：tcp
-- 描述：socket类型，tcp或udp
+- 描述：socket 类型，tcp 或 udp
 
 udpMode：
 
 - 类型：字符串
 - 默认值：unicast
-- 描述：udp通讯模式，取值范围为（unicast-单播、multicast-组播、broadcast-广播）
+- 描述：udp 通讯模式，取值范围为（unicast-单播、multicast-组播、broadcast-广播）
 
 host：
 
 - 类型：字符串
 - 默认值：无
-- 描述：主机地址，IP或者域名，不能为空
+- 描述：主机地址，IP 或者域名，不能为空
 
 port：
 
@@ -87,7 +89,7 @@ returnBase64：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -108,7 +110,7 @@ var socketManager = api.require('socketManager');
 socketManager.createSocket({
 	host: '192.168.1.100',
 	port: 8282
-},function( ret, err ){		
+}, function(ret, err){		
 	if( ret ){
 		alert( JSON.stringify( ret ) );
 	}else{
@@ -130,7 +132,7 @@ iOS系统，Android系统
 
 #**closeSocket**<div id="2"></div>
 
-关闭socket连接
+关闭 socket 连接
 
 closeSocket({params}, callback(ret, err))
 
@@ -140,12 +142,12 @@ sid：
 
 - 类型：字符串
 - 默认值：无
-- 描述：通过createSocket方法获取得到的socket的唯一标识，不能为空
+- 描述：通过 createSocket 方法获取得到的 socket 的唯一标识，不能为空
 
 ##callback(ret, err)
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -156,13 +158,13 @@ ret：
 ```
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
 ```js
 {
-	msg:""    //错误描述
+	msg:''    //错误描述
 }
 ```
 ##示例代码
@@ -171,7 +173,7 @@ err：
 var socketManager = api.require('socketManager');
 socketManager.closeSocket({
 	sid: '1'
-},function( ret, err ){		
+}, function(ret, err){		
 	if( ret.status ){
 		alert( JSON.stringify( ret ) );
 	}else{
@@ -193,7 +195,7 @@ iOS系统，Android系统
 
 #**write**<div id="3"></div>
 
-往某个socket写入数据
+往某个 socket 写入数据
 
 write({params}, callback(ret, err))
 
@@ -203,7 +205,7 @@ sid：
 
 - 类型：字符串
 - 默认值：无
-- 描述：通过createSocket方法获取得到的socket的唯一标识，不能为空
+- 描述：通过 createSocket 方法获取得到的 socket 的唯一标识，不能为空
 
 data：
 
@@ -215,25 +217,25 @@ base64：
 
 - 类型：布尔
 - 默认值：false
-- 描述：标识data是否是经过JS层base64处理后的数据，如果是，模块中会将其decode后再发送
+- 描述：标识 data 是否是经过 JS 层 base64 处理后的数据，如果是，模块中会将其 decode 后再发送
 
 host：
 
 - 类型：字符串
-- 默认值：createSocket方法里面传的host
-- 描述：主机地址，IP或者域名，udp时有效
+- 默认值：createSocket 方法里面传的 host
+- 描述：主机地址，IP 或者域名，udp 时有效
 
 port：
 
 - 类型：数字
-- 默认值：createSocket方法里面传的port
-- 描述：主机端口，udp时有效
+- 默认值：createSocket 方法里面传的 port
+- 描述：主机端口，udp 时有效
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -245,13 +247,13 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
 ```js
 {
-	msg:""    //错误描述
+	msg:''    //错误描述
 }
 ```
 
@@ -262,7 +264,7 @@ var socketManager = api.require('socketManager');
 socketManager.write({
 	sid: '1',
 	data: '你好'
-},function( ret, err ){		
+}, function(ret, err){		
 	if( ret.status ){
 		alert( JSON.stringify( ret ) );
 	}else{

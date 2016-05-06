@@ -3,6 +3,8 @@ Title: actionButton
 Description: actionButton
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -20,7 +22,7 @@ Description: actionButton
 
 #**概述**
 
-actionButton 是一个仿照新浪微博快捷菜单而定制的一个模块，使用该模块可弹出一个由多个按钮组成的菜单，点击按钮，菜单消失。此模块最大的特点是弹出和消失都有相应的动画，开发者可自定义按钮的样式和个数（超过单屏显示的可以左右拖动）。本模块已停止更新，建议使用优化升级版模块[MNActionButton](http://docs.apicloud.com/端API/导航菜单/MNActionButton)
+actionButton 是一个仿照新浪微博快捷菜单而定制的一个模块，使用该模块可弹出一个由多个按钮组成的菜单，点击按钮，菜单消失。此模块最大的特点是弹出和消失都有相应的动画，开发者可自定义按钮的样式和个数（超过单屏显示的可以左右拖动）。本模块已停止更新，建议使用优化升级版模块 [MNActionButton](http://docs.apicloud.com/端API/导航菜单/MNActionButton)
 
 ![图片说明](/img/docImage/actionButton.jpg)
 
@@ -36,7 +38,7 @@ bg：
 
 - 类型：字符串
 - 默认值：无
-- 描述：（可选项）背景遮罩层设置，支持rgb，rgba，#，img
+- 描述：（可选项）背景遮罩层设置，支持 rgb，rgba，#，img
 - 备注：若不传或传空则背景透明
 
 size：
@@ -56,18 +58,18 @@ items：
 [{
     bgColor:       //按钮背景色值，deprecated
     image：		//图片路径，deprecated
-    normal         //（可选项）按钮背景色设置，支持rgb，rgba，#，img，默认#ff0000
-    highlight：    //（可选项）按钮高亮背景设置，支持rgb,rgba,#,默认和normal一样
+    normal         //（可选项）按钮背景色设置，支持 rgb，rgba，#，img，默认#ff0000
+    highlight：    //（可选项）按钮高亮背景设置，支持 rgb,rgba,#,默认和normal一样
 	title：        //（可选项）标题，字符串类型，无默认值，可为空，为空则不显示
     titleSize :   // （可选项）标题字体的大小，默认15
-	titleColor :  // （可选项）标题字体的颜色，支持rgb，rgba，#，默认#000000 
+	titleColor :  // （可选项）标题字体的颜色，支持 rgb，rgba，#，默认#000000 
 
 }]
 ```
 
 pageControl：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：（可选项）配置页面控制器的显示
 - 备注：若不传则表示不显示页面控制器
@@ -75,8 +77,8 @@ pageControl：
 
 ```js
 {
-    activeColor:0,          //（可选项）当前页颜色值，默认为红色，支持rgb,rgba,#
-    inactiveColor:0,        //（可选项）非当前页颜色值，默认为灰色，支持rgb,rgba,#
+    activeColor:0,          //（可选项）当前页颜色值，默认为红色，支持 rgb,rgba,#
+    inactiveColor:0,        //（可选项）非当前页颜色值，默认为灰色，支持 rgb,rgba,#
 }
 ```
 
@@ -100,7 +102,7 @@ clickDisappear：
 
 matrix：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 默认值：见内部字段
 - 描述：（可选项）菜单按钮布局配置
 - 内部字段：
@@ -130,7 +132,7 @@ blowUp：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -157,7 +159,7 @@ actionButton.open({
 		inactiveColor: '#DDA0DD'
 	},
     fixedOn: api.frameName
-},function( ret, err ){		
+}, function(ret, err){		
 	if( ret ){
 		alert( JSON.stringify( ret ) );
 	}else{
@@ -244,4 +246,3 @@ actionButton.show();
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
-

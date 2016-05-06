@@ -3,6 +3,8 @@ Title: touchID
 Description: touchID
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -32,7 +34,7 @@ title：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -51,8 +53,8 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('touchID');
-obj.verify(
+var touchID = api.require('touchID');
+touchID.verify(
 function(ret,err){
 	if(ret.status){
 		api.alert({msg:"验证通过"});

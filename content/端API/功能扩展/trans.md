@@ -3,6 +3,8 @@ Title: trans
 Description: trans
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -18,7 +20,7 @@ Description: trans
 
 #**概述**
 
-trans是一个数据格式转换工具，可以实现不同格式数据间的转换，如 XML -> JSON、图片<--> base64字符串
+trans 是一个数据格式转换工具，可以实现不同格式数据间的转换，如 XML -> JSON、图片 <--> base64 字符串
 
 #**parse**<div id="1"></div>
 
@@ -31,29 +33,29 @@ parse({params}, callback(ret, err))
 path：
 
 - 类型：字符串
-- 描述：（可选项）xml文件路径，要求本地路径（fs://、widget），与 data 配合使用，data 和 path 不可都不传，若都传则以 data 为准
+- 描述：（可选项）xml 文件路径，要求本地路径（fs://、widget），与 data 配合使用，data 和 path 不可都不传，若都传则以 data 为准
 
 data：
 
 - 类型：字符串
-- 描述：（可选项）xml数据，与 path 配合使用，data 和 path 不可都不传，若都传则以 data 为准
+- 描述：（可选项）xml 数据，与 path 配合使用，data 和 path 不可都不传，若都传则以 data 为准
 
 customKey：
 
 - 类型：字符串
 - 默认值：plainText
-- 描述：所解析的xml值无对应的key时，需要填充一个自定义key
+- 描述：所解析的 xml 值无对应的 key 时，需要填充一个自定义 key
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
-- 描述：xml解析成的JSON数据
+- 类型：JSON 对象
+- 描述：xml 解析成的 JSON 数据
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -68,7 +70,7 @@ err：
 var trans = api.require('trans');
 trans.parse({
 	path: 'widget://res/file/test.xml'
-},function( ret, err ){		
+}, function(ret, err){		
 	if( ret ){
 		alert( JSON.stringify( ret ) );
 	}else{
@@ -87,7 +89,7 @@ path和data不能同时为空，如果都不为空，则使用data的值；
 <author email="'123@api.com'">
 	api
 </author>
-则author节点被解析成以下格式，其中plainText为约定好的字段
+则 author节点被解析成以下格式，其中 plainText 为约定好的字段
 {
 	email:'123@api.com',
 	plainText:'api'
@@ -101,7 +103,7 @@ iOS系统，Android系统
 
 #**saveImage**<div id="2"></div>
 
-将base64字符串保存为图片
+将 base64 字符串保存为图片
 
 parse({params}, callback(ret, err))
 
@@ -127,13 +129,13 @@ imgName：
 
 - 类型：字符串
 - 默认值：apicloud.png
-- 描述：（可选项）转换后的图片保存名字，若imgPath下已存在同名图片则覆盖，若imgPath为空则此参数无意义
+- 描述：（可选项）转换后的图片保存名字，若imgPath下已存在同名图片则覆盖，若 imgPath 为空则此参数无意义
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```JS
@@ -144,7 +146,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -159,7 +161,7 @@ err：
 var trans = api.require('trans');
 trans.saveImage({
 	base64Str: 'test'
-},function( ret, err ){		
+}, function(ret, err){		
 	if( ret.status ){
 		alert( JSON.stringify( ret ) );
 	}else{
@@ -176,7 +178,7 @@ iOS系统，Android系统
 
 #**decodeImgToBase64**<div id="3"></div>
 
-将图片转换为base64字符串，**暂仅支持 png、jpg 格式的图片**
+将图片转换为 base64 字符串，**暂仅支持 png、jpg 格式的图片**
 
 parse({params}, callback(ret, err))
 
@@ -191,7 +193,7 @@ imgPath：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -203,7 +205,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -218,7 +220,7 @@ err：
 var trans = api.require('trans');
 trans.decodeImgToBase64({
 	imgPath: 'widget://res/img/apicloud.png'
-},function( ret, err ){        
+}, function(ret, err){        
     if( ret.status ){
         alert( JSON.stringify( ret ) );
     }else{

@@ -3,6 +3,8 @@ Title: brightBeacon
 Description: brightBeacon
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：智石</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 	<li><a href="#const-content">Constant</a></li>
@@ -59,7 +61,7 @@ Description: brightBeacon
 ##<div id="a1"></div>registerAppKey
 ---
 初始化应用AppKey
-registerAppKey(params,callback(ret,err))
+registerAppKey({params}, callBack(ret, err))
 
 ####params
 key：
@@ -71,7 +73,7 @@ key：
 ####callback(ret, err)
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -81,7 +83,7 @@ status:true/false        //操作成功、失败状态值
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -126,7 +128,7 @@ uuids：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -137,7 +139,7 @@ list:[{"uuid":"","major":""...},{...},...]	//Beacon数组（详情见Beacon解�
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -182,7 +184,7 @@ uuids：
 ####callback(ret, err)
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -191,7 +193,7 @@ status:true/false          //操作状态值
 ```
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -202,8 +204,8 @@ error:"错误详情"//错误描述
 ###示例代码
 
 ```
-var obj = api.require("brightBeacon");
-obj.stopRanging(function(ret, err){
+var brightBeacon = api.require("brightBeacon");
+brightBeacon.stopRanging(function(ret, err){
 if(ret.status){
 alert("调用关闭扫描周边Beacon成功");
 }else{
@@ -273,7 +275,7 @@ display：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -286,7 +288,7 @@ list:				//Beacon数组（详情见Beacon）
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -322,8 +324,8 @@ apiready = function(){
 
 ```
 //再次开启监听区域，但区域监听只会继续使用初次打开的通道出口。
-	var obj = api.require("brightBeacon");
-obj.startMonitoring({
+	var brightBeacon = api.require("brightBeacon");
+brightBeacon.startMonitoring({
    uuid:"E2C56DB5-DFFB-48D2-B060-D0F5A71096E0",
    mac:"xx:xx:xx:xx:xx:xx"
    major:1,
@@ -378,13 +380,13 @@ minor：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 ###示例代码
 
 ```
-var obj = api.require("brightBeacon");
-obj.stopMonitoring({
+var brightBeacon = api.require("brightBeacon");
+brightBeacon.stopMonitoring({
    uuid:"E2C56DB5-DFFB-48D2-B060-D0F5A71096E0",
    mac:"78:A5:6B:12:7B"
    major:1,
@@ -404,7 +406,7 @@ iOS系统，Android系统
 ####sendLocalNotification<div id="a6"></div>
 
 发送通知并显示在通知栏
-sendLocalNotification(params,callback(ret,err))
+sendLocalNotification({params}, callBack(ret, err))
 
 ####params
 
@@ -430,7 +432,7 @@ userInfo：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -439,7 +441,7 @@ status:       //操作状态值
 ```
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -495,7 +497,7 @@ minor：
 ####callback(ret, err)
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -505,7 +507,7 @@ status:           //操作状态值
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -515,8 +517,8 @@ error:"错误详情"           //错误描述
 ###示例代码
 
 ```
-var obj = api.require("brightBeacon");
-obj.startAdvertising({"uuid":"E2C56DB5-DFFB-48D2-B060-D0F5A71096E0","major":1,"minor":"","mac":"","identifier":"demo"},
+var brightBeacon = api.require("brightBeacon");
+brightBeacon.startAdvertising({"uuid":"E2C56DB5-DFFB-48D2-B060-D0F5A71096E0","major":1,"minor":"","mac":"","identifier":"demo"},
 function(ret, err){
    if(ret.status){
    	alert("调用模拟Beacon成功");
@@ -542,7 +544,7 @@ stopAdvertising(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -552,7 +554,7 @@ status:           //操作状态值
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -563,8 +565,8 @@ error:"错误详情"          //错误描述
 ###示例代码
 
 ```
-var obj = api.require("brightBeacon");
-obj.stopAdvertising(function(ret, err){
+var brightBeacon = api.require("brightBeacon");
+brightBeacon.stopAdvertising(function(ret, err){
    if(ret.status){
    alert("停止模拟Beacon成功");
    }else{
@@ -598,7 +600,7 @@ version：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -609,8 +611,8 @@ beacon：         //Beacon(详情见Beacon)
 ###示例代码
 
 ```
-var obj = api.require("brightBeacon");
-obj.connectBeacon({mac:"xx:xx:xx:xx:xx"，version:772},function(ret, err){
+var brightBeacon = api.require("brightBeacon");
+brightBeacon.connectBeacon({mac:"xx:xx:xx:xx:xx"，version:772},function(ret, err){
    if(ret.status){
 	   alert(JSON.stringify(ret.beacon));
    }
@@ -633,7 +635,7 @@ disconnectBeacon(params,callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 ###内部字段：
 
@@ -642,7 +644,7 @@ status:true/false           //操作状态值
 ```
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -652,8 +654,8 @@ error:"错误详情"    //错误描述
 ###示例代码
 
 ```
-var obj = api.require("brightBeacon");
-obj.disconnectBeacon({"mac":"xx:xx:xx:xx:xx:xx"}，function(ret, err){
+var brightBeacon = api.require("brightBeacon");
+brightBeacon.disconnectBeacon({"mac":"xx:xx:xx:xx:xx:xx"}，function(ret, err){
    if(ret.status){
    alert("调用关闭Beacon连接成功");
    }else{
@@ -677,7 +679,7 @@ isBeaconConnected(params,callback(ret, err))
 ####callback(ret, err)
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 ###内部字段：
 
@@ -687,7 +689,7 @@ status:true/false           //1连接 0未连接
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -698,8 +700,8 @@ error:"错误详情"    //错误描述
 ###示例代码
 
 ```
-var obj = api.require("brightBeacon");
-obj.isBeaconConnected(mac:"xx:xx:xx:xx:xx:xx",function(ret, err){
+var brightBeacon = api.require("brightBeacon");
+brightBeacon.isBeaconConnected(mac:"xx:xx:xx:xx:xx:xx",function(ret, err){
    if(ret.status){
    alert("连接状态");
    }else{
@@ -778,7 +780,7 @@ eddystoneUrl：
 ####callback(ret, err)
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 ###内部字段：
 
@@ -787,7 +789,7 @@ status:true/false           //操作状态值
 ```
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -797,8 +799,8 @@ error:"错误详情"    //错误描述
 ###示例代码
 
 ```
-var obj = api.require("brightBeacon");
-obj.writeBeaconValues({mac:"xx:xx:xx:xx:xx:xx","uuid":"E2C56DB5-DFFB-48D2-B060-D0F5A71096E0","major":"0","minor":"0","name":"BrightBeacon","txInterval":"400","mPower":"-65","pMode":0,"txPower":"2"}，function(ret, err){
+var brightBeacon = api.require("brightBeacon");
+brightBeacon.writeBeaconValues({mac:"xx:xx:xx:xx:xx:xx","uuid":"E2C56DB5-DFFB-48D2-B060-D0F5A71096E0","major":"0","minor":"0","name":"BrightBeacon","txInterval":"400","mPower":"-65","pMode":0,"txPower":"2"}，function(ret, err){
    if(ret.status){
    alert("调用设置Beacon值成功");
    }else{
@@ -822,7 +824,7 @@ checkBeaconFirmwareUpdate(params,callback(ret, err))
 ####callback(ret, err)
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 ###内部字段：
 
@@ -832,7 +834,7 @@ update:true/false           //true有更新false无更新
 ```
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -842,8 +844,8 @@ error:"错误详情"    //错误描述
 ###示例代码
 
 ```
-var obj = api.require("brightBeacon");
-obj.checkBeaconFirmwareUpdate({mac:"xx:xx:xx:xx:xx:xx"},function(ret, err){
+var brightBeacon = api.require("brightBeacon");
+brightBeacon.checkBeaconFirmwareUpdate({mac:"xx:xx:xx:xx:xx:xx"},function(ret, err){
    if(ret.status){
    	if(ret.update)alert("调用检查固件版本成功,现在可以调用updateBeaconFirmwareWithProgress进行更新");
    }else{
@@ -868,7 +870,7 @@ updateBeaconFirmwareWithProgress(params,callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 ###内部字段：
 
@@ -879,7 +881,7 @@ progress:0~100         //更新进度值(百分比值)
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -891,10 +893,10 @@ error:"错误详情"    //错误描述
 
 
 ```
-var obj = api.require("brightBeacon");
-obj.updateBeaconFirmwareWithProgress({mac:"xx:xx:xx:xx:xx:xx"},function(ret, err){
+var brightBeacon = api.require("brightBeacon");
+brightBeacon.updateBeaconFirmwareWithProgress({mac:"xx:xx:xx:xx:xx:xx"},function(ret, err){
    if(ret.status){
-	   if(ret.progress=='100'){
+	   if(ret.progress=="100'){
    			alert("固件升级成功");
 	   }
    }else{
@@ -918,7 +920,7 @@ resetBeacon(params,callback(ret, err))
 ####callback(ret, err)
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 ###内部字段：
 
@@ -928,7 +930,7 @@ status:true/false           //操作状态值
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -940,8 +942,8 @@ error:"错误详情"    //错误描述
 
 
 ```
-var obj = api.require("brightBeacon");
-obj.resetBeacon({mac:"xx:xx:xx:xx:xx:xx"},function(ret, err){
+var brightBeacon = api.require("brightBeacon");
+brightBeacon.resetBeacon({mac:"xx:xx:xx:xx:xx:xx"},function(ret, err){
    if(ret.status){
    alert("重置Beacon成功");
    }else{
@@ -967,7 +969,7 @@ resetBeaconAppKey(params,callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 ###内部字段：
 
@@ -976,7 +978,7 @@ status:true/false           //操作状态值
 ```
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -986,8 +988,8 @@ error:"错误详情"    //错误描述
 ###示例代码
 
 ```
-var obj = api.require("brightBeacon");
-obj.resetBeaconAppKey({mac:"xx:xx:xx:xx:xx:xx"},function(ret, err){
+var brightBeacon = api.require("brightBeacon");
+brightBeacon.resetBeaconAppKey({mac:"xx:xx:xx:xx:xx:xx"},function(ret, err){
    if(ret.status){
    alert("重置AppKey成功");
    }else{
@@ -1013,7 +1015,7 @@ monitorRegions(callback(ret, err))
 ####callback(ret, err)
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 ###内部字段：
 
@@ -1024,7 +1026,7 @@ regions：				//详情见regions监听区域;
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -1034,8 +1036,8 @@ error:"错误详情"    //错误描述
 ###示例代码
 
 ```
-var obj = api.require("brightBeacon");
-obj.monitorRegions(function(ret, err){
+var brightBeacon = api.require("brightBeacon");
+brightBeacon.monitorRegions(function(ret, err){
    if(ret.status){
    JSON.stringify(ret.regions);
    }else{

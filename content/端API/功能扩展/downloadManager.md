@@ -3,6 +3,8 @@ Title: downloadManager
 Description: downloadManager
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 	<li><a href="#const-content">Constant</a></li>
@@ -35,7 +37,7 @@ Description: downloadManager
 
 打开下载管理界面
 
-openManagerView({params}, callback(ret))
+openManagerView({params}, callback(ret, err))
 
 ##params
 
@@ -45,22 +47,22 @@ title：
 - 默认值：下载管理
 - 描述：显示在下载界面顶部栏的标题，不能为空
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：点击列表中下载完成项的回调
 
 内部字段：
 
 ```js
 {
-	id:'',                          //下载记录id
-	mimeType:'',                    //文件类型
-	savePath:'',                    //下载文件的本地存储路径
-	uncompressPath:''               //压缩文件解压缩后路径
-	event:true                      //下载管理界面返回时的事件，布尔类型
+	id: '',                          //下载记录 id
+	mimeType: '',                    //文件类型
+	savePath: '',                    //下载文件的本地存储路径
+	uncompressPath: ''               //压缩文件解压缩后路径
+	event: true                      //下载管理界面返回时的事件，布尔类型
 }
 ```
 
@@ -70,7 +72,7 @@ ret：
 var downloadManager = api.require('downloadManager');
 downloadManager.openManagerView({
 	title: '下载管理'
-},function( ret, err ){		
+}, function(ret, err){		
     if( ret ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -154,7 +156,7 @@ uncompress：
 
 headers：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：请求头
 
@@ -174,7 +176,7 @@ iconPath：
 
 - 类型：字符串
 - 默认值：无
-- 描述：该项下载显示在managerView中对应的图标
+- 描述：该项下载显示在 managerView 中对应的图标
 
 networkTypes：
 
@@ -186,13 +188,13 @@ networkTypes：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
 ```js
 {
-	id:'123456'		//新下载记录的id
+	id: '123456'		//新下载记录的 id
 }
 ```
 
@@ -207,7 +209,7 @@ downloadManager.enqueue({
 	allowResume: true,
 	title: '教程',
 	networkTypes: 'all'
-},function( ret, err ){		
+}, function(ret, err){		
     if( ret ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -239,20 +241,20 @@ id：
 
 - 类型：字符串
 - 默认值：无
-- 描述：下载记录的id，不能为空
+- 描述：下载记录的 id，不能为空
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
 ```js
 {
-	status:false,            //操作状态
-	msg:''                   //操作失败时的描述
+	status: false,            //操作状态
+	msg: ''                   //操作失败时的描述
 }
 ```
 
@@ -262,7 +264,7 @@ ret：
 var downloadManager = api.require('downloadManager');
 downloadManager.pause({
 	id: '123'
-},function( ret, err ){		
+}, function(ret, err){		
     if( ret.status ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -294,20 +296,20 @@ id：
 
 - 类型：字符串
 - 默认值：无
-- 描述：下载记录的id，不能为空
+- 描述：下载记录的 id，不能为空
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
 ```js
 {
-	status:false,		//操作状态
-	msg:''           	//操作失败时的描述
+	status: false,		//操作状态
+	msg: ''           	//操作失败时的描述
 }
 ```
 
@@ -317,7 +319,7 @@ ret：
 var downloadManager = api.require('downloadManager');
 downloadManager.resume({
 	id: '123'
-},function( ret, err ){		
+}, function(ret, err){		
     if( ret.status ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -350,7 +352,7 @@ ids：
 
 - 类型：数组
 - 默认值：无
-- 描述：下载记录的id数组，不能为空
+- 描述：下载记录的 id 数组，不能为空
 
 deleteFiles：
 
@@ -362,13 +364,13 @@ deleteFiles：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
 ```js
 {
-	number:1          //成功完成删除操作的总数，没有则返回-1
+	number: 1          //成功完成删除操作的总数，没有则返回-1
 }
 ```
 
@@ -377,8 +379,11 @@ ret：
 ```js
 var downloadManager = api.require('downloadManager');
 downloadManager.remove({
-	ids: [ '123456', '1234567' ]
-},function( ret, err ){		
+	ids: [ 
+		'123456', 
+		'1234567' 
+	]
+}, function(ret, err){		
     if( ret ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -410,7 +415,7 @@ ids：
 
 - 类型：数组
 - 默认值：无
-- 描述：下载记录的id数组
+- 描述：下载记录的 id 数组
 
 status：
 
@@ -422,7 +427,7 @@ status：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -430,16 +435,16 @@ ret：
 {
 	data:
 	[{
-		id:'123456',                  //下载id
-    	status:1,                     //下载状态
-		url:'',                       //资源地址
-		savePath,                     //下载文件本地存储路径
-		title:'教程',                  //下载文件标题
-		totalSize:1000,               //文件总大小，单位byte
-		finishSize:500,               //已完成下载大小，单位byte
-		mimeType:'audio/mp4',         //文件类型
-		iconPath:''                   //图片路径
-		reason:''                     //当下载发生错误时，错误的描述。详见下载错误常量表
+		id: '123456',                  		//下载id
+    	status: 1,                     		//下载状态
+		url: '',                       		//资源地址
+		savePath: '',                     	//下载文件本地存储路径
+		title: '教程',                  	//下载文件标题
+		totalSize: 1000,               		//文件总大小，单位 byte
+		finishSize: 500,               		//已完成下载大小，单位 byte
+		mimeType: 'audio/mp4',         		//文件类型
+		iconPath: ''                   		//图片路径
+		reason: ''                     		//当下载发生错误时，错误的描述。详见下载错误常量表
 	}]
 }
 ```
@@ -449,9 +454,11 @@ ret：
 ```js
 var downloadManager = api.require('downloadManager');
 downloadManager.query({
-	ids: [ '123456', '1234567' ],
-	status: 1
-},function( ret, err ){		
+	ids: [ 
+		'123456', 
+		'1234567' 
+	]
+}, function(ret, err){		
     if( ret ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -483,20 +490,20 @@ id：
 
 - 类型：字符串
 - 默认值：无
-- 描述：下载记录的id，不能为空
+- 描述：下载记录的 id，不能为空
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
 ```js
 {
-	status:false,		//操作状态
-	msg:''           	//操作失败时的描述
+	status: false,		//操作状态
+	msg: ''           	//操作失败时的描述
 }
 ```
 
@@ -506,7 +513,7 @@ ret：
 var downloadManager = api.require('downloadManager');
 downloadManager.openDownloadedFile({
 	id: '123456'
-},function( ret, err ){		
+}, function(ret, err){		
     if( ret.status ){
         alert( JSON.stringify( ret ) );
     }else{

@@ -3,6 +3,8 @@ Title: rongCloud
 Description: rongCloud
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：融云</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 	<li><a href="#const-content">Constant</a></li>
@@ -141,7 +143,7 @@ rongCloud封装了融云即时通讯能力库IMLib SDK的API，对融云的相�
 
 初始化融云SDK，调用connect连接前务必保证调用此方法
 
-调用前请在config.xml中设置内容如下：
+调用前请在[config.xml](/APICloud/技术专题/app-config-manual)中设置内容如下：
 
 ```xml
 <feature name="rongCloud">
@@ -158,7 +160,7 @@ init(callback(ret, err))
 ret:
 
 - 类型：JSON 对象
-- 描述：初始化的状态，如果 config.xml 中没有设置 appKey 值，会导致失败，错误信息为参数错误
+- 描述：初始化的状态，如果 [config.xml](/APICloud/技术专题/app-config-manual) 中没有设置 appKey 值，会导致失败，错误信息为参数错误
 
 内部字段：
 
@@ -200,7 +202,7 @@ rong.init(function(ret, err){
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -276,7 +278,7 @@ rong.init(function(ret, err){
 });
 
 rong.connect({
-	token: 'ThptTWyiPPPvZHvuSiuri82yq+hfEluLjZ78E1qo4hEVSFQNpqdoPu406urMWKN4Z3/olWR+v9JVLAwfOQoLrA=='},
+	token: 'ThptTWyiPPPvZHvuSiuri82yq+hfEluLjZ78E1qo4hEVSFQNpqdoPu406urMWKN4Z3/olWR+v9JVLAwfOQoLrA=="},
 	function(ret, err){
 		if (ret.status == 'success')
 			api.toast({ msg: ret.result.userId });
@@ -285,7 +287,7 @@ rong.connect({
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -358,7 +360,7 @@ rong.reconnect(function(ret, err){
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -404,7 +406,7 @@ rong.disconnect(false); // 断开，且不再接收 Push
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -463,7 +465,7 @@ rong.setConnectionStatusListener(function(ret, err){
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -615,7 +617,7 @@ rong.sendTextMessage({
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -775,7 +777,7 @@ rong.sendVoiceMessage({
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -947,7 +949,7 @@ rong.sendImageMessage({
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -1116,7 +1118,7 @@ rong.sendRichContentMessage({
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -1310,7 +1312,7 @@ rong.sendLocationMessage({
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -1462,7 +1464,7 @@ rong.sendCommandNotificationMessage({
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -1526,7 +1528,7 @@ rong.setOnReceiveMessageListener(function (ret, err) {
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -1589,7 +1591,7 @@ rong.getConversationList(function (ret, err) {
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -1665,7 +1667,7 @@ rong.getConversation({
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -1723,7 +1725,7 @@ rong.removeConversation({
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -1772,7 +1774,7 @@ rong.clearConversations({
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -1835,7 +1837,7 @@ rong.setConversationToTop({
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -1921,7 +1923,7 @@ rong.getConversationNotificationStatus({
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -2014,7 +2016,7 @@ rong.setConversationNotificationStatus({
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -2094,7 +2096,7 @@ rong.getLatestMessages({
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -2181,7 +2183,7 @@ rong.getHistoryMessages({
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -2275,7 +2277,7 @@ rong.getHistoryMessagesByObjectName({
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -2324,7 +2326,7 @@ rong.deleteMessages({
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -2380,7 +2382,7 @@ rong.clearMessages({
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -2420,7 +2422,7 @@ rong.getTotalUnreadCount(function (ret, err) {
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -2477,7 +2479,7 @@ rong.getUnreadCount({
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -2527,7 +2529,7 @@ rong.getUnreadCountByConversationTypes({
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -2583,7 +2585,7 @@ rong.setMessageReceivedStatus({
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -2639,7 +2641,7 @@ rong.clearMessagesUnreadStatus({
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -2695,7 +2697,7 @@ rong.setMessageExtra({
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -2752,7 +2754,7 @@ rong.getTextMessageDraft({
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -2815,7 +2817,7 @@ rong.saveTextMessageDraft({
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -2877,7 +2879,7 @@ rong.clearTextMessageDraft({
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -2962,7 +2964,7 @@ rong.createDiscussion({
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -3044,7 +3046,7 @@ rong.getDiscussion({
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -3126,7 +3128,7 @@ rong.setDiscussionName({
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -3208,7 +3210,7 @@ rong.addMemberToDiscussion({
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -3292,7 +3294,7 @@ rong.removeMemberFromDiscussion({
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -3367,7 +3369,7 @@ rong.quitDiscussion({
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -3449,7 +3451,7 @@ rong.setDiscussionInviteStatus({
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -3534,7 +3536,7 @@ rong.syncGroup({
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -3616,7 +3618,7 @@ rong.joinGroup({
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -3691,7 +3693,7 @@ rong.quitGroup({
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -3773,7 +3775,7 @@ rong.joinChatRoom({
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -3848,7 +3850,7 @@ rong.quitChatRoom({
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -3879,7 +3881,7 @@ iOS 系统，Android 系统
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -3894,7 +3896,7 @@ iOS 系统，Android 系统
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 
@@ -3909,7 +3911,7 @@ iOS 系统，Android 系统
 
 ### 可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 可提供的 1.1.0 及更高版本
 </div>

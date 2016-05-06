@@ -3,6 +3,8 @@ Title: mdReader
 Description: mdReader
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -33,7 +35,7 @@ open({params})
 
 rect：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）模块的位置及尺寸
 - 内部字段：
 
@@ -47,20 +49,20 @@ rect：
 ```
 styles：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）模块的样式
 - 内部字段：
 
 ```js
 {
-    bg: 'rgba(0,0,0,0)'   //（可选项）字符串类型；日历整体背景，支持rgb、rgba、#、图片路径，要求本地路径（fs://，widget://）；默认：'rgba(0,0,0,0)'
+    bg: 'rgba(0,0,0,0)'   //（可选项）字符串类型；日历整体背景，支持 rgb、rgba、#、图片路径，要求本地路径（fs://、widget://）；默认：'rgba(0,0,0,0)'
 }
 ```
 
 path：
 
 - 类型：字符串
-- 描述：文档的路径，要求本地路径（fs://，widget://）
+- 描述：文档的路径，要求本地路径（fs://、widget://）
 
 fixedOn：
 
@@ -71,7 +73,7 @@ fixedOn：
 fixed：
 
 - 类型：布尔
-- 描述：（可选项）模块是否随所属 Window 或 Frame 滚动
+- 描述：（可选项）模块是否随所属 window 或 frame 滚动
 - 默认值：true（不随之滚动）
 
 ##示例代码
@@ -112,7 +114,7 @@ setPath({params})
 path：
 
 - 类型：字符串
-- 描述：文档的路径，要求本地路径（fs://，widget://）
+- 描述：文档的路径，要求本地路径（fs://、widget://）
 
 ##示例代码
 

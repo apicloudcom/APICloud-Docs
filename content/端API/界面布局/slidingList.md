@@ -3,6 +3,8 @@ Title: slidingList
 Description: slidingList
 */
 
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -15,8 +17,7 @@ Description: slidingList
 
 #**概述**
 
-slidingList封装了自定义列表，仿IOS滑动选择器，由底部弹出。 本模块暂仅支持Android。
-
+slidingList 封装了自定义列表，仿 iOS 滑动选择器，由底部弹出。 
 
 #**showList**<div id="a1"></div>
 
@@ -54,7 +55,7 @@ data：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -66,23 +67,31 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
 {
-    select_item:""    // 当必填参数没有填或者必填参数传递错误的话会有相应的提示 比如 "数量少于三个" "缺少参数"
+    select_item:''    // 当必填参数没有填或者必填参数传递错误的话会有相应的提示 比如 '数量少于三个' '缺少参数'
 }
 ```
 
 ##示例代码
 
 ```js
-var ioslist = api.require('slidingList');
-var param = {"rightbtn" : "确定", "leftbtn" : "取消","item_height" : "130","item_num":"3","data" : [{ content:'标题1'},{content:'标题2'},{content:'标题3'}]};
-ioslist.showList(param, function(ret, err){
-	alert(JSON.stringify(ret));
-	alert(JSON.stringify(err));
+var slidingList = api.require('slidingList');
+slidingList.showList({
+	rightbtn : '确定', 
+	leftbtn : '取消',
+	item_height : '130',
+	item_num:'3',
+	data : [{ content:'标题1'},{content:'标题2'},{content:'标题3'}]
+}, function(ret, err){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 

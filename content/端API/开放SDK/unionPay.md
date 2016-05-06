@@ -2,6 +2,9 @@
 Title: unionPay
 Description: unionPay
 */
+
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <div class="outline">
 [pay](#a1)
 </div>
@@ -44,11 +47,11 @@ devMode：
 - 描述：接入模式设定，值为 false 代表接入生成环境
 - 默认值：true
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -87,6 +90,6 @@ ret：
 
 ##可用性
 
-IOS系统  Android系统
+iOS系统  Android系统
 
 可提供的1.0.0及更高版本

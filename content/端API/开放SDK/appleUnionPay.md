@@ -3,6 +3,8 @@ Title: appleUnionPay
 Description: appleUnionPay
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -98,7 +100,14 @@ Apple Pay 分为线上支付和线下支付。线下支付不需要手机接入�
 
 ![付款流程](/img/docImage/appleUnionPay/applePayUnion.png)
 
-- 1-2：商户生成订单，通过商户 SERVER 端将订单信息发送给银联支付网关；- 3-4：银联支付网关记录订单信息，返回用来标识订单的 TN 号，经由商户 SERVER 返回至给商户 APP；- 5：商户 APP 调用银联SDK，将 TN 号传递给银联 SDK- 6：银联 SDK 向苹果公司的 PASSKIT FRAMEWORK 发起支付请求；- 7：接口返回加密的支付 Token 信息；- 8-9：银联 SDK 将支付 Token 传递给银联支付网关，完成交易认证；- 10-12：银联将支付结果返回给商户APP，商户SERVER，商户APP 负责提示用户交易结果
+- 1-2：商户生成订单，通过商户 SERVER 端将订单信息发送给银联支付网关；
+- 3-4：银联支付网关记录订单信息，返回用来标识订单的 TN 号，经由商户 SERVER 返回至给
+商户 APP；
+- 5：商户 APP 调用银联SDK，将 TN 号传递给银联 SDK
+- 6：银联 SDK 向苹果公司的 PASSKIT FRAMEWORK 发起支付请求；
+- 7：接口返回加密的支付 Token 信息；
+- 8-9：银联 SDK 将支付 Token 传递给银联支付网关，完成交易认证；
+- 10-12：银联将支付结果返回给商户APP，商户SERVER，商户APP 负责提示用户交易结果
 
 本模块封装了支付流程的5-12。
 
@@ -106,7 +115,8 @@ Apple Pay 分为线上支付和线下支付。线下支付不需要手机接入�
 
 **步骤一、成为银联手机支付入网商户**
 
-参照《全渠道业务运营服务指引》，签署业务Apple Pay 线上支付合作协议，申请银联商户代码，准备接入的相关参数。 详情参考[商户入网指南](https://merchant.unionpay.com/join/help/director)
+参照《全渠道业务运营服务指引》，签署业务Apple Pay 线上支付合作协议，申请银联商
+户代码，准备接入的相关参数。 详情参考[商户入网指南](https://merchant.unionpay.com/join/help/director)
 
 **步骤二 、登录银联商户服务平台，通过商户服务平台申请 CSR**
 
@@ -144,13 +154,13 @@ Apple Pay 分为线上支付和线下支付。线下支付不需要手机接入�
 
 判断手机是否支持 Apple Pay 功能，以及是否已加载有可用的支付卡片
 
-canMakePayments(callback(ret))
+canMakePayments(callback(ret, err))
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -163,16 +173,18 @@ ret：
 
 ```js
 var appleUnionPay = api.require('appleUnionPay');
-appleUnionPay.canMakePayments(function( ret ) {
-    if( ret ) {
+appleUnionPay.canMakePayments(function( ret, err ){		
+    if( ret ){
         alert( JSON.stringify( ret ) );
-    } 
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
 ##可用性
 
-IOS 系统
+iOS系统
 
 可提供的1.0.0及更高版本
 
@@ -180,7 +192,7 @@ IOS 系统
 
 支付
 
-pay(params, callback(ret))
+pay({params}, callback(ret, err))
 
 
 ##params
@@ -204,11 +216,11 @@ mID：
 - 描述：在苹果公司申请的商户号，表示调用 Apple Pay 所需要的 MerchantID
 
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -230,7 +242,8 @@ otherInfo：例如：“currency=元&order_amt=20.00&pay_amt=15.00“，其中 c
 
 ![csr下载](/img/docImage/appleUnionPay/applePayExamples.png)
 
-**商户订单是否成功支付应以商户后台收到全渠道返回的支付结果为准，此处支付控件返回结果仅作为商户App 向用户展示支付结果使用。**
+**商户订单是否成功支付应以商户后台收到全渠道返回的支付结果为准，此处支付
+控件返回结果仅作为商户App 向用户展示支付结果使用。**
 
 ##示例代码
 
@@ -240,15 +253,17 @@ appleUnionPay.pay({
     tn: "201602231715123483638",
     mode: "01",
     mID: "merchent.com.apicloud"
-}, function( ret ) {
-    if( ret ) {
+}, function(ret, err){		
+    if( ret ){
         alert( JSON.stringify( ret ) );
-    } 
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
 ##可用性
 
-IOS 系统
+iOS系统
 
 可提供的1.0.0及更高版本

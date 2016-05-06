@@ -3,6 +3,8 @@ Title: bMap
 Description: bMap
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 ##基础类
 
 <div class="outline">
@@ -218,7 +220,11 @@ bMap 模块封装了百度地图的原生 SDK，集成了百度地图常用基�
     **android_api_key**：在百度地图开放平台申请的 Android 端 AK
 
     **ios_api_key**：在百度地图开放平台申请的 IOS 端 AK
-
+ 
+ ***百度ak申请方法见[百度地图接入指南](http://docs.apicloud.com/APICloud/开放平台接入指南/baidu)***
+ 
+ ***注意：在使用搜索类接口时，请确保您的 ak 是通过百度认证的状态，否则会报异常***
+ 
 ##**模块接口**
 
 <div id="m1"></div>
@@ -233,7 +239,7 @@ open({params}, callback(ret, err))
 
 rect：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）模块的位置及尺寸
 - 内部字段：
 
@@ -280,14 +286,14 @@ fixedOn：
 fixed:
 
 - 类型：布尔
-- 描述：（可选项）模块是否随所属 Window 或 Frame 滚动
+- 描述：（可选项）模块是否随所属 window 或 frame 滚动
 - 默认值：true（不随之滚动）
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -403,7 +409,7 @@ setRect({params})
 
 rect：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）模块的位置及尺寸
 - 内部字段：
 
@@ -440,7 +446,7 @@ iOS系统，Android系统
 
 #**getLocation**
 
-开始定位，若要支持后台定位需[配置 config.xml 文件 location 字段](http://docs.apicloud.com/APICloud/技术专题/app-config-manual#14-2)，**无需调用 open 接口即可定位**
+开始定位，若要支持后台定位需配置 [config.xml](/APICloud/技术专题/app-config-manual) 文件 location 字段，**无需调用 open 接口即可定位**
 
 getLocation({params}, callback(ret, err))
 
@@ -473,7 +479,7 @@ filter：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -488,7 +494,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -567,7 +573,7 @@ address：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -580,7 +586,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -640,7 +646,7 @@ lat：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -659,7 +665,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -707,7 +713,7 @@ getDistance({params}, callback(ret, err))
 
 start：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：起点经纬度
 - 内部字段：
 
@@ -720,7 +726,7 @@ start：
 
 end：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：终点经纬度
 - 内部字段：
 
@@ -731,11 +737,11 @@ end：
 }
 ```
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -825,7 +831,7 @@ setCenter({params})
 
 coords：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：中心点的经纬度
 - 内部字段：
 
@@ -867,13 +873,13 @@ iOS系统，Android系统
 
 获取百度地图中心点坐标
 
-getCenter(callback(ret))
+getCenter(callback(ret, err))
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -1057,7 +1063,7 @@ show：
 
 position：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）比例尺的位置，设定坐标以地图左上角为原点
 - 内部字段：
 ```js
@@ -1098,7 +1104,7 @@ setCompass({params})
 
 position：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）指南针的位置，设定坐标以地图左上角为原点
 - 内部字段：
 ```js
@@ -1280,13 +1286,13 @@ iOS系统，Android系统
 
 获取地图显示范围（矩形区域）
 
-getRegion(callback(ret))
+getRegion(callback(ret, err))
 
 ##callback
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -1354,7 +1360,7 @@ mcode：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -1367,7 +1373,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -1460,11 +1466,11 @@ name:
     - click（单击事件）
     - dbclick（双击事件）
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -1503,13 +1509,13 @@ iOS系统，Android系统
 
 判断已知点是否在指定的多边形区域内
 
-isPolygonContantsPoint({params}, callback(ret))
+isPolygonContantsPoint({params}, callback(ret, err))
 
 ##params
 
 point：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：已知点的地理坐标
 - 内部字段：
 
@@ -1536,7 +1542,7 @@ points：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -1618,13 +1624,13 @@ iOS系统，Android系统
 
 开始搜索GPS信息（卫星个数，以及每个卫星的信噪比数组），本接口仅支持 android 平台
 
-startSearchGPS(callback(ret))
+startSearchGPS(callback(ret, err))
 
 ##callBack
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -1681,7 +1687,7 @@ Android系统
 
 在地图上添加标注信息
 
-addAnnotations({params}, callback(ret))
+addAnnotations({params}, callback(ret, err))
 
 ##params
 
@@ -1696,7 +1702,7 @@ annotations：
     id: 1,                     //数字类型；图标标注的唯一标识
     lon: 116.233,              //数字类型；图标标注所在位置的经度
     lat: 39.134,               //数字类型；图标标注所在位置的纬度
-    icon: 'widget://',         //（可选项）字符串类型；指定的标注图标，要求本地路径（fs://，widget://），若不传则显示公用的 icon 图标
+    icon: 'widget://',         //（可选项）字符串类型；指定的标注图标，要求本地路径（fs://、widget://），若不传则显示公用的 icon 图标
     draggable: true            //（可选项）布尔类型；所添加的标注是否可被拖动，若不传则以公用的 draggable 为准
 }]
 ```
@@ -1704,7 +1710,7 @@ annotations：
 icon：
 
 - 类型：字符串
-- 描述：（可选项）公用的标注图标，要求本地路径（fs://，widget://）
+- 描述：（可选项）公用的标注图标，要求本地路径（fs://、widget://）
 - 默认值：红色大头针
 
 
@@ -1714,11 +1720,11 @@ draggable：
 - 描述：（可选项）所添加的标注是否可被拖动
 - 默认值：false
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -1771,7 +1777,7 @@ iOS系统，Android系统
 
 获取指定标注的经纬度
 
-getAnnotationCoords({params}, callback(ret))
+getAnnotationCoords({params}, callback(ret, err))
 
 ##params
 
@@ -1780,11 +1786,11 @@ id：
 - 类型：数字
 - 描述：指定的标注 id
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -1819,7 +1825,7 @@ iOS系统，Android系统
 
 设置某个已添加标注的经纬度
 
-setAnnotationCoords(callback(ret))
+setAnnotationCoords(callback(ret, err))
 
 ##params
 
@@ -1861,7 +1867,7 @@ iOS系统，Android系统
 
 判断标注是否存在
 
-annotationExist({params}, callback(ret))
+annotationExist({params}, callback(ret, err))
 
 ##params
 
@@ -1870,11 +1876,11 @@ id：
 - 类型：数字
 - 描述：指定的标注 id
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -1908,7 +1914,7 @@ iOS系统，Android系统
 
 设置点击标注时弹出的气泡信息
 
-setBubble({params}, callback(ret))
+setBubble({params}, callback(ret, err))
 
 ##params
 
@@ -1920,12 +1926,12 @@ id：
 bgImg：
 
 - 类型：字符串
-- 描述：（可选项）弹出气泡的背景图片（160*90规格），要求本地路径（fs://，widget://）
+- 描述：（可选项）弹出气泡的背景图片（160*90规格），要求本地路径（fs://、widget://）
 - 默认值：默认气泡样式
 
 content：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：弹出气泡的内容
 - 内部字段：
 
@@ -1939,7 +1945,7 @@ content：
 
 styles：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：弹出气泡的样式
 - 内部字段：
 
@@ -1960,7 +1966,7 @@ styles：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -2052,7 +2058,7 @@ id：
 
 coords：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：布告牌所在位置的坐标
 - 内部字段：
 
@@ -2066,11 +2072,11 @@ coords：
 bgImg：
 
 - 类型：字符串
-- 描述：布告牌的背景图片（160*75规格），要求本地路径（fs://，widget://）
+- 描述：布告牌的背景图片（160*75规格），要求本地路径（fs://、widget://）
 
 content：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：布告牌的内容
 - 内部字段：
 
@@ -2084,7 +2090,7 @@ content：
 
 styles：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：布告牌的样式
 - 内部字段：
 
@@ -2105,7 +2111,7 @@ styles：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -2171,7 +2177,7 @@ annotations：
     id: 10,                    //数字类型；图标标注的唯一标识
     lon: 116.233,              //数字类型；图标标注所在位置的经度
     lat: 39.134,               //数字类型；图标标注所在位置的纬度
-    icon: 'widget://'          //字符串类型；指定的标注图标，要求本地路径（fs://，widget://）
+    icon: 'widget://'          //字符串类型；指定的标注图标，要求本地路径（fs://、widget://）
 }]
 ```
 
@@ -2208,7 +2214,7 @@ iOS系统，Android系统
 
 移动地图上已添加的可移动、旋转的标注图标，**在移动动画开始前，会先做 0.3 秒的旋转动画，使所移动的图标中间轴线顶端对准终点坐标点。由于百度官方 SDK 的 bug 限制，在 Android 平台上，如果标注添加到地图当前可视区域以外的区域，则不可以移动该标注**
 
-moveAnnotation({params}, callback(ret))
+moveAnnotation({params}, callback(ret, err))
 
 ##params
 
@@ -2225,7 +2231,7 @@ duration：
 
 end：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：终点经纬度
 - 内部字段：
 
@@ -2235,11 +2241,11 @@ end：
     lat: 29.615467      //数字类型；终点的纬度
 }
 ```
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -2318,7 +2324,7 @@ id：
 
 styles：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）折线的样式
 - 内部字段：
 
@@ -2388,7 +2394,7 @@ id：
 
 styles：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）多边形的样式
 - 内部字段：
 
@@ -2460,7 +2466,7 @@ id：
 
 styles：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）弧形的样式
 - 内部字段：
 
@@ -2530,7 +2536,7 @@ id：
 
 center：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：圆形中心点的经纬度
 - 内部字段：
 
@@ -2548,7 +2554,7 @@ radius：
 
 styles：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）圆形的样式
 - 内部字段：
 
@@ -2603,7 +2609,7 @@ id：
 imgPath：
 
 - 类型：字符串
-- 描述：图片的路径，要求本地路径（fs://，widget://）
+- 描述：图片的路径，要求本地路径（fs://、widget://）
 
 lbLon：
 
@@ -2724,7 +2730,7 @@ policy：
 
 start：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：起点信息
 - 内部字段：
 
@@ -2737,7 +2743,7 @@ start：
 
 end：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：终点信息
 - 内部字段：
 
@@ -2752,7 +2758,7 @@ end：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -2783,7 +2789,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -2853,7 +2859,7 @@ iOS系统，Android系统
 
 在地图上显示指定路线，**调用本接口前，必须保证已经调用过接口 open 和 searchRoute**
 
-drawRoute({params}, callback(ret))
+drawRoute({params}, callback(ret, err))
 
 ##params
 
@@ -2876,7 +2882,7 @@ index：
 
 styles：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：路线样式设置
 - 内部字段：
 
@@ -2891,11 +2897,11 @@ styles：
 }
 ```
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -3003,7 +3009,7 @@ line：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -3023,7 +3029,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -3096,7 +3102,7 @@ uid：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -3122,7 +3128,7 @@ ret：
 ```
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -3242,7 +3248,7 @@ pageCapacity：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -3273,7 +3279,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -3359,7 +3365,7 @@ pageCapacity：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -3390,7 +3396,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -3481,7 +3487,7 @@ pageCapacity：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -3512,7 +3518,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -3560,7 +3566,7 @@ iOS系统，Android系统
 
 根据关键字返回建议搜索关键字，**无需调用 open 接口即可搜索**
 
-autocomplete({params}, callback(ret))
+autocomplete({params}, callback(ret, err))
 
 ##params
 
@@ -3578,7 +3584,7 @@ city：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -3589,7 +3595,7 @@ ret：
 ```
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -3633,14 +3639,14 @@ iOS系统，Android系统
 
 获取热门城市列表，**无需调用 open 接口即可搜索**
 
-getHotCityList(callback(ret))
+getHotCityList(callback(ret, err))
 
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -3682,14 +3688,14 @@ iOS系统，Android系统
 
 获取支持离线下载城市列表，**无需调用 open 接口即可搜索**
 
-getOfflineCityList(callback(ret))
+getOfflineCityList(callback(ret, err))
 
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -3731,7 +3737,7 @@ iOS系统，Android系统
 
 根据城市名搜索该城市离线地图记录，**无需调用 open 接口即可搜索**
 
-searchCityByName(params,callback(ret))
+searchCityByName({params}, callback(ret, err))
 
 ##params
 
@@ -3740,11 +3746,11 @@ name：
 - 类型：字符串
 - 描述：指定搜索的城市名
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -3788,13 +3794,13 @@ iOS系统，Android系统
 
 获取各城市离线地图更新信息，**无需调用 open 接口即可搜索**
 
-getAllUpdateInfo(callback(ret))
+getAllUpdateInfo(callback(ret, err))
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -3848,7 +3854,7 @@ iOS系统，Android系统
 
 获取指定城市id离线地图更新信息，**无需调用 open 接口即可搜索**
 
-getUpdateInfoByID(params, callback(ret))
+getUpdateInfoByID({params}, callback(ret, err))
 
 ##params
 
@@ -3857,11 +3863,11 @@ cityID:
 - 类型：数字
 - 描述：指定的城市id
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -3917,7 +3923,7 @@ iOS系统，Android系统
 
 启动下载指定城市 id 的离线地图，**无需调用 open 接口即可搜索**
 
-start(params, callback(ret))
+start({params}, callback(ret, err))
 
 ##params
 
@@ -3926,11 +3932,11 @@ cityID:
 - 类型：数字
 - 描述：指定的城市id
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -3964,7 +3970,7 @@ iOS系统，Android系统
 
 启动更新指定城市 id 的离线地图，**无需调用 open 接口即可搜索**
 
-update(params, callback(ret))
+update({params}, callback(ret, err))
 
 ##params
 
@@ -3973,11 +3979,11 @@ cityID:
 - 类型：数字
 - 描述：指定的城市id
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -4011,7 +4017,7 @@ iOS系统，Android系统
 
 暂停下载指定城市 id 的离线地图，**无需调用 open 接口即可搜索**
 
-pause(params, callback(ret))
+pause({params}, callback(ret, err))
 
 ##params
 
@@ -4020,11 +4026,11 @@ cityID:
 - 类型：数字
 - 描述：指定的城市id
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -4058,7 +4064,7 @@ iOS系统，Android系统
 
 删除下载指定城市 id 的离线地图，**无需调用 open 接口即可搜索**
 
-remove(params, callback(ret))
+remove({params}, callback(ret, err))
 
 ##params
 
@@ -4067,11 +4073,11 @@ cityID:
 - 类型：数字
 - 描述：指定的城市id
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -4105,13 +4111,13 @@ iOS系统，Android系统
 
 监听离线地图相关事件
 
-addOfflineListener(callback(ret))
+addOfflineListener(callback(ret, err))
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js

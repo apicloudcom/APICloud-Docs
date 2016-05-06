@@ -2,6 +2,9 @@
 Title: recordVideo
 Description: recordVideo
 */
+
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <div class="outline">
 [initrecordSDK](#a1)
 [startRecordTV](#a2)
@@ -19,13 +22,13 @@ VCamera(短视频拍摄)提供视频录制、后滤镜、炫酷 MV 主题。
 
 注册SDK
 
-initrecordSDK(callback(ret))
+initrecordSDK(callback(ret, err))
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -59,13 +62,13 @@ function initsdk(){
 
 开始录制
 
-startRecordTV(callback(ret))
+startRecordTV(callback(ret, err))
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 

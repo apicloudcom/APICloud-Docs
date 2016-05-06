@@ -2,6 +2,9 @@
 Title: videoPlayer
 Description: videoPlayer
 */
+
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -59,19 +62,18 @@ videoPlayer 封装了视频播放功能（不支持音频播放）。可快进�
 
 打开一个自带界面的视频播放器，本播放器为全屏横屏显示，支持屏幕随设备自动旋转。用户单击播放器时，会弹出 foot 和 head 导航条，再次单击则关闭之。**仅 setPath 接口对本接口打开的播放器有效**
 
-play({params},callback(ret))
-
+play({params}, callback(ret, err))
 ##params
 
 texts：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）聊天输入框模块可配置的文本
 - 内部字段：
 
 ```js
 {
-    head: {          //（可选项）JSON对象；顶部文字
+    head: {          //（可选项）JSON 对象；顶部文字
         title: ''    //（可选项）字符串类型；顶部标题文字
     }
 }
@@ -79,13 +81,13 @@ texts：
 
 styles：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）模块的样式设置
 - 内部字段：
 
 ```js
 {
-    head:{    //（可选项）JSON对象；播放器顶部导航条样式    
+    head:{                           //（可选项）JSON对象；播放器顶部导航条样式    
        bg: 'rgba(161,161,161,0.5)',  //（可选项）字符串类型；顶部导航条背景，支持#、rgb、rgba、img；默认：rgba(161,161,161,0.5)
        height: 44,                   //（可选项）数字类型；顶部导航条的高；默认：44
        titleSize: 20,                //（可选项）数字类型；顶部标题字体大小；默认：20
@@ -95,7 +97,7 @@ styles：
        setSize: 44,                  //（可选项）数字类型；顶部右边设置按钮大小；默认：44
        setImg:'fs://img/set.png'     //（可选项）字符串类型；顶部右边设置按钮背景图片，要求本地路径（widget://、fs://）；默认：设置小图标
     },  
-    foot:{    //（可选项）JSON对象；播放器底部导航条样式    
+    foot:{                           //（可选项）JSON对象；播放器底部导航条样式    
        bg: 'rgba(161,161,161,0.5)',  //（可选项）字符串类型；底部导航条背景，支持#、rgb、rgba、img；默认：rgba(161,161,161,0.5)
        height: 44,                   //（可选项）数字类型；底部导航条的高；默认：44
        playSize: 44,                 //（可选项）数字类型；底部播放/暂停按钮大小；默认：44
@@ -134,11 +136,11 @@ autorotation:
 - 描述：（可选项）视频播放页面是否支持自动旋转（横竖屏），若为 false 则手动点击右下角按钮旋转
 - 默认值：true（根据设备当前方向自动适配旋转）
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -192,8 +194,7 @@ videoPlayer.play({
     path: 'http://7o50kb.com2.z0.glb.qiniucdn.com/c1.1.mp4', //（可选项）字符串类型；文档的路径，支持网络和本地（fs://）路径；默认：未传值时不播放
     //在 android 平台上不支持 widget://
     autoPlay:true //（可选项）布尔类型；打开时是否自动播放；默认：true（自动播放）
-},
-function(ret, err) {
+},function(ret, err) {
     if (ret) {
         alert(JSON.stringify(ret));
     } else {
@@ -212,13 +213,13 @@ iOS系统，Android系统
 
 打开一个视频播放器
 
-open({params},callback(ret))
+open({params}, callback(ret, err))
 
 ##params
 
 rect：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）模块的位置及尺寸
 - 内部字段：
 
@@ -256,14 +257,14 @@ fixedOn：
 fixed：
 
 - 类型：布尔
-- 描述：（可选项）模块是否随所属 Window 或 Frame 滚动
+- 描述：（可选项）模块是否随所属 window 或 frame 滚动
 - 默认值：true（不随之滚动）
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -284,7 +285,7 @@ ret：
 var videoPlayer = api.require('videoPlayer');
 videoPlayer.open({
     path: 'http://7o50kb.com2.z0.glb.qiniucdn.com/c1.1.mp4'
-},function( ret, err ){		
+}, function(ret, err){		
 	if( ret.status ){
 		alert( JSON.stringify( ret ) );
 	}else{
@@ -303,7 +304,7 @@ iOS系统，Android系统
 
 设置音/视频的文件路径
 
-setPath({params},callback(ret))
+setPath({params}, callback(ret, err))
 
 ##params
 
@@ -323,11 +324,11 @@ title：
 - 描述：（可选项）当设置 play 接口打开的视频时，本参数表示设置该视频的标题，本参数仅对 play 接口有效
 - 默认值：原标题
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -510,7 +511,7 @@ iOS系统，Android系统
 
 快进
 
-forward(params)
+forward({params})
 
 ##params
 
@@ -539,7 +540,7 @@ iOS系统，Android系统
 
 快退
 
-rewind(params)
+rewind({params})
 
 ##params
 
@@ -567,7 +568,7 @@ iOS系统，Android系统
 
 跳转
 
-seekTo(params)
+seekTo({params})
 
 ##params
 
@@ -595,14 +596,14 @@ iOS系统，Android系统
 
 设置屏幕亮度
 
-setBrightness(params)
+setBrightness({params})
 
 ##params
 
 brightness：
 
 - 类型：数字
-- 描述：（可选项）设置的屏幕的亮度，取值范围：0-100，**在 IOS 平台上设置的是系统屏幕亮度。Android 平台上设置的本应用内的屏幕亮度**
+- 描述：（可选项）设置的屏幕的亮度，取值范围：0-100，**在 iOS 平台上设置的是系统屏幕亮度。Android 平台上设置的本应用内的屏幕亮度**
 - 默认值：80
 
 
@@ -627,14 +628,13 @@ iOS系统，Android系统
 
 获取当前屏幕亮度值
 
-getBrightness(callBack(ret))
+getBrightness(callback(ret, err))
 
-
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -696,13 +696,13 @@ iOS系统，Android系统
 
 获取当前播放音量
 
-getVolume(callBack(ret,err))
+getVolume(callback(ret, err))
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -735,7 +735,7 @@ iOS系统，Android系统
 
 添加动作监听(当全屏或者fixed为true且页面不能被左右滑动时有效)
 
-addEventListener({params}，callBack(ret))
+addEventListener({params}，callback(ret, err))
 
 ##params
 
@@ -754,11 +754,11 @@ name：
    - 'doubleClick'：双击播放器事件（单击手势）
    - 'play'：播放事件，包括开始播放（start）、正在播放（playing）、暂停（pause）、停止（stop）、播放完成（complete），在回调里用 eventType 区分。**播放事件为 playing 时，回调函数每秒执行四次**
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -779,7 +779,7 @@ ret：
 var videoPlayer = api.require('videoPlayer');
 videoPlayer.addEventListener({
     name:'leftUp'
-},function( ret, err ){		
+}, function(ret, err){		
 	if( ret ){
 		alert( JSON.stringify( ret ) );
 	}else{
@@ -808,15 +808,15 @@ name：
 - 类型：字符串
 - 描述：（可选项）所要移除的监听的动作名称
 - 取值范围：
-   - 'leftUp'：播放器靠左的二分之一内的上滑事件，每滑动5（百分比）回调执行一次
-   - 'leftDown'：播放器靠左的二分之一内的下滑事件，每滑动5（百分比）回调执行一次
-   - 'rightUp'：播放器靠右的二分之一内的上滑事件，每滑动5（百分比）回调执行一次
-   - 'rightDown'：播放器靠右的二分之一内的下滑事件，每滑动5（百分比）回调执行一次
-   - 'swipeLeft'：播放器上的左滑事件，每滑动5（百分比）回调执行一次
-   - 'swipeRight'：播放器上的右滑事件，每滑动5（百分比）回调执行一次
-   - 'click'：点击播放器事件（单击手势）
-   - 'doubleClick'：双击播放器事件（单击手势）
-   - 'play'：播放事件，包括开始播放（start）、正在播放（playing）、暂停（pause）、停止（stop）、播放完成（complete）
+   - 'leftUp'：      播放器靠左的二分之一内的上滑事件，每滑动5（百分比）回调执行一次
+   - 'leftDown'：    播放器靠左的二分之一内的下滑事件，每滑动5（百分比）回调执行一次
+   - 'rightUp'：     播放器靠右的二分之一内的上滑事件，每滑动5（百分比）回调执行一次
+   - 'rightDown'：   播放器靠右的二分之一内的下滑事件，每滑动5（百分比）回调执行一次
+   - 'swipeLeft'：   播放器上的左滑事件，每滑动5（百分比）回调执行一次
+   - 'swipeRight'：  播放器上的右滑事件，每滑动5（百分比）回调执行一次
+   - 'click'：       点击播放器事件（单击手势）
+   - 'doubleClick'： 双击播放器事件（单击手势）
+   - 'play'：        播放事件，包括开始播放（start）、正在播放（playing）、暂停（pause）、停止（stop）、播放完成（complete）
 
 ##示例代码
 
@@ -837,22 +837,22 @@ iOS系统，Android系统
 
 设置视频播放器位置、尺寸，以及是否全屏
 
-setRect({params},callback(ret))
+setRect({params}, callback(ret, err))
 
 ##params
 
 rect：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）模块的位置及尺寸
 - 内部字段：
 
 ```js
 {
-    x: 0,   //（可选项）数字类型；模块左上角的 x 坐标（相对于所属的 Window 或 Frame）；默认：0
-    y: 0,   //（可选项）数字类型；模块左上角的 y 坐标（相对于所属的 Window 或 Frame）；默认：0
-    w: 'auto', //（可选项）数字类型；模块的宽度；当w为'auto'时，w为所属的 Window 或 Frame 的宽度，默认：open中设置的宽度
-    h: 300  //（可选项）数字类型；模块的高度；当h为'auto'时，h为所属的 Window 或 Frame 的高度，默认：open中设置的高度
+    x: 0,         //（可选项）数字类型；模块左上角的 x 坐标（相对于所属的 Window 或 Frame）；默认：0
+    y: 0,         //（可选项）数字类型；模块左上角的 y 坐标（相对于所属的 Window 或 Frame）；默认：0
+    w: 'auto',    //（可选项）数字类型；模块的宽度；当w为'auto'时，w为所属的 Window 或 Frame 的宽度，默认：open中设置的宽度
+    h: 300        //（可选项）数字类型；模块的高度；当h为'auto'时，h为所属的 Window 或 Frame 的高度，默认：open中设置的高度
 }
 ```
 

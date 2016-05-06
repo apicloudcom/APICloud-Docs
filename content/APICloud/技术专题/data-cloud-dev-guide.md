@@ -15,6 +15,10 @@ Sort: 9
 
 [客户端API](#4)
 
+##参考视频  
+
+入门概念篇第六节（APICloud 云端数据服务的使用）：http://docs.apicloud.com/APICloud/videos-and-codes
+
 #**介绍**<div id="1"></div>
 
 APICloud提供从客户端到云端完整的数据存储解决方案，云端提供数据管理功能，客户端提供数据访问API，开发者只需要在云端创建好表结构和关系，云端会自动生成Restful接口，然后在客户端调用mcm模块API方法即可，不需要自己搭建服务器和写任何服务端代码。
@@ -194,7 +198,7 @@ model.insert({
 });
 ```
 
-更多model对象方法请参考mcmRef文档中的model对象。
+更多model对象方法请参考[mcm](http://docs.apicloud.com/端API/云服务对接/mcm)文档中的model对象。
 
 - user对象
 
@@ -216,7 +220,7 @@ user.login({
 
 登录成功后，会话信息会在本地保存，直到调用logout方法退出登录。
 
-更多user对象方法请参考mcmRef文档中的user对象。
+更多user对象方法请参考[mcm](http://docs.apicloud.com/端API/云服务对接/mcm)文档中的user对象。
 
 - query对象
 
@@ -249,7 +253,7 @@ query.createQuery(
 );
 ```
 
-更多query对象方法请参考mcmRef文档中的query对象。
+更多query对象方法请参考[mcm](http://docs.apicloud.com/端API/云服务对接/mcm)文档中的query对象。
 
 - relation对象
 

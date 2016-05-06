@@ -3,6 +3,8 @@ Title: moduleSMS
 Description: moduleSMS
 */
 
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -61,7 +63,7 @@ getSmsNumber(callback(ret, err))
 
 ret：
 
-类型：JSON对象
+类型：JSON 对象
 
 内部字段：
 
@@ -73,7 +75,7 @@ ret：
 
 err：
 
-类型：JSON对象
+类型：JSON 对象
 
 内部字段：
 
@@ -113,7 +115,7 @@ Android系统
 
 param :
 
-类型：JSON对象
+类型：JSON 对象
 
 内部字段:
 
@@ -129,7 +131,7 @@ startListening(param,callback(ret, err))
 
 ret：
 
-类型：JSON对象
+类型：JSON 对象
 
 内部字段：
 
@@ -144,7 +146,7 @@ ret：
 
 err：
 
-类型：JSON对象
+类型：JSON 对象
 
 内部字段：
 
@@ -212,7 +214,7 @@ stopListening(callback(ret, err))
 
 ret：
 
-类型：JSON对象
+类型：JSON 对象
 
 内部字段：
 
@@ -223,7 +225,7 @@ ret：
 ```
 err：
 
-类型：JSON对象
+类型：JSON 对象
 
 内部字段：
 
@@ -280,7 +282,7 @@ getSmsFromDB(param,callback(ret, err))
 param:
 
 
-类型：JSON对象
+类型：JSON 对象
 
 描述：可根据发信人号码、起始日期、结束日期进行筛选短信，如果没有传入某个参数或为空，表示筛选不受该参数约束。
 
@@ -299,7 +301,7 @@ param:
 
 ret：
 
-类型：JSON对象
+类型：JSON 对象
 
 内部字段：
 ```
@@ -313,7 +315,7 @@ ret：
 
 err：
 
-类型：JSON对象
+类型：JSON 对象
 
 内部字段：
 

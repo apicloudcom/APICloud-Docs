@@ -2,6 +2,9 @@
 Title: UIScrollPicture
 Description: UIScrollPicture
 */
+
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <div class="outline">
 [open](#m1)
 
@@ -20,11 +23,25 @@ Description: UIScrollPicture
 
 #**概述**
 
-UIScrollPicture 是一个图片轮播模块，只需传入一组图片地址，即可实现图片轮播效果，开发者可以监听滑动或点击事件；一般用于头条新闻或广告图片的轮播展示；图片地址支持本地路径或网络路径，网络图片会自动缓存到本地。**UIScrollPicture 模块是 scrollPicture 模块的优化版。**
+UIScrollPicture 是一个图片轮播模块，只需传入一组图片地址，即可实现图片轮播效果。
+
+open 接口内的 rect 参数，可控制图片轮播区域的位置和大小。styles 参数可以设置轮播视图底部的标题文字大小及颜色，亦可设置底部页面控制器（几个小圆点）的位置和样式。
+
+有些应用的头条新闻或广告轮播展示都是无限循环自动播放的，本模块亦可以实现相同的功能，可通过open 接口内的 loop 和 auto 参数控制。每张图片自动轮播时的时间间隔也可自定义，用 interval 即可。为了让原生模块真正的嵌入的网页内，让开发者像使用 js 库一样使用原生模块，APICloud 平台特开放了 fixedOn、fixed 参数。通过配置以上两个参数，可实现让轮播视图随 html 页面上下滚动的功能。
+
+本图片轮播器是由原生代码开发，对于网络图片的展示更加人性化。模块内部会做缓存处理，第一次加载网络图片时，模块会根据其路径生成一个 md5 加密的图片名，并缓存在缓存文件夹里。当用户下次打开同路径的图片时，模块直接从缓存文件内读取该图片，从而大大节省了用户流量。开发者可以通过调用 api.clearCache 接口清除本地的缓存文件。由于原生代码相对前端代码的高效性，本模块相对于前端实现的图片轮播功能更加流畅，内存管理更加优化。当用户需要展示多张图片时，其内存只保留三张图片的地址，然后来回切换图片内容，从而降低了整个 app 内存占用率。具体模块功能请参考模块接口。
+
+**UIScrollPicture 模块是 scrollPicture 模块的优化版。**
 
 ![图片说明](/img/docImage/scrollPicture.jpg)
 
+
+##[实例widget下载地址](https://github.com/XM-Right/UIScrollPicture-Example/archive/master.zip)
+
+#模块接口
+
 <div id="m1"></div>
+
 #**open**
 
 打开模块
@@ -35,7 +52,7 @@ open({params}, callback(ret, err))
 
 rect：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）模块的位置及尺寸
 - 内部字段：
 
@@ -50,7 +67,7 @@ rect：
 
 data：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：模块的图片路径数组，及说明文字数组
 - 内部字段：
 
@@ -63,7 +80,7 @@ data：
 
 styles：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）模块各部分的样式
 - 内部字段：
 
@@ -71,9 +88,9 @@ styles：
 {
     caption: {                          //（可选项）JSON对象；说明文字区域样式
         height: 35,                     //（可选项）数字类型；说明文字区域高度；默认：35.0
-        color: '#E0FFFF',               //（可选项）字符串类型；说明文字字体颜色，支持rgb、rgba、#；默认：'#E0FFFF'
+        color: '#E0FFFF',               //（可选项）字符串类型；说明文字字体颜色，支持 rgb、rgba、#；默认：'#E0FFFF'
         size: 13,                       //（可选项）数字类型；说明文字字体大小；默认：13.0
-        bgColor: '#696969',             //（可选项）字符串类型；说明文字区域的背景色，支持rgb、rgba、#；默认：'#696969'
+        bgColor: '#696969',             //（可选项）字符串类型；说明文字区域的背景色，支持 rgb、rgba、#；默认：'#696969'
         position: 'bottom'              //（可选项）字符串类型；说明文字区域的显示位置；默认：'bottom'
                                         //取值范围：
                                         //overlay（悬浮在图片上方，底部与图片底部对齐）
@@ -90,8 +107,8 @@ styles：
                                         //center（居中）
                                         //left（靠左）
                                         //right（靠右）
-        color: '#FFFFFF',               //（可选项）指示器颜色 ，支持rgb、rgba、#；默认：'#FFFFFF'
-        activeColor: '#DA70D6'          //（可选项）当前指示器颜色，支持rgb、rgba、#；默认：'#DA70D6'
+        color: '#FFFFFF',               //（可选项）指示器颜色 ，支持 rgb、rgba、#；默认：'#FFFFFF'
+        activeColor: '#DA70D6'          //（可选项）当前指示器颜色，支持 rgb、rgba、#；默认：'#DA70D6'
     }
 }
 ```
@@ -99,7 +116,7 @@ styles：
 placeholderImg：
 
 - 类型：字符串
-- 描述：（可选项）网络图片未加载完毕时，模块显示的占位图片，要求本地路径（fs://，widget://）
+- 描述：（可选项）网络图片未加载完毕时，模块显示的占位图片，要求本地路径（fs://、widget://）
 
 contentMode：
 
@@ -137,14 +154,14 @@ fixedOn：
 fixed:
 
 - 类型：布尔
-- 描述：（可选项）模块是否随所属 Window 或 Frame 滚动
+- 描述：（可选项）模块是否随所属 window 或 frame 滚动
 - 默认值：true（不随之滚动）
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -198,7 +215,7 @@ UIScrollPicture.open({
     fixedOn: api.frameName,
     loop: true,
     fixed: false
-},function( ret, err ){
+}, function(ret, err){
     if( ret ){
          alert( JSON.stringify( ret ) );
     }else{
@@ -314,7 +331,7 @@ reloadData({params})
 
 data：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：模块的图片路径数组，及说明文字数组
 - 内部字段：
 
@@ -361,7 +378,7 @@ name：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：事件触发时回调的参数，可能为空
 - 内部字段：
 
@@ -378,7 +395,7 @@ ret：
 var UIScrollPicture = api.require('UIScrollPicture');
 UIScrollPicture.addEventListener({
     name: 'scroll'
-}, function( ret, err ){
+}, function(ret, err){
     if( ret ){
           alert( JSON.stringify( ret ) );
     }else{

@@ -3,6 +3,8 @@ Title: personalCenter
 Description: personalCenter
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -24,7 +26,7 @@ Description: personalCenter
 
 #**概述**
 
-personalCenter是一个带有图片模糊效果的个人信息展示中心，开发者只需配置相关接口参数即可实现一个原生效果的个人展示中心
+personalCenter 是一个带有图片模糊效果的个人信息展示中心，开发者只需配置相关接口参数即可实现一个原生效果的个人展示中心
 
 ![图片说明](/img/docImage/personalCenter.jpg)
 
@@ -32,7 +34,7 @@ personalCenter是一个带有图片模糊效果的个人信息展示中心，开
 
 打开个人中心
 
-open({params},callback(ret,err))
+open({params}, callback(ret, err))
 
 ##params
 
@@ -106,7 +108,7 @@ showRightBtn：
 
 modButton：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）修改按钮参数
 - 备注：若不传则不显示修改按钮
 - 内部字段：
@@ -132,10 +134,10 @@ btnArray：
     lightImg:                //（可选项）字符串类型；按钮选中后图片，要求本地路径（widget://、fs://）
     title:                   //（可选项）字符串类型；按钮上的标题
     count:                   //（可选项）字符串类型；按钮上的数据
-    titleColor:              //（可选项）字符串类型；按钮上的标题颜色，支持rgb、rgba、#；默认：#AAAAAA
-    titleLightColor:         //（可选项）字符串类型；按钮选中标题的颜色，支持rgb、rgba、#；默认：#A4D3EE
-    countColor:              //（可选项）字符串类型；按钮上数字颜色，支持rgb、rgba、#；默认：#FFFFFF
-    countLightColor:         //（可选项）字符串类型；按钮上数字选中颜色，支持rgb、rgba、#；默认：#A4D3EE
+    titleColor:              //（可选项）字符串类型；按钮上的标题颜色，支持 rgb、rgba、#；默认：#AAAAAA
+    titleLightColor:         //（可选项）字符串类型；按钮选中标题的颜色，支持 rgb、rgba、#；默认：#A4D3EE
+    countColor:              //（可选项）字符串类型；按钮上数字颜色，支持 rgb、rgba、#；默认：#FFFFFF
+    countLightColor:         //（可选项）字符串类型；按钮上数字选中颜色，支持 rgb、rgba、#；默认：#A4D3EE
 }]
 ```
 
@@ -154,14 +156,14 @@ fixedOn：
 fixed:
 
 - 类型：布尔
-- 描述：（可选项）模块是否随所属 Window 或 Frame 滚动
+- 描述：（可选项）模块是否随所属 window 或 frame 滚动
 - 默认值：true（不随之滚动）
 
-##callback(ret,err)
+##callback(ret, err)
 
 ret:
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -180,25 +182,25 @@ var personalCenter = api.require('personalCenter');
 
 var btnArray = [
     {
-        "bgImg": "widget://res/personalCenter/personal_btn_nor.png",
-        "selectedImg": "widget://res/personalCenter/personal_btn_sele.png",
-        "lightImg": "widget://res/personalCenter/personal_btn_light.png",
-        "title": "好友",
-        "count": "5"
+        'bgImg': 'widget://res/personalCenter/personal_btn_nor.png',
+        'selectedImg': 'widget://res/personalCenter/personal_btn_sele.png',
+        'lightImg': 'widget://res/personalCenter/personal_btn_light.png',
+        'title': '好友',
+        'count': '5'
     },
     {
-        "bgImg": "widget://res/personalCenter/personal_btn_nor.png",
-        "selectedImg": "widget://res/personalCenter/personal_btn_sele.png",
-        "lightImg": "widget://res/personalCenter/personal_btn_light.png",
-        "title": "回贴",
-        "count": "240"
+        'bgImg': 'widget://res/personalCenter/personal_btn_nor.png',
+        'selectedImg': 'widget://res/personalCenter/personal_btn_sele.png',
+        'lightImg': 'widget://res/personalCenter/personal_btn_light.png',
+        'title': '回贴',
+        'count': '240'
     },
     {
-        "bgImg": "widget://res/personalCenter/personal_btn_nor.png",
-        "selectedImg": "widget://res/personalCenter/personal_btn_sele.png",
-        "lightImg": "widget://res/personalCenter/personal_btn_light.png",
-        "title": "主题",
-        "count": "27"
+        'bgImg': 'widget://res/personalCenter/personal_btn_nor.png',
+        'selectedImg': 'widget://res/personalCenter/personal_btn_sele.png',
+        'lightImg': 'widget://res/personalCenter/personal_btn_light.png',
+        'title': '主题',
+        'count': '27'
     }
 ];
 
@@ -208,33 +210,33 @@ var y = 44;
 
 
 personalCenter.open({
-    "y": y,
-    "imgPath": "widget://res/personalCenter/d7d1d308fe165b984c09728e7118e9f1.jpg",
-    "placeholderImg": "widget://res/common/placeHolder.png",
-    "userName": "APICloud",
-    "count": count,
-    "modButton": {
-        "bgImg": "widget://res/personalCenter/mod_normal.png",
-        "lightImg": "widget://res/personalCenter/mod_click.png"
+    'y': y,
+    'imgPath': 'widget://res/personalCenter/d7d1d308fe165b984c09728e7118e9f1.jpg',
+    'placeholderImg': 'widget://res/common/placeHolder.png',
+    'userName': 'APICloud',
+    'count': count,
+    'modButton': {
+        'bgImg': 'widget://res/personalCenter/mod_normal.png',
+        'lightImg': 'widget://res/personalCenter/mod_click.png'
     },
 	fixedOn: api.frameName,
-    "btnArray": btnArray
+    'btnArray': btnArray
 },function(ret,err){
     /* 头像修改按钮. */
     if(btnArray.length === ret.click){
         api.confirm({
-            title: "聊天盒子",
-            msg: "您想要从哪里选取图片 ?",
-            buttons:["优雅自拍", "相册收藏", "取消"]
+            title: '聊天盒子',
+            msg: '您想要从哪里选取图片 ?',
+            buttons:['优雅自拍', '相册收藏', '取消']
         },function(ret,err){
-            var sourceType = "album";
+            var sourceType = 'album';
 
             if(3 == ret.buttonIndex){ // 取消
                 return;
             }
 
             if(1 == ret.buttonIndex){ // 打开相机
-                sourceType = "camera";
+                sourceType = 'camera';
             }
 
             api.getPicture({
@@ -260,22 +262,22 @@ personalCenter.open({
 
     /* 修改按钮. */
     if(btnArray.length + 1 == ret.click){
-        msg = "您没有修改权限!";
+        msg = '您没有修改权限!';
     }
 
     if(btnArray.length + 2 == ret.click){
-        msg = "您没有设置权限!"
+        msg = '您没有设置权限!'
     }
 
     if(btnArray.length == ret.click){
         btn = btnArray[ret.click];
-        msg = btn.title + " 数量为 " + btn.count
+        msg = btn.title + ' 数量为 ' + btn.count
     }
 
     api.toast({
         msg: msg,
         duration: 1000,
-        location: "top"
+        location: 'top'
     });
 });
 ```
@@ -357,18 +359,16 @@ close()
 
 ##示例代码
 
-
- ```js
+```js
 var personalCenter = api.require('personalCenter');
 personalCenter.close();
- ```
+```
 
 ##可用性
 
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
-
 
 #**setSelect**<div id="4"></div>
 
@@ -390,8 +390,6 @@ personalCenter.setSelect({
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
-
-
 
 #**show**<div id="5"></div>
 

@@ -3,6 +3,8 @@ Title: umengTJ
 Description: umengTJ
 */
 
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -39,7 +41,7 @@ umengTJ实现了友盟统计功能，包括启动次数、事件、页面等app�
 - 字段描述:
 
 		1. android_appkey：通过百度移动统计网站获得Android系统的key
-		2. ios_appkey:通过百度移动统计网站获得IOS系统的key
+		2. ios_appkey:通过百度移动统计网站获得iOS系统的key
 		3. ios_channel: IOS渠道号
 		4. android_channel: Android的渠道号
 
@@ -59,7 +61,7 @@ umengTJ实现了友盟统计功能，包括启动次数、事件、页面等app�
 
 模块初始化，所有统计方法都需要在init后被调用，所以init方法一般放在首页面的apiready函数中。
 
-init(params,callback(ret))
+init({params}, callback(ret, err))
 
 ##params
 
@@ -73,11 +75,11 @@ path：
 - 类型：字符串
 - 描述：（可选项）app发布路径或渠道名称，自定义渠道名称(无需申请)后在统计时加以分别。
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 
@@ -93,7 +95,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 
@@ -108,12 +110,12 @@ err：
 ##示例代码
 
      ```js
-      //如在config.xml配置了key和channel，则调用本方法可忽略appid和path参数
+      //如在 config.xml 配置了key和channel，则调用本方法可忽略appid和path参数
         var  umeng = api.require('umengTJ');//调用统计模块初始化，一般在app首页面调用
 			 umeng.init({
 			// appid:'56eba8b4e0f55acc430000a1',
 			// path:'iosapp'
-			 }, function(ret, err){ //通过config.xml配置appid
+			 }, function(ret, err){ //通过 config.xml 配置appid
              if(ret.status){
                 alert(JSON.stringify(ret));
              }else{
@@ -135,7 +137,7 @@ iOS系统，Android系统
 
 onEvent(params,callback(ret, err))
 
-init(params,callback(ret))
+init({params}, callback(ret, err))
 
 
 ##params
@@ -157,11 +159,11 @@ labelvalue：
 - 描述：参数取值，每个参数可以有1000个取值，
 - ####本参数值无需在平台上预先定义。
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
      ```js
@@ -209,7 +211,7 @@ iOS系统，Android系统
   
 **注意：本方法不会随页面打开自动调用，一定要在页面的初始化中写入。**
 
-onPageStart({parmas},callback(ret))
+onPageStart({parmas},callback(ret, err))
 
 ##params
 
@@ -219,11 +221,11 @@ pagename：
 - 描述：自定义的页面名称，统计开始和结束统计的页面名称必须一致。
 
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -258,7 +260,7 @@ iOS系统，Android系统
   
 **注意：本方法不会随页面关闭自动调用，需要写在关闭页面的api.closeWin()或api.closeFrame()方法前有效。**
 
-onPageEnd({parmas},callback(ret))
+onPageEnd({parmas},callback(ret, err))
 
 ##params
 
@@ -268,11 +270,11 @@ pagename：
 - 描述：自定义的页面名称，统计开始和结束统计的页面名称必须一致。
 
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js

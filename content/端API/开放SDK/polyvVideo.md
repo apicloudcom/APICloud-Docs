@@ -3,6 +3,8 @@ Title: polyvVideo
 Description: polyvVideo
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：保利威视</p>
+
 <ul id="tab" class="clearfix">
   <li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -145,7 +147,7 @@ open({params},function(ret))
 
 `rect`：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）模块的位置及尺寸，（仅对视频有效）
 - 内部字段：
 
@@ -182,14 +184,14 @@ open({params},function(ret))
 `fixed`：
 
 - 类型：布尔
-- 描述：（可选项）模块是否随所属 Window 或 Frame 滚动
+- 描述：（可选项）模块是否随所属 window 或 frame 滚动
 - 默认值：true（不随之滚动）
 
 ### callback
 
 #### ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：本回调函数在播放状态改变时执行
 - 内部字段：
 
@@ -207,7 +209,7 @@ open({params},function(ret))
 
 #### err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：本回调函数在播放错误时执行
 - 内部字段：
 
@@ -482,13 +484,13 @@ iOS系统，Android系统
 
 获得当前视频时长
 
-getDuration(callBack(ret))
+getDuration(callback(ret, err))
 
-### callback(ret)
+### callback(ret, err)
 
 #### ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```json
@@ -519,13 +521,13 @@ iOS系统，Android系统
 
 获取视频当前播放位置（时间）
 
-getCurrentPosition(callBack(ret))
+getCurrentPosition(callback(ret, err))
 
-### callback(ret)
+### callback(ret, err)
 
 #### ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```json
@@ -557,13 +559,13 @@ iOS系统，Android系统
 
 获取视频当前缓存进度
 
-getBufferPercentage(callBack(ret))
+getBufferPercentage(callback(ret, err))
 
-### callback(ret)
+### callback(ret, err)
 
 #### ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```json
@@ -596,13 +598,13 @@ iOS系统，Android系统
 
 当前视频是否正在播放
 
-isPlaying(callBack(ret))
+isPlaying(callback(ret, err))
 
-### callback(ret)
+### callback(ret, err)
 
 #### ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```json
@@ -634,7 +636,7 @@ iOS系统，Android系统
 
 快进
 
-forward(params)
+forward({params})
 
 ### params
 
@@ -664,7 +666,7 @@ iOS系统，Android系统
 
 快退
 
-rewind(params)
+rewind({params})
 
 ### params
 
@@ -694,7 +696,7 @@ iOS系统，Android系统
 
 跳转
 
-seekTo(params)
+seekTo({params})
 
 ### params
 
@@ -724,14 +726,14 @@ iOS系统，Android系统
 
 设置屏幕亮度
 
-setBrightness(params)
+setBrightness({params})
 
 ### params
 
 `brightness`：
 
 - 类型：数字
-- 描述：（可选项）设置的屏幕的亮度，取值范围：0-100，**在 IOS 平台上设置的是系统屏幕亮度。Android 平台上设置的本应用内的屏幕亮度**
+- 描述：（可选项）设置的屏幕的亮度，取值范围：0-100，**在 iOS 平台上设置的是系统屏幕亮度。Android 平台上设置的本应用内的屏幕亮度**
 - 默认值：80
 
 ### 示例代码
@@ -755,13 +757,13 @@ iOS系统，Android系统
 
 获取当前屏幕亮度值
 
-getBrightness(callBack(ret))
+getBrightness(callback(ret, err))
 
-### callback(ret)
+### callback(ret, err)
 
 `ret`：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```json
@@ -823,13 +825,13 @@ iOS系统，Android系统
 
 获取当前音量
 
-getVolume(callBack(ret,err))
+getVolume(callback(ret, err))
 
-### callback(ret)
+### callback(ret, err)
 
 #### ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```json
@@ -860,7 +862,7 @@ iOS系统，Android系统
 
 添加手势监听(当全屏或者 fixed 为 true 且页面不能被左右滑动时有效)
 
-addEventListener({params}，callBack(ret,err))
+addEventListener({params}，callback(ret, err))
 
 ### params
 
@@ -877,11 +879,11 @@ addEventListener({params}，callBack(ret,err))
   - `swipeRight`：播放器上的右滑事件，每滑动5（百分比）回调执行一次
   - `click`：点击播放器事件（单击手势）
 
-### callback(ret)
+### callback(ret, err)
 
 #### ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```json

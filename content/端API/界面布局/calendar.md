@@ -3,6 +3,8 @@ Title: calendar
 Description: calendar
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -67,7 +69,7 @@ fixedOn：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -80,8 +82,8 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('calendar');
-obj.open({
+var calendar = api.require('calendar');
+calendar.open({
 	x: 100,
 	y:100,
 	width:300,
@@ -110,8 +112,8 @@ close()
 
 ##示例代码
 
-    var obj = api.require('calendar');
-    obj.close();
+    var calendar = api.require('calendar');
+    calendar.close();
 
 ##补充说明
 
@@ -131,8 +133,8 @@ hide()
 
 ##示例代码
 
-    var obj = api.require('calendar');
-    obj.hide();
+    var calendar = api.require('calendar');
+    calendar.hide();
 
 ##补充说明
 
@@ -152,8 +154,8 @@ show()
 
 ##示例代码
 
-    var obj = api.require('calendar');
-    obj.show();
+    var calendar = api.require('calendar');
+    calendar.show();
 
 ##补充说明
 

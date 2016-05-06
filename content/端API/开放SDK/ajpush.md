@@ -3,6 +3,8 @@ Title: ajpush
 Description: 极光推送模块
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：极光</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -50,7 +52,7 @@ ajpush模块封装了极光推送平台的SDK，使用此模块可实现接收�
 
 1.在极光推送网站（ https://www.jpush.cn ）注册帐号，并创建应用，获取APP_KEY
 
-2.在config.xml中配置ajpush feature，填写app_key及channel参数
+2.在[config.xml](/APICloud/技术专题/app-config-manual)中配置ajpush feature，填写app_key及channel参数
 
 3.前端调用ajpush模块方法，初始化和监听推送消息。
 
@@ -80,7 +82,7 @@ init(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -124,7 +126,7 @@ setListener(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -191,7 +193,7 @@ iOS系统，Android系统
 
 绑定用户别名和标签。服务端可以指定别名和标签进行消息推送
 
-bindAliasAndTags({params},callback(ret, err))
+bindAliasAndTags({params}, callback(ret, err))
 
 ##params
 
@@ -211,7 +213,7 @@ tags：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -302,7 +304,7 @@ Android系统
 
 清除极光推送发送到状态栏的通知。
 
-clearNotification({params},callback(ret, err))
+clearNotification({params}, callback(ret, err))
 
 ##params
 
@@ -316,7 +318,7 @@ id：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -379,7 +381,7 @@ endHour：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -451,7 +453,7 @@ endMinute：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -498,7 +500,7 @@ stopPush(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -540,7 +542,7 @@ resumePush(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -582,7 +584,7 @@ isPushStopped(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -618,7 +620,7 @@ Android系统
 
 设置应用图标右上角数字，只iOS有效。
 
-setBadge(params)
+setBadge({params})
 
 ##params
 
@@ -658,7 +660,7 @@ getRegistrationId(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 

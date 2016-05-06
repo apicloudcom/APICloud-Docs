@@ -3,6 +3,8 @@ Title: mico
 Description: mico
 */
 
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
     
@@ -39,14 +41,20 @@ Description: mico
 
 #**概述**
 
-mico封装了物联网中最重要的接口，如果你使用的是庆科的WIFI设备，那么此模块可助你极快地开发一个智能硬件设备的APP，最主要的功能如下：<br/>
-1、让设备联网，我们称之为EasyLink<br/>
-2、通过mDNS发现局域网的设备<br/>
-3、通过MQTT控制远程设备<br/>
+mico封装了物联网中最重要的接口，如果你使用的是庆科的WIFI设备，那么此模块可助你极快地开发一个智能硬件设备的APP，最主要的功能如下：
+
+
+1. 让设备联网，我们称之为EasyLink
+2. 通过mDNS发现局域网的设备
+3. 通过MQTT控制远程设备
 开发时候，按照以下接口的顺序开发即可，或者直接[参考开源项目](http://git.oschina.net/bringmehome/MiCOSDK)项目里也包含完整的开发手册，如果您没有智能硬件，也可以[申请硬件设备](http://mico.io/)。
-<br/><br/>
+
+
 首先，我们需要通过___getSSID___获取设备的SSID，然后将ssid和wifi的密码通过__startEasyLink__发送给设备，如果需要发现局域网的设备我们可以使用___startMDNS___，当设备连上网络，并与自己绑定上时，我们就可以通过___startMqtt___开启mqtt通道，并通过___publishCommand___将指令发送给设备。
-<br/><br/>接口清单如下：<br/><br/>
+
+
+接口清单如下：
+
 ___EasyLink配网___
 
 * [getSSID](#1)
@@ -84,18 +92,18 @@ getSSID(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
 {
-    ssid:wifi           //WIFI的名字
+    ssid:wifi           //WIFI 的名字
 }
 ```
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -119,14 +127,14 @@ mico.getSSID(function( ret, err ){
 
 ##可用性
 
-Android系统
+Android 系统
 
 可提供的1.0.0及更高版本
 
 
 #**startEasyLink**<div id="2"></div>
 
-将当前的WIFI名称和密码发送给设备，有些设备带回连的这里就会有返回值，不带回连的设备就不会返回任何信息
+将当前的 WIFI 名称和密码发送给设备，有些设备带回连的这里就会有返回值，不带回连的设备就不会返回任何信息
 
 startEasyLink({params}, callback(ret, err))
 
@@ -135,30 +143,30 @@ startEasyLink({params}, callback(ret, err))
 wifi_ssid：
 
 - 类型：字符串
-- 描述：WIFI的名称，即SSID，不能为空
+- 描述：WIFI 的名称，即 SSID，不能为空
 
 wifi_password：
 
 - 类型：字符串
-- 描述：WIFI的密码，手动输入，不能为空
+- 描述：WIFI 的密码，手动输入，不能为空
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
 {
-	devip:ip		//设备的ip地址
-    devinfo:{}      //设备的所有信息，包括名称、状态、属性等
+	devip: ip		 //设备的ip地址
+    devinfo: {}      //设备的所有信息，包括名称、状态、属性等
 }
 ```
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -172,9 +180,9 @@ err：
 ```js
 var mico = api.require('mico');
 mico.startEasyLink({
-    wifi_ssid : 'mico',
-    wifi_password : '88888888'
-}, function( ret, err ){        
+    wifi_ssid: 'mico',
+    wifi_password: '88888888'
+}, function(ret, err){        
     if( ret ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -184,13 +192,13 @@ mico.startEasyLink({
 ```
 ##可用性
 
-Android系统
+Android 系统
 
 可提供的1.0.0及更高版本
 
 #**stopEasyLink**<div id="3"></div>
 
-停止EasyLink配网
+停止 EasyLink 配网
 
 stopEasyLink(callback(ret, err))
 
@@ -198,7 +206,7 @@ stopEasyLink(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -207,7 +215,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -231,13 +239,13 @@ mico.stopEasyLink(function( ret, err ){
 
 ##可用性
 
-Android系统
+Android 系统
 
 可提供的1.0.0及更高版本
 
 #**startMDNS**<div id="4"></div>
 
-通过mDNS来搜索局域网设备，需要传入服务的名称
+通过 mDNS 来搜索局域网设备，需要传入服务的名称
 
 startMDNS({params}, callback(ret, err))
 
@@ -246,30 +254,30 @@ startMDNS({params}, callback(ret, err))
 servicename：
 
 - 类型：字符串
-- 默认值："_easylink._tcp.local."
+- 默认值：'_easylink._tcp.local'
 - 描述：服务的名称
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
 {
-    deviceinfo:{}   		//mDNS搜索到的设备的全部信息
+    deviceinfo: {}   		//mDNS 搜索到的设备的全部信息
 }
 ```
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
 {
-    error:0      //错误码
+    error: 0      //错误码
 }
 ```
 
@@ -279,7 +287,7 @@ err：
 var mico = api.require('mico');
 mico.startMDNS({
     servicename: 'mico'
-},function( ret, err ){		
+}, function(ret, err){		
 	if( ret ){
 		alert( JSON.stringify( ret ) );
 	}else{
@@ -290,7 +298,7 @@ mico.startMDNS({
 
 ##可用性
 
-Android系统
+Android 系统
 
 可提供的1.0.0及更高版本
 
@@ -304,23 +312,23 @@ stopMDNS(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
 {
-    status:Stop      //操作成功
+    status: Stop      //操作成功
 }
 ```
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
 {
-    error:0      //错误码
+    error: 0      //错误码
 }
 ```
 
@@ -339,13 +347,13 @@ mico.stopMDNS(function( ret, err ){
 
 ##可用性
 
-Android系统
+Android 系统
 
 可提供的1.0.0及更高版本
 
 #**startMqtt**<div id="6"></div>
 
-开启MQTT通道，同时订阅一个主题
+开启 MQTT 通道，同时订阅一个主题
 
 startMqtt({params}, callback(ret, err))
 
@@ -354,12 +362,12 @@ startMqtt({params}, callback(ret, err))
 host：
 
 - 类型：字符串
-- 描述：MQTT服务器的域名，不能为空
+- 描述：MQTT 服务器的域名，不能为空
 
 port：
 
 - 类型：字符串
-- 描述：服务器MQTT的端口，不能为空
+- 描述：服务器 MQTT 的端口，不能为空
 
 username：
 
@@ -374,7 +382,7 @@ password：
 clientID：
 
 - 类型：字符串
-- 描述：客户机的ID，v1_app_[MAC] //版本号_app_USERTOKEN(截取12位必须小写)，不能为空
+- 描述：客户机的 ID，v1_app_[MAC] 	//版本号 _app_USERTOKEN (截取12位必须小写)，不能为空
 
 topic：
 
@@ -385,19 +393,19 @@ topic：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
 {
-    status:    		//操作成功状态洗洗脑
+    status:    			//操作成功状态洗洗脑
     payload：{}         //服务器返回的消息
 }
 ```
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -417,7 +425,7 @@ mico.startMqtt({
     password: 'admin',
     clientID: 'clientId-999abcdedf',
     topic: 'd64f517c/c8934691813c/out/read'
-},function( ret, err ){		
+}, function(ret, err){		
 	if( ret.status ){
 		alert( JSON.stringify( ret ) );
 	}else{
@@ -427,13 +435,13 @@ mico.startMqtt({
 ```
 ##可用性
 
-Android系统
+Android 系统
 
 可提供的1.0.0及更高版本
 
 #**stopMqtt**<div id="7"></div>
 
-关闭MQTT订阅服务
+关闭 MQTT 订阅服务
 
 stopMqtt(callback(ret, err))
 
@@ -441,23 +449,23 @@ stopMqtt(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
 {
-    status:Stop         //操作成功
+    status: Stop         //操作成功
 }
 ```
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
 {
-    error:0      //错误码
+    error: 0      //错误码
 }
 ```
 
@@ -475,13 +483,13 @@ mico.stopMqtt(function( ret, err ){
 ```
 ##可用性
 
-Android系统
+Android 系统
 
 可提供的1.0.0及更高版本
 
 #**recvMqttMsg**<div id="8"></div>
 
-开始接收服务器push的消息，startMQTT的时候会自动启用，所以startMQTT之后不需要再次执行此方法，只有在_stopRecvMqttMsg_之后，想再次接收时，才需要再次启用
+开始接收服务器 push 的消息，startMQTT 的时候会自动启用，所以 startMQTT 之后不需要再次执行此方法，只有在 _stopRecvMqttMsg_ 之后，想再次接收时，才需要再次启用
 
 recvMqttMsg(callback(ret, err))
 
@@ -489,7 +497,7 @@ recvMqttMsg(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -498,7 +506,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -521,7 +529,7 @@ mico.recvMqttMsg(function( ret, err ){
 ```
 ##可用性
 
-Android系统
+Android 系统
 
 可提供的1.0.0及更高版本
 #**stopRecvMqttMsg**<div id="9"></div>
@@ -534,7 +542,7 @@ stopRecvMqttMsg(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -543,7 +551,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -566,7 +574,7 @@ mico.stopRecvMqttMsg(function( ret, err ){
 ```
 ##可用性
 
-Android系统
+Android 系统
 
 可提供的1.0.0及更高版本
 #**publishCommand**<div id="10"></div>
@@ -585,7 +593,7 @@ topic：
 command：
 
 - 类型：字符串
-- 描述：指令，json类型的字符串，不能为空
+- 描述：指令，JSON 类型的字符串，不能为空
 
 qos：
 
@@ -601,7 +609,7 @@ retained：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -612,7 +620,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -630,7 +638,7 @@ mico.publishCommand({
     command: '{"4":true}',
     qos: 0,
     retained: false
-},function( ret, err ){		
+}, function(ret, err){		
 	if( ret ){
 		alert( JSON.stringify( ret ) );
 	}else{
@@ -640,7 +648,7 @@ mico.publishCommand({
 ```
 ##可用性
 
-Android系统
+Android 系统
 
 可提供的1.0.0及更高版本
 
@@ -666,7 +674,7 @@ qos：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -677,7 +685,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -691,9 +699,9 @@ err：
 ```js
 var mico = api.require('mico');
 mico.addSubscribe({
-    topic : 'd64f517c/c8934691813c/out/err',
-    qos : 0
-},function( ret, err ){		
+    topic: 'd64f517c/c8934691813c/out/err',
+    qos: 0
+}, function(ret, err){		
 	if( ret ){
 		alert( JSON.stringify( ret ) );
 	}else{
@@ -703,7 +711,7 @@ mico.addSubscribe({
 ```
 ##可用性
 
-Android系统
+Android 系统
 
 可提供的1.0.0及更高版本
 
@@ -718,13 +726,13 @@ rmSubscribe({params}, callback(ret, err))
 topic：
 
 - 类型：字符串
-- 描述：MQTT服务器的域名，不能为空
+- 描述：MQTT 服务器的域名，不能为空
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -735,7 +743,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -750,7 +758,7 @@ err：
 var mico = api.require('mico');
 mico.rmSubscribe({
     topic : 'd64f517c/c8934691813c/out/err'
-},function( ret, err ){		
+}, function(ret, err){		
 	if( ret ){
 		alert( JSON.stringify( ret ) );
 	}else{
@@ -760,7 +768,7 @@ mico.rmSubscribe({
 ```
 ##可用性
 
-Android系统
+Android 系统
 
 可提供的1.0.0及更高版本
 

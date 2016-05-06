@@ -3,6 +3,8 @@ Title: micoMqtt
 Description: MQTT连接
 */
 
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -22,11 +24,11 @@ Description: MQTT连接
 
 #**概述**
 
-micoMqtt模块封装了标准的mqtt方法，可实现订阅，publish和停止订阅
+micoMqtt 模块封装了标准的 MQTT 方法，可实现订阅，publish 和停止订阅
 
 #**startMqtt**<div id="1"></div>
 
-打开MQTT，如果未连接成功，则自动重连直到连接上为止。
+打开 MQTT，如果未连接成功，则自动重连直到连接上为止。
 
 startMqtt({params}, callback(ret, err))
 
@@ -68,25 +70,25 @@ topic：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
 ```js
 {
-	status:false		//是否成功，布尔类型
+	status: false		//是否成功，布尔类型
 }
 ```
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
 ```js
 {
-	msg:""    //错误描述
+	msg: ''    			//错误描述
 }
 ```
 
@@ -100,7 +102,7 @@ micoMqtt.startMqtt({
 	password: 'admin',
 	clientID: 'aca213caec5c',
 	topic: 'd64f517c/out/read/#'
-},function( ret, err ){		
+}, function(ret, err){		
 	if( ret.status ){
 		alert( JSON.stringify( ret ) );
 	}else{
@@ -111,7 +113,7 @@ micoMqtt.startMqtt({
 
 ##补充说明
 
-打开MQTT连接
+打开 MQTT 连接
 
 ##可用性
 
@@ -130,25 +132,25 @@ recvMqttMsg(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
 ```js
 {
-	subs:		 //消息内容，JSON对象
+	subs:		 //消息内容，JSON 对象
 }
 ```
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
 ```js
 {
-	msg:""    //错误描述
+	msg:''    //错误描述
 }
 ```
 
@@ -223,7 +225,7 @@ command：
 ##callback(ret, err)
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -235,13 +237,13 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
 ```js
 {
-	msg:""    //错误描述
+	msg:''    //错误描述
 }
 ```
 ##示例代码
@@ -251,7 +253,7 @@ var micoMqtt = api.require('micoMqtt');
 micoMqtt.publish({
 	topic: 'd64f517c/in/read/app1',
 	command: '{}'
-},function( ret, err ){		
+}, function(ret, err){		
 	if( ret.status ){
 		alert( JSON.stringify( ret ) );
 	}else{
@@ -273,7 +275,7 @@ iOS系统，Android系统
 
 #**stopMqtt**<div id="5"></div>
 
-关闭MQTT连接
+关闭 MQTT 连接
 
 stopMqtt(callback(ret, err))
 
@@ -281,25 +283,25 @@ stopMqtt(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
 ```js
 {
-	status:false		//是否成功，布尔类型
+	status: false		//是否成功，布尔类型
 }
 ```
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
 ```js
 {
-	msg:""    //错误描述
+	msg:''    //错误描述
 }
 ```
 ##示例代码
@@ -317,7 +319,7 @@ micoMqtt.stopMqtt(function( ret, err ){
 
 ##补充说明
 
-关闭MQTT连接
+关闭 MQTT 连接
 
 ##可用性
 

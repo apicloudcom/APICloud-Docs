@@ -3,6 +3,8 @@ Title: imageCrop
 Description: imageCrop
 */
 
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 	<li><a href="#const-content">Constant</a></li>
@@ -22,7 +24,7 @@ Description: imageCrop
 
 #**概述**
 
-imageCrop模块封装了Android原生图片剪切的功能，通过拍照或者从相册选取图片之后，可以调用图片剪切方法。用户可以拖放剪切剪切框改变大小，也可以通过剪切框对图片进行缩放。在选取剪切位置和大小之后，可以选择确认或者取消。 **本模块暂仅支持安卓。**
+imageCrop 模块封装了 Android 原生图片剪切的功能，通过拍照或者从相册选取图片之后，可以调用图片剪切方法。用户可以拖动、缩放、改变剪切框大小，也可以通过剪切框对图片进行缩放。在选取剪切位置和大小之后，可以选择确认或者取消。 **本模块暂仅支持安卓。**
 
 #**takePhoto**<div id="a1"></div>
 
@@ -34,18 +36,18 @@ takePhoto(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
 {
-	imgPath://拍照获取的图片路径
+	imgPath: ''		//拍照获取的图片路径
 }
 ```
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -69,7 +71,7 @@ imageCrop.takePhoto(function( ret, err ){
 
 ##可用性
 
-Android系统
+Android 系统
 
 可提供的1.0.0及更高版本
 
@@ -84,17 +86,17 @@ getPhoto(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
 {
-	imgPath://相册获取的图片路径
+	imgPath: ''			//相册获取的图片路径
 }
 ```
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -118,7 +120,7 @@ imageCrop.getPhoto(function( ret, err ){
 
 ##可用性
 
-Android系统
+Android 系统
 
 可提供的1.0.0及更高版本
 
@@ -126,7 +128,7 @@ Android系统
 
 开始截图
 
-clipPhoto ({params},callback(ret, err))
+clipPhoto({params}, callback(ret, err))
 
 ##params
 
@@ -151,7 +153,7 @@ width：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -162,7 +164,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -179,7 +181,7 @@ imageCrop.clipPhoto({
     imgPath: 'widget://.png',
     height: 300,
     width: 300
-},function( ret, err ){		
+}, function(ret, err){		
 	if( ret ){
 		alert( JSON.stringify( ret ) );
 	}else{
@@ -189,7 +191,7 @@ imageCrop.clipPhoto({
 ```
 ##可用性
 
-Android系统
+Android 系统
 
 可提供的1.0.0及更高版本
 
@@ -197,18 +199,24 @@ Android系统
 
 图片上传后可以调用此方法删除剪裁后的图片
 
-deletePic(callback()
+deletePic(callback(ret, err))
 
 ##示例代码
 
 ```js
 var imageCrop = api.require('imageCrop');
-imageCrop.deletePic();
+imageCrop.deletePic(function( ret, err ){		
+	if( ret ){
+		alert( JSON.stringify( ret ) );
+	}else{
+		alert( JSON.stringify( err ) );
+	}
+});
 ```
 
 ##可用性
 
-Android系统
+Android 系统
 
 可提供的1.1.0及更高版本
 

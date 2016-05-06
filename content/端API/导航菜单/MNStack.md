@@ -3,6 +3,8 @@ Title: MNStack
 Description: MNStack
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 	<li><a href="#const-content">Constant</a></li>
@@ -23,7 +25,7 @@ MNStack是一个栈菜单，可自定义按钮样式和个数及菜单背景，�
 
 #**open**<div id="1"></div>
 
-打开stack菜单
+打开 stack 菜单
 
 open({params}, callback(ret, err))
 
@@ -45,13 +47,13 @@ startCoords：
 
 styles:
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：菜单样式配置
 - 内部字段：
 
 ```js
 {
-   bg: '',           //（可选项）字符串类型；菜单弹出时的背景（全屏）设置，支持#、rgb、rgba、图片路径（本地路径，fs://，widget://）
+   bg: '',           //（可选项）字符串类型；菜单弹出时的背景（全屏）设置，支持#、rgb、rgba、图片路径（本地路径，fs://、widget://）
    itemHeight: 50,   //（可选项）数字类型；子菜单高度，子菜单宽度随标题字符串长度自适应；默认：50
    titleColor: '',   //（可选项）字符串类型；子菜单标题字体颜色；默认：#8b3e2f
    direction: ''     //（可选项）字符串类型；弹出子菜单方向；默认：right_down，取值范围如下：
@@ -73,9 +75,9 @@ items：
 ```js
 [{
 	title:          //（可选项）字符串类型；子按钮标题
-	icon:           //（可选项）字符串类型；子按钮图片的路径，要求本地路径（fs://，widget://）
-	bgColor:        //（可选项）字符串类型；子按钮背景色，支持rgb、rgba、#；默认：rgba(0,0,0,0);
-	highlightColor: //（可选项）字符串类型；子按钮背景高亮色，支持rgb、rgba、#；默认：rgba(220,220,220,0.8)
+	icon:           //（可选项）字符串类型；子按钮图片的路径，要求本地路径（fs://、widget://）
+	bgColor:        //（可选项）字符串类型；子按钮背景色，支持 rgb、rgba、#；默认：rgba(0,0,0,0);
+	highlightColor: //（可选项）字符串类型；子按钮背景高亮色，支持 rgb、rgba、#；默认：rgba(220,220,220,0.8)
 }]
 ```
 
@@ -83,7 +85,7 @@ items：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -112,7 +114,7 @@ MNStack.open({
 		title: '标题二',
 		bgColor: '#fff'
 	}]
-},function( ret, err ){		
+}, function(ret, err){		
 	if( ret ){
 		alert( JSON.stringify( ret ) );
 	}else{
@@ -123,7 +125,7 @@ MNStack.open({
 
 ##可用性
 
-IOS系统，安卓系统
+iOS系统，安卓系统
 
 可提供的1.0.0及更高版本
 
@@ -143,7 +145,7 @@ MNStack.close();
 
 ##可用性
 
-IOS系统，安卓系统
+iOS系统，安卓系统
 
 可提供的0.0.1及更高版本
 

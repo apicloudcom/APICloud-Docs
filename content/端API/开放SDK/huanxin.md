@@ -2,6 +2,9 @@
 Title: huanxin
 Description: huanxin
 */
+
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <style type="text/css">
     .outline a{width: 33.32%;}
 </style>
@@ -120,7 +123,7 @@ Description: huanxin
 #**register**<div id="2"></div>
 注册
 
-register ({params}, callback(ret, err))
+register({params}, callback(ret, err))
 
 ## params ##
 ### username： ###
@@ -185,7 +188,7 @@ register ({params}, callback(ret, err))
 #**login**<div id="3"></div>
 登录
 
-login ({params}, callback(ret, err))
+login({params}, callback(ret, err))
 
 ## params ##
 ### username： ###
@@ -309,7 +312,7 @@ logout (callback(ret, err))
 通知sdk，UI 已经初始化完毕，注册了相应的receiver和listener, 可以接受广播了
 在registerReceiverAndListener和界面完成后使用
 
-setAppInited ()
+setAppInited()
 
 ## params ##
 无
@@ -335,7 +338,7 @@ setAppInited ()
 ##
 注册主要的广播
 
-registerReceiver ()
+registerReceiver()
 
 ## params ##
 无
@@ -360,7 +363,7 @@ registerReceiver ()
 #**registerNewMessageBroadcastReceiver**<div id="7"></div>
 添加一个接收消息的广播
 
-registerNewMessageBroadcastReceiver ()
+registerNewMessageBroadcastReceiver()
 
 ## params ##
 无
@@ -400,7 +403,7 @@ registerNewMessageBroadcastReceiver ()
 #**registerAckMessageBroadcastReceiver**<div id="8"></div>
 添加一个消息回执的广播
 
-registerAckMessageBroadcastReceiver ()
+registerAckMessageBroadcastReceiver()
 
 ## params ##
 无
@@ -440,7 +443,7 @@ registerAckMessageBroadcastReceiver ()
 #**registerDeliveryAckMessageBroadcastReceiver**<div id="9"></div>
 添加一个消息送达的广播
 
-registerDeliveryAckMessageBroadcastReceiver ()
+registerDeliveryAckMessageBroadcastReceiver()
 
 ## params ##
 无
@@ -480,7 +483,7 @@ registerDeliveryAckMessageBroadcastReceiver ()
 #**sendTextMessage**<div id="10"></div>
 发送文本信息
 
-sendTextMessage ({params}, callback(ret, err))
+sendTextMessage({params}, callback(ret, err))
 
 ## params ##
 ### chatType： ###
@@ -563,7 +566,7 @@ sendTextMessage ({params}, callback(ret, err))
 #**sendImageMessage**<div id="11"></div>
 发送图片信息
 
-sendImageMessage ({params}, callback(ret, err))
+sendImageMessage({params}, callback(ret, err))
 
 ## params ##
 ### chatType： ###
@@ -646,7 +649,7 @@ sendImageMessage ({params}, callback(ret, err))
 #**sendVoiceMessage**<div id="12"></div>
 发送语音信息
 
-sendVoiceMessage ({params}, callback(ret, err))
+sendVoiceMessage({params}, callback(ret, err))
 
 ## params ##
 ### chatType： ###
@@ -736,7 +739,7 @@ sendVoiceMessage ({params}, callback(ret, err))
 #**sendFileMessage**<div id="13"></div>
 发送文件信息
 
-sendFileMessage ({params}, callback(ret, err))
+sendFileMessage({params}, callback(ret, err))
 
 ## params ##
 ### chatType： ###
@@ -819,7 +822,7 @@ sendFileMessage ({params}, callback(ret, err))
 #**sendLocationMessage**<div id="14"></div>
 发送位置信息
 
-sendLocationMessage ({params}, callback(ret, err))
+sendLocationMessage({params}, callback(ret, err))
 
 ## params ##
 ### chatType： ###
@@ -916,7 +919,7 @@ sendLocationMessage ({params}, callback(ret, err))
 #**sendVideoMessage**<div id="15"></div>
 发送视频信息
 
-sendVideoMessage ({params}, callback(ret, err))
+sendVideoMessage({params}, callback(ret, err))
 
 ## params ##
 ### chatType： ###
@@ -1006,7 +1009,7 @@ sendVideoMessage ({params}, callback(ret, err))
 #**getUnreadMsgCount**<div id="16"></div>
 获取未读消息数
 
-getUnreadMsgCount ({params}, callback(ret, err))
+getUnreadMsgCount({params}, callback(ret, err))
 
 ## params ##
 ### conversation： ###
@@ -1062,7 +1065,7 @@ getUnreadMsgCount ({params}, callback(ret, err))
 #**resetUnreadMsgCount**<div id="17"></div>
 未读消息数清零
 
-resetUnreadMsgCount ({params}, callback(ret, err))
+resetUnreadMsgCount({params}, callback(ret, err))
 
 ## params ##
 ### conversation： ###
@@ -1166,7 +1169,7 @@ resetAllUnreadMsgCount (callback(ret, err))
 #**getMsgCount**<div id="19"></div>
 获取消息总数
 
-getMsgCount ({params},callback(ret, err))
+getMsgCount({params}, callback(ret, err))
 
 ## params ##
 ### conversation： ###
@@ -1222,7 +1225,7 @@ getMsgCount ({params},callback(ret, err))
 #**clearConversation**<div id="20"></div>
 清空会话聊天记录,但不删除这个会话对象
 
-clearConversation ({params},callback(ret, err))
+clearConversation({params}, callback(ret, err))
 
 ## params ##
 ### conversation： ###
@@ -1277,7 +1280,7 @@ clearConversation ({params},callback(ret, err))
 #**deleteConversation**<div id="21"></div>
 清空会话聊天记录并删除这个会话对象
 
-deleteConversation ({params},callback(ret, err))
+deleteConversation({params}, callback(ret, err))
 
 ## params ##
 ### conversation： ###
@@ -1332,7 +1335,7 @@ deleteConversation ({params},callback(ret, err))
 #**removeMessage**<div id="22"></div>
 删除某个会话的某条聊天记录
 
-removeMessage ({params},callback(ret, err))
+removeMessage({params}, callback(ret, err))
 
 ## params ##
 ### conversation： ###
@@ -1493,7 +1496,7 @@ getContactUserNames (callback(ret, err))
 #**addContact**<div id="25"></div>
 添加好友
 
-addContact ({params},callback(ret, err))
+addContact({params}, callback(ret, err))
 
 ## params ##
 ### username： ###
@@ -1556,7 +1559,7 @@ addContact ({params},callback(ret, err))
 #**deleteContact**<div id="26"></div>
 删除好友
 
-deleteContact ({params},callback(ret, err))
+deleteContact({params}, callback(ret, err))
 
 ## params ##
 ### username： ###
@@ -1611,7 +1614,7 @@ deleteContact ({params},callback(ret, err))
 #**acceptInvitation**<div id="27"></div>
 同意好友请求
 
-acceptInvitation ({params},callback(ret, err))
+acceptInvitation({params}, callback(ret, err))
 
 ## params ##
 ### username： ###
@@ -1666,7 +1669,7 @@ acceptInvitation ({params},callback(ret, err))
 #**refuseInvitation**<div id="28"></div>
 拒绝好友请求
 
-refuseInvitation ({params},callback(ret, err))
+refuseInvitation({params}, callback(ret, err))
 
 ## params ##
 ### username： ###
@@ -1771,7 +1774,7 @@ getBlackListUsernames (callback(ret, err))
 #**addUserToBlackList**<div id="30"></div>
 把用户加入到黑名单
 
-addUserToBlackList ({params},callback(ret, err))
+addUserToBlackList({params}, callback(ret, err))
 
 ## params ##
 ### username： ###
@@ -1833,7 +1836,7 @@ addUserToBlackList ({params},callback(ret, err))
 #**deleteUserFromBlackList**<div id="31"></div>
 把用户从黑名单中移除
 
-deleteUserFromBlackList ({params},callback(ret, err))
+deleteUserFromBlackList({params}, callback(ret, err))
 
 ## params ##
 ### username： ###
@@ -1888,7 +1891,7 @@ deleteUserFromBlackList ({params},callback(ret, err))
 #**createPublicGroup**<div id="32"></div>
 创建一个公开群
 
-createPublicGroup ({params},callback(ret, err))
+createPublicGroup({params}, callback(ret, err))
 
 ## params ##
 ### groupName： ###
@@ -1975,7 +1978,7 @@ createPublicGroup ({params},callback(ret, err))
 #**createPrivateGroup**<div id="33"></div>
 创建一个私有群
 
-createPrivateGroup ({params},callback(ret, err))
+createPrivateGroup({params}, callback(ret, err))
 
 ## params ##
 ### groupName： ###
@@ -2062,7 +2065,7 @@ createPrivateGroup ({params},callback(ret, err))
 #**addUsersToGroup**<div id="34"></div>
 添加群成员
 
-addUsersToGroup ({params},callback(ret, err))
+addUsersToGroup({params}, callback(ret, err))
 
 ## params ##
 ### groupId： ###
@@ -2125,7 +2128,7 @@ addUsersToGroup ({params},callback(ret, err))
 #**removeUserFromGroup**<div id="35"></div>
 删除群成员
 
-removeUserFromGroup ({params},callback(ret, err))
+removeUserFromGroup({params}, callback(ret, err))
 
 ## params ##
 ### groupId： ###
@@ -2188,7 +2191,7 @@ removeUserFromGroup ({params},callback(ret, err))
 #**joinGroup**<div id="36"></div>
 成员加群请求
 
-joinGroup ({params},callback(ret, err))
+joinGroup({params}, callback(ret, err))
 
 ## params ##
 ### groupId： ###
@@ -2251,7 +2254,7 @@ joinGroup ({params},callback(ret, err))
 #**exitFromGroup**<div id="37"></div>
 退群请求
 
-exitFromGroup ({params},callback(ret, err))
+exitFromGroup({params}, callback(ret, err))
 
 ## params ##
 ### groupId： ###
@@ -2307,7 +2310,7 @@ exitFromGroup ({params},callback(ret, err))
 #**exitAndDeleteGroup**<div id="38"></div>
 解散群聊
 
-exitAndDeleteGroup ({params},callback(ret, err))
+exitAndDeleteGroup({params}, callback(ret, err))
 
 ## params ##
 ### groupId： ###
@@ -2363,7 +2366,7 @@ exitAndDeleteGroup ({params},callback(ret, err))
 #**blockGroupMessage**<div id="39"></div>
 是否屏蔽群消息
 
-blockGroupMessage ({params},callback(ret, err))
+blockGroupMessage({params}, callback(ret, err))
 
 ## params ##
 ### groupId： ###
@@ -2426,7 +2429,7 @@ blockGroupMessage ({params},callback(ret, err))
 #**blockUser**<div id="40"></div>
 是否将群成员拉入群组的黑名单（只有群主才能调用此函数）
 
-blockUser ({params},callback(ret, err))
+blockUser({params}, callback(ret, err))
 
 ## params ##
 ### groupId： ###
@@ -2496,7 +2499,7 @@ blockUser ({params},callback(ret, err))
 #**getBlockedUsers**<div id="41"></div>
 获取群组的黑名单用户列表
 
-getBlockedUsers ({params},callback(ret, err))
+getBlockedUsers({params}, callback(ret, err))
 
 ## params ##
 ### groupId： ###
@@ -2553,7 +2556,7 @@ getBlockedUsers ({params},callback(ret, err))
 #**changeGroupName**<div id="42"></div>
 修改群组名称
 
-changeGroupName ({params},callback(ret, err))
+changeGroupName({params}, callback(ret, err))
 
 ## params ##
 ### groupId： ###
@@ -2678,7 +2681,7 @@ getAllGroups (callback(ret, err))
 #**getGroup**<div id="44"></div>
 获取单个群聊信息
 
-getGroup ({params},callback(ret, err))
+getGroup({params}, callback(ret, err))
 
 ## params ##
 ### groupId： ###
@@ -3101,7 +3104,7 @@ loadMoreMsg (params,callback(ret, err))
 #**registerListener**<div id="50"></div>
 注册主要的监听
 
-registerListener ()
+registerListener()
 
 ## params ##
 无
@@ -3128,7 +3131,7 @@ registerListener ()
 ##
 注销主要的广播
 
-unregisterReceiver ()
+unregisterReceiver()
 
 ## params ##
 无
@@ -3153,7 +3156,7 @@ unregisterReceiver ()
 #**unregisterListener**<div id="51"></div>
 注销主要的监听
 
-unregisterListener ()
+unregisterListener()
 
 ## params ##
 无
@@ -3179,7 +3182,7 @@ unregisterListener ()
 #**acceptInvitationGroup**<div id="52"></div>
  接受加入群组邀请
 
-acceptInvitationGroup ({params},callback(ret, err))
+acceptInvitationGroup({params}, callback(ret, err))
 
 ## params ##
 ### groupId： ###
@@ -3234,7 +3237,7 @@ acceptInvitationGroup ({params},callback(ret, err))
 #**declineApplicationGroup**<div id="53"></div>
 拒绝加群申请
 
-declineApplicationGroup ({params},callback(ret, err))
+declineApplicationGroup({params}, callback(ret, err))
 
 ## params ##
 ### groupId： ###
@@ -3304,7 +3307,7 @@ declineApplicationGroup ({params},callback(ret, err))
 #**acceptApplicationGroup**<div id="54"></div>
 同意加群申请
 
-acceptApplicationGroup ({params},callback(ret, err))
+acceptApplicationGroup({params}, callback(ret, err))
 
 ## params ##
 ### groupId： ###

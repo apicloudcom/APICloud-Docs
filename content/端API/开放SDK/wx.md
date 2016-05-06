@@ -2,6 +2,9 @@
 Title: wx
 Description: wx
 */
+
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <div class="outline">
 [isInstalled](#a1)
 
@@ -62,7 +65,7 @@ Description: wx
 
 微信平台接入流程参考[微信平台接入文档](http://docs.apicloud.com/APICloud/开放平台接入指南/weChat)
 
-**使用此模块之前建议先配置  config.xml 文件，配置完毕，需通过云端编译生效，配置方法如下：**
+**使用此模块之前建议先配置  [config.xml](/APICloud/技术专题/app-config-manual) 文件，配置完毕，需通过云端编译生效，配置方法如下：**
 
 - 名称：wx
 - 参数：urlScheme、apiKey、apiSecret
@@ -85,6 +88,9 @@ Description: wx
     
     
 **Android 系统平台上需注意事项请参考[微信集成注意事项](http://community.apicloud.com/bbs/forum.php?mod=viewthread&tid=9307)**
+
+
+## [实例widget下载地址](https://github.com/XM-Right/wx-Example/archive/master.zip)
     
 ##**模块接口**
     
@@ -99,7 +105,7 @@ isInstalled(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -109,7 +115,7 @@ ret：
 ```
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -151,7 +157,7 @@ shareText({params}, callback(ret, err))
 apiKey：
 
 - 类型：字符串
-- 描述：（可选项）从微信开放平台获取的 appid，若不传则从当前 widget 的 `config.xml` 中读取。
+- 描述：（可选项）从微信开放平台获取的 appid，若不传则从当前 widget 的 [config.xml](/APICloud/技术专题/app-config-manual) 中读取。
 
 scene：
 
@@ -170,7 +176,7 @@ text：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -181,7 +187,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -235,7 +241,7 @@ shareImage({params}, callback(ret, err))
 apiKey：
 
 - 类型：字符串
-- 描述：（可选项）从微信开放平台获取的 appid，若不传则从当前 widget 的 `config.xml` 中读取。
+- 描述：（可选项）从微信开放平台获取的 appid，若不传则从当前 widget 的 [config.xml](/APICloud/技术专题/app-config-manual) 中读取。
 
 scene：
 
@@ -250,7 +256,7 @@ scene：
 thumb：
 
 - 类型：字符串
-- 描述：缩略图片的地址，支持 fs://，widget:// 协议。**大小不能超过32K，若 contentUrl 为本地图片地址则本参数忽略,需要路径包含图片格式后缀，否则如果原图片为非png格式，会分享失败**
+- 描述：缩略图片的地址，支持 fs://、widget:// 协议。**大小不能超过32K，若 contentUrl 为本地图片地址则本参数忽略,需要路径包含图片格式后缀，否则如果原图片为非png格式，会分享失败**
 
 contentUrl：
 
@@ -261,7 +267,7 @@ contentUrl：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -272,7 +278,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -327,7 +333,7 @@ shareMusic({params}, callback(ret, err))
 apiKey：
 
 - 类型：字符串
-- 描述：（可选项）从微信开放平台获取的 appid，若不传则从当前 widget 的 `config.xml` 中读取。
+- 描述：（可选项）从微信开放平台获取的 appid，若不传则从当前 widget 的 [config.xml](/APICloud/技术专题/app-config-manual) 中读取。
 
 scene：
 
@@ -352,7 +358,7 @@ description：
 thumb：
 
 - 类型：字符串
-- 描述：（可选项）分享网络音频的缩略图地址，要求本地路径（fs://，widget://）**大小不能超过32K,需要路径包含图片格式后缀，否则如果原图片为非png格式，会分享失败**
+- 描述：（可选项）分享网络音频的缩略图地址，要求本地路径（fs://、widget://）**大小不能超过32K,需要路径包含图片格式后缀，否则如果原图片为非png格式，会分享失败**
 
 musicDataUrl：
 
@@ -368,7 +374,7 @@ contentUrl：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -379,7 +385,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -439,7 +445,7 @@ shareVideo({params}, callback(ret, err))
 apiKey：
 
 - 类型：字符串
-- 描述：（可选项）从微信开放平台获取的 appid，若不传则从当前 widget 的 `config.xml` 中读取。
+- 描述：（可选项）从微信开放平台获取的 appid，若不传则从当前 widget 的 [config.xml](/APICloud/技术专题/app-config-manual) 中读取。
 
 scene：
 
@@ -464,7 +470,7 @@ description：
 thumb：
 
 - 类型：字符串
-- 描述：（可选项）分享网络视频的缩略图地址，要求本地路径（fs://，widget://）**大小不能超过32K,需要路径包含图片格式后缀，否则如果原图片为非png格式，会分享失败**
+- 描述：（可选项）分享网络视频的缩略图地址，要求本地路径（fs://、widget://）**大小不能超过32K,需要路径包含图片格式后缀，否则如果原图片为非png格式，会分享失败**
 
 contentUrl：
 
@@ -475,7 +481,7 @@ contentUrl：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -486,7 +492,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -546,7 +552,7 @@ shareWebpage({params}, callback(ret, err))
 apiKey：
 
 - 类型：字符串
-- 描述：（可选项）从微信开放平台获取的 appid，若不传则从当前 widget 的 `config.xml` 中读取。
+- 描述：（可选项）从微信开放平台获取的 appid，若不传则从当前 widget 的 [config.xml](/APICloud/技术专题/app-config-manual) 中读取。
 
 scene：
 
@@ -571,7 +577,7 @@ description：
 thumb：
 
 - 类型：字符串
-- 描述：（可选项）分享网页的缩略图地址，要求本地路径（fs://，widget://）**大小不能超过32K,需要路径包含图片格式后缀，否则如果原图片为非png格式，会分享失败**
+- 描述：（可选项）分享网页的缩略图地址，要求本地路径（fs://、widget://）**大小不能超过32K,需要路径包含图片格式后缀，否则如果原图片为非png格式，会分享失败**
 
 contentUrl：
 
@@ -582,7 +588,7 @@ contentUrl：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -593,7 +599,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -650,13 +656,13 @@ auth({params}, callback(ret, err))
 apiKey：
 
 - 类型：字符串
-- 描述：（可选项）从微信开放平台获取的 appid，若不传则从当前 widget 的 `config.xml` 中读取，不传或传入错误的 apiKey，则无法打开微信进行登录。
+- 描述：（可选项）从微信开放平台获取的 appid，若不传则从当前 widget 的 [config.xml](/APICloud/技术专题/app-config-manual) 中读取，不传或传入错误的 apiKey，则无法打开微信进行登录。
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -668,7 +674,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -716,12 +722,12 @@ getToken({params}, callback(ret, err))
 apiKey：
 
 - 类型：字符串
-- 描述：（可选项）从微信开放平台获取的 appid，若不传则从当前 widget 的 `config.xml` 中读取。
+- 描述：（可选项）从微信开放平台获取的 appid，若不传则从当前 widget 的 [config.xml](/APICloud/技术专题/app-config-manual) 中读取。
 
 apiSecret
 
 - 类型：字符串
-- 描述：（可选项）从微信开放平台获取的 secret，若不传则从当前 widget 的 `config.xml` 中读取。
+- 描述：（可选项）从微信开放平台获取的 secret，若不传则从当前 widget 的 [config.xml](/APICloud/技术专题/app-config-manual) 中读取。
 
 code
 
@@ -732,7 +738,7 @@ code
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -747,7 +753,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -813,7 +819,7 @@ openId：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -830,7 +836,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -886,7 +892,7 @@ refreshToken({params}, callback(ret, err))
 apiKey：
 
 - 类型：字符串
-- 描述：（可选项）从微信开放平台获取的 appid，若不传则从当前 widget 的 `config.xml` 中读取。
+- 描述：（可选项）从微信开放平台获取的 appid，若不传则从当前 widget 的 [config.xml](/APICloud/技术专题/app-config-manual) 中读取。
 
 dynamicToken：
 
@@ -898,7 +904,7 @@ dynamicToken：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -913,7 +919,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js

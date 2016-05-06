@@ -3,6 +3,8 @@ Title: qupai
 Description: qupai
 */
 
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 * [initQuPai](#1)
 
 * [startQuPai](#2)
@@ -33,11 +35,11 @@ Description: qupai
 
 initQuPai(function(ret, err))
 
-##callback(ret,err)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -49,7 +51,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -107,11 +109,11 @@ waterMarkPostion：
 - 类型：number
 - 描述：水印的坐标，1 右上角， 2 右下角
 
-##callback(ret,err)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：返回的文件路径，如视频文件名为sin_2016-02-17-12-03-42-142.mp4, 图片文件名为sin_2016-02-17-12-03-42-142.jpg
 - 内部字段：
 
@@ -124,7 +126,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js

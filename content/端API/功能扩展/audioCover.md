@@ -3,6 +3,8 @@ Title: audioCover
 Description: audioCover
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -19,14 +21,14 @@ Description: audioCover
 
 #**概述**
 
-audioCover 封装了设置音乐播放锁屏界面的相关接口。当音乐播放时切换到后台（音频后台播放功能需要在 config.xml 文件里进行相关配置，详情参考 config 文件配置文档）锁屏后，再次点击开屏键，当前屏幕会显示一个音乐播放器页面，该界面中有播放器的控制按钮，可点击按钮和用户播放器进行交互。通过本模块可以对该页面进行相关功能的自定义设置。**在 IOS 平台上，必须保证有音频在后台播放，本模块设置的锁屏界面才会显示**
+audioCover 封装了设置音乐播放锁屏界面的相关接口。当音乐播放时切换到后台（音频后台播放功能需要在 config.xml 文件里进行相关配置，详情参考 config 文件配置文档）锁屏后，再次点击开屏键，当前屏幕会显示一个音乐播放器页面，该界面中有播放器的控制按钮，可点击按钮和用户播放器进行交互。通过本模块可以对该页面进行相关功能的自定义设置。**在 iOS 平台上，必须保证有音频在后台播放，本模块设置的锁屏界面才会显示**
 
 
 #**set**<div id="1"></div>
 
 设置锁屏音乐播放页面
 
-set({params}, callback(ret))
+set({params}, callback(ret, err))
 
 ##params
 
@@ -43,12 +45,12 @@ progress:
 cover:
 
 - 类型： 字符串
-- 描述：（可选项）专辑图片路径，要求本地路径（fs://，widget://）
+- 描述：（可选项）专辑图片路径，要求本地路径（fs://、widget://）
 
 defaultCover:
 
 - 类型： 字符串
-- 描述：（可选项）默认专辑图片路径，要求本地路径（fs://，widget://）
+- 描述：（可选项）默认专辑图片路径，要求本地路径（fs://、widget://）
 
 volume：
 
@@ -70,7 +72,7 @@ author:
 
 lyrics:
 
-- 类型： JSON对象
+- 类型： JSON 对象
 - 描述：（可选项）显示歌词设置
 - 内部字段：
 
@@ -85,17 +87,17 @@ lyrics:
 fixedOn:
 
 - 类型： 字符串
-- 描述：本模块所依附的window或frame的名字，在IOS平台上，该window或frame必须始终在可视区域的最上层，否则锁屏效果将会失效
-- 默认值：当前主window
+- 描述：本模块所依附的 window 或 frame 的名字，在 iOS 平台上，该 window 或 frame 必须始终在可视区域的最上层，否则锁屏效果将会失效
+- 默认值：当前主 window
 
-##callBack(ret)
+##callBack(ret, err)
 
 ret：
 
 - 类型：JSON 对象
 - 内部字段：
   
-  ```js
+```js
 {
 	eventType: 'play',     //字符串类型；交互事件类型，取值范围如下：
 							//play(播放)
@@ -103,8 +105,7 @@ ret：
 							//next（下一首）
 							//previous（上一首）
 }
- ```
-
+```
  
 ##示例代码
 
@@ -113,7 +114,7 @@ var audioCover = api.require('audioCover');
 audioCover.set({
     audio: '歌曲名',
     author: '作者'
-},function( ret, err ){		
+}, function(ret, err){		
     if( ret ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -160,9 +161,9 @@ iOS系统，Android系统
 
 取消锁屏音乐播放页面
 
-cancel(callback(ret))
+cancel(callback(ret, err))
 
-##callBack(ret)
+##callback(ret, err)
 
 ret：
 
@@ -171,7 +172,7 @@ ret：
 
 ```js
 {
-	status:true  //布尔类型；true||false
+	status: true  //布尔类型；
 }
 ```
 ##示例代码

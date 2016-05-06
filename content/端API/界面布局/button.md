@@ -3,6 +3,8 @@ Title: button
 Description: button
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -24,7 +26,7 @@ Description: button
 
 #**概述**
 
-button是一个按钮模块，用原生代码实现了一个可自定义的按钮，开发者使用此模块可以实现在一个模块视图上添加自定义按钮的功能。本模块已停止更新，建议使用优化升级版模块[UIButton](http://docs.apicloud.com/端API/界面布局/UIButton)
+button是一个按钮模块，用原生代码实现了一个可自定义的按钮，开发者使用此模块可以实现在一个模块视图上添加自定义按钮的功能。本模块已停止更新，建议使用优化升级版模块 [UIButton](http://docs.apicloud.com/端API/界面布局/UIButton)
 
 
 #**open**<div id="1"></div>
@@ -77,15 +79,15 @@ fixed:
 - 描述：是否将模块视图固定到窗口上，不跟随窗口上下滚动，可为空
 
 bg:
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：见内部字段
 - 描述：按钮视图背景设置，可为空
 - 内部字段：
 
 ```js
 {
-        normal:      //按钮常态下的背景，支持rgb，rgba，#，img，可为空
-        highlight:    //按钮高亮下的背景，支持rgb，rgba，#，img，可为空，为空则和normal效果一致
+        normal:      //按钮常态下的背景，支持 rgb，rgba，#，img，可为空
+        highlight:    //按钮高亮下的背景，支持 rgb，rgba，#，img，可为空，为空则和normal效果一致
 
 }
 ```
@@ -101,18 +103,18 @@ title:
       size:            //标题字体大小，数字类型，默认13，可为空 
       normalTitle:      //按钮常态下的标题，字符串，可为空
       highlightTitle:     //按钮高亮下的标题，字符串，可为空
-      normalColor:     //标题常态颜色，支持rgb，rgba，#，默认#ffffff，可为空
-      highlightColor:    //标题按下颜色，支持rgb，rgba，#，默认#ffffff，可为空
+      normalColor:     //标题常态颜色，支持 rgb，rgba，#，默认#ffffff，可为空
+      highlightColor:    //标题按下颜色，支持 rgb，rgba，#，默认#ffffff，可为空
       alignment:       //标题位置，取值范围：left，right，center，默认center，可为空
 
 }
 ```
 
-##callBack(ret,err)
+##callback(ret, err)
 
 ret：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 内部字段：
   
 ```js
@@ -132,7 +134,7 @@ button.open({
         normal: "#ff0000"
     },
     fixedOn: api.frameName
-},function( ret, err ){		
+}, function(ret, err){		
     if( ret ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -176,8 +178,8 @@ title:
       size:            //标题字体大小，数字类型，默认13，可为空 
       normalTitle:      //按钮常态下的标题，字符串，可为空
       highlightTitle:     //按钮高亮下的标题，字符串，可为空
-      normalColor:     //标题常态颜色，支持rgb，rgba，#，默认#ffffff，可为空
-      highlightColor:    //标题按下颜色，支持rgb，rgba，#，默认#ffffff，可为空
+      normalColor:     //标题常态颜色，支持 rgb，rgba，#，默认#ffffff，可为空
+      highlightColor:    //标题按下颜色，支持 rgb，rgba，#，默认#ffffff，可为空
       alignment:       //标题位置，取值范围：left，right，center，默认center，可为空
 
 }
@@ -191,7 +193,7 @@ button.setTitle({
    title:{
        normalTitle: "按钮"
     }
-},function( ret, err ){		
+}, function(ret, err){		
     if( ret ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -276,7 +278,7 @@ iOS系统，Android系统
 
 关闭按钮视图
 
-close(params)
+close({params})
 
 ##params
 
@@ -307,7 +309,7 @@ iOS系统，Android系统
 
 隐藏按钮视图
 
-hide(params)
+hide({params})
 
 ##params
 
@@ -338,7 +340,7 @@ iOS系统，Android系统
 
 显示按钮视图
 
-show(params)
+show({params})
 
 ##params
 

@@ -3,6 +3,8 @@ Title: cityList
 Description: cityList
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -113,7 +115,7 @@ fixedOn：
 
 style：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：见内部字段
 - 描述：（可选项）城市列表样式设置
 - 内部字段：
@@ -121,21 +123,21 @@ style：
 ```js
 {
      indector:       //（可选项）字母导航条设置，内部字段如下：{
-                       bgColor:  //（可选项）字母导航条背景色，支持rgb、rgba、#，默认#FFFFFF
-                       tintColor://（可选项）字母导航条字母色，支持rgb、rgba、#，默认#696969
+                       bgColor:  //（可选项）字母导航条背景色，支持 rgb、rgba、#，默认#FFFFFF
+                       tintColor://（可选项）字母导航条字母色，支持 rgb、rgba、#，默认#696969
                        }
-     bg:             //（可选项）列表分组标题背景设置，支持rgb、rgba、#，默认#E0E0E0
-     itemBg:         //（可选项）列表单条选项背景色，支持rgb、rgba、#，默认#ffffff
-     titleColor:     //（可选项）section标题字体颜色，支持rgb、rgba、#，默认#000000
+     bg:             //（可选项）列表分组标题背景设置，支持 rgb、rgba、#，默认#E0E0E0
+     itemBg:         //（可选项）列表单条选项背景色，支持 rgb、rgba、#，默认#ffffff
+     titleColor:     //（可选项）section标题字体颜色，支持 rgb、rgba、#，默认#000000
      titleSize:      //（可选项）section标题字体大小，数字类型，默认12.0
-     contentColor:   //（可选项）内容字体颜色，支持rgb、rgba、#，默认#000000
+     contentColor:   //（可选项）内容字体颜色，支持 rgb、rgba、#，默认#000000
      contentSize:    //（可选项）内容字体大小，数字类型，默认14.0
-     localColor:     //（可选项）定位提示字体颜色，支持rgb、rgba、#，默认#696969
+     localColor:     //（可选项）定位提示字体颜色，支持 rgb、rgba、#，默认#696969
      localSize:      //（可选项）定位提示字体大小，数字类型，默认12.0
      searchBar:      //（可选项）搜索条样式设置，内部字段如下：{
-                        bg:         //（可选项）搜索条背景色，支持支持rgb、rgba、#，默认#C2C2C2
+                        bg:         //（可选项）搜索条背景色，支持支持 rgb、rgba、#，默认#C2C2C2
                         placeholder://（可选项）搜索条占位提示文字，默认输入城市名或首字母查询
-                        cancelColor://（可选项）右边取消字体颜色，支持rgb、rgba、#，默认#E3E3E3；android上忽略此参数
+                        cancelColor://（可选项）右边取消字体颜色，支持 rgb、rgba、#，默认#E3E3E3；android上忽略此参数
                       }
 }
 ```
@@ -144,7 +146,7 @@ style：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -159,8 +161,8 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('cityList');
-obj.open({
+var cityList = api.require('cityList');
+cityList.open({
 	currentCity:'北京',
 	resource:'widget://res/cityList.json'
 },function(ret,err) {
@@ -187,8 +189,8 @@ close()
 
 ##示例代码
 
-    var obj = api.require('cityList');
-    obj.close();
+    var cityList = api.require('cityList');
+    cityList.close();
 
 ##补充说明
 
@@ -208,8 +210,8 @@ hide()
 
 ##示例代码
 
-    var obj = api.require('cityList');
-    obj.hide();
+    var cityList = api.require('cityList');
+    cityList.hide();
 
 ##补充说明
 
@@ -229,8 +231,8 @@ show()
 
 ##示例代码
 
-    var obj = api.require('cityList');
-    obj.show();
+    var cityList = api.require('cityList');
+    cityList.show();
 
 ##补充说明
 

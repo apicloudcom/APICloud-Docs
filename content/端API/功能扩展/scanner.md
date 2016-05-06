@@ -3,6 +3,8 @@ Title: scanner
 Description: scanner
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 	<li><a href="#const-content">Constant</a></li>
@@ -25,7 +27,7 @@ Description: scanner
 
 #**概述**
 
-二维码/条码扫描器，本模块底层集成了ZXing，Zbar条码/二维码分析库，调用open接口可打开默认UI的二维码/条码扫描页面，此页面内添加了闪光灯开关、从相册读取图片扫描按钮。开发者亦可通过openView接口打开自定义扫描区域（大小和位置）的扫码视图。本模块亦实现了对图片解码，对字符串编码的功能，按照接口规范调用decode、encode接口即可实现。开发者可通过调整接口参数可将扫描结果保存到系统相册、指定位置。**[FNScanner 模块](/端API/功能扩展/FNScanner)是 scanner 模块的优化版，建议使用 FNScanner 模块，此模块已停止更新。**
+二维码/条码扫描器，本模块底层集成了 ZXing，Zbar 条码/二维码分析库，调用 open 接口可打开默认UI的二维码/条码扫描页面，此页面内添加了闪光灯开关、从相册读取图片扫描按钮。开发者亦可通过 openView 接口打开自定义扫描区域（大小和位置）的扫码视图。本模块亦实现了对图片解码，对字符串编码的功能，按照接口规范调用 decode、encode 接口即可实现。开发者可通过调整接口参数可将扫描结果保存到系统相册、指定位置。**[FNScanner 模块](/端API/功能扩展/FNScanner)是 scanner 模块的优化版，建议使用 FNScanner 模块，此模块已停止更新。**
 
 ![图片说明](/img/docImage/scanner.jpg)
 
@@ -51,7 +53,7 @@ sound：
 
 save：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：见内部字段
 - 描述：（可选项）所生成的图片保存位置
 - 内部字段：
@@ -69,18 +71,18 @@ save：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
 {
-   eventType：//扫码事件类型，字符串类型，取值范围如下：
-                cancel  //用户取消扫码
-                image   //用户选择从系统相册读取二维码
-                success//扫码成功
-                fail   //扫码失败
-   savePath： //若扫码成功且需保存所扫二维码图片，则返回该图片保存路径
-   msg:""    //返回扫描信息（扫码失败则返回失败信息）
+   eventType：				//扫码事件类型，字符串类型，取值范围如下：
+                'cancel'  	//用户取消扫码
+                'image'   	//用户选择从系统相册读取二维码
+                'success'	//扫码成功
+                'fail'   	//扫码失败
+   savePath： 				//若扫码成功且需保存所扫二维码图片，则返回该图片保存路径
+   msg:''    				//返回扫描信息（扫码失败则返回失败信息）
 }
 ```
 
@@ -107,7 +109,7 @@ iOS系统，Android系统
 
 打开自定义视图大小的二维码/条码扫描器
 
-openView({params},callback(ret,err))
+openView({params}, callback(ret, err))
 
 ##params
 
@@ -141,7 +143,7 @@ h：
 fixedOn：
 
 - 类型：字符串类型
-- 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+- 描述：（可选项）模块视图添加到指定 frame 的名字（ 传 window 名称无效 ）
 - 默认：模块依附于当前 window
 
 needBr：
@@ -158,7 +160,7 @@ sound：
 
 save：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：见内部字段
 - 描述：（可选项）所生成的图片保存位置
 - 内部字段：
@@ -167,7 +169,7 @@ save：
 {
 	album:            //（可选项）布尔值，是否保存到系统相册，默认false
 	imgPath:          //（可选项）保存的文件路径，无默认值,若不传则不保存，若路径不存在则创建此目录
-	imgName:          //（可选项）保存的图片名字，字符串类型，无默认值,若不传则不保存，支持png和jpg格式，若不指定格式，则默认png
+	imgName:          //（可选项）保存的图片名字，字符串类型，无默认值,若不传则不保存，支持 png 和 jpg 格式，若不指定格式，则默认 png
 	size:             //（可选项）生成的图片(正方形)的边长，数字，默认200
 }
 ```
@@ -176,13 +178,13 @@ save：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
 {
    savePath： //若扫码成功且需保存所扫二维码图片，则返回改图片保存路径
-	msg:""    //返回扫描信息（扫码失败则返回失败信息）
+	msg:''    //返回扫描信息（扫码失败则返回失败信息）
 }
 ```
 
@@ -196,7 +198,7 @@ scanner.openView({
 	w: 200,
 	h: 240,
 	sound: 'widget://test.wav'
-},function( ret, err ){		
+}, function(ret, err){		
 	if( ret ){
 		alert( JSON.stringify( ret ) );
 	}else{
@@ -236,7 +238,7 @@ iOS系统，Android系统
 
 图片解码
 
-decode({params},callback(ret,err))
+decode({params}, callback(ret, err))
 
 ##params
 
@@ -264,12 +266,12 @@ imgPath：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
 {
-	msg:""    //返回扫描信息（扫码失败则返回失败信息）
+	msg:''    //返回扫描信息（扫码失败则返回失败信息）
 }
 ```
 
@@ -279,7 +281,7 @@ ret：
 var scanner = api.require('scanner');
 scanner.decode({
 	sound: 'widget://test.wav'
-}, function( ret, err ){		
+}, function(ret, err){		
 	if( ret ){
 		alert( JSON.stringify( ret ) );
 	}else{
@@ -299,7 +301,7 @@ iOS系统，Android系统
 
 将字符串生成条码/二维码
 
-encode({params},callback(ret,err))
+encode({params}, callback(ret, err))
 
 ##params
 
@@ -312,12 +314,12 @@ type：
 string：
 
 - 类型：字符串
-- 默认值："test"
+- 默认值：'test'
 - 描述：（可选项）所要生成的条码/二维码的字符串
 
 save：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：见内部字段
 - 描述：（可选项）所生成的图片保存位置
 - 内部字段：
@@ -335,13 +337,13 @@ save：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
 {
-   savePath： //若扫码成功且需保存所扫二维码图片，则返回改图片保存路径
-	status:   //是否生成成功
+   savePath： 		//若扫码成功且需保存所扫二维码图片，则返回改图片保存路径
+	status:   		//是否生成成功
 }
 ```
 
@@ -355,7 +357,7 @@ scanner.encode({
 		imgPath: 'fs://',
 		imgName: 'album.png'
 	}
-},function( ret, err ){		
+}, function(ret, err){		
 	if( ret.status ){
 		alert( JSON.stringify( ret ) );
 	}else{

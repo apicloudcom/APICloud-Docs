@@ -3,6 +3,8 @@ Title: csOpenApi
 Description: Domob APICloud 接口文档
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：上海合合信息科技发展有限公司</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 	<li><a href="#const-content">Constant</a></li>
@@ -38,7 +40,7 @@ csOpenApi模块封装了扫描全能王图片处理的Open API。
 
 app_key可以访问https://dev.camscanner.com/进行申请
 
-auth(params)
+auth({params})
 
 ##params()
 
@@ -78,13 +80,13 @@ Android系统
 
 获取 扫描全能王CamScanner 的下载链接。
 
-getDownloadLink(callback)
+getDownloadLink(callback(ret, err))
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -119,13 +121,13 @@ Android系统
 
 获取当前手机上安装的扫描全能王CamScanner支持的最低Open API版本号。
 
-getOpenApiVersion(callback)
+getOpenApiVersion(callback(ret, err))
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -160,13 +162,13 @@ Android系统
 
 判断当前手机上是否安装了支持Open API的CamScanner APP
 
-isCamScannerAvailable(callback)
+isCamScannerAvailable(callback(ret, err))
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -200,13 +202,13 @@ Android系统
 
 判断当前手机上是否安装了CamScanner
 
-isCamScannerInstalled(callback)
+isCamScannerInstalled(callback(ret, err))
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -240,7 +242,7 @@ Android系统
 
 处理图片
 
-scanImage(params, callback)
+scanImage({params}, callback(ret, err))
 
 ##params()
 
@@ -274,11 +276,11 @@ api_version：
 - 默认值：无
 - 描述：请求所需最低的OPEN API版本号，可选字段
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 

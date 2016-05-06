@@ -3,6 +3,8 @@ Title: scrollPicture
 Description: scrollPicture
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 	<li><a href="#const-content">Constant</a></li>
@@ -84,7 +86,7 @@ placeholderImg：
 
 subTitle：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：（可选项）图片的说明文字
 - 备注：若不传则不显示说明文字
@@ -96,14 +98,14 @@ subTitle：
 	titles：     //数组类型，说明的文字组成的数组，与paths一一对应
 	color：      //（可选项）字符串类型，说明文字的颜色，默认#E0FFFF
 	size：       //（可选项）数字类型，说明文字的字体大小，默认13.0
-	bgColor：    //（可选项）说明文字视图的背景颜色，支持rgb、rgba、#，默认#696969
+	bgColor：    //（可选项）说明文字视图的背景颜色，支持 rgb、rgba、#，默认#696969
 	fixed：      //（可选项）布尔值，是否将标题视图固定到主视图内部，默认false 
 }
 ```
 
 control：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：（可选项）页面控制器
 - 备注：若不传则不显示页面控制器
@@ -113,8 +115,8 @@ control：
 {
 	position:             //(deprecated)页面控制器位置，0-中间；1-左边；2-右边，默认0
 	alignment:            //(可选项)页面控制器位置，center(居中),left(靠左), right(靠右),默认center
-	activeColor:          //(可选项)当前圆点颜色，支持rgb、rgba、#，默认:DA70D6
-	inactiveColor:        //(可选项)圆点颜色 ，支持rgb、rgba、#，默认：#FFFFFF
+	activeColor:          //(可选项)当前圆点颜色，支持 rgb、rgba、#，默认:DA70D6
+	inactiveColor:        //(可选项)圆点颜色 ，支持 rgb、rgba、#，默认：#FFFFFF
 }
 ```
 
@@ -139,7 +141,7 @@ fixed:
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -153,7 +155,7 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('scrollPicture');
+var scrollPicture = api.require('scrollPicture');
  var arrayPath = new Array();
  arrayPath[0] = 'widget://res/scrollPicture_01.jpg';
  arrayPath[1] = 'widget://res/scrollPicture_02.jpg';
@@ -167,7 +169,7 @@ var obj = api.require('scrollPicture');
  arrayTitle[3] = 'widget://res/scrollPicture_04.jpg';
  arrayTitle[4] = 'widget://res/scrollPicture_05.jpg';
     
- obj.open({
+ scrollPicture.open({
      placeholderImg:'widget://res/scrollPicture_placeholder.png',
      paths: arrayPath,
      subtitle:{
@@ -176,13 +178,13 @@ var obj = api.require('scrollPicture');
      control:{
          position:0
      }
- },function(ret,err){
-     if(ret.status){
-        ret.click;
-     }else{
-        ret.index;
-     }
- });
+ }, function(ret, err){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
 ```
 
 ##补充说明
@@ -200,13 +202,13 @@ iOS系统，Android系统
 
 关闭页面
 
-close(callBack(ret,err))
+close(callback(ret, err))
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -217,8 +219,10 @@ ret：
 
 ##示例代码
 
-    var obj = api.require('scrollPicture');
-    obj.close();
+```js
+var scrollPicture = api.require('scrollPicture');
+scrollPicture.close();
+```
 
 ##补充说明
 
@@ -234,7 +238,7 @@ iOS系统，Android系统
 
 转到指定页面
 
-turnPage(params)
+turnPage({params})
 
 ##params
 
@@ -248,9 +252,8 @@ index：
 
 ```js
 var scrollPicture = api.require('scrollPicture');
-
 scrollPicture.turnPage({
-	index:0
+	index: 0
 });
 ```
 
@@ -268,7 +271,7 @@ iOS系统，Android系统
 
 刷新页面
 
-refresh(params)
+refresh({params})
 
 ##params
 
@@ -305,13 +308,13 @@ iOS系统，Android系统
 
 隐藏模块视图
 
-hide(callBack(ret,err))
+hide(callback(ret, err))
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -322,8 +325,10 @@ ret：
 
 ##示例代码
 
-	var obj = api.require('scrollPicture');
-	obj.hide();
+```js
+var scrollPicture = api.require('scrollPicture');
+scrollPicture.hide();
+```
 
 ##补充说明
 
@@ -339,13 +344,13 @@ iOS系统，Android系统
 
 显示模块视图
 
-show(callBack(ret,err))
+show(callback(ret, err))
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -356,8 +361,10 @@ ret：
 
 ##示例代码
 
-	var obj = api.require('scrollPicture');
-	obj.show();
+```js
+var scrollPicture = api.require('scrollPicture');
+scrollPicture.show();
+```
 
 ##补充说明
 

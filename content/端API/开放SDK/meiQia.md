@@ -3,6 +3,8 @@ Title: meiQia
 Description: meiQia
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：美洽</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -80,7 +82,7 @@ iOS中很多功能需要配置`Info.plist`才能实现。使用美洽模块，�
 	
 初始化美洽
 
-initMeiQia(params, callback)
+initMeiQia({params}, callback(ret, err))
 
 ##params
 
@@ -128,7 +130,7 @@ iOS系统，Android系统
 #**setTitleColor**<div id="2"></div>
 
 设置美洽聊天界面的标题栏中文字的颜色
-setTitleColor(params)
+setTitleColor({params})
 
 ##params
 
@@ -157,7 +159,7 @@ iOS系统，Android系统
 #**setTitleBarColor**<div id="3"></div>
 
 设置美洽聊天界面的标题栏背景颜色
-setTitleBarColor(params)
+setTitleBarColor({params})
 
 ##params
 
@@ -210,7 +212,7 @@ iOS系统，Android系统
 
 指定分配客服与客服组
 
-setScheduledAgentOrAgentGroup(params)
+setScheduledAgentOrAgentGroup({params})
 
 ##params
 
@@ -264,7 +266,7 @@ iOS系统，Android系统
 
 添加规范化用户信息
 
-setClientInfo(params)
+setClientInfo({params})
 
 ##params
 
@@ -311,7 +313,7 @@ iOS系统，Android系统
 #**setLoginMQClientId**<div id="7"></div>
 
 设置美洽顾客的 id 后，该id对应的顾客将会上线。设置后可实现消息漫游。
-setLoginMQClientId(params)
+setLoginMQClientId({params})
 
 ##params
 
@@ -346,7 +348,7 @@ iOS系统，Android系统
 使用该接口，可让美洽绑定开发者的用户系统和美洽的顾客系统。
 设置开发者自定义 id 后，将会以该自定义 id 对应的顾客上线。设置后可实现消息漫游。
 
-setLoginCustomizedId(params)
+setLoginCustomizedId({params})
 
 ##params
 

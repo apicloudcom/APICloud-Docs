@@ -28,6 +28,12 @@ Sort: 10
 
 [使用推送API](#15)
 
+
+##参考视频  
+
+入门概念篇第七节（如何使用APICloud云端应用服务）：http://docs.apicloud.com/APICloud/videos-and-codes
+
+
 #**推送准备**<div id="1"></div>
 
 

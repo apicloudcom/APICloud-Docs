@@ -3,6 +3,8 @@ Title: brokenLine
 Description: brokenLine
 */
 
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -24,7 +26,7 @@ Description: brokenLine
 
 #**概述**
 
-brokenLine模块封装了一个折线图视图，开发者可自定义其样式，可刷新数据，左右拖动查看不同的数据，并且能响应用户点击结点的事件。目前暂仅支持绘制单条折线，由于本模块是有第三方模块开发者提供，使用本模块需在线云编译安装包。如下图：
+brokenLine模块封装了一个折线图视图，开发者可自定义其样式，可刷新数据，左右拖动查看不同的数据，并且能响应用户点击结点的事件。目前暂仅支持绘制单条折线，由于本模块是由第三方模块开发者提供，使用本模块需在线云编译安装包。如下图：
 
 ![图片说明](/img/docImage/brokenLine.jpg)
 
@@ -80,7 +82,7 @@ xAxisGap：
 
 yAxis：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：K线图坐标系y轴配置参数，可为空
 - 内部字段：
@@ -95,16 +97,16 @@ yAxis：
 
 mark：
 
-- 类型：json对象	
+- 类型：JSON 对象	
 - 默认值：见内部字段
 - 描述：标注的配置，可为空
 
 内部字段：
 ```js
 {
-	colorX: 	//X轴标注的字体颜色，支持rgb，rgba，#，默认696969，可为空
+	colorX: 	//X轴标注的字体颜色，支持 rgb，rgba，#，默认696969，可为空
 	sizeX： 		//X轴标注的字体大小，数字类型，默认13，可为空
-	colorY: 	//Y轴标注的字体颜色，支持rgb，rgba，#，默认696969，可为空
+	colorY: 	//Y轴标注的字体颜色，支持 rgb，rgba，#，默认696969，可为空
 	sizeY： 		//Y轴标注的字体大小，数字类型，默认13，可为空
 	dot:    	//josn对象，圆点标注配置，可为空
 
@@ -113,8 +115,8 @@ mark：
 	{
 	markX:     //圆点x轴标注，字符串，默认日期，可为空
 	markY:     //圆点y轴标注，字符串，默认字数，可为空
-	colorX:    //圆点x标注颜色，支持rgb，rgba，#，默认696969，可为空
-	colorY:    //圆点y标注颜色，支持rgb，rgba，#，默认696969，可为空
+	colorX:    //圆点x标注颜色，支持 rgb，rgba，#，默认696969，可为空
+	colorY:    //圆点y标注颜色，支持 rgb，rgba，#，默认696969，可为空
 	sizeX:     //圆点x标注大小，，默认11，可为空
 	sizeY:     //圆点x标注大小，默认11，可为空
     }
@@ -131,7 +133,7 @@ coordLine：
 
 ```js
 {
-	color://坐标线颜色,字符串类型，支持rgb，rgba，#，默认#696969，可为空
+	color://坐标线颜色,字符串类型，支持 rgb，rgba，#，默认#696969，可为空
 	width: //坐标线粗细，数字类型，默认1.0，可为空
 	style：    //坐标线类型，dash，solid，默认dash，可为空
 }
@@ -139,7 +141,7 @@ coordLine：
 
 brokenLine：
 
-- 类型：json对象	
+- 类型：JSON 对象	
 - 默认值：见内部字段
 - 描述：折线的配置，可为空
 
@@ -147,13 +149,13 @@ brokenLine：
 
 ```js
 {
-	color://折线颜色,字符串类型，支持rgb，rgba，#，默认#436eee，可为空
+	color://折线颜色,字符串类型，支持 rgb，rgba，#，默认#436eee，可为空
 	width: //折线粗细，数字类型，默认2.0，可为空
 }
 ```
 node：
 
-- 类型：json对象	
+- 类型：JSON 对象	
 - 默认值：见内部字段
 - 描述：结点的配置，可为空
 
@@ -162,10 +164,10 @@ node：
 ```js
 {
 	size:  //结点大小，数字类型，默认5.0，可为空
-	color：//结点颜色，字符串类型，支持rgb，rgba，#，默认#436eee，可为空
+	color：//结点颜色，字符串类型，支持 rgb，rgba，#，默认#436eee，可为空
 	showBubble: //布尔类型，是否显示点击结点时候的气泡，默认true，可为空
-	bubbleBg://气泡背景,字符串类型,支持rgb，rgba，#，img，默认#436eee，可为空
-	textColor://气泡字体颜色,字符串类型，支持rgb，rgba，#，默认#436eee，可为空
+	bubbleBg://气泡背景,字符串类型,支持 rgb，rgba，#，img，默认#436eee，可为空
+	textColor://气泡字体颜色,字符串类型，支持 rgb，rgba，#，默认#436eee，可为空
 	textSize://气泡文字大小，数字类型，默认13.0，可为空
 	hollow：  //布尔类型，是否为空心圆，默认true，可为空
 }
@@ -201,7 +203,7 @@ fixed:
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -216,8 +218,8 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('brokenLine');
-obj.open({
+var brokenLine = api.require('brokenLine');
+brokenLine.open({
 	datas: [{mark:1,value:2500},
 			{mark:2,value:3500},
 			{mark:3,value:4500},
@@ -278,7 +280,7 @@ id：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -290,7 +292,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -303,8 +305,8 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('brokenLine');
-obj.reloadData({
+var brokenLine = api.require('brokenLine');
+brokenLine.reloadData({
 	id:1,
 	datas: [{mark:1,value:3500},
 			{mark:2,value:2500},
@@ -374,7 +376,7 @@ id：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -386,7 +388,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -399,8 +401,8 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('brokenLine');
-obj.appendData({
+var brokenLine = api.require('brokenLine');
+brokenLine.appendData({
 	id:1,
 	datas: [{mark:11,value:3500},
 			{mark:12,value:2500},
@@ -434,7 +436,7 @@ iOS系统，Android系统
 
 关闭折线图视图
 
-close({params},callback(ret, err))
+close({params}, callback(ret, err))
 
 ##params
 
@@ -448,7 +450,7 @@ id：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -460,7 +462,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -473,8 +475,8 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('brokenLine');
-obj.close(function(ret, err){
+var brokenLine = api.require('brokenLine');
+brokenLine.close(function(ret, err){
 	if(ret.status){
 		api.alert({msg:'关闭成功'});
     }else{
@@ -511,7 +513,7 @@ id：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -523,7 +525,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -536,8 +538,8 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('brokenLine');
-obj.hide (function(ret, err){
+var brokenLine = api.require('brokenLine');
+brokenLine.hide (function(ret, err){
 	if(ret.status){
 			api.alert({msg:'隐藏成功'});
 	    }else{
@@ -574,7 +576,7 @@ id：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -586,7 +588,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -599,8 +601,8 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('brokenLine');
-obj.show (function(ret, err){
+var brokenLine = api.require('brokenLine');
+brokenLine.show (function(ret, err){
 		if(ret.status){
 			api.alert({msg:'隐藏成功'});
 	    }else{

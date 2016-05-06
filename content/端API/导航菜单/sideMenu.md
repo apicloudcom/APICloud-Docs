@@ -3,12 +3,12 @@ Title: sideMenu
 Description: sideMenu
 */
 
-<ul id='tab' class='clearfix'>
-	<li class='active'><a href='#method-content'>Method</a></li>
+<ul id="tab" class="clearfix">
+	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
-<div id='method-content'>
+<div id="method-content">
 
-<div class='outline'>
+<div class="outline">
 [open](#1)
 
 [hidden](#2)
@@ -20,11 +20,11 @@ Description: sideMenu
 
 #**概述**
 
-sideMenu是一个从边框弹出的菜单，允许开发者自定义子按钮的样式和个数。打开时会有从边框弹出的动画
+sideMenu 是一个从边框弹出的菜单，允许开发者自定义子按钮的样式和个数。打开时会有从边框弹出的动画
 
 ![图片说明](/img/docImage/sideMenu.jpg)
 
-#**open**<div id='1'></div>
+#**open**<div id="1"></div>
 
 打开菜单
 
@@ -93,7 +93,7 @@ clickHide：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -132,7 +132,7 @@ sideMenu.open({
         'bgImg': 'widget://res/sideMenu/bg.png'
     }],
     fixedOn: api.frameName
-},function( ret, err ){		
+}, function(ret, err){		
     if( ret ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -185,8 +185,6 @@ iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
-
-
 #**show**
 
 显示菜单
@@ -219,8 +217,6 @@ sideMenu.show({
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
-
-
 
 #**close**
 

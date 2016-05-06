@@ -3,6 +3,8 @@ Title: umengAnalytics
 Description: umengAnalytics
 */
 
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <div class="outline">
 [init](#a1)
 
@@ -37,7 +39,7 @@ umengAnalytics 模块封装了[友盟](http://www.umeng.com/analytics)APP统计S
 
 如果需要自定义事件统计，需进入应用，然后点击 设置 => 事件 => 添加事件 。[自定义事件功能说明](http://dev.umeng.com/analytics/functions/numekv)
 
-**4. 配置 APICloud 项目的 config.xml 文件**
+**4. 配置 APICloud 项目的 [config.xml](/APICloud/技术专题/app-config-manual) 文件**
 
 - 名称：umengAnalytics
 - 参数：
@@ -49,7 +51,7 @@ umengAnalytics 模块封装了[友盟](http://www.umeng.com/analytics)APP统计S
     **android_app_key：**Android应用的 appkey
 
     **android_app_channel：**（可选项）Android应用的渠道名称。名称可自定义，去掉这一项的话将使用平台默认渠道名称
-- 备注：同一个 App 需要同时支持 iOS 和 Android 平台，必须在友盟平台分别创建 iOS 和 Android 的两个标准模式的统计分析应用，并同时配置在 config.xml 文件中；若要移除本模块，需要先删除 config.xml 中的配置项，提交代码到云端后方可在控制台的模块栏目移除。
+- 备注：同一个 App 需要同时支持 iOS 和 Android 平台，必须在友盟平台分别创建 iOS 和 Android 的两个标准模式的统计分析应用，并同时配置在 [config.xml](/APICloud/技术专题/app-config-manual) 文件中；若要移除本模块，需要先删除 [config.xml](/APICloud/技术专题/app-config-manual) 中的配置项，提交代码到云端后方可在控制台的模块栏目移除。
 - 配置示例:
 ```
 <feature name="umengAnalytics">
@@ -62,7 +64,7 @@ umengAnalytics 模块封装了[友盟](http://www.umeng.com/analytics)APP统计S
 
 **4. 添加模块**
 
-如果此时已正确配置了 config.xml 文件，那提交代码到 APICloud 云端后，umengAnalytics 模块将会自动添加到你的项目中。云编译或者通过 APICloud Studio 自定义loader 模块即可生效。
+如果此时已正确配置了 [config.xml](/APICloud/技术专题/app-config-manual) 文件，那提交代码到 APICloud 云端后，umengAnalytics 模块将会自动添加到你的项目中。云编译或者通过 APICloud Studio 自定义loader 模块即可生效。
 
 **5. 集成测试**
 
@@ -111,7 +113,7 @@ debugMode:
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -122,7 +124,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -178,7 +180,7 @@ pageName:
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -189,7 +191,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -242,7 +244,7 @@ pageName:
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -253,7 +255,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -339,7 +341,7 @@ counter:
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -350,7 +352,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -366,7 +368,7 @@ err：
 
 ```js
     var umengAnalytics = null;
-    apiready = function () {
+    apiready = function() {
         umengAnalytics = api.require('umengAnalytics');
     }
     // 计数事件1：统计发生次数（只有 eventId 一个参数时）
@@ -451,7 +453,7 @@ provider:
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -462,7 +464,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -505,11 +507,11 @@ iOS系统，Android系统
 
 profileSignOff(callback(ret, err))
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -555,7 +557,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js

@@ -2,6 +2,9 @@
 Title: UIListView
 Description: UIListView
 */
+
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <div class="outline">
 [open](#m1)
 
@@ -53,7 +56,7 @@ open({params}, callback(ret, err))
 
 rect：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）模块的位置及尺寸
 - 备注：Android 必须传此参数。
 - 内部字段：
@@ -79,7 +82,7 @@ data：
     title: '',              //（可选项）字符串类型；标题，若不传或为空则 subTitle 上下位置居中显示
     subTitle: '',           //（可选项）字符串类型；子标题，若不传或为空则 title 上下位置居中显示
     remark: '',             //（可选项）字符串类型；右边备注文字
-    icon: '',               //（可选项）字符串类型；右侧备注的图标路径（本地路径，支持fs://，widget://）
+    icon: '',               //（可选项）字符串类型；右侧备注的图标路径（本地路径，支持fs://、widget://）
     rightBtns: []           //（可选项）数组类型；列表项向左滑动露出的按钮组，配置某一项的特定按钮组，若不传则显示通用按钮，内部字段同下方 rightBtns 参数
 }]
 ```
@@ -92,39 +95,45 @@ rightBtns：
 
 ```js
 [{
-    bgColor: '#388e8e', //（可选项）字符串类型；按钮背景色，支持rgb、rgba、#；默认：'#388e8e'
-    activeBgColor: '',  //（可选项）字符串类型；按钮按下时的背景色，支持rgb、rgba、#
+    bgColor: '#388e8e', //（可选项）字符串类型；按钮背景色，支持 rgb、rgba、#；默认：'#388e8e'
+    activeBgColor: '',  //（可选项）字符串类型；按钮按下时的背景色，支持 rgb、rgba、#
     width: 70,          //（可选项）数字类型；按钮的宽度；默认：w / 4       
     title: '',          //（可选项）字符串类型；按钮标题，水平、垂直居中
     titleSize: 12,      //（可选项）数字类型；按钮标题文字大小；默认：12
-    titleColor: '#fff', //（可选项）字符串类型；按钮标题文字颜色，支持rgb、rgba、#；默认：'#ffffff'
-    icon: '',           //（可选项）字符串类型；按钮标题前的图标路径（本地路径，支持fs://，widget://），水平、垂直居中，图标为正方形
+    titleColor: '#fff', //（可选项）字符串类型；按钮标题文字颜色，支持 rgb、rgba、#；默认：'#ffffff'
+    icon: '',           //（可选项）字符串类型；按钮标题前的图标路径（本地路径，支持fs://、widget://），水平、垂直居中，图标为正方形
     iconWidth: 20       //（可选项）数字类型；按钮标题前的图标宽度，图标为正方形；默认：20
 }]
 ```
 
+bounces:
+
+- 类型：布尔
+- 描述：（可选项）是否开启弹动，android 平台不支持本参数
+- 默认：false
+
 styles:
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）模块各部分的样式
 - 内部字段：
 
 ```js
 {
-    borderColor: '#696969',             //（可选项）字符串类型；列表分割线的颜色，支持rgb、rgba、#；默认：'#696969'
+    borderColor: '#696969',             //（可选项）字符串类型；列表分割线的颜色，支持 rgb、rgba、#；默认：'#696969'
     item: {                             //（可选项）JSON对象；列表项的样式
-        bgColor: '#AFEEEE',             //（可选项）字符串类型；列表项的背景色，支持rgb、rgba、#；默认：'#AFEEEE'
-        activeBgColor: '#F5F5F5',       //（可选项）字符串类型；列表项按下时的背景色，支持rgb、rgba、#；默认：'#F5F5F5'
+        bgColor: '#AFEEEE',             //（可选项）字符串类型；列表项的背景色，支持 rgb、rgba、#；默认：'#AFEEEE'
+        activeBgColor: '#F5F5F5',       //（可选项）字符串类型；列表项按下时的背景色，支持 rgb、rgba、#；默认：'#F5F5F5'
         height: 55,                     //（可选项）数字类型；列表项的高度；默认：55
         imgWidth: 40,                   //（可选项）数字类型；列表项配图的宽度；默认：列表项的高度减去10px
         imgHeight: 40,                  //（可选项）数字类型；列表项配图的高度；默认：列表项的高度减去10px
         imgCorner: 4,                   //（可选项）数字类型；列表项配图的圆角大小；默认：0
-        placeholderImg: '',             //（可选项）字符串类型；列表项配图的占位图路径（本地路径，fs://，widget://），默认：APICloud 图标
+        placeholderImg: '',             //（可选项）字符串类型；列表项配图的占位图路径（本地路径，fs://、widget://），默认：APICloud 图标
         titleSize: 12,                  //（可选项）数字类型；列表项标题文字大小；默认：12
-        titleColor: '#000',             //（可选项）字符串类型；列表项标题文字颜色，支持rgb，rgba，#；默认：'#000000'
+        titleColor: '#000',             //（可选项）字符串类型；列表项标题文字颜色，支持 rgb，rgba，#；默认：'#000000'
         subTitleSize: 12,               //（可选项）数字类型；列表项子标题文字大小；默认：12
-        subTitleColor: '#000',          //（可选项）字符串类型：列表项子标题文字颜色，支持rgb、rgba、#；默认：'#000000' 
-        remarkColor: '#000',            //（可选项）字符串类型；备注的文字颜色，支持rgb、rgba、#；默认：'#000000'
+        subTitleColor: '#000',          //（可选项）字符串类型：列表项子标题文字颜色，支持 rgb、rgba、#；默认：'#000000' 
+        remarkColor: '#000',            //（可选项）字符串类型；备注的文字颜色，支持 rgb、rgba、#；默认：'#000000'
         remarkSize: 16,                 //（可选项）数字类型；备注的文字大小；默认：16
         remarkIconWidth: 30              //（可选项）数字类型；当备注是图片时，图片的宽度，图片为正方形；默认：30
     }
@@ -137,11 +146,11 @@ fixedOn：
 - 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
 - 默认：模块依附于当前 window
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -276,7 +285,7 @@ UIListView.open({
         }
     },
     fixedOn: api.frameName
-}, function( ret, err ){
+}, function(ret, err){
     if( ret ){
          alert( JSON.stringify( ret ) );
     }else{
@@ -372,11 +381,11 @@ h：
 - 描述：（可选项）模块的高度
 - 默认值：原 h 值
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -392,7 +401,7 @@ var UIListView = api.require('UIListView');
 UIListView.setAttr({
     y: 40,
     h: 200
-}, function( ret, err ){
+}, function(ret, err){
     if( ret ){
          alert( JSON.stringify( ret ) );
     }else{
@@ -412,7 +421,7 @@ iOS系统，Android系统
 
 根据开发者自定义的唯一标识（open 接口的 data 参数中自定义的唯一标识）查找列表项对应的数据
 
-getIndex({params}, callback(ret,err))
+getIndex({params}, callback(ret, err))
 
 ##params
 
@@ -426,11 +435,11 @@ value：
 - 类型：字符串
 - 描述：调用 open 接口时，data 参数传入的开发者自定义的唯一标识的 value
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -445,9 +454,9 @@ ret：
 ```js
 var UIListView = api.require('UIListView');
 UIListView.getIndex({
-    key: "uid",
-    value: "1001"
-}, function( ret, err ){
+    key: 'uid',
+    value: '1001'
+}, function(ret, err){
     if( ret ){
          alert( JSON.stringify( ret ) );
     }else{
@@ -467,7 +476,7 @@ iOS系统，Android系统
 
 根据列表项的索引获取对应的数据
 
-getDataByIndex({params}, callback(ret,err))
+getDataByIndex({params}, callback(ret, err))
 
 ##params
 
@@ -477,11 +486,11 @@ index：
 - 描述：（可选项）列表项的索引
 - 默认值：0
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -496,7 +505,7 @@ ret：
 var UIListView = api.require('UIListView');
 UIListView.getDataByIndex({
 	index: 0
-},function( ret, err ){
+}, function(ret, err){
 	if( ret ){
          alert( JSON.stringify( ret ) );
     }else{
@@ -516,7 +525,7 @@ iOS系统，Android系统
 
 设置侧滑显示出来的按钮
 
-setSwipeBtns({params}, callback(ret,err))
+setSwipeBtns({params}, callback(ret, err))
 
 ##params
 
@@ -534,22 +543,22 @@ btns：
 
 ```js
 [{
-    bgColor: '#388e8e', //（可选项）字符串类型；按钮背景色，支持rgb、rgba、#；默认：'#388e8e'
-    activeBgColor: '',  //（可选项）字符串类型；按钮按下时的背景色，支持rgb、rgba、#
+    bgColor: '#388e8e', //（可选项）字符串类型；按钮背景色，支持 rgb、rgba、#；默认：'#388e8e'
+    activeBgColor: '',  //（可选项）字符串类型；按钮按下时的背景色，支持 rgb、rgba、#
     width: 70,          //（可选项）数字类型；按钮的宽度；默认：w / 4       
     title: '',          //（可选项）字符串类型；按钮标题，水平、垂直居中
     titleSize: 12,      //（可选项）数字类型；按钮标题文字大小；默认：12
-    titleColor: '#fff', //（可选项）字符串类型；按钮标题文字颜色，支持rgb、rgba、#；默认：'#ffffff'
-    icon: '',           //（可选项）字符串类型；按钮标题前的图标路径（本地路径，支持fs://，widget://），水平、垂直居中，图标为正方形
+    titleColor: '#fff', //（可选项）字符串类型；按钮标题文字颜色，支持 rgb、rgba、#；默认：'#ffffff'
+    icon: '',           //（可选项）字符串类型；按钮标题前的图标路径（本地路径，支持fs://、widget://），水平、垂直居中，图标为正方形
     iconWidth: 20       //（可选项）数字类型；按钮标题前的图标宽度，图标为正方形；默认：20
 }]
 ```
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -574,7 +583,7 @@ UIListView.setSwipeBtns({
         icon: '',
         iconWidth: 20
     }]
-}, function( ret, err ){
+}, function(ret, err){
     if( ret ){
          alert( JSON.stringify( ret ) );
     }else{
@@ -594,7 +603,7 @@ iOS系统，Android系统
 
 刷新列表数据
 
-reloadData({params}, callback(ret,err))
+reloadData({params}, callback(ret, err))
 
 ##params
 
@@ -610,16 +619,16 @@ data：
     title: '',              //（可选项）字符串类型；标题，若不传或为空则 subTitle 上下位置居中显示
     subTitle: '',           //（可选项）字符串类型；子标题，若不传或为空则 title 上下位置居中显示
     remark: '',             //（可选项）字符串类型；右边备注文字
-    icon: '',               //（可选项）字符串类型；右侧备注的图标路径（本地路径，支持fs://，widget://）
+    icon: '',               //（可选项）字符串类型；右侧备注的图标路径（本地路径，支持fs://、widget://）
     rightBtns: []           //（可选项）数组类型；列表项向左滑动露出的按钮组，配置某一项的特定按钮组，若不传则显示通用按钮，内部字段同 rightBtns 参数
 }]
 ```
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -638,7 +647,7 @@ UIListView.reloadData({
         title: '新标题',
         subTitle: '新子标题',
         remark: '新备注',
-        icon: ""
+        icon: ''
     }]
 },function(ret){
     if( ret ){
@@ -670,11 +679,11 @@ index：
 - 描述：（可选项）数据列表的索引
 - 默认值：0
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -689,7 +698,7 @@ ret：
 var UIListView = api.require('UIListView');
 UIListView.deleteItem({
     index: 2
-},function( ret, err ){
+}, function(ret, err){
     if( ret ){
          alert( JSON.stringify( ret ) );
     }else{
@@ -721,7 +730,7 @@ index：
 
 data：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：列表的数据源
 - 内部字段：
 
@@ -731,16 +740,16 @@ data：
     title: '',              //（可选项）字符串类型；标题，若不传或为空则 subTitle 上下位置居中显示
     subTitle: '',           //（可选项）字符串类型；子标题，若不传或为空则 title 上下位置居中显示
     remark: '',             //（可选项）字符串类型；右边备注文字
-    icon: '',               //（可选项）字符串类型；右侧备注的图标路径（本地路径，支持fs://，widget://）
+    icon: '',               //（可选项）字符串类型；右侧备注的图标路径（本地路径，支持fs://、widget://）
     rightBtns: []           //（可选项）数组类型；列表项向左滑动露出的按钮组，配置某一项的特定按钮组，若不传则显示通用按钮，内部字段同 rightBtns 参数
 }
 ```
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -761,7 +770,7 @@ UIListView.updateItem({
         subTitle: '刷新子标题',
         remark: '刷新备注'
     }
-}, function( ret, err ){
+}, function(ret, err){
     if( ret ){
          alert( JSON.stringify( ret ) );
     }else{
@@ -793,7 +802,7 @@ index：
 
 data：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：列表的数据源
 - 内部字段：
 
@@ -803,16 +812,16 @@ data：
     title: '',              //（可选项）字符串类型；标题，若不传或为空则 subTitle 上下位置居中显示
     subTitle: '',           //（可选项）字符串类型；子标题，若不传或为空则 title 上下位置居中显示
     remark: '',             //（可选项）字符串类型；右边备注文字
-    icon: '',               //（可选项）字符串类型；右侧备注的图标路径（本地路径，支持fs://，widget://）
+    icon: '',               //（可选项）字符串类型；右侧备注的图标路径（本地路径，支持fs://、widget://）
     rightBtns: []           //（可选项）数组类型；列表项向左滑动露出的按钮组，配置某一项的特定按钮组，内部字段同 open 接口的 rightBtns 参数
 }
 ```
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -833,7 +842,7 @@ UIListView.insertItem({
         subTitle: 'APICloud粉丝互动会',
         remark: '完成'
     }
-},function( ret, err ){
+}, function(ret, err){
     if( ret ){
          alert( JSON.stringify( ret ) );
     }else{
@@ -869,16 +878,16 @@ data：
     title: '',              //（可选项）字符串类型；标题，若不传或为空则 subTitle 上下位置居中显示
     subTitle: '',           //（可选项）字符串类型；子标题，若不传或为空则 title 上下位置居中显示
     remark: '',             //（可选项）字符串类型；右边备注文字
-    icon: '',               //（可选项）字符串类型；右侧备注的图标路径（本地路径，支持fs://，widget://）
+    icon: '',               //（可选项）字符串类型；右侧备注的图标路径（本地路径，支持fs://、widget://）
     rightBtns: []           //（可选项）数组类型；列表项向左滑动露出的按钮组，配置某一项的特定按钮组，内部字段同 open 接口的 rightBtns 参数
 }]
 ```
  
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -898,7 +907,7 @@ UIListView.appendData({
         subTitle: '新增子标题',
         remark: '新增备注'
     }]
-},function( ret, err ){
+}, function(ret, err){
     if( ret ){
          alert( JSON.stringify( ret ) );
     }else{
@@ -918,14 +927,14 @@ iOS系统，Android系统
  
 获取当前列表的总数据量
  
-getCount(callback(ret))
+getCount(callback(ret, err))
  
  
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -961,18 +970,18 @@ setRefreshHeader({params}, callback(ret, err))
 loadingImg：
  
 - 类型：字符串
-- 描述：下拉刷新时显示的小箭头图标的本地路径，要求本地路径（fs://，widget://）
+- 描述：下拉刷新时显示的小箭头图标的本地路径，要求本地路径（fs://、widget://）
  
 bgColor：
  
 - 类型：字符串
-- 描述：（可选项）下拉刷新区域的背景色，支持rgb、rgba、#
+- 描述：（可选项）下拉刷新区域的背景色，支持 rgb、rgba、#
 - 默认值：'#f5f5f5'
  
 textColor：
  
 - 类型：字符串
-- 描述：（可选项）提示文字颜色，支持rgb、rgba、#
+- 描述：（可选项）提示文字颜色，支持 rgb、rgba、#
 - 默认值：'#8e8e8e'
  
 textDown：
@@ -1010,7 +1019,7 @@ UIListView.setRefreshHeader({
     textDown: '下拉可以刷新...',
     textUp: '松开开始刷新...',
     showTime: true
-},function( ret, err ){
+}, function(ret, err){
     if( ret ){
          alert( JSON.stringify( ret ) );
     }else{
@@ -1037,18 +1046,18 @@ setRefreshFooter({params}, callback(ret, err))
 loadingImg：
  
 - 类型：字符串
-- 描述：上拉加载时显示的小箭头图标的本地路径，要求本地路径（fs://，widget://）
+- 描述：上拉加载时显示的小箭头图标的本地路径，要求本地路径（fs://、widget://）
  
 bgColor：
  
 - 类型：字符串
-- 描述：（可选项）上拉加载区域的背景色，支持rgb、rgba、#
+- 描述：（可选项）上拉加载区域的背景色，支持 rgb、rgba、#
 - 默认值：'#f5f5f5'
  
 textColor：
  
 - 类型：字符串
-- 描述：（可选项）提示文字颜色，支持rgb、rgba、#
+- 描述：（可选项）提示文字颜色，支持 rgb、rgba、#
 - 默认值：'#8e8e8e'
  
 textUp：
@@ -1084,7 +1093,7 @@ UIListView.setRefreshFooter({
     textUp: '上拉加载更多...',
     textDown: '松开开始加载...',
     showTime: true
-},function( ret, err ){
+}, function(ret, err){
     if( ret ){
          alert( JSON.stringify( ret ) );
     }else{
@@ -1099,4 +1108,3 @@ UIListView.setRefreshFooter({
 iOS系统，Android系统
  
 可提供的1.0.0及更高版本
-

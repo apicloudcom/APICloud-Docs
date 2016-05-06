@@ -3,6 +3,8 @@ Title: adsDomob
 Description: Domob APICloud 接口文档
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：多盟广告</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 	<li><a href="#const-content">Constant</a></li>
@@ -61,7 +63,7 @@ y：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -74,44 +76,44 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
 ```js
 {
     code: 0,    //错误码
-    msg: ""    //错误描述
+    msg: ''    //错误描述
 }
 ```
 
 ##示例代码
 
 ```js
-var domob = api.require('adsDomob');
+var adsDomob = api.require('adsDomob');
 
-domob.presentBanner({
-    publiserId:"56OJyM1ouMGoULfJaL",
-    placementId:"16TLwebvAchkANUH_krQ7vOz",
-    x:"0",
-    y:"20"
-    }, function(ret, err) {
+adsDomob.presentBanner({
+    publiserId: '56OJyM1ouMGoULfJaL',
+    placementId: '16TLwebvAchkANUH_krQ7vOz',
+    x: '0',
+    y: '20'
+}, function(ret, err) {
     if (ret.type == 0) {
         switch (ret.status) {
             case -1:
-                api.alert({msg:"Banner 广告加载失败:" + err});
+                api.alert({msg:'Banner 广告加载失败:' + err});
                 break;
             case 0:
-                api.alert({msg:"Banner 广告加载完成"});
+                api.alert({msg:'Banner 广告加载完成'});
                 break;
             case 1:
-                api.alert({msg:"Banner 广告准备展现"});
+                api.alert({msg:'Banner 广告准备展现'});
                 break;
             case 2:
-                api.alert({msg:"Banner 广告被关闭"});
+                api.alert({msg:'Banner 广告被关闭'});
                 break;
             case 3:
-                api.alert({msg:"Banner 广告被切到后台"});
+                api.alert({msg:'Banner 广告被切到后台'});
                 break;
         }
     }
@@ -194,7 +196,7 @@ Flexible | All iOS Devices
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -207,46 +209,45 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
 ```js
 {
     code:0    //错误码
-    msg:""    //错误描述
+    msg:''    //错误描述
 }
 ```
 
 ##示例代码
 
 ```js
-var domob = api.require('adsDomob');
-
-domob.presentBanner({
-    publiserId:"56OJyM1ouMGoULfJaL",
-    placementId:"16TLwebvAchkANUH_krQ7vOz",
-    x:"0",
-    y:"20",
-    width:"375",
-    height:"325", autorefresh:"1"
+var adsDomob = api.require('adsDomob');
+adsDomob.presentBanner({
+    publiserId:'56OJyM1ouMGoULfJaL',
+    placementId:'16TLwebvAchkANUH_krQ7vOz',
+    x:'0',
+    y:'20',
+    width:'375',
+    height:'325', autorefresh:'1'
 }, function(ret, err) {
     if (ret.type == 0) {
         switch (ret.status) {
             case -1:
-                api.alert({msg:"Banner 广告加载失败:" + err});
+                api.alert({msg:'Banner 广告加载失败:' + err});
                 break;
             case 0:
-                api.alert({msg:"Banner 广告加载完成"});
+                api.alert({msg:'Banner 广告加载完成'});
                 break;
             case 1:
-                api.alert({msg:"Banner 广告准备展现"});
+                api.alert({msg:'Banner 广告准备展现'});
                 break;
             case 2:
-                api.alert({msg:"Banner 广告被关闭"});
+                api.alert({msg:'Banner 广告被关闭'});
                 break;
             case 3:
-                api.alert({msg:"Banner 广告被切到后台"});
+                api.alert({msg:'Banner 广告被切到后台'});
                 break;
         }
     }
@@ -285,7 +286,7 @@ placementId：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -298,42 +299,42 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
 ```js
 {
     code:0    //错误码
-    msg:""    //错误描述
+    msg:''    //错误描述
 }
 ```
 
 ##示例代码
 
 ```js
-var domob = api.require('adsDomob');
+var adsDomob = api.require('adsDomob');
 
-domob.initInterstitial({
-    publiserId:"56OJyM1ouMGoULfJaL",
-    placementId:"16TLwebvAchkAY6iOWkE6kpk"
+adsDomob.initInterstitial({
+    publiserId:'56OJyM1ouMGoULfJaL',
+    placementId:'16TLwebvAchkAY6iOWkE6kpk'
 }, function(ret, err) {
     if (ret.type == 1) {
         switch (ret.status) {
             case -1:
-                api.alert({msg:"插屏广告加载失败:" + err});
+                api.alert({msg:'插屏广告加载失败:' + err});
                 break;
             case 0:
-                api.alert({msg:"插屏广告加载完成"});
+                api.alert({msg:'插屏广告加载完成'});
                 break;
             case 1:
-                api.alert({msg:"插屏广告准备展现"});
+                api.alert({msg:'插屏广告准备展现'});
                 break;
             case 2:
-                api.alert({msg:"插屏广告被关闭"});
+                api.alert({msg:'插屏广告被关闭'});
                 break;
             case 3:
-                api.alert({msg:"插屏广告被切到后台"});
+                api.alert({msg:'插屏广告被切到后台'});
                 break;
         }
     }
@@ -363,7 +364,7 @@ presentInterstitial({params}, callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -376,40 +377,40 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
 ```js
 {
     code:0    //错误码
-    msg:""    //错误描述
+    msg:''    //错误描述
 }
 ```
 
 ##示例代码
 
 ```js
-var domob = api.require('adsDomob');
+var adsDomob = api.require('adsDomob');
 
-domob.presentInterstitial({},
+adsDomob.presentInterstitial({},
     function(ret, err) {
         if (ret.type == 1) {
             switch (ret.status) {
                 case -1:
-                    api.alert({msg:"插屏广告加载失败:" + err});
+                    api.alert({msg:'插屏广告加载失败:' + err});
                     break;
                 case 0:
-                    api.alert({msg:"插屏广告加载完成"});
+                    api.alert({msg:'插屏广告加载完成'});
                     break;
                 case 1:
-                    api.alert({msg:"插屏广告准备展现"});
+                    api.alert({msg:'插屏广告准备展现'});
                     break;
                 case 2:
-                    api.alert({msg:"插屏广告被关闭"});
+                    api.alert({msg:'插屏广告被关闭'});
                     break;
                 case 3:
-                    api.alert({msg:"插屏广告被切到后台"});
+                    api.alert({msg:'插屏广告被切到后台'});
                     break;
             }
         }
@@ -458,7 +459,7 @@ splashBackgroundImageUrl：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -471,43 +472,42 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
 ```js
 {
     code:0    //错误码
-    msg:""    //错误描述
+    msg:''    //错误描述
 }
 ```
 
 ##示例代码
 
 ```js
-var domob = api.require('adsDomob');
-
-domob.presentSplash({
-    publiserId:"56OJyM1ouMGoULfJaL",
-    placementId:"16TLwebvAchkAY6iOVhpfHPs",
-    splashImageUrl:"http://static.hothdwallpaper.net/51aac68f51f8599006.jpg"
+var adsDomob = api.require('adsDomob');
+adsDomob.presentSplash({
+    publiserId:'56OJyM1ouMGoULfJaL',
+    placementId:'16TLwebvAchkAY6iOVhpfHPs',
+    splashImageUrl:'http://static.hothdwallpaper.net/51aac68f51f8599006.jpg'
 }, function(ret, err) {
     if (ret.type == 2) {
         switch (ret.status) {
             case -1:
-                api.alert({msg:"开屏广告加载失败:" + err});
+                api.alert({msg:'开屏广告加载失败:' + err});
                 break;
             case 0:
-                api.alert({msg:"开屏广告加载完成"});
+                api.alert({msg:'开屏广告加载完成'});
                 break;
             case 1:
-                api.alert({msg:"开屏广告准备展现"});
+                api.alert({msg:'开屏广告准备展现'});
                 break;
             case 2:
-                api.alert({msg:"开屏广告被关闭"});
+                api.alert({msg:'开屏广告被关闭'});
                 break;
             case 3:
-                api.alert({msg:"开屏广告被切到后台"});
+                api.alert({msg:'开屏广告被切到后台'});
                 break;
         }
     }
@@ -545,7 +545,7 @@ placementId：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -558,42 +558,41 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
 ```js
 {
     code:0    //错误码
-    msg:""    //错误描述
+    msg:''    //错误描述
 }
 ```
 
 ##示例代码
 
 ```js
-var domob = api.require('adsDomob');
-
-domob.initDBox({
-        publiserId:"56OJw+rouN8xdhPaW9",
-        placementId:"16TLuFnvAp2p4NU06al1hNgi"
+var adsDomob = api.require('adsDomob');
+adsDomob.initDBox({
+        publiserId:'56OJw+rouN8xdhPaW9',
+        placementId:'16TLuFnvAp2p4NU06al1hNgi'
     },function(ret, err) {
         if (ret.type == 3) {
             switch (ret.status) {
                 case -1:
-                    api.alert({msg:"多宝屋广告加载失败:" + err});
+                    api.alert({msg:'多宝屋广告加载失败:' + err});
                     break;
                 case 0:
-                    api.alert({msg:"多宝屋广告加载完成"});
+                    api.alert({msg:'多宝屋广告加载完成'});
                     break;
                 case 1:
-                    api.alert({msg:"多宝屋广告准备展现"});
+                    api.alert({msg:'多宝屋广告准备展现'});
                     break;
                 case 2:
-                    api.alert({msg:"多宝屋广告被关闭"});
+                    api.alert({msg:'多宝屋广告被关闭'});
                     break;
                 case 3:
-                    api.alert({msg:"多宝屋广告被切到后台"});
+                    api.alert({msg:'多宝屋广告被切到后台'});
                     break;
             }
         }
@@ -631,7 +630,7 @@ placementId：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -644,46 +643,45 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
 ```js
 {
     code:0    //错误码
-    msg:""    //错误描述
+    msg:''    //错误描述
 }
 ```
 
 ##示例代码
 
 ```js
-var domob = api.require('adsDomob');
-
-domob.presentDBoxEntry({
-        publiserId:"56OJw+rouN8xdhPaW9",
-        placementId:"16TLuFnvAp2p4NU06al1hNgi"
-    },function(ret, err) {
-        if (ret.type == 3) {
-            switch (ret.status) {
-                case -1:
-                    api.alert({msg:"多宝屋广告加载失败:" + err});
-                    break;
-                case 0:
-                    api.alert({msg:"多宝屋广告加载完成"});
-                    break;
-                case 1:
-                    api.alert({msg:"多宝屋广告准备展现"});
-                    break;
-                case 2:
-                    api.alert({msg:"多宝屋广告被关闭"});
-                    break;
-                case 3:
-                    api.alert({msg:"多宝屋广告被切到后台"});
-                    break;
-            }
+var adsDomob = api.require('adsDomob');
+adsDomob.presentDBoxEntry({
+    publiserId:'56OJw+rouN8xdhPaW9',
+    placementId:'16TLuFnvAp2p4NU06al1hNgi'
+},function(ret, err) {
+    if (ret.type == 3) {
+        switch (ret.status) {
+            case -1:
+                api.alert({msg:'多宝屋广告加载失败:' + err});
+                break;
+            case 0:
+                api.alert({msg:'多宝屋广告加载完成'});
+                break;
+            case 1:
+                api.alert({msg:'多宝屋广告准备展现'});
+                break;
+            case 2:
+                api.alert({msg:'多宝屋广告被关闭'});
+                break;
+            case 3:
+                api.alert({msg:'多宝屋广告被切到后台'});
+                break;
         }
-    });
+    }
+});
 ```
 
 ##补充说明
@@ -709,7 +707,7 @@ sendDBoxEntryImpression({params}, callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -721,7 +719,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -763,7 +761,7 @@ sendDBoxEntryClick({params}, callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -775,7 +773,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -788,11 +786,10 @@ err：
 ##示例代码
 
 ```js
-var demo = api.require('adsDomob');
+var adsDomob = api.require('adsDomob');
+adsDomob.sendDBoxEntryClick(function(ret, err) {
 
-demo.sendDBoxEntryClick(
-    function(ret, err) {
-    });
+});
 ```
 
 ##补充说明

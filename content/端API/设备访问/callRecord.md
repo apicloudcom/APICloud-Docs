@@ -3,6 +3,8 @@ Title: callRecord
 Description: callRecord
 */
 
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <div class="outline">
 
 [openCallRecord](#a1)
@@ -18,13 +20,13 @@ callRecord 模块封装了系统通话记录的相关接口；**本模块暂仅�
 
 获取通话记录
 
-openCallRecord(callback(ret))
+openCallRecord(callback(ret, err))
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 

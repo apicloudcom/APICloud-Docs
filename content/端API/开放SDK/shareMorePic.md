@@ -3,6 +3,8 @@ Title: shareMorePic
 Description: shareMorePic
 */
 
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -13,14 +15,14 @@ Description: shareMorePic
 
 #**概述**
 
-shareMorePic为原生自定义微信分享，可分享多图加文字到微信朋友圈。本模块暂仅支持Android。
+shareMorePic为原生自定义微信分享，可分享多图加文字到微信朋友圈。
 
 
 #**shareMPT**<div id="a1"></div>
 
 发表内容
 
-shareMPT({params}, callback(ret))
+shareMPT({params}, callback(ret, err))
 
 ##params
 
@@ -34,11 +36,11 @@ sharetext：
 - 类型：字符串
 - 描述：需要分享的文字内容 ， 不能特别长
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js

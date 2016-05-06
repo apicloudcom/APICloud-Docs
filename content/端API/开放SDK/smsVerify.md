@@ -2,6 +2,9 @@
 Title: smsVerify
 Description: Mob免费短信验证模块，同时支持短信验证与语音验证。
 */
+
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <div class="outline">
 [register](#a1)
 
@@ -16,10 +19,10 @@ Description: Mob免费短信验证模块，同时支持短信验证与语音验�
 
 smsVerify 模块封装了 [Mob](http://sms.mob.com/#/sms)2.0 版本的短信验证与语音验证功能。所有短信费用由Mob为您承担，支持212个国家、1000多个运营商。详细使用方法 [请看此帖](http://community.apicloud.com/bbs/forum.php?mod=viewthread&tid=22318)
 
-**使用此模块之前必须先配置 config.xml 文件，配置方法如下：**
+**使用此模块之前必须先配置 [config.xml](/APICloud/技术专题/app-config-manual) 文件，配置方法如下：**
 - 名称：smsVerify
 - 参数：android_app_key、android_app_secret、ios_app_key、ios_app_secret
-- 备注：同一个 App 需要同时支持 iOS 和 Android 平台，必须在Mob短信验证码平台分别创建 iOS 和 Android 的两个应用，并同时配置在 config.xml 文件中；若要移除本模块，需要先删除 config.xml 中的配置项，提交代码到云端后方可在控制台的模块栏目移除。
+- 备注：同一个 App 需要同时支持 iOS 和 Android 平台，必须在Mob短信验证码平台分别创建 iOS 和 Android 的两个应用，并同时配置在 [config.xml](/APICloud/技术专题/app-config-manual) 文件中；若要移除本模块，需要先删除 [config.xml](/APICloud/技术专题/app-config-manual) 中的配置项，提交代码到云端后方可在控制台的模块栏目移除。
 - 配置示例:
 ```
   <feature name="smsVerify">
@@ -53,7 +56,7 @@ register(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -64,7 +67,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -123,7 +126,7 @@ country：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -135,7 +138,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -199,7 +202,7 @@ country：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -210,7 +213,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -275,7 +278,7 @@ country：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -286,7 +289,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js

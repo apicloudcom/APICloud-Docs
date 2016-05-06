@@ -5,21 +5,27 @@ Description: 云修复
 
 #概述
 
-云修复可以实现快速版本迭代，快速修复bug。绕过苹果store及andriod市场的版本审核。不用发布新的apk或者ipa版本既可对你的app进行更新，即增量更新。您改动了哪个或者哪几个html/css/js文件，那么只更新这几个文件即可。更新完毕后用户在下次启动app时，立即看到效果。
+云修复可以实现快速版本迭代，快速修复bug。绕过苹果应用商店及安卓应用市场的版本审核。不用发布新的apk或者ipa版本既可对你的app进行更新，即增量更新。您改动了哪个或者哪几个html/css/js文件，那么只更新这几个文件即可。
+
+
+##参考视频  
+
+入门概念篇第七节（如何使用APICloud云端应用服务）：http://docs.apicloud.com/APICloud/videos-and-codes
+
+
 
 #注意事项
 
-1. config.xml配置smartUpdate为true：
+1， config.xml配置smartUpdate为true：
 
     ```js
-
-         
+        
   		  <preference name="smartUpdate" value="true" /> 
  
     ```
-2. app必须是编译的正式版。
+2， app必须是编译的正式版。
  
-3. 必须重启App，才能看到效果。
+
 
 #操作步骤
 
@@ -29,7 +35,7 @@ Description: 云修复
  
    ![原项目文件结构](/img/smartUpdate/smartUpdate1.png)
 
-  例如您需要更新 html 文件夹下的 main.html 文件。 那么你可以新建一个widget文件夹，
+  例如您需要更新 html 文件夹下的 main.html 文件。 那么您可以新建一个widget文件夹，
   把新的main.html 文件放入widget 下的 html 目录。更新包结构如图：
 
   ![更新包结构](/img/smartUpdate/smartUpdate2.png)
@@ -64,7 +70,10 @@ Description: 云修复
    最后，点击“更新”按钮。
 
 
-3， 在手机上打开app, 即可收到更新。 重启生效。
+3， 使用提示修复时，在手机上打开app, 即可收到更新提示。 点击确定更新后，App自动重启，即可看到更新效果。
+
+4， 对于静默修复，也可利用[smartupdatefinish](http://docs.apicloud.com/端API/api#c20)事件，和[rebootApp()](http://docs.apicloud.com/端API/api#92)方法，实现热更新效果，无需用户手动重启App。
+
 	
 
    

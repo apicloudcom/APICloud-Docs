@@ -3,6 +3,8 @@ Title: runBackground
 Description: runBackground
 */
 
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -17,7 +19,7 @@ Description: runBackground
 
 #**概述**
 
-一键退到后台运行，安卓手机可以在后台运行做的app。
+一键退到后台运行，安卓手机可以在后台运行 app。
 
 
 #**hideActivity**<div id="a1"></div>

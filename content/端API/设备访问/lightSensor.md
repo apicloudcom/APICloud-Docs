@@ -3,6 +3,8 @@ Title: lightSensor
 Description: lightSensor
 */
 
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -14,6 +16,7 @@ Description: lightSensor
 
 
 </div>
+
 #**概述**
 
 lightSensor封装了android的光传感器，使用此模块可轻松实现对光照亮度获取的功能
@@ -39,7 +42,7 @@ type：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 

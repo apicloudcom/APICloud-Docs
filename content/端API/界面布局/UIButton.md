@@ -2,6 +2,9 @@
 Title: UIButton
 Description: UIButton
 */
+
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -41,7 +44,7 @@ open({params}, callback(ret, err))
 
 rect：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）模块的位置及尺寸
 - 内部字段：
 
@@ -62,16 +65,16 @@ corner：
 
 bg:
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）按钮视图背景设置
 - 默认值：见内部字段
 - 内部字段：
 
 ```js
 {
-        normal: '',    //（可选项）字符串类型；按钮常态下的背景，支持rgb、rgba、#、img；默认：'#000'
-        highlight: '', //（可选项）字符串类型；按钮高亮下的背景，支持rgb、rgba、#、img；默认：normal 
-        active: ''     //（可选项）字符串类型；按钮选中后的背景，支持rgb、rgba、#、img；默认：normal 
+        normal: '',    //（可选项）字符串类型；按钮常态下的背景，支持 rgb、rgba、#、img；默认：'#000'
+        highlight: '', //（可选项）字符串类型；按钮高亮下的背景，支持 rgb、rgba、#、img；默认：normal 
+        active: ''     //（可选项）字符串类型；按钮选中后的背景，支持 rgb、rgba、#、img；默认：normal 
 }
 ```
 
@@ -88,9 +91,9 @@ title:
       normal: '',       //（可选项）字符串类型；按钮常态下的标题
       highlight: '',    //（可选项）字符串类型；按钮高亮下的标题；默认：normal
       active: '',       //（可选项）字符串类型；按钮选中后的标题；默认：normal
-      normalColor: '',  //（可选项）字符串类型；标题常态颜色，支持rgb、rgba、#；默认：#fff
-      highlightColor:'',//（可选项）字符串类型；标题按下颜色，支持rgb、rgba、#；默认：normalColor
-      activeColor:'',   //（可选项）字符串类型；标题点击后颜色，支持rgb、rgba、#；默认：normalColor
+      normalColor: '',  //（可选项）字符串类型；标题常态颜色，支持 rgb、rgba、#；默认：#fff
+      highlightColor:'',//（可选项）字符串类型；标题按下颜色，支持 rgb、rgba、#；默认：normalColor
+      activeColor:'',   //（可选项）字符串类型；标题点击后颜色，支持 rgb、rgba、#；默认：normalColor
       alignment: ''     //（可选项）字符串类型；标题位置，取值范围：left、right、center；默认：center
 }
 ```
@@ -113,7 +116,7 @@ move:
 - 默认值：false
 
 
-##callBack(ret,err)
+##callBack(ret, err)
 
 ret：
 
@@ -145,7 +148,7 @@ button.open({
     },
     corner: 5,
     bg: {
-        normal: "#000000",
+        normal: '#000000',
         highlight: '#ff0000',
         active: '#adf000'
     },
@@ -153,18 +156,20 @@ button.open({
         size: 14,
         highlight: '高亮状态标题',
         active: '选中后标题',
-        normal: "常态标题",
+        normal: '常态标题',
         highlightColor: '#000000',
         activeColor: '#000adf',
-        normalColor: "#ff0000",
+        normalColor: '#ff0000',
         alignment: 'center'
     },
     fixedOn: api.frameName,
     fixed: true,
     move: true
-},function( ret ){		
-    if( ret.eventType != 'moving' ){
+}, function(ret, err){   
+    if( ret ){
         alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -201,9 +206,9 @@ title:
       normal: '',       //（可选项）字符串类型；按钮常态下的标题
       highlight: '',    //（可选项）字符串类型；按钮高亮下的标题；默认：normal
       active: '',       //（可选项）字符串类型；按钮选中后的标题；默认：normal
-      normalColor: '',  //（可选项）字符串类型；标题常态颜色，支持rgb、rgba、#；默认：#fff
-      highlightColor:'',//（可选项）字符串类型；标题按下颜色，支持rgb、rgba、#；默认：normalColor
-      activeColor:'',   //（可选项）字符串类型；标题点击后颜色，支持rgb、rgba、#；默认：normalColor
+      normalColor: '',  //（可选项）字符串类型；标题常态颜色，支持 rgb、rgba、#；默认：#fff
+      highlightColor:'',//（可选项）字符串类型；标题按下颜色，支持 rgb、rgba、#；默认：normalColor
+      activeColor:'',   //（可选项）字符串类型；标题点击后颜色，支持 rgb、rgba、#；默认：normalColor
       alignment: ''     //（可选项）字符串类型；标题位置，取值范围：left、right、center；默认：center
 }
 ```
@@ -217,15 +222,17 @@ button.setTitle({
         size: 14,
         highlight: '高亮状态标题',
         active: '选中后标题',
-        normal: "常态标题",
+        normal: '常态标题',
         highlightColor: '#oo0000',
         activeColor: '#adf000',
-        normalColor: "#ff0000",
+        normalColor: '#ff0000',
         alignment: 'center'
     }
-},function( ret ){		
+}, function(ret, err){   
     if( ret ){
         alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -239,7 +246,7 @@ iOS系统，Android系统
 
 获取指定按钮模块的位置及大小
 
-getRect(params, callback(ret))
+getRect({params}, callback(ret, err))
 
 ##params
 
@@ -248,7 +255,7 @@ id ：
 - 类型：数字
 - 描述：操作按钮模块的id
 
-##callBack(ret)
+##callBack(ret, err)
 
 ret：
 
@@ -269,12 +276,13 @@ ret：
 var button = api.require('UIButton');
 button.getRect({
     id: 1
-},function( ret ){		
+}, function(ret, err){   
     if( ret ){
         alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
     }
 });
-
 ```
 
 ##可用性
@@ -298,7 +306,7 @@ id ：
 
 rect：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）模块的位置及尺寸
 - 内部字段：
 
@@ -342,7 +350,7 @@ iOS系统，Android系统
 
 获取指定按钮模块的状态
 
-getState(params, callback(ret))
+getState({params}, callback(ret, err))
 
 ##params
 
@@ -351,7 +359,7 @@ id ：
 - 类型：数字
 - 描述：操作按钮模块的id
 
-##callBack(ret)
+##callBack(ret, err)
 
 ret：
 
@@ -369,9 +377,11 @@ ret：
 var button = api.require('UIButton');
 button.getState({
     id: 1
-},function( ret ){		
+}, function(ret, err){   
     if( ret ){
         alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
     }
 });
 
@@ -424,7 +434,7 @@ iOS系统，Android系统
 
 关闭指定按钮模块
 
-close(params)
+close({params})
 
 ##params
 
@@ -451,7 +461,7 @@ iOS系统，Android系统
 
 隐藏指定按钮模块
 
-hide(params)
+hide({params})
 
 ##params
 
@@ -478,7 +488,7 @@ iOS系统，Android系统
 
 显示指定按钮模块
 
-show(params)
+show({params})
 
 ##params
 

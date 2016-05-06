@@ -3,6 +3,8 @@ Title: photoBrowser
 Description: photoBrowser
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -38,9 +40,16 @@ photoBrowser 是一个图片浏览器，支持单张、多张图片查看的功�
 
 **模块使用攻略**
 
-开发者使用此模块时可以先 frame 的形式打开并添加到主窗口上，该 frame 不可设置位置和大小，其宽高默认和当前设备屏幕的宽高相同。模块打开后可再 open 一个自定义的 frame 贴在本模块上，从而实现自定义图片浏览器样式和功能。需要适配横竖屏时，开发者可通过api对象监听当前设备的位置状态，以改变自己自定义的 frame 的横竖屏展示，而图片的展示模块内部会自动适配横竖屏，最终实现了整个浏览器的横竖屏配置。在本模块的 open 接口内可以获取图片的下载状态，通过 getImage 接口获取目标图片在本地的绝对路径，以实现保存到系统相册的功能。详情请参考模块接口参数说明。
+开发者使用此模块时可以用 frame 的形式打开并添加到主窗口上，该 frame 不可设置位置和大小，其宽高默认和当前设备屏幕的宽高相同。模块打开后可再 open 一个自定义的 frame 贴在本模块上，从而实现自定义图片浏览器样式和功能。需要适配横竖屏时，开发者可通过api对象监听当前设备的位置状态，以改变自己自定义的 frame 的横竖屏展示，而图片的展示模块内部会自动适配横竖屏，最终实现了整个浏览器的横竖屏配置。在本模块的 open 接口内可以获取图片的下载状态，通过 getImage 接口获取目标图片在本地的绝对路径，以实现保存到系统相册的功能。详情请参考模块接口参数说明。
 
 ![图片说明](/img/docImage/imageBrowser.jpg)
+
+
+##[实例widget下载地址](https://github.com/XM-Right/PhotoBrowser-Example/archive/master.zip)
+
+
+
+***该模块源码已开源，地址为：https://github.com/apicloudcom/photoBrowser***
 
 ##**模块接口**
 
@@ -49,14 +58,14 @@ photoBrowser 是一个图片浏览器，支持单张、多张图片查看的功�
 
 打开图片浏览器
 
-open({params},callback(ret))
+open({params}, callback(ret, err))
 
 ##params
 
 images：
 
 - 类型：数组
-- 描述：要读取的图片路径组成的数组，图片路径支持fs://、http://协议
+- 描述：要读取的图片路径组成的数组，图片路径支持 fs://、http:// 协议
 
 activeIndex：
 
@@ -72,30 +81,34 @@ placeholderImg：
 bgColor：
 
 - 类型：字符串
-- 描述：（可选项）图片浏览器背景色，支持rgb、rgba、#
+- 描述：（可选项）图片浏览器背景色，支持 rgb、rgba、#
 - 默认：#000
 
-##callback(ret)
+zoomEnabled：
+
+- 类型：布尔
+- 描述：（可选项）是否打开缩放手势识别功能（随手势放大缩小图片）
+- 默认：true
+
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
   
 ```js
 {
      eventType: 'show',    //字符串类型；交互事件类型，取值范围如下：
-                           //show：打开浏览器并显示
-                           //change：用户切换图片
-                           //click：用户单击图片浏览器
+                           //show：          打开浏览器并显示
+                           //change：        用户切换图片
+                           //click：         用户单击图片浏览器
                            //loadImgSuccess：网络图片下载成功的回调事件
-                           //loadImgFail：网络图片下载失败的回调事件
-                           //longPress：用户长按图片事件
-     index: 2              //数字类型；当前图片在图片路径数组中的索引
+                           //loadImgFail：   网络图片下载失败的回调事件
+                           //longPress：     用户长按图片事件
+     index: 2              //数字类型；      当前图片在图片路径数组中的索引
 }
 ```
-
-
 
 ##示例代码
 
@@ -106,17 +119,20 @@ photoBrowser.open({
         'fs://img/image1.png', 
         'fs://img/encryption.png'
     ],
-    activeIndex: 0,
     placeholderImg: 'widget://res/img/apicloud.png',
     bgColor: '#000'
-}, function(ret){
-    alert(JSON.stringify(ret));
+}, function(ret, err){    
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
 ##可用性
 
-IOS系统，Android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -136,7 +152,7 @@ photoBrowser.close();
 
 ##可用性
 
-IOS系统，Android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -156,7 +172,7 @@ photoBrowser.hide();
 
 ##可用性
 
-IOS系统，Android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -176,7 +192,7 @@ photoBrowser.show();
 
 ##可用性
 
-IOS系统，Android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -206,7 +222,7 @@ photoBrowser.setIndex({
 
 ##可用性
 
-IOS系统，Android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -215,13 +231,13 @@ IOS系统，Android系统
 
 获取当前图片在图片路径数组内的索引
 
-getIndex(callback(ret))
+getIndex(callback(ret, err))
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
   
 ```js
@@ -230,20 +246,22 @@ ret：
 }
 ```
 
-
-
 ##示例代码
 
 ```js
 var photoBrowser = api.require('photoBrowser');
-photoBrowser.getIndex(function(ret){
-    alert(JSON.stringfiy(ret));
+photoBrowser.getIndex(function(ret, err){   
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
 ##可用性
 
-IOS系统，Android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -252,7 +270,7 @@ IOS系统，Android系统
 
 获取指定图片在本地的绝对路径
 
-getImage({params}, callback(ret))
+getImage({params}, callback(ret, err))
 
 ##params
 
@@ -262,11 +280,11 @@ index：
 - 描述：指定图片在图片数组中的索引
 - 默认：当前图片在图片数组中的索引
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
   
 ```js
@@ -283,14 +301,18 @@ ret：
 var photoBrowser = api.require('photoBrowser');
 photoBrowser.getImage({
     index: 2
-}, function(ret){
-    alert(JSON.stringfiy(ret));
+}, function(ret, err){    
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
 ##可用性
 
-IOS系统，Android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -314,20 +336,19 @@ image：
 - 类型：字符串
 - 描述：要设置的图片路径，支持本地和网络路径（fs://、http://）
 
-
 ##示例代码
 
 ```js
 var photoBrowser = api.require('photoBrowser');
 photoBrowser.setImage({
-    index: 2 ,
+    index: 2,
     image: 'http://docs.apicloud.com/img/docImage/imageBrowser.jpg'
 });
 ```
 
 ##可用性
 
-IOS系统，Android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -336,14 +357,14 @@ IOS系统，Android系统
 
 往已打开的图片浏览器里添加图片（拼接在最后）
 
-appendImage({params},callback(ret))
+appendImage({params}, callback(ret, err))
 
 ##params
 
 images：
 
 - 类型：数组
-- 描述：要拼接的图片路径组成的数组，图片路径支持fs://、http://协议
+- 描述：要拼接的图片路径组成的数组，图片路径支持 fs://、http:// 协议
 
 
 ##示例代码
@@ -351,16 +372,16 @@ images：
 ```js
 var photoBrowser = api.require('photoBrowser');
 photoBrowser.appendImage({
-	images: [ 
-        'fs://img/image1.png', 
-        'fs://img/encryption.png'
-    ]
+  images: [ 
+    'fs://img/image1.png', 
+    'fs://img/encryption.png'
+  ]
 });
 ```
 
 ##可用性
 
-IOS系统，Android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -369,7 +390,7 @@ IOS系统，Android系统
 
 删除指定位置的图片
 
-deleteImage({params}, callback(ret))
+deleteImage({params}, callback(ret, err))
 
 ##params
 
@@ -390,7 +411,7 @@ photoBrowser.deleteImage({
 
 ##可用性
 
-IOS系统，Android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -398,7 +419,7 @@ IOS系统，Android系统
 <div id="m11"></div>
 #**clearCache**
 
-清除缓存到本地的网络图片，**本接口只清除本模块缓存的数据，若要清除本app缓存的所有数据这调用api.clearCache**
+清除缓存到本地的网络图片，**本接口只清除本模块缓存的数据，若要清除本 app 缓存的所有数据这调用 api.clearCache**
 
 clearCache()
 
@@ -411,6 +432,6 @@ photoBrowser.clearCache();
 
 ##可用性
 
-IOS系统，Android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本

@@ -3,6 +3,8 @@ Title: hintChatBox
 Description: hintChatBox
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 	<li><a href="#const-content">Constant</a></li>
@@ -45,13 +47,13 @@ Description: hintChatBox
 
 #**概述**
 
-hintChatBox是一个聊天输入框模块，集成了表情，从相册选取图片的功能。开发者可自定义表情集，只需简单配置即可实现自定义表情和添加点击事件。开发者可自定义快捷输入面板，用户可选择快捷输入
+hintChatBox 是一个聊天输入框模块，集成了表情，从相册选取图片的功能。开发者可自定义表情集，只需简单配置即可实现自定义表情和添加点击事件。开发者可自定义快捷输入面板，用户可选择快捷输入
 
 #**open**<div id="1"></div>
 
 打开输入框
 
-open({parmas},callback(ret, err))
+open({parmas}, callback(ret, err))
 
 params
 
@@ -59,29 +61,29 @@ bgColor:
 
 - 类型：字符串
 - 默认值：#f2f2f2
-- 描述：（可选项）输入视图背景色设置，支持rgb，rgba，#，img
+- 描述：（可选项）输入视图背景色设置，支持 rgb，rgba，#，img
 
 lineColor:
 
 - 类型：字符串
 - 默认值：#d9d9d9
-- 描述：（可选项）输入框视图最上边的分割线色，支持rgb，rgba，#
+- 描述：（可选项）输入框视图最上边的分割线色，支持 rgb，rgba，#
 
 borderColor:
 
 - 类型：字符串
 - 默认值：#B3B3B3
-- 描述：（可选项）输入框边框色，支持rgb，rgba，#
+- 描述：（可选项）输入框边框色，支持 rgb，rgba，#
 
 fileBgColor:
 
 - 类型：字符串
 - 默认值：#FFFFFF
-- 描述：（可选项）输入框背景色，支持rgb，rgba，#
+- 描述：（可选项）输入框背景色，支持 rgb，rgba，#
 
 switchButton:
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：表情键盘加号的按钮图片，可为空
 - 内部字段：
@@ -115,7 +117,7 @@ addButtons：
 
 pageControl：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：见内部字段
 - 描述：（可选项）表情和添加界面的页面控制器配置
 - 备注：可不传，不传则没有控制器
@@ -132,7 +134,7 @@ sourcePath：
 
 - 类型：字符串
 - 默认值:无
-- 描述：自定义表情源文件(.json的文件和图片表情集文件同名且在同一路径下)的路径，不可为空，json文件格式如下：[{name:’Expression_1’,text:’[微笑]’}]
+- 描述：自定义表情源文件(.json 的文件和图片表情集文件同名且在同一路径下)的路径，不可为空，json 文件格式如下：[{name:’Expression_1’,text:’[微笑]’}]
 
 placeholder：
 
@@ -148,7 +150,7 @@ maxLines：
 
 leftButton：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：（可选项）输入框左边按钮设置
 - 备注：若不传则不显示左边按钮
@@ -157,7 +159,7 @@ leftButton：
 ```js
 {
 	hint：{              //快捷文字提示面板设置，不可为空
-	   bg：              //（可选项）面板背景设置，支持rgb，rgba，#，img，默认白色
+	   bg：              //（可选项）面板背景设置，支持 rgb，rgba，#，img，默认白色
       	buttons：[{      //提示面板导航按钮组成的数组
 	          normal:   //按钮常态下的背景图片
 	          selected: //点击后背景图片
@@ -165,7 +167,7 @@ leftButton：
 		hints：
 		[{            //快捷提示文面板设置，数组对象，与buttons按序一一对应
 		 	size：    //（可选项）快捷文字大小，数字类型，默认12
-			color:   //（可选项）快捷文字颜色，默认黑色，支持rgb，rgba，#
+			color:   //（可选项）快捷文字颜色，默认黑色，支持 rgb，rgba，#
 			contents://快捷文字内容组成的数组，数组对象
 			normal:  //快捷提示文字开头标注图标，支持widget，fs，等本地路径
 			selected://快捷提示文字开头选中标注图标，支持widget，fs,等本地路径
@@ -179,7 +181,7 @@ leftButton：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -203,32 +205,27 @@ ret：
 ##示例代码
 
 ```js
-var addButtonAry = [];
-    for (var i = 0; i < 3; i++) {
-        addButtonAry[i]={
-            normal:"widget://image/chatBox_album1.png",
-            title:"相册"
-        };
-    }
-var obj = api.require('hintChatBox');
-obj.open({
+var hintChatBox = api.require('hintChatBox');
+hintChatBox.open({
      switchButton:{
-       faceNormal:"widget://image/chatBox_face1.png",
-       addNormal: "widget://image/chatBox_add1.png",
-       keyboardNormal: "widget://image/chatBox_key1.png"
+       faceNormal:'widget://image/chatBox_face1.png',
+       addNormal: 'widget://image/chatBox_add1.png',
+       keyboardNormal: 'widget://image/chatBox_key1.png'
      },
-     sourcePath:"widget://image/emotion",
-     addButtons:addButtonAry
- },function(ret,err){
-    if(ret.click){
-      api.alert({msg:"用户点击了第"+ret.index+"个按钮"});
+     sourcePath:'widget://image/emotion',
+     addButtons: [{
+        normal:'widget://image/chatBox_album1.png',
+        title:'相册'
+    }, {
+        normal:'widget://image/chatBox_album1.png',
+        title:'相册'
+    }]
+ }, function(ret, err){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
     }else{
-      api.alert({
-title: '输入的内容是',
- msg: ret.msg,
-        buttons: ['确定']
-      });
-   }
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -258,8 +255,12 @@ index：
 
 ##示例代码
 
-	var obj = api.require('hintChatBox');
-	obj.setHintButton ({index:2});
+```js
+var hintChatBox = api.require('hintChatBox');
+hintChatBox.setHintButton ({
+	index: 2
+});
+```
 
 ##补充说明
 
@@ -276,13 +277,13 @@ iOS系统，Android系统
 
 设置提示面板上提示按钮的监听
 
-setHintButtonListener(callBack())
+setHintButtonListener(callback(ret, err))
 
-##callBack(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -296,14 +297,20 @@ ret：
 
 ##示例代码
 
-	var obj = api.require('hintChatBox');
-	obj.setHintButtonListener (function(ret,err){
-		api.alert({msg:ret.index});
-	});
+```js
+var hintChatBox = api.require('hintChatBox');
+hintChatBox.setHintButtonListener(function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
+```
 
 ##补充说明
 
-配合open接口的leftButton参数使用
+配合 open 接口的 leftButton 参数使用
 
 ##可用性
 
@@ -321,7 +328,6 @@ setAddView({params})
 
 addButtons：
 
-
 - 类型：数组
 - 默认值：无
 - 描述：（可选项）添加界面的按钮信息
@@ -330,24 +336,24 @@ addButtons：
 
 ```js
 	[{
-		normal:             //常态按钮背景图片，可为空，默认绿色面板
-		highlight:           //高亮按钮背景图片，可为空，默认暗色
-		title:               //按钮标题，可为空，默认无
-		titleSize:            //标题大小，可为空，默认10
-		titleColor:           //标题颜色，可为空，默认#a3a3a3
+		normal:             	//常态按钮背景图片，可为空，默认绿色面板
+		highlight:           	//高亮按钮背景图片，可为空，默认暗色
+		title:               	//按钮标题，可为空，默认无
+		titleSize:            	//标题大小，可为空，默认10
+		titleColor:           	//标题颜色，可为空，默认#a3a3a3
 	}]
 ```
 
 ##示例代码
 
 ```js
-	var obj = api.require('hintChatBox');
-	obj.setAddView();
+var hintChatBox = api.require('hintChatBox');
+hintChatBox.setAddView();
 ```
 
 ##补充说明
 
-配合open接口使用
+配合 open 接口使用
 
 ##可用性
 
@@ -359,13 +365,13 @@ iOS系统，Android系统
 
 设置输入框监听
 
-setInputFieldListener(callBack())
+setInputFieldListener(callBack( ret, err))
 
-##callBack(ret,err)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -378,10 +384,14 @@ ret：
 ##示例代码
 
 ```js
-	var obj = api.require('hintChatBox');
-	obj.setInputFieldListener(function(ret,err){
-		api.alert({msg:ret.eventType+'*'+ret.h});
-	});
+var hintChatBox = api.require('hintChatBox');
+hintChatBox.setInputFieldListener(function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
 ```
 
 ##补充说明
@@ -403,8 +413,8 @@ close()
 ##示例代码
 
 ```js
-	var obj = api.require('hintChatBox');
-	obj.close();
+var hintChatBox = api.require('hintChatBox');
+hintChatBox.close();
 ```
 
 ##补充说明
@@ -426,8 +436,8 @@ show()
 ##示例代码
 
 ```js
-	var obj = api.require('hintChatBox');
-	obj.show();
+var hintChatBox = api.require('hintChatBox');
+hintChatBox.show();
 ```
 
 ##补充说明
@@ -449,8 +459,8 @@ hide()
 ##示例代码
 
 ```js
-	var obj = api.require('hintChatBox');
-	obj.hide();
+var hintChatBox = api.require('hintChatBox');
+hintChatBox.hide();
 ```
 
 ##补充说明
@@ -467,19 +477,12 @@ iOS系统，Android系统
 
 弹出键盘
 
-becomeFirstResponder(callBack(ret,err))
+becomeFirstResponder(callBack( ret, err))
 
-##示例代码
-
-```js
-	var obj = api.require('hintChatBox');
-	obj.becomeFirstResponder(function(ret, err){
-
-    });
-```
+##callback(ret, err)
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -487,6 +490,20 @@ ret：
 		status:           //操作状态码
 	}
 ```
+
+##示例代码
+
+```js
+var hintChatBox = api.require('hintChatBox');
+hintChatBox.becomeFirstResponder(function( ret, err ){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
+```
+
 ##补充说明
 
 无
@@ -502,24 +519,32 @@ iOS系统，Android系统
 
 隐藏键盘
 
-resignFirstResponder(callBack(ret,err))
+resignFirstResponder(callback(ret, err))
 
-##示例代码
-
-	var obj = api.require('hintChatBox');
-	obj.resignFirstResponder(function(ret, err){
-
-    });
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
 	{
 		status:           //操作状态码
 	}
+```
+
+##示例代码
+
+```js
+var hintChatBox = api.require('hintChatBox');
+hintChatBox.resignFirstResponder(function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
 ```
 
 ##补充说明
@@ -536,7 +561,7 @@ iOS系统，Android系统
 
 设置输入框内的文字
 
-setMsg({parmas},callback(ret, err))
+setMsg({parmas}, callback(ret, err))
 
 #params
 
@@ -546,11 +571,11 @@ msg:
 - 默认值：空字符串
 - 描述：(可选项)要设置的输入框内的文字内容
 
-#callback(ret, err)
+#callback( ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -562,14 +587,16 @@ ret：
 ##示例代码
 
 ```js
-	var obj = api.require('hintChatBox');
-	obj.setMsg({
-	msg:"设置的文字"
-	 },function(ret,err){
-	    if(ret.status){
-	      api.alert({msg:"设置成功"});
-	    }
-	});
+var hintChatBox = api.require('hintChatBox');
+hintChatBox.setMsg({
+	msg:'设置的文字'
+}, function(ret, err){		
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
 ```
 
 ##补充说明
@@ -592,7 +619,7 @@ getMsg(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -604,12 +631,14 @@ ret：
 ##示例代码
 
 ```js
-	var obj = api.require('hintChatBox');
-	obj.getMsg(function(ret,err){
-	    if(ret.status){
-	      api.alert({msg:ret.msg });
-	    }
-	});
+var hintChatBox = api.require('hintChatBox');
+hintChatBox.getMsg(function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
 ```
 
 ##补充说明
@@ -626,7 +655,7 @@ iOS系统，Android系统
 
 配置当前输入框内的文字
 
-configMsg(params,callback(ret, err))
+configMsg({params}, callback(ret, err))
 
 ##params
 
@@ -640,7 +669,7 @@ msg:
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -653,10 +682,12 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('hintChatBox');
-obj.configMsg(function(ret,err){
-    if(ret.status){
-      api.alert({msg:ret.msg });
+var hintChatBox = api.require('hintChatBox');
+hintChatBox.configMsg(function( ret, err ){		
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -675,7 +706,7 @@ iOS系统，Android系统
 
 向当前输入框内指定位置插入字符串
 
-insertMsg(params,callback(ret, err))
+insertMsg({params}, callback(ret, err))
 
 ##params
 
@@ -694,10 +725,10 @@ msg:
 ##示例代码
 
 ```js
-	var obj = api.require('hintChatBox');
-	obj.insertMsg({
-	   msg:'这里是插入的字符串'
-	});
+var hintChatBox = api.require('hintChatBox');
+hintChatBox.insertMsg({
+   msg:'这里是插入的字符串'
+});
 ```
 
 ##补充说明
@@ -719,7 +750,7 @@ setHintView({params})
 
 hint：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：（可选项）输入框左边按钮刷新
 - 备注：不传或传空则不刷新提示面板内容
@@ -727,14 +758,14 @@ hint：
 
 ```js
 {               //（快捷文字提示面板设置
-   bg：          //（可选项）面板背景设置，支持rgb，rgba，#，img，默认白色
+   bg：          //（可选项）面板背景设置，支持 rgb，rgba，#，img，默认白色
    buttons：[{   //提示面板导航按钮组成的数组
      normal:    //（可选项）按钮常态下的背景图片
      selected:  //（可选项）点击后背景图片，
    }]
    hints：[{    //快捷提示文面板设置，数组对象，与buttons对应
       size：    //（可选项）快捷文字大小，默认12
-      color:    //（可选项）快捷文字颜色，默认黑色，支持rgb，rgba，#
+      color:    //（可选项）快捷文字颜色，默认黑色，支持 rgb，rgba，#
       contents: //快捷文字内容组成的数组，数组对象
       normal:   //快捷提示文字开头标注图标，支持widget，fs，等本地路径
       selected: //快捷提示文字开头选中标注图标，支持widget，fs,等本地路径
@@ -745,8 +776,8 @@ hint：
 ##示例代码
 
 ```js
-	var obj = api.require('hintChatBox');
-	obj.setHintView();
+var hintChatBox = api.require('hintChatBox');
+hintChatBox.setHintView();
 ```
 
 ##补充说明
@@ -777,8 +808,8 @@ placeholder：
 ##示例代码
 
 ```js
-var obj = api.require('hintChatBox');
-obj. setPlaceholder({
+var hintChatBox = api.require('hintChatBox');
+hintChatBox.setPlaceholder({
    placeholder:'我是占位提示文字'
 });
 ```

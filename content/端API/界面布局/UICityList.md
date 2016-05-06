@@ -2,6 +2,9 @@
 Title: UICityList
 Description: UICityList
 */
+
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <div class="outline">
 [open](#m1)
 
@@ -18,6 +21,11 @@ UICityList 模块是一个可定制数据源的城市列表；模块根据数据
 
 ![图片说明](/img/docImage/UICityList.jpg)
 
+
+
+## [实例widget下载地址](https://github.com/XM-Right/UICityList-Example/archive/master.zip)
+
+
 <div id="m1"></div>
 #**open**
 
@@ -29,7 +37,7 @@ open({params}, callback(ret, err))
 
 rect：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）模块的位置及尺寸
 - 内部字段：
 
@@ -50,56 +58,56 @@ resource：
 
 ```json
 {
-    "topCitys": [{   //（可选项）数组类型；热门城市，若不传则不显示热门城市            
-        "city": "北京",
-        "id": 110001,
-        "pinyin":"beijing"//（可选项）字符串类型；本字段可不传，若不传模块内会生成该城市名的pinyin，以防止城市名中的多音字乱序问题
+    'topCitys': [{          //（可选项）数组类型；热门城市，若不传则不显示热门城市            
+        'city': '北京',
+        'id': 110001,
+        'pinyin':'beijing'  //（可选项）字符串类型；本字段可不传，若不传模块内会生成该城市名的pinyin，以防止城市名中的多音字乱序问题
     },{
-        "city": "天津",
-        "id": 120001
+        'city': '天津',
+        'id': 120001
     }],
-    "citys": [{   //数组类型，数组元素是JSON对象；城市数据；至少包含 id、city 二个字段，其余可自定义添加
-        "id": 110001,
-        "city": "北京"
+    'citys': [{             //数组类型，数组元素是JSON对象；城市数据；至少包含 id、city 二个字段，其余可自定义添加
+        'id': 110001,
+        'city': '北京'
     },{
-        "id": 120001,
-        "city": "天津"
+        'id': 120001,
+        'city': '天津'
     }]
 }
 ```
 
 styles：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）城市列表样式设置
 - 内部字段：
 
 ```js
 {   
     searchBar: {                    //（可选项）JSON对象；顶部搜索条的样式
-        bgColor: '#696969',         //（可选项）字符串类型；搜索条背景色，支持rgb、rgba、#；默认：'#696969'
-        cancelColor: '#E3E3E3'      //（可选项）字符串类型；取消文字颜色，支持rgb、rgba、#，默认：'#E3E3E3'；在安卓平台上不显示取消按钮，所以，此参数只在iOS平台有效
+        bgColor: '#696969',         //（可选项）字符串类型；搜索条背景色，支持 rgb、rgba、#；默认：'#696969'
+        cancelColor: '#E3E3E3'      //（可选项）字符串类型；取消文字颜色，支持 rgb、rgba、#，默认：'#E3E3E3'；在安卓平台上不显示取消按钮，所以，此参数只在iOS平台有效
     },
     location: {                     //（可选项）JSON对象；定位提示文字样式
-        color: '#696969',           //（可选项）字符串类型；定位提示文字颜色，支持rgb、rgba、#，默认：'#696969'
+        color: '#696969',           //（可选项）字符串类型；定位提示文字颜色，支持 rgb、rgba、#，默认：'#696969'
         size: 12                    //（可选项）数字类型；定位提示文字大小，默认：12.0
     },
     sectionTitle: {                 //（可选项）JSON对象；标题的样式
-        bgColor: '#eee',            //（可选项）字符串类型；标题的背景色，支持rgb、rgba、#；默认：'#EEEEEE'
-        color: '#000',              //（可选项）字符串类型；标题文字颜色，支持rgb、rgba、#；默认：'#000000'
+        bgColor: '#eee',            //（可选项）字符串类型；标题的背景色，支持 rgb、rgba、#；默认：'#EEEEEE'
+        color: '#000',              //（可选项）字符串类型；标题文字颜色，支持 rgb、rgba、#；默认：'#000000'
         size: 12,                   //（可选项）数字类型；标题文字大小；默认：12.0
         height: 25                  //（可选项）数字类型；区域标题的高度，默认：25.0
     },
     item: {                         //（可选项）JSON对象；列表项的样式
-        bgColor: '#fff',            //（可选项）字符串类型；列表项的背景色，支持rgb、rgba、#；默认：'#FFFFFF'
-        activeBgColor: '#696969',   //（可选项）字符串类型；列表项按下时的背景色，支持rgb、rgba、#；默认：'#696969'
-        color: '#000',              //（可选项）字符串类型；列表项的文字颜色，支持rgb、rgba、#，默认：'#000000'
+        bgColor: '#fff',            //（可选项）字符串类型；列表项的背景色，支持 rgb、rgba、#；默认：'#FFFFFF'
+        activeBgColor: '#696969',   //（可选项）字符串类型；列表项按下时的背景色，支持 rgb、rgba、#；默认：'#696969'
+        color: '#000',              //（可选项）字符串类型；列表项的文字颜色，支持 rgb、rgba、#，默认：'#000000'
         size: 14,                 //（可选项）数字类型；列表项的文字大小，默认：14.0
         height: 40                  //（可选项）数字类型；列表项的高度，默认：40.0
     },
     indicator: {                    //（可选项）JSON对象；右侧字母导航条样式
-        bgColor: '#fff',            //（可选项）字符串类型；字母导航条背景色，支持rgb、rgba、#，默认：'#FFFFFF'
-        color: '#696969'            //（可选项）字符串类型；字母导航条字母颜色，支持rgb、rgba、#，默认：'#696969'
+        bgColor: '#fff',            //（可选项）字符串类型；字母导航条背景色，支持 rgb、rgba、#，默认：'#FFFFFF'
+        color: '#696969'            //（可选项）字符串类型；字母导航条字母颜色，支持 rgb、rgba、#，默认：'#696969'
     }
 }
 ```
@@ -131,7 +139,7 @@ placeholder：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -141,9 +149,9 @@ ret：
                             //show（模块打开成功）
                             //selected（用户选择城市）
     cityInfo: {             //JSON对象；用户选择的城市信息，同传入的数据源格式相同
-        "id": 110001,
-        "city": "北京",
-        "pinyin":"beijing"
+        'id': 110001,
+        'city': '北京',
+        'pinyin':'beijing'
     }            
 }
 ```

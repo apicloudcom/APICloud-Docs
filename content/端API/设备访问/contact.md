@@ -3,6 +3,8 @@ Title: contact
 Description: contact
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -34,7 +36,7 @@ Description: contact
 
 #**概述**
 
-contact模块封装了系统通讯录的相关接口，通过此模块可实现对系统通讯录的联系人增删改查操作，将底层负责的访问通讯录代码简单成一个个小接口，让开发者轻松访问通讯录。**本模块停止更新，已有优化升级版本 [contacts](http://docs.apicloud.com/端API/设备访问/contacts)**
+contact 模块封装了系统通讯录的相关接口，通过此模块可实现对系统通讯录的联系人增、删、改、查操作，将底层负责的访问通讯录代码简单成一个个小接口，让开发者轻松访问通讯录。**本模块停止更新，已有优化升级版本 [contacts](http://docs.apicloud.com/端API/设备访问/contacts)**
 
 #**openContact**<div id="1"></div>
 
@@ -46,7 +48,7 @@ openContact(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -75,7 +77,7 @@ ret：
 
 err：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -172,7 +174,7 @@ title：
 
 address：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：（可选项）联系人地址组成的JSON对象
 - 内部字段：
@@ -198,7 +200,7 @@ note：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -265,7 +267,7 @@ ids：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -335,7 +337,7 @@ firstName：
 
 phones：
 
-- 类型：JSON对象数组
+- 类型：JSON 对象数组
 - 默认值：原值
 - 描述：（可选项）联系人电话组成的JSON对象数组
 - 备注：若不传则不修改此属性
@@ -363,7 +365,7 @@ title：
 
 address：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 默认值：无
 - 描述：（可选项）联系人地址组成的JSON对象
 - 内部字段：
@@ -389,7 +391,7 @@ note：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -456,7 +458,7 @@ ids：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -533,7 +535,7 @@ name：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -587,7 +589,7 @@ key：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -714,7 +716,7 @@ id：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -795,7 +797,7 @@ name：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -848,7 +850,7 @@ id：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js

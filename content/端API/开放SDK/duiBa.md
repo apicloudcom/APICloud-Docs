@@ -2,6 +2,9 @@
 Title: duiBa
 Description: duiBa
 */
+
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <div class="outline">
 [open](#a1)
 
@@ -9,7 +12,7 @@ Description: duiBa
 
 #**概述**
 
-duiBa 封装了兑吧平台的SDK，使用此模块可实现对接兑吧积分商城功能。**duiBa 模块使用需要开发者配合开发后台相关接口供兑吧服务端调用。** 本模块暂仅支持Android。
+duiBa 封装了兑吧平台的SDK，使用此模块可实现对接兑吧积分商城功能。**duiBa 模块使用需要开发者配合开发后台相关接口供兑吧服务端调用。** 
 
 **使用兑吧模块基本流程说明：**
 

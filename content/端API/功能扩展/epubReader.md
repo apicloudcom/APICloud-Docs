@@ -76,7 +76,7 @@ textSize：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -90,7 +90,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -106,7 +106,7 @@ err：
 var epubReader = api.require('epubReader');
 epubReader.open({
    path: 'fs://test.epub'
-},function( ret, err ){		
+}, function(ret, err){		
     if( ret ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -178,13 +178,13 @@ iOS系统，Android系统
 
 获取章节列表
 
-getChapters(callBack(ret,err))
+getChapters(callback(ret, err))
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -198,7 +198,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -250,7 +250,7 @@ index：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -263,7 +263,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -279,7 +279,7 @@ err：
 var epubReader = api.require('epubReader');
 epubReader.openChapter({
 	index: 2
-},function( ret, err ){		
+}, function(ret, err){		
     if( ret ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -303,25 +303,25 @@ iOS系统，Android系统
 
 获取屏幕亮度
 
-getBrightness(callBack(ret,err))
+getBrightness(callback(ret, err))
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
 ```js
 {
-	brightness:           //返回的当前屏幕亮度，取值范围0-100，数字类型
+	brightness:           //返回的当前屏幕亮度，取值范围 0-100，数字类型
 }
 ```
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -367,7 +367,7 @@ brightness：
 
 - 类型：数字
 - 默认值：无
-- 描述：屏幕亮度，取值范围0-100
+- 描述：屏幕亮度，取值范围 0-100
 
 ##示例代码
 

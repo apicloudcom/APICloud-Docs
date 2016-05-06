@@ -3,9 +3,12 @@ Title: arcColorPicker
 Description: arcColorPicker
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：开发者</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
+
 <div id="method-content">
 
 <div class="outline">
@@ -24,7 +27,7 @@ Description: arcColorPicker
 
 #**概述**
 
-arcColorPicker模块封装了一个环形取色器，开发者可自定义样式，设置当前色值，获取拖动指示十六进制色值
+arcColorPicker 模块封装了一个环形取色器，开发者可自定义样式，设置当前色值，获取拖动指示十六进制色值
 
 ![图片说明](/img/docImage/arcColorPicker.jpg)
 
@@ -57,18 +60,18 @@ r：
 gradients：
 
 - 类型：数组
-- 默认值：['#000000','#fff']
+- 默认值：['#000','#fff']
 - 描述：顺时针渐变色值组成的数组，可为空
 
 slider：
 
 - 类型：字符串
-- 默认值：#fff
-- 描述：滑块背景，支持rgb,rgba,#,img,可为空，为空时滑块背景透明
+- 默认值：'#fff'
+- 描述：滑块背景，支持 rgb,rgba,#,img 可为空，为空时滑块背景透明
 
 style：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 默认值：内部字段
 - 描述：环形选值器样式配置，可为空
 
@@ -76,18 +79,18 @@ style：
 
 ```js
 {
-	innerR：//预览区半径占r的百分比，数字类型，默认25，取值范围0-100可为空
-	innerRwidth://预览区灰色环宽占innerR的百分比，数字类型，默认3，取值范围0-100，可为空
-	ringWidth：//环形取色器环宽占r的百分比，数字类型，默认25，取值范围0-100，可为空
-	intervalAngle://环形取值器下环缺口弧度大小，数字类型，默认20,可为空，取值范围0-180
+	innerR:			//预览区半径占 R 的百分比，数字类型：`25` 默认，`0-100` 取值范围，可为空
+	innerRwidth:	//预览区灰色环宽占 innerR 的百分比，数字类型：`3` 默认，`0-100` 取值范围，可为空
+	ringWidth:		//环形取色器环宽占 R 的百分比，数字类型：`25` 默认，`0-100` 取值范围，可为空
+	intervalAngle:	//环形取值器下环缺口弧度大小，数字类型：`20` 默认,`0-180` 取值范围， 可为空
 }
 ```
 
 currentColor：
 
 - 类型：字符串
-- 默认值：gradients的第一个元素
-- 描述：环形取色器当前颜色值，仅支持#，可为空
+- 默认值：gradients 的第一个元素
+- 描述：环形取色器当前颜色值，仅支持 #，可为空
 
 fixedOn：
 
@@ -107,14 +110,14 @@ fixed：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
 ```js
 {
-	touchCancel:      //是否是滑动结束事件，布尔类型，若为true则表示手指离开事件
-	color：//色值的十六进制表示，字符串类型
+	touchCancel:      	//是否是滑动结束事件，布尔类型：`true` 表示手指离开事件
+	color: 				//色值的十六进制表示，字符串类型
 }
 ```
 
@@ -123,12 +126,8 @@ ret：
 ```js
 var arcColorPicker = api.require('arcColorPicker');
 arcColorPicker.open({
-    gradients : [ 
-		'#FF0005',
-		'#FF00F0'
-	],
 	fixedOn: api.frameName
-},function( ret, err ){		
+},function( ret, err){		
     if( ret ){
         alert( JSON.stringify( ret ) );
     }else{
@@ -158,13 +157,13 @@ getColor(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
 ```js
 {
-	color：//色值的十六进制表示，字符串类型
+	color:			//色值的十六进制表示，字符串类型
 }
 ```
 
@@ -203,7 +202,7 @@ color：
 
 - 类型：字符串
 - 默认值：无
-- 描述：要设置的色值，可为空
+- 描述：（可选项）要设置的色值
 
 ##示例代码
 
@@ -234,7 +233,7 @@ hide(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -272,7 +271,7 @@ show(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -309,7 +308,7 @@ close(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 

@@ -2,6 +2,9 @@
 Title: UISearchBar
 Description: UISearchBar
 */
+
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <div class="outline">
 [open](#m1)
 
@@ -14,16 +17,42 @@ Description: UISearchBar
 
 #**概述**
 
-UISearchBar 是一个独立的搜索页面，可以返回搜索文本，监听录音按钮事件，保存、清除搜索记录。**UISearchBar 模块是 searchBar 模块的优化版。**
-
+UISearchBar 是一个独立的搜索页面，相当于打开一个 window 。模块预览图如下：
 ![图片说明](/img/docImage/searchBar.jpg)
 
+本模块可实现的主要功能有：
+
+1，设置输入框占位提示文字
+    
+  可通过 open 接口的 placeholder 参数配置
+
+2，设置搜索历史记录条数
+    
+  可通过 open 接口的 historyCount 参数配置
+
+3，设置历史记录存储位置
+    
+  可通过 open 接口的 dataBase 参数配置
+
+4，设置搜索页面样式
+    
+  可通过 open 接口的 styles 参数配置
+
+5，清空历史记录
+    
+  可通过 clearHistory 接口实现
+
+***本模块源码已开源，地址为：https://github.com/apicloudcom/UISearchBar***
+
+#模块接口
+
 <div id="m1"></div>
+
 #**open**
 
 打开搜索页面
 
-open({params}, callback(ret))
+open({params}, callback(ret, err))
 
 ##params
 
@@ -53,7 +82,7 @@ showRecordBtn：
 
 texts：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）模块各部分的文本
 - 内部字段：
 
@@ -66,48 +95,48 @@ texts：
 
 styles：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）模块各部分的样式
 - 内部字段：
 
 ```js
 {
     navBar: {                               //（可选项）JSON对象；搜索框所在的导航条样式
-        bgColor: '#FFFFFF',                 //（可选项）字符串类型；搜索框所在的导航条背景色，支持rgb，rgba，#；默认：'#FFFFFF'
-        borderColor: '#ccc'                 //（可选项）字符串类型；搜索框所在的导航条边框颜色，支持rgb，rgba，#；默认：'#CCCCCC'
+        bgColor: '#FFFFFF',                 //（可选项）字符串类型；搜索框所在的导航条背景色，支持 rgb，rgba，#；默认：'#FFFFFF'
+        borderColor: '#ccc'                 //（可选项）字符串类型；搜索框所在的导航条边框颜色，支持 rgb，rgba，#；默认：'#CCCCCC'
     },
     searchBox: {                            //（可选项）JSON对象；搜索框样式
-        bgImg: '',                          //（可选项）字符串类型；搜索框的背景图片，要求本地路径（fs://，widget://）；默认：自带背景图片
-        color: '#000',                      //（可选项）字符串类型；搜索框输入文本的颜色，支持rgb，rgba，#；默认：'#000000'
+        bgImg: '',                          //（可选项）字符串类型；搜索框的背景图片，要求本地路径（fs://、widget://）；默认：自带背景图片
+        color: '#000',                      //（可选项）字符串类型；搜索框输入文本的颜色，支持 rgb，rgba，#；默认：'#000000'
         height: 44                          //（可选项）数字类型；搜索框的高度；默认：44
     },
     cancel: {                               //（可选项）JSON对象；取消按钮的样式
-        bg: 'rgba(0,0,0,0)',                //（可选项）字符串类型；取消按钮的背景，支持rgb，rgba，#，图片路径（本地路径，支持fs://，widget://）；默认：'rgba(0,0,0,0)'
-        color: '#D2691E',                   //（可选项）字符串类型；取消按钮的字体颜色，支持rgb，rgba，#；默认：'#D2691E'
+        bg: 'rgba(0,0,0,0)',                //（可选项）字符串类型；取消按钮的背景，支持 rgb，rgba，#，图片路径（本地路径，支持fs://、widget://）；默认：'rgba(0,0,0,0)'
+        color: '#D2691E',                   //（可选项）字符串类型；取消按钮的字体颜色，支持 rgb，rgba，#；默认：'#D2691E'
         size: 16                            //（可选项）数字类型；取消按钮的字体大小；默认：16
     },
     list: {                                 //（可选项）JSON对象；历史记录列表的样式
-        color: '#696969',                   //（可选项）字符串类型；历史记录列表的文本颜色，支持rgb，rgba，#；默认：'#696969'
-        bgColor: '#FFFFFF',                 //（可选项）字符串类型；历史记录列表的背景色，支持rgb，rgba，#；默认：'#FFFFFF'
-        activeBgColor: '#eee',              //（可选项）字符串类型；历史记录列表按下时的背景色，支持rgb，rgba，#；默认：'#EEEEEE'
-        borderColor: '#eee',                //（可选项）字符串类型；历史记录列表的边框颜色，支持rgb，rgba，#；默认：'#EEEEEE'
+        color: '#696969',                   //（可选项）字符串类型；历史记录列表的文本颜色，支持 rgb，rgba，#；默认：'#696969'
+        bgColor: '#FFFFFF',                 //（可选项）字符串类型；历史记录列表的背景色，支持 rgb，rgba，#；默认：'#FFFFFF'
+        activeBgColor: '#eee',              //（可选项）字符串类型；历史记录列表按下时的背景色，支持 rgb，rgba，#；默认：'#EEEEEE'
+        borderColor: '#eee',                //（可选项）字符串类型；历史记录列表的边框颜色，支持 rgb，rgba，#；默认：'#EEEEEE'
         size: 16                            //（可选项）数字类型；历史记录列表的字体大小；默认：16
     },
     clear: {                                //（可选项）JSON对象；清除历史记录按钮的样式
-        color: '#000000',                   //（可选项）字符串类型；清除按钮的字体颜色，支持rgb，rgba，#；默认：'#000000'
-        bgColor: '#fff',                    //（可选项）字符串类型；清除按钮的背景色，支持rgb，rgba，#；默认：'#FFFFFF'
-        activeBgColor: '#eee',              //（可选项）字符串类型；清除按钮按下时的背景色，支持rgb，rgba，#；默认：'#EEEEEE'
-        borderColor: '#ccc',                //（可选项）字符串类型；清除按钮的下边框颜色，支持rgb，rgba，#；默认：'#CCCCCC'
+        color: '#000000',                   //（可选项）字符串类型；清除按钮的字体颜色，支持 rgb，rgba，#；默认：'#000000'
+        bgColor: '#fff',                    //（可选项）字符串类型；清除按钮的背景色，支持 rgb，rgba，#；默认：'#FFFFFF'
+        activeBgColor: '#eee',              //（可选项）字符串类型；清除按钮按下时的背景色，支持 rgb，rgba，#；默认：'#EEEEEE'
+        borderColor: '#ccc',                //（可选项）字符串类型；清除按钮的下边框颜色，支持 rgb，rgba，#；默认：'#CCCCCC'
         size: 16                            //（可选项）数字类型；清除按钮的字体大小；默认：16
     }
 }
 ```
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -160,7 +189,7 @@ UISearchBar.open({
             size: 16
         }
     }
-},function( ret, err ){
+}, function(ret, err){
 	if( ret ){
          alert( JSON.stringify( ret ) );
     }else{

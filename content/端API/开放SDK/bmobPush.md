@@ -3,6 +3,8 @@ Title: bmobPush
 Description: bmobPush
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：Bmob</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 	<li><a href="#const-content">Constant</a></li>
@@ -51,7 +53,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -65,18 +67,16 @@ err：
 ##示例代码
 
 ```
-var applicationId = "1234567890123";
-
-var param = {
-    appid: applicationId
-};
-
-var resultCallback = function(ret, err){
-    alert(JSON.stringify(ret) + JSON.stringify(err));
-};
-var bmob = api.require('bmobPush');
-
-bmob.init(param,resultCallback);
+var bmobPush = api.require('bmobPush');
+bmobPush.init({
+    appid: '1234567890123'
+}, function(ret, err){     
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
 ```
 
 ##补充说明
@@ -158,7 +158,7 @@ time：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -169,7 +169,7 @@ ret：
 ```
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -200,9 +200,9 @@ var resultCallback = function(ret, err){
         api.alert(err);
     }
 };
-var bmob = api.require('bmobPush');
+var bmobPush = api.require('bmobPush');
 
-bmob.push(param,resultCallback);
+bmobPush.push(param,resultCallback);
 ```
 
 ```js
@@ -226,8 +226,8 @@ var resultCallback = function(ret, err){
         api.alert(err);
     }
 }
-var bmob = api.require('bmobPush');
-bmob.push(param,resultCallback);
+var bmobPush = api.require('bmobPush');
+bmobPush.push(param,resultCallback);
 ```
 
 ```js
@@ -238,9 +238,9 @@ var param = {content:content_str,type:type_str};
 var resultCallback = function(ret, err){
     alert(JSON.stringify(ret) + JSON.stringify(err));
 }
-var bmob = api.require('bmobPush');
+var bmobPush = api.require('bmobPush');
 
-bmob.push(param,resultCallback);
+bmobPush.push(param,resultCallback);
 ```
 
 ##补充说明
@@ -279,7 +279,7 @@ latitude：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -290,7 +290,7 @@ ret：
 ```
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -311,9 +311,9 @@ var param = {latitude:latitude_double,longitude:longitude_double};
 var resultCallback = function(ret, err){
     alert(JSON.stringify(ret) + JSON.stringify(err));
 };
-var bmob = api.require('bmobPush');
+var bmobPush = api.require('bmobPush');
 
-bmob.saveLocation(param,resultCallback);
+bmobPush.saveLocation(param,resultCallback);
 ```
 
 
@@ -353,8 +353,8 @@ var resultCallback = function(ret, err){
 		api.alert(err);
     }
 }
-var bmob = api.require('bmobPush');
-bmob.addChannel(param,resultCallback);
+var bmobPush = api.require('bmobPush');
+bmobPush.addChannel(param,resultCallback);
 ```
 
 
@@ -391,8 +391,8 @@ var param = {channel:channel_array};
 var resultCallback = function(ret, err){
     alert(JSON.stringify(ret) + JSON.stringify(err));
 };
-var bmob = api.require('bmobPush');
-bmob.removeChannel(param,resultCallback);
+var bmobPush = api.require('bmobPush');
+bmobPush.removeChannel(param,resultCallback);
 ```
 
 

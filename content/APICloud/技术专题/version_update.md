@@ -7,6 +7,12 @@ Description: 版本更新
 
 您可以使用APICloud 的版本更新服务，来向用户推送您App的新版本。版本更新服务只针对正式版APP，测试版无效。只能由低版本更新到高版本。
 
+
+##参考视频  
+
+入门概念篇第七节（如何使用APICloud云端应用服务）：http://docs.apicloud.com/APICloud/videos-and-codes
+
+
 #一、使用自动更新
 
 1， config.xml 中配置

@@ -3,6 +3,8 @@ Title: tencentMTA
 Description: tencentMTA
 */
 
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">方法</a></li>
 </ul>
@@ -18,7 +20,7 @@ Description: tencentMTA
    
    tencentMTA 封装了腾讯统计平台的SDK，使用此模块可实现APP统计的功能。
    在使用前需要在腾讯统计平台进行注册账号[http://mta.qq.com](http://mta.qq.com)   
-####    *config.xml参数配置*
+####    *[config.xml](/APICloud/技术专题/app-config-manual)参数配置*
 使用模块前可以配置相关key和channel参数，如不愿配置的，也可在初始化时传入参数进行配置。
 
     <feature name="tencentMTA">
@@ -73,26 +75,26 @@ Description: tencentMTA
 #**init**<div id="init"></div>
 模块初始化.
 
-init(params,callback(ret));
+init({params}, callback(ret, err));
 
 ##params
 
 appid:
 
 -	类型：字符串
--	描述：（可选项）开发者在腾讯统计平台申请的APPKEY，若不传则读取config.xml里的参数
+-	描述：（可选项）开发者在腾讯统计平台申请的APPKEY，若不传则读取[config.xml](/APICloud/技术专题/app-config-manual)里的参数
 
 
 path:
 
 -	类型：字符串
--	描述：（可选项）开发者自定义的通道号，若不传则读取config.xml里的参数
+-	描述：（可选项）开发者自定义的通道号，若不传则读取[config.xml](/APICloud/技术专题/app-config-manual)里的参数
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -118,7 +120,7 @@ ret：
 
 ##补充说明
 
-开发者如在config.xml中配置了appkey和channel的，可不填写参数，直接init 
+开发者如在[config.xml](/APICloud/技术专题/app-config-manual)中配置了appkey和channel的，可不填写参数，直接init 
 
 ##可用性
 
@@ -149,11 +151,11 @@ labelvalue:
 -	类型：字符串
 -	描述：事件参数配置中的参数名称
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -198,7 +200,7 @@ iOS系统，Android系统
 
 自定义页面统计触发开始，本方法与下面的onPageEnd方法成对使用，其中的pagename参数必须一致，否则无法统计页面使用时间。
 
-onPageStart(params,callback(ret));
+onPageStart({params}, callback(ret, err));
 
 ##params
 
@@ -207,11 +209,11 @@ pagename:
 -	类型: 字符串
 -	描述:自定义的页面名称，不需要预先在平台中定义，当然如果定义了也没问题
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -248,7 +250,7 @@ iOS系统，Android系统
 
 自定义页面统计结束，与onPageStart方法配对使用，其中pagename参数必须一致。
 
-onPageEnd(params,callback(ret));
+onPageEnd({params}, callback(ret, err));
 
 ##params
 
@@ -258,11 +260,11 @@ pagename:
 -	描述:自定义的页面名称，不需要预先在平台中定义，当然如果定义了也没问题
 
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js

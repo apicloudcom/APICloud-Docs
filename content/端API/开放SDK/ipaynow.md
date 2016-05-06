@@ -3,6 +3,8 @@ Title: ipaynow
 Description: ipaynow
 */
 
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">方法</a></li>
 </ul>
@@ -45,7 +47,7 @@ ipaynow(现在支付)封装了支付宝、微信、银联、点卡充值卡、�
 
 获取待签名字符串
 
-generatePresignMessage(params, callback)
+generatePresignMessage({params}, callback(ret, err))
 
 ##params
 
@@ -149,7 +151,7 @@ payChannelType：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -164,7 +166,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -219,7 +221,7 @@ iOS系统，Android系统
 该方法需要与商户后台签名接口配合使用，商户服务器应获取paydata字段中的内容，对内容做url解码，并对解码后的内容进行签名处理。
 签名公式为MD5(服务器接收的解码内容+MD5(聚合支付平台发放的APP秘钥));
 
-doSignature(params, callback)
+doSignature({params}, callback(ret, err))
 
 ##params
 
@@ -247,7 +249,7 @@ post_url：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -263,7 +265,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -311,7 +313,7 @@ iOS系统，Android系统
 
 支付订单
 
-pay(params, callback)
+pay({params}, callback(ret, err))
 
 ##params
 
@@ -332,7 +334,7 @@ urlSchema：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -344,7 +346,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 

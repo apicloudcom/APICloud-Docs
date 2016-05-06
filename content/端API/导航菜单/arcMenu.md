@@ -3,6 +3,8 @@ Title: arcMenu
 Description: arcMenu
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -20,9 +22,13 @@ Description: arcMenu
 
 #**概述**
 
-arcMenu是一个弧形菜单，子菜单按钮成弧形排列，展开和缩放菜单都有炫酷的动画。开发者可以配置子按钮的样式和数量以及子按钮排列方式
+arcMenu 是一个弧形菜单，子菜单按钮成弧形排列，展开和缩放菜单都有炫酷的动画。开发者可以配置子按钮的样式和数量以及子按钮排列方式
 
 ![图片说明](/img/docImage/arcMenu.jpg)
+
+
+##[实例widget下载地址](https://github.com/XM-Right/ArcMenu-Example/archive/master.zip)
+
 
 #**open**<div id="1"></div>
 
@@ -46,7 +52,7 @@ type：
 
 mainMenu：
 
-- 类型：JSON
+- 类型：JSON 对象
 - 默认值：见内部字段
 - 描述：主菜单的位置大小和背景图
 - 内部字段：
@@ -117,7 +123,7 @@ shieldClick:
 ##callback(ret, err)
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -176,7 +182,7 @@ arcMenu.open({
     wholeAngle: 180,
     radius: 100,
     fixedOn: api.frameName
-},function( ret, err ){		
+}, function(ret, err){		
 	if( ret ){
 		alert( JSON.stringify( ret ) );
 	}else{

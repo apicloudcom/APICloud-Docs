@@ -3,6 +3,8 @@ Title: tyRTC
 Description: tyRTC
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：天翼RTC</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#init-content">初始化设置类接口</a></li>
 	<li><a href="#single-content">点对点通信类接口</a></li>

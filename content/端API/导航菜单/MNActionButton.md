@@ -3,6 +3,8 @@ Title: MNActionButton
 Description: MNActionButton
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <div class="outline">
 [open](#m1)
 
@@ -15,13 +17,16 @@ Description: MNActionButton
 
 #**概述**
 
-MNActionButton 是 actionButton 模块的优化升级版。开发者可通过本模块打开一个以 action 形式弹出的菜单，该菜单从当前屏幕底部以动画的形式弹出。所弹出的菜单依附于当前主窗口，其生命周期也痛当前主窗口。
+MNActionButton 是 actionButton 模块的优化升级版。开发者可通过本模块打开一个以 action 形式弹出的菜单，该菜单从当前屏幕底部以动画的形式弹出。所弹出的菜单依附于当前主窗口，其生命周期也同当前主窗口。
 
 **模块功能**
 
-该菜单由多个菜单按钮组成，开发者可定义显示行数和列数。亦支持多屏显示，当开发者所设置的子按钮个数超过当前屏幕锁承载的个数时，子按钮会被现实在下一屏，用户左右拖动即可查看。菜单子按钮图片及其标题，都可通过相应参数自定义设置。详细功能请查看模块接口。
+该菜单由多个菜单按钮组成，开发者可定义显示行数和列数。亦支持多屏显示，当开发者所设置的子按钮个数超过当前屏幕锁承载的个数时，子按钮会被显示在下一屏，用户左右拖动即可查看。菜单子按钮图片及其标题，都可通过相应参数自定义设置。详细功能请查看模块接口。
 
 ![图片说明](/img/docImage/actionButton.jpg)
+
+
+##[实例widget下载地址](https://github.com/XM-Right/MNActionButton-Example/archive/master.zip)
 
 ##**模块接口**
 
@@ -72,7 +77,7 @@ styles：
     bg: '#fff',                        //（可选项）字符串类型；菜单有效区域背景，支持 rgb，rgba，#，img；默认：#fff
     cancelButton: {                    //（可选项）JSON 对象类型，取消按钮设置
         size: 44,                      //（可选项）数字类型；底部取消按钮的高和宽；默认：44
-        bg: '#fff',                    //（可选项）字符串类型；取消按钮的 100% 宽度的背景，支持rgb，rgba，#，img；默认：'#fff'
+        bg: '#fff',                    //（可选项）字符串类型；取消按钮的 100% 宽度的背景，支持 rgb，rgba，#，img；默认：'#fff'
         icon: 'widget://res/icon.png', //（可选项）字符串类型：取消按钮的图标，要求本地路径（widget://、fs://）；默认：默认X型图标
     },
     item: {                            //（可选项）JSON 对象类型，菜单按钮设置
@@ -81,8 +86,8 @@ styles：
         titleSize: 12,                 //（可选项）数字类型；菜单按钮文字大小，同时也是文字栏所占高度，值为 0 时不显示文字栏；默认：12
     },
     indicator: {                       //（可选项）JSON 对象类型；页标指示器样式，若不传则不显示该指示器
-        color: '#c4c4c4',              //（可选项）字符串类型；其它页指示器颜色；支持rgb、rgba、#；默认：'#c4c4c4'
-        highlight: '#9e9e9e'           //（可选项）字符串类型；当前页指示器颜色；支持rgb、rgba、#；默认：'#9e9e9e'
+        color: '#c4c4c4',              //（可选项）字符串类型；其它页指示器颜色；支持 rgb、rgba、#；默认：'#c4c4c4'
+        highlight: '#9e9e9e'           //（可选项）字符串类型；当前页指示器颜色；支持 rgb、rgba、#；默认：'#9e9e9e'
     }
 }
 ```
@@ -105,7 +110,7 @@ items：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -120,8 +125,8 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('MNActionButton');
-obj.open({
+var MNActionButton = api.require('MNActionButton');
+MNActionButton.open({
     layout: {
         row: 2,                        //（可选项）数字类型；每屏显示菜单按钮的行数；默认：2
         col: 3,                        //（可选项）数字类型；每屏显示菜单按钮的列数；默认：3
@@ -136,7 +141,7 @@ obj.open({
         bg: '#fff',                    //（可选项）字符串类型；菜单有效区域背景，支持 rgb，rgba，#，img；默认：#fff
         cancelButton: {                      //（可选项）JSON 对象类型，取消按钮设置
             size: 44,                  //（可选项）数字类型；底部取消按钮的高和宽；默认：44
-            bg: '#fff',                //（可选项）字符串类型；取消按钮的 100% 宽度的背景，支持rgb，rgba，#，img；默认：'#fff'
+            bg: '#fff',                //（可选项）字符串类型；取消按钮的 100% 宽度的背景，支持 rgb，rgba，#，img；默认：'#fff'
             icon: 'widget://res/action-button-cancel.png'  //（可选项）字符串类型：取消按钮的图标，要求本地路径（widget://、fs://）；默认：默认X型图标
         },
         item: { //（可选项）JSON 对象类型，菜单按钮设置
@@ -145,8 +150,8 @@ obj.open({
             titleSize: 12              //（可选项）数字类型；菜单按钮文字大小，同时也是文字栏所占高度，值为 0 时不显示文字栏；默认：12
         },
         indicator: {                   //（可选项）JSON 对象类型；页标指示器样式，若不传则不显示该指示器
-            color: '#c4c4c4',          //（可选项）字符串类型；其它页指示器颜色；支持rgb、rgba、#；默认：'#c4c4c4'
-            highlight: '#9e9e9e'       //（可选项）字符串类型；当前页指示器颜色；支持rgb、rgba、#；默认：'#9e9e9e'
+            color: '#c4c4c4',          //（可选项）字符串类型；其它页指示器颜色；支持 rgb、rgba、#；默认：'#c4c4c4'
+            highlight: '#9e9e9e'       //（可选项）字符串类型；当前页指示器颜色；支持 rgb、rgba、#；默认：'#9e9e9e'
         }
     },
     items:[{ //JSON 对象类型；一个菜单项的设置信息
@@ -182,12 +187,10 @@ obj.open({
         highlight: 'widget://res/MNActionButton/7.png',
         title: '菜单项8'
     }]
-}, function(ret, err) {
+}, function(ret) {
     if (ret) {
         alert(JSON.stringify(ret));
-    } else {
-        alert(JSON.stringify(err));
-    }
+    } 
 });
 ```
 
@@ -205,8 +208,10 @@ close()
 
 ##示例代码
 
-    var obj = api.require('MNActionButton');
-    obj.close();
+```js
+var MNActionButton = api.require('MNActionButton');
+MNActionButton.close();
+```
 
 ##可用性
 
@@ -222,8 +227,10 @@ hide()
 
 ##示例代码
 
-    var obj = api.require('MNActionButton');
-    obj.hide();
+```js
+var MNActionButton = api.require('MNActionButton');
+MNActionButton.hide();
+```
 
 ##可用性
 
@@ -239,8 +246,10 @@ show()
 
 ##示例代码
 
-    var obj = api.require('MNActionButton');
-    obj.show();
+```js
+var MNActionButton = api.require('MNActionButton');
+MNActionButton.show();
+```
 
 ##可用性
 

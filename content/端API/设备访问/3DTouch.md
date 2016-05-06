@@ -3,6 +3,8 @@ Title: 3DTouch
 Description: 3DTouch
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -10,9 +12,9 @@ Description: 3DTouch
 
 #**概述**
 
-3DTouch封装了iPhone6s、iPhone6s plus以后版本的手机特有的3DTouch功能。使用本模块需要支持3DTouch屏幕的手机和ios9.0以上的操作系统
+3DTouch 封装了 iPhone6s、iPhone6s plus 以后版本的手机特有的 3DTouch 功能。使用本模块需要支持 3DTouch 屏幕的手机和 iOS9.0 以上的操作系统
 
-使用此模块之前，请先在Info.plist里面配置快捷菜单，配置方法请参考链接里面的”配置3DTouch应用快捷菜单“：http://community.apicloud.com/bbs/forum.php?mod=viewthread&tid=20
+使用此模块之前，请先在 Info.plist 里面配置快捷菜单，配置方法请参考链接里面的”配置 3DTouch 应用快捷菜单“：http://community.apicloud.com/bbs/forum.php?mod=viewthread&tid=20
 
 ![图片说明](/img/docImage/3DTouch.jpg)
 
@@ -26,7 +28,7 @@ setListener(callback(ret, err))
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -42,8 +44,8 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('3DTouch');
-obj.setListener(
+var 3DTouch = api.require('3DTouch');
+3DTouch.setListener(
 	function(ret,err){
 		var type = ret.type;
 		if (type == 'com.mycompany.myapp.openfavorites'){

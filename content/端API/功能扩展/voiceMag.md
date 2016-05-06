@@ -3,6 +3,8 @@ Title: voiceMag
 Description: voiceMag
 */
 
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -21,7 +23,7 @@ Description: voiceMag
 
 #**概述**
 
-voiceMag是用来控制手机的声音在听筒播放还是在扩音器播放；由于IOS版本的用apicloud的startPlay播放时，不能进行控制，所以将startPlay和stopPlay一并来封装了。使用时，将api.startPlay和api.stopPlay改为voiceMag.startPlay和voiceMag.stopPlay即可。
+voiceMag 是用来控制手机的声音在听筒播放还是在扩音器播放；由于 IOS 版本的用 apicloud 的 startPlay 播放时，不能进行控制，所以将 startPlay 和 stopPlay 一并来封装了。使用时，将 api.startPlay 和 api.stopPlay 改为 voiceMag.startPlay 和 voiceMag.stopPlay 即可。
 使用场景：类似微信播放语音时靠近听筒时使用听筒播放，远离时使用扩音器播放。下面有相应的例子。
 
 
@@ -75,7 +77,7 @@ iOS系统，Android系统
 
 播放音频文件
 
-startPlay(function(ret,err))
+startPlay(callback(ret, err))
 
 播放错误时会提醒
 

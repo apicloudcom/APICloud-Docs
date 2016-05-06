@@ -3,6 +3,8 @@ Title: pingpp
 Description: 封装了多个渠道的支付接口.
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：ping++</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">分享类接口</a></li>
 	<li><a href="#const-content">常量</a></li>
@@ -25,7 +27,7 @@ pingpp 封装了支付宝（alipay），微信（wx），银联（upacp/upmp）�
 
 支付.
 
-createPayment(params, callback)
+createPayment({params}, callback(ret, err))
 
 ## params
 
@@ -43,7 +45,7 @@ scheme
 
 ret
 
-- 类型：JSON对象.
+- 类型：JSON 对象.
 
 内部字段：
 
@@ -110,7 +112,7 @@ getVersion();
 
 ret
 
-- 类型：JSON对象.
+- 类型：JSON 对象.
 
 内部字段：
 
@@ -167,7 +169,7 @@ pingpp.setDebugMode({enabled:true});
 
 ##可用性
 
-iOS 系统，Android 系统
+iOS系统，Android系统
 
 </div>
 

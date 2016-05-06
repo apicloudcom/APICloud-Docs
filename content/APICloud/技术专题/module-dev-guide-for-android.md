@@ -5,6 +5,7 @@ Sort: 5
 */
 
 
+
 [第一章 SDK简介](#resoure2)
 
 [第二章 阅读对象](#resoure3)
@@ -33,7 +34,11 @@ Sort: 5
 [第九章 其他](#resoure10)
 - [模块资源文件命名规范](#10)
 - [APICloud引擎固有资源说明](#11)
-- [资源规范细则](#12)
+
+[第十章 模块审核规范](#13)
+
+
+##参考视频：http://docs.apicloud.com/APICloud/videos-and-codes
 
 #**第一章 SDK简介**<div id="resoure2"></div>
 APICloud模块（Native Module）扩展SDK（以下简称SDK）是APICloud为满足广大开发者自定义扩展Native模块的热切需求，而推出的模块扩展开发SDK，提供给有一定Android基础的开发者，通过简单的接口实现，轻松接入APICloud平台，快速开发扩展模块，自行实现对APICloud引擎能力的增强，提升App的质量及用户体验。
@@ -422,5 +427,8 @@ mo + 模块名 + 功能或UI类型 + 资源类型。
 
 APICloud SDK工程目录下，凡是以“uz_”前缀打头命名的资源文件，请开发者不要随意改动，保持其原状，否则SDK可能在启动过程中报找不到引擎资源的警告而强制退出。
 		
-##iii.资源规范细则<div id="12"></div>	
-暂定
+
+
+#**第十章 模块审核规范**<div id="13"></div>
+
+开发者开发的模块务必遵守[《模块审核规范-Android》](http://docs.apicloud.com/APICloud/技术专题/Module-audit-specification-Android)。

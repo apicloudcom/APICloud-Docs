@@ -3,6 +3,8 @@ Title: photoSelect
 Description: photoSelect
 */
 
+<p style="color: #ccc;margin-bottom: 30px;">来自于：开发者</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -14,34 +16,34 @@ Description: photoSelect
 
 #**概述**
 
-photoSelect封装了读取安卓系统相册功能，使用此模块可实现相册的单选多选，并可以限制选择图片的数量。暂仅支持 Android 平台
+photoSelect 封装了读取安卓系统相册功能，使用此模块可实现相册的单选多选，并可以限制选择图片的数量。暂仅支持 Android 平台
 
 
 #**openAblum**<div id="a1"></div>
 
 调用相册
 
-openAblum(param, callback(ret))
+openAblum( param, callback)
 
 ##params
 
 permitnum
 
 - 类型：字符串
-- 描述：限制选择图片数量 最小为1，没有限制最大，但建议不要太大，一般最大为9
+- 描述：限制选择图片数量 最小为 1，没有限制最大，但建议不要太大，一般最大为 9
 
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
 {
-	selectpic:[],            //数组类型；返回用户所选图片的地址的数组
-	selectnum: 9    			  //数字类型；返回的选择的图片的总数
+	selectpic: [],            		//数组类型；返回用户所选图片的地址的数组
+	selectnum: 9    			  	//数字类型；返回的选择的图片的总数
 }
 ```
 
@@ -53,7 +55,7 @@ ret：
 var photoSelect = api.require('photoSelect');
 photoSelect.openAblum({
 	permitnum: '9'
-},function( ret, err ){		
+}, function(ret, err){		
 	if( ret ){
 		alert( JSON.stringify( ret ) );
 	}else{
@@ -64,7 +66,7 @@ photoSelect.openAblum({
 
 ##可用性
 
-Android系统
+Android 系统
 
 可提供的1.0.0及更高版本
 
@@ -89,6 +91,6 @@ photoSelect.clearoom();
 
 ##可用性
 
-Android系统
+Android 系统
 
 可提供的1.0.0及更高版本

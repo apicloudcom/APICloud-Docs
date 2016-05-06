@@ -3,6 +3,8 @@ Title: UILineChart
 Description: UILineChart
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
     <li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -58,8 +60,8 @@ xAxis：
 
 ```js
 {
-    indexs:['一月','二月','三月'],      //字符串数组类型；X 轴标注
-    screenXcount:7                    //（可选项）数字类型；X 轴标注在每屏内的显示个数；默认：7
+    indexs: ['一月','二月','三月'],      //字符串数组类型；X 轴标注
+    screenXcount: 7                      //（可选项）数字类型；X 轴标注在每屏内的显示个数；默认：7
 }
 ```
 yAxis：
@@ -133,14 +135,14 @@ fixedOn：
 fixed:
 
 - 类型：布尔
-- 描述：（可选项）模块是否随所属 Window 或 Frame 滚动
+- 描述：（可选项）模块是否随所属 window 或 frame 滚动
 - 默认值：true（不随之滚动）
 
-##callBack(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 内部字段：
   
 ```js
@@ -169,14 +171,14 @@ UILineChart.open({
         h: 300
     },
     xAxis: {
-        indexs: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月', '一月'], //字符串数组类型；X 轴标注
-        screenXcount: 7                //（可选项）数字类型；X 轴标注在每屏内的显示个数；默认：7
+        indexs: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月', '一月'],
+        screenXcount: 7
     },
     yAxis: {
-        max: 1000,                     //数字类型；Y 轴最大值；可为负值，需要大于 min
-        min: -1000,                    //数字类型；Y 轴最小值；可为负值，需要小于 max
-        step: 200,                     //数字类型；Y 轴刻度间隔
-        base: 0                        //数字类型；基准线对应的 Y 轴坐标，当值大于 max 或小于 min 时不显示
+        max: 1000,
+        min: -1000,
+        step: 200,
+        base: 0
     },
     datas: [
         [200,-100,100,0,50],           //数字数组；一条折线的结点数据数组
@@ -206,7 +208,7 @@ UILineChart.open({
     },
     fixedOn: api.frameName,
     fixed: false
-},function( ret, err ){
+}, function(ret, err){
     if( ret ){
          alert( JSON.stringify( ret ) );
     }else{
@@ -225,7 +227,7 @@ iOS系统，Android系统
 
 重新加载数据
 
-reloadData({params},callback(ret))
+reloadData({params}, callback(ret, err))
 
 ##params
 
@@ -255,11 +257,11 @@ datas：
     [-200,100,-100,0,-50]              //数字数组；这是另一条折线的结点数据数组
 ]
 ```
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
   
 ```js
@@ -300,7 +302,7 @@ iOS系统，Android系统
 
 关闭折线图
 
-close(params)
+close({params})
 
 ##params
 
@@ -327,7 +329,7 @@ iOS系统，Android系统
 
 隐藏折线图视图
 
-hide(params)
+hide({params})
 
 ##params
 
@@ -340,7 +342,7 @@ id：
 ```js
 var UILineChart = api.require('UILineChart');
 UILineChart.hide({
-    id:1
+    id: 1
 });
 ```
 ##补充说明
@@ -357,7 +359,7 @@ iOS系统，Android系统
 
 显示已隐藏的折线图视图
 
-show(params)
+show({params})
 
 ##params
 

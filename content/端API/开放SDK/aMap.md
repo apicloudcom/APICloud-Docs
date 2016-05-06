@@ -3,6 +3,8 @@ Title: aMap
 Description: 高德地图
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 ##基础类
 
 <div class="outline">
@@ -99,7 +101,7 @@ Description: 高德地图
 
 **高德地图简介**
 
-高德地图 是国内一流的免费地图导航产品，也是基于位置的生活服务功能最全面、信息最丰富的手机地图，由国内最大的电子地图、导航和LBS服务解决方案提供商高德软件（纳斯达克Amap）提供。高德地图采用领先的技术为用户打造了最好用的“活地图”，不管在哪、去哪、找哪、怎么去、想干什么一图在手，统统搞定，省电省流量更省钱，堪称最完美的生活出行软件。地图数据覆盖中国大陆及香港澳门,遍及337个地级2857个县级以上行政区划单位；导航支持GPS、基站、网络等多种方式一键定位。美食、酒店、演出、商场等各种深度POI点达2600多万条，衣食住行吃喝玩乐全方位海量生活信息可供搜索查询。自动生成“最短”“最快”“最省钱”等多种路线规划以供选择，可根据实时路况选择最优公交/驾车出行路线。
+高德地图 是国内一流的免费地图导航产品，也是基于位置的生活服务功能最全面、信息最丰富的手机地图，由国内最大的电子地图、导航和LBS服务解决方案提供商高德软件（纳斯达克AaMap）提供。高德地图采用领先的技术为用户打造了最好用的“活地图”，不管在哪、去哪、找哪、怎么去、想干什么一图在手，统统搞定，省电省流量更省钱，堪称最完美的生活出行软件。地图数据覆盖中国大陆及香港澳门,遍及337个地级2857个县级以上行政区划单位；导航支持GPS、基站、网络等多种方式一键定位。美食、酒店、演出、商场等各种深度POI点达2600多万条，衣食住行吃喝玩乐全方位海量生活信息可供搜索查询。自动生成“最短”“最快”“最省钱”等多种路线规划以供选择，可根据实时路况选择最优公交/驾车出行路线。
 
 **高德地图特色功能**
 
@@ -169,7 +171,7 @@ open({params}, callback(ret, err))
 
 rect：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）模块的位置及尺寸
 - 内部字段：
 
@@ -216,14 +218,14 @@ fixedOn：
 fixed:
 
 - 类型：布尔
-- 描述：（可选项）模块是否随所属 Window 或 Frame 滚动
+- 描述：（可选项）模块是否随所属 window 或 frame 滚动
 - 默认值：true（不随之滚动）
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -235,8 +237,8 @@ ret：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.open({
+var aMap = api.require('aMap');
+aMap.open({
     rect: {
         x: 0,
         y: 0,
@@ -251,10 +253,12 @@ map.open({
     },
     fixedOn: api.frameName,
     fixed: true
-}, function(ret){
-	if(ret.status){
-        alert('地图打开成功');
-	}
+}, function(ret, err){        
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -275,8 +279,8 @@ close()
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.close();
+var aMap = api.require('aMap');
+aMap.close();
 ```
 
 ##可用性
@@ -296,8 +300,8 @@ show()
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.show();
+var aMap = api.require('aMap');
+aMap.show();
 ```
 
 ##可用性
@@ -317,8 +321,8 @@ hide()
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.hide();
+var aMap = api.require('aMap');
+aMap.hide();
 ```
 
 ##可用性
@@ -339,7 +343,7 @@ setRect({params})
 
 rect：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）模块的位置及尺寸
 - 内部字段：
 
@@ -355,8 +359,8 @@ rect：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.setRect({
+var aMap = api.require('aMap');
+aMap.setRect({
     rect: {
         x: 0,
         y: 0,
@@ -376,9 +380,9 @@ iOS系统，Android系统
 
 #**getLocation**
 
-获取当前位置信息，若要支持后台定位需[配置 config.xml 文件 location 字段](http://docs.apicloud.com/APICloud/技术专题/app-config-manual#14-2)。**调用本接口需先 open，在ios 平台上 showUserLocation 为 false 时此接口不可用**
+获取当前位置信息，若要支持后台定位需[配置 [config.xml](/APICloud/技术专题/app-config-manual) 文件 location 字段](http://docs.apicloud.com/APICloud/技术专题/app-config-manual#14-2)。**调用本接口需先 open，在ios 平台上 showUserLocation 为 false 时此接口不可用**
 
-getLocation(params, callback(ret))
+getLocation({params}, callback(ret, err))
 
 ##params
 
@@ -388,11 +392,11 @@ autoStop：
 - 描述：（可选项）获取到位置信息后是否自动停止定位
 - 默认值：true
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -409,9 +413,11 @@ ret：
 
 ```js
 var aMap = api.require('aMap');
-aMap.getLocation(function(ret, err){
-    if(ret.status){
-        alert(JSON.stringify(ret));
+aMap.getLocation(function(ret, err){      
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -467,7 +473,7 @@ address：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -480,7 +486,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -493,13 +499,15 @@ err：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.getCoordsFromName({
+var aMap = api.require('aMap');
+aMap.getCoordsFromName({
     city: '北京',
     address: '天安门'
-},function(ret,err){
-    if(ret.status){
-       alert(JSON.stringify(ret));
+}, function(ret, err){     
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -516,7 +524,7 @@ iOS系统，Android系统
 
 根据经纬度查找地址信息，**无需调用 open 接口即可使用**
 
-getNameFromCoords({params}, callback(ret))
+getNameFromCoords({params}, callback(ret, err))
 
 ##params
 
@@ -530,11 +538,11 @@ lat：
 - 类型：数字
 - 描述：纬度
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -553,13 +561,15 @@ ret：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.getNameFromCoords({
+var aMap = api.require('aMap');
+aMap.getNameFromCoords({
     lon: 116.384767,
     lat: 39.989539
-},function(ret,err){
-    if(ret.status){
-        alert(JSON.stringify(ret));
+}, function(ret, err){     
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -582,7 +592,7 @@ getDistance({params}, callback(ret, err))
 
 start：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：起点经纬度
 - 内部字段：
 
@@ -595,7 +605,7 @@ start：
 
 end：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：终点经纬度
 - 内部字段：
 
@@ -606,11 +616,11 @@ end：
 }
 ```
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -623,8 +633,8 @@ ret：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.getDistance({
+var aMap = api.require('aMap');
+aMap.getDistance({
     start: {
         lon: 106.486654,
         lat: 29.490295
@@ -633,9 +643,11 @@ map.getDistance({
         lon: 106.581515,
         lat: 29.615467
     }
-},function(ret){
-    if(ret.status){
-        alert(ret.distance);
+}, function(ret, err){     
+    if( ret.status ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
     }
 });
 ```
@@ -665,8 +677,8 @@ isShow：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.showUserLocation({
+var aMap = api.require('aMap');
+aMap.showUserLocation({
     isShow: true
 });
 ```
@@ -706,8 +718,8 @@ animation：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.setTrackingMode({
+var aMap = api.require('aMap');
+aMap.setTrackingMode({
     animation: false,
     trackingMode: 'none'
 });
@@ -731,7 +743,7 @@ setCenter({params})
 
 coords：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）中心点的经纬度
 - 内部字段：
 
@@ -751,8 +763,8 @@ animation：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.setCenter({
+var aMap = api.require('aMap');
+aMap.setCenter({
     coords: {
         lon: 116.404,
         lat: 39.915
@@ -773,13 +785,13 @@ iOS系统，Android系统
 
 获取高德地图中心点坐标
 
-getCenter(callback(ret))
+getCenter(callback(ret, err))
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -792,9 +804,13 @@ ret：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.getCenter(function(ret){
-   alert(ret.lon+'*'+ret.lat);
+var aMap = api.require('aMap');
+aMap.getCenter(function(ret, err){        
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -829,10 +845,10 @@ animation：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.setZoomLevel({
+var aMap = api.require('aMap');
+aMap.setZoomLevel({
     level: 10,
-    animation:true
+    animation: true
 });
 ```
 
@@ -848,13 +864,13 @@ iOS系统，Android系统
 
 获取地图缩放级别（0.01-20）
 
-getZoomLevel(callback(ret))
+getZoomLevel(callback(ret, err))
 
 ##callback
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -866,9 +882,13 @@ ret：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.getZoomLevel(function(ret){
-    alert(JSON.stringify(ret.level));
+var aMap = api.require('aMap');
+aMap.getZoomLevel(function(ret, err){     
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
 });
 ```
 
@@ -938,8 +958,8 @@ building：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.setMapAttr({
+var aMap = api.require('aMap');
+aMap.setMapAttr({
     type: 'standard',
     trafficOn: true,
     zoomEnable: false,
@@ -987,8 +1007,8 @@ duration：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.setRotation({
+var aMap = api.require('aMap');
+aMap.setRotation({
     degree: 30,
     animation: true,
     duration: 0.3
@@ -1007,13 +1027,13 @@ iOS系统，Android系统
 
 获取地图当前旋转角度
 
-getRotation(callback(ret))
+getRotation(callback(ret, err))
 
 ##callback
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -1025,8 +1045,8 @@ ret：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.getRotation(function(ret){
+var aMap = api.require('aMap');
+aMap.getRotation(function(ret){
     alert(JSON.stringify(ret.level));
 });
 ```
@@ -1068,8 +1088,8 @@ duration：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.setOverlook({
+var aMap = api.require('aMap');
+aMap.setOverlook({
     degree: 30,
     animation: true,
     duration: 0.3
@@ -1088,13 +1108,13 @@ iOS系统，Android系统
 
 获取地图当前俯视角度
 
-getOverlook(callback(ret))
+getOverlook(callback(ret, err))
 
 ##callback
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -1106,8 +1126,8 @@ ret：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.getOverlook(function(ret){
+var aMap = api.require('aMap');
+aMap.getOverlook(function(ret){
     alert(JSON.stringify(ret.level));
 });
 ```
@@ -1157,8 +1177,8 @@ animation：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.setRegion({
+var aMap = api.require('aMap');
+aMap.setRegion({
     lbLon: 116.027143, 
     lbLat: 39.772348, 
     rtLon: 116.832025, 
@@ -1179,13 +1199,13 @@ iOS系统，Android系统
 
 获取地图显示范围（矩形区域）
 
-getRegion(callback(ret))
+getRegion(callback(ret, err))
 
 ##callback
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -1201,8 +1221,8 @@ ret：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.getRegion(function(ret){
+var aMap = api.require('aMap');
+aMap.getRegion(function(ret){
     if(ret.status){
         alert(JSON.stringify(ret));
     }
@@ -1233,7 +1253,7 @@ show：
 
 position：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）比例尺的位置，设定坐标以地图左上角为原点，**在 Android 平台上为固定位置，本参数无效**
 - 内部字段：
 ```js
@@ -1246,8 +1266,8 @@ position：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.setScaleBar({
+var aMap = api.require('aMap');
+aMap.setScaleBar({
     show: true,
     position: {
       x:100,
@@ -1280,7 +1300,7 @@ show：
 
 position：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）指南针的位置，设定坐标以地图左上角为原点，**在 Android 平台上为固定位置，本参数无效**
 - 内部字段：
 ```js
@@ -1293,14 +1313,14 @@ position：
 img：
 
 - 类型：布尔
-- 描述：（可选项）自定义指南针图标图片路径，要求本地路径（fs://，widget://），**Android 平台上忽略本参数**
+- 描述：（可选项）自定义指南针图标图片路径，要求本地路径（fs://、widget://），**Android 平台上忽略本参数**
 - 默认值：高德地图默认图标
 
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.setCompass({
+var aMap = api.require('aMap');
+aMap.setCompass({
     show: true,
     img: 'widget://res/compass.png',
     position: {
@@ -1338,8 +1358,8 @@ position：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.setLogo({
+var aMap = api.require('aMap');
+aMap.setLogo({
     position: 'right'
 });
 ```
@@ -1356,13 +1376,13 @@ iOS系统，Android系统
 
 判断已知点是否在指定的多边形区域内
 
-isPolygonContainsPoint({params}, callback(ret))
+isPolygonContainsPoint({params}, callback(ret, err))
 
 ##params
 
 point：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：已知点的地理坐标
 - 内部字段：
 
@@ -1389,7 +1409,7 @@ points：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -1402,8 +1422,8 @@ ret：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.isPolygonContainsPoint({
+var aMap = api.require('aMap');
+aMap.isPolygonContainsPoint({
     point: {
 	     lon:116.39432327,
 	     lat:39.98963192
@@ -1435,7 +1455,7 @@ iOS系统，Android系统
 
 经纬度坐标与地图容器像素坐标相互转换，经纬度和x，y值传一种即可。
 
-interconvertCoords({params}, callback(ret))
+interconvertCoords({params}, callback(ret, err))
 
 ##params
 
@@ -1463,7 +1483,7 @@ y：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -1479,8 +1499,8 @@ ret：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.interconvertCoords({
+var aMap = api.require('aMap');
+aMap.interconvertCoords({
     lon: 116.351,
     lat: 39.283
 }, function(ret, err){
@@ -1502,7 +1522,7 @@ iOS系统，Android系统
 
 监听地图相关事件
 
-addEventListener({params}, callback(ret))
+addEventListener({params}, callback(ret, err))
 
 ##params
 
@@ -1516,11 +1536,11 @@ name:
     - click（单击事件）
     - trackingMode（userTrackingMode 改变事件，暂仅支持 IOS 平台）
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -1542,8 +1562,8 @@ ret：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.addEventListener({
+var aMap = api.require('aMap');
+aMap.addEventListener({
     name: 'longPress'
 },function(ret){
     if(ret.status){
@@ -1581,8 +1601,8 @@ name:
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.removeEventListener({
+var aMap = api.require('aMap');
+aMap.removeEventListener({
     name: 'longPress'
 });
 ```
@@ -1599,7 +1619,7 @@ iOS系统，Android系统
 
 在地图上添加标注信息，标注大小为 icons 内第一张图片大小的二分之一。**图标中轴线的下边缘点为坐标基准点**
 
-addAnnotations({params}, callback(ret))
+addAnnotations({params}, callback(ret, err))
 
 ##params
 
@@ -1614,7 +1634,7 @@ annotations：
     id: 1,                     //数字类型；图标标注的唯一标识
     lon: 116.233,              //数字类型；图标标注所在位置的经度
     lat: 39.134,               //数字类型；图标标注所在位置的纬度
-    icons: 'widget://',        //（可选项）数组类型；指定的标注图标路径组成的数组，若包含多张图片，则此标注显示为多图联动的 gif 动画效果，要求本地路径（fs://，widget://），若不传则显示公用的 icons 图标
+    icons: 'widget://',        //（可选项）数组类型；指定的标注图标路径组成的数组，若包含多张图片，则此标注显示为多图联动的 gif 动画效果，要求本地路径（fs://、widget://），若不传则显示公用的 icons 图标
     draggable: true            //（可选项）布尔类型；所添加的标注是否可被拖动，若不传则以公用的 draggable 为准
 }]
 ```
@@ -1622,7 +1642,7 @@ annotations：
 icons：
 
 - 类型：数组
-- 描述：（可选项）指定的标注图标路径组成的数组，若包含多张图片，则此标注显示为多图联动的 gif ，要求本地路径（fs://，widget://）
+- 描述：（可选项）指定的标注图标路径组成的数组，若包含多张图片，则此标注显示为多图联动的 gif ，要求本地路径（fs://、widget://）
 - 默认值：红色大头针
 
 
@@ -1638,11 +1658,11 @@ timeInterval：
 - 描述：（可选项）若添加的标注为动态图，则本参数表示动态图循环播放一次的时间，单位为秒（s），否则本参数无效
 - 默认值：3.0
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -1663,8 +1683,8 @@ ret：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.addAnnotations({
+var aMap = api.require('aMap');
+aMap.addAnnotations({
     annotations: [{
         id: 1, lon: 116.297, lat: 40.109
     },
@@ -1696,7 +1716,7 @@ iOS系统，Android系统
 
 获取指定标注的经纬度
 
-getAnnotationCoords({params}, callback(ret))
+getAnnotationCoords({params}, callback(ret, err))
 
 ##params
 
@@ -1705,11 +1725,11 @@ id：
 - 类型：数字
 - 描述：指定的标注 id
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -1722,8 +1742,8 @@ ret：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.getAnnotationCoords({
+var aMap = api.require('aMap');
+aMap.getAnnotationCoords({
     id: 2
 }, function(ret){
     if(ret){
@@ -1744,7 +1764,7 @@ iOS系统，Android系统
 
 设置某个已添加标注的经纬度
 
-setAnnotationCoords(callback(ret))
+setAnnotationCoords(callback(ret, err))
 
 ##params
 
@@ -1766,8 +1786,8 @@ lat：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.setAnnotationCoords({
+var aMap = api.require('aMap');
+aMap.setAnnotationCoords({
     id: 2,
     lon: 116.39,
     lat: 40.209
@@ -1786,7 +1806,7 @@ iOS系统，Android系统
 
 判断标注是否存在
 
-annotationExist({params}, callback(ret))
+annotationExist({params}, callback(ret, err))
 
 ##params
 
@@ -1795,11 +1815,11 @@ id：
 - 类型：数字
 - 描述：指定的标注 id
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -1811,8 +1831,8 @@ ret：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.annotationExist({
+var aMap = api.require('aMap');
+aMap.annotationExist({
     id: 2
 }, function(ret){
     if(ret.status){
@@ -1833,7 +1853,7 @@ iOS系统，Android系统
 
 设置点击标注时弹出的气泡信息
 
-setBubble({params}, callback(ret))
+setBubble({params}, callback(ret, err))
 
 ##params
 
@@ -1845,12 +1865,12 @@ id：
 bgImg：
 
 - 类型：字符串
-- 描述：（可选项）弹出气泡的背景图片（160*90规格），要求本地路径（fs://，widget://），中轴线下边缘点为气泡弹出点，**若本字段为空，则 content 内的 title 长度大于105时，气泡宽度会根据 title 长度自适应**
+- 描述：（可选项）弹出气泡的背景图片（160*90规格），要求本地路径（fs://、widget://），中轴线下边缘点为气泡弹出点，**若本字段为空，则 content 内的 title 长度大于105时，气泡宽度会根据 title 长度自适应**
 - 默认值：默认气泡背景图片
 
 content：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：弹出气泡的内容
 - 内部字段：
 
@@ -1864,15 +1884,15 @@ content：
 
 styles：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：弹出气泡的样式
 - 内部字段：
 
 ```js
 {
-    titleColor: '#000',             //（可选项）字符串类型；气泡标题的文字颜色，支持rgb、rgba、#；默认：'#000'
+    titleColor: '#000',             //（可选项）字符串类型；气泡标题的文字颜色，支持 rgb、rgba、#；默认：'#000'
     titleSize: 16,                  //（可选项）数字类型；气泡标题的文字大小；默认：16
-    subTitleColor: '#000',          //（可选项）字符串类型；气泡概述内容的文字颜色，支持rgb、rgba、#；默认：'#000'
+    subTitleColor: '#000',          //（可选项）字符串类型；气泡概述内容的文字颜色，支持 rgb、rgba、#；默认：'#000'
     subTitleSize: 14,               //（可选项）数字类型；气泡概述内容的文字大小；默认：14
     illusAlign: 'left'              //（可选项）字符串类型；气泡配图的显示位置；默认：'left'
                                     //取值范围：
@@ -1885,7 +1905,7 @@ styles：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -1901,8 +1921,8 @@ ret：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.setBubble({
+var aMap = api.require('aMap');
+aMap.setBubble({
     id: 2,
     bgImg: 'widget://res/bubble_bg.png',
     content: {
@@ -1948,8 +1968,8 @@ id：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.popupBubble({
+var aMap = api.require('aMap');
+aMap.popupBubble({
     id: 2
 });
 ```
@@ -1977,7 +1997,7 @@ id：
 
 coords：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：布告牌所在位置的坐标
 - 内部字段：
 
@@ -1991,11 +2011,11 @@ coords：
 bgImg：
 
 - 类型：字符串
-- 描述：布告牌的背景图片（120*75规格），要求本地路径（fs://，widget://）
+- 描述：布告牌的背景图片（120*75规格），要求本地路径（fs://、widget://）
 
 content：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：布告牌的内容
 - 内部字段：
 
@@ -2014,15 +2034,15 @@ draggable：
 
 styles：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：布告牌的样式
 - 内部字段：
 
 ```js
 {
-    titleColor: '#000',             //（可选项）字符串类型；布告牌标题的文字颜色，支持rgb、rgba、#；默认：'#000'
+    titleColor: '#000',             //（可选项）字符串类型；布告牌标题的文字颜色，支持 rgb、rgba、#；默认：'#000'
     titleSize: 14,                  //（可选项）数字类型；布告牌标题的文字大小；默认：16
-    subTitleColor: '#000',          //（可选项）字符串类型；布告牌概述内容的文字颜色，支持rgb、rgba、#；默认：'#000'
+    subTitleColor: '#000',          //（可选项）字符串类型；布告牌概述内容的文字颜色，支持 rgb、rgba、#；默认：'#000'
     subTitleSize: 12,               //（可选项）数字类型；布告牌概述内容的文字大小；默认：16
     illusAlign: 'left'              //（可选项）字符串类型；布告牌配图的显示位置；默认：'left'
                                     //取值范围：
@@ -2035,7 +2055,7 @@ styles：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -2056,8 +2076,8 @@ ret：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.addBillboard({
+var aMap = api.require('aMap');
+aMap.addBillboard({
     id: 4,
     draggable: true,
     coords: {
@@ -2096,7 +2116,7 @@ iOS系统，Android系统
 
 在地图上添加可移动、旋转的标注图标，**注意：本 id 不可与 addAnnotations、addBillboard 接口内的 id 相同**
 
-addMobileAnnotations({params},callback(ret,err))
+addMobileAnnotations({params}, callback(ret, err))
 
 ##params
 
@@ -2111,7 +2131,7 @@ annotations：
     id: 10,                    //数字类型；图标标注的唯一标识
     lon: 116.233,              //数字类型；图标标注所在位置的经度
     lat: 39.134,               //数字类型；图标标注所在位置的纬度
-    icon: 'widget://',          //字符串类型；指定的标注图标，要求本地路径（fs://，widget://），图标的锚点即是坐标点。
+    icon: 'widget://',          //字符串类型；指定的标注图标，要求本地路径（fs://、widget://），图标的锚点即是坐标点。
     draggable: true            //布尔类型；所添加的可移动的标注是否可被拖动；默认：false
 }]
 ```
@@ -2119,7 +2139,7 @@ annotations：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -2135,8 +2155,8 @@ ret：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-        map.addMobileAnnotations({
+var aMap = api.require('aMap');
+        aMap.addMobileAnnotations({
             annotations: [{
                 id: 10, lon: 116.297, lat: 40.109, icon:'widget://image/aMap_car1.png', draggable: true
             },{
@@ -2165,7 +2185,7 @@ iOS系统，Android系统
 
 移动地图上已添加的可移动、旋转的标注图标，**在移动动画开始前，会先做 0.3 秒的旋转动画，使所移动的图标中间轴线顶端对准终点坐标点。在 Android 平台上，如果标注添加到地图当前可视区域以外的区域，则不可以移动该标注**
 
-moveAnnotation({params}, callback(ret))
+moveAnnotation({params}, callback(ret, err))
 
 ##params
 
@@ -2182,7 +2202,7 @@ duration：
 
 end：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：终点经纬度
 - 内部字段：
 
@@ -2192,11 +2212,11 @@ end：
     lat: 29.615467      //数字类型；终点的纬度
 }
 ```
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -2208,9 +2228,9 @@ ret：
 ##示例代码
 
 ```js
-	var map = api.require('aMap');
+	var aMap = api.require('aMap');
 	for (var i=0; i<6; i++) {
-	  map.moveAnnotation({
+	  aMap.moveAnnotation({
 	      id: 10+i,
 	      duration: 6,
 	      end:{
@@ -2247,8 +2267,8 @@ ids：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.removeAnnotations({
+var aMap = api.require('aMap');
+aMap.removeAnnotations({
     ids: [1,3,5,7]
 });
 ```
@@ -2276,7 +2296,7 @@ id：
 
 styles：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）直线的样式
 - 内部字段：
 
@@ -2287,7 +2307,7 @@ styles：
                               //square：方头线
                               //arrow：带箭头的线    
     lineDash: false,          //（可选项）布尔类型；是否绘制成虚线，当 type 为 arrow 时，本参数无效；默认：false
-    borderColor: '#000',      //（可选项）字符串类型；线的颜色，支持rgb、rgba、#；默认值：'#000'
+    borderColor: '#000',      //（可选项）字符串类型；线的颜色，支持 rgb、rgba、#；默认值：'#000'
     borderWidth: 3,           //（可选项）数字类型；线的宽度，默认：2
     strokeImg:'fs://arrow.png'//（可选项）字符串类型；组成纹理画线的图片路径，要求本地路径（fs://、widget://），若本参数不为空，则本接口忽略 type、lineDash、borderColor 参数   
 }
@@ -2309,8 +2329,8 @@ points：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.addLine({
+var aMap = api.require('aMap');
+aMap.addLine({
     id: 1,
     styles: {
         type: 'arrow',
@@ -2351,7 +2371,7 @@ id：
 
 center：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：圆形中心点的经纬度
 - 内部字段：
 
@@ -2369,24 +2389,24 @@ radius：
 
 styles：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）圆形的样式
 - 内部字段：
 
 ```js
 {
-    borderColor: '#000',          //（可选项）字符串类型；圆形的边框颜色，支持rgb、rgba、#；默认：'#000'
+    borderColor: '#000',          //（可选项）字符串类型；圆形的边框颜色，支持 rgb、rgba、#；默认：'#000'
     borderWidth: 3 ,              //（可选项）数字类型；圆形的边框宽度，默认：2  
     lineDash: false,              //（可选项）布尔类型；是否绘制成虚线，Android 平台不支持；默认：false
-    fillColor: '#ff0'             //（可选项）字符串类型；圆形填充颜色，支持rgb、rgba、#；默认：'rgba(1,0.8,0,0.8)'
+    fillColor: '#ff0'             //（可选项）字符串类型；圆形填充颜色，支持 rgb、rgba、#；默认：'rgba(1,0.8,0,0.8)'
 }
 ```
 
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.addCircle({
+var aMap = api.require('aMap');
+aMap.addCircle({
     id: 2,
     center: {
         lon: 116.298,
@@ -2425,16 +2445,16 @@ id：
 
 styles：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）多边形的样式
 - 内部字段：
 
 ```js
 {
-    borderColor: '#000',    //（可选项）字符串类型；多边形的边框颜色，支持rgb、rgba、#；默认：'#000'
+    borderColor: '#000',    //（可选项）字符串类型；多边形的边框颜色，支持 rgb、rgba、#；默认：'#000'
     borderWidth: 3,         //（可选项）数字类型；多边形的边框宽度，默认：2
     lineDash: false,       //（可选项）布尔类型；是否绘制成虚线，Android 平台不支持本参数；默认：false
-    fillColor: '#ff0'      //（可选项）字符串类型；圆形填充颜色，支持rgb、rgba、#；默认：'rgba(1,0.8,0,0.8)'
+    fillColor: '#ff0'      //（可选项）字符串类型；圆形填充颜色，支持 rgb、rgba、#；默认：'rgba(1,0.8,0,0.8)'
 }
 ```
 
@@ -2454,8 +2474,8 @@ points：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.addPolygon({
+var aMap = api.require('aMap');
+aMap.addPolygon({
     id: 4,
     styles: {
         borderColor: '#FF0000',
@@ -2500,7 +2520,7 @@ id：
 imgPath：
 
 - 类型：字符串
-- 描述：图片的路径，要求本地路径（fs://，widget://）
+- 描述：图片的路径，要求本地路径（fs://、widget://）
 
 lbLon：
 
@@ -2525,8 +2545,8 @@ rtLat：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.addImg({
+var aMap = api.require('aMap');
+aMap.addImg({
     id: 5,
     imgPath: 'widget://res/over_img.png',
     lbLon: 116.297,
@@ -2560,8 +2580,8 @@ ids：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.removeOverlay({
+var aMap = api.require('aMap');
+aMap.removeOverlay({
     ids: [1, 2, 3, 4, 5]
 });
 ```
@@ -2578,7 +2598,7 @@ iOS系统，Android系统
 
 搜索路线方案，**无需调用 open 接口即可使用**
 
-searchRoute({params}, callback(ret))
+searchRoute({params}, callback(ret, err))
 
 ##params
 
@@ -2616,7 +2636,7 @@ strategy：
 
 start：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：起点信息
 - 内部字段：
 
@@ -2629,7 +2649,7 @@ start：
 
 waypoints：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）途经点信息组成的数组，仅当 type 为 drive 时有效
 - 内部字段：
 
@@ -2652,7 +2672,7 @@ city：
 
 end：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：终点信息
 - 内部字段：
 
@@ -2663,11 +2683,11 @@ end：
 }
 ```
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -2743,8 +2763,8 @@ ret：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.searchRoute({
+var aMap = api.require('aMap');
+aMap.searchRoute({
     id: 1,
     type: 'drive',
     policy: 'drive_time_first',
@@ -2801,7 +2821,7 @@ index：
 
 styles：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：路线样式设置
 - 内部字段：
 
@@ -2809,19 +2829,19 @@ styles：
 {
     walkLine:{                    //（可选项）JSON对象；步行路线样式
         width: 3,                 //（可选项）数字类型；步行路线的线条宽度；默认：3
-        color:'#698B22',          //（可选项）字符串类型；步行路线的线条颜色，支持rgb、rgba、#；默认：#698B22
+        color:'#698B22',          //（可选项）字符串类型；步行路线的线条颜色，支持 rgb、rgba、#；默认：#698B22
         lineDash:false,           //（可选项）布尔类型；步行路线的线条是否为虚线，Android 平台暂不支持；默认：false
         strokeImg:'fs://arrow.png'//（可选项）字符串类型；组成纹理画线的图片路径，要求本地路径（fs://、widget://），若本参数不为空，则忽略 color、dashed 参数 。Android 平台暂不支持
     },
     driveLine:{                   //（可选项）JSON对象；驾车路线样式
         width: 6,                 //（可选项）数字类型；驾车路线的线条宽度；默认：5
-        color:'#0000EE',          //（可选项）字符串类型；驾车路线的线条颜色，支持rgb、rgba、#；默认：#00868B
+        color:'#0000EE',          //（可选项）字符串类型；驾车路线的线条颜色，支持 rgb、rgba、#；默认：#00868B
         lineDash:false,           //（可选项）布尔类型；驾车路线的线条是否为虚线，Android 平台暂不支持；默认：false
         strokeImg:'fs://arrow.png'//（可选项）字符串类型；组成纹理画线的图片路径，要求本地路径（fs://、widget://），若本参数不为空，则忽略 color、dashed 参数。Android 平台暂不支持
     },
     busLine:{                     //（可选项）JSON对象；公交路线样式
         width: 4,                 //（可选项）数字类型；公交路线的线条宽度；默认：4
-        color:'#00BFFF',          //（可选项）字符串类型；公交路线的线条颜色，支持rgb、rgba、#；默认：#00BFFF
+        color:'#00BFFF',          //（可选项）字符串类型；公交路线的线条颜色，支持 rgb、rgba、#；默认：#00BFFF
         lineDash:false,           //（可选项）布尔类型；公交路线的线条是否为虚线，Android 平台暂不支持；默认：false
         strokeImg:'fs://arrow.png'//（可选项）字符串类型；组成纹理画线的图片路径，要求本地路径（fs://、widget://），若本参数不为空，则忽略 color、dashed 参数。Android 平台暂不支持  
     },
@@ -2838,8 +2858,8 @@ styles：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.searchRoute({
+var aMap = api.require('aMap');
+aMap.searchRoute({
     type: 'drive',
     policy: 'drive_fee_first',
     start: {
@@ -2852,7 +2872,7 @@ map.searchRoute({
     }
 }, function(ret, err){
     if(ret.status){
-	    map.drawRoute({
+	    aMap.drawRoute({
 		    id: 1,
             autoresizing:false,
 		    index: 0,
@@ -2914,8 +2934,8 @@ ids：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.removeRoute({
+var aMap = api.require('aMap');
+aMap.removeRoute({
     ids: [1, 2, 3]
 });
 ```
@@ -2965,7 +2985,7 @@ page：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -3000,8 +3020,8 @@ ret：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.searchBusRoute({
+var aMap = api.require('aMap');
+aMap.searchBusRoute({
     city: '北京',
     line: '110',
     offset:20,
@@ -3048,7 +3068,7 @@ index：
 
 styles：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：路线样式设置
 - 内部字段：
 
@@ -3056,7 +3076,7 @@ styles：
 {
     line:{                        //（可选项）JSON对象；公交路线样式
         width: 4,                 //（可选项）数字类型；公交路线的线条宽度；默认：4
-        color:'#00BFFF',          //（可选项）字符串类型；公交路线的线条颜色，支持rgb、rgba、#；默认：#00BFFF
+        color:'#00BFFF',          //（可选项）字符串类型；公交路线的线条颜色，支持 rgb、rgba、#；默认：#00BFFF
         lineDash:false,           //（可选项）布尔类型；公交路线的线条是否为虚线；默认：false
         strokeImg:'fs://arrow.png'//（可选项）字符串类型；组成纹理画线的图片路径，要求本地路径（fs://、widget://），若本参数不为空，则忽略 color、dashed 参数  
     },
@@ -3071,15 +3091,15 @@ styles：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.searchBusRoute({
+var aMap = api.require('aMap');
+aMap.searchBusRoute({
     city: '北京',
     line: '110',
     offset: 20,
     page: 1
 },function(ret, err){
     if(ret.status){
-        map.drawBusRoute({
+        aMap.drawBusRoute({
                 id: 1,
                 autoresizing: true,
                 index: 0,
@@ -3125,8 +3145,8 @@ ids：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.removeBusRoute({
+var aMap = api.require('aMap');
+aMap.removeBusRoute({
    ids:[1, 2, 3]
 });
 ```
@@ -3143,7 +3163,7 @@ iOS系统，Android系统
 
 根据单个关键字搜索兴趣点，**无需调用 open 接口即可搜索**
 
-searchInCity({params}, callback(ret))
+searchInCity({params}, callback(ret, err))
 
 ##params
 
@@ -3175,11 +3195,11 @@ sortrule：
 - 描述：（可选项）排序规则，0-距离排序；1-综合排序,Android 平台上忽略本参数
 - 默认：0
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -3205,8 +3225,8 @@ ret：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.searchInCity({
+var aMap = api.require('aMap');
+aMap.searchInCity({
     city: '北京',
     keyword: '学校',
     offset: 20,
@@ -3234,7 +3254,7 @@ iOS系统，Android系统
 
 根据单个关键字在圆形区域内搜索兴趣点，**无需调用 open 接口即可搜索**
 
-searchNearby({params}, callback(ret))
+searchNearby({params}, callback(ret, err))
 
 ##params
 
@@ -3277,11 +3297,11 @@ sortrule：
 - 描述：（可选项）排序规则，0-距离排序；1-综合排序,Android 平台上忽略本参数
 - 默认：0
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -3307,8 +3327,8 @@ ret：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.searchNearby({
+var aMap = api.require('aMap');
+aMap.searchNearby({
     keyword: 'KTV',
     lon: 116.384767,
     lat: 39.989539,
@@ -3379,11 +3399,11 @@ sortrule：
 - 默认：0
 
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -3409,8 +3429,8 @@ ret：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.searchInPolygon({
+var aMap = api.require('aMap');
+aMap.searchInPolygon({
     keyword: '图书馆', 
     points:[{
       lat: 34.55648,
@@ -3449,7 +3469,7 @@ iOS系统，Android系统
 
 根据关键字返回建议搜索关键字，**无需调用 open 接口即可搜索**
 
-autocomplete({params}, callback(ret))
+autocomplete({params}, callback(ret, err))
 
 ##params
 
@@ -3463,11 +3483,11 @@ city：
 - 类型：字符串
 - 描述：要搜索的城市，查询城市，中文或中文全拼
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -3487,8 +3507,8 @@ ret：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.autocomplete({
+var aMap = api.require('aMap');
+aMap.autocomplete({
     keyword: '北京',
     city: '北京'
 },function(ret){
@@ -3510,14 +3530,14 @@ iOS系统，Android系统
 
 获取省份列表，**无需调用 open 接口**
 
-getProvinces(callback(ret))
+getProvinces(callback(ret, err))
 
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -3545,8 +3565,8 @@ ret：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.getProvinces(function(ret){
+var aMap = api.require('aMap');
+aMap.getProvinces(function(ret){
     if(ret.status){
         alert(JSON.stringify(ret)); 
     }
@@ -3565,14 +3585,14 @@ iOS系统，Android系统
 
 获取直辖市列表，**无需调用 open 接口。Android 平台不支持此接口**
 
-getMunicipalities(callback(ret))
+getMunicipalities(callback(ret, err))
 
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -3598,8 +3618,8 @@ ret：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.getMunicipalities(function(ret){
+var aMap = api.require('aMap');
+aMap.getMunicipalities(function(ret){
     if(ret.status){
         alert(JSON.stringify(ret)); 
     }
@@ -3618,14 +3638,14 @@ iOS系统
 
 获取全国概要图信息，**无需调用 open 接口。Android 平台不支持此接口**
 
-getNationWide(callback(ret))
+getNationWide(callback(ret, err))
 
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -3651,8 +3671,8 @@ ret：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.getNationWide(function(ret){
+var aMap = api.require('aMap');
+aMap.getNationWide(function(ret){
     if(ret.status){
         alert(JSON.stringify(ret)); 
     }
@@ -3671,13 +3691,13 @@ iOS系统
 
 获取全国所有离线地图城市信息，**无需调用 open 接口**
 
-getAllCities(callback(ret))
+getAllCities(callback(ret, err))
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -3703,8 +3723,8 @@ ret：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.getAllCities(function(ret){
+var aMap = api.require('aMap');
+aMap.getAllCities(function(ret){
     if(ret.status){
         alert(JSON.stringify(ret)); 
     }
@@ -3723,13 +3743,13 @@ iOS系统，Android系统
 
 获取离线数据的版本号，**无需调用 open 接口。Android 平台不支持此接口**
 
-getVersion(callback(ret))
+getVersion(callback(ret, err))
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -3742,8 +3762,8 @@ ret：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.getVersion(function(ret){
+var aMap = api.require('aMap');
+aMap.getVersion(function(ret){
     if(ret.status){
         alert(JSON.stringify(ret)); 
     }
@@ -3762,7 +3782,7 @@ iOS系统
 
 启动下载指定 adcode 区域的离线地图，**无需调用 open 接口**
 
-downloadRegion(params, callback(ret))
+downloadRegion({params}, callback(ret, err))
 
 ##params
 
@@ -3777,11 +3797,11 @@ shouldContinueWhenAppEntersBackground:
 - 描述：（可选项）进入后台是否允许继续下载
 - 默认：false
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -3805,8 +3825,8 @@ ret：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.downloadRegion({
+var aMap = api.require('aMap');
+aMap.downloadRegion({
     adcode: '110000',
     shouldContinueWhenAppEntersBackground: true
 }, function(ret){
@@ -3825,7 +3845,7 @@ iOS系统，Android系统
 
 检测指定 adcode 的区域是否正在下载，**无需调用 open 接口**
 
-isDownloading(params, callback(ret))
+isDownloading({params}, callback(ret, err))
 
 ##params
 
@@ -3834,11 +3854,11 @@ adcode:
 - 类型：字符串
 - 描述：指定的区域的 adcode 码
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -3850,8 +3870,8 @@ ret：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.isDownloading({
+var aMap = api.require('aMap');
+aMap.isDownloading({
     adcode: '110000'
 }, function(ret){
     if(ret.status){
@@ -3872,7 +3892,7 @@ iOS系统，Android系统
 
 暂停下载指定 adcode 区域的离线地图，**无需调用 open 接口，android端会暂停所有下载**
 
-pauseDownload(params)
+pauseDownload({params})
 
 ##params
 
@@ -3884,8 +3904,8 @@ adcode:
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.pauseDownload({
+var aMap = api.require('aMap');
+aMap.pauseDownload({
     adcode: '110000'
 });
 ```
@@ -3907,8 +3927,8 @@ cancelAllDownload()
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.cancelAllDownload();
+var aMap = api.require('aMap');
+aMap.cancelAllDownload();
 ```
 
 ##可用性
@@ -3928,8 +3948,8 @@ clearDisk()
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.clearDisk();
+var aMap = api.require('aMap');
+aMap.clearDisk();
 ```
 
 ##可用性
@@ -3944,13 +3964,13 @@ iOS系统，Android系统
 
 监测新版本，**Android 平台不支持此接口**
 
-checkNewestVersion(callback(ret))
+checkNewestVersion(callback(ret, err))
 
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -3962,8 +3982,8 @@ ret：
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.checkNewestVersion(function(ret) {
+var aMap = api.require('aMap');
+aMap.checkNewestVersion(function(ret) {
    if(ret.status) {
       alert ('有新版本');
    } else {
@@ -3989,8 +4009,8 @@ reloadMap()
 ##示例代码
 
 ```js
-var map = api.require('aMap');
-map.reloadMap();
+var aMap = api.require('aMap');
+aMap.reloadMap();
 ```
 
 ##可用性

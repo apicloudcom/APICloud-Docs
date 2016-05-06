@@ -13,6 +13,9 @@ Sort: 4
 
 [第四章 Swift支持](#4)
 
+[第五章 模块审核规范](#5)
+
+##参考视频：http://docs.apicloud.com/APICloud/videos-and-codes
 
 #**第一章 模块开发介绍**<div id="1"></div>
 
@@ -270,3 +273,8 @@ class UZModuleDemoSwift: UZModule {
 ##2. 集成
 
 目前静态库不支持使用swift，所以不能将swift源码编译成静态库，调试时直接将swift文件添加到模块开发工程里面进行调试。最后制作模块包的时候则将所有的swift源文件放到target目录下面。
+
+
+#**第五章 模块审核规范**<div id="5"></div>
+
+开发者开发的模块务必遵守[《模块审核规范-IOS》](http://docs.apicloud.com/APICloud/技术专题/Module-audit-specification-ios)。

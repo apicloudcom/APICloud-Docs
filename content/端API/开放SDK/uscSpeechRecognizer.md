@@ -3,6 +3,8 @@ Title: uscSpeechRecognizer
 Description: uscSpeechRecognizer
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：云知声</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -33,7 +35,7 @@ uscSpeechRecognizer模块封装了云知声语音识别的sdk，开发者只需�
 
 开始语音识别，识别完成后返回识别文字
 
-startRecord(params, callback)
+startRecord({params}, callback(ret, err))
 
 ##params
 
@@ -65,7 +67,7 @@ domain：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -79,7 +81,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -170,7 +172,7 @@ Android系统
 
 播放合成的文字
 
-play(params, callback)
+play({params}, callback(ret, err))
 
 ##params
 
@@ -184,7 +186,7 @@ text：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 
@@ -196,7 +198,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 
 内部字段：
 

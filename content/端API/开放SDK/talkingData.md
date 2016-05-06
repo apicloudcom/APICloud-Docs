@@ -3,6 +3,8 @@ Title: talkingData
 Description: talkingData
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：北京腾云天下科技有限公司</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -63,7 +65,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
         {  

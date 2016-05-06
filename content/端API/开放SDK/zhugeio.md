@@ -3,6 +3,8 @@ Title: zhugeio
 Description: zhugeio
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：诸葛 IO</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">方法</a></li>
 </ul>
@@ -19,7 +21,7 @@ Description: zhugeio
 zhugeio封装了zhugeio精细化运营分析工具SDK，使用此模块可轻松实现精细化运营分析。  (请使用本模块升级版[zhuge](http://docs.apicloud.com/%E7%AB%AFAPI/%E5%BC%80%E6%94%BESDK/zhuge)，支持Android和IOS双平台。本模块已停止更新)
 
 ###**配置选项**<div id="a2"></div>
-需在config.xml中配置:
+需在[config.xml](/APICloud/技术专题/app-config-manual)中配置:
 
 ```js
 <feature name="zhugeio">

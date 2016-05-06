@@ -3,6 +3,8 @@ Title: fileBrowser
 Description: fileBrowser
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -10,7 +12,7 @@ Description: fileBrowser
 
 #**概述**
 
-fileBrowser实现对文件的浏览功能，点击文件可返回该文件的绝对路径。该模块可对文件进行删除操作
+fileBrowser 实现对文件的浏览功能，点击文件可返回该文件的绝对路径。该模块可对文件进行删除操作
 
 ![图片说明](/img/docImage/fileBrowser.jpg)
 
@@ -24,13 +26,13 @@ open(callback(ret, err))
 
 ret：
 
-类型：JSON对象
+类型：JSON 对象
 
 ##内部字段：
 
 ```js
 {
-	url:'文件路径'
+	url: '文件路径'
 }
 ```
 

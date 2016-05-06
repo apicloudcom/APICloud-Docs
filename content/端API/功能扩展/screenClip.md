@@ -3,6 +3,8 @@ Title: screenClip
 Description: screenClip
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 	<li><a href="#const-content">Constant</a></li>
@@ -22,7 +24,7 @@ Description: screenClip
 
 #**概述**
 
-screenClip模块封装了屏幕截图的功能，用户可加拖动选择截图的区域，生成的图片可指定保存路径，也可保存到本地相册。用户点击已选截图区域则保存图片并取消本次截图，点击非已选区域则直接取消本次截图。**不支持截取视频画面**。
+screenClip 模块封装了屏幕截图的功能，用户可加拖动选择截图的区域，生成的图片可指定保存路径，也可保存到本地相册。用户点击已选截图区域则保存图片并取消本次截图，点击非已选区域则直接取消本次截图。**不支持截取视频画面**。
 
 #**open**<div id="a1"></div>
 
@@ -39,7 +41,7 @@ bg：
 
 cutFrame：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）截取框配置
 - 默认值：见内部字段
 - 内部字段:
@@ -50,7 +52,7 @@ cutFrame：
     y:            //（可选项）数字类型；截图区域左上角点坐标；默认：128
     w:            //（可选项）数字类型；截图区域的宽；默认：当前屏幕宽减二十
     h:            //（可选项）数字类型；截图区域的高；默认：w
-	borderColor:  //（可选项）字符串类型；边框颜色，支持rgb、rgba、#；默认：#696969
+	borderColor:  //（可选项）字符串类型；边框颜色，支持 rgb、rgba、#；默认：#696969
 	borderWidth:  //（可选项）数字类型；边框粗细；默认：2
 	tipsSize:     //（可选项）数字类型；提示文字的大小；默认：12
 	tipsPosition: //（可选项）字符串类型；提示文字位置，取值范围见提示文字位置；默认：center
@@ -60,7 +62,7 @@ cutFrame：
 
 save：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：所生成的图片保存位置
 - 默认值：见内部字段
 - 内部字段：
@@ -77,7 +79,7 @@ save：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -88,7 +90,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -125,7 +127,7 @@ iOS系统，Android系统
 
 截取 open 接口内 cutFrame 参数指定的当前区域的图片，并保存到指定位置
 
-save ({params}, callback(ret, err))
+save({params}, callback(ret, err))
 
 ##params
 
@@ -149,7 +151,7 @@ imgName：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -160,7 +162,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -216,7 +218,7 @@ iOS系统，Android系统
 
 截屏
 
-screenShot ({params}, callback(ret, err))
+screenShot({params}, callback(ret, err))
 
 ##params
 
@@ -240,7 +242,7 @@ imgName：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -251,7 +253,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -292,15 +294,15 @@ iOS系统，Android系统
 
 ##取值范围：
 
-- center        //正中间
-- right_up//右上角
-- right_down//右下角
-- left_up//左上角
-- left_down//左下角
-- center_up//靠上边，左右居中
-- center_down//靠下边，左右居中
-- right_center//靠右上下居中
-- left_center//靠左上下居中
+- center        		//正中间
+- right_up				//右上角
+- right_down			//右下角
+- left_up				//左上角
+- left_down				//左下角
+- center_up				//靠上边，左右居中
+- center_down			//靠下边，左右居中
+- right_center			//靠右上下居中
+- left_center			//靠左上下居中
 
 
 

@@ -2,6 +2,9 @@
 Title: wxPay
 Description: wxPay
 */
+
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <div class="outline">
 [getOrderId](#b1)
 
@@ -48,7 +51,7 @@ wxPay 封装了微信支付的 SDK，可实现微信支付功能；使用之前�
 
 - **方案二**：通过 config 接口和 pay 接口把签名过程交予模块内部处理。config 接口的参数可通过 `key.xml` 文件配置。
 
-**使用此模块之前需先配置  config.xml 文件，方法如下**
+**使用此模块之前需先配置  [config.xml](/APICloud/技术专题/app-config-manual) 文件，方法如下**
 
 - 名称：wxPay
 - 参数：urlScheme、apiKey、apiSecret
@@ -116,7 +119,7 @@ info：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -168,7 +171,7 @@ payOrder({params}, callback(ret, err))
 apiKey：
 
 - 类型：字符串
-- 描述：（可选项）从微信开放平台获取的 appid，若不传则从当前 widget 的 `config.xml` 中读取。
+- 描述：（可选项）从微信开放平台获取的 appid，若不传则从当前 widget 的 [config.xml](/APICloud/技术专题/app-config-manual) 中读取。
 
 orderId：
 
@@ -205,7 +208,7 @@ sign：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -216,7 +219,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：（错误码详见[全局返回码说明](http://mp.weixin.qq.com/wiki/17/fa4e1434e57290788bde25603fa2fcbd.html)）
 
 ```js
@@ -269,7 +272,7 @@ config({params}, callback(ret, err))
 apiKey：
 
 - 类型：字符串
-- 描述：（可选项）从微信开放平台获取的 appid，若不传则从当前 widget 的 `config.xml` 中读取。
+- 描述：（可选项）从微信开放平台获取的 appid，若不传则从当前 widget 的 [config.xml](/APICloud/技术专题/app-config-manual) 中读取。
 
 mchId：
 
@@ -290,7 +293,7 @@ notifyUrl：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -301,7 +304,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -421,7 +424,7 @@ openId：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -432,7 +435,7 @@ ret：
 
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：（错误码详见[统一下单错误码](https://pay.weixin.qq.com/wiki/doc/api/app.php?chapter=9_1)）
 
 ```js

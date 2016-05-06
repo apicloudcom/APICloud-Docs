@@ -3,6 +3,8 @@ Title: UIBarChart
 Description: UIBarChart
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -22,7 +24,7 @@ Description: UIBarChart
 
 #**概述**
 
-UIBarChart是一个柱状图模块，可自定义 X、Y 轴样式以及柱子的个数和颜色。本模块可监听左右拖动到头的事件，可向当前数据拼接加载、刷新等操作。同一个页面可以打开多个模块实例，以模块 id 区分。**本模块是 barChart 的优化版**
+UIBarChart 是一个柱状图模块，可自定义 X、Y 轴样式以及柱子的个数和颜色。本模块可监听左右拖动到头的事件，可向当前数据拼接加载、刷新等操作。同一个页面可以打开多个模块实例，以模块 id 区分。**本模块是 barChart 的优化版**
 
 ![图片说明](/img/docImage/barChart.jpg)
 
@@ -36,7 +38,7 @@ open({params}, callback(ret, err))
 
 rect：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）模块的位置及尺寸
 - 内部字段：
 
@@ -50,7 +52,7 @@ rect：
 ```
 yAxis：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：曲线图的y轴信息
 - 内部字段：
 
@@ -89,23 +91,23 @@ styles:
 {
       yAxis: {              //（可选项）JSON 对象；Y轴样式
           width:30,         //（可选项）数字类型；Y轴宽度，默认：20
-          bg: '#B2DFEE',    //（可选项）字符串类型；Y轴背景，支持rgb、rgba、#、img，默认:'#B2DFEE'
-          markColor: '#fff',//（可选项）字符串类型；Y轴标注字体颜色，支持rgb、rgba、#，默认:'#fff'
+          bg: '#B2DFEE',    //（可选项）字符串类型；Y轴背景，支持 rgb、rgba、#、img，默认:'#B2DFEE'
+          markColor: '#fff',//（可选项）字符串类型；Y轴标注字体颜色，支持 rgb、rgba、#，默认:'#fff'
           markSize: 12      //（可选项）数字类型；Y轴标注字体大小，默认：12
       },   
       xAxis: {              //（可选项）JSON 对象；X轴样式
           height:30,        //（可选项）数字类型；X轴高度，默认：20
-          bg: '#B2DFEE',    //（可选项）字符串类型；X轴背景，支持rgb、rgba、#、img，默认:'#B2DFEE'
-          markColor: '#fff',//（可选项）字符串类型；X轴标注字体颜色，支持rgb、rgba、#，默认:'#fff'
+          bg: '#B2DFEE',    //（可选项）字符串类型；X轴背景，支持 rgb、rgba、#、img，默认:'#B2DFEE'
+          markColor: '#fff',//（可选项）字符串类型；X轴标注字体颜色，支持 rgb、rgba、#，默认:'#fff'
           markSize: 12      //（可选项）数字类型；X轴标注字体大小，默认：12
       },   
       coordinate: {         //（可选项）JSON 对象；坐标系样式
-          bg: '#FCFCFC',    //（可选项）字符串类型；坐标系背景，支持rgb、rgba、#、img，默认:'#FCFCFC'
+          bg: '#FCFCFC',    //（可选项）字符串类型；坐标系背景，支持 rgb、rgba、#、img，默认:'#FCFCFC'
       },    
       bar: {                //（可选项）JSON 对象；柱子样式
           width:30,         //（可选项）数字类型；柱子的宽度，默认：20
-          bg: '#696969',    //（可选项）字符串类型；柱子的背景色，支持rgb、rgba、#、img，默认:'#696969'
-          tint: '#8DB6CD',  //（可选项）字符串类型；柱子的数据展示色，支持rgb、rgba、#，默认:'#8DB6CD'
+          bg: '#696969',    //（可选项）字符串类型；柱子的背景色，支持 rgb、rgba、#、img，默认:'#696969'
+          tint: '#8DB6CD',  //（可选项）字符串类型；柱子的数据展示色，支持 rgb、rgba、#，默认:'#8DB6CD'
           interval: 16      //（可选项）数字类型；柱子间隔大小，默认：16
       }    
 }
@@ -120,14 +122,14 @@ fixedOn：
 fixed:
 
 - 类型：布尔
-- 描述：（可选项）模块是否随所属 Window 或 Frame 滚动
+- 描述：（可选项）模块是否随所属 window 或 frame 滚动
 - 默认值：true（不随之滚动）
 
-##callBack(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：json对象
+- 类型：JSON 对象
 - 内部字段：
   
 ```js
@@ -200,29 +202,29 @@ UIBarChart.open({
 	styles: {
 	      yAxis: {              //（可选项）JSON 对象；Y轴样式
 	          width:30,         //（可选项）数字类型；Y轴宽度，默认：20
-	          bg: '#B2DFEE',    //（可选项）字符串类型；Y轴背景，支持rgb、rgba、#、img，默认:'#B2DFEE'
-	          markColor: '#fff',//（可选项）字符串类型；Y轴标注字体颜色，支持rgb、rgba、#，默认:'#fff'
+	          bg: '#B2DFEE',    //（可选项）字符串类型；Y轴背景，支持 rgb、rgba、#、img，默认:'#B2DFEE'
+	          markColor: '#fff',//（可选项）字符串类型；Y轴标注字体颜色，支持 rgb、rgba、#，默认:'#fff'
 	          markSize: 12      //（可选项）数字类型；Y轴标注字体大小，默认：12
 	      },   
 	      xAxis: {              //（可选项）JSON 对象；X轴样式
 	          height:30,        //（可选项）数字类型；X轴高度，默认：20
-	          bg: '#B2DFEE',    //（可选项）字符串类型；X轴背景，支持rgb、rgba、#、img，默认:'#B2DFEE'
-	          markColor: '#fff',//（可选项）字符串类型；X轴标注字体颜色，支持rgb、rgba、#，默认:'#fff'
+	          bg: '#B2DFEE',    //（可选项）字符串类型；X轴背景，支持 rgb、rgba、#、img，默认:'#B2DFEE'
+	          markColor: '#fff',//（可选项）字符串类型；X轴标注字体颜色，支持 rgb、rgba、#，默认:'#fff'
 	          markSize: 12      //（可选项）数字类型；X轴标注字体大小，默认：12
 	      },   
 	      coordinate: {         //（可选项）JSON 对象；坐标系样式
-	          bg: '#FCFCFC',    //（可选项）字符串类型；坐标系背景，支持rgb、rgba、#、img，默认:'#FCFCFC'
+	          bg: '#FCFCFC',    //（可选项）字符串类型；坐标系背景，支持 rgb、rgba、#、img，默认:'#FCFCFC'
 	      },    
 	      bar: {                //（可选项）JSON 对象；柱子样式
 	          width:30,         //（可选项）数字类型；柱子的宽度，默认：20
-	          bg: '#696969',    //（可选项）字符串类型；柱子的背景色，支持rgb、rgba、#、img，默认:'#696969'
-	          tint: '#8DB6CD',  //（可选项）字符串类型；柱子的数据展示色，支持rgb、rgba、#，默认:'#8DB6CD'
+	          bg: '#696969',    //（可选项）字符串类型；柱子的背景色，支持 rgb、rgba、#、img，默认:'#696969'
+	          tint: '#8DB6CD',  //（可选项）字符串类型；柱子的数据展示色，支持 rgb、rgba、#，默认:'#8DB6CD'
 	          interval: 16      //（可选项）数字类型；柱子间隔大小，默认：16
 	      }    
 	},
 	fixedOn: api.frameName,
 	fixed: false
-},function( ret, err ){
+}, function(ret, err){
     if( ret ){
          alert( JSON.stringify( ret ) );
     }else{
@@ -241,7 +243,7 @@ iOS系统，Android系统
 
 重新加载数据
 
-reloadData({params},callback(ret))
+reloadData({params}, callback(ret, err))
 
 ##params
 
@@ -275,11 +277,11 @@ data：
     yAxis: 56                //数字类型；关键结点的y轴数据，
 }]
 ```
-##callback(ret)
+##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
   
   ```js
@@ -308,7 +310,7 @@ UIBarChart.reloadData({
         xAxis: '八月',
         yAxis: 85
     }]
-},function( ret, err ){
+}, function(ret, err){
     if( ret ){
          alert( JSON.stringify( ret ) );
     }else{
@@ -327,7 +329,7 @@ iOS系统，Android系统
 
 关闭柱状图
 
-close(params)
+close({params})
 
 ##params
 
@@ -354,7 +356,7 @@ iOS系统，Android系统
 
 隐藏柱状图视图
 
-hide(params)
+hide({params})
 
 ##params
 
@@ -384,7 +386,7 @@ iOS系统，Android系统
 
 显示已隐藏的柱状图视图
 
-show(params)
+show({params})
 
 ##params
 

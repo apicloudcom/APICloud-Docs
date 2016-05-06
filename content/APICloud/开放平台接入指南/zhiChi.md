@@ -9,13 +9,13 @@ Sort: 11
 
 ##注册智齿客服
 
-使用zhiChi模块，智齿客服访问地址：http://www.sobot.com如果您还没有注册智齿客服，请先注册账号。 
+使用zhiChi模块，智齿客服访问地址：[http://www.sobot.com](http://www.sobot.com)。 如果您还没有注册智齿客服，请先注册账号。 
 
 ![图片说明](/img/zhiChi/register.png)
 
 ##使用管理用账号登录
 
-访问http://www.sobot.com/console/login.jsp使用您刚刚注册的智齿客服账号进行登录。
+访问[http://www.sobot.com/console/login.jsp](http://www.sobot.com/console/login.jsp)， 使用您刚刚注册的智齿客服账号进行登录。
 
 ![图片说明](/img/zhiChi/login.png) 
 

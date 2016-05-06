@@ -32,7 +32,7 @@ open({params}, callback(ret, err))
 
 rect：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）模块的位置及尺寸
 - 内部字段：
 
@@ -47,7 +47,7 @@ rect：
 
 yAxis：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：曲线图的y轴信息
 - 内部字段：
 
@@ -78,19 +78,19 @@ data：
 
 styles：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 描述：（可选项）模块各部分的样式
 - 内部字段：
 
 ```js
 {
-    bg: '#fff',                   //（可选项）字符串类型；曲线图的背景，支持rgb，rgba，#，图片路径（本地路径，fs://，widget://）；默认：'#fff'
-    axisColor: '#A9A9A9',         //（可选项）字符串类型；曲线图的坐标轴颜色，支持rgb，rgba，#；默认：'#A9A9A9'
-    nodeColor: '#000',            //（可选项）字符串类型；曲线图的结点颜色，支持rgb，rgba，#；默认：'#000'
+    bg: '#fff',                   //（可选项）字符串类型；曲线图的背景，支持 rgb，rgba，#，图片路径（本地路径，fs://、widget://）；默认：'#fff'
+    axisColor: '#A9A9A9',         //（可选项）字符串类型；曲线图的坐标轴颜色，支持 rgb，rgba，#；默认：'#A9A9A9'
+    nodeColor: '#000',            //（可选项）字符串类型；曲线图的结点颜色，支持 rgb，rgba，#；默认：'#000'
     nodeSize: 2,                  //（可选项）数字类型；曲线图的结点处小圆圈的半径；默认：2
-    lineColor: '#1E90FF',         //（可选项）字符串类型；曲线的颜色，支持rgb，rgba，#；默认：'#1E90FF'
+    lineColor: '#1E90FF',         //（可选项）字符串类型；曲线的颜色，支持 rgb，rgba，#；默认：'#1E90FF'
     lineWidth: 1,                 //（可选项）数字类型；曲线条的宽；默认：1
-    makeColor: '#000',            //（可选项）字符串类型；标注的字体颜色，支持rgb，rgba，#；默认：'#000'
+    makeColor: '#000',            //（可选项）字符串类型；标注的字体颜色，支持 rgb，rgba，#；默认：'#000'
     makeSize:  16,                //（可选项）数字类型；标注的字体大小，；默认：16
     bubble: {                     //（可选项）JSON对象；点击结点弹出气泡的样式
         bgImg: 'widget://'        //（可选项）字符串类型；点击结点弹出气泡的背景图
@@ -126,14 +126,14 @@ fixedOn：
 fixed:
 
 - 类型：布尔
-- 描述：（可选项）模块是否随所属 Window 或 Frame 滚动
+- 描述：（可选项）模块是否随所属 window 或 frame 滚动
 - 默认值：true（不随之滚动）
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -153,8 +153,8 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('graphHaier');
-obj.open({
+var graphHaier = api.require('graphHaier');
+graphHaier.open({
     rect: {
         x: 0,
         y: 0,
@@ -223,8 +223,8 @@ id：
 ##示例代码
 
 ```js
-var obj = api.require('graphHaier');
-obj.close({id: 1});
+var graphHaier = api.require('graphHaier');
+graphHaier.close({id: 1});
 ```
 
 ##可用性
@@ -251,13 +251,13 @@ id：
 ##示例代码
 
 ```js
-var obj = api.require('graphHaier');
-obj.show({id: 1});
+var graphHaier = api.require('graphHaier');
+graphHaier.show({id: 1});
 ```
 
 ##可用性
 
-IOS系统，安卓系统
+iOS系统，安卓系统
 
 可提供的1.0.1及更高版本
 
@@ -279,13 +279,13 @@ id：
 ##示例代码
 
 ```js
-var obj = api.require('graphHaier');
-obj.hide({id: 1});
+var graphHaier = api.require('graphHaier');
+graphHaier.hide({id: 1});
 ```
 
 ##可用性
 
-IOS系统，安卓系统
+iOS系统，安卓系统
 
 可提供的1.0.1及更高版本
 
@@ -333,8 +333,8 @@ data：
 ##示例代码
 
 ```js
-var obj = api.require('graphHaier');
-obj.reloadData({
+var graphHaier = api.require('graphHaier');
+graphHaier.reloadData({
     id: 1,
     type: 'prepend',
 	data: [{

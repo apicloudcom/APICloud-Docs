@@ -3,6 +3,8 @@ Title: UIActionSelector
 Description: UIActionSelector
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -24,9 +26,17 @@ Description: UIActionSelector
 
 #**概述**
 
-UIActionSelector 是一个支持弹出动画的多级选择器。最多支持自定义三个级别的选择数据。以选择器的形式将各级选择数据弹出，供用户选择。开发者可自定义该选择器的样式。**本模块也可替代 citySelector 模块来选择城市**。
+UIActionSelector 是一个支持弹出动画的多级选择器。调用 open 接口，会从当前 window 底部弹出一个 action 选择器，该选择器在 iOS 平台上是立体滚轮效果的，在 android 平台上二维平面效果的。开发者可自定义该选择器的数据源，利用此模块做出一个城市地区选择器、公司部门选择器，菜单选择器等各种炫酷的选择器。
+ 
+本模块选择器是分级联动选择器，最多支持三级目录，每级目录直接是相关联包含的。通过 open 接口内的 layout 参数可配置选择器的级数、显示行数、行间距等各种样式信息。getActive、setActive 接口可获取、设置当前选中项。详情参考模块接口参数。
 
-![图片说明](/img/docImage/citySelector.jpg)
+**本模块可替代 citySelector 模块来自定义城市选择器**。
+
+模块概览图如下：
+
+![图片说明](/img/docImage/UIActionSelector.png)
+ 
+#模块接口
  
 #**open**<div id="1"></div>
 
@@ -45,40 +55,39 @@ datas：
 ```js
 [                                      //JSON 数组类型；第一级选择项数组
 	{
-		name: "北京市",                //字符串类型；第一级选择项的名称
+		name: '北京市',                //字符串类型；第一级选择项的名称
 		sub: [                         //JSON 数组类型；第二级选择项数组
 			{
-				name: "东城区"         //字符串类型；第二级选择项的名称
+				name: '东城区'         //字符串类型；第二级选择项的名称
 			},{
-				name: "西城区"         //字符串类型；第二级选择项的名称
+				name: '西城区'         //字符串类型；第二级选择项的名称
 			}
 		]
 	}, {
-		name: "河南省",                //字符串类型；第一级选择项的名称
+		name: '河南省',                //字符串类型；第一级选择项的名称
 		sub: [                         //JSON 数组类型；第二级选择项数组
 			{
-				name: "郑州市",        //字符串类型；第二级选择项的名称
+				name: '郑州市',        //字符串类型；第二级选择项的名称
 				sub: [                 //JSON 数组类型；第三级选择项数组
 					{
-						name: "中原区" //字符串类型；第三级选择项的名称
+						name: '中原区' //字符串类型；第三级选择项的名称
 					},{
-						name: "金水区" //字符串类型；第三级选择项的名称
+						name: '金水区' //字符串类型；第三级选择项的名称
 					}
 				]
 			},{
-				name: "驻马店市",      //字符串类型；第二级选择项的名称
+				name: '驻马店市',      //字符串类型；第二级选择项的名称
 				sub: [                 //JSON 数组类型；第三级选择项数组
 					{
-						name: "西平县" //字符串类型；第三级选择项的名称
+						name: '西平县' //字符串类型；第三级选择项的名称
 					},{
-						name: "泌阳县" //字符串类型；第三级选择项的名称
+						name: '泌阳县' //字符串类型；第三级选择项的名称
 					}
 				]
 			}
 		]
 	}
 ]
-
 ```
 
 layout：
@@ -96,12 +105,11 @@ layout：
     sizeActive: 14,                    //（可选项）数字类型；当前选项的字体大小；默认：同 size
     rowSpacing: 5,                     //（可选项）数字类型；行与行之间的距离；默认：5
     colSpacing: 10,                    //（可选项）数字类型；列与列之间的距离；默认：10
-    maskBg: 'rgba(0,0,0,0.2)',         //（可选项）字符串类型；遮罩层背景，支持 rgb，rgba，#，img；默认：rgba(0,0,0,0.2)
+    maskBg: 'rgba(0,0,0,0.2)',         //（可选项）字符串类型；遮罩层背景，点击该区域隐藏选择器，支持 rgb，rgba，#，img；默认：rgba(0,0,0,0.2)
     bg: '#fff',                        //（可选项）字符串类型；选择器有效区域背景，支持 rgb，rgba，#，img；默认：#fff
     color: '#888',                     //（可选项）字符串类型；选项的文字颜色，支持 rgb，rgba，#；默认：#848484
     colorSelected: '#f00'              //（可选项）字符串类型；已选项的文字颜色，支持 rgb，rgba，#；默认：同 colorActive
 }
-
 ```
 
 animation：
@@ -122,10 +130,10 @@ cancel：
 	size: 12,                          //（可选项）数字类型；取消按钮的显示文字大小；默认：12
     w: 90,                             //（可选项）数字类型；取消按钮的宽；默认：90
     h: 35,                             //（可选项）数字类型；取消按钮的高；默认：35
-    bg: '#fff',                        //（可选项）字符串类型；取消按钮的背景，支持rgb，rgba，#，img；默认：'#fff'
-    bgActive: '#ccc',                  //（可选项）字符串类型；取消按钮的背景高亮，支持rgb，rgba，#，img；默认：同 bg
-    color: '#888',                     //（可选项）字符串类型；取消按钮的文字颜色，支持rgb，rgba，#；默认：'#848484'
-    colorActive: '#fff'                //（可选项）字符串类型；取消按钮的文字颜色高亮，支持rgb，rgba，#；默认：同 color
+    bg: '#fff',                        //（可选项）字符串类型；取消按钮的背景，支持 rgb，rgba，#，img；默认：'#fff'
+    bgActive: '#ccc',                  //（可选项）字符串类型；取消按钮的背景高亮，支持 rgb，rgba，#，img；默认：同 bg
+    color: '#888',                     //（可选项）字符串类型；取消按钮的文字颜色，支持 rgb，rgba，#；默认：'#848484'
+    colorActive: '#fff'                //（可选项）字符串类型；取消按钮的文字颜色高亮，支持 rgb，rgba，#；默认：同 color
 }
 
 ```
@@ -142,10 +150,10 @@ ok：
 	size: 12,                          //（可选项）数字类型；确定按钮的显示文字大小；默认：12
     w: 90,                             //（可选项）数字类型；确定按钮的宽；默认：90
     h: 35,                             //（可选项）数字类型；确定按钮的高；默认：35
-    bg: '#fff',                        //（可选项）字符串类型；确定按钮的背景，支持rgb，rgba，#，img；默认：'#fff'
-    bgActive: '#ccc',                  //（可选项）字符串类型；确定按钮的背景高亮，支持rgb，rgba，#，img；默认：同 bg
-    color: '#888',                     //（可选项）字符串类型；确定按钮的文字颜色，支持rgb，rgba，#；默认：'#848484'
-    colorActive: '#fff'                //（可选项）字符串类型；确定按钮的文字颜色高亮，支持rgb，rgba，#；默认：同 color
+    bg: '#fff',                        //（可选项）字符串类型；确定按钮的背景，支持 rgb，rgba，#，img；默认：'#fff'
+    bgActive: '#ccc',                  //（可选项）字符串类型；确定按钮的背景高亮，支持 rgb，rgba，#，img；默认：同 bg
+    color: '#888',                     //（可选项）字符串类型；确定按钮的文字颜色，支持 rgb，rgba，#；默认：'#848484'
+    colorActive: '#fff'                //（可选项）字符串类型；确定按钮的文字颜色高亮，支持 rgb，rgba，#；默认：同 color
 }
 
 ```
@@ -161,8 +169,8 @@ title：
 	text: '请选择',                    //（可选项）字符串类型；选择器的标题内容；默认：请选择
 	size: 12,                          //（可选项）数字类型；标题内容的文字大小；默认：12
     h: 44,                             //（可选项）数字类型；标题栏的高；默认：44
-    bg: '#eee',                        //（可选项）字符串类型；标题栏的背景，支持rgb，rgba，#，img；默认：'#eee'
-    color: '#888'                      //（可选项）字符串类型；标题内容的文字颜色，支持rgb，rgba，#；默认：'#848484'
+    bg: '#eee',                        //（可选项）字符串类型；标题栏的背景，支持 rgb，rgba，#，img；默认：'#eee'
+    color: '#888'                      //（可选项）字符串类型；标题内容的文字颜色，支持 rgb，rgba，#；默认：'#848484'
 }
 
 ```
@@ -184,7 +192,7 @@ fixedOn：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -201,9 +209,9 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('UIActionSelector');
-obj.open({
-    datas: "widget://res/city.json",   //JSON 数组类型 或 路径类型；为选择器指定数据，可以是 JSON 数组 或是以 JSON 数组格式内容保存的文件的fs://、widget://路径
+var UIActionSelector = api.require('UIActionSelector');
+UIActionSelector.open({
+    datas: 'widget://res/city.json',   //JSON 数组类型 或 路径类型；为选择器指定数据，可以是 JSON 数组 或是以 JSON 数组格式内容保存的文件的fs://、widget://路径
     layout: {
         row: 5,                        //（可选项）数字类型；每屏显示的数据行数，超出的数据可以滑动查看，只能是奇数；默认：5
         col: 3,                        //（可选项）数字类型；数据源的数据级数，最多3级；默认：3
@@ -224,27 +232,27 @@ obj.open({
         size: 12,                      //（可选项）数字类型；取消按钮的显示文字大小；默认：12
         w: 90,                         //（可选项）数字类型；取消按钮的宽；默认：90
         h: 35,                         //（可选项）数字类型；取消按钮的高；默认：35
-        bg: '#fff',                    //（可选项）字符串类型；取消按钮的背景，支持rgb，rgba，#，img；默认：'#fff'
-        bgActive: '#ccc',              //（可选项）字符串类型；取消按钮的背景高亮，支持rgb，rgba，#，img；默认：同 bg
-        color: '#888',                 //（可选项）字符串类型；取消按钮的文字颜色，支持rgb，rgba，#；默认：'#848484'
-        colorActive: '#fff'            //（可选项）字符串类型；取消按钮的文字颜色高亮，支持rgb，rgba，#；默认：同 color
+        bg: '#fff',                    //（可选项）字符串类型；取消按钮的背景，支持 rgb，rgba，#，img；默认：'#fff'
+        bgActive: '#ccc',              //（可选项）字符串类型；取消按钮的背景高亮，支持 rgb，rgba，#，img；默认：同 bg
+        color: '#888',                 //（可选项）字符串类型；取消按钮的文字颜色，支持 rgb，rgba，#；默认：'#848484'
+        colorActive: '#fff'            //（可选项）字符串类型；取消按钮的文字颜色高亮，支持 rgb，rgba，#；默认：同 color
     },
     ok: {                              //（可选项）JSON 对象类型；确定按钮设置
         text: '确定',                  //（可选项）字符串类型；确定按钮的显示文字；默认：未设置时只显示背景
         size: 12,                      //（可选项）数字类型；确定按钮的显示文字大小；默认：12
         w: 90,                         //（可选项）数字类型；确定按钮的宽；默认：90
         h: 35,                         //（可选项）数字类型；确定按钮的高；默认：35
-        bg: '#fff',                    //（可选项）字符串类型；确定按钮的背景，支持rgb，rgba，#，img；默认：'#fff'
-        bgActive: '#ccc',              //（可选项）字符串类型；确定按钮的背景高亮，支持rgb，rgba，#，img；默认：同 bg
-        color: '#888',                 //（可选项）字符串类型；确定按钮的文字颜色，支持rgb，rgba，#；默认：'#848484'
-        colorActive: '#fff'            //（可选项）字符串类型；确定按钮的文字颜色高亮，支持rgb，rgba，#；默认：同 color
+        bg: '#fff',                    //（可选项）字符串类型；确定按钮的背景，支持 rgb，rgba，#，img；默认：'#fff'
+        bgActive: '#ccc',              //（可选项）字符串类型；确定按钮的背景高亮，支持 rgb，rgba，#，img；默认：同 bg
+        color: '#888',                 //（可选项）字符串类型；确定按钮的文字颜色，支持 rgb，rgba，#；默认：'#848484'
+        colorActive: '#fff'            //（可选项）字符串类型；确定按钮的文字颜色高亮，支持 rgb，rgba，#；默认：同 color
     },
     title: {                           //（可选项）JSON 对象类型；选择器顶部标题栏设置
         text: '请选择',                //（可选项）字符串类型；选择器的标题内容；默认：请选择
         size: 12,                      //（可选项）数字类型；标题内容的文字大小；默认：12
         h: 44,                         //（可选项）数字类型；标题栏的高；默认：44
-        bg: '#eee',                    //（可选项）字符串类型；标题栏的背景，支持rgb，rgba，#，img；默认：'#eee'
-        color: '#888'                  //（可选项）字符串类型；标题内容的文字颜色，支持rgb，rgba，#；默认：'#848484'
+        bg: '#eee',                    //（可选项）字符串类型；标题栏的背景，支持 rgb，rgba，#，img；默认：'#eee'
+        color: '#888'                  //（可选项）字符串类型；标题内容的文字颜色，支持 rgb，rgba，#；默认：'#848484'
     },
     fixedOn: api.frameName
 }, function(ret, err) {
@@ -254,17 +262,13 @@ obj.open({
         alert(JSON.stringify(err));
     }
 });
-
-
 ```
 
 ##可用性
 
-IOS系统，Android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
-
-
 
 #**hide**<div id="2"></div>
 
@@ -274,8 +278,10 @@ hide()
 
 ##示例代码
 
-	var obj = api.require('UIActionSelector');
-	obj.hide();
+```js
+var UIActionSelector = api.require('UIActionSelector');
+UIActionSelector.hide();
+```
 
 ##补充说明
 
@@ -283,7 +289,7 @@ hide()
 
 ##可用性
 
-IOS系统，Android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -297,17 +303,16 @@ show()
 
 ##示例代码
 
-	var obj = api.require('UIActionSelector');
-	obj.show();
-
+```js
+var UIActionSelector = api.require('UIActionSelector');
+UIActionSelector.show();
+```
 
 ##可用性
 
-IOS系统，Android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
-
-
 
 #**close**<div id="4"></div>
 
@@ -317,8 +322,10 @@ close()
 
 ##示例代码
 
-	var obj = api.require('UIActionSelector');
-	obj.close();
+```js
+var UIActionSelector = api.require('UIActionSelector');
+UIActionSelector.close();
+```
 
 ##补充说明
 
@@ -326,7 +333,7 @@ close()
 
 ##可用性
 
-IOS系统，Android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -346,15 +353,17 @@ actives：
 
 ##示例代码
 
-	var obj = api.require('UIActionSelector');
-	obj.setActive({
-	    actives:[1,0,0]
-	});
+```js
+var UIActionSelector = api.require('UIActionSelector');
+UIActionSelector.setActive({
+    actives: [1,0,0]
+});
+```
 
 
 ##可用性
 
-IOS系统，Android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
@@ -362,13 +371,13 @@ IOS系统，Android系统
 
 获取当前选中项
 
-getActive(callback(ret))
+getActive(callback(ret, err))
 
 ##callback
 
 ret:
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -382,13 +391,19 @@ ret:
 
 ##示例代码
 
-	var obj = api.require('UIActionSelector');
-	obj.getActive(function(ret){
-		 api.alert({msg:JSON.string(ret)});
-	});
+```js
+var UIActionSelector = api.require('UIActionSelector');
+UIActionSelector.getActive(function(ret, err){        
+    if( ret ){
+        alert( JSON.stringify( ret ) );
+    }else{
+        alert( JSON.stringify( err ) );
+    }
+});
+```
 
 ##可用性
 
-IOS系统，Android系统
+iOS系统，Android系统
 
 可提供的1.0.0及更高版本

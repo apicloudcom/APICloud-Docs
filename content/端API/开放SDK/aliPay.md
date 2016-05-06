@@ -3,6 +3,8 @@ Title: aliPay
 Description: 支付宝模块
 */
 
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
+
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
@@ -71,15 +73,15 @@ aliPay封装了支付宝的SDK，开发者只需配置从支付宝申请的相�
 
 - **方案一**：开发者通过 payOrder 方法来进行支付，自己处理订单信息以及签名过程；
 
-- **方案二**：通过 config 接口和 pay 接口把订单信息以及签名过程交予模块内部处理。config 接口的参数可通过 `key.xml` 文件配置。
+- **方案二**：通过 config 接口和 pay 接口把订单信息以及签名过程交予模块内部处理。config 接口的参数可通过 `key.xml` 文件配置（***此时需要云编译或自定义loader才能测试本功能***）。
 
 **支付宝使用注意：**
 
 1. 此模块必须在真机环境下使用
 2. 使用前商户必须与支付宝公司签约获得商户Id、账户Id、商家私钥、支付宝公钥。详情可参看支付宝文档[PID和密钥管理](http://doc.open.alipay.com/doc2/detail?spm=0.0.0.0.pF0173&treeId=58&articleId=103543&docType=1)
-3. 商家私钥的生成和支付宝公钥的获取见支付宝官方相关文档[RSA私钥及公钥生成](http://doc.open.alipay.com/doc2/detail?treeId=58&articleId=103242&docType=1)（[开发者技术分享](http://community.apicloud.com/bbs/forum.php?mod=viewthread&tid=14777&highlight=alipay)，[常见错误](http://community.apicloud.com/bbs/forum.php?mod=viewthread&tid=16292&highlight=alipay)）。
+3. 商家私钥的生成和支付宝公钥的获取见支付宝官方相关文档[RSA私钥及公钥生成](http://doc.open.alipay.com/doc2/detail?treeId=58&articleId=103242&docType=1)（[开发者技术分享](http://community.apicloud.com/bbs/forum.php?mod=viewthread&tid=14777&highlight=alipay)，[私钥生成方法](http://community.apicloud.com/bbs/forum.php?mod=viewthread&tid=30005&extra=)，[常见错误](http://community.apicloud.com/bbs/forum.php?mod=viewthread&tid=16292&highlight=alipay)）。
 4. 商家公钥一定要上传，具体方法参考支付宝官方文档[上传RSA公钥](http://doc.open.alipay.com/doc2/detail.htm?spm=0.0.0.0.rKRiyk&treeId=58&articleId=103578&docType=1)。
-5. 使用此模块前需先配置 config.xml文件，方法如下：
+5. 使用此模块前需先配置 [config.xml](/APICloud/技术专题/app-config-manual)文件，方法如下：
 
 	- 名称：aliPay
 	- 参数：urlScheme
@@ -93,7 +95,7 @@ aliPay封装了支付宝的SDK，开发者只需配置从支付宝申请的相�
 		
 	- 字段描述：
 		
-		**urlScheme**：（必须配置）用于实现应用间跳转及数据交换，本应用可以启动支付宝客户端，也可以从支付宝客户端跳回本应用。urlScheme 的 value 值由字符串 ‘AliPay’ 和本应用的 widgetId 拼接而成
+		**urlScheme**：（必须配置）用于实现应用间跳转及数据交换，本应用可以启动支付宝客户端，也可以从支付宝客户端跳回本应用（***此时需要云编译或自定义loader才能测试本功能***）。urlScheme 的 value 值由字符串 ‘AliPay’ 和本应用的 widgetId 拼接而成
 	
 **密钥配置（适用于支付方案二）**
 	
@@ -133,7 +135,7 @@ aliPay封装了支付宝的SDK，开发者只需配置从支付宝申请的相�
 
 调用支付宝客户端支付
 
-payOrder({params},callback(ret,err))
+payOrder({params}, callback(ret, err))
 
 ##params
 
@@ -146,7 +148,7 @@ orderInfo：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -168,8 +170,8 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('aliPay');
-obj.payOrder({
+var aliPay = api.require('aliPay');
+aliPay.payOrder({
   orderInfo:'partner="2088101568358171"&seller_id="xxx@alipay.com"&out_trade_no="0819145412-6177"&subject="测试"&body="测试测试"&total_fee="0.01"&notify_url="http://notify.msp.hk/notify.htm"&service="mobile.securitypay.pay"&payment_type="1"&_input_charset="utf-8"&it_b_pay="30m"&sign="lBBK%2F0w5LOajrMrji7DUgEqNjIhQbidR13GovA5r3TgIbNqv231yC1NksLdw%2Ba3JnfHXoXuet6XNNHtn7VE%2BeCoRO1O%2BR1KugLrQEZMtG5jmJIe2pbjm%2F3kb%2FuGkpG%2BwYQYI51%2BhA3YBbvZHVQBYveBqK%2Bh8mUyb7GM1HxWs9k4%3D"&sign_type="RSA"'
 },function(ret,err) {
   api.alert({
@@ -190,7 +192,7 @@ iOS系统，Android系统
 
 配置支付宝信息，**适用于支付方案二**
 
-config({params},callback(ret,err))
+config({params}, callback(ret, err))
 ##params
 
 partner：
@@ -222,7 +224,7 @@ notifyURL：
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -232,7 +234,7 @@ ret：
 ```
 err：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -245,8 +247,8 @@ err：
 ##示例代码
 
 ```js
-var obj = api.require('aliPay');
-obj.config({
+var aliPay = api.require('aliPay');
+aliPay.config({
   partner:'12345678901234',
   seller:'123456789024354',
   rsaPriKey:'testKEY',
@@ -293,13 +295,13 @@ amount：
 tradeNO：
 
 - 类型：字符串
-- 描述：交易订单编号（由商家按自己的规则生成），**不可包含字母，否则在 IOS 平台上报错**
+- 描述：交易订单编号（由商家按自己的规则生成），**不可包含字母，否则在 iOS 平台上报错**
 
 ##callback(ret, err)
 
 ret：
 
-- 类型：JSON对象
+- 类型：JSON 对象
 - 内部字段：
 
 ```js
@@ -324,17 +326,13 @@ ret：
 ##示例代码
 
 ```js
-var obj = api.require('aliPay');
-var subject = '订单名';
-var body = '订单描述';
-var amount = '0.01';
-var tradeNO = '4563548735674';
+var aliPay = api.require('aliPay');
 var notifyURL = 'http://www.apicloud.com';
-obj.pay({
-   subject:subject,
-	body:body,
-	amount:amount,
-	tradeNO:tradeNO
+aliPay.pay({
+   subject: '订单名',
+	body: '订单描述',
+	amount: '0.01',
+	tradeNO: '4563548735674'
 },function(ret,err) {
 	api.alert({
 		title: '支付结果',
